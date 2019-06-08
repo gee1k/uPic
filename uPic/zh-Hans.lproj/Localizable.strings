@@ -1,0 +1,49 @@
+/* 
+  Localizable.strings
+  uPic
+
+  Created by Svend Jin on 2019/6/8.
+  Copyright © 2019 Svend Jin. All rights reserved.
+*/
+
+/* app 名称 */
+"app-name" = "UPic";
+
+/* 提示窗口确定按钮的标题 */
+"alert-info-button.titile" = "确定";
+
+/* 关于窗口的消息：帮助您提取图片中的文字。 */
+"about-window.message" = "上传图片到 https://sm.ms";
+
+/* 关于窗口的标题：关于 */
+"about-window.title" = "关于";
+
+/* 上传成功通知标题 */
+"upload.notification.success.title" = "上传成功";
+
+/* 上传成功通知副标题 */
+"upload.notification.success.subtitle" = "URL 已复制到剪切板，快去粘贴使用吧！";
+
+/* 上传失败通知标题 */
+"upload.notification.error.title" = "长传失败";
+
+/* 清除历史上传成功通知标题 */
+"clear.notification.success.title" = "清除历史上传成功";
+
+/* 清除历史上传失败通知标题 */
+"clear.notification.error.title" = "清除历史上传失败";
+
+/* 状态栏菜单选择文件 */
+"status-menu.select" = "选择文件";
+
+/* 状态栏菜单清空历史上传 */
+"status-menu.clear" = "清空历史上传";
+
+/* 状态栏菜单输出格式 */
+"status-menu.output" = "输出格式";
+
+/* 状态栏菜单关于 */
+"status-menu.about" = "关于";
+
+/* 状态栏菜单退出 */
+"status-menu.quit" = "退出";
