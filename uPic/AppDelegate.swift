@@ -128,10 +128,18 @@ extension AppDelegate {
         let alert = NSAlert()
         alert.alertStyle = NSAlert.Style.informational
         alert.messageText = NSLocalizedString("about-window.title", comment: "关于窗口的标题：关于")
-        alert.informativeText = "\(appInfo) \(NSLocalizedString("about-window.message", comment: "关于窗口的消息：上传图片到 https://sm.ms"))"
+        alert.informativeText = "\(appInfo) \(NSLocalizedString("about-window.message", comment: "关于窗口的消息：上传图片到 https://sm.ms")) \n\nAuthor: Svend Jin \nWebsite: https://svend.cc \nGithub: https://github.com/gee1k/uPic"
+        let button = NSButton(title: "Github", target: nil, action: #selector(openGithub))
+        alert.accessoryView = button
         alert.addButton(withTitle: NSLocalizedString("alert-info-button.titile", comment: "提示窗口确定按钮的标题：确定"))
         alert.window.titlebarAppearsTransparent = true
         alert.runModal()
+    }
+    
+    @objc func openGithub() {
+        if let url = URL(string: "https://github.com/gee1k/uPic"), NSWorkspace.shared.open(url) {
+            print("default browser was successfully opened")
+        }
     }
     
     @objc func changeOutputFormat(_ sender: NSMenuItem!) {
