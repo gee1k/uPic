@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1623611B22AB935300E4025C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623611D22AB935300E4025C /* InfoPlist.strings */; };
 		1623612322AB951E00E4025C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
+		1675516022ABE4A800D3EB6F /* SmmsPic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675515F22ABE4A800D3EB6F /* SmmsPic.swift */; };
+		1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */; };
+		1675516422AC102700D3EB6F /* NotificationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516322AC102700D3EB6F /* NotificationExt.swift */; };
+		1675516722ACAA0600D3EB6F /* UPicUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516622ACAA0600D3EB6F /* UPicUpdater.swift */; };
+		1675516A22ACAA5900D3EB6F /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516922ACAA5900D3EB6F /* Util.swift */; };
 		16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A6DC5722AA375700813706 /* AppDelegate.swift */; };
 		16A6DC5A22AA375700813706 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A6DC5922AA375700813706 /* ViewController.swift */; };
 		16A6DC5C22AA375800813706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16A6DC5B22AA375800813706 /* Assets.xcassets */; };
@@ -25,6 +30,11 @@
 		1623612422AB951E00E4025C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1623612622AB951F00E4025C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1626E8C622AAB6B1006DCF0F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1675515F22ABE4A800D3EB6F /* SmmsPic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsPic.swift; sourceTree = "<group>"; };
+		1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDragingInfoExt.swift; sourceTree = "<group>"; };
+		1675516322AC102700D3EB6F /* NotificationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExt.swift; sourceTree = "<group>"; };
+		1675516622ACAA0600D3EB6F /* UPicUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPicUpdater.swift; sourceTree = "<group>"; };
+		1675516922ACAA5900D3EB6F /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		16A6DC5722AA375700813706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16A6DC5922AA375700813706 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		16A6DC5B22AA375800813706 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,6 +69,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1675516522AC165600D3EB6F /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */,
+				1675516322AC102700D3EB6F /* NotificationExt.swift */,
+				1675516622ACAA0600D3EB6F /* UPicUpdater.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		1675516822ACAA4B00D3EB6F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1675516922ACAA5900D3EB6F /* Util.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		16A6DC4B22AA375700813706 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +101,7 @@
 		16A6DC5622AA375700813706 /* uPic */ = {
 			isa = PBXGroup;
 			children = (
+				1675516822ACAA4B00D3EB6F /* Utils */,
 				1623611D22AB935300E4025C /* InfoPlist.strings */,
 				16A6DC6922AA3B1800813706 /* Model */,
 				16A6DC6722AA3ABF00813706 /* View Controllers */,
@@ -81,6 +110,7 @@
 				16A6DC5D22AA375800813706 /* Main.storyboard */,
 				16A6DC6822AA3AD900813706 /* Supporting Files */,
 				1623612522AB951E00E4025C /* Localizable.strings */,
+				1675516522AC165600D3EB6F /* extension */,
 			);
 			path = uPic;
 			sourceTree = "<group>";
@@ -105,6 +135,7 @@
 		16A6DC6922AA3B1800813706 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1675515F22ABE4A800D3EB6F /* SmmsPic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -241,8 +272,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1675516722ACAA0600D3EB6F /* UPicUpdater.swift in Sources */,
 				16A6DC5A22AA375700813706 /* ViewController.swift in Sources */,
+				1675516422AC102700D3EB6F /* NotificationExt.swift in Sources */,
 				16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */,
+				1675516A22ACAA5900D3EB6F /* Util.swift in Sources */,
+				1675516022ABE4A800D3EB6F /* SmmsPic.swift in Sources */,
+				1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

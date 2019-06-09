@@ -25,7 +25,13 @@
 "upload.notification.success.subtitle" = "URL 已复制到剪切板，快去粘贴使用吧！";
 
 /* 上传失败通知标题 */
-"upload.notification.error.title" = "长传失败";
+"upload.notification.error.title" = "上传失败";
+
+/* 开始上传标题 */
+"upload.notification.start.title" = "开始上传";
+
+/* 开始上传副标题 */
+"upload.notification.start.subtitle" = "图片正在上传，请稍后！";
 
 /* 清除历史上传成功通知标题 */
 "clear.notification.success.title" = "清除历史上传成功";
@@ -33,8 +39,20 @@
 /* 清除历史上传失败通知标题 */
 "clear.notification.error.title" = "清除历史上传失败";
 
+/* 复制的文件不存在 */
+"copied-file-does-not-exist" = "复制的文件不存在或已被删除！";
+
+/* 复制的文件格式不支持 */
+"copied-file-format-is-not-supported" = "复制的文件格式不支持！";
+
 /* 状态栏菜单选择文件 */
 "status-menu.select" = "选择文件";
+
+/* 状态栏菜单屏幕截图 */
+"status-menu.screenshot" = "截图上传";
+
+/* 状态栏菜单上传剪切板中的图片 */
+"status-menu.pasteboard" = "上传剪切板中的图片";
 
 /* 状态栏菜单清空历史上传 */
 "status-menu.clear" = "清空历史上传";
@@ -47,3 +65,24 @@
 
 /* 状态栏菜单退出 */
 "status-menu.quit" = "退出";
+
+/* 菜单栏检查更新按钮标题：检查更新 */
+"status-menu.check-update" = "检查更新";
+
+/* 前往下载 */
+"check-update-tip-get-gobutton.title" = "前往下载";
+
+/* 忽略 */
+"check-update-tip-get-ignorebutton.title" = "忽略";
+
+/* 发现新版本 */
+"check-update-tip-get.message" = "发现新版本";
+
+/* 网络异常！ */
+"check-update-tip-network.message" = "网络异常！";
+
+/* 没有更新！ */
+"check-update-tip-none.message" = "没有更新！";
+
+/* 检查更新 */
+"check-update-tip.title" = "检查更新";

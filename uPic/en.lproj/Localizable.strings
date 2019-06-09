@@ -20,13 +20,25 @@
 "about-window.title" = "About";
 
 /* 上传成功通知标题 */
-"upload.notification.success.title" = "uploaded successfully";
+"upload.notification.success.title" = "Uploaded successfully";
 
 /* 上传成功通知副标题 */
 "upload.notification.success.subtitle" = "URL has been copied to the clipboard, paste and use it!";
 
 /* 上传失败通知标题 */
-"upload.notification.error.title" = "uploaded fail";
+"upload.notification.error.title" = "Uploaded fail";
+
+/* 开始上传标题 */
+"upload.notification.start.title" = "Start upload";
+
+/* 开始上传副标题 */
+"upload.notification.start.subtitle" = "The picture is being uploaded, please wait!";
+
+/* 复制的文件不存在 */
+"copied-file-does-not-exist" = "The copied file does not exist or has been deleted!";
+
+/* 所复制的文件格式不支持 */
+"copied-file-format-is-not-supported" = "The copied file format is not supported!";
 
 /* 清除历史上传成功通知标题 */
 "clear.notification.success.title" = "clear history successfully";
@@ -36,6 +48,12 @@
 
 /* 状态栏菜单选择文件 */
 "status-menu.select" = "Select File";
+
+/* 状态栏菜单屏幕截图 */
+"status-menu.screenshot" = "Screenshot And Upload";
+
+/* 状态栏菜单上传剪切板中的图片 */
+"status-menu.pasteboard" = "Upload Image From Pasteboard";
 
 /* 状态栏菜单清空历史上传 */
 "status-menu.clear" = "Clear History";
@@ -48,3 +66,24 @@
 
 /* 状态栏菜单退出 */
 "status-menu.quit" = "Quit";
+
+/* 菜单栏检查更新按钮标题：检查更新 */
+"status-menu.check-update" = "Check for updates";
+
+/* 前往下载 */
+"check-update-tip-get-gobutton.title" = "Download";
+
+/* 忽略 */
+"check-update-tip-get-ignorebutton.title" = "Ignore";
+
+/* 发现新版本 */
+"check-update-tip-get.message" = "Found new version!";
+
+/* 网络异常！ */
+"check-update-tip-network.message" = "Connection Invalid!";
+
+/* 没有更新！ */
+"check-update-tip-none.message" = "No updates!";
+
+/* 检查更新 */
+"check-update-tip.title" = "Check for updates";

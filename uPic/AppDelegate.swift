@@ -9,7 +9,6 @@
 import Cocoa
 import SwiftyJSON
 import Alamofire
-import UserNotifications
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -21,7 +20,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         if let button = statusItem.button {
-            button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
+            button.image = NSImage(named:NSImage.Name("statusIcon"))
+            button.window?.delegate = self
+            button.window?.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
         }
         constructStatusMenu()
     }
@@ -39,14 +40,18 @@ extension AppDelegate {
     /* 构建状态栏菜单 */
     func constructStatusMenu() {
         let menu = NSMenu()
-        let menuItem = NSMenuItem(title: NSLocalizedString("status-menu.select", comment: "选择文件"), action: #selector(AppDelegate.selectFile(_:)), keyEquivalent: "P")
+        let menuItem = NSMenuItem(title: NSLocalizedString("status-menu.select", comment: "选择文件"), action: #selector(AppDelegate.selectFile(_:)), keyEquivalent: "u")
         menuItem.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
         menu.addItem(menuItem)
+        
+        menu.addItem(withTitle: NSLocalizedString("status-menu.pasteboard", comment: "上传剪切板中的图片"), action: #selector(uploadByPasteboard), keyEquivalent: "p")
+        menu.addItem(withTitle: NSLocalizedString("status-menu.screenshot", comment: "截图上传"), action: #selector(screenshotAndUpload), keyEquivalent: "c")
         
         menu.addItem(NSMenuItem(title: NSLocalizedString("status-menu.clear", comment: "清除历史上传"), action: #selector(clearHistory), keyEquivalent: ""))
         menu.addItem(NSMenuItem.separator())
         self.createOutputFormatMenu(menu: menu)
         menu.addItem(NSMenuItem(title: NSLocalizedString("status-menu.about", comment: "关于"), action: #selector(showAboutMe), keyEquivalent: ""))
+        menu.addItem(withTitle: NSLocalizedString("status-menu.check-update", comment: "检查更新"), action: #selector(checkUpdate), keyEquivalent: "u")
         menu.addItem(NSMenuItem(title: NSLocalizedString("status-menu.quit", comment: "退出"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         
         statusItem.menu = menu
@@ -86,60 +91,55 @@ extension AppDelegate {
         openPanel.canChooseDirectories = false
         openPanel.canCreateDirectories = false
         openPanel.canChooseFiles = true
-        openPanel.allowedFileTypes = ["png", "jpg", "jpeg", "svg", "gif"]
+        openPanel.allowedFileTypes = SmmsPic.imageTypes
         openPanel.begin { (result) -> Void in
             openPanel.close()
             if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
                 let selectedPath = openPanel.url!.path
                 let url: URL = URL(fileURLWithPath: selectedPath)
                 
-                
-                AF.upload(multipartFormData: { (multipartFormData:MultipartFormData) in
-                    multipartFormData.append(url, withName: "smfile")
-                }, to: "https://sm.ms/api/upload", method: HTTPMethod.post).responseJSON { response in
-                    switch response.result {
-                    case .success(let value):
-                        let json = JSON(value)
-                        let code = json["code"]
-                        if "error" == code {
-                            let msg = json["msg"].stringValue
-                            debugPrint(msg)
-                            self.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败通知标题"), subTitle: "", body: msg)
-                        } else {
-                            let data = json["data"]
-                            self.onUploadSuccess(data: data)
-                        }
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-                
+                SmmsPic.share.upload(url, callback: self.uploadCallBack)
             }
         }
     }
     
-    @objc func showAboutMe() {
+    @objc func uploadByPasteboard() {
+        let pasteboardType = NSPasteboard.general.types?.first
         
-        let infoDic = Bundle.main.infoDictionary
-        let appNameStr = NSLocalizedString("app-name", comment: "APP 名称")
-        let versionStr = infoDic?["CFBundleShortVersionString"] as! String
-        let appInfo =  appNameStr + " v" + versionStr
-        
-        let alert = NSAlert()
-        alert.alertStyle = NSAlert.Style.informational
-        alert.messageText = NSLocalizedString("about-window.title", comment: "关于窗口的标题：关于")
-        alert.informativeText = "\(appInfo) \(NSLocalizedString("about-window.message", comment: "关于窗口的消息：上传图片到 https://sm.ms")) \n\nAuthor: Svend Jin \nWebsite: https://svend.cc \nGithub: https://github.com/gee1k/uPic"
-        let button = NSButton(title: "Github", target: nil, action: #selector(openGithub))
-        alert.accessoryView = button
-        alert.addButton(withTitle: NSLocalizedString("alert-info-button.titile", comment: "提示窗口确定按钮的标题：确定"))
-        alert.window.titlebarAppearsTransparent = true
-        alert.runModal()
+        if (pasteboardType == NSPasteboard.PasteboardType.png) {
+            let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
+            SmmsPic.share.upload(imgData!, callback: self.uploadCallBack)
+        } else if (pasteboardType == NSPasteboard.PasteboardType.fileURL) {
+            
+            let filePath = NSPasteboard.general.string(forType: NSPasteboard.PasteboardType.fileURL)!
+            let url = URL(string: filePath)!
+            
+            if (!SmmsPic.imageTypes.contains(url.pathExtension)) {
+                NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败"), subTitle: "", body: NSLocalizedString("copied-file-format-is-not-supported", comment: "复制的文件格式不支持"))
+                return
+            }
+            
+            let fileManager = FileManager.default
+            if (!url.isFileURL || !fileManager.fileExists(atPath: url.path)) {
+                debugPrint("复制的文件不存在或已被删除！")
+                NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败"), subTitle: "", body: NSLocalizedString("copied-file-does-not-exist", comment: "复制的文件不存在或已被删除"))
+                return
+            }
+            SmmsPic.share.upload(url, callback: self.uploadCallBack)
+        } else {
+            NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败"), subTitle: "", body: NSLocalizedString("copied-file-format-is-not-supported", comment: "复制的文件格式不支持"))
+        }
     }
     
-    @objc func openGithub() {
-        if let url = URL(string: "https://github.com/gee1k/uPic"), NSWorkspace.shared.open(url) {
-            print("default browser was successfully opened")
-        }
+    @objc func screenshotAndUpload() {
+        
+        let task = Process()
+        task.launchPath = "/usr/sbin/screencapture"
+        task.arguments = ["-i", "-c"]
+        task.launch()
+        task.waitUntilExit()
+        
+        self.uploadByPasteboard()
     }
     
     @objc func changeOutputFormat(_ sender: NSMenuItem!) {
@@ -152,22 +152,43 @@ extension AppDelegate {
             }
         }
         
-        
         self.setOutputFomart(format: sender.tag)
     }
     
     @objc func clearHistory() {
-        AF.request("https://sm.ms/api/clear").validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                let code = json["code"]
-                let msg = json["msg"].stringValue
-                let title = "error" == code ? NSLocalizedString("clear.notification.error.title", comment: "清除历史上传失败通知标题") : NSLocalizedString("clear.notification.success.title", comment: "清除历史上传失败通知标题")
-                self.sendNotification(title: title, subTitle: "", body: msg)
-            case .failure(let error):
-                print(error)
-            }
+        SmmsPic.share.clearHistory(callback: {(data:JSON) -> Void in
+            let code = data["code"]
+            let msg = data["msg"].stringValue
+            let title = "error" == code ? NSLocalizedString("clear.notification.error.title", comment: "清除历史上传失败通知标题") : NSLocalizedString("clear.notification.success.title", comment: "清除历史上传失败通知标题")
+            NotificationExt.share.sendNotification(title: title, subTitle: "", body: msg)
+        })
+    }
+    
+    
+    @objc func showAboutMe() {
+        alertInfo(withText: NSLocalizedString("about-window.title", comment: "关于窗口的标题：关于"), withMessage: "\(getAppInfo()) \(NSLocalizedString("about-window.message", comment: "关于窗口的消息：上传图片到 https://sm.ms")) \n\nAuthor: Svend Jin \nWebsite: https://svend.cc \nGithub: https://github.com/gee1k/uPic \n", oKButtonTitle: "Github", cancelButtonTitle: NSLocalizedString("alert-info-button.titile", comment: "提示窗口确定按钮的标题：确定"), okHandler: openGithub)
+    }
+    
+    @objc func checkUpdate() {
+        UPicUpdater.share.check(){}
+    }
+    
+    
+    @objc func openGithub() {
+        if let url = URL(string: "https://github.com/gee1k/uPic"), NSWorkspace.shared.open(url) {
+            print("default browser was successfully opened")
+        }
+    }
+    
+    func uploadCallBack(data: JSON) {
+        let code = data["code"]
+        if "error" == code {
+            let msg = data["msg"].stringValue
+            debugPrint(msg)
+            NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败通知标题"), subTitle: "", body: msg)
+        } else {
+            let data = data["data"]
+            self.onUploadSuccess(data: data)
         }
     }
     
@@ -195,9 +216,49 @@ extension AppDelegate {
         NSPasteboard.general.declareTypes([.string], owner: nil)
         NSPasteboard.general.setString(url, forType: .string)
         
-        self.sendNotification(title: NSLocalizedString("upload.notification.success.title", comment: "上传成功通知标题"), subTitle: NSLocalizedString("upload.notification.success.subtitle", comment: "上传成功通知副标题"), body: url)
+        NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.success.title", comment: "上传成功通知标题"), subTitle: NSLocalizedString("upload.notification.success.subtitle", comment: "上传成功通知副标题"), body: url)
     }
     
+}
+
+extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
+    
+    func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        if sender.isImageFile {
+            if let button = statusItem.button {
+                button.image = NSImage(named: "uploadIcon")
+            }
+            return .copy
+        }
+        return .generic
+    }
+    
+    func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        let uploadCallBack = self.uploadCallBack
+        if sender.isImageFile {
+            let imgurl = sender.draggedFileURL!.absoluteURL
+            let imgData = NSData(contentsOf: imgurl!)
+            SmmsPic.share.upload(imgData! as Data, callback: uploadCallBack)
+            return true
+        }
+        return false
+    }
+    
+    func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        return true
+    }
+    
+    func draggingExited(_ sender: NSDraggingInfo?) {
+        if let button = statusItem.button {
+            button.image = NSImage(named: "statusIcon")
+        }
+    }
+    
+    func draggingEnded(_ sender: NSDraggingInfo) {
+        if let button = statusItem.button {
+            button.image = NSImage(named: "statusIcon")
+        }
+    }
 }
 
 
@@ -225,41 +286,5 @@ extension AppDelegate {
     
     func getOutputFormat() -> Int? {
         return UserDefaults.standard.integer(forKey: "output-format")
-    }
-}
-
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    
-    // MARK: 本地通知扩展
-    
-    func sendNotification(title: String, subTitle: String, body: String) -> Void {
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.subtitle = subTitle
-        content.body = body
-        
-        content.sound = UNNotificationSound.default
-        content.categoryIdentifier = "U_PIC"
-        
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: "U_PIC_REQUEST",
-                                            content: content,
-                                            trigger: trigger)
-        
-        // Schedule the request with the system.
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.delegate = self
-        notificationCenter.add(request) { (error) in
-            if error != nil {
-                // Handle any errors.
-            }
-        }
-        
-    }
-    
-    // 配置通知发起时的行为 alert -> 显示弹窗, sound -> 播放提示音
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .sound])
     }
 }
