@@ -6,17 +6,9 @@
   Copyright © 2019 Svend Jin. All rights reserved.
 */
 
-/* app 名称 */
-"app-name" = "UPic";
-
-/* 提示窗口确定按钮的标题 */
-"alert-info-button.titile" = "确定";
-
-/* 关于窗口的消息：帮助您提取图片中的文字。 */
-"about-window.message" = "上传图片到 https://sm.ms";
-
-/* 关于窗口的标题：关于 */
-"about-window.title" = "关于";
+"general.ok" = "好";
+"general.cancel" = "取消";
+"general.yes" = "是的";
 
 /* 上传成功通知标题 */
 "upload.notification.success.title" = "上传成功";
@@ -46,7 +38,7 @@
 "copied-file-format-is-not-supported" = "复制的文件格式不支持！";
 
 /* 状态栏菜单选择文件 */
-"status-menu.select" = "选择文件";
+"status-menu.select-file" = "选择文件";
 
 /* 状态栏菜单屏幕截图 */
 "status-menu.screenshot" = "截图上传";
@@ -60,8 +52,8 @@
 /* 状态栏菜单输出格式 */
 "status-menu.output" = "输出格式";
 
-/* 状态栏菜单关于 */
-"status-menu.about" = "关于";
+/* 状态栏菜单偏好设置 */
+"status-menu.preference" = "偏好设置";
 
 /* 状态栏菜单退出 */
 "status-menu.quit" = "退出";
@@ -86,3 +78,6 @@
 
 /* 检查更新 */
 "check-update-tip.title" = "检查更新";
+
+"alert.reset_preferences_title" = "重置用户偏好设置?";
+"alert.reset_preferences_description" = "⚠️ 注意这将会重置所有用户偏好设置";

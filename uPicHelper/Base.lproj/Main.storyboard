@@ -10,11 +10,11 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="uPic" id="1Xt-HY-uBw">
+                            <menuItem title="uPicHelper" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="uPic" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="uPicHelper" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About uPic" id="5kV-Vb-QxS">
+                                        <menuItem title="About uPicHelper" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
@@ -28,7 +28,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide uPic" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide uPicHelper" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -46,7 +46,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit uPic" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit uPicHelper" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -659,7 +659,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="uPic Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="uPicHelper Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -673,93 +673,11 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="uPic" customModuleProvider="target">
-                    <connections>
-                        <outlet property="statusItemMenu" destination="fqV-BN-CNE" id="X4g-PY-omO"/>
-                    </connections>
-                </customObject>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="uPicHelper" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-                <customObject id="veO-oa-UPB" customClass="StatusMenuController" customModule="uPic" customModuleProvider="target">
-                    <connections>
-                        <outlet property="checkUpdateMenuItem" destination="2Jw-ET-3eH" id="b5K-KG-2xC"/>
-                        <outlet property="ouputFormatMenuItem" destination="1BX-LF-q51" id="H54-M9-CBq"/>
-                        <outlet property="preferenceMenuItem" destination="VW7-Z2-hXR" id="Mhm-Tb-F4W"/>
-                        <outlet property="quitMenuItem" destination="0JF-m2-1iq" id="qTr-PH-bBg"/>
-                        <outlet property="screenshotMenuItem" destination="ueU-fm-1nn" id="lV8-I2-PPX"/>
-                        <outlet property="selectFileMenuItem" destination="p0A-6d-cAU" id="G7k-5Y-yGX"/>
-                        <outlet property="statusMenu" destination="fqV-BN-CNE" id="XoS-be-xDF"/>
-                        <outlet property="uploadPasteboardMenuItem" destination="orX-KL-q11" id="MyG-41-1SW"/>
-                    </connections>
-                </customObject>
-                <menu id="fqV-BN-CNE">
-                    <items>
-                        <menuItem title="选择文件" id="p0A-6d-cAU">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="selectFileMenuItemClicked:" target="veO-oa-UPB" id="yXR-uI-dbU"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="上传剪切板中的图片" id="orX-KL-q11">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="uploadPasteboardMenuItemClicked:" target="veO-oa-UPB" id="2eR-9E-643"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="截图上传" id="ueU-fm-1nn">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="screenshotMenuItemClicked:" target="veO-oa-UPB" id="hJ1-oS-CNS"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="输出格式" id="1BX-LF-q51">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="输出格式" id="XmF-iN-Y0V">
-                                <items>
-                                    <menuItem title="URL" id="U1c-9i-q5b">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <action selector="ouputFormatMenuItemClicked:" target="veO-oa-UPB" id="rRb-CM-Htv"/>
-                                        </connections>
-                                    </menuItem>
-                                    <menuItem title="HTML" tag="1" id="wCN-Y7-fdU">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <action selector="ouputFormatMenuItemClicked:" target="veO-oa-UPB" id="v5l-L7-7KA"/>
-                                        </connections>
-                                    </menuItem>
-                                    <menuItem title="Markdown" tag="2" id="Opc-aA-hUg">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <action selector="ouputFormatMenuItemClicked:" target="veO-oa-UPB" id="Xxd-x1-2BP"/>
-                                        </connections>
-                                    </menuItem>
-                                </items>
-                            </menu>
-                        </menuItem>
-                        <menuItem isSeparatorItem="YES" id="9go-zg-sPT"/>
-                        <menuItem title="偏好设置" id="VW7-Z2-hXR">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="preferenceMenuItemClicked:" target="veO-oa-UPB" id="dVz-M2-Nxa"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="检查更新" id="2Jw-ET-3eH">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="checkUpdateMenuItemClicked:" target="veO-oa-UPB" id="8kG-3a-1Yb"/>
-                            </connections>
-                        </menuItem>
-                        <menuItem title="退出" keyEquivalent="q" id="0JF-m2-1iq">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="quitMenuItemClicked:" target="veO-oa-UPB" id="e0d-Ue-lUF"/>
-                            </connections>
-                        </menuItem>
-                    </items>
-                </menu>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-141" y="182"/>
+            <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
     </scenes>
 </document>

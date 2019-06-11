@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.0.0-beta.6)
+  - MASShortcut (2.3.6)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.6)
+  - MASShortcut
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - MASShortcut
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
+  MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 4550c8a90768c7abebf18e561b971c6bd93c7774
+PODFILE CHECKSUM: 804b3f899d29b34db961533ea9f82149b540c6b8
 
 COCOAPODS: 1.7.1

@@ -15,16 +15,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     /* 状态栏菜单 */
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
-
+    
+    @IBOutlet weak var statusItemMenu: NSMenu!
+    
+    lazy var preferencesWindowController: PreferencesWindowController = {
+        let storyboard = NSStoryboard(name: "Preferences", bundle: nil)
+        return storyboard.instantiateInitialController() as? PreferencesWindowController ?? PreferencesWindowController()
+    }()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        if let button = statusItem.button {
-            button.image = NSImage(named:NSImage.Name("statusIcon"))
-            button.window?.delegate = self
-            button.window?.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
-        }
-        constructStatusMenu()
+        setupStatusBar()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -35,70 +36,49 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 extension AppDelegate {
     
-    // MARK: 状态栏菜单
-    
-    /* 构建状态栏菜单 */
-    func constructStatusMenu() {
-        let menu = NSMenu()
-        let menuItem = NSMenuItem(title: NSLocalizedString("status-menu.select", comment: "选择文件"), action: #selector(AppDelegate.selectFile(_:)), keyEquivalent: "u")
-        menuItem.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
-        menu.addItem(menuItem)
-        
-        menu.addItem(withTitle: NSLocalizedString("status-menu.pasteboard", comment: "上传剪切板中的图片"), action: #selector(uploadByPasteboard), keyEquivalent: "p")
-        menu.addItem(withTitle: NSLocalizedString("status-menu.screenshot", comment: "截图上传"), action: #selector(screenshotAndUpload), keyEquivalent: "c")
-        
-        menu.addItem(NSMenuItem(title: NSLocalizedString("status-menu.clear", comment: "清除历史上传"), action: #selector(clearHistory), keyEquivalent: ""))
-        menu.addItem(NSMenuItem.separator())
-        self.createOutputFormatMenu(menu: menu)
-        menu.addItem(NSMenuItem(title: NSLocalizedString("status-menu.about", comment: "关于"), action: #selector(showAboutMe), keyEquivalent: ""))
-        menu.addItem(withTitle: NSLocalizedString("status-menu.check-update", comment: "检查更新"), action: #selector(checkUpdate), keyEquivalent: "u")
-        menu.addItem(NSMenuItem(title: NSLocalizedString("status-menu.quit", comment: "退出"), action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        
-        statusItem.menu = menu
-    }
-    
-    func createOutputFormatMenu(menu:NSMenu) {
-        // MARK: 创建输出方式子菜单
-        
-        let outputFormatItem = NSMenuItem(title: NSLocalizedString("status-menu.output", comment: "Markdown 格式"), action: nil, keyEquivalent: "")
-        let outputFormatItemSubmenu = NSMenu()
-        let urlFormat = NSMenuItem(title: "URL", action: #selector(AppDelegate.changeOutputFormat(_:)), keyEquivalent: "")
-        urlFormat.tag = 0
-        let imageFormat = NSMenuItem(title: "Image", action: #selector(AppDelegate.changeOutputFormat(_:)), keyEquivalent: "")
-        imageFormat.tag = 1
-        let markdownFormat = NSMenuItem(title: "Markdown", action: #selector(AppDelegate.changeOutputFormat(_:)), keyEquivalent: "")
-        markdownFormat.tag = 2
-        outputFormatItemSubmenu.addItem(urlFormat)
-        outputFormatItemSubmenu.addItem(imageFormat)
-        outputFormatItemSubmenu.addItem(markdownFormat)
-        
-        // 获取数据中保存的输出格式，默认选中对应的格式菜单
-        let outputFormat = self.getOutputFormat()
-        for item in outputFormatItemSubmenu.items {
-            if item.tag == outputFormat {
-                item.state = NSControl.StateValue.on
-            }
+    func setupStatusBar() {
+        if let button = statusItem.button {
+            self.setStatusBarIcon()
+            button.window?.delegate = self
+            
+            button.window?.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
         }
         
-        outputFormatItem.submenu = outputFormatItemSubmenu
-        menu.addItem(outputFormatItem)
+        statusItem.menu = statusItemMenu
+    }
+    
+    func setStatusBarIcon() {
+        let icon = NSImage(named:NSImage.Name("statusIcon"))
+        icon!.isTemplate = true
+        DispatchQueue.main.async {
+            self.statusItem.button?.image = icon
+        }
+    }
+    
+    
+}
+
+extension AppDelegate {
+    
+    @objc func showPreference() {
+        self.preferencesWindowController.showWindow(self)
     }
     
     /* 选择文件 */
-    @objc func selectFile(_ sender: Any?) {
+    @objc func selectFile() {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = false
         openPanel.canCreateDirectories = false
         openPanel.canChooseFiles = true
-        openPanel.allowedFileTypes = SmmsPic.imageTypes
+        openPanel.allowedFileTypes = SmmsUploader.imageTypes
         openPanel.begin { (result) -> Void in
             openPanel.close()
             if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
                 let selectedPath = openPanel.url!.path
                 let url: URL = URL(fileURLWithPath: selectedPath)
                 
-                SmmsPic.share.upload(url, callback: self.uploadCallBack)
+                self.uploadFile(url, data: nil)
             }
         }
     }
@@ -108,16 +88,11 @@ extension AppDelegate {
         
         if (pasteboardType == NSPasteboard.PasteboardType.png) {
             let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
-            SmmsPic.share.upload(imgData!, callback: self.uploadCallBack)
+            self.uploadFile(nil, data: imgData!)
         } else if (pasteboardType == NSPasteboard.PasteboardType.fileURL) {
             
             let filePath = NSPasteboard.general.string(forType: NSPasteboard.PasteboardType.fileURL)!
             let url = URL(string: filePath)!
-            
-            if (!SmmsPic.imageTypes.contains(url.pathExtension)) {
-                NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败"), subTitle: "", body: NSLocalizedString("copied-file-format-is-not-supported", comment: "复制的文件格式不支持"))
-                return
-            }
             
             let fileManager = FileManager.default
             if (!url.isFileURL || !fileManager.fileExists(atPath: url.path)) {
@@ -125,7 +100,7 @@ extension AppDelegate {
                 NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败"), subTitle: "", body: NSLocalizedString("copied-file-does-not-exist", comment: "复制的文件不存在或已被删除"))
                 return
             }
-            SmmsPic.share.upload(url, callback: self.uploadCallBack)
+            self.uploadFile(url, data: nil)
         } else {
             NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败"), subTitle: "", body: NSLocalizedString("copied-file-format-is-not-supported", comment: "复制的文件格式不支持"))
         }
@@ -142,79 +117,48 @@ extension AppDelegate {
         self.uploadByPasteboard()
     }
     
-    @objc func changeOutputFormat(_ sender: NSMenuItem!) {
-        let items:[NSMenuItem] = sender.menu!.items
-        for item in items {
-            if item.tag == sender.tag {
-                item.state = .on
-            } else {
-                item.state = .off
-            }
-        }
-        
-        self.setOutputFomart(format: sender.tag)
-    }
-    
-    @objc func clearHistory() {
-        SmmsPic.share.clearHistory(callback: {(data:JSON) -> Void in
-            let code = data["code"]
-            let msg = data["msg"].stringValue
-            let title = "error" == code ? NSLocalizedString("clear.notification.error.title", comment: "清除历史上传失败通知标题") : NSLocalizedString("clear.notification.success.title", comment: "清除历史上传失败通知标题")
-            NotificationExt.share.sendNotification(title: title, subTitle: "", body: msg)
-        })
-    }
-    
-    
-    @objc func showAboutMe() {
-        alertInfo(withText: NSLocalizedString("about-window.title", comment: "关于窗口的标题：关于"), withMessage: "\(getAppInfo()) \(NSLocalizedString("about-window.message", comment: "关于窗口的消息：上传图片到 https://sm.ms")) \n\nAuthor: Svend Jin \nWebsite: https://svend.cc \nGithub: https://github.com/gee1k/uPic \n", oKButtonTitle: "Github", cancelButtonTitle: NSLocalizedString("alert-info-button.titile", comment: "提示窗口确定按钮的标题：确定"), okHandler: openGithub)
-    }
     
     @objc func checkUpdate() {
         UPicUpdater.share.check(){}
     }
     
     
-    @objc func openGithub() {
-        if let url = URL(string: "https://github.com/gee1k/uPic"), NSWorkspace.shared.open(url) {
-            print("default browser was successfully opened")
+    func uploadFile(_ url:URL?, data: Data?) {
+        if url != nil {
+            if (!SmmsUploader.imageTypes.contains(url!.pathExtension)) {
+                NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败"), subTitle: "", body: NSLocalizedString("copied-file-format-is-not-supported", comment: "复制的文件格式不支持"))
+                return
+            }
+            SmmsUploader.share.upload(url!, callback: self.uploadCallBack)
+        } else if (data != nil) {
+            SmmsUploader.share.upload(data!, callback: self.uploadCallBack)
+            
         }
     }
     
-    func uploadCallBack(data: JSON) {
-        let code = data["code"]
-        if "error" == code {
-            let msg = data["msg"].stringValue
-            debugPrint(msg)
-            NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败通知标题"), subTitle: "", body: msg)
-        } else {
-            let data = data["data"]
-            self.onUploadSuccess(data: data)
+    func uploadCallBack(url: String, error: Error?) {
+        
+        if error != nil {
+            NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败通知标题"), subTitle: "", body: error!.localizedDescription)
         }
-    }
-    
-    func onUploadSuccess(data: JSON) {
-//        let dataDic = data.dictionaryObject!
-//        self.insertHistoryItem(item: dataDic)
         
-        var url = data["url"].stringValue
-        
+        var outputUrl = ""
         let outputFormat = self.getOutputFormat()
         switch outputFormat {
         case 1:
-            url = "<img src='\(url)'/>"
+            outputUrl = "<img src='\(url)'/>"
             break
         case 2:
-            url = "![pic](\(url))"
+            outputUrl = "![pic](\(url))"
             break
-        case .none: break
-            
-        case .some(_): break
+        default:
+            outputUrl = url
             
         }
         
         NSPasteboard.general.clearContents()
         NSPasteboard.general.declareTypes([.string], owner: nil)
-        NSPasteboard.general.setString(url, forType: .string)
+        NSPasteboard.general.setString(outputUrl, forType: .string)
         
         NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.success.title", comment: "上传成功通知标题"), subTitle: NSLocalizedString("upload.notification.success.subtitle", comment: "上传成功通知副标题"), body: url)
     }
@@ -222,6 +166,8 @@ extension AppDelegate {
 }
 
 extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
+    
+    // MARK: 拖拽文件
     
     func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         if sender.isImageFile {
@@ -234,11 +180,11 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
     
     func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        let uploadCallBack = self.uploadCallBack
+        // TODO: 需要支持所有格式文件/根据图床支持的格式再进行判断
         if sender.isImageFile {
             let imgurl = sender.draggedFileURL!.absoluteURL
             let imgData = NSData(contentsOf: imgurl!)
-            SmmsPic.share.upload(imgData! as Data, callback: uploadCallBack)
+            self.uploadFile(nil, data: imgData! as Data)
             return true
         }
         return false

@@ -7,17 +7,9 @@
 */
 
 
-/* app display name */
-"app-name" = "UPic";
-
-/* 提示窗口确定按钮的标题 */
-"alert-info-button.titile" = "OK";
-
-/* 关于窗口的消息：帮助您提取图片中的文字。 */
-"about-window.message" = "upload image to https://sm.ms";
-
-/* 关于窗口的标题：关于 */
-"about-window.title" = "About";
+"general.ok" = "OK";
+"general.cancel" = "Cancel";
+"general.yes" = "Yes";
 
 /* 上传成功通知标题 */
 "upload.notification.success.title" = "Uploaded successfully";
@@ -47,7 +39,7 @@
 "clear.notification.error.title" = "clear history fail";
 
 /* 状态栏菜单选择文件 */
-"status-menu.select" = "Select File";
+"status-menu.select-file" = "Select File";
 
 /* 状态栏菜单屏幕截图 */
 "status-menu.screenshot" = "Screenshot And Upload";
@@ -61,8 +53,8 @@
 /* 状态栏菜单输出格式 */
 "status-menu.output" = "Output Format";
 
-/* 状态栏菜单关于 */
-"status-menu.about" = "About";
+/* 状态栏菜单偏好设置 */
+"status-menu.preference" = "Preference";
 
 /* 状态栏菜单退出 */
 "status-menu.quit" = "Quit";
@@ -87,3 +79,6 @@
 
 /* 检查更新 */
 "check-update-tip.title" = "Check for updates";
+
+"alert.reset_preferences_title" = "Reset User Preferences?";
+"alert.reset_preferences_description" = "⚠️ Note that this will reset all user preferences";
