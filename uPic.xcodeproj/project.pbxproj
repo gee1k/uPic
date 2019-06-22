@@ -12,14 +12,33 @@
 		16068C7522AEC1D1004D39B7 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7422AEC1D1004D39B7 /* PreferencesViewController.swift */; };
 		16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */; };
 		16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7B22AECD9F004D39B7 /* Constants.swift */; };
+		160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */; };
 		1623611B22AB935300E4025C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623611D22AB935300E4025C /* InfoPlist.strings */; };
 		1623612322AB951E00E4025C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
-		1672762322AFF655007299C3 /* PictureServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672762222AFF655007299C3 /* PictureServer.swift */; };
-		1675516022ABE4A800D3EB6F /* SmmsPic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675515F22ABE4A800D3EB6F /* SmmsPic.swift */; };
+		162E8ED622B142DC00B38D00 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162E8ED522B142DC00B38D00 /* Paths.swift */; };
+		163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */; };
+		163632F122B274B400805E7F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F022B274B400805E7F /* Date+Extension.swift */; };
+		163632F322B2751D00805E7F /* BoolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F222B2751D00805E7F /* BoolType.swift */; };
+		164745EB22B618D700F9575D /* HostPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164745EA22B618D700F9575D /* HostPreferencesViewController.swift */; };
+		164745F022B65FE900F9575D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164745EF22B65FE900F9575D /* String+Extension.swift */; };
+		1647474322B66ACE00F9575D /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474222B66ACE00F9575D /* Data+Extension.swift */; };
+		1647474522B66E3400F9575D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474422B66E3400F9575D /* Util.swift */; };
+		164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C39FF22B2AA6C003ADE39 /* Notifier.swift */; };
+		164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */; };
+		166B4A5322B9CB4D001288ED /* UpYunConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */; };
+		166B4A5522B9CFD7001288ED /* ConfigSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4A5422B9CFD7001288ED /* ConfigSheetController.swift */; };
+		166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4A5622B9D118001288ED /* PreferencesNotifier.swift */; };
+		1672762322AFF655007299C3 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672762222AFF655007299C3 /* Host.swift */; };
 		1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */; };
 		1675516422AC102700D3EB6F /* NotificationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516322AC102700D3EB6F /* NotificationExt.swift */; };
 		1675516722ACAA0600D3EB6F /* UPicUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516622ACAA0600D3EB6F /* UPicUpdater.swift */; };
 		1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516922ACAA5900D3EB6F /* AppPublic.swift */; };
+		167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D7F4822B4D2F500DD0A7A /* HostConfig.swift */; };
+		167D7F4B22B4D31300DD0A7A /* HostType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D7F4A22B4D31300DD0A7A /* HostType.swift */; };
+		167D7F4D22B4D43B00DD0A7A /* HostSaveKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D7F4C22B4D43B00DD0A7A /* HostSaveKey.swift */; };
+		168A831122B606C000344E77 /* UpYunUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A2022B5FC7B00B1F923 /* UpYunUploader.swift */; };
+		16995A3422B6008000B1F923 /* UpYunHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A3322B6008000B1F923 /* UpYunHostConfig.swift */; };
+		16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A3522B6026500B1F923 /* UpYunUtil.swift */; };
 		169F073722AF4549008E8525 /* AdvancedPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F073322AF4549008E8525 /* AdvancedPreferencesViewController.swift */; };
 		169F073922AF4549008E8525 /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F073522AF4549008E8525 /* GeneralPreferencesViewController.swift */; };
 		169F073A22AF4549008E8525 /* AboutPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F073622AF4549008E8525 /* AboutPreferencesViewController.swift */; };
@@ -33,8 +52,7 @@
 		16EA205022AF8AB40006FB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA204F22AF8AB40006FB9C /* Assets.xcassets */; };
 		16EA205322AF8AB40006FB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EA205122AF8AB40006FB9C /* Main.storyboard */; };
 		16EA205A22AF8C920006FB9C /* uPicHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16EA204922AF8AB30006FB9C /* uPicHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		16EA205C22AF8FB90006FB9C /* CoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205B22AF8FB90006FB9C /* CoreManager.swift */; };
-		16EA205E22AF96060006FB9C /* PictureServerPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205D22AF96060006FB9C /* PictureServerPreferencesViewController.swift */; };
+		16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205B22AF8FB90006FB9C /* ConfigManager.swift */; };
 		E3FDF6B8A725C97871C6B2D0 /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -57,6 +75,7 @@
 		16068C7422AEC1D1004D39B7 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		16068C7B22AECD9F004D39B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
 		1623611822AB92DB00E4025C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		1623611C22AB935300E4025C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1623611E22AB935F00E4025C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -64,18 +83,36 @@
 		1623612422AB951E00E4025C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1623612622AB951F00E4025C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1626E8C622AAB6B1006DCF0F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1672762222AFF655007299C3 /* PictureServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureServer.swift; sourceTree = "<group>"; };
-		1675515F22ABE4A800D3EB6F /* SmmsPic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsPic.swift; sourceTree = "<group>"; };
+		162E8ED522B142DC00B38D00 /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
+		163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextFieldCell+VerticallyCentered.swift"; sourceTree = "<group>"; };
+		163632F022B274B400805E7F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		163632F222B2751D00805E7F /* BoolType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolType.swift; sourceTree = "<group>"; };
+		164745EA22B618D700F9575D /* HostPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostPreferencesViewController.swift; sourceTree = "<group>"; };
+		164745EF22B65FE900F9575D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		1647474222B66ACE00F9575D /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
+		1647474422B66E3400F9575D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		164C39FF22B2AA6C003ADE39 /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
+		164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigNotifier.swift; sourceTree = "<group>"; };
+		166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpYunConfigView.swift; sourceTree = "<group>"; };
+		166B4A5422B9CFD7001288ED /* ConfigSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSheetController.swift; sourceTree = "<group>"; };
+		166B4A5622B9D118001288ED /* PreferencesNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesNotifier.swift; sourceTree = "<group>"; };
+		1672762222AFF655007299C3 /* Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
 		1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDragingInfoExt.swift; sourceTree = "<group>"; };
 		1675516322AC102700D3EB6F /* NotificationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExt.swift; sourceTree = "<group>"; };
 		1675516622ACAA0600D3EB6F /* UPicUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPicUpdater.swift; sourceTree = "<group>"; };
 		1675516922ACAA5900D3EB6F /* AppPublic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPublic.swift; sourceTree = "<group>"; };
+		167D7F4822B4D2F500DD0A7A /* HostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostConfig.swift; sourceTree = "<group>"; };
+		167D7F4A22B4D31300DD0A7A /* HostType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostType.swift; sourceTree = "<group>"; };
+		167D7F4C22B4D43B00DD0A7A /* HostSaveKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostSaveKey.swift; sourceTree = "<group>"; };
+		1690E7E022BE32B100FC81F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
+		1690E7E222BE32D500FC81F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
+		16995A2022B5FC7B00B1F923 /* UpYunUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpYunUploader.swift; sourceTree = "<group>"; };
+		16995A3322B6008000B1F923 /* UpYunHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpYunHostConfig.swift; sourceTree = "<group>"; };
+		16995A3522B6026500B1F923 /* UpYunUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpYunUtil.swift; sourceTree = "<group>"; };
 		169F073322AF4549008E8525 /* AdvancedPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedPreferencesViewController.swift; sourceTree = "<group>"; };
 		169F073522AF4549008E8525 /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
 		169F073622AF4549008E8525 /* AboutPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutPreferencesViewController.swift; sourceTree = "<group>"; };
 		169F073C22AF53DE008E8525 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Preferences.storyboard; sourceTree = "<group>"; };
-		169F073F22AF53E2008E8525 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
-		169F074122AF53E3008E8525 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		169F074322AF7A3D008E8525 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		16A6DC5722AA375700813706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16A6DC5B22AA375800813706 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,8 +126,7 @@
 		16EA205222AF8AB40006FB9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16EA205422AF8AB40006FB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16EA205522AF8AB40006FB9C /* uPicHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPicHelper.entitlements; sourceTree = "<group>"; };
-		16EA205B22AF8FB90006FB9C /* CoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreManager.swift; sourceTree = "<group>"; };
-		16EA205D22AF96060006FB9C /* PictureServerPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureServerPreferencesViewController.swift; sourceTree = "<group>"; };
+		16EA205B22AF8FB90006FB9C /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
 		16EC9A0222ABBBB4001B6C89 /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9210ACA587ED2CA41A506A /* Pods-uPic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.debug.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.debug.xcconfig"; sourceTree = "<group>"; };
 		A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uPic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,33 +164,132 @@
 		16068C7622AECB26004D39B7 /* PreferencesWindow */ = {
 			isa = PBXGroup;
 			children = (
+				166B4A5122B9CB17001288ED /* ConfigViews */,
 				169F073622AF4549008E8525 /* AboutPreferencesViewController.swift */,
 				169F073322AF4549008E8525 /* AdvancedPreferencesViewController.swift */,
 				169F073522AF4549008E8525 /* GeneralPreferencesViewController.swift */,
-				16EA205D22AF96060006FB9C /* PictureServerPreferencesViewController.swift */,
 				16068C7422AEC1D1004D39B7 /* PreferencesViewController.swift */,
 				16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */,
 				169F073D22AF53DE008E8525 /* Preferences.storyboard */,
+				164745EA22B618D700F9575D /* HostPreferencesViewController.swift */,
 			);
 			path = PreferencesWindow;
 			sourceTree = "<group>";
 		};
-		1672762122AFF63A007299C3 /* Model */ = {
+		162E8ED422B142CC00B38D00 /* Macro */ = {
 			isa = PBXGroup;
 			children = (
-				1672762222AFF655007299C3 /* PictureServer.swift */,
+				162E8ED522B142DC00B38D00 /* Paths.swift */,
 			);
-			path = Model;
+			path = Macro;
 			sourceTree = "<group>";
 		};
-		1675516522AC165600D3EB6F /* extension */ = {
+		163632ED22B2745A00805E7F /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */,
+				163632F022B274B400805E7F /* Date+Extension.swift */,
+				163632F222B2751D00805E7F /* BoolType.swift */,
+				164745EF22B65FE900F9575D /* String+Extension.swift */,
+				1647474222B66ACE00F9575D /* Data+Extension.swift */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
+		163F241E22B12E6700F81D03 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				16068C7B22AECD9F004D39B7 /* Constants.swift */,
+				163F242022B12EB900F81D03 /* Utils */,
+				163F241F22B12EAE00F81D03 /* Managers */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		163F241F22B12EAE00F81D03 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				16EA205B22AF8FB90006FB9C /* ConfigManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		163F242022B12EB900F81D03 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1675516922ACAA5900D3EB6F /* AppPublic.swift */,
+				160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */,
+				1647474422B66E3400F9575D /* Util.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		164C39FE22B2AA5E003ADE39 /* Notifier */ = {
+			isa = PBXGroup;
+			children = (
+				166B4A5622B9D118001288ED /* PreferencesNotifier.swift */,
+				164C39FF22B2AA6C003ADE39 /* Notifier.swift */,
+				164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */,
+			);
+			path = Notifier;
+			sourceTree = "<group>";
+		};
+		166B4A5122B9CB17001288ED /* ConfigViews */ = {
+			isa = PBXGroup;
+			children = (
+				166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */,
+				166B4A5422B9CFD7001288ED /* ConfigSheetController.swift */,
+			);
+			path = ConfigViews;
+			sourceTree = "<group>";
+		};
+		1672762122AFF63A007299C3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				16995A1F22B5FC6800B1F923 /* UpYun */,
+				167D7F4E22B4DB2500DD0A7A /* Smms */,
+				1602ED9622ADEFB200AA8638 /* BaseUploader.swift */,
+				1672762222AFF655007299C3 /* Host.swift */,
+				167D7F4822B4D2F500DD0A7A /* HostConfig.swift */,
+				167D7F4A22B4D31300DD0A7A /* HostType.swift */,
+				167D7F4C22B4D43B00DD0A7A /* HostSaveKey.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1675516522AC165600D3EB6F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */,
 				1675516322AC102700D3EB6F /* NotificationExt.swift */,
 				1675516622ACAA0600D3EB6F /* UPicUpdater.swift */,
 			);
-			path = extension;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		167D7F4E22B4DB2500DD0A7A /* Smms */ = {
+			isa = PBXGroup;
+			children = (
+				1602ED9822ADF43800AA8638 /* SmmsUploader.swift */,
+			);
+			path = Smms;
+			sourceTree = "<group>";
+		};
+		16995A1522B5FC4A00B1F923 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		16995A1F22B5FC6800B1F923 /* UpYun */ = {
+			isa = PBXGroup;
+			children = (
+				16995A2022B5FC7B00B1F923 /* UpYunUploader.swift */,
+				16995A3322B6008000B1F923 /* UpYunHostConfig.swift */,
+				16995A3522B6026500B1F923 /* UpYunUtil.swift */,
+			);
+			path = UpYun;
 			sourceTree = "<group>";
 		};
 		16A6DC4B22AA375700813706 = {
@@ -174,18 +309,19 @@
 			isa = PBXGroup;
 			children = (
 				16A6DC5722AA375700813706 /* AppDelegate.swift */,
-				16068C7B22AECD9F004D39B7 /* Constants.swift */,
-				16EA205B22AF8FB90006FB9C /* CoreManager.swift */,
 				169F074322AF7A3D008E8525 /* StatusMenuController.swift */,
-				1675516922ACAA5900D3EB6F /* AppPublic.swift */,
 				16A6DC5B22AA375800813706 /* Assets.xcassets */,
-				1675516522AC165600D3EB6F /* extension */,
+				163632ED22B2745A00805E7F /* Basic */,
+				1675516522AC165600D3EB6F /* Extensions */,
+				163F241E22B12E6700F81D03 /* General */,
 				1623612522AB951E00E4025C /* Localizable.strings */,
+				162E8ED422B142CC00B38D00 /* Macro */,
 				16A6DC5D22AA375800813706 /* Main.storyboard */,
-				1672762122AFF63A007299C3 /* Model */,
+				1672762122AFF63A007299C3 /* Models */,
+				164C39FE22B2AA5E003ADE39 /* Notifier */,
 				16068C7622AECB26004D39B7 /* PreferencesWindow */,
+				16995A1522B5FC4A00B1F923 /* SDK */,
 				16A6DC6822AA3AD900813706 /* Supporting Files */,
-				16A6DC6922AA3B1800813706 /* Uploader */,
 			);
 			path = uPic;
 			sourceTree = "<group>";
@@ -198,16 +334,6 @@
 				16A6DC6122AA375800813706 /* uPic.entitlements */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		16A6DC6922AA3B1800813706 /* Uploader */ = {
-			isa = PBXGroup;
-			children = (
-				1675515F22ABE4A800D3EB6F /* SmmsPic.swift */,
-				1602ED9622ADEFB200AA8638 /* BaseUploader.swift */,
-				1602ED9822ADF43800AA8638 /* SmmsUploader.swift */,
-			);
-			path = Uploader;
 			sourceTree = "<group>";
 		};
 		16EA204A22AF8AB30006FB9C /* uPicHelper */ = {
@@ -283,6 +409,7 @@
 				TargetAttributes = {
 					16A6DC5322AA375700813706 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -394,23 +521,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16EA205C22AF8FB90006FB9C /* CoreManager.swift in Sources */,
+				16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */,
 				1675516722ACAA0600D3EB6F /* UPicUpdater.swift in Sources */,
 				16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */,
-				1672762322AFF655007299C3 /* PictureServer.swift in Sources */,
+				16995A3422B6008000B1F923 /* UpYunHostConfig.swift in Sources */,
+				1672762322AFF655007299C3 /* Host.swift in Sources */,
 				1602ED9922ADF43800AA8638 /* SmmsUploader.swift in Sources */,
 				1675516422AC102700D3EB6F /* NotificationExt.swift in Sources */,
+				164745F022B65FE900F9575D /* String+Extension.swift in Sources */,
+				166B4A5322B9CB4D001288ED /* UpYunConfigView.swift in Sources */,
+				166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */,
+				162E8ED622B142DC00B38D00 /* Paths.swift in Sources */,
 				16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */,
 				1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */,
-				16EA205E22AF96060006FB9C /* PictureServerPreferencesViewController.swift in Sources */,
+				163632F322B2751D00805E7F /* BoolType.swift in Sources */,
+				163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */,
+				164745EB22B618D700F9575D /* HostPreferencesViewController.swift in Sources */,
+				167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */,
+				164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */,
+				164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */,
+				166B4A5522B9CFD7001288ED /* ConfigSheetController.swift in Sources */,
+				1647474322B66ACE00F9575D /* Data+Extension.swift in Sources */,
+				167D7F4B22B4D31300DD0A7A /* HostType.swift in Sources */,
+				168A831122B606C000344E77 /* UpYunUploader.swift in Sources */,
+				163632F122B274B400805E7F /* Date+Extension.swift in Sources */,
+				16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */,
+				1647474522B66E3400F9575D /* Util.swift in Sources */,
 				1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */,
+				160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */,
 				169F073722AF4549008E8525 /* AdvancedPreferencesViewController.swift in Sources */,
 				16068C7522AEC1D1004D39B7 /* PreferencesViewController.swift in Sources */,
 				169F073A22AF4549008E8525 /* AboutPreferencesViewController.swift in Sources */,
-				1675516022ABE4A800D3EB6F /* SmmsPic.swift in Sources */,
 				1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */,
 				169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */,
 				169F073922AF4549008E8525 /* GeneralPreferencesViewController.swift in Sources */,
+				167D7F4D22B4D43B00DD0A7A /* HostSaveKey.swift in Sources */,
 				16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,8 +593,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				169F073C22AF53DE008E8525 /* Base */,
-				169F073F22AF53E2008E8525 /* en */,
-				169F074122AF53E3008E8525 /* zh-Hans */,
+				1690E7E022BE32B100FC81F8 /* en */,
+				1690E7E222BE32D500FC81F8 /* zh-Hans */,
 			);
 			name = Preferences.storyboard;
 			sourceTree = "<group>";
@@ -597,6 +742,7 @@
 			baseConfigurationReference = 7D9210ACA587ED2CA41A506A /* Pods-uPic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -608,6 +754,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -617,6 +765,7 @@
 			baseConfigurationReference = EF6E6B1F322C29A8668C8B00 /* Pods-uPic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -628,6 +777,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

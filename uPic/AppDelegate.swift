@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     /* 状态栏菜单 */
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
+    let indicator = NSProgressIndicator()
     
     @IBOutlet weak var statusItemMenu: NSMenu!
     
@@ -25,6 +26,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
+        indicator.minValue = 0.0
+        indicator.maxValue = 1.0
+        indicator.doubleValue = 0.0
+        indicator.isIndeterminate = false
+        indicator.controlSize = NSControl.ControlSize.small
+        indicator.style = NSProgressIndicator.Style.spinning
+        indicator.isHidden = true
+        
         setupStatusBar()
     }
 
@@ -42,17 +52,38 @@ extension AppDelegate {
             button.window?.delegate = self
             
             button.window?.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
+            indicator.frame = NSRect(x: (button.frame.width - 16) / 2,
+                                     y: (button.frame.height - 16) / 2,
+                                     width: 16,
+                                     height: 16)
+            button.addSubview(indicator)
         }
         
         statusItem.menu = statusItemMenu
     }
     
-    func setStatusBarIcon() {
-        let icon = NSImage(named:NSImage.Name("statusIcon"))
-        icon!.isTemplate = true
-        DispatchQueue.main.async {
-            self.statusItem.button?.image = icon
+    func setStatusBarIcon(isIndicator:Bool = false) {
+        
+        if isIndicator {
+            DispatchQueue.main.async {
+                self.statusItem.button?.image = nil
+                self.indicator.doubleValue = 0.0
+                self.indicator.isHidden = false
+            }
+            
+        } else {
+            let icon = NSImage(named:NSImage.Name("statusIcon"))
+            icon!.isTemplate = true
+            DispatchQueue.main.async {
+                self.statusItem.button?.image = icon
+                self.indicator.isHidden = true
+            }
         }
+        
+    }
+    
+    func setUpdateProcess(percent: Double) {
+        self.indicator.doubleValue = percent
     }
     
     
@@ -66,12 +97,19 @@ extension AppDelegate {
     
     /* 选择文件 */
     @objc func selectFile() {
+        
+        let fileExtensions = BaseUploader.getFileExtensions()
+        
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = false
         openPanel.canCreateDirectories = false
         openPanel.canChooseFiles = true
-        openPanel.allowedFileTypes = SmmsUploader.imageTypes
+        
+        if fileExtensions.count > 0 {
+            openPanel.allowedFileTypes = fileExtensions
+        }
+        
         openPanel.begin { (result) -> Void in
             openPanel.close()
             if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
@@ -97,12 +135,12 @@ extension AppDelegate {
             let fileManager = FileManager.default
             if (!url.isFileURL || !fileManager.fileExists(atPath: url.path)) {
                 debugPrint("复制的文件不存在或已被删除！")
-                NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败"), subTitle: "", body: NSLocalizedString("copied-file-does-not-exist", comment: "复制的文件不存在或已被删除"))
+                NotificationExt.sendFileDoesNotExistNotification()
                 return
             }
             self.uploadFile(url, data: nil)
         } else {
-            NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败"), subTitle: "", body: NSLocalizedString("copied-file-format-is-not-supported", comment: "复制的文件格式不支持"))
+            self.uploadFaild(errorMsg: NSLocalizedString("file-format-is-not-supported", comment: "文件格式不支持"))
         }
     }
     
@@ -119,31 +157,25 @@ extension AppDelegate {
     
     
     @objc func checkUpdate() {
-        UPicUpdater.share.check(){}
+        UPicUpdater.shared.check(){}
     }
     
     
     func uploadFile(_ url:URL?, data: Data?) {
         if url != nil {
-            if (!SmmsUploader.imageTypes.contains(url!.pathExtension)) {
-                NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败"), subTitle: "", body: NSLocalizedString("copied-file-format-is-not-supported", comment: "复制的文件格式不支持"))
-                return
-            }
-            SmmsUploader.share.upload(url!, callback: self.uploadCallBack)
+            BaseUploader.upload(url: url!)
         } else if (data != nil) {
-            SmmsUploader.share.upload(data!, callback: self.uploadCallBack)
-            
+            BaseUploader.upload(data: data!)
         }
     }
     
-    func uploadCallBack(url: String, error: Error?) {
-        
-        if error != nil {
-            NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.error.title", comment: "上传失败通知标题"), subTitle: "", body: error!.localizedDescription)
-        }
-        
+    ///
+    /// 上传成功时被调用
+    ///
+    func uploadCompleted(url: String) {
+        self.setStatusBarIcon(isIndicator: false)
         var outputUrl = ""
-        let outputFormat = self.getOutputFormat()
+        let outputFormat = Defaults[.ouputFormat]
         switch outputFormat {
         case 1:
             outputUrl = "<img src='\(url)'/>"
@@ -159,10 +191,29 @@ extension AppDelegate {
         NSPasteboard.general.clearContents()
         NSPasteboard.general.declareTypes([.string], owner: nil)
         NSPasteboard.general.setString(outputUrl, forType: .string)
-        
-        NotificationExt.share.sendNotification(title: NSLocalizedString("upload.notification.success.title", comment: "上传成功通知标题"), subTitle: NSLocalizedString("upload.notification.success.subtitle", comment: "上传成功通知副标题"), body: url)
+        NotificationExt.sendUploadSuccessfulNotification(body: outputUrl)
     }
     
+    ///
+    /// 上传失败时被调用
+    ///
+    func uploadFaild(errorMsg: String? = "") {
+        self.setStatusBarIcon(isIndicator: false)
+        NotificationExt.sendUploadErrorNotification(body: errorMsg)
+    }
+    
+    ///
+    /// 上传进度更新时调用
+    ///
+    func uploadProgress(percent: Double) {
+        self.indicator.doubleValue = percent
+    }
+    
+    func uploadStart() {
+        self.setStatusBarIcon(isIndicator: true)
+        self.indicator.doubleValue = 0.0
+        NotificationExt.sendStartUploadNotification()
+    }
 }
 
 extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
@@ -170,7 +221,7 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     // MARK: 拖拽文件
     
     func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        if sender.isImageFile {
+        if sender.isValidFile {
             if let button = statusItem.button {
                 button.image = NSImage(named: "uploadIcon")
             }
@@ -181,10 +232,10 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     
     func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
         // TODO: 需要支持所有格式文件/根据图床支持的格式再进行判断
-        if sender.isImageFile {
-            let imgurl = sender.draggedFileURL!.absoluteURL
-            let imgData = NSData(contentsOf: imgurl!)
-            self.uploadFile(nil, data: imgData! as Data)
+        if sender.isValidFile {
+            let fileUrl = sender.draggedFileURL!.absoluteURL
+            self.setStatusBarIcon()
+            self.uploadFile(fileUrl, data: nil)
             return true
         }
         return false
@@ -195,42 +246,10 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
     
     func draggingExited(_ sender: NSDraggingInfo?) {
-        if let button = statusItem.button {
-            button.image = NSImage(named: "statusIcon")
-        }
     }
     
     func draggingEnded(_ sender: NSDraggingInfo) {
-        if let button = statusItem.button {
-            button.image = NSImage(named: "statusIcon")
-        }
     }
+    
 }
 
-
-extension AppDelegate {
-    
-    // MARK: 本地文件操作扩展
-    
-    func getHistoryList() -> Array<Any> {
-        return UserDefaults.standard.array(forKey: "history") ?? Array()
-    }
-    
-    func insertHistoryItem(item: Any) -> Void {
-        var array:Array = self.getHistoryList()
-        array.append(item)
-        self.setHistoryList(array: array)
-    }
-    
-    func setHistoryList(array: Array<Any>) -> Void {
-        UserDefaults.standard.setValue(array, forKeyPath: "history")
-    }
-    
-    func setOutputFomart(format:Int) -> Void {
-        UserDefaults.standard.set(format, forKey: "output-format")
-    }
-    
-    func getOutputFormat() -> Int? {
-        return UserDefaults.standard.integer(forKey: "output-format")
-    }
-}

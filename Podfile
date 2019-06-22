@@ -7,5 +7,5 @@ use_frameworks!
     pod 'SwiftyJSON', '~> 4.0'
     pod 'Alamofire', '~> 5.0.0-beta.6'
     pod 'MASShortcut'
-
+    pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "master"
 end

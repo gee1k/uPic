@@ -33,12 +33,12 @@ class GeneralPreferencesViewController: PreferencesViewController {
     @IBAction func launchButtonClicked(_ sender: NSButton) {
         let isLaunch = launchButton.state == .on
         let launchAtLogin: BoolType = isLaunch ? ._true : ._false
-        CoreManager.shared.launchAtLogin = launchAtLogin
+        ConfigManager.shared.launchAtLogin = launchAtLogin
         SMLoginItemSetEnabled(Constants.launcherAppIdentifier as CFString, isLaunch)
     }
     
     func refreshButtonState() {
-        guard let launchAtLogin = CoreManager.shared.launchAtLogin else { return }
+        guard let launchAtLogin = ConfigManager.shared.launchAtLogin else { return }
         launchButton.state = launchAtLogin == ._true ? .on : .off
     }
 }

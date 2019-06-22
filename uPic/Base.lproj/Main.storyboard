@@ -681,7 +681,10 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="veO-oa-UPB" customClass="StatusMenuController" customModule="uPic" customModuleProvider="target">
                     <connections>
-                        <outlet property="checkUpdateMenuItem" destination="2Jw-ET-3eH" id="b5K-KG-2xC"/>
+                        <outlet property="checkUpdateMenuItem" destination="yai-4F-Btp" id="klG-hy-GGO"/>
+                        <outlet property="guideMenuItem" destination="O8o-6e-fZn" id="3FX-T4-S1c"/>
+                        <outlet property="helpMenuItem" destination="2Jw-ET-3eH" id="Ubq-wz-L3N"/>
+                        <outlet property="hostMenuItem" destination="d02-bT-1Lv" id="Ah0-J0-Z4M"/>
                         <outlet property="ouputFormatMenuItem" destination="1BX-LF-q51" id="H54-M9-CBq"/>
                         <outlet property="preferenceMenuItem" destination="VW7-Z2-hXR" id="Mhm-Tb-F4W"/>
                         <outlet property="quitMenuItem" destination="0JF-m2-1iq" id="qTr-PH-bBg"/>
@@ -699,7 +702,7 @@
                                 <action selector="selectFileMenuItemClicked:" target="veO-oa-UPB" id="yXR-uI-dbU"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="上传剪切板中的图片" id="orX-KL-q11">
+                        <menuItem title="上传剪切板中的文件" id="orX-KL-q11">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="uploadPasteboardMenuItemClicked:" target="veO-oa-UPB" id="2eR-9E-643"/>
@@ -710,6 +713,10 @@
                             <connections>
                                 <action selector="screenshotMenuItemClicked:" target="veO-oa-UPB" id="hJ1-oS-CNS"/>
                             </connections>
+                        </menuItem>
+                        <menuItem title="图床" id="d02-bT-1Lv">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="图床" id="J3c-l3-LmQ"/>
                         </menuItem>
                         <menuItem title="输出格式" id="1BX-LF-q51">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -743,14 +750,26 @@
                                 <action selector="preferenceMenuItemClicked:" target="veO-oa-UPB" id="dVz-M2-Nxa"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="检查更新" id="2Jw-ET-3eH">
+                        <menuItem title="帮助" id="2Jw-ET-3eH">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <action selector="checkUpdateMenuItemClicked:" target="veO-oa-UPB" id="8kG-3a-1Yb"/>
-                            </connections>
+                            <menu key="submenu" title="帮助" id="Z6H-TN-83r">
+                                <items>
+                                    <menuItem title="检查更新" id="yai-4F-Btp">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="checkUpdateMenuItemClicked:" target="veO-oa-UPB" id="9GG-v2-whs"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="使用教程" id="O8o-6e-fZn">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="guideMenuItemClicked:" target="veO-oa-UPB" id="PRm-Bb-SKG"/>
+                                        </connections>
+                                    </menuItem>
+                                </items>
+                            </menu>
                         </menuItem>
                         <menuItem title="退出" keyEquivalent="q" id="0JF-m2-1iq">
-                            <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="quitMenuItemClicked:" target="veO-oa-UPB" id="e0d-Ue-lUF"/>
                             </connections>

@@ -24,13 +24,13 @@
 "upload.notification.start.title" = "Start upload";
 
 /* 开始上传副标题 */
-"upload.notification.start.subtitle" = "The picture is being uploaded, please wait!";
+"upload.notification.start.subtitle" = "Upload already started, please wait!";
 
-/* 复制的文件不存在 */
-"copied-file-does-not-exist" = "The copied file does not exist or has been deleted!";
+/* 文件不存在或已被删除 */
+"file-does-not-exist" = "The file does not exist or has been deleted!";
 
-/* 所复制的文件格式不支持 */
-"copied-file-format-is-not-supported" = "The copied file format is not supported!";
+/* 文件格式不支持 */
+"file-format-is-not-supported" = "File format not supported!";
 
 /* 清除历史上传成功通知标题 */
 "clear.notification.success.title" = "clear history successfully";
@@ -44,11 +44,11 @@
 /* 状态栏菜单屏幕截图 */
 "status-menu.screenshot" = "Screenshot And Upload";
 
-/* 状态栏菜单上传剪切板中的图片 */
-"status-menu.pasteboard" = "Upload Image From Pasteboard";
+/* 状态栏菜单上传剪切板中的文件 */
+"status-menu.pasteboard" = "Upload copied file";
 
-/* 状态栏菜单清空历史上传 */
-"status-menu.clear" = "Clear History";
+/* 状态栏菜单图床 */
+"status-menu.host" = "Hosts";
 
 /* 状态栏菜单输出格式 */
 "status-menu.output" = "Output Format";

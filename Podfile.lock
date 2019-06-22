@@ -1,10 +1,12 @@
 PODS:
   - Alamofire (5.0.0-beta.6)
+  - CryptoSwift (1.0.0)
   - MASShortcut (2.3.6)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.6)
+  - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
   - MASShortcut
   - SwiftyJSON (~> 4.0)
 
@@ -14,11 +16,22 @@ SPEC REPOS:
     - MASShortcut
     - SwiftyJSON
 
+EXTERNAL SOURCES:
+  CryptoSwift:
+    :branch: master
+    :git: https://github.com/krzyzanowskim/CryptoSwift
+
+CHECKOUT OPTIONS:
+  CryptoSwift:
+    :commit: 50d1c03bc3420eb818c0bdfcbf1c203f174bad3e
+    :git: https://github.com/krzyzanowskim/CryptoSwift
+
 SPEC CHECKSUMS:
   Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
+  CryptoSwift: b91cc3e6902875f4baa91fdf1042c1344108a53b
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 804b3f899d29b34db961533ea9f82149b540c6b8
+PODFILE CHECKSUM: 3ab8398af54261148bd9d1bd8c2802a45bd2c6d7
 
 COCOAPODS: 1.7.1
