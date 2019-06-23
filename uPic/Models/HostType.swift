@@ -29,4 +29,15 @@ public enum HostType: Int, CaseIterable, Codable {
         }
     }
     
+    public var isOnlyOne: Bool {
+        get {
+            switch self {
+            case .smms:
+                return true
+            default:
+                return false
+            }
+        }
+    }
+    
 }

@@ -47,12 +47,21 @@ class HostPreferencesViewController: PreferencesViewController {
 
         tableView.dataSource = self
         tableView.delegate = self
-
+        
         self.initAddHostTypes()
-
         self.initHostItems()
+        
+        self.selectedRow = 0
+        self.setDefaultSelectedHost()
+    }
+    
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        
+        self.setDefaultSelectedHost()
+        
         self.refreshButtonStatus()
-
         self.addObserver()
     }
 
@@ -60,6 +69,7 @@ class HostPreferencesViewController: PreferencesViewController {
         super.viewDidDisappear()
         self.removeObserver()
     }
+    
 
 
     @IBAction func addHostButtonClicked(_ sender: NSPopUpButton) {
@@ -111,6 +121,7 @@ class HostPreferencesViewController: PreferencesViewController {
             return
         }
 
+        // MARK: 根据当前选择的图床，创建对应的配置界面
         switch item.type {
         case .upyun_USS:
             configView.addSubview(UpYunConfigView(frame: configView.frame, data: item.data))
@@ -125,17 +136,19 @@ class HostPreferencesViewController: PreferencesViewController {
         }
     }
 
+    // MARK: 初始化用户的图床配置
     func initHostItems() -> Void {
         self.hostItems = ConfigManager.shared.getHostItems()
         if self.hostItems?.count == 0 {
             self.hostItems?.append(Host.getDefaultHost())
             self.saveButtonClicked(nil)
-            self.resetDefaultHostTypeVisible()
+            self.resetAllowOnlyOneHostTypeVisible()
         }
         self.tableView.reloadData()
 
     }
 
+    // MARK: 初始化图床添加按钮的子菜单
     func initAddHostTypes() {
         for type in HostType.allCases {
             let menuItem = NSMenuItem(title: type.name, action: nil, keyEquivalent: "")
@@ -143,30 +156,33 @@ class HostPreferencesViewController: PreferencesViewController {
             menuItem.tag = type.rawValue
             addHostButton.menu?.addItem(menuItem)
         }
-        self.resetDefaultHostTypeVisible()
+        self.resetAllowOnlyOneHostTypeVisible()
     }
 
-    // 设置添加默认图床是否可以显示
-    func resetDefaultHostTypeVisible() -> Void {
+    // MARK: 设置只允许添加一个实例的图床添加按钮是否可用
+    func resetAllowOnlyOneHostTypeVisible() -> Void {
         guard let hostItems = hostItems else {
             return
         }
-        var hasDefaultHost = false
+        var onlyOneHosts = [Int]()
         for host in hostItems {
-            if host.type == HostType.smms {
-                hasDefaultHost = true
-                break
+            if host.type.isOnlyOne {
+                onlyOneHosts.append(host.type.rawValue)
             }
         }
 
         for item in addHostButton.menu!.items {
-            if item.tag != HostType.smms.rawValue {
-                continue
-            }
-            item.isHidden = hasDefaultHost
+            item.isHidden = onlyOneHosts.contains(item.tag)
         }
     }
+    
+    // MARK: 设置默认选中的图床配置
+    func setDefaultSelectedHost() {
+        self.tableView.selectRowIndexes(IndexSet([self.selectedRow]), byExtendingSelection: false)
+        self.tableViewClick(self)
+    }
 
+    // MARK: 刷新按钮状态
     func refreshButtonStatus() {
         self.saveButton.isEnabled = self.hostItemsChanged
         self.resetButton.isEnabled = self.hostItemsChanged
@@ -176,19 +192,19 @@ class HostPreferencesViewController: PreferencesViewController {
         self.editHostButton.isEnabled = isSelected
     }
 
-
+    // MARK: 添加图床
     func addHost(type: HostType) {
         let data = HostConfig.create(type: type)
         self.hostItems?.append(Host(type, data: data))
         self.tableView.reloadData()
         self.hostItemsChanged = true
-        self.resetDefaultHostTypeVisible()
+        self.resetAllowOnlyOneHostTypeVisible()
         
         self.selectedRow = (self.hostItems?.count ?? 0) - 1
-        self.tableView.selectRowIndexes(IndexSet([self.selectedRow]), byExtendingSelection: false)
-        self.tableViewClick(self)
+        self.setDefaultSelectedHost()
     }
 
+    // MARK: 删除图床
     func deleteHost(index: Int) {
         // Delete selected row
         self.tableView.removeRows(at: IndexSet([index]), withAnimation: .slideUp)
@@ -196,22 +212,18 @@ class HostPreferencesViewController: PreferencesViewController {
         self.hostItems?.remove(at: index)
 
         self.hostItemsChanged = true
-        self.resetDefaultHostTypeVisible()
+        self.resetAllowOnlyOneHostTypeVisible()
         
         selectedRow = -1
-        self.tableViewClick(self)
+        self.setDefaultSelectedHost()
     }
 
+    // MARK: 修改图床名称
     func setHostName(index: Int, name: String) {
         if self.hostItems?[index].name != name {
             self.hostItems?[index].name = name
             self.hostItemsChanged = true
         }
-    }
-
-    func setHostData(index: Int, data: HostConfig?) {
-        self.hostItems?[index].data = data
-        self.hostItemsChanged = true
     }
 
 

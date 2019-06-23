@@ -51,14 +51,11 @@ class QiniuUploader: BaseUploader {
         }
         
         var key = fileName
-        if config.folder != nil {
+        if (config.folder != nil && config.folder!.count > 0) {
             key = "\(config.folder!)/\(key)"
         }
         
         let scope = "\(bucket):\(key)"
-        
-        debugPrint(scope)
-        
         
         // MARK: 生成 token
         let token = QiniuUtil.getToken(scope: scope, accessKey: accessKey, secretKey: secretKey)
@@ -66,9 +63,6 @@ class QiniuUploader: BaseUploader {
         
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
-        
-        debugPrint(token)
-        debugPrint(scope)
         
         AF.upload(multipartFormData: { (multipartFormData:MultipartFormData) in
             if fileUrl != nil {
@@ -84,7 +78,6 @@ class QiniuUploader: BaseUploader {
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    debugPrint(json)
                     let error = json["error"].string
                     if error != nil && error!.count > 0 {
                         super.faild(errorMsg: error)

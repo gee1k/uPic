@@ -12,9 +12,15 @@ import SwiftyJSON
 @objcMembers
 class HostConfig: NSObject, Codable{
     
+    private var addedObserver = false
+    
     //注册监听
     override init() {
         super.init()
+    }
+    
+    deinit {
+        self.removeObserverValues()
     }
     
     //处理监听
@@ -22,15 +28,19 @@ class HostConfig: NSObject, Codable{
                                of object: Any?,
                                change: [NSKeyValueChangeKey : Any]?,
                                context: UnsafeMutableRawPointer?) {
-        if let new = change?[.newKey], let old = change?[.oldKey] {
+        // let new = change?[.newKey], 
+        if let old = change?[.oldKey] {
             if !(old is NSNull) {
-                print("++++ updated: \(old) to: \(new)")
                 PreferencesNotifier.postNotification(.hostConfigChanged)
             }
         }
     }
     
     func observerValues() {
+        if self.addedObserver == true {
+            return
+        }
+        self.addedObserver = true
         let morror = Mirror.init(reflecting: self)
         for (name, _) in (morror.children) {
             addObserver(self, forKeyPath: name!, options: [.new,.old], context: nil)
@@ -39,6 +49,10 @@ class HostConfig: NSObject, Codable{
     
     
     func removeObserverValues() {
+        if !self.addedObserver {
+            return
+        }
+        self.addedObserver = false
         let morror = Mirror.init(reflecting: self)
         for (name, _) in (morror.children) {
             removeObserver(self, forKeyPath: name!, context: nil)

@@ -49,7 +49,7 @@ class UpYunUploader: BaseUploader {
         }
         
         var saveKey = fileName
-        if config.folder != nil {
+        if (config.folder != nil && config.folder!.count > 0) {
             saveKey = "/\(config.folder!)/\(saveKey)"
         }
         

@@ -79,7 +79,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     @objc func changeDefaultHost(_ sender: NSMenuItem) {
-        debugPrint(sender.tag)
         self.setDefaultHost(id: sender.tag)
     }
 

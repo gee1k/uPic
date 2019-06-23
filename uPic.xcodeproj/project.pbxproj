@@ -298,13 +298,6 @@
 			path = Qiniu;
 			sourceTree = "<group>";
 		};
-		16995A1522B5FC4A00B1F923 /* SDK */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SDK;
-			sourceTree = "<group>";
-		};
 		16995A1F22B5FC6800B1F923 /* UpYun */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,7 +336,6 @@
 				1672762122AFF63A007299C3 /* Models */,
 				164C39FE22B2AA5E003ADE39 /* Notifier */,
 				16068C7622AECB26004D39B7 /* PreferencesWindow */,
-				16995A1522B5FC4A00B1F923 /* SDK */,
 				16A6DC6822AA3AD900813706 /* Supporting Files */,
 			);
 			path = uPic;

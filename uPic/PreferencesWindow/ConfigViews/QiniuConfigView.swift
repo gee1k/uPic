@@ -40,7 +40,9 @@ class QiniuConfigView: NSView {
     }
 
     deinit {
-        configSheetController.removeFromParent()
+        if configSheetController != nil {
+            configSheetController.removeFromParent()
+        }
     }
 
 
