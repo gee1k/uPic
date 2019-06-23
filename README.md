@@ -62,7 +62,7 @@
 
 - [x] [~~smms~~](https://sm.ms/)
 - [x] [~~又拍云 USS~~](https://www.upyun.com/products/file-storage)
-- [x] [七牛云 KODO](https://www.qiniu.com/products/kodo)
+- [x] [~~七牛云 KODO~~](https://www.qiniu.com/products/kodo)
 - [ ] [腾讯云 COS](https://cloud.tencent.com/product/cos)
 - [ ] [阿里云 OSS](https://www.aliyun.com/product/oss)
 - ...
