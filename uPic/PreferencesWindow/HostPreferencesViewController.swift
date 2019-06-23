@@ -115,6 +115,9 @@ class HostPreferencesViewController: PreferencesViewController {
         case .upyun_USS:
             configView.addSubview(UpYunConfigView(frame: configView.frame, data: item.data))
             break
+        case .qiniu_KODO:
+            configView.addSubview(QiniuConfigView(frame: configView.frame, data: item.data))
+            break
         default:
             let label = NSTextField(labelWithString: "文件将匿名上传至 \(item.name)")
             label.frame = NSRect(x: (configView.frame.width - label.frame.width) / 2, y: configView.frame.height - 50, width: label.frame.width, height: 20)
@@ -180,6 +183,10 @@ class HostPreferencesViewController: PreferencesViewController {
         self.tableView.reloadData()
         self.hostItemsChanged = true
         self.resetDefaultHostTypeVisible()
+        
+        self.selectedRow = (self.hostItems?.count ?? 0) - 1
+        self.tableView.selectRowIndexes(IndexSet([self.selectedRow]), byExtendingSelection: false)
+        self.tableViewClick(self)
     }
 
     func deleteHost(index: Int) {
@@ -190,6 +197,9 @@ class HostPreferencesViewController: PreferencesViewController {
 
         self.hostItemsChanged = true
         self.resetDefaultHostTypeVisible()
+        
+        selectedRow = -1
+        self.tableViewClick(self)
     }
 
     func setHostName(index: Int, name: String) {

@@ -8,4 +8,5 @@ use_frameworks!
     pod 'Alamofire', '~> 5.0.0-beta.6'
     pod 'MASShortcut'
     pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "master"
+    pod 'Sparkle'
 end

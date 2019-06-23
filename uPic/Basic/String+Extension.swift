@@ -49,6 +49,10 @@ extension String {
         return hmac
     }
     
+    func urlSafeBase64() -> String {
+        return self.replacingOccurrences(of: "+", with: "-").replacingOccurrences(of: "/", with: "_")
+    }
+    
     // 字符串增强
     var lastPathComponent: String {
         return (self as NSString).lastPathComponent
@@ -73,6 +77,7 @@ extension String {
         let nsSt = self as NSString
         return nsSt.appendingPathExtension(ext)
     }
+    
     
     static let random_str_characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     static func randomStr(len : Int) -> String{

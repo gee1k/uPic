@@ -82,3 +82,14 @@
 
 "alert.reset_preferences_title" = "Reset User Preferences?";
 "alert.reset_preferences_description" = "⚠️ Note that this will reset all user preferences";
+
+/* host -- start */
+"host.region" = "Region";
+"host.bucket" = "Bucket";
+"host.operator" = "Operator";
+"host.password" = "Password";
+"host.accessKey" = "Access Key";
+"host.secretKey" = "Secret Key";
+"host.domain" = "Domain";
+"host.folder" = "Folder";
+"host.saveKey" = "File Name";

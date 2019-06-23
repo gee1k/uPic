@@ -9,7 +9,8 @@
 import Foundation
 
 public enum HostType: Int, CaseIterable, Codable {
-    case smms = 1, upyun_USS = 3 //, qiniu_KODO, aliyun_OSS, tencent_COS
+    // MARK: 
+    case smms = 1, upyun_USS = 3, qiniu_KODO = 2//, aliyun_OSS, tencent_COS
     
     public var name: String {
         get {
@@ -18,8 +19,8 @@ public enum HostType: Int, CaseIterable, Codable {
                 return "SMMS"
             case .upyun_USS:
                 return "又拍云USS"
-//            case .qiniu_KODO:
-//                return "七牛云KODO"
+            case .qiniu_KODO:
+                return "七牛云KODO"
 //            case .aliyun_OSS:
 //                return "阿里云OSS"
 //            case .tencent_COS:

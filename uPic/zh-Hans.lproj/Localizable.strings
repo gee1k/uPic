@@ -81,3 +81,14 @@
 
 "alert.reset_preferences_title" = "重置用户偏好设置?";
 "alert.reset_preferences_description" = "⚠️ 注意这将会重置所有用户偏好设置";
+
+/* host -- start */
+"host.region" = "区域";
+"host.bucket" = "储存空间";
+"host.operator" = "操作员";
+"host.password" = "密码";
+"host.accessKey" = "Access Key";
+"host.secretKey" = "Secret Key";
+"host.domain" = "域名";
+"host.folder" = "文件夹";
+"host.saveKey" = "文件名";

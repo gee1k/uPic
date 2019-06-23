@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.3.0</string>
+	<string>0.4.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationCategoryType</key>
@@ -34,5 +34,9 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUFeedURL</key>
+	<string>https://s2.svend.cc/projects/appcasts/uPic_appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>v4kd9DCL59Fim7M1j6QVBJf8fDX+1lUjmeRN0SRf3qk=</string>
 </dict>
 </plist>

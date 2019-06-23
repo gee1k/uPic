@@ -60,6 +60,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     @IBAction func checkUpdateMenuItemClicked(_ sender: NSMenuItem) {
+        // MARK: 已废弃，使用 Sparkle 进行升级
         (NSApplication.shared.delegate as? AppDelegate)?.checkUpdate()
     }
 

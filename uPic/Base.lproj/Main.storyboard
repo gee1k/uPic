@@ -694,6 +694,7 @@
                         <outlet property="uploadPasteboardMenuItem" destination="orX-KL-q11" id="MyG-41-1SW"/>
                     </connections>
                 </customObject>
+                <customObject id="Oqi-DG-w38" customClass="SUUpdater"/>
                 <menu id="fqV-BN-CNE">
                     <items>
                         <menuItem title="选择文件" id="p0A-6d-cAU">
@@ -757,7 +758,7 @@
                                     <menuItem title="检查更新" id="yai-4F-Btp">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <action selector="checkUpdateMenuItemClicked:" target="veO-oa-UPB" id="9GG-v2-whs"/>
+                                            <action selector="checkForUpdates:" target="Oqi-DG-w38" id="D85-2L-1Ob"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="使用教程" id="O8o-6e-fZn">

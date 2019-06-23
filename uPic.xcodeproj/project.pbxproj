@@ -37,6 +37,11 @@
 		167D7F4B22B4D31300DD0A7A /* HostType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D7F4A22B4D31300DD0A7A /* HostType.swift */; };
 		167D7F4D22B4D43B00DD0A7A /* HostSaveKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D7F4C22B4D43B00DD0A7A /* HostSaveKey.swift */; };
 		168A831122B606C000344E77 /* UpYunUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A2022B5FC7B00B1F923 /* UpYunUploader.swift */; };
+		1690E7E422BF111500FC81F8 /* QiniuConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */; };
+		1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E622BF12D200FC81F8 /* QiniuHostConfig.swift */; };
+		1690E7E922BF1A6D00FC81F8 /* QiniuRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E822BF1A6D00FC81F8 /* QiniuRegion.swift */; };
+		1690E7EB22BF2D9400FC81F8 /* QiniuUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7EA22BF2D9400FC81F8 /* QiniuUploader.swift */; };
+		1690E7ED22BF2E4F00FC81F8 /* QiniuUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7EC22BF2E4F00FC81F8 /* QiniuUtil.swift */; };
 		16995A3422B6008000B1F923 /* UpYunHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A3322B6008000B1F923 /* UpYunHostConfig.swift */; };
 		16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A3522B6026500B1F923 /* UpYunUtil.swift */; };
 		169F073722AF4549008E8525 /* AdvancedPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F073322AF4549008E8525 /* AdvancedPreferencesViewController.swift */; };
@@ -106,6 +111,11 @@
 		167D7F4C22B4D43B00DD0A7A /* HostSaveKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostSaveKey.swift; sourceTree = "<group>"; };
 		1690E7E022BE32B100FC81F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		1690E7E222BE32D500FC81F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
+		1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiniuConfigView.swift; sourceTree = "<group>"; };
+		1690E7E622BF12D200FC81F8 /* QiniuHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiniuHostConfig.swift; sourceTree = "<group>"; };
+		1690E7E822BF1A6D00FC81F8 /* QiniuRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiniuRegion.swift; sourceTree = "<group>"; };
+		1690E7EA22BF2D9400FC81F8 /* QiniuUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiniuUploader.swift; sourceTree = "<group>"; };
+		1690E7EC22BF2E4F00FC81F8 /* QiniuUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiniuUtil.swift; sourceTree = "<group>"; };
 		16995A2022B5FC7B00B1F923 /* UpYunUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpYunUploader.swift; sourceTree = "<group>"; };
 		16995A3322B6008000B1F923 /* UpYunHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpYunHostConfig.swift; sourceTree = "<group>"; };
 		16995A3522B6026500B1F923 /* UpYunUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpYunUtil.swift; sourceTree = "<group>"; };
@@ -238,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */,
+				1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */,
 				166B4A5422B9CFD7001288ED /* ConfigSheetController.swift */,
 			);
 			path = ConfigViews;
@@ -246,6 +257,7 @@
 		1672762122AFF63A007299C3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1690E7E522BF113700FC81F8 /* Qiniu */,
 				16995A1F22B5FC6800B1F923 /* UpYun */,
 				167D7F4E22B4DB2500DD0A7A /* Smms */,
 				1602ED9622ADEFB200AA8638 /* BaseUploader.swift */,
@@ -273,6 +285,17 @@
 				1602ED9822ADF43800AA8638 /* SmmsUploader.swift */,
 			);
 			path = Smms;
+			sourceTree = "<group>";
+		};
+		1690E7E522BF113700FC81F8 /* Qiniu */ = {
+			isa = PBXGroup;
+			children = (
+				1690E7EA22BF2D9400FC81F8 /* QiniuUploader.swift */,
+				1690E7E622BF12D200FC81F8 /* QiniuHostConfig.swift */,
+				1690E7E822BF1A6D00FC81F8 /* QiniuRegion.swift */,
+				1690E7EC22BF2E4F00FC81F8 /* QiniuUtil.swift */,
+			);
+			path = Qiniu;
 			sourceTree = "<group>";
 		};
 		16995A1522B5FC4A00B1F923 /* SDK */ = {
@@ -532,6 +555,7 @@
 				166B4A5322B9CB4D001288ED /* UpYunConfigView.swift in Sources */,
 				166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */,
 				162E8ED622B142DC00B38D00 /* Paths.swift in Sources */,
+				1690E7EB22BF2D9400FC81F8 /* QiniuUploader.swift in Sources */,
 				16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */,
 				1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */,
 				163632F322B2751D00805E7F /* BoolType.swift in Sources */,
@@ -540,9 +564,12 @@
 				167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */,
 				164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */,
 				164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */,
+				1690E7ED22BF2E4F00FC81F8 /* QiniuUtil.swift in Sources */,
 				166B4A5522B9CFD7001288ED /* ConfigSheetController.swift in Sources */,
 				1647474322B66ACE00F9575D /* Data+Extension.swift in Sources */,
 				167D7F4B22B4D31300DD0A7A /* HostType.swift in Sources */,
+				1690E7E422BF111500FC81F8 /* QiniuConfigView.swift in Sources */,
+				1690E7E922BF1A6D00FC81F8 /* QiniuRegion.swift in Sources */,
 				168A831122B606C000344E77 /* UpYunUploader.swift in Sources */,
 				163632F122B274B400805E7F /* Date+Extension.swift in Sources */,
 				16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */,
@@ -552,6 +579,7 @@
 				169F073722AF4549008E8525 /* AdvancedPreferencesViewController.swift in Sources */,
 				16068C7522AEC1D1004D39B7 /* PreferencesViewController.swift in Sources */,
 				169F073A22AF4549008E8525 /* AboutPreferencesViewController.swift in Sources */,
+				1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */,
 				1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */,
 				169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */,
 				169F073922AF4549008E8525 /* GeneralPreferencesViewController.swift in Sources */,

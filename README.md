@@ -15,7 +15,7 @@
 </p>
 
 
-## 上传方式
+## ⚒ 上传方式
 
 **uPic支持选择文件上传、拖拽文件上传、复制文件上传、截图上传。支持菜单栏显示实时进度**
 
@@ -40,7 +40,7 @@
 
 ![shortcuts](https://s2.svend.cc/projects/uPic/upload/shortcuts.png)
 
-## 图床配置
+## 💻 图床配置
 
 **在`偏好设置`中可配置图床，同一类型图床可配置多个，已满足多个云储存位置**
 
@@ -50,7 +50,7 @@
 
 ![default-host](https://s2.svend.cc/projects/uPic/upload/default-host.png)
 
-## 输出格式
+## 📝 输出格式
 
 **支持多种输出格式，以快速帮你实现的不同需求。**
 
@@ -62,22 +62,22 @@
 
 - [x] [~~smms~~](https://sm.ms/)
 - [x] [~~又拍云 USS~~](https://www.upyun.com/products/file-storage)
-- [ ] [七牛云 KODO](https://www.qiniu.com/products/kodo)
+- [x] [七牛云 KODO](https://www.qiniu.com/products/kodo)
 - [ ] [腾讯云 COS](https://cloud.tencent.com/product/cos)
 - [ ] [阿里云 OSS](https://www.aliyun.com/product/oss)
 - ...
 
-## 赞助
+## ❤️ 赞助
 
 如果你喜欢 uPic ，欢迎给我打赏
 
 - 支付宝：
 
-<img src="https://s2.svend.cc/qrcode/alipay-mini.jpeg" alt="" style="width: 300px;">
+<img src="https://s2.svend.cc/qrcode/alipay-mini.jpeg" alt="">
 
 - 微信：
 
-<img src="https://s2.svend.cc/qrcode/wechat-mini.jpeg" alt="" style="width: 300px;">
+<img src="https://s2.svend.cc/qrcode/wechat-mini.jpeg" alt="">
 
 ## License
 

@@ -1,8 +1,8 @@
 //
-//  UpYunUploader.swift
+//  QiniuUploader.swift
 //  uPic
 //
-//  Created by Svend Jin on 2019/6/10.
+//  Created by Svend Jin on 2019/6/23.
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
@@ -10,13 +10,16 @@ import Cocoa
 import SwiftyJSON
 import Alamofire
 
-class UpYunUploader: BaseUploader {
+class QiniuUploader: BaseUploader {
     
-    static let shared = UpYunUploader()
-    
-    let url = "https://v0.api.upyun.com/"
+    static let shared = QiniuUploader()
     
     static let fileExtensions:[String] = []
+    
+    struct PutPolicy: Codable {
+        let scope: String
+        let deadline: Int
+    }
     
     func _upload(_ fileUrl: URL?, fileData: Data?) {
         guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {
@@ -26,52 +29,46 @@ class UpYunUploader: BaseUploader {
         
         super.start()
         
-        let config = data as! UpYunHostConfig
+        let config = data as! QiniuHostConfig
         
         
         let bucket = config.bucket!
-        let operatorName = config.operatorName!
-        let password = config.password!
+        let accessKey = config.accessKey!
+        let secretKey = config.secretKey!
         let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
+        let region = QiniuRegion(rawValue: config.region ?? QiniuRegion.z0.rawValue)
         
         var fileName = ""
         var mimeType = ""
         if fileUrl != nil {
             fileName = "\(hostSaveKey.getFileName(filename: fileUrl!.lastPathComponent.deletingPathExtension)).\(fileUrl!.pathExtension)"
-//            fileName = fileUrl!.lastPathComponent
             mimeType = getMimeType(pathExtension: fileUrl!.pathExtension)
         } else {
             // MARK: 处理截图之类的图片，生成一个文件名
             fileName = "\(hostSaveKey.getFileName()).png"
-//            fileName = "uPic_\(Date().milliStamp).png"
             mimeType = getMimeType(pathExtension: "png")
         }
         
-        var saveKey = fileName
+        var key = fileName
         if config.folder != nil {
-            saveKey = "/\(config.folder!)/\(saveKey)"
+            key = "\(config.folder!)/\(key)"
         }
         
-        // MARK: 加密 policy
-        var policyDict = Dictionary<String, Any>()
-        policyDict["bucket"] = bucket
-        policyDict["save-key"] = saveKey
+        let scope = "\(bucket):\(key)"
         
-        let policy = UpYunUtil.getPolicy(policyDict: policyDict)
+        debugPrint(scope)
         
-        // MARK: 加密 signature
-        let signatureParams = ["POST", "/\(bucket)", policy]
-        let signatureStr = signatureParams.joined(separator: "&")
-        let hmac = signatureStr.calculateHMACByKey(key: password.toMd5())
-        let signature = hmac.toBase64()!
         
-        // MARK: 生成 authorization
-        let authorization = "UPYUN \(operatorName):\(signature)"
+        // MARK: 生成 token
+        let token = QiniuUtil.getToken(scope: scope, accessKey: accessKey, secretKey: secretKey)
+        
         
         var headers = HTTPHeaders()
-        headers.add(HTTPHeader.authorization(authorization))
         headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
+        
+        debugPrint(token)
+        debugPrint(scope)
         
         AF.upload(multipartFormData: { (multipartFormData:MultipartFormData) in
             if fileUrl != nil {
@@ -79,19 +76,20 @@ class UpYunUploader: BaseUploader {
             } else {
                 multipartFormData.append(fileData!, withName: "file", fileName: fileName, mimeType: mimeType)
             }
-            multipartFormData.append(authorization.data(using: .utf8)!, withName: "authorization")
-            multipartFormData.append(policy.data(using: .utf8)!, withName: "policy")
-        }, to: "\(url)\(bucket)", headers: headers).uploadProgress { progress in
+            multipartFormData.append(token.data(using: .utf8)!, withName: "token")
+            multipartFormData.append(key.data(using: .utf8)!, withName: "key")
+        }, to: region!.url, headers: headers).uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted * 100)
             }.responseJSON(completionHandler: { response -> Void in
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    let code = json["code"]
-                    if 200 == code {
-                        super.completed(url: domain + saveKey)
+                    debugPrint(json)
+                    let error = json["error"].string
+                    if error != nil && error!.count > 0 {
+                        super.faild(errorMsg: error)
                     } else {
-                        super.faild(errorMsg: json["message"].string)
+                        super.completed(url: "\(domain)/\(key)")
                     }
                 case .failure(let error):
                     super.faild(errorMsg: error.localizedDescription)

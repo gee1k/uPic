@@ -53,6 +53,8 @@ class HostConfig: NSObject, Codable{
             return nil
         case .upyun_USS:
             return UpYunHostConfig()
+        case .qiniu_KODO:
+            return QiniuHostConfig()
         }
     }
     
@@ -72,6 +74,9 @@ class HostConfig: NSObject, Codable{
             break
         case .upyun_USS:
             config =  UpYunHostConfig.deserialize(str: str)
+            break
+        case .qiniu_KODO:
+            config =  QiniuHostConfig.deserialize(str: str)
             break
         }
         
