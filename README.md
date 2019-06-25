@@ -3,7 +3,7 @@
 > 图片(文件)上传 
 
 <p align="center">
-  <img src="https://s2.svend.cc/projects/uPic/icon_128x128.png" alt="">
+  <img src="https://s2.svend.cc/projects/uPic/icon_128x128.png?20190625" alt="">
 </p>
 <p align="center">
   <a href="https://github.com/gee1k/uPic/releases">
