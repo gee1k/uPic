@@ -7,9 +7,10 @@
 //
 
 import Cocoa
+
 // 垂直居中
 class VerticallyCenteredTextFieldCell: NSTextFieldCell {
-    
+
     override func drawingRect(forBounds theRect: NSRect) -> NSRect {
         var newRect: NSRect = super.drawingRect(forBounds: theRect)
         let textSize: NSSize = self.cellSize(forBounds: theRect)

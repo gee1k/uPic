@@ -15,14 +15,14 @@ class QiniuConfigView: NSView {
     var domainField: NSTextField!
 
     var configSheetController: ConfigSheetController!
-    
+
     override func viewWillDraw() {
         super.viewWillDraw()
         // Do view setup here.
-        
+
         configSheetController = (self.window?.contentViewController?.storyboard!.instantiateController(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ConfigSheetController").rawValue)
-            as! ConfigSheetController)
-        
+                as! ConfigSheetController)
+
         self.createView()
     }
 
@@ -49,28 +49,28 @@ class QiniuConfigView: NSView {
     func createView() {
 
         let paddingTop = 50, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 75, labelHeight = 20,
-            viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
-            textFieldX = labelWidth + paddingLeft + gapLeft, textFieldWidth = viewWidth - paddingLeft - textFieldX
+                viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
+                textFieldX = labelWidth + paddingLeft + gapLeft, textFieldWidth = viewWidth - paddingLeft - textFieldX
 
         var y = viewHeight - paddingTop
-        
+
         // MARK: Region
         let regionLabel = NSTextField(labelWithString: "\(self.data.displayName(key: "region")):")
         regionLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
         regionLabel.alignment = .right
         regionLabel.lineBreakMode = .byClipping
-        
+
         let regionButtonPopUp = NSPopUpButton(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         regionButtonPopUp.target = self
         regionButtonPopUp.action = #selector(regionChange(_:))
         regionButtonPopUp.identifier = NSUserInterfaceItemIdentifier(rawValue: "region")
-        
+
         var selectRegion: NSMenuItem?
         for region in QiniuRegion.allCases {
             let menuItem = NSMenuItem(title: region.name, action: nil, keyEquivalent: "")
             menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: region.rawValue)
             regionButtonPopUp.menu?.addItem(menuItem)
-            
+
             if data.region == region.rawValue {
                 selectRegion = menuItem
             }
@@ -78,10 +78,10 @@ class QiniuConfigView: NSView {
         if selectRegion != nil {
             regionButtonPopUp.select(selectRegion)
         }
-        
+
         self.addSubview(regionLabel)
         self.addSubview(regionButtonPopUp)
-        
+
 
         // MARK: Bucket
         y = y - gapTop - labelHeight
@@ -183,7 +183,7 @@ class QiniuConfigView: NSView {
 
         domainField.stringValue = self.data.domain!
     }
-    
+
     @objc func regionChange(_ sender: NSPopUpButton) {
         if let menuItem = sender.selectedItem, let identifier = menuItem.identifier?.rawValue {
             self.data.region = identifier

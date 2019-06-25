@@ -61,13 +61,41 @@
 **以下是现有和未来计划加入支持的图床**
 
 - [x] [~~smms~~](https://sm.ms/)
+
 - [x] [~~又拍云 USS~~](https://www.upyun.com/products/file-storage)
+
 - [x] [~~七牛云 KODO~~](https://www.qiniu.com/products/kodo)
-- [ ] [腾讯云 COS](https://cloud.tencent.com/product/cos)
-- [ ] [阿里云 OSS](https://www.aliyun.com/product/oss)
+
+- [x] [~~腾讯云 COS~~](https://cloud.tencent.com/product/cos)
+
+- [x] [~~阿里云 OSS~~](https://www.aliyun.com/product/oss)
+
 - ...
 
-## ❤️ 赞助
+  # ⚙ 开发
+
+- 1.克隆代码到本地
+	
+	`https://github.com/gee1k/uPic.git`
+	
+- 2.安装依赖，本项目依赖使用 [Cocoapods](https://cocoapods.org/) 管理，请先确保已有 Cocoapods 环境
+
+  ```sh
+  # 进入项目目录
+  cd uPic
+  # 安装依赖
+  pod install
+  ```
+
+- 3.依赖安装完成之后，可编译测试一下是否通过
+
+# ✉️ 联系我
+
+- `Email`: `svend.jin#gmail.com` (#替换为@)
+- `微信群`: `JSW5297` (请备注一下uPic)
+- `Telegram`: [gee1k]()
+
+# ❤️ 赞助
 
 如果你喜欢 uPic ，欢迎给我打赏
 

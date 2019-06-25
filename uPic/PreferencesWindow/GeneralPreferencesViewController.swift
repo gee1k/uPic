@@ -14,31 +14,33 @@ class GeneralPreferencesViewController: PreferencesViewController {
     // MARK: Properties
 
     @IBOutlet weak var launchButton: NSButton!
-    
+
     // MARK: Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func viewWillAppear() {
         super.viewWillAppear()
         refreshButtonState()
     }
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
     }
-    
+
     @IBAction func launchButtonClicked(_ sender: NSButton) {
         let isLaunch = launchButton.state == .on
         let launchAtLogin: BoolType = isLaunch ? ._true : ._false
         ConfigManager.shared.launchAtLogin = launchAtLogin
         SMLoginItemSetEnabled(Constants.launcherAppIdentifier as CFString, isLaunch)
     }
-    
+
     func refreshButtonState() {
-        guard let launchAtLogin = ConfigManager.shared.launchAtLogin else { return }
+        guard let launchAtLogin = ConfigManager.shared.launchAtLogin else {
+            return
+        }
         launchButton.state = launchAtLogin == ._true ? .on : .off
     }
 }

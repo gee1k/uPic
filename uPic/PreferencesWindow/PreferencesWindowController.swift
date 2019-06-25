@@ -14,5 +14,5 @@ class PreferencesWindowController: NSWindowController {
         super.windowDidLoad()
         // Do view setup here.
     }
-    
+
 }

@@ -9,12 +9,12 @@
 import Foundation
 
 public class ConfigManager {
-    
+
     // static
     public static var shared = ConfigManager()
-    
+
     // instance
-    
+
     public var firstUsage: BoolType {
         if Defaults[.firstUsage] == nil {
             Defaults[.firstUsage] = BoolType._false.rawValue
@@ -23,24 +23,26 @@ public class ConfigManager {
             return ._false
         }
     }
-    
+
     public var launchAtLogin: BoolType? {
         get {
-            return Defaults[.launchAtLogin].map(BoolType.init(rawValue: )) ?? nil
+            return Defaults[.launchAtLogin].map(BoolType.init(rawValue:)) ?? nil
         }
-        
+
         set {
             Defaults[.launchAtLogin] = newValue?.rawValue
         }
     }
-    
-    
+
+
     public func firstSetup() {
-        guard firstUsage == ._true else { return }
+        guard firstUsage == ._true else {
+            return
+        }
         Defaults[.launchAtLogin] = BoolType._false.rawValue
         Defaults.synchronize()
     }
-    
+
     public func removeAllUserDefaults() {
         // 提前取出图床配置
         let hostItems = self.getHostItems()
@@ -50,17 +52,17 @@ public class ConfigManager {
         self.setHostItems(items: hostItems)
         Defaults.synchronize()
     }
-    
+
     func getHostItems() -> [Host] {
         return Defaults[.hostItems] ?? [Host]()
     }
-    
+
     func setHostItems(items: [Host]) -> Void {
         Defaults[.hostItems] = items
         ConfigNotifier.postNotification(.changeHostItems)
     }
-    
-    
+
+
     func getDefaultHost() -> Host? {
         guard let defaultHostId = Defaults[.defaultHostId], let hostItems = Defaults[.hostItems] else {
             return nil
@@ -72,5 +74,5 @@ public class ConfigManager {
         }
         return nil
     }
-    
+
 }

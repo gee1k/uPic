@@ -1,16 +1,16 @@
 //
-//  UpYunConfigView.swift
+//  TencentConfigView.swift
 //  uPic
 //
-//  Created by Svend Jin on 2019/6/19.
+//  Created by Svend Jin on 2019/6/24.
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
 import Cocoa
 
-class UpYunConfigView: NSView {
+class TencentConfigView: NSView {
 
-    var data: UpYunHostConfig = UpYunHostConfig()
+    var data: TencentHostConfig = TencentHostConfig()
 
     var domainField: NSTextField!
 
@@ -30,7 +30,7 @@ class UpYunConfigView: NSView {
         super.init(frame: frameRect)
 
         if data != nil {
-            self.data = data as! UpYunHostConfig
+            self.data = data as! TencentHostConfig
         }
 
     }
@@ -48,13 +48,45 @@ class UpYunConfigView: NSView {
 
     func createView() {
 
-        let paddingTop = 50, paddingLeft = 10, gapTop = 10, gapLeft = 5, labelWidth = 60, labelHeight = 20,
+        let paddingTop = 50, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 75, labelHeight = 20,
                 viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
                 textFieldX = labelWidth + paddingLeft + gapLeft, textFieldWidth = viewWidth - paddingLeft - textFieldX
 
         var y = viewHeight - paddingTop
-
+        // MARK: Region
+        let regionLabel = NSTextField(labelWithString: "\(self.data.displayName(key: "region")):")
+        regionLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
+        regionLabel.alignment = .right
+        regionLabel.lineBreakMode = .byClipping
+        
+        let regionButtonPopUp = NSPopUpButton(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        regionButtonPopUp.target = self
+        regionButtonPopUp.action = #selector(regionChange(_:))
+        regionButtonPopUp.identifier = NSUserInterfaceItemIdentifier(rawValue: "region")
+        
+        var selectRegion: NSMenuItem?
+        for region in TencentRegion.allCases {
+            let menuItem = NSMenuItem(title: region.name, action: nil, keyEquivalent: "")
+            menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: region.rawValue)
+            regionButtonPopUp.menu?.addItem(menuItem)
+            if region.endPoint.isEmpty {
+                menuItem.isEnabled = false
+            }
+            
+            if data.region == region.rawValue {
+                selectRegion = menuItem
+            }
+        }
+        if selectRegion != nil {
+            regionButtonPopUp.select(selectRegion)
+        }
+        
+        self.addSubview(regionLabel)
+        self.addSubview(regionButtonPopUp)
+        
+        
         // MARK: Bucket
+        y = y - gapTop - labelHeight
         let bucketLabel = NSTextField(labelWithString: "\(self.data.displayName(key: "bucket")):")
         bucketLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
         bucketLabel.alignment = .right
@@ -67,36 +99,36 @@ class UpYunConfigView: NSView {
         self.addSubview(bucketLabel)
         self.addSubview(bucketField)
 
-        // MARK: Operator
+        // MARK: SecretId
         y = y - gapTop - labelHeight
 
-        let operatorLabel = NSTextField(labelWithString: "\(self.data.displayName(key: "operatorName")):")
-        operatorLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
-        operatorLabel.alignment = .right
-        operatorLabel.lineBreakMode = .byClipping
+        let secretIdLabel = NSTextField(labelWithString: "\(self.data.displayName(key: "secretId")):")
+        secretIdLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
+        secretIdLabel.alignment = .right
+        secretIdLabel.lineBreakMode = .byClipping
 
-        let operatorField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
-        operatorField.identifier = NSUserInterfaceItemIdentifier(rawValue: "operatorName")
-        operatorField.delegate = self.data
-        operatorField.stringValue = self.data.operatorName ?? ""
-        self.addSubview(operatorLabel)
-        self.addSubview(operatorField)
+        let secretIdField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        secretIdField.identifier = NSUserInterfaceItemIdentifier(rawValue: "secretId")
+        secretIdField.delegate = self.data
+        secretIdField.stringValue = self.data.secretId ?? ""
+        self.addSubview(secretIdLabel)
+        self.addSubview(secretIdField)
 
 
         // MARK: Password
         y = y - gapTop - labelHeight
 
-        let passwordLabel = NSTextField(labelWithString: "\(self.data.displayName(key: "password")):")
-        passwordLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
-        passwordLabel.alignment = .right
-        passwordLabel.lineBreakMode = .byClipping
+        let secretKeyLabel = NSTextField(labelWithString: "\(self.data.displayName(key: "secretKey")):")
+        secretKeyLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
+        secretKeyLabel.alignment = .right
+        secretKeyLabel.lineBreakMode = .byClipping
 
-        let passwordField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
-        passwordField.identifier = NSUserInterfaceItemIdentifier(rawValue: "password")
-        passwordField.delegate = self.data
-        passwordField.stringValue = self.data.password ?? ""
-        self.addSubview(passwordLabel)
-        self.addSubview(passwordField)
+        let secretKeyField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        secretKeyField.identifier = NSUserInterfaceItemIdentifier(rawValue: "secretKey")
+        secretKeyField.delegate = self.data
+        secretKeyField.stringValue = self.data.secretKey ?? ""
+        self.addSubview(secretKeyLabel)
+        self.addSubview(secretKeyField)
 
 
         // MARK: domain
@@ -152,5 +184,12 @@ class UpYunConfigView: NSView {
         self.data.saveKey = userInfo["saveKey"] as? String ?? HostSaveKey.dateFilename.rawValue
 
         domainField.stringValue = self.data.domain!
+    }
+    
+    
+    @objc func regionChange(_ sender: NSPopUpButton) {
+        if let menuItem = sender.selectedItem, let identifier = menuItem.identifier?.rawValue {
+            self.data.region = identifier
+        }
     }
 }

@@ -5,6 +5,7 @@
 //  Created by Svend Jin on 2019/6/11.
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
+
 import Cocoa
 import ServiceManagement
 import SwiftyJSON
@@ -24,16 +25,14 @@ class HostPreferencesViewController: PreferencesViewController {
     var hostItems: [Host]?
 
     /* Obserber start */
-    var hostItemsChanged = false
-    {
+    var hostItemsChanged = false {
         didSet {
             self.refreshButtonStatus()
         }
     }
 
     /* Obserber start */
-    var selectedRow: Int = -1
-    {
+    var selectedRow: Int = -1 {
         didSet {
             self.refreshButtonStatus()
         }
@@ -47,20 +46,20 @@ class HostPreferencesViewController: PreferencesViewController {
 
         tableView.dataSource = self
         tableView.delegate = self
-        
+
         self.initAddHostTypes()
         self.initHostItems()
-        
+
         self.selectedRow = 0
         self.setDefaultSelectedHost()
     }
-    
-    
+
+
     override func viewDidAppear() {
         super.viewDidAppear()
-        
+
         self.setDefaultSelectedHost()
-        
+
         self.refreshButtonStatus()
         self.addObserver()
     }
@@ -69,7 +68,6 @@ class HostPreferencesViewController: PreferencesViewController {
         super.viewDidDisappear()
         self.removeObserver()
     }
-    
 
 
     @IBAction func addHostButtonClicked(_ sender: NSPopUpButton) {
@@ -129,6 +127,12 @@ class HostPreferencesViewController: PreferencesViewController {
         case .qiniu_KODO:
             configView.addSubview(QiniuConfigView(frame: configView.frame, data: item.data))
             break
+        case .aliyun_OSS:
+            configView.addSubview(AliyunConfigView(frame: configView.frame, data: item.data))
+            break
+        case .tencent_COS:
+            configView.addSubview(TencentConfigView(frame: configView.frame, data: item.data))
+            break
         default:
             let label = NSTextField(labelWithString: "文件将匿名上传至 \(item.name)")
             label.frame = NSRect(x: (configView.frame.width - label.frame.width) / 2, y: configView.frame.height - 50, width: label.frame.width, height: 20)
@@ -175,7 +179,7 @@ class HostPreferencesViewController: PreferencesViewController {
             item.isHidden = onlyOneHosts.contains(item.tag)
         }
     }
-    
+
     // MARK: 设置默认选中的图床配置
     func setDefaultSelectedHost() {
         self.tableView.selectRowIndexes(IndexSet([self.selectedRow]), byExtendingSelection: false)
@@ -199,7 +203,7 @@ class HostPreferencesViewController: PreferencesViewController {
         self.tableView.reloadData()
         self.hostItemsChanged = true
         self.resetAllowOnlyOneHostTypeVisible()
-        
+
         self.selectedRow = (self.hostItems?.count ?? 0) - 1
         self.setDefaultSelectedHost()
     }
@@ -213,7 +217,7 @@ class HostPreferencesViewController: PreferencesViewController {
 
         self.hostItemsChanged = true
         self.resetAllowOnlyOneHostTypeVisible()
-        
+
         selectedRow = -1
         self.setDefaultSelectedHost()
     }

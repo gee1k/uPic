@@ -1,5 +1,5 @@
 //
-//  QiniuHostConfig.swift
+//  AliyunHostConfig.swift
 //  uPic
 //
 //  Created by Svend Jin on 2019/6/23.
@@ -18,7 +18,7 @@ class QiniuHostConfig: HostConfig {
     dynamic var domain: String?
     dynamic var folder: String?
     dynamic var saveKey: String? = HostSaveKey.filename.rawValue
-    
+
     override func displayName(key: String) -> String {
         switch key {
         case "region":
@@ -39,7 +39,7 @@ class QiniuHostConfig: HostConfig {
             return ""
         }
     }
-    
+
     override func serialize() -> String {
         var dict = Dictionary<String, Any>()
         dict["region"] = self.region
@@ -49,10 +49,10 @@ class QiniuHostConfig: HostConfig {
         dict["domain"] = self.domain
         dict["folder"] = self.folder
         dict["saveKey"] = self.saveKey
-        
+
         return JSON(dict).rawString()!
     }
-    
+
     static func deserialize(str: String?) -> QiniuHostConfig? {
         let config = QiniuHostConfig()
         guard let str = str else {

@@ -10,8 +10,8 @@ import Foundation
 
 
 public enum HostSaveKey: String, CaseIterable, Codable {
-    case dateFilename,filename, random
-    
+    case dateFilename, filename, random
+
     public var name: String {
         get {
             switch self {
@@ -24,13 +24,13 @@ public enum HostSaveKey: String, CaseIterable, Codable {
             }
         }
     }
-    
+
     public func getFileName(filename: String? = nil) -> String {
         var filename = filename
         if filename == nil {
             filename = String.randomStr(len: 6)
         }
-        
+
         switch self {
         case .filename:
             return filename!

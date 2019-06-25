@@ -9,7 +9,7 @@
 import Cocoa
 
 class BaseUploader {
-    
+
     ///
     /// 作为上传的统一入口
     /// As a unified entry point for uploads
@@ -18,12 +18,12 @@ class BaseUploader {
         guard let host = ConfigManager.shared.getDefaultHost() else {
             return
         }
-        
+
         let fileExtensions = BaseUploader.getFileExtensions()
         if (!BaseUploader.checkFileExtensions(fileExtensions: fileExtensions, fileExtension: url.pathExtension)) {
             return
         }
-        
+
         /* 有新的图床在这里进行判断调用 */
         switch host.type {
         case .smms:
@@ -35,9 +35,15 @@ class BaseUploader {
         case .qiniu_KODO:
             QiniuUploader.shared.upload(url)
             break
+        case .aliyun_OSS:
+            AliyunUploader.shared.upload(url)
+            break
+        case .tencent_COS:
+            TencentUploader.shared.upload(url)
+            break
         }
     }
-    
+
     ///
     /// 作为上传的统一入口
     /// As a unified entry point for uploads
@@ -46,7 +52,7 @@ class BaseUploader {
         guard let host = ConfigManager.shared.getDefaultHost() else {
             return
         }
-        
+
         /* 有新的图床在这里进行判断调用 */
         switch host.type {
         case .smms:
@@ -58,9 +64,15 @@ class BaseUploader {
         case .qiniu_KODO:
             QiniuUploader.shared.upload(data)
             break
+        case .aliyun_OSS:
+            AliyunUploader.shared.upload(data)
+            break
+        case .tencent_COS:
+            TencentUploader.shared.upload(data)
+            break
         }
     }
-    
+
     ///
     /// 获取当前图床对应的支持文件格式
     ///
@@ -68,7 +80,7 @@ class BaseUploader {
         guard let host = ConfigManager.shared.getDefaultHost() else {
             return [String]()
         }
-        
+
         /* 有新的图床在这里进行判断调用 */
         switch host.type {
         case .smms:
@@ -77,9 +89,13 @@ class BaseUploader {
             return UpYunUploader.fileExtensions
         case .qiniu_KODO:
             return QiniuUploader.fileExtensions
+        case .aliyun_OSS:
+            return AliyunUploader.fileExtensions
+        case .tencent_COS:
+            return TencentUploader.fileExtensions
         }
     }
-    
+
     private static func checkFileExtensions(fileExtensions: [String], fileExtension: String) -> Bool {
         if fileExtensions.count == 0 {
             return true
@@ -90,19 +106,19 @@ class BaseUploader {
         }
         return valid
     }
-    
+
     func start() {
         (NSApplication.shared.delegate as? AppDelegate)?.uploadStart()
     }
-    
+
     func progress(percent: Double) {
         (NSApplication.shared.delegate as? AppDelegate)?.uploadProgress(percent: percent)
     }
-    
+
     func completed(url: String) {
         (NSApplication.shared.delegate as? AppDelegate)?.uploadCompleted(url: url)
     }
-    
+
     func faild(errorMsg: String? = "") {
         (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
     }

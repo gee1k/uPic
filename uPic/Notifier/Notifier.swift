@@ -13,48 +13,48 @@ public protocol Notifier {
 }
 
 public extension Notifier where Notification.RawValue == String {
-    
+
     private static func nameFor(notification: Notification) -> String {
         return "\(self).\(notification.rawValue)"
     }
-    
-    
+
+
     // instance
-    
-    
+
+
     func postNotification(notification: Notification, object: String? = nil) {
         Self.postNotification(notification, object: object)
     }
-    
-    func postNotification(notification: Notification, object: String? = nil, userInfo: [String : AnyObject]? = nil) {
+
+    func postNotification(notification: Notification, object: String? = nil, userInfo: [String: AnyObject]? = nil) {
         Self.postNotification(notification, object: object, userInfo: userInfo)
     }
-    
-    
+
+
     // static
-    
-    static func postNotification(_ notification: Notification, object: String? = nil, userInfo: [AnyHashable : Any]? = nil) {
+
+    static func postNotification(_ notification: Notification, object: String? = nil, userInfo: [AnyHashable: Any]? = nil) {
         let name = nameFor(notification: notification)
-        
+
         DistributedNotificationCenter.default()
-            .postNotificationName(NSNotification.Name(rawValue: name), object: object, userInfo: userInfo, deliverImmediately: true)
+                .postNotificationName(NSNotification.Name(rawValue: name), object: object, userInfo: userInfo, deliverImmediately: true)
     }
-    
+
     // addObserver
-    
+
     static func addObserver(observer: AnyObject, selector: Selector, notification: Notification, object: String? = nil) {
         let name = nameFor(notification: notification)
-        
+
         DistributedNotificationCenter.default()
-            .addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
+                .addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
     }
-    
+
     // removeObserver
-    
+
     static func removeObserver(observer: AnyObject, notification: Notification, object: String? = nil) {
         let name = nameFor(notification: notification)
-        
+
         DistributedNotificationCenter.default()
-            .removeObserver(observer, name: NSNotification.Name(rawValue: name), object: object)
+                .removeObserver(observer, name: NSNotification.Name(rawValue: name), object: object)
     }
 }

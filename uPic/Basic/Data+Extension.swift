@@ -15,7 +15,7 @@ extension Data {
         return self.bytes
     }
 
-    func toMd5 () -> String {
+    func toMd5() -> String {
         return self.md5().toHexString()
     }
 
@@ -41,5 +41,18 @@ extension Data {
 
     func toSha512() -> String {
         return self.sha512().toHexString()
+    }
+    
+    func toString() -> String {
+        return String(data: self, encoding: .utf8)!
+    }
+    
+    init<T>(from value: T) {
+        var value = value
+        self.init(buffer: UnsafeBufferPointer(start: &value, count: 1))
+    }
+    
+    func to<T>(type: T.Type) -> T {
+        return self.withUnsafeBytes { $0.pointee }
     }
 }

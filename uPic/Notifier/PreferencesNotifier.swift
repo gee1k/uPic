@@ -9,11 +9,11 @@
 import Foundation
 
 public class PreferencesNotifier: Notifier {
-    
+
     public enum Notification: String {
         case openConfigSheet
         case saveHostSettings
         case hostConfigChanged
     }
-    
+
 }

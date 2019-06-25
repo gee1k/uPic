@@ -32,6 +32,10 @@
 /* 文件格式不支持 */
 "file-format-is-not-supported" = "File format not supported!";
 
+/* 图床配置存在问题，请检查 */
+"bad-host-config" = "There is a problem with the map bed configuration, please check!";
+
+
 /* 清除历史上传成功通知标题 */
 "clear.notification.success.title" = "clear history successfully";
 
@@ -89,7 +93,16 @@
 "host.operator" = "Operator";
 "host.password" = "Password";
 "host.accessKey" = "Access Key";
+"host.secretId" = "Secret Id";
 "host.secretKey" = "Secret Key";
 "host.domain" = "Domain";
 "host.folder" = "Folder";
 "host.saveKey" = "File Name";
+
+
+/*host type*/
+"host.type.1" = "SMMS";
+"host.type.2" = "Qiniu KODO";
+"host.type.3" = "Upyun USS";
+"host.type.4" = "Aliyun OSS";
+"host.type.5" = "Tencent Cloud COS";

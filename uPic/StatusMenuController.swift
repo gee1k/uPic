@@ -65,7 +65,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     @IBAction func guideMenuItemClicked(_ sender: NSMenuItem) {
-        guard let url = URL(string: "https://blog.svend.cc/2019/06/22/upic-guide/") else { return }
+        guard let url = URL(string: "https://blog.svend.cc/upic/") else {
+            return
+        }
         NSWorkspace.shared.open(url)
     }
 

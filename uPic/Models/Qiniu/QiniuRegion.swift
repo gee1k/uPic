@@ -8,6 +8,16 @@
 
 import Foundation
 
+class QiniuRegionDict {
+    static let allRegion = [
+        "z0": ["name": "华东", "url": "https://upload.qiniup.com"],
+        "z1": ["name": "华北", "url": "https://upload-z1.qiniup.com"],
+        "z2": ["name": "华南", "url": "https://upload-z2.qiniup.com"],
+        "na0": ["name": "北美", "url": "https://upload-na0.qiniup.com"],
+        "as0": ["name": "东南亚", "url": "https://upload-as0.qiniup.com"]
+    ]
+}
+
 public enum QiniuRegion: String, CaseIterable {
     case z0
     case z1
@@ -17,35 +27,20 @@ public enum QiniuRegion: String, CaseIterable {
     
     public var name: String {
         get {
-            switch self {
-            case .z0:
-                return "华东"
-            case .z1:
-                return "华北"
-            case .z2:
-                return "华南"
-            case .na0:
-                return "北美"
-            case .as0:
-                return "东南亚"
+            guard let regionDict = QiniuRegionDict.allRegion[self.rawValue], let cname = regionDict["name"] else {
+                return self.rawValue
             }
+            
+            return "【\(cname)】\(self.rawValue)"
         }
     }
     
     public var url: String {
         get {
-            switch self {
-            case .z0:
-                return "https://upload.qiniup.com"
-            case .z1:
-                return "https://upload-z1.qiniup.com"
-            case .z2:
-                return "https://upload-z2.qiniup.com"
-            case .na0:
-                return "https://upload-na0.qiniup.com"
-            case .as0:
-                return "https://upload-as0.qiniup.com"
+            guard let regionDict = QiniuRegionDict.allRegion[self.rawValue], let url = regionDict["url"] else {
+                return ""
             }
+            return url
         }
     }
 }

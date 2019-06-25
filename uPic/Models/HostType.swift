@@ -9,26 +9,15 @@
 import Foundation
 
 public enum HostType: Int, CaseIterable, Codable {
-    // MARK: 
-    case smms = 1, upyun_USS = 3, qiniu_KODO = 2//, aliyun_OSS, tencent_COS
-    
+    // MARK: 写了固定的数值原因是为了这里的顺序改变不会影响用户已经保存的配置
+    case smms = 1, upyun_USS = 3, qiniu_KODO = 2, aliyun_OSS = 4, tencent_COS = 5
+
     public var name: String {
         get {
-            switch self {
-            case .smms:
-                return "SMMS"
-            case .upyun_USS:
-                return "又拍云USS"
-            case .qiniu_KODO:
-                return "七牛云KODO"
-//            case .aliyun_OSS:
-//                return "阿里云OSS"
-//            case .tencent_COS:
-//                return "腾讯云COS"
-            }
+            return NSLocalizedString("host.type.\(self.rawValue)", comment: "")
         }
     }
-    
+
     public var isOnlyOne: Bool {
         get {
             switch self {
@@ -39,5 +28,5 @@ public enum HostType: Int, CaseIterable, Codable {
             }
         }
     }
-    
+
 }
