@@ -59,6 +59,14 @@ class NotificationExt: NSObject {
 
         NotificationExt.shared.sendNotification(title: NSLocalizedString("upload.notification.success.title", comment: "上传成功通知标题"), subTitle: NSLocalizedString("upload.notification.success.subtitle", comment: "上传成功通知副标题"), body: body!)
     }
+    
+    ///
+    /// 发送拷贝成功通知
+    ///
+    static func sendCopySuccessfulNotification(body: String? = "") {
+        
+        NotificationExt.shared.sendNotification(title: "", subTitle: NSLocalizedString("upload.notification.success.subtitle", comment: "上传成功通知副标题"), body: body!)
+    }
 
 
     ///

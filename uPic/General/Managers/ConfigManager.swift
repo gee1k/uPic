@@ -33,8 +33,7 @@ public class ConfigManager {
             Defaults[.launchAtLogin] = newValue?.rawValue
         }
     }
-
-
+    
     public func firstSetup() {
         guard firstUsage == ._true else {
             return
@@ -53,16 +52,23 @@ public class ConfigManager {
         Defaults.synchronize()
     }
 
+}
+
+
+extension ConfigManager {
+    // MARK: 图床配置和默认图床
+    
     func getHostItems() -> [Host] {
         return Defaults[.hostItems] ?? [Host]()
     }
-
+    
     func setHostItems(items: [Host]) -> Void {
         Defaults[.hostItems] = items
+        Defaults.synchronize()
         ConfigNotifier.postNotification(.changeHostItems)
     }
-
-
+    
+    
     func getDefaultHost() -> Host? {
         guard let defaultHostId = Defaults[.defaultHostId], let hostItems = Defaults[.hostItems] else {
             return nil
@@ -74,5 +80,49 @@ public class ConfigManager {
         }
         return nil
     }
+}
 
+
+extension ConfigManager {
+    // MARK: 上传历史
+    
+    public var historyLimit: Int {
+        get {
+            let defaultLimit = 5
+            let limit =  Defaults[.historyLimit]
+            if (limit == nil || limit == 0) {
+                return defaultLimit
+            }
+            return limit!
+        }
+        
+        set {
+            Defaults[.historyLimit] = 5
+        }
+    }
+    
+    func getHistoryList() -> [String] {
+        return Defaults[.historyList] ?? [String]()
+    }
+    
+    func setHistoryList(items: [String]) -> Void {
+        Defaults[.historyList] = items
+        Defaults.synchronize()
+        ConfigNotifier.postNotification(.changeHistoryList)
+    }
+    
+    func addHistory(url: String) -> Void {
+        var list = self.getHistoryList()
+        list.append(url)
+        
+        if list.count > self.historyLimit {
+            list.removeFirst(self.historyLimit - list.count)
+        }
+        
+        self.setHistoryList(items: list)
+    }
+    
+    func clearHistoryList() -> Void {
+        Defaults[.historyList] = []
+    }
 }

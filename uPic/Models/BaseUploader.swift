@@ -116,6 +116,7 @@ class BaseUploader {
     }
 
     func completed(url: String) {
+        ConfigManager.shared.addHistory(url: url)
         (NSApplication.shared.delegate as? AppDelegate)?.uploadCompleted(url: url)
     }
 

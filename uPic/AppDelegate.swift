@@ -175,6 +175,11 @@ extension AppDelegate {
     ///
     func uploadCompleted(url: String) {
         self.setStatusBarIcon(isIndicator: false)
+        let outputUrl = self.copyUrl(url: url)
+        NotificationExt.sendUploadSuccessfulNotification(body: outputUrl)
+    }
+    
+    func copyUrl(url: String) -> String {
         var outputUrl = ""
         let outputFormat = Defaults[.ouputFormat]
         switch outputFormat {
@@ -186,13 +191,14 @@ extension AppDelegate {
             break
         default:
             outputUrl = url
-
+            
         }
-
+        
         NSPasteboard.general.clearContents()
         NSPasteboard.general.declareTypes([.string], owner: nil)
         NSPasteboard.general.setString(outputUrl, forType: .string)
-        NotificationExt.sendUploadSuccessfulNotification(body: outputUrl)
+        
+        return outputUrl
     }
 
     ///

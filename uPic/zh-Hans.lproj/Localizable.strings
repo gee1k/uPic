@@ -64,6 +64,12 @@
 /* 菜单栏检查更新按钮标题：检查更新 */
 "status-menu.check-update" = "检查更新";
 
+/* 菜单栏上传历史 */
+"status-menu.upload-history" = "上传历史";
+
+/* 菜单栏清空上传历史 */
+"status-menu.upload-history-clear" = "清空上传历史";
+
 /* 前往下载 */
 "check-update-tip-get-gobutton.title" = "前往下载";
 
