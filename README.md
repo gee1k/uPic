@@ -101,11 +101,11 @@
 
 - 支付宝：
 
-<img src="https://s2.svend.cc/qrcode/alipay-mini.jpeg" alt="">
+<img src="https://s2.svend.cc/qrcode/alipay-mini.jpeg?20190625" alt="">
 
 - 微信：
 
-<img src="https://s2.svend.cc/qrcode/wechat-mini.jpeg" alt="">
+<img src="https://s2.svend.cc/qrcode/wechat-mini.jpeg?20190625" alt="">
 
 ## License
 
