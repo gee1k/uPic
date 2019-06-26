@@ -18,6 +18,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var screenshotMenuItem: NSMenuItem!
     @IBOutlet weak var hostMenuItem: NSMenuItem!
     @IBOutlet weak var ouputFormatMenuItem: NSMenuItem!
+    @IBOutlet weak var historyMenuItem: NSMenuItem!
     @IBOutlet weak var preferenceMenuItem: NSMenuItem!
     @IBOutlet weak var helpMenuItem: NSMenuItem!
     @IBOutlet weak var checkUpdateMenuItem: NSMenuItem!
@@ -33,11 +34,13 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         screenshotMenuItem.title = NSLocalizedString("status-menu.screenshot", comment: "Upload with pasteboard")
         hostMenuItem.title = NSLocalizedString("status-menu.host", comment: "Host")
         ouputFormatMenuItem.title = NSLocalizedString("status-menu.output", comment: "Choose output format")
+        historyMenuItem.title = NSLocalizedString("status-menu.upload-history", comment: "upload history")
         preferenceMenuItem.title = NSLocalizedString("status-menu.preference", comment: "Open Preference")
         checkUpdateMenuItem.title = NSLocalizedString("status-menu.check-update", comment: "Check update")
         quitMenuItem.title = NSLocalizedString("status-menu.quit", comment: "Quit")
 
         resetHostMenu()
+        resetUploadHistory()
         refreshOutputFormat()
         addObserver()
     }
@@ -85,9 +88,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     @objc func resetHostMenu() {
-        guard let hostItems = Defaults[.hostItems] else {
-            return
-        }
+        let hostItems = ConfigManager.shared.getHostItems()
         hostMenuItem.submenu?.removeAllItems()
         for item in hostItems {
             let menuItem = NSMenuItem(title: item.name, action: #selector(changeDefaultHost(_:)), keyEquivalent: "")
@@ -99,6 +100,38 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             hostMenuItem.submenu?.delegate = self
         }
         self.refreshDefaultHost()
+    }
+    
+    @objc func resetUploadHistory() {
+        let historyList = ConfigManager.shared.getHistoryList()
+        
+        historyMenuItem.submenu?.removeAllItems()
+        for url in historyList {
+            let menuItem = NSMenuItem(title: url, action: #selector(copyUrl(_:)), keyEquivalent: "")
+            menuItem.target = self
+            historyMenuItem.submenu?.addItem(menuItem)
+            historyMenuItem.submenu?.delegate = self
+        }
+        
+        if ((historyMenuItem.submenu?.items.count ?? 0) > 0) {
+            historyMenuItem.submenu?.addItem(NSMenuItem.separator())
+            let menuItem = NSMenuItem(title: NSLocalizedString("status-menu.upload-history-clear", comment: "clear history"), action: #selector(clearHistory(_:)), keyEquivalent: "")
+            menuItem.target = self
+            historyMenuItem.submenu?.addItem(menuItem)
+        } else {
+            let menuItem = NSMenuItem(title: NSLocalizedString("status-menu.upload-history-empty", comment: "history is empty"), action: nil, keyEquivalent: "")
+            menuItem.target = self
+            historyMenuItem.submenu?.addItem(menuItem)
+        }
+    }
+    
+    @objc func copyUrl(_ sender: NSMenuItem) {
+        let outputUrl = (NSApplication.shared.delegate as? AppDelegate)?.copyUrl(url: sender.title)
+        NotificationExt.sendCopySuccessfulNotification(body: outputUrl)
+    }
+    
+    @objc func clearHistory(_ sender: NSMenuItem) {
+        ConfigManager.shared.clearHistoryList()
     }
 
     func refreshDefaultHost() {
@@ -138,5 +171,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     func addObserver() {
         ConfigNotifier.addObserver(observer: self, selector: #selector(resetHostMenu), notification: .changeHostItems)
+        ConfigNotifier.addObserver(observer: self, selector: #selector(resetUploadHistory), notification: .changeHistoryList)
+    }
+    
+    func removeObserver() {
+        ConfigNotifier.removeObserver(observer: self, notification: .changeHostItems)
+        ConfigNotifier.removeObserver(observer: self, notification: .changeHistoryList)
     }
 }

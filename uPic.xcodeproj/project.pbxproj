@@ -25,6 +25,7 @@
 		1647474522B66E3400F9575D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474422B66E3400F9575D /* Util.swift */; };
 		164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C39FF22B2AA6C003ADE39 /* Notifier.swift */; };
 		164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */; };
+		165D908622C333740096FF38 /* PasteboardType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165D908522C333740096FF38 /* PasteboardType+Extension.swift */; };
 		1660FCBA22C11C2300372950 /* TencentHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660FCB922C11BA000372950 /* TencentHostConfig.swift */; };
 		1660FCBB22C11C7200372950 /* TencentUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660FCB722C11BA000372950 /* TencentUploader.swift */; };
 		1660FCBC22C11C7500372950 /* TencentUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660FCB822C11BA000372950 /* TencentUtil.swift */; };
@@ -107,6 +108,7 @@
 		1647474422B66E3400F9575D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		164C39FF22B2AA6C003ADE39 /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigNotifier.swift; sourceTree = "<group>"; };
+		165D908522C333740096FF38 /* PasteboardType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PasteboardType+Extension.swift"; sourceTree = "<group>"; };
 		1660FCB622C11BA000372950 /* TencentRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TencentRegion.swift; sourceTree = "<group>"; };
 		1660FCB722C11BA000372950 /* TencentUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TencentUploader.swift; sourceTree = "<group>"; };
 		1660FCB822C11BA000372950 /* TencentUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TencentUtil.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				163632F222B2751D00805E7F /* BoolType.swift */,
 				164745EF22B65FE900F9575D /* String+Extension.swift */,
 				1647474222B66ACE00F9575D /* Data+Extension.swift */,
+				165D908522C333740096FF38 /* PasteboardType+Extension.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				166B4A5322B9CB4D001288ED /* UpYunConfigView.swift in Sources */,
 				166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */,
 				1690E7EB22BF2D9400FC81F8 /* QiniuUploader.swift in Sources */,
+				165D908622C333740096FF38 /* PasteboardType+Extension.swift in Sources */,
 				16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */,
 				1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */,
 				163632F322B2751D00805E7F /* BoolType.swift in Sources */,
@@ -816,6 +820,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -839,6 +844,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";

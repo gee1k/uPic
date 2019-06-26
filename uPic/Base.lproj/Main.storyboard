@@ -684,6 +684,7 @@
                         <outlet property="checkUpdateMenuItem" destination="yai-4F-Btp" id="klG-hy-GGO"/>
                         <outlet property="guideMenuItem" destination="O8o-6e-fZn" id="3FX-T4-S1c"/>
                         <outlet property="helpMenuItem" destination="2Jw-ET-3eH" id="Ubq-wz-L3N"/>
+                        <outlet property="historyMenuItem" destination="EhO-Zw-XXj" id="okQ-0q-kK5"/>
                         <outlet property="hostMenuItem" destination="d02-bT-1Lv" id="Ah0-J0-Z4M"/>
                         <outlet property="ouputFormatMenuItem" destination="1BX-LF-q51" id="H54-M9-CBq"/>
                         <outlet property="preferenceMenuItem" destination="VW7-Z2-hXR" id="Mhm-Tb-F4W"/>
@@ -743,6 +744,11 @@
                                     </menuItem>
                                 </items>
                             </menu>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="bfM-jE-V7Q"/>
+                        <menuItem title="上传历史" id="EhO-Zw-XXj">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="上传历史" id="MjM-mX-Ci5"/>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="9go-zg-sPT"/>
                         <menuItem title="偏好设置" id="VW7-Z2-hXR">

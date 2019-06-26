@@ -14,6 +14,8 @@ struct Keys {
     static let hostItems = "uPic_hostItems"
     static let defaultHostId = "uPic_DefaultHostId"
     static let ouputFormat = "uPic_OutputFormat"
+    static let historyList = "uPic_HistoryList"
+    static let historyLimit = "uPic_HistoryLimit"
 }
 
 class DefaultsKeys {
@@ -41,6 +43,8 @@ extension DefaultsKeys {
     static let hostItems = DefaultsKey<[Host]>(Keys.hostItems)
     static let defaultHostId = DefaultsKey<Int>(Keys.defaultHostId)
     static let ouputFormat = DefaultsKey<Int>(Keys.ouputFormat)
+    static let historyList = DefaultsKey<[String]>(Keys.historyList)
+    static let historyLimit = DefaultsKey<Int>(Keys.historyLimit)
 
 }
 
@@ -86,6 +90,15 @@ extension UserDefaults {
                 }
             }
             set(result, forKey: key._key)
+        }
+    }
+    
+    subscript(key: DefaultsKey<[String]>) -> [String]? {
+        get {
+            return array(forKey: key._key) as? [String]
+        }
+        set {
+            set(newValue, forKey: key._key)
         }
     }
 }

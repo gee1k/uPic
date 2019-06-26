@@ -48,7 +48,7 @@ class UpYunUploader: BaseUploader {
 
         var saveKey = fileName
         if (config.folder != nil && config.folder!.count > 0) {
-            saveKey = "/\(config.folder!)/\(saveKey)"
+            saveKey = "\(config.folder!)\(saveKey)"
         }
 
         // MARK: 加密 policy
@@ -87,7 +87,7 @@ class UpYunUploader: BaseUploader {
                 let json = JSON(value)
                 let code = json["code"]
                 if 200 == code {
-                    super.completed(url: domain + saveKey)
+                    super.completed(url: "\(domain)/\(saveKey)")
                 } else {
                     super.faild(errorMsg: json["message"].string)
                 }
