@@ -88,7 +88,7 @@ extension ConfigManager {
     
     public var historyLimit: Int {
         get {
-            let defaultLimit = 5
+            let defaultLimit = 10
             let limit =  Defaults[.historyLimit]
             if (limit == nil || limit == 0) {
                 return defaultLimit
@@ -97,7 +97,7 @@ extension ConfigManager {
         }
         
         set {
-            Defaults[.historyLimit] = 5
+            Defaults[.historyLimit] = newValue
         }
     }
     
@@ -116,13 +116,13 @@ extension ConfigManager {
         list.append(url)
         
         if list.count > self.historyLimit {
-            list.removeFirst(self.historyLimit - list.count)
+            list.removeFirst(list.count - self.historyLimit)
         }
         
         self.setHistoryList(items: list)
     }
     
     func clearHistoryList() -> Void {
-        Defaults[.historyList] = []
+        self.setHistoryList(items: [])
     }
 }

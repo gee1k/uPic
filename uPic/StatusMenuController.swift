@@ -108,17 +108,30 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         historyMenuItem.submenu?.removeAllItems()
         for url in historyList {
             let menuItem = NSMenuItem(title: url, action: #selector(copyUrl(_:)), keyEquivalent: "")
-            menuItem.image = NSImage(contentsOf: URL(string: url)!)
-            menuItem.image?.size = NSSize(width: 40, height: 40)
             menuItem.target = self
             historyMenuItem.submenu?.addItem(menuItem)
             historyMenuItem.submenu?.delegate = self
+        }
+        
+        if ((historyMenuItem.submenu?.items.count ?? 0) > 0) {
+            historyMenuItem.submenu?.addItem(NSMenuItem.separator())
+            let menuItem = NSMenuItem(title: NSLocalizedString("status-menu.upload-history-clear", comment: "clear history"), action: #selector(clearHistory(_:)), keyEquivalent: "")
+            menuItem.target = self
+            historyMenuItem.submenu?.addItem(menuItem)
+        } else {
+            let menuItem = NSMenuItem(title: NSLocalizedString("status-menu.upload-history-empty", comment: "history is empty"), action: nil, keyEquivalent: "")
+            menuItem.target = self
+            historyMenuItem.submenu?.addItem(menuItem)
         }
     }
     
     @objc func copyUrl(_ sender: NSMenuItem) {
         let outputUrl = (NSApplication.shared.delegate as? AppDelegate)?.copyUrl(url: sender.title)
         NotificationExt.sendCopySuccessfulNotification(body: outputUrl)
+    }
+    
+    @objc func clearHistory(_ sender: NSMenuItem) {
+        ConfigManager.shared.clearHistoryList()
     }
 
     func refreshDefaultHost() {

@@ -127,9 +127,9 @@ extension AppDelegate {
         if (pasteboardType == NSPasteboard.PasteboardType.png) {
             let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
             self.uploadFile(nil, data: imgData!)
-        } else if (pasteboardType == NSPasteboard.PasteboardType.fileURL) {
+        } else if (pasteboardType == NSPasteboard.PasteboardType.backwardsCompatibleFileURL) {
 
-            let filePath = NSPasteboard.general.string(forType: NSPasteboard.PasteboardType.fileURL)!
+            let filePath = NSPasteboard.general.string(forType: NSPasteboard.PasteboardType.backwardsCompatibleFileURL)!
             let url = URL(string: filePath)!
 
             let fileManager = FileManager.default
@@ -259,4 +259,3 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
 
 }
-

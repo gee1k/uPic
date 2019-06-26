@@ -72,6 +72,9 @@
 /* 菜单栏清空上传历史 */
 "status-menu.upload-history-clear" = "Clear upload history";
 
+/* 菜单栏没有上传历史 */
+"status-menu.upload-history-empty" = "No upload history";
+
 /* 前往下载 */
 "check-update-tip-get-gobutton.title" = "Download";
 
