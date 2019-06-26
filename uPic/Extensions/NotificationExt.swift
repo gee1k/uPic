@@ -11,37 +11,12 @@ import UserNotifications
 
 class NotificationExt: NSObject {
     static let shared = NotificationExt()
-
-    // MARK: 本地通知扩展
-
+    
     func sendNotification(title: String, subTitle: String, body: String) -> Void {
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.subtitle = subTitle
-        content.body = body
-
-        content.sound = UNNotificationSound.default
-        content.categoryIdentifier = "U_PIC"
-        content.userInfo = ["url": body]
-
-        let request = UNNotificationRequest(identifier: "U_PIC_REQUEST",
-                content: content,
-                trigger: nil)
-
-
-        let category = UNNotificationCategory(identifier: "U_PIC_CATEGORY",
-                actions: [],
-                intentIdentifiers: [],
-                hiddenPreviewsBodyPlaceholder: "",
-                options: .customDismissAction)
-
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.delegate = self
-        notificationCenter.setNotificationCategories([category])
-        notificationCenter.add(request) { (error) in
-            if error != nil {
-                // Handle any errors.
-            }
+        if #available(OSX 10.14, *) {
+            self.sendNotificationByNew(title: title, subTitle: subTitle, body: body)
+        } else {
+            self.sendNotificationByOld(title: title, subTitle: subTitle, body: body)
         }
     }
 
@@ -58,6 +33,14 @@ class NotificationExt: NSObject {
     static func sendUploadSuccessfulNotification(body: String? = "") {
 
         NotificationExt.shared.sendNotification(title: NSLocalizedString("upload.notification.success.title", comment: "上传成功通知标题"), subTitle: NSLocalizedString("upload.notification.success.subtitle", comment: "上传成功通知副标题"), body: body!)
+    }
+    
+    ///
+    /// 发送拷贝成功通知
+    ///
+    static func sendCopySuccessfulNotification(body: String? = "") {
+        
+        NotificationExt.shared.sendNotification(title: "", subTitle: NSLocalizedString("upload.notification.success.subtitle", comment: "上传成功通知副标题"), body: body!)
     }
 
 
@@ -79,16 +62,52 @@ class NotificationExt: NSObject {
 
 }
 
+@available(OSX 10.14, *)
 extension NotificationExt: UNUserNotificationCenterDelegate {
+    
+    
+    // MARK: Version Target >= 10.14
+    
+    func sendNotificationByNew(title: String, subTitle: String, body: String) -> Void {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.subtitle = subTitle
+        content.body = body
+        
+        content.sound = UNNotificationSound.default
+        content.categoryIdentifier = "NOTIFICATION_U_PIC"
+        content.userInfo = ["body": body]
+        
+        let request = UNNotificationRequest(identifier: "U_PIC_REQUEST",
+                                            content: content,
+                                            trigger: nil)
+        
+        
+        let category = UNNotificationCategory(identifier: "U_PIC_CATEGORY",
+                                              actions: [],
+                                              intentIdentifiers: [],
+                                              hiddenPreviewsBodyPlaceholder: "",
+                                              options: .customDismissAction)
+        
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.delegate = self
+        notificationCenter.setNotificationCategories([category])
+        notificationCenter.add(request) { (error) in
+            if error != nil {
+                // Handle any errors.
+            }
+        }
+        
+    }
 
     // 用户点击弹窗后的回调
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
 
-        if let url = userInfo["url"] {
+        if let body = userInfo["body"] {
             NSPasteboard.general.clearContents()
             NSPasteboard.general.declareTypes([.string], owner: nil)
-            NSPasteboard.general.setString(url as! String, forType: .string)
+            NSPasteboard.general.setString(body as! String, forType: .string)
         }
 
         completionHandler()
@@ -98,4 +117,51 @@ extension NotificationExt: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }
+}
+
+extension NotificationExt: NSUserNotificationCenterDelegate {
+    
+    // MARK: Version Target < 10.14
+    
+    func sendNotificationByOld(title: String, subTitle: String, body: String) -> Void {
+        
+        let userNotification = NSUserNotification()
+        
+        userNotification.title = title
+        userNotification.subtitle = subTitle
+        userNotification.informativeText = body
+        
+        userNotification.identifier = "OLD_NOTIFICATION_U_PIC"
+        userNotification.userInfo = ["body": "body"]
+        
+        userNotification.soundName = NSUserNotificationDefaultSoundName
+        
+        NSUserNotificationCenter.default.delegate = self
+        NSUserNotificationCenter.default.removeAllDeliveredNotifications()
+        NSUserNotificationCenter.default.deliver(userNotification)
+        
+    }
+    
+    // 当 App 在前台时是否弹出通知
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+        return true
+    }
+    
+    // 推送消息后的回调
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didDeliver notification: NSUserNotification) {
+        print("\(Date(timeIntervalSinceNow: 0)) -> 消息已经推送")
+    }
+    
+    // 用户点击了通知后的回调
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        
+        if notification.activationType == .contentsClicked {
+            if let userInfo = notification.userInfo, let body = userInfo["body"] {
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.declareTypes([.string], owner: nil)
+                NSPasteboard.general.setString(body as! String, forType: .string)
+            }
+        }
+    }
+    
 }

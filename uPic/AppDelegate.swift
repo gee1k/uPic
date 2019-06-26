@@ -127,9 +127,9 @@ extension AppDelegate {
         if (pasteboardType == NSPasteboard.PasteboardType.png) {
             let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
             self.uploadFile(nil, data: imgData!)
-        } else if (pasteboardType == NSPasteboard.PasteboardType.fileURL) {
+        } else if (pasteboardType == NSPasteboard.PasteboardType.backwardsCompatibleFileURL) {
 
-            let filePath = NSPasteboard.general.string(forType: NSPasteboard.PasteboardType.fileURL)!
+            let filePath = NSPasteboard.general.string(forType: NSPasteboard.PasteboardType.backwardsCompatibleFileURL)!
             let url = URL(string: filePath)!
 
             let fileManager = FileManager.default
@@ -175,6 +175,11 @@ extension AppDelegate {
     ///
     func uploadCompleted(url: String) {
         self.setStatusBarIcon(isIndicator: false)
+        let outputUrl = self.copyUrl(url: url)
+        NotificationExt.sendUploadSuccessfulNotification(body: outputUrl)
+    }
+    
+    func copyUrl(url: String) -> String {
         var outputUrl = ""
         let outputFormat = Defaults[.ouputFormat]
         switch outputFormat {
@@ -186,13 +191,14 @@ extension AppDelegate {
             break
         default:
             outputUrl = url
-
+            
         }
-
+        
         NSPasteboard.general.clearContents()
         NSPasteboard.general.declareTypes([.string], owner: nil)
         NSPasteboard.general.setString(outputUrl, forType: .string)
-        NotificationExt.sendUploadSuccessfulNotification(body: outputUrl)
+        
+        return outputUrl
     }
 
     ///
@@ -253,4 +259,3 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
 
 }
-

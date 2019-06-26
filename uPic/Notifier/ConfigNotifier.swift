@@ -12,6 +12,7 @@ public class ConfigNotifier: Notifier {
 
     public enum Notification: String {
         case changeHostItems
+        case changeHistoryList
     }
 
 }
