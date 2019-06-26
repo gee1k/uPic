@@ -91,9 +91,9 @@
 
 # ✉️ 联系我
 
-- `Email`: `svend.jin#gmail.com` (#替换为@)
-- `微信群`: `JSW5297` (请备注一下uPic)
-- `Telegram`: [gee1k]()
+- `Email`: `svend.jin@gmail.com`
+- `微信`: `JSW5297` (请备注一下 uPic)
+- `Telegram`: [gee1k](https://t.me/gee1k)
 
 # ❤️ 赞助
 
