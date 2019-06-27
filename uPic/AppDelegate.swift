@@ -38,8 +38,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         setupStatusBar()
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+    func applicationWillTerminate(_ notification: Notification) {
+        NSStatusBar.system.removeStatusItem(statusItem)
+    }
+    
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        return true
     }
 
 }
@@ -91,13 +95,10 @@ extension AppDelegate {
 
 extension AppDelegate {
 
-    @objc func showPreference() {
-        self.preferencesWindowController.showWindow(self)
-    }
-
     /* 选择文件 */
     @objc func selectFile() {
 
+        NSApp.activate(ignoringOtherApps: true)
         let fileExtensions = BaseUploader.getFileExtensions()
 
         let openPanel = NSOpenPanel()

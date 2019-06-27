@@ -49,7 +49,9 @@ class HostPreferencesViewController: PreferencesViewController {
 
         self.initAddHostTypes()
         self.initHostItems()
-
+        
+        self.resetAllowOnlyOneHostTypeVisible()
+        
         self.selectedRow = 0
         self.setDefaultSelectedHost()
     }
@@ -74,7 +76,11 @@ class HostPreferencesViewController: PreferencesViewController {
         guard let selectedItem = self.addHostButton.selectedItem else {
             return
         }
-        let type: HostType = HostType(rawValue: selectedItem.tag)!
+        
+        guard let type: HostType = HostType(rawValue: selectedItem.tag) else {
+            return
+        }
+        
         self.addHost(type: type)
     }
 
@@ -121,6 +127,9 @@ class HostPreferencesViewController: PreferencesViewController {
 
         // MARK: 根据当前选择的图床，创建对应的配置界面
         switch item.type {
+        case .custom:
+            configView.addSubview(CustomConfigView(frame: configView.frame, data: item.data))
+            break
         case .upyun_USS:
             configView.addSubview(UpYunConfigView(frame: configView.frame, data: item.data))
             break
@@ -146,7 +155,6 @@ class HostPreferencesViewController: PreferencesViewController {
         if self.hostItems?.count == 0 {
             self.hostItems?.append(Host.getDefaultHost())
             self.saveButtonClicked(nil)
-            self.resetAllowOnlyOneHostTypeVisible()
         }
         self.tableView.reloadData()
 
@@ -154,13 +162,23 @@ class HostPreferencesViewController: PreferencesViewController {
 
     // MARK: 初始化图床添加按钮的子菜单
     func initAddHostTypes() {
+        addHostButton.pullsDown = true
+        addHostButton.removeAllItems()
+        addHostButton.imagePosition = .imageOnly
+        
+        let imageItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+        imageItem.image = NSImage(named: NSImage.addTemplateName)
+        imageItem.identifier = NSUserInterfaceItemIdentifier(rawValue: "addImageTemplate")
+        imageItem.isHidden = true
+        addHostButton.menu?.addItem(imageItem)
+        
         for type in HostType.allCases {
             let menuItem = NSMenuItem(title: type.name, action: nil, keyEquivalent: "")
             menuItem.image = Host.getIconByType(type: type)
             menuItem.tag = type.rawValue
             addHostButton.menu?.addItem(menuItem)
         }
-        self.resetAllowOnlyOneHostTypeVisible()
+        
     }
 
     // MARK: 设置只允许添加一个实例的图床添加按钮是否可用
@@ -176,7 +194,8 @@ class HostPreferencesViewController: PreferencesViewController {
         }
 
         for item in addHostButton.menu!.items {
-            item.isHidden = onlyOneHosts.contains(item.tag)
+            // 隐藏只能有一个实例的类别。和用来显示 + 号的选项。注：明明在初始化时已经设置了，担不起作用。必须在过后设置才有用
+            item.isHidden = onlyOneHosts.contains(item.tag) || item.identifier?.rawValue == "addImageTemplate"
         }
     }
 

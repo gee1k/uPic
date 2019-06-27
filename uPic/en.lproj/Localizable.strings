@@ -96,6 +96,8 @@
 "alert.reset_preferences_title" = "Reset User Preferences?";
 "alert.reset_preferences_description" = "⚠️ Note that this will reset all user preferences";
 
+"tutorial.tooltip" = "tutorial";
+
 /* host -- start */
 "host.region" = "Region";
 "host.bucket" = "Bucket";
@@ -107,9 +109,15 @@
 "host.domain" = "Domain";
 "host.folder" = "Folder";
 "host.saveKey" = "File Name";
+"host.url" = "Upload url";
+"host.method" = "Request method";
+"host.field" = "Field";
+"host.extensions" = "Extension field";
+"host.headers" = "Request Headers";
 
 
 /*host type*/
+"host.type.-1" = "Custom";
 "host.type.1" = "SMMS";
 "host.type.2" = "Qiniu KODO";
 "host.type.3" = "Upyun USS";

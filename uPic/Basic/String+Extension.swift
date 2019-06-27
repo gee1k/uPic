@@ -52,6 +52,18 @@ extension String {
     func urlSafeBase64() -> String {
         return self.replacingOccurrences(of: "+", with: "-").replacingOccurrences(of: "/", with: "_")
     }
+    
+    //将原始的url编码为合法的url
+    func urlEncoded() -> String {
+        let encodeUrlString = self.addingPercentEncoding(withAllowedCharacters:
+            .urlQueryAllowed)
+        return encodeUrlString ?? ""
+    }
+    
+    //将编码后的url转换回原始的url
+    func urlDecoded() -> String {
+        return self.removingPercentEncoding ?? ""
+    }
 
     // 字符串增强
     var lastPathComponent: String {
