@@ -88,9 +88,9 @@ class TencentUploader: BaseUploader {
         headers.add(HTTPHeader.contentType("multipart/form-data"))
         headers.add(HTTPHeader(name: "Host", value: hostUri))
         // improtant - end
-
-        AF.upload(multipartFormData: { (multipartFormData: MultipartFormData) in
-
+        
+        
+        func multipartFormDataGen(multipartFormData: MultipartFormData) {
             multipartFormData.append(key.data(using: .utf8)!, withName: "key")
             multipartFormData.append(policy.data(using: .utf8)!, withName: "policy")
             if fileUrl != nil {
@@ -98,8 +98,10 @@ class TencentUploader: BaseUploader {
             } else {
                 multipartFormData.append(fileData!, withName: "file", fileName: fileName, mimeType: mimeType)
             }
+        }
+        
 
-        }, to: url, headers: headers).validate().uploadProgress { progress in
+        AF.upload(multipartFormData: multipartFormDataGen, to: url, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted * 100)
         }.response(completionHandler: { response -> Void in
             switch response.result {

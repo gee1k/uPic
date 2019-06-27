@@ -1,8 +1,8 @@
 //
-//  AliyunUploader.swift
+//  CustomUploader.swift
 //  uPic
 //
-//  Created by Svend Jin on 2019/6/23.
+//  Created by Svend Jin on 2019/6/27.
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
@@ -10,9 +10,9 @@ import Cocoa
 import Alamofire
 import SwiftyXMLParser
 
-class AliyunUploader: BaseUploader {
+class CustomUploader: BaseUploader {
 
-    static let shared = AliyunUploader()
+    static let shared = CustomUploader()
     static let fileExtensions: [String] = []
 
     func _upload(_ fileUrl: URL?, fileData: Data?) {
@@ -23,18 +23,17 @@ class AliyunUploader: BaseUploader {
 
         super.start()
 
-        let config = data as! AliyunHostConfig
+        let config = data as! CustomHostConfig
 
-
-        let bucket = config.bucket!
-        let accessKey = config.accessKey!
-        let secretKey = config.secretKey!
+        let url = config.url!
+        let method = config.method!
+        let field = config.field!
         let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
-        let region = (config.region != nil ? AliyunRegion(rawValue: config.region!) : AliyunRegion.cn_hangzhou)!
-
-        let url = AliyunUtil.computeUrl(bucket: bucket, region: region)
-
+        
+        let httpMethod = HTTPMethod(rawValue: method) ?? HTTPMethod.post
+        
+        
         if url.isEmpty {
             super.faild(errorMsg: NSLocalizedString("bad-host-config", comment: "bad host config"))
             return
@@ -56,48 +55,49 @@ class AliyunUploader: BaseUploader {
             key = "\(config.folder!)/\(key)"
         }
 
-        // MARK: 加密 policy
-        var policyDict = Dictionary<String, Any>()
-        let conditions = [["bucket": bucket], ["key": key]]
-        policyDict["conditions"] = conditions
-        let policy = AliyunUtil.getPolicy(policyDict: policyDict)
-
-        let signature = AliyunUtil.computeSignature(accessKeySecret: secretKey, encodePolicy: policy)
-
-
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
-        
+        if let headersStr = config.headers {
+            let headersArr = headersStr.split(separator: Character("&"))
+            for headerSr in headersArr {
+                let headerArr = headerSr.split(separator: Character("="))
+                if headerArr.count < 2 {
+                    continue
+                }
+                headers.add(HTTPHeader(name: String(headerArr[0]), value: String(headerArr[1])))
+            }
+        }
         
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
             multipartFormData.append(key.data(using: .utf8)!, withName: "key")
-            multipartFormData.append(accessKey.data(using: .utf8)!, withName: "OSSAccessKeyId")
-            multipartFormData.append(policy.data(using: .utf8)!, withName: "policy")
-            multipartFormData.append(signature.data(using: .utf8)!, withName: "Signature")
+            
+            if let extensionsStr = config.extensions {
+                let extensionsArr = extensionsStr.split(separator: Character("&"))
+                for extensions in extensionsArr {
+                    let extensionArr = extensions.split(separator: Character("="))
+                    if extensionArr.count < 2 {
+                        continue
+                    }
+                    multipartFormData.append(String(extensionArr[0]).data(using: .utf8)!, withName: String(extensionArr[1]))
+                }
+            }
             
             if fileUrl != nil {
-                multipartFormData.append(fileUrl!, withName: "file", fileName: fileName, mimeType: mimeType)
+                multipartFormData.append(fileUrl!, withName: field, fileName: fileName, mimeType: mimeType)
             } else {
-                multipartFormData.append(fileData!, withName: "file", fileName: fileName, mimeType: mimeType)
+                multipartFormData.append(fileData!, withName: field, fileName: fileName, mimeType: mimeType)
             }
         }
 
 
-        AF.upload(multipartFormData: multipartFormDataGen, to: url, headers: headers).validate().uploadProgress { progress in
+        AF.upload(multipartFormData: multipartFormDataGen, to: url, method: httpMethod, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted * 100)
         }.response(completionHandler: { response -> Void in
             switch response.result {
             case .success(_):
                 super.completed(url: "\(domain)/\(key)")
             case .failure(let error):
-                var errorMessage = error.localizedDescription
-                if let data = response.data {
-                    let xml = XML.parse(data)
-                    if let errorMsg = xml.Error.Message.text {
-                        errorMessage = errorMsg
-                    }
-                }
-                super.faild(errorMsg: errorMessage)
+                super.faild(errorMsg: error.localizedDescription)
             }
         })
 

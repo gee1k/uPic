@@ -12,6 +12,7 @@ class ConfigSheetController: NSViewController {
 
     @IBOutlet weak var domainTextField: NSTextField!
     @IBOutlet weak var folderTextField: NSTextField!
+    @IBOutlet weak var folderSeparator: NSTextField!
     @IBOutlet weak var saveKeyPopUpButton: NSPopUpButton!
     @IBOutlet weak var previewLabel: NSTextField!
     @IBOutlet weak var cancelButton: NSButton!
@@ -79,11 +80,18 @@ class ConfigSheetController: NSViewController {
     func setData(userInfo: [String: AnyObject]) {
 
         let domain = userInfo["domain"] as! String
-        let folder = userInfo["folder"] as! String
         let saveKey = userInfo["saveKey"] as! String
-
+        
         domainTextField.stringValue = domain
-        folderTextField.stringValue = folder
+        
+        if let folder = userInfo["folder"] {
+            let folder = folder as! String
+            folderTextField.stringValue = folder
+        } else {
+            folderTextField.isHidden = true
+            folderSeparator.isHidden = true
+        }
+
 
         self.saveKey = HostSaveKey(rawValue: saveKey)
 

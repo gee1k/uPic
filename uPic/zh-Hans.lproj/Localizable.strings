@@ -94,9 +94,11 @@
 "alert.reset_preferences_title" = "重置用户偏好设置?";
 "alert.reset_preferences_description" = "⚠️ 注意这将会重置所有用户偏好设置";
 
+"tutorial.tooltip" = "教程";
+
 /* host -- start */
 "host.region" = "区域";
-"host.bucket" = "储存空间";
+"host.bucket" = "空间名称";
 "host.operator" = "操作员";
 "host.password" = "密码";
 "host.accessKey" = "Access Key";
@@ -105,8 +107,14 @@
 "host.domain" = "域名";
 "host.folder" = "文件夹";
 "host.saveKey" = "文件名";
+"host.url" = "上传地址";
+"host.method" = "请求方式";
+"host.field" = "上传字段";
+"host.extensions" = "扩展字段";
+"host.headers" = "请求头";
 
 /*host type*/
+"host.type.-1" = "自定义";
 "host.type.1" = "SMMS";
 "host.type.2" = "七牛云 KODO";
 "host.type.3" = "又拍云 USS";

@@ -151,6 +151,16 @@ class QiniuConfigView: NSView {
         self.addSubview(domainLabel)
         self.addSubview(domainField)
         self.addSubview(settingsBtn)
+        
+        // MARK: help
+        y = y - gapTop * 2 - labelHeight
+        let helpBtnSize = 21
+        let helpBtn = NSButton(title: "", target: self, action: #selector(openTutorial))
+        helpBtn.frame = NSRect(x: viewWidth - helpBtnSize * 3 / 2, y: y, width: helpBtnSize, height: helpBtnSize)
+        helpBtn.bezelStyle = .helpButton
+        helpBtn.setButtonType(.momentaryPushIn)
+        helpBtn.toolTip = NSLocalizedString("tutorial.tooltip", comment: "tutorial")
+        self.addSubview(helpBtn)
     }
 
     func addObserver() {
@@ -161,6 +171,14 @@ class QiniuConfigView: NSView {
     func removeObserver() {
         PreferencesNotifier.removeObserver(observer: self, notification: .saveHostSettings)
         PreferencesNotifier.addObserver(observer: self, selector: #selector(saveHostSettings), notification: .saveHostSettings)
+    }
+    
+    
+    @objc func openTutorial() {
+        guard let url = URL(string: "https://blog.svend.cc/upic/tutorials/qiniu_kodo") else {
+            return
+        }
+        NSWorkspace.shared.open(url)
     }
 
     @objc func openConfigSheet(_ sender: NSButton) {

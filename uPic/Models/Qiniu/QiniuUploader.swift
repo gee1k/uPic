@@ -58,8 +58,8 @@ class QiniuUploader: BaseUploader {
 
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
-
-        AF.upload(multipartFormData: { (multipartFormData: MultipartFormData) in
+        
+        func multipartFormDataGen(multipartFormData: MultipartFormData) {
             if fileUrl != nil {
                 multipartFormData.append(fileUrl!, withName: "file", fileName: fileName, mimeType: mimeType)
             } else {
@@ -67,7 +67,9 @@ class QiniuUploader: BaseUploader {
             }
             multipartFormData.append(token.data(using: .utf8)!, withName: "token")
             multipartFormData.append(key.data(using: .utf8)!, withName: "key")
-        }, to: region.url, headers: headers).validate().uploadProgress { progress in
+        }
+
+        AF.upload(multipartFormData: multipartFormDataGen, to: region.url, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted * 100)
         }.responseJSON(completionHandler: { response -> Void in
             switch response.result {

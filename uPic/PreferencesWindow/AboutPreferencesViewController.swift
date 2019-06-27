@@ -40,6 +40,16 @@ class AboutPreferencesViewController: PreferencesViewController {
         NSWorkspace.shared.open(url)
     }
     
+    @IBAction func alipayButtonClicked(_ sender: NSButton) {
+        guard let url = URL(string: "https://github.com/gee1k/uPic/blob/master/screenshot/qrcode/alipay-mini.jpeg") else { return }
+        NSWorkspace.shared.open(url)
+    }
+    
+    @IBAction func weChatPayButtonClicked(_ sender: NSButton) {
+        guard let url = URL(string: "https://github.com/gee1k/uPic/blob/master/screenshot/qrcode/wechat-mini.jpeg") else { return }
+        NSWorkspace.shared.open(url)
+    }
+    
 }
 
 class LinkButton: NSButton {

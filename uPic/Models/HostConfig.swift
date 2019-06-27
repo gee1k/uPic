@@ -28,12 +28,7 @@ class HostConfig: NSObject, Codable {
                                of object: Any?,
                                change: [NSKeyValueChangeKey: Any]?,
                                context: UnsafeMutableRawPointer?) {
-        // let new = change?[.newKey], 
-        if let old = change?[.oldKey] {
-            if !(old is NSNull) {
-                PreferencesNotifier.postNotification(.hostConfigChanged)
-            }
-        }
+        PreferencesNotifier.postNotification(.hostConfigChanged)
     }
 
     func observerValues() {
@@ -65,6 +60,8 @@ class HostConfig: NSObject, Codable {
         switch type {
         case .smms:
             return nil
+        case .custom:
+            return CustomHostConfig()
         case .upyun_USS:
             return UpYunHostConfig()
         case .qiniu_KODO:
@@ -89,6 +86,9 @@ class HostConfig: NSObject, Codable {
         switch type {
         case .smms:
             config = nil
+            break
+        case .custom:
+            config = CustomHostConfig.deserialize(str: str)
             break
         case .upyun_USS:
             config = UpYunHostConfig.deserialize(str: str)

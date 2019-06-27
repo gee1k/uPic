@@ -29,6 +29,9 @@ class BaseUploader {
         case .smms:
             SmmsUploader.shared.upload(url)
             break
+        case .custom:
+            CustomUploader.shared.upload(url)
+            break
         case .upyun_USS:
             UpYunUploader.shared.upload(url)
             break
@@ -58,6 +61,9 @@ class BaseUploader {
         case .smms:
             SmmsUploader.shared.upload(data)
             break
+        case .custom:
+            CustomUploader.shared.upload(data)
+            break
         case .upyun_USS:
             UpYunUploader.shared.upload(data)
             break
@@ -85,6 +91,8 @@ class BaseUploader {
         switch host.type {
         case .smms:
             return SmmsUploader.fileExtensions
+        case .custom:
+            return CustomUploader.fileExtensions
         case .upyun_USS:
             return UpYunUploader.fileExtensions
         case .qiniu_KODO:

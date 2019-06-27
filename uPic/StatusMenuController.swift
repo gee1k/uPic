@@ -59,7 +59,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     @IBAction func preferenceMenuItemClicked(_ sender: NSMenuItem) {
-        (NSApplication.shared.delegate as? AppDelegate)?.showPreference()
+        let preferencesWindowController = (NSApplication.shared.delegate as? AppDelegate)?.preferencesWindowController
+        NSApp.activate(ignoringOtherApps: true)
+        preferencesWindowController?.showWindow(sender)
     }
 
     @IBAction func checkUpdateMenuItemClicked(_ sender: NSMenuItem) {
@@ -106,9 +108,19 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         let historyList = ConfigManager.shared.getHistoryList()
         
         historyMenuItem.submenu?.removeAllItems()
-        for url in historyList {
-            let menuItem = NSMenuItem(title: url, action: #selector(copyUrl(_:)), keyEquivalent: "")
+        for urlStr in historyList.reversed() {
+            let menuItem = NSMenuItem(title: urlStr, action: #selector(copyUrl(_:)), keyEquivalent: "")
             menuItem.target = self
+            
+            if let url = URL(string: urlStr.urlEncoded()), let image = NSImage(contentsOf: url), image.isValid {
+                let imgMenuItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+                imgMenuItem.image = image
+                imgMenuItem.image?.size = NSSize(width: 200, height: 230)
+                let imgSubMenu = NSMenu(title:"")
+                imgSubMenu.addItem(imgMenuItem)
+                menuItem.submenu = imgSubMenu
+            }
+            
             historyMenuItem.submenu?.addItem(menuItem)
             historyMenuItem.submenu?.delegate = self
         }
