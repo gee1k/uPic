@@ -109,7 +109,7 @@
 "host.saveKey" = "文件名";
 "host.url" = "上传地址";
 "host.method" = "请求方式";
-"host.field" = "上传字段";
+"host.field" = "文件字段名";
 "host.extensions" = "扩展字段";
 "host.headers" = "请求头";
 

@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import Cocoa
+
+typealias Action = () -> ()
 
 class Util {
     static func getFileMd5(filePath: String) -> String? {
@@ -50,6 +53,34 @@ class Util {
             return "cn"//中文
         default:
             return "en"
+        }
+    }
+    
+    static func debounce(threshold: TimeInterval, action: @escaping Action) -> Action {
+        var timer: DispatchSourceTimer?
+        return {
+            if timer != nil {
+                timer!.cancel()
+            }
+            
+            timer = DispatchSource.makeTimerSource()
+            timer!.setEventHandler {
+                action()
+            }
+            
+            timer!.schedule(deadline: .now() + .milliseconds(Int(threshold * 1000)))
+            timer!.activate()
+        }
+    }
+    
+    static func throttle(threshold: TimeInterval, action: @escaping Action) -> Action {
+        var last: CFAbsoluteTime = 0
+        return {
+            let current = CFAbsoluteTimeGetCurrent();
+            if current >= last + threshold {
+                action()
+                last = current
+            }
         }
     }
 }

@@ -47,6 +47,8 @@ class AliyunConfigView: NSView {
 
 
     func createView() {
+        
+        var nextKeyViews = [NSView]()
 
         let paddingTop = 50, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 75, labelHeight = 20,
                 viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
@@ -83,6 +85,7 @@ class AliyunConfigView: NSView {
         
         self.addSubview(regionLabel)
         self.addSubview(regionButtonPopUp)
+        nextKeyViews.append(regionButtonPopUp)
         
         
         // MARK: Bucket
@@ -94,10 +97,13 @@ class AliyunConfigView: NSView {
 
         let bucketField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         bucketField.identifier = NSUserInterfaceItemIdentifier(rawValue: "bucket")
+        bucketField.usesSingleLineMode = true
+        bucketField.lineBreakMode = .byTruncatingTail
         bucketField.delegate = self.data
         bucketField.stringValue = self.data.bucket ?? ""
         self.addSubview(bucketLabel)
         self.addSubview(bucketField)
+        nextKeyViews.append(bucketField)
 
         // MARK: AccessKey
         y = y - gapTop - labelHeight
@@ -109,10 +115,13 @@ class AliyunConfigView: NSView {
 
         let accessKeyField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         accessKeyField.identifier = NSUserInterfaceItemIdentifier(rawValue: "accessKey")
+        accessKeyField.usesSingleLineMode = true
+        accessKeyField.lineBreakMode = .byTruncatingTail
         accessKeyField.delegate = self.data
         accessKeyField.stringValue = self.data.accessKey ?? ""
         self.addSubview(accessKeyLabel)
         self.addSubview(accessKeyField)
+        nextKeyViews.append(accessKeyField)
 
 
         // MARK: Password
@@ -125,10 +134,13 @@ class AliyunConfigView: NSView {
 
         let secretKeyField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         secretKeyField.identifier = NSUserInterfaceItemIdentifier(rawValue: "secretKey")
+        secretKeyField.usesSingleLineMode = true
+        secretKeyField.lineBreakMode = .byTruncatingTail
         secretKeyField.delegate = self.data
         secretKeyField.stringValue = self.data.secretKey ?? ""
         self.addSubview(secretKeyLabel)
         self.addSubview(secretKeyField)
+        nextKeyViews.append(secretKeyField)
 
 
         // MARK: domain
@@ -142,6 +154,8 @@ class AliyunConfigView: NSView {
 
         let domainField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth - settingsBtnWith, height: labelHeight))
         domainField.identifier = NSUserInterfaceItemIdentifier(rawValue: "domain")
+        domainField.usesSingleLineMode = true
+        domainField.lineBreakMode = .byTruncatingTail
         domainField.delegate = self.data
         domainField.stringValue = self.data.domain ?? ""
         self.domainField = domainField
@@ -153,6 +167,8 @@ class AliyunConfigView: NSView {
         self.addSubview(domainLabel)
         self.addSubview(domainField)
         self.addSubview(settingsBtn)
+        nextKeyViews.append(domainField)
+        nextKeyViews.append(settingsBtn)
         
         // MARK: help
         y = y - gapTop * 2 - labelHeight
@@ -163,6 +179,10 @@ class AliyunConfigView: NSView {
         helpBtn.setButtonType(.momentaryPushIn)
         helpBtn.toolTip = NSLocalizedString("tutorial.tooltip", comment: "tutorial")
         self.addSubview(helpBtn)
+        
+        
+        // set nextKeyView
+        setNextKeyViews(nextKeyViews: nextKeyViews)
     }
 
     func addObserver() {
