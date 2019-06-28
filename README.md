@@ -1,7 +1,10 @@
+<div align="center">
+  <img src="./screenshot/logo.png" alt="uPic">
+</div>
 
 # ☁️ 简洁的 Mac 图床客户端 uPic
 
-<div style="display: flex;justify-content: center;">
+<div style="display: flex;justify-content: center;" align="center">
    <a href="https://github.com/gee1k/uPic/stargazers">
     <img src="https://img.shields.io/github/stars/gee1k/uPic.svg?style=popout-square" alt="">
   </a> <a href="https://github.com/gee1k/uPic/releases" style="margin: 0 5px;">
@@ -11,7 +14,7 @@
   </a>
 </div>
 
-
+# 📓 目录
 
 - [📑 简介](#-简介)
 - [💡 特点](#-特点)
@@ -157,3 +160,4 @@
 [MIT](http://opensource.org/licenses/MIT)
 
 Copyright (c) 2019 gee1k
+
