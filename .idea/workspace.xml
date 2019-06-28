@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0d59784a-a30a-4430-b3e3-6000b9d76511" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/uPic/Models/Aliyun/AliyunHostConfig.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uPic/Models/Aliyun/AliyunUploader.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uPic/Models/Aliyun/AliyunUtil.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/uPic.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/AppDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/AppIcon.appiconset/icon_128x128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/AppIcon.appiconset/icon_128x128@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/AppIcon.appiconset/icon_16x16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/AppIcon.appiconset/icon_16x16@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/AppIcon.appiconset/icon_256x256.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/AppIcon.appiconset/icon_256x256@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/AppIcon.appiconset/icon_32x32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/AppIcon.appiconset/icon_32x32@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/AppIcon.appiconset/icon_512x512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/AppIcon.appiconset/icon_512x512@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/about.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/about.imageset/icon_128x128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/host.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/host.imageset/servers (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/host_icon_1.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/host_icon_1.imageset/smms.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/host_icon_2.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/host_icon_2.imageset/qiniu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/host_icon_3.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/host_icon_3.imageset/upyun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/host_icon_4.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/host_icon_4.imageset/aliyun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/host_icon_5.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/host_icon_5.imageset/tengx.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/statusIcon.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/statusIcon.imageset/icon_32x32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/uploadIcon.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/uploadIcon.imageset/icon_16x16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/uploadIcon.imageset/icon_32x32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Assets.xcassets/uploadIcon.imageset/media-up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Basic/BoolType.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Basic/BoolType.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Basic/Data+Extension.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Basic/Data+Extension.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Basic/Date+Extension.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Basic/Date+Extension.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Basic/NSTextFieldCell+VerticallyCentered.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Basic/NSTextFieldCell+VerticallyCentered.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Basic/String+Extension.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Basic/String+Extension.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Extensions/NSDragingInfoExt.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Extensions/NSDragingInfoExt.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Extensions/NotificationExt.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Extensions/NotificationExt.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Extensions/UPicUpdater.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Extensions/UPicUpdater.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/General/Constants.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/General/Constants.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/General/Managers/ConfigManager.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/General/Managers/ConfigManager.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/General/Utils/PreferenceKey.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/General/Utils/PreferenceKey.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/General/Utils/Util.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/General/Utils/Util.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/BaseUploader.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/BaseUploader.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/Host.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/Host.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/HostConfig.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/HostConfig.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/HostSaveKey.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/HostSaveKey.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/HostType.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/HostType.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/Qiniu/QiniuHostConfig.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/Qiniu/QiniuHostConfig.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/Qiniu/QiniuRegion.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/Qiniu/QiniuRegion.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/Qiniu/QiniuUploader.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/Qiniu/QiniuUploader.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/Qiniu/QiniuUtil.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/Qiniu/QiniuUtil.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/Smms/SmmsUploader.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/Smms/SmmsUploader.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/UpYun/UpYunHostConfig.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/UpYun/UpYunHostConfig.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/UpYun/UpYunUploader.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/UpYun/UpYunUploader.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Models/UpYun/UpYunUtil.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Models/UpYun/UpYunUtil.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Notifier/ConfigNotifier.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Notifier/ConfigNotifier.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Notifier/Notifier.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Notifier/Notifier.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Notifier/PreferencesNotifier.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Notifier/PreferencesNotifier.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/PreferencesWindow/AboutPreferencesViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/PreferencesWindow/AboutPreferencesViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/PreferencesWindow/AdvancedPreferencesViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/PreferencesWindow/AdvancedPreferencesViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/PreferencesWindow/ConfigViews/QiniuConfigView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/PreferencesWindow/ConfigViews/QiniuConfigView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/PreferencesWindow/ConfigViews/UpYunConfigView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/PreferencesWindow/ConfigViews/UpYunConfigView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/PreferencesWindow/GeneralPreferencesViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/PreferencesWindow/GeneralPreferencesViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/PreferencesWindow/HostPreferencesViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/PreferencesWindow/HostPreferencesViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/PreferencesWindow/PreferencesViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/PreferencesWindow/PreferencesViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/PreferencesWindow/PreferencesWindowController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/PreferencesWindow/PreferencesWindowController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/StatusMenuController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/StatusMenuController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uPic/Supporting Files/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/uPic/Supporting Files/Info.plist" afterDir="false" />
+    </list>
+    <ignored path="$USER_HOME$/Library/Caches/AppCode2019.1/DerivedData/uPic-dkhhvkjgdgunqdgbopqgldbmzkuu/Build/Intermediates.noindex/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="macos_x86_64" />
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uPic/PreferencesWindow/PreferencesViewController.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uPic/PreferencesWindow/GeneralPreferencesViewController.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="684">
+              <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uPic/Models/Aliyun/AliyunHostConfig.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/uPic/Models/Aliyun/AliyunUploader.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="602">
+              <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
+              <folding>
+                <element signature="e#135#147#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uPic/Models/Aliyun/AliyunUtil.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="23" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="23" />
+              <folding>
+                <element signature="e#132#149#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uPic/Models/UpYun/UpYunUtil.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uPic/Models/Qiniu/QiniuUtil.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="6" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/uPic/Models/UpYun/UpYunUploader.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="60" column="64" selection-start-line="55" selection-start-column="8" selection-end-line="60" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/uPic/PreferencesWindow/PreferencesViewController.swift" />
+        <option value="$PROJECT_DIR$/uPic/Models/Qiniu/QiniuHostConfig.swift" />
+        <option value="$PROJECT_DIR$/uPic/Models/Aliyun/AliyunHostConfig.swift" />
+        <option value="$PROJECT_DIR$/uPic/Models/Aliyun/AliyunUtil.swift" />
+        <option value="$PROJECT_DIR$/uPic/Models/Aliyun/AliyunUploader.swift" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/uPic.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/xcode.xml" />
+        <option value="$PROJECT_DIR$/.idea/runConfigurations/uPic.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="157" />
+    <option name="y" value="48" />
+    <option name="width" value="1400" />
+    <option name="height" value="987" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Cidr.FilesView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="uPic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uPic" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="uPic" type="1d218c8b:XcodeProjectNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="uPic" type="1d218c8b:XcodeProjectNode" />
+              <item name="uPic" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="uPic" type="1d218c8b:XcodeProjectNode" />
+              <item name="uPic" type="fcab9f18:XcodeViewNode" />
+              <item name="Models" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="uPic" type="1d218c8b:XcodeProjectNode" />
+              <item name="uPic" type="fcab9f18:XcodeViewNode" />
+              <item name="Models" type="fcab9f18:XcodeViewNode" />
+              <item name="Aliyun" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="uPic" type="1d218c8b:XcodeProjectNode" />
+              <item name="uPic" type="fcab9f18:XcodeViewNode" />
+              <item name="Models" type="fcab9f18:XcodeViewNode" />
+              <item name="Qiniu" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="uPic" type="1d218c8b:XcodeProjectNode" />
+              <item name="uPic" type="fcab9f18:XcodeViewNode" />
+              <item name="Models" type="fcab9f18:XcodeViewNode" />
+              <item name="UpYun" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="uPic" type="1d218c8b:XcodeProjectNode" />
+              <item name="uPic" type="fcab9f18:XcodeViewNode" />
+              <item name="Main.storyboard" type="fcab9f18:XcodeViewNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="OBJC.PRESERVED_TARGET_SELECTION" value="uPic" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0d59784a-a30a-4430-b3e3-6000b9d76511" name="Default Changelist" comment="" />
+      <created>1561357202862</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1561357202862</updated>
+      <workItem from="1561357205285" duration="989000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="989000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="157" y="48" width="1400" height="987" extended-state="0" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496318" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Messages" weight="0.32960895" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32960895" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="64" column="6" selection-start-line="64" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uPic/Macro/Paths.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uPic/Models/Qiniu/QiniuHostConfig.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="49" column="32" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
+          <folding>
+            <element signature="e#137#154#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uPic/PreferencesWindow/PreferencesViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uPic/PreferencesWindow/GeneralPreferencesViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uPic/Models/Aliyun/AliyunHostConfig.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uPic/Models/Qiniu/QiniuUtil.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="6" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uPic/Models/UpYun/UpYunUtil.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uPic/Models/Aliyun/AliyunUtil.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="23" />
+          <folding>
+            <element signature="e#132#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uPic/Models/UpYun/UpYunUploader.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="60" column="64" selection-start-line="55" selection-start-column="8" selection-end-line="60" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/uPic/Models/Aliyun/AliyunUploader.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
+          <folding>
+            <element signature="e#135#147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
