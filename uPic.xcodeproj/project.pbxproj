@@ -13,6 +13,7 @@
 		16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */; };
 		16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7B22AECD9F004D39B7 /* Constants.swift */; };
 		160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */; };
+		1614532322C5D2AA00CA28F2 /* Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1614532222C5D2AA00CA28F2 /* Public.swift */; };
 		161C3BE122C483380092114F /* CustomUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE022C4831B0092114F /* CustomUploader.swift */; };
 		161C3BE322C483560092114F /* CustomHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE222C483560092114F /* CustomHostConfig.swift */; };
 		161C3BE522C4870C0092114F /* CustomConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE422C4870B0092114F /* CustomConfigView.swift */; };
@@ -95,6 +96,7 @@
 		16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		16068C7B22AECD9F004D39B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
+		1614532222C5D2AA00CA28F2 /* Public.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Public.swift; sourceTree = "<group>"; };
 		161C3BE022C4831B0092114F /* CustomUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUploader.swift; sourceTree = "<group>"; };
 		161C3BE222C483560092114F /* CustomHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHostConfig.swift; sourceTree = "<group>"; };
 		161C3BE422C4870B0092114F /* CustomConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfigView.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */,
 				1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */,
 				166B4A5422B9CFD7001288ED /* ConfigSheetController.swift */,
+				1614532222C5D2AA00CA28F2 /* Public.swift */,
 			);
 			path = ConfigViews;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */,
 				1662AC7322C0BBF7003AC924 /* AliyunRegion.swift in Sources */,
 				169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */,
+				1614532322C5D2AA00CA28F2 /* Public.swift in Sources */,
 				169F073922AF4549008E8525 /* GeneralPreferencesViewController.swift in Sources */,
 				167D7F4D22B4D43B00DD0A7A /* HostSaveKey.swift in Sources */,
 				16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */,

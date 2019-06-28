@@ -11,7 +11,6 @@ import SwiftyJSON
 
 @objcMembers
 class HostConfig: NSObject, Codable {
-
     private var addedObserver = false
 
     //注册监听

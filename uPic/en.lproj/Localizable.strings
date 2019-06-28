@@ -111,7 +111,7 @@
 "host.saveKey" = "File Name";
 "host.url" = "Upload url";
 "host.method" = "Request method";
-"host.field" = "Field";
+"host.field" = "File field";
 "host.extensions" = "Extension field";
 "host.headers" = "Request Headers";
 

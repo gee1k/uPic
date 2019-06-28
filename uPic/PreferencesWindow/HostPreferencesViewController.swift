@@ -23,6 +23,9 @@ class HostPreferencesViewController: PreferencesViewController {
     @IBOutlet weak var configView: NSView!
 
     var hostItems: [Host]?
+    
+    // 配置更改状态变化节流函数
+    var hostConfigChangedDebouncedFunc:Action!
 
     /* Obserber start */
     var hostItemsChanged = false {
@@ -30,7 +33,7 @@ class HostPreferencesViewController: PreferencesViewController {
             self.refreshButtonStatus()
         }
     }
-
+    
     /* Obserber start */
     var selectedRow: Int = -1 {
         didSet {
@@ -218,6 +221,7 @@ class HostPreferencesViewController: PreferencesViewController {
     // MARK: 添加图床
     func addHost(type: HostType) {
         let data = HostConfig.create(type: type)
+        data?.observerValues()
         self.hostItems?.append(Host(type, data: data))
         self.tableView.reloadData()
         self.hostItemsChanged = true
@@ -251,10 +255,17 @@ class HostPreferencesViewController: PreferencesViewController {
 
 
     @objc func hostConfigChanged() {
-        self.hostItemsChanged = true
+        hostConfigChangedDebouncedFunc()
     }
 
     func addObserver() {
+        // 设置监听配置变化的节流函数，当0.5秒后没有再次变化就刷新当前状态
+        hostConfigChangedDebouncedFunc = Util.debounce(threshold: 0.5) {
+            DispatchQueue.main.async {
+                self.hostItemsChanged = true
+            }
+            
+        }
         PreferencesNotifier.addObserver(observer: self, selector: #selector(hostConfigChanged), notification: .hostConfigChanged)
     }
 

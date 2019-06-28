@@ -47,6 +47,7 @@ class UpYunConfigView: NSView {
 
 
     func createView() {
+        var nextKeyViews = [NSView]()
 
         let paddingTop = 50, paddingLeft = 10, gapTop = 10, gapLeft = 5, labelWidth = 60, labelHeight = 20,
                 viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
@@ -62,10 +63,13 @@ class UpYunConfigView: NSView {
 
         let bucketField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         bucketField.identifier = NSUserInterfaceItemIdentifier(rawValue: "bucket")
+        bucketField.usesSingleLineMode = true
+        bucketField.lineBreakMode = .byTruncatingTail
         bucketField.delegate = self.data
         bucketField.stringValue = self.data.bucket ?? ""
         self.addSubview(bucketLabel)
         self.addSubview(bucketField)
+        nextKeyViews.append(bucketField)
 
         // MARK: Operator
         y = y - gapTop - labelHeight
@@ -77,10 +81,13 @@ class UpYunConfigView: NSView {
 
         let operatorField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         operatorField.identifier = NSUserInterfaceItemIdentifier(rawValue: "operatorName")
+        operatorField.usesSingleLineMode = true
+        operatorField.lineBreakMode = .byTruncatingTail
         operatorField.delegate = self.data
         operatorField.stringValue = self.data.operatorName ?? ""
         self.addSubview(operatorLabel)
         self.addSubview(operatorField)
+        nextKeyViews.append(operatorField)
 
 
         // MARK: Password
@@ -93,10 +100,13 @@ class UpYunConfigView: NSView {
 
         let passwordField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         passwordField.identifier = NSUserInterfaceItemIdentifier(rawValue: "password")
+        passwordField.usesSingleLineMode = true
+        passwordField.lineBreakMode = .byTruncatingTail
         passwordField.delegate = self.data
         passwordField.stringValue = self.data.password ?? ""
         self.addSubview(passwordLabel)
         self.addSubview(passwordField)
+        nextKeyViews.append(passwordField)
 
 
         // MARK: domain
@@ -110,6 +120,8 @@ class UpYunConfigView: NSView {
 
         let domainField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth - settingsBtnWith, height: labelHeight))
         domainField.identifier = NSUserInterfaceItemIdentifier(rawValue: "domain")
+        domainField.usesSingleLineMode = true
+        domainField.lineBreakMode = .byTruncatingTail
         domainField.delegate = self.data
         domainField.stringValue = self.data.domain ?? ""
         self.domainField = domainField
@@ -121,6 +133,8 @@ class UpYunConfigView: NSView {
         self.addSubview(domainLabel)
         self.addSubview(domainField)
         self.addSubview(settingsBtn)
+        nextKeyViews.append(domainField)
+        nextKeyViews.append(settingsBtn)
         
         // MARK: help
         y = y - gapTop * 2 - labelHeight
@@ -131,6 +145,10 @@ class UpYunConfigView: NSView {
         helpBtn.setButtonType(.momentaryPushIn)
         helpBtn.toolTip = NSLocalizedString("tutorial.tooltip", comment: "tutorial")
         self.addSubview(helpBtn)
+        
+        
+        // set nextKeyView
+        setNextKeyViews(nextKeyViews: nextKeyViews)
     }
 
     func addObserver() {

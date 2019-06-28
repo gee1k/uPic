@@ -47,6 +47,8 @@ class CustomConfigView: NSView {
 
 
     func createView() {
+        
+        var nextKeyViews = [NSView]()
 
         let paddingTop = 30, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 75, labelHeight = 20, textAreaHeight = 50,
                 viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
@@ -61,10 +63,13 @@ class CustomConfigView: NSView {
         
         let urlField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         urlField.identifier = NSUserInterfaceItemIdentifier(rawValue: "url")
+        urlField.usesSingleLineMode = true
+        urlField.lineBreakMode = .byTruncatingTail
         urlField.delegate = self.data
         urlField.stringValue = self.data.url ?? ""
         self.addSubview(urlLabel)
         self.addSubview(urlField)
+        nextKeyViews.append(urlField)
         
         // MARK: Method
         y = y - gapTop - labelHeight
@@ -94,6 +99,7 @@ class CustomConfigView: NSView {
         
         self.addSubview(methodLabel)
         self.addSubview(methodButtonPopUp)
+        nextKeyViews.append(methodButtonPopUp)
         
         
         // MARK: field
@@ -105,10 +111,13 @@ class CustomConfigView: NSView {
 
         let fieldField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         fieldField.identifier = NSUserInterfaceItemIdentifier(rawValue: "field")
+        fieldField.usesSingleLineMode = true
+        fieldField.lineBreakMode = .byTruncatingTail
         fieldField.delegate = self.data
         fieldField.stringValue = self.data.field ?? ""
         self.addSubview(fieldLabel)
         self.addSubview(fieldField)
+        nextKeyViews.append(fieldField)
         
         // MARK: Extensions
         y = y - gapTop - labelHeight
@@ -127,6 +136,7 @@ class CustomConfigView: NSView {
         extensionsField.placeholderString = "eg: key=value&key2=value2"
         self.addSubview(extensionsLabel)
         self.addSubview(extensionsField)
+        nextKeyViews.append(extensionsField)
         
         // MARK: Headers
         y = y - gapTop - textAreaHeight
@@ -145,7 +155,7 @@ class CustomConfigView: NSView {
         headersField.placeholderString = "eg: key=value&key2=value2"
         self.addSubview(headersLabel)
         self.addSubview(headersField)
-
+        nextKeyViews.append(headersField)
 
         // MARK: domain
         y = y - gapTop - textAreaHeight
@@ -158,6 +168,8 @@ class CustomConfigView: NSView {
 
         let domainField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth - settingsBtnWith, height: labelHeight))
         domainField.identifier = NSUserInterfaceItemIdentifier(rawValue: "domain")
+        domainField.usesSingleLineMode = true
+        domainField.lineBreakMode = .byTruncatingTail
         domainField.delegate = self.data
         domainField.stringValue = self.data.domain ?? ""
         self.domainField = domainField
@@ -169,6 +181,8 @@ class CustomConfigView: NSView {
         self.addSubview(domainLabel)
         self.addSubview(domainField)
         self.addSubview(settingsBtn)
+        nextKeyViews.append(domainField)
+        nextKeyViews.append(settingsBtn)
         
         // MARK: help
         y = y - gapTop - labelHeight
@@ -179,6 +193,9 @@ class CustomConfigView: NSView {
         helpBtn.setButtonType(.momentaryPushIn)
         helpBtn.toolTip = NSLocalizedString("tutorial.tooltip", comment: "tutorial")
         self.addSubview(helpBtn)
+        
+        // set nextKeyView
+        setNextKeyViews(nextKeyViews: nextKeyViews)
     }
 
     func addObserver() {
