@@ -1,0 +1,49 @@
+PODS:
+  - Alamofire (5.0.0-beta.6)
+  - CryptoSwift (1.0.0)
+  - MASShortcut (2.3.6)
+  - Sparkle (1.21.3)
+  - SwiftyJSON (4.3.0)
+  - SwiftyXMLParser (5.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0-beta.6)
+  - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
+  - MASShortcut
+  - Sparkle
+  - SwiftyJSON (~> 4.0)
+  - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - MASShortcut
+    - Sparkle
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  CryptoSwift:
+    :branch: master
+    :git: https://github.com/krzyzanowskim/CryptoSwift
+  SwiftyXMLParser:
+    :git: https://github.com/yahoojapan/SwiftyXMLParser.git
+
+CHECKOUT OPTIONS:
+  CryptoSwift:
+    :commit: 50d1c03bc3420eb818c0bdfcbf1c203f174bad3e
+    :git: https://github.com/krzyzanowskim/CryptoSwift
+  SwiftyXMLParser:
+    :commit: 13c1b5efa33c6238b5560d8625af4f1a24df2bd1
+    :git: https://github.com/yahoojapan/SwiftyXMLParser.git
+
+SPEC CHECKSUMS:
+  Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
+  CryptoSwift: b91cc3e6902875f4baa91fdf1042c1344108a53b
+  MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
+  Sparkle: 3f75576db8b0265adef36c43249d747f22d0b708
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  SwiftyXMLParser: 5ebb8793192f403fa8cc691045143906122a7a75
+
+PODFILE CHECKSUM: 7c6c78f59e37e62627438dd88dae6ce9d1cbd10d
+
+COCOAPODS: 1.7.1

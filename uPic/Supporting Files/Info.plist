@@ -35,8 +35,6 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>
-	<string>https://s2.svend.cc/projects/appcasts/uPic_appcast.xml</string>
-	<key>SUPublicEDKey</key>
-	<string>v4kd9DCL59Fim7M1j6QVBJf8fDX+1lUjmeRN0SRf3qk=</string>
+	<string>https://gee1k.github.io/uPic/appcast.xml</string>
 </dict>
 </plist>
