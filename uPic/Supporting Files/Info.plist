@@ -34,7 +34,9 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
 	<key>SUFeedURL</key>
-	<string>https://gee1k.github.io/uPic/appcast.xml</string>
+	<string>https://svend.cc/uPic/appcast.xml</string>
 </dict>
 </plist>
