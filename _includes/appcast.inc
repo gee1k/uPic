@@ -14,7 +14,7 @@
 			<pubDate>{{ release.published_at | date_to_rfc822 }}</pubDate>
 			<enclosure
 				url="https://github.com/gee1k/uPic/releases/download/{{ release.tag_name }}/uPic.app2.zip"
-				sparkle:version="{{ release.published_at | date: "%Y%m%d" }}"
+				sparkle:version="{{ release.published_at | date_to_rfc822 }}"
 				sparkle:shortVersionString="{{ release.tag_name }}"
 				type="application/octet-stream"
 			/>
