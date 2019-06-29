@@ -10,6 +10,7 @@ import Foundation
 import Cocoa
 
 typealias Action = () -> ()
+typealias CancelAction = (_ cancel: Bool ) -> ()
 
 class Util {
     static func getFileMd5(filePath: String) -> String? {
@@ -56,11 +57,16 @@ class Util {
         }
     }
     
-    static func debounce(threshold: TimeInterval, action: @escaping Action) -> Action {
+    static func debounce(threshold: TimeInterval, action: @escaping Action) -> CancelAction {
         var timer: DispatchSourceTimer?
-        return {
+        return {(_ cancel: Bool) in
             if timer != nil {
                 timer!.cancel()
+            }
+            
+            if cancel {
+                // 取消当前节流定时器
+                return
             }
             
             timer = DispatchSource.makeTimerSource()

@@ -97,6 +97,9 @@
 "alert.reset_preferences_description" = "⚠️ Note that this will reset all user preferences";
 
 "tutorial.tooltip" = "tutorial";
+/*匿名上传*/
+"anonymously-upload" = "The file will be uploaded anonymously to";
+
 
 /* host -- start */
 "host.region" = "Region";
