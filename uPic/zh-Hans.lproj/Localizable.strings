@@ -96,6 +96,9 @@
 
 "tutorial.tooltip" = "教程";
 
+/*匿名上传*/
+"anonymously-upload" = "文件将匿名上传至";
+
 /* host -- start */
 "host.region" = "区域";
 "host.bucket" = "空间名称";

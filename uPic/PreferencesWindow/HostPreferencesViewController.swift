@@ -25,7 +25,7 @@ class HostPreferencesViewController: PreferencesViewController {
     var hostItems: [Host]?
     
     // 配置更改状态变化节流函数
-    var hostConfigChangedDebouncedFunc:Action!
+    var hostConfigChangedDebouncedFunc: CancelAction!
 
     /* Obserber start */
     var hostItemsChanged = false {
@@ -107,7 +107,12 @@ class HostPreferencesViewController: PreferencesViewController {
     // save host config
     //
     @IBAction func saveButtonClicked(_ sender: Any?) {
-        // TODO: 保存当前图床信息到用户配置文件
+        
+        // 取消一下节流函数的定时器，确保不会在点击保存按钮后，再重新计划安装状态
+        self.hostConfigChangedDebouncedFunc(true)
+        
+        // 先让当前正在编辑的输入框触发一下 editEnd 事件，来 trim 一下本身
+        self.blurEditingTextField()
         ConfigManager.shared.setHostItems(items: self.hostItems!)
         self.hostItemsChanged = false
     }
@@ -146,9 +151,23 @@ class HostPreferencesViewController: PreferencesViewController {
             configView.addSubview(TencentConfigView(frame: configView.frame, data: item.data))
             break
         default:
-            let label = NSTextField(labelWithString: "文件将匿名上传至 \(item.name)")
+            let label = NSTextField(labelWithString: NSLocalizedString("anonymously-upload", comment: "匿名上传") + " \(item.name)")
             label.frame = NSRect(x: (configView.frame.width - label.frame.width) / 2, y: configView.frame.height - 50, width: label.frame.width, height: 20)
             configView.addSubview(label)
+        }
+    }
+    
+    // MARK: 将正在编辑的输入框执行 endEdit
+    func blurEditingTextField() {
+        for view in self.configView.subviews {
+            for subView in view.subviews {
+                if !(subView is NSTextField) {
+                    continue
+                }
+                if let subTextField = subView as? NSTextField, let editor = subTextField.currentEditor() {
+                    subTextField.endEditing(editor)
+                }
+            }
         }
     }
 
@@ -255,7 +274,7 @@ class HostPreferencesViewController: PreferencesViewController {
 
 
     @objc func hostConfigChanged() {
-        hostConfigChangedDebouncedFunc()
+        hostConfigChangedDebouncedFunc(false)
     }
 
     func addObserver() {

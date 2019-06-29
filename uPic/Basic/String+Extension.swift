@@ -64,6 +64,10 @@ extension String {
     func urlDecoded() -> String {
         return self.removingPercentEncoding ?? ""
     }
+    
+    func trim() -> String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 
     // 字符串增强
     var lastPathComponent: String {
