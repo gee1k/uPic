@@ -11,13 +11,14 @@ import Cocoa
 func setNextKeyViews(nextKeyViews: [NSView]) {
     if nextKeyViews.count > 1 {
         for (index, item) in nextKeyViews.enumerated() {
+            let currentView = item
             if index == nextKeyViews.count - 1 {
                 break
             }
             
-            let currentView = item
             let nextView = nextKeyViews[index + 1]
             currentView.nextKeyView = nextView
+            
         }
     }
 }

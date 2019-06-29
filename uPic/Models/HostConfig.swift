@@ -112,9 +112,15 @@ class HostConfig: NSObject, Codable {
 extension HostConfig: NSTextFieldDelegate {
     func controlTextDidChange(_ obj: Notification) {
         if let textField = obj.object as? NSTextField, let key = textField.identifier?.rawValue {
-
             let value = textField.stringValue
-            self.setValue(value, forKey: key)
+            let trimValue = value.trim()
+            self.setValue(trimValue, forKey: key)
+        }
+    }
+    
+    func controlTextDidEndEditing(_ obj: Notification) {
+        if let textField = obj.object as? NSTextField, let key = textField.identifier?.rawValue {
+            textField.stringValue = self.value(forKey: key) as? String ?? textField.stringValue
         }
     }
 }
