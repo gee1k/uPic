@@ -88,7 +88,7 @@ extension ConfigManager {
     
     public var historyLimit: Int {
         get {
-            let defaultLimit = 6
+            let defaultLimit = 10
             let limit =  Defaults[.historyLimit]
             if (limit == nil || limit == 0) {
                 return defaultLimit

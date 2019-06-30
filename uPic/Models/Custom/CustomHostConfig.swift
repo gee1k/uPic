@@ -64,13 +64,13 @@ class CustomHostConfig: HostConfig {
         }
         let data = str.data(using: String.Encoding.utf8)
         let json = try! JSON(data: data!)
-        config.url = json["url"].string
-        config.method = json["method"].string
-        config.field = json["field"].string
-        config.extensions = json["extensions"].string
-        config.headers = json["headers"].string
-        config.domain = json["domain"].string
-        config.folder = json["folder"].string
+        config.url = json["url"].stringValue
+        config.method = json["method"].stringValue
+        config.field = json["field"].stringValue
+        config.extensions = json["extensions"].stringValue
+        config.headers = json["headers"].stringValue
+        config.domain = json["domain"].stringValue
+        config.folder = json["folder"].stringValue
         config.saveKey = json["saveKey"].stringValue
         return config
     }

@@ -56,11 +56,11 @@ class UpYunHostConfig: HostConfig {
         }
         let data = str.data(using: String.Encoding.utf8)
         let json = try! JSON(data: data!)
-        config.bucket = json["bucket"].string
-        config.operatorName = json["operatorName"].string
-        config.password = json["password"].string
-        config.domain = json["domain"].string
-        config.folder = json["folder"].string
+        config.bucket = json["bucket"].stringValue
+        config.operatorName = json["operatorName"].stringValue
+        config.password = json["password"].stringValue
+        config.domain = json["domain"].stringValue
+        config.folder = json["folder"].stringValue
         config.saveKey = json["saveKey"].stringValue
         return config
     }

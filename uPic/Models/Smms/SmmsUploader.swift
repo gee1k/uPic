@@ -22,7 +22,7 @@ class SmmsUploader: BaseUploader {
         super.start()
 
         AF.upload(multipartFormData: multipartFormData, to: url, method: HTTPMethod.post).validate().uploadProgress { progress in
-            super.progress(percent: progress.fractionCompleted * 100)
+            super.progress(percent: progress.fractionCompleted)
         }.responseJSON(completionHandler: { response -> Void in
             switch response.result {
             case .success(let value):

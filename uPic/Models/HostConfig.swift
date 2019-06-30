@@ -69,6 +69,12 @@ class HostConfig: NSObject, Codable {
             return AliyunHostConfig()
         case .tencent_COS:
             return TencentHostConfig()
+        case .github:
+            return GithubHostConfig()
+        case .gitee:
+            return GiteeHostConfig()
+        case .weibo:
+            return WeiboHostConfig()
         }
     }
 
@@ -100,6 +106,15 @@ class HostConfig: NSObject, Codable {
             break
         case .tencent_COS:
             config = TencentHostConfig.deserialize(str: str)
+            break
+        case .github:
+            config = GithubHostConfig.deserialize(str: str)
+            break
+        case .gitee:
+            config = GiteeHostConfig.deserialize(str: str)
+            break
+        case .weibo:
+            config = WeiboHostConfig.deserialize(str: str)
             break
         }
 

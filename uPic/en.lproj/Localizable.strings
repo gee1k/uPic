@@ -10,6 +10,9 @@
 "general.ok" = "OK";
 "general.cancel" = "Cancel";
 "general.yes" = "Yes";
+"general.warn" = "Warning";
+"general.continue" = "Continue";
+"general.example" = "Example";
 
 /* 上传成功通知标题 */
 "upload.notification.success.title" = "Uploaded successfully";
@@ -75,30 +78,19 @@
 /* 菜单栏没有上传历史 */
 "status-menu.upload-history-empty" = "No upload history";
 
-/* 前往下载 */
-"check-update-tip-get-gobutton.title" = "Download";
 
-/* 忽略 */
-"check-update-tip-get-ignorebutton.title" = "Ignore";
-
-/* 发现新版本 */
-"check-update-tip-get.message" = "Found new version!";
-
-/* 网络异常！ */
-"check-update-tip-network.message" = "Connection Invalid!";
-
-/* 没有更新！ */
-"check-update-tip-none.message" = "No updates!";
-
-/* 检查更新 */
-"check-update-tip.title" = "Check for updates";
+/* 菜单栏帮助 */
+"status-menu.help" = "Help";
+"status-menu.tutorial" = "Tutorial";
 
 "alert.reset_preferences_title" = "Reset User Preferences?";
 "alert.reset_preferences_description" = "⚠️ Note that this will reset all user preferences";
 
-"tutorial.tooltip" = "tutorial";
+
 /*匿名上传*/
 "anonymously-upload" = "The file will be uploaded anonymously to";
+
+"alert.unsave_description" = "继续会丢失未保存数据，是否继续？";
 
 
 /* host -- start */
@@ -113,11 +105,18 @@
 "host.folder" = "Folder";
 "host.saveKey" = "File Name";
 "host.url" = "Upload url";
-"host.method" = "Request method";
+"host.method" = "Method";
 "host.field" = "File field";
-"host.extensions" = "Extension field";
-"host.headers" = "Request Headers";
-
+"host.extensions" = "Fields";
+"host.headers" = "Headers";
+"host.owner" = "Owner";
+"host.repo" = "Repo";
+"host.branch" = "Branch";
+"host.token" = "Token";
+"host.username" = "Username";
+"host.cookieMode" = "Cookie Mode";
+"host.cookie" = "Cookie";
+"host.quality" = "Pic Quality";
 
 /*host type*/
 "host.type.-1" = "Custom";
@@ -126,3 +125,20 @@
 "host.type.3" = "Upyun USS";
 "host.type.4" = "Aliyun OSS";
 "host.type.5" = "Tencent Cloud COS";
+"host.type.6" = "Github";
+"host.type.7" = "Gitee";
+"host.type.8" = "Weibo";
+
+/* HostSaveKey */
+"save-key.filename" = "filename";
+"save-key.date-filename" = "date-filename";
+"save-key.datetime-filename" = "datetime-filename";
+"save-key.random" = "random";
+
+/* weibo quality*/
+"weibo.quality.thumbnail" = "thumbnail";
+"weibo.quality.mw690" = "medium size";
+"weibo.quality.large" = "original";
+
+/*eroor message*/
+"weibo.upload.error" = "Upload failed, please check the configuration!";

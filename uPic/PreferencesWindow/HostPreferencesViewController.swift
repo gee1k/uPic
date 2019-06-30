@@ -62,9 +62,8 @@ class HostPreferencesViewController: PreferencesViewController {
 
     override func viewDidAppear() {
         super.viewDidAppear()
-
-        self.setDefaultSelectedHost()
-
+        self.view.window?.delegate = self
+        
         self.refreshButtonStatus()
         self.addObserver()
     }
@@ -72,9 +71,9 @@ class HostPreferencesViewController: PreferencesViewController {
     override func viewDidDisappear() {
         super.viewDidDisappear()
         self.removeObserver()
+        
     }
-
-
+    
     @IBAction func addHostButtonClicked(_ sender: NSPopUpButton) {
         guard let selectedItem = self.addHostButton.selectedItem else {
             return
@@ -122,7 +121,7 @@ class HostPreferencesViewController: PreferencesViewController {
     //
     // reset host config
     //
-    @IBAction func resetButtonClicked(_ sender: NSButton) {
+    @IBAction func resetButtonClicked(_ sender: NSButton?) {
         // TODO: 从用户配置文件读取图床信息覆盖掉现有修改
         self.initHostItems()
         self.hostItemsChanged = false
@@ -135,28 +134,7 @@ class HostPreferencesViewController: PreferencesViewController {
             return
         }
 
-        // MARK: 根据当前选择的图床，创建对应的配置界面
-        switch item.type {
-        case .custom:
-            configView.addSubview(CustomConfigView(frame: configView.frame, data: item.data))
-            break
-        case .upyun_USS:
-            configView.addSubview(UpYunConfigView(frame: configView.frame, data: item.data))
-            break
-        case .qiniu_KODO:
-            configView.addSubview(QiniuConfigView(frame: configView.frame, data: item.data))
-            break
-        case .aliyun_OSS:
-            configView.addSubview(AliyunConfigView(frame: configView.frame, data: item.data))
-            break
-        case .tencent_COS:
-            configView.addSubview(TencentConfigView(frame: configView.frame, data: item.data))
-            break
-        default:
-            let label = NSTextField(labelWithString: NSLocalizedString("anonymously-upload", comment: "匿名上传") + " \(item.name)")
-            label.frame = NSRect(x: (configView.frame.width - label.frame.width) / 2, y: configView.frame.height - 50, width: label.frame.width, height: 20)
-            configView.addSubview(label)
-        }
+        ConfigView.createConfigView(parentView: configView, item: item)
     }
     
     // MARK: 将正在编辑的输入框执行 endEdit
@@ -351,6 +329,32 @@ extension HostPreferencesViewController: NSTextFieldDelegate {
 
         if index > -1 {
             self.setHostName(index: index, name: textField.stringValue)
+        }
+    }
+}
+
+extension HostPreferencesViewController: NSWindowDelegate {
+   
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
+        if self.hostItemsChanged {
+            let alert = NSAlert()
+            alert.alertStyle = .warning
+            alert.messageText = NSLocalizedString("general.warn", comment: "提醒")
+            alert.informativeText = NSLocalizedString("alert.unsave_description", comment: "继续退出，当前未保存数据将会丢失")
+            alert.addButton(withTitle: NSLocalizedString("general.continue", comment: "继续"))
+            alert.addButton(withTitle: NSLocalizedString("general.cancel", comment: "取消"))
+            alert.window.titlebarAppearsTransparent = true
+            alert.beginSheetModal(for: self.view.window!) { (response) in
+                if response == .alertFirstButtonReturn {
+                    self.resetButtonClicked(nil)
+                    self.view.window?.close()
+                } else if response == .alertSecondButtonReturn {
+                    debugPrint("Cancel")
+                }
+            }
+            return false
+        } else {
+            return true
         }
     }
 }

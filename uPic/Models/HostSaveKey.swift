@@ -10,17 +10,19 @@ import Foundation
 
 
 public enum HostSaveKey: String, CaseIterable, Codable {
-    case dateFilename, filename, random
+    case dateFilename, datetimeFilename, filename, random
 
     public var name: String {
         get {
             switch self {
             case .filename:
-                return "文件名"
+                return NSLocalizedString("save-key.filename", comment: "filename")
             case .dateFilename:
-                return "日期-文件名"
+                return NSLocalizedString("save-key.date-filename", comment: "date-filename")
+            case .datetimeFilename:
+                return NSLocalizedString("save-key.datetime-filename", comment: "datetime-filename")
             case .random:
-                return "随机"
+                return NSLocalizedString("save-key.random", comment: "random")
             }
         }
     }
@@ -36,6 +38,8 @@ public enum HostSaveKey: String, CaseIterable, Codable {
             return filename!
         case .dateFilename:
             return "\(Date().format(dateFormat: "yyyy-MM-dd"))-\(filename!)"
+        case .datetimeFilename:
+            return "\(Date().format(dateFormat: "yyyy-MM-dd HH:mm:ss"))-\(filename!)"
         case .random:
             return String.randomStr(len: 6)
         }

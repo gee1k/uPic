@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
     </dependencies>
     <scenes>
@@ -682,7 +683,6 @@
                 <customObject id="veO-oa-UPB" customClass="StatusMenuController" customModule="uPic" customModuleProvider="target">
                     <connections>
                         <outlet property="checkUpdateMenuItem" destination="yai-4F-Btp" id="klG-hy-GGO"/>
-                        <outlet property="guideMenuItem" destination="O8o-6e-fZn" id="3FX-T4-S1c"/>
                         <outlet property="helpMenuItem" destination="2Jw-ET-3eH" id="Ubq-wz-L3N"/>
                         <outlet property="historyMenuItem" destination="EhO-Zw-XXj" id="okQ-0q-kK5"/>
                         <outlet property="hostMenuItem" destination="d02-bT-1Lv" id="Ah0-J0-Z4M"/>
@@ -692,6 +692,7 @@
                         <outlet property="screenshotMenuItem" destination="ueU-fm-1nn" id="lV8-I2-PPX"/>
                         <outlet property="selectFileMenuItem" destination="p0A-6d-cAU" id="G7k-5Y-yGX"/>
                         <outlet property="statusMenu" destination="fqV-BN-CNE" id="XoS-be-xDF"/>
+                        <outlet property="tutorialMenuItem" destination="O8o-6e-fZn" id="3FX-T4-S1c"/>
                         <outlet property="uploadPasteboardMenuItem" destination="orX-KL-q11" id="MyG-41-1SW"/>
                     </connections>
                 </customObject>
