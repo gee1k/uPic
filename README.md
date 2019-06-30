@@ -88,6 +88,9 @@
 - [七牛云 KODO](https://www.qiniu.com/products/kodo)
 - [阿里云 OSS](https://www.aliyun.com/product/oss/)
 - [腾讯云 COS](https://cloud.tencent.com/product/cos)
+- [微博](https://weibo.com/)
+- [Github](https://github.com/settings/tokens)
+- [Gitee](https://gitee.com/profile/personal_access_tokens)
 - [自定义上传接口](https://blog.svend.cc/upic/tutorials/custom)
 - ...
 
