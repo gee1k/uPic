@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Cocoa
+import ServiceManagement
 
 public class ConfigManager {
 
@@ -31,6 +33,8 @@ public class ConfigManager {
 
         set {
             Defaults[.launchAtLogin] = newValue?.rawValue
+            
+            SMLoginItemSetEnabled(Constants.launcherAppIdentifier as CFString, newValue?.bool ?? false)
         }
     }
     

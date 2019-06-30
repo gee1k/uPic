@@ -34,7 +34,6 @@ class GeneralPreferencesViewController: PreferencesViewController {
         let isLaunch = launchButton.state == .on
         let launchAtLogin: BoolType = isLaunch ? ._true : ._false
         ConfigManager.shared.launchAtLogin = launchAtLogin
-        SMLoginItemSetEnabled(Constants.launcherAppIdentifier as CFString, isLaunch)
     }
 
     func refreshButtonState() {

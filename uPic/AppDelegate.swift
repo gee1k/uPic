@@ -26,6 +26,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
+        self.resetNewVersionLaunchAtLogin()
 
         indicator.minValue = 0.0
         indicator.maxValue = 1.0
@@ -44,6 +46,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         return true
+    }
+    
+    func resetNewVersionLaunchAtLogin() {
+        guard let launchAtLogin = ConfigManager.shared.launchAtLogin else {
+            return
+        }
+        if launchAtLogin == ._true {
+            ConfigManager.shared.launchAtLogin = BoolType._false
+            ConfigManager.shared.launchAtLogin = BoolType._true
+        }
     }
 
 }

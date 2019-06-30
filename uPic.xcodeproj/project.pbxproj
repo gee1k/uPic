@@ -23,6 +23,7 @@
 		163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */; };
 		163632F122B274B400805E7F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F022B274B400805E7F /* Date+Extension.swift */; };
 		163632F322B2751D00805E7F /* BoolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F222B2751D00805E7F /* BoolType.swift */; };
+		16396F6422C918AF00E2EA73 /* uPicHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16EA204922AF8AB30006FB9C /* uPicHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1646B80622C79337009271DF /* GiteeUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80422C79325009271DF /* GiteeUploader.swift */; };
 		1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80522C79325009271DF /* GiteeHostConfig.swift */; };
 		1646B80822C79349009271DF /* GiteeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80322C79325009271DF /* GiteeUtil.swift */; };
@@ -82,7 +83,6 @@
 		16EA204C22AF8AB30006FB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA204B22AF8AB30006FB9C /* AppDelegate.swift */; };
 		16EA205022AF8AB40006FB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA204F22AF8AB40006FB9C /* Assets.xcassets */; };
 		16EA205322AF8AB40006FB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EA205122AF8AB40006FB9C /* Main.storyboard */; };
-		16EA205A22AF8C920006FB9C /* uPicHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16EA204922AF8AB30006FB9C /* uPicHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205B22AF8FB90006FB9C /* ConfigManager.swift */; };
 		68BBB3EF25C92DCAE216A4DF /* AliyunUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB5C4550545707614BE4D /* AliyunUploader.swift */; };
 		68BBB6E5FFBB050D05107413 /* AliyunHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB8CF2838A67CA1AD438F /* AliyunHostConfig.swift */; };
@@ -97,7 +97,7 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				16EA205A22AF8C920006FB9C /* uPicHelper.app in CopyFiles */,
+				16396F6422C918AF00E2EA73 /* uPicHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
