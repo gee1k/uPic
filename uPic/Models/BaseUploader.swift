@@ -44,6 +44,15 @@ class BaseUploader {
         case .tencent_COS:
             TencentUploader.shared.upload(url)
             break
+        case .github:
+            GithubUploader.shared.upload(url)
+            break
+        case .gitee:
+            GiteeUploader.shared.upload(url)
+            break
+        case .weibo:
+            WeiboUploader.shared.upload(url)
+            break
         }
     }
 
@@ -76,6 +85,15 @@ class BaseUploader {
         case .tencent_COS:
             TencentUploader.shared.upload(data)
             break
+        case .github:
+            GithubUploader.shared.upload(data)
+            break
+        case .gitee:
+            GiteeUploader.shared.upload(data)
+            break
+        case .weibo:
+            WeiboUploader.shared.upload(data)
+            break
         }
     }
 
@@ -101,6 +119,12 @@ class BaseUploader {
             return AliyunUploader.fileExtensions
         case .tencent_COS:
             return TencentUploader.fileExtensions
+        case .github:
+            return GithubUploader.fileExtensions
+        case .gitee:
+            return GiteeUploader.fileExtensions
+        case .weibo:
+            return WeiboUploader.fileExtensions
         }
     }
 

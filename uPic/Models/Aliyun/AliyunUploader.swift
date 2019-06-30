@@ -84,7 +84,7 @@ class AliyunUploader: BaseUploader {
 
 
         AF.upload(multipartFormData: multipartFormDataGen, to: url, headers: headers).validate().uploadProgress { progress in
-            super.progress(percent: progress.fractionCompleted * 100)
+            super.progress(percent: progress.fractionCompleted)
         }.response(completionHandler: { response -> Void in
             switch response.result {
             case .success(_):

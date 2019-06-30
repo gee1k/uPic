@@ -26,10 +26,8 @@ class ConfigSheetController: NSViewController {
         // Do view setup here.
 
         okButton.highlight(true)
-    }
-
-    @IBAction func onTextChanged(_ sender: NSTextField) {
-        self.resetPreviewLabel()
+        domainTextField.delegate = self
+        folderTextField.delegate = self
     }
 
     @IBAction func onSaveKeyChanged(_ sender: NSPopUpButton) {
@@ -61,7 +59,7 @@ class ConfigSheetController: NSViewController {
     }
 
     func resetPreviewLabel() {
-        var text = "示例："
+        var text = "\(NSLocalizedString("general.example", comment: "example")):"
         if (domainTextField.stringValue.count > 0) {
             text += domainTextField.stringValue
         }
@@ -99,4 +97,10 @@ class ConfigSheetController: NSViewController {
         self.resetPreviewLabel()
     }
 
+}
+
+extension ConfigSheetController: NSTextFieldDelegate {
+    func controlTextDidChange(_ obj: Notification) {
+        self.resetPreviewLabel()
+    }
 }

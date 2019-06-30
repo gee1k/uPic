@@ -13,7 +13,6 @@
 		16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */; };
 		16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7B22AECD9F004D39B7 /* Constants.swift */; };
 		160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */; };
-		1614532322C5D2AA00CA28F2 /* Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1614532222C5D2AA00CA28F2 /* Public.swift */; };
 		161C3BE122C483380092114F /* CustomUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE022C4831B0092114F /* CustomUploader.swift */; };
 		161C3BE322C483560092114F /* CustomHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE222C483560092114F /* CustomHostConfig.swift */; };
 		161C3BE522C4870C0092114F /* CustomConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE422C4870B0092114F /* CustomConfigView.swift */; };
@@ -24,12 +23,23 @@
 		163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */; };
 		163632F122B274B400805E7F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F022B274B400805E7F /* Date+Extension.swift */; };
 		163632F322B2751D00805E7F /* BoolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F222B2751D00805E7F /* BoolType.swift */; };
+		1646B80622C79337009271DF /* GiteeUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80422C79325009271DF /* GiteeUploader.swift */; };
+		1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80522C79325009271DF /* GiteeHostConfig.swift */; };
+		1646B80822C79349009271DF /* GiteeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80322C79325009271DF /* GiteeUtil.swift */; };
+		1646B80A22C79483009271DF /* GiteeConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80922C79482009271DF /* GiteeConfigView.swift */; };
+		1646B80E22C7C082009271DF /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80D22C7C082009271DF /* ConfigView.swift */; };
 		164745EB22B618D700F9575D /* HostPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164745EA22B618D700F9575D /* HostPreferencesViewController.swift */; };
 		164745F022B65FE900F9575D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164745EF22B65FE900F9575D /* String+Extension.swift */; };
 		1647474322B66ACE00F9575D /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474222B66ACE00F9575D /* Data+Extension.swift */; };
 		1647474522B66E3400F9575D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474422B66E3400F9575D /* Util.swift */; };
 		164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C39FF22B2AA6C003ADE39 /* Notifier.swift */; };
 		164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */; };
+		1657019922C8922400C57EE9 /* WeiboHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657019822C8920400C57EE9 /* WeiboHostConfig.swift */; };
+		1657019B22C8934000C57EE9 /* WeiboqQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657019A22C8934000C57EE9 /* WeiboqQuality.swift */; };
+		1657019D22C8953B00C57EE9 /* WeiboUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657019C22C8953B00C57EE9 /* WeiboUploader.swift */; };
+		1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657019E22C897A400C57EE9 /* WeiboConfigView.swift */; };
+		165701A122C8A6E600C57EE9 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165701A022C8A6E600C57EE9 /* Regex.swift */; };
+		165701A322C8AE0A00C57EE9 /* WeiboUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165701A222C8AE0A00C57EE9 /* WeiboUtil.swift */; };
 		165D908622C333740096FF38 /* PasteboardType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165D908522C333740096FF38 /* PasteboardType+Extension.swift */; };
 		1660FCBA22C11C2300372950 /* TencentHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660FCB922C11BA000372950 /* TencentHostConfig.swift */; };
 		1660FCBB22C11C7200372950 /* TencentUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660FCB722C11BA000372950 /* TencentUploader.swift */; };
@@ -49,6 +59,10 @@
 		167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D7F4822B4D2F500DD0A7A /* HostConfig.swift */; };
 		167D7F4B22B4D31300DD0A7A /* HostType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D7F4A22B4D31300DD0A7A /* HostType.swift */; };
 		167D7F4D22B4D43B00DD0A7A /* HostSaveKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D7F4C22B4D43B00DD0A7A /* HostSaveKey.swift */; };
+		167DDBEB22C76F5000B03357 /* GithubUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDBEA22C76F5000B03357 /* GithubUploader.swift */; };
+		167DDBED22C76F6600B03357 /* GithubHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDBEC22C76F6600B03357 /* GithubHostConfig.swift */; };
+		167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDBEE22C7722200B03357 /* GithubUtil.swift */; };
+		167DDBF122C7784900B03357 /* GithubConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDBF022C7784900B03357 /* GithubConfigView.swift */; };
 		168A831122B606C000344E77 /* UpYunUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A2022B5FC7B00B1F923 /* UpYunUploader.swift */; };
 		1690E7E422BF111500FC81F8 /* QiniuConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */; };
 		1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E622BF12D200FC81F8 /* QiniuHostConfig.swift */; };
@@ -96,7 +110,6 @@
 		16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		16068C7B22AECD9F004D39B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
-		1614532222C5D2AA00CA28F2 /* Public.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Public.swift; sourceTree = "<group>"; };
 		161C3BE022C4831B0092114F /* CustomUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUploader.swift; sourceTree = "<group>"; };
 		161C3BE222C483560092114F /* CustomHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHostConfig.swift; sourceTree = "<group>"; };
 		161C3BE422C4870B0092114F /* CustomConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfigView.swift; sourceTree = "<group>"; };
@@ -112,12 +125,23 @@
 		163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextFieldCell+VerticallyCentered.swift"; sourceTree = "<group>"; };
 		163632F022B274B400805E7F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		163632F222B2751D00805E7F /* BoolType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolType.swift; sourceTree = "<group>"; };
+		1646B80322C79325009271DF /* GiteeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiteeUtil.swift; sourceTree = "<group>"; };
+		1646B80422C79325009271DF /* GiteeUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiteeUploader.swift; sourceTree = "<group>"; };
+		1646B80522C79325009271DF /* GiteeHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiteeHostConfig.swift; sourceTree = "<group>"; };
+		1646B80922C79482009271DF /* GiteeConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiteeConfigView.swift; sourceTree = "<group>"; };
+		1646B80D22C7C082009271DF /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		164745EA22B618D700F9575D /* HostPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostPreferencesViewController.swift; sourceTree = "<group>"; };
 		164745EF22B65FE900F9575D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1647474222B66ACE00F9575D /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		1647474422B66E3400F9575D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		164C39FF22B2AA6C003ADE39 /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigNotifier.swift; sourceTree = "<group>"; };
+		1657019822C8920400C57EE9 /* WeiboHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboHostConfig.swift; sourceTree = "<group>"; };
+		1657019A22C8934000C57EE9 /* WeiboqQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboqQuality.swift; sourceTree = "<group>"; };
+		1657019C22C8953B00C57EE9 /* WeiboUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboUploader.swift; sourceTree = "<group>"; };
+		1657019E22C897A400C57EE9 /* WeiboConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboConfigView.swift; sourceTree = "<group>"; };
+		165701A022C8A6E600C57EE9 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		165701A222C8AE0A00C57EE9 /* WeiboUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboUtil.swift; sourceTree = "<group>"; };
 		165D908522C333740096FF38 /* PasteboardType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PasteboardType+Extension.swift"; sourceTree = "<group>"; };
 		1660FCB622C11BA000372950 /* TencentRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TencentRegion.swift; sourceTree = "<group>"; };
 		1660FCB722C11BA000372950 /* TencentUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TencentUploader.swift; sourceTree = "<group>"; };
@@ -137,6 +161,10 @@
 		167D7F4822B4D2F500DD0A7A /* HostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostConfig.swift; sourceTree = "<group>"; };
 		167D7F4A22B4D31300DD0A7A /* HostType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostType.swift; sourceTree = "<group>"; };
 		167D7F4C22B4D43B00DD0A7A /* HostSaveKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostSaveKey.swift; sourceTree = "<group>"; };
+		167DDBEA22C76F5000B03357 /* GithubUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUploader.swift; sourceTree = "<group>"; };
+		167DDBEC22C76F6600B03357 /* GithubHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubHostConfig.swift; sourceTree = "<group>"; };
+		167DDBEE22C7722200B03357 /* GithubUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUtil.swift; sourceTree = "<group>"; };
+		167DDBF022C7784900B03357 /* GithubConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubConfigView.swift; sourceTree = "<group>"; };
 		1690E7E022BE32B100FC81F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		1690E7E222BE32D500FC81F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiniuConfigView.swift; sourceTree = "<group>"; };
@@ -204,7 +232,7 @@
 		16068C7622AECB26004D39B7 /* PreferencesWindow */ = {
 			isa = PBXGroup;
 			children = (
-				166B4A5122B9CB17001288ED /* ConfigViews */,
+				166B4A5122B9CB17001288ED /* ConfigView */,
 				169F073622AF4549008E8525 /* AboutPreferencesViewController.swift */,
 				169F073322AF4549008E8525 /* AdvancedPreferencesViewController.swift */,
 				169F073522AF4549008E8525 /* GeneralPreferencesViewController.swift */,
@@ -235,6 +263,7 @@
 				164745EF22B65FE900F9575D /* String+Extension.swift */,
 				1647474222B66ACE00F9575D /* Data+Extension.swift */,
 				165D908522C333740096FF38 /* PasteboardType+Extension.swift */,
+				165701A022C8A6E600C57EE9 /* Regex.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -267,6 +296,31 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		1646B80222C7931E009271DF /* Gitee */ = {
+			isa = PBXGroup;
+			children = (
+				1646B80422C79325009271DF /* GiteeUploader.swift */,
+				1646B80522C79325009271DF /* GiteeHostConfig.swift */,
+				1646B80322C79325009271DF /* GiteeUtil.swift */,
+			);
+			path = Gitee;
+			sourceTree = "<group>";
+		};
+		1646B80F22C7C485009271DF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1657019E22C897A400C57EE9 /* WeiboConfigView.swift */,
+				1662AC7022C0AC52003AC924 /* AliyunConfigView.swift */,
+				161C3BE422C4870B0092114F /* CustomConfigView.swift */,
+				1646B80922C79482009271DF /* GiteeConfigView.swift */,
+				167DDBF022C7784900B03357 /* GithubConfigView.swift */,
+				1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */,
+				1660FCBE22C1211800372950 /* TencentConfigView.swift */,
+				166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		164C39FE22B2AA5E003ADE39 /* Notifier */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +329,17 @@
 				164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */,
 			);
 			path = Notifier;
+			sourceTree = "<group>";
+		};
+		1657019722C891DC00C57EE9 /* Weibo */ = {
+			isa = PBXGroup;
+			children = (
+				1657019C22C8953B00C57EE9 /* WeiboUploader.swift */,
+				1657019822C8920400C57EE9 /* WeiboHostConfig.swift */,
+				1657019A22C8934000C57EE9 /* WeiboqQuality.swift */,
+				165701A222C8AE0A00C57EE9 /* WeiboUtil.swift */,
+			);
+			path = Weibo;
 			sourceTree = "<group>";
 		};
 		1660FCB522C11A9F00372950 /* Tencent */ = {
@@ -288,23 +353,21 @@
 			path = Tencent;
 			sourceTree = "<group>";
 		};
-		166B4A5122B9CB17001288ED /* ConfigViews */ = {
+		166B4A5122B9CB17001288ED /* ConfigView */ = {
 			isa = PBXGroup;
 			children = (
-				1662AC7022C0AC52003AC924 /* AliyunConfigView.swift */,
-				161C3BE422C4870B0092114F /* CustomConfigView.swift */,
-				1660FCBE22C1211800372950 /* TencentConfigView.swift */,
-				166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */,
-				1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */,
+				1646B80F22C7C485009271DF /* Views */,
+				1646B80D22C7C082009271DF /* ConfigView.swift */,
 				166B4A5422B9CFD7001288ED /* ConfigSheetController.swift */,
-				1614532222C5D2AA00CA28F2 /* Public.swift */,
 			);
-			path = ConfigViews;
+			path = ConfigView;
 			sourceTree = "<group>";
 		};
 		1672762122AFF63A007299C3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1657019722C891DC00C57EE9 /* Weibo */,
+				1646B80222C7931E009271DF /* Gitee */,
 				1602ED9622ADEFB200AA8638 /* BaseUploader.swift */,
 				1672762222AFF655007299C3 /* Host.swift */,
 				167D7F4822B4D2F500DD0A7A /* HostConfig.swift */,
@@ -312,6 +375,7 @@
 				167D7F4A22B4D31300DD0A7A /* HostType.swift */,
 				68BBB87F2C3AEBDF2C914131 /* Aliyun */,
 				161C3BDF22C4830A0092114F /* Custom */,
+				167DDBE922C76F3B00B03357 /* Github */,
 				1690E7E522BF113700FC81F8 /* Qiniu */,
 				167D7F4E22B4DB2500DD0A7A /* Smms */,
 				1660FCB522C11A9F00372950 /* Tencent */,
@@ -336,6 +400,16 @@
 				1602ED9822ADF43800AA8638 /* SmmsUploader.swift */,
 			);
 			path = Smms;
+			sourceTree = "<group>";
+		};
+		167DDBE922C76F3B00B03357 /* Github */ = {
+			isa = PBXGroup;
+			children = (
+				167DDBEA22C76F5000B03357 /* GithubUploader.swift */,
+				167DDBEC22C76F6600B03357 /* GithubHostConfig.swift */,
+				167DDBEE22C7722200B03357 /* GithubUtil.swift */,
+			);
+			path = Github;
 			sourceTree = "<group>";
 		};
 		1690E7E522BF113700FC81F8 /* Qiniu */ = {
@@ -597,21 +671,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				165701A322C8AE0A00C57EE9 /* WeiboUtil.swift in Sources */,
 				16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */,
 				1675516722ACAA0600D3EB6F /* UPicUpdater.swift in Sources */,
 				16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */,
 				16995A3422B6008000B1F923 /* UpYunHostConfig.swift in Sources */,
 				1672762322AFF655007299C3 /* Host.swift in Sources */,
+				167DDBF122C7784900B03357 /* GithubConfigView.swift in Sources */,
 				1602ED9922ADF43800AA8638 /* SmmsUploader.swift in Sources */,
 				1675516422AC102700D3EB6F /* NotificationExt.swift in Sources */,
 				164745F022B65FE900F9575D /* String+Extension.swift in Sources */,
 				166B4A5322B9CB4D001288ED /* UpYunConfigView.swift in Sources */,
 				166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */,
+				1646B80E22C7C082009271DF /* ConfigView.swift in Sources */,
 				1690E7EB22BF2D9400FC81F8 /* QiniuUploader.swift in Sources */,
+				1657019B22C8934000C57EE9 /* WeiboqQuality.swift in Sources */,
 				165D908622C333740096FF38 /* PasteboardType+Extension.swift in Sources */,
 				16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */,
 				1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */,
 				163632F322B2751D00805E7F /* BoolType.swift in Sources */,
+				1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */,
 				161C3BE722C49BE90092114F /* RequestMethods.swift in Sources */,
 				163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */,
 				164745EB22B618D700F9575D /* HostPreferencesViewController.swift in Sources */,
@@ -620,6 +699,7 @@
 				167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */,
 				164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */,
 				164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */,
+				1657019D22C8953B00C57EE9 /* WeiboUploader.swift in Sources */,
 				1690E7ED22BF2E4F00FC81F8 /* QiniuUtil.swift in Sources */,
 				166B4A5522B9CFD7001288ED /* ConfigSheetController.swift in Sources */,
 				1647474322B66ACE00F9575D /* Data+Extension.swift in Sources */,
@@ -627,15 +707,22 @@
 				1690E7E422BF111500FC81F8 /* QiniuConfigView.swift in Sources */,
 				1690E7E922BF1A6D00FC81F8 /* QiniuRegion.swift in Sources */,
 				168A831122B606C000344E77 /* UpYunUploader.swift in Sources */,
+				165701A122C8A6E600C57EE9 /* Regex.swift in Sources */,
 				163632F122B274B400805E7F /* Date+Extension.swift in Sources */,
 				16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */,
+				167DDBED22C76F6600B03357 /* GithubHostConfig.swift in Sources */,
+				1646B80822C79349009271DF /* GiteeUtil.swift in Sources */,
 				1660FCBF22C1211900372950 /* TencentConfigView.swift in Sources */,
+				1646B80A22C79483009271DF /* GiteeConfigView.swift in Sources */,
 				1660FCBB22C11C7200372950 /* TencentUploader.swift in Sources */,
 				1647474522B66E3400F9575D /* Util.swift in Sources */,
+				1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */,
 				1662AC7122C0AC53003AC924 /* AliyunConfigView.swift in Sources */,
 				1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */,
+				1657019922C8922400C57EE9 /* WeiboHostConfig.swift in Sources */,
 				160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */,
 				169F073722AF4549008E8525 /* AdvancedPreferencesViewController.swift in Sources */,
+				1646B80622C79337009271DF /* GiteeUploader.swift in Sources */,
 				16068C7522AEC1D1004D39B7 /* PreferencesViewController.swift in Sources */,
 				161C3BE122C483380092114F /* CustomUploader.swift in Sources */,
 				169F073A22AF4549008E8525 /* AboutPreferencesViewController.swift in Sources */,
@@ -643,7 +730,7 @@
 				1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */,
 				1662AC7322C0BBF7003AC924 /* AliyunRegion.swift in Sources */,
 				169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */,
-				1614532322C5D2AA00CA28F2 /* Public.swift in Sources */,
+				167DDBEB22C76F5000B03357 /* GithubUploader.swift in Sources */,
 				169F073922AF4549008E8525 /* GeneralPreferencesViewController.swift in Sources */,
 				167D7F4D22B4D43B00DD0A7A /* HostSaveKey.swift in Sources */,
 				16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */,
@@ -652,6 +739,7 @@
 				68BBB3EF25C92DCAE216A4DF /* AliyunUploader.swift in Sources */,
 				1660FCBC22C11C7500372950 /* TencentUtil.swift in Sources */,
 				1660FCBA22C11C2300372950 /* TencentHostConfig.swift in Sources */,
+				167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */,
 				68BBB99780D7F4586458D4F5 /* AliyunUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

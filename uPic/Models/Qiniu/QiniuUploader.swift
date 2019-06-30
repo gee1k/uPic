@@ -70,7 +70,7 @@ class QiniuUploader: BaseUploader {
         }
 
         AF.upload(multipartFormData: multipartFormDataGen, to: region.url, headers: headers).validate().uploadProgress { progress in
-            super.progress(percent: progress.fractionCompleted * 100)
+            super.progress(percent: progress.fractionCompleted)
         }.responseJSON(completionHandler: { response -> Void in
             switch response.result {
             case .success(let value):

@@ -600,7 +600,7 @@
                                                                 <popUpButtonCell key="cell" type="smallSquare" bezelStyle="smallSquare" imagePosition="left" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" pullsDown="YES" autoenablesItems="NO" altersStateOfSelectedItem="NO" id="3i6-6C-bpq">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                                     <font key="font" metaFont="menu"/>
-                                                                    <menu key="menu" autoenablesItems="NO" id="Uha-43-8nK"/>
+                                                                    <menu key="menu" showsStateColumn="NO" autoenablesItems="NO" id="Uha-43-8nK"/>
                                                                 </popUpButtonCell>
                                                                 <connections>
                                                                     <action selector="addHostButtonClicked:" target="5Ln-jV-uxk" id="KcY-35-eq1"/>
@@ -687,6 +687,16 @@
                                                 <view key="contentView" identifier="UpYunConfigView" id="6bq-nL-Uwf">
                                                     <rect key="frame" x="1" y="1" width="358" height="278"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="byT-eQ-43P">
+                                                            <rect key="frame" x="156" y="106" width="61" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="y0W-Nr-ozt">
+                                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                            </buttonCell>
+                                                        </button>
+                                                    </subviews>
                                                 </view>
                                                 <color key="borderColor" red="1" green="1" blue="1" alpha="0.14789509113504556" colorSpace="custom" customColorSpace="sRGB"/>
                                             </box>
@@ -711,19 +721,8 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="cdE-pR-Z2E">
                                         <rect key="frame" x="0.0" y="0.0" width="540" height="40"/>
                                         <subviews>
-                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZD-zT-qZX">
-                                                <rect key="frame" x="379" y="2" width="82" height="32"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="push" title="reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TD4-LI-X9U">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="resetButtonClicked:" target="5Ln-jV-uxk" id="t9k-DL-aFf"/>
-                                                </connections>
-                                            </button>
                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XXZ-1C-FIq">
-                                                <rect key="frame" x="457" y="2" width="82" height="32"/>
+                                                <rect key="frame" x="442" y="2" width="97" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="push" title="save" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nvN-EI-scz">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -731,6 +730,17 @@
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="saveButtonClicked:" target="5Ln-jV-uxk" id="6Op-fW-Oom"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZD-zT-qZX">
+                                                <rect key="frame" x="345" y="2" width="97" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <buttonCell key="cell" type="push" title="reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TD4-LI-X9U">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="resetButtonClicked:" target="5Ln-jV-uxk" id="t9k-DL-aFf"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -809,9 +819,6 @@
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <action selector="onTextChanged:" target="vYP-vW-WfI" id="241-dX-xLO"/>
-                                                </connections>
                                             </textField>
                                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g3J-J7-1Yp">
                                                 <rect key="frame" x="285" y="17" width="8" height="17"/>
@@ -834,9 +841,6 @@
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <action selector="onTextChanged:" target="vYP-vW-WfI" id="aTC-Wt-CTM"/>
-                                                </connections>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rUp-El-9TO">
                                                 <rect key="frame" x="443" y="17" width="8" height="17"/>

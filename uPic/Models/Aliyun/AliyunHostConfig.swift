@@ -11,13 +11,13 @@ import SwiftyJSON
 
 @objcMembers
 class AliyunHostConfig: HostConfig {
-    dynamic var region: String?
-    dynamic var bucket: String?
-    dynamic var accessKey: String?
-    dynamic var secretKey: String?
-    dynamic var domain: String?
+    dynamic var region: String!
+    dynamic var bucket: String!
+    dynamic var accessKey: String!
+    dynamic var secretKey: String!
+    dynamic var domain: String!
     dynamic var folder: String?
-    dynamic var saveKey: String? = HostSaveKey.filename.rawValue
+    dynamic var saveKey: String! = HostSaveKey.filename.rawValue
 
     override func displayName(key: String) -> String {
         switch key {
@@ -60,12 +60,12 @@ class AliyunHostConfig: HostConfig {
         }
         let data = str.data(using: String.Encoding.utf8)
         let json = try! JSON(data: data!)
-        config.region = json["region"].string
-        config.bucket = json["bucket"].string
-        config.accessKey = json["accessKey"].string
-        config.secretKey = json["secretKey"].string
-        config.domain = json["domain"].string
-        config.folder = json["folder"].string
+        config.region = json["region"].stringValue
+        config.bucket = json["bucket"].stringValue
+        config.accessKey = json["accessKey"].stringValue
+        config.secretKey = json["secretKey"].stringValue
+        config.domain = json["domain"].stringValue
+        config.folder = json["folder"].stringValue
         config.saveKey = json["saveKey"].stringValue
         return config
     }

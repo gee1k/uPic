@@ -26,7 +26,10 @@ class Host: Equatable, CustomDebugStringConvertible, Codable {
 
     static func getIconByType(type: HostType) -> NSImage {
         let iconName = Host.getIconNameByType(type: type)
-        return NSImage(named: iconName)!
+        let image = NSImage(named: iconName)!
+        let width = 20.0, height = Double(image.size.height) / (Double(image.size.width) / width)
+        image.size = NSSize(width: width, height: height)
+        return image
     }
 
     var id: Int

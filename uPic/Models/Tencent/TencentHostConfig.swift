@@ -60,12 +60,12 @@ class TencentHostConfig: HostConfig {
         }
         let data = str.data(using: String.Encoding.utf8)
         let json = try! JSON(data: data!)
-        config.region = json["region"].string
-        config.bucket = json["bucket"].string
-        config.secretId = json["secretId"].string
-        config.secretKey = json["secretKey"].string
-        config.domain = json["domain"].string
-        config.folder = json["folder"].string
+        config.region = json["region"].stringValue
+        config.bucket = json["bucket"].stringValue
+        config.secretId = json["secretId"].stringValue
+        config.secretKey = json["secretKey"].stringValue
+        config.domain = json["domain"].stringValue
+        config.folder = json["folder"].stringValue
         config.saveKey = json["saveKey"].stringValue
         return config
     }
