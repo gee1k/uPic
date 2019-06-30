@@ -109,7 +109,9 @@ class HostPreferencesViewController: PreferencesViewController {
     @IBAction func saveButtonClicked(_ sender: Any?) {
         
         // 取消一下节流函数的定时器，确保不会在点击保存按钮后，再重新计划安装状态
-        self.hostConfigChangedDebouncedFunc(true)
+        if self.hostConfigChangedDebouncedFunc != nil {
+            self.hostConfigChangedDebouncedFunc(true)
+        }
         
         // 先让当前正在编辑的输入框触发一下 editEnd 事件，来 trim 一下本身
         self.blurEditingTextField()
