@@ -147,7 +147,14 @@
 
 # 📝 使用手册
 
-**编写中...敬请期待**
+- [uPic 图床配置教程 - 微博](https://blog.svend.cc/upic/tutorials/weibo)
+- [uPic 图床配置教程 - 又拍云](https://blog.svend.cc/upic/tutorials/upyun_uss)
+- [uPic 图床配置教程 - 七牛云](https://blog.svend.cc/upic/tutorials/qiniu_kodo)
+- [uPic 图床配置教程 - 阿里云](https://blog.svend.cc/upic/tutorials/aliyun_oss)
+- [uPic 图床配置教程 - 腾讯云](https://blog.svend.cc/upic/tutorials/tencent_cos)
+- [uPic 图床配置教程 - Github](https://blog.svend.cc/upic/tutorials/github)
+- [uPic 图床配置教程 - 码云(Gitee)](https://blog.svend.cc/upic/tutorials/gitee)
+- [uPic 图床配置教程 - 自定义上传](https://blog.svend.cc/upic/tutorials/custom)
 
 
 # ❤️ 赞助
