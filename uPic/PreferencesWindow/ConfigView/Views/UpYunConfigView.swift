@@ -52,6 +52,7 @@ class UpYunConfigView: ConfigView {
         operatorField.lineBreakMode = .byTruncatingTail
         operatorField.delegate = data
         operatorField.stringValue = data.operatorName ?? ""
+        operatorField.placeholderString = NSLocalizedString("host.placeholder.operator", comment: "")
         self.addSubview(operatorLabel)
         self.addSubview(operatorField)
         nextKeyViews.append(operatorField)
@@ -71,6 +72,7 @@ class UpYunConfigView: ConfigView {
         passwordField.lineBreakMode = .byTruncatingTail
         passwordField.delegate = data
         passwordField.stringValue = data.password ?? ""
+        passwordField.placeholderString = NSLocalizedString("host.placeholder.operator-password", comment: "")
         self.addSubview(passwordLabel)
         self.addSubview(passwordField)
         nextKeyViews.append(passwordField)
@@ -91,6 +93,7 @@ class UpYunConfigView: ConfigView {
         domainField.lineBreakMode = .byTruncatingTail
         domainField.delegate = data
         domainField.stringValue = data.domain ?? ""
+        domainField.placeholderString = NSLocalizedString("host.placeholder.domain", comment: "")
         self.domainField = domainField
 
         let settingsBtn = NSButton(title: "", image: NSImage(named: NSImage.advancedName)!, target: self, action: #selector(openConfigSheet(_:)))

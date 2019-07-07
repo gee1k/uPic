@@ -14,11 +14,20 @@
 "general.continue" = "Continue";
 "general.example" = "Example";
 
+/* 成功通知标题 */
+"notification.success.title" = "Successfully";
+
 /* 上传成功通知标题 */
 "upload.notification.success.title" = "Uploaded successfully";
 
+/* 提醒通知标题 */
+"upload.notification.warning.title" = "Warning";
+
 /* 上传成功通知副标题 */
 "upload.notification.success.subtitle" = "URL has been copied to the clipboard, paste and use it!";
+
+/* 当前上传任务还未完成通知副标题 */
+"upload.notification.task-not-complete.subtitle" = "The current upload task is not complete";
 
 /* 上传失败通知标题 */
 "upload.notification.error.title" = "Uploaded fail";
@@ -90,33 +99,41 @@
 /*匿名上传*/
 "anonymously-upload" = "The file will be uploaded anonymously to";
 
-"alert.unsave_description" = "继续会丢失未保存数据，是否继续？";
+"alert.unsave_description" = "Continuing will lose unsaved data. Do you want to continue?";
 
 
 /* host -- start */
-"host.region" = "Region";
-"host.bucket" = "Bucket";
-"host.operator" = "Operator";
-"host.password" = "Password";
-"host.accessKey" = "Access Key";
-"host.secretId" = "Secret Id";
-"host.secretKey" = "Secret Key";
-"host.domain" = "Domain";
-"host.folder" = "Folder";
-"host.saveKey" = "File Name";
-"host.url" = "Upload url";
-"host.method" = "Method";
-"host.field" = "File field";
-"host.extensions" = "Fields";
-"host.headers" = "Headers";
-"host.owner" = "Owner";
-"host.repo" = "Repo";
-"host.branch" = "Branch";
-"host.token" = "Token";
-"host.username" = "Username";
-"host.cookieMode" = "Cookie Mode";
-"host.cookie" = "Cookie";
-"host.quality" = "Pic Quality";
+"host.field.region" = "Region";
+"host.field.bucket" = "Bucket";
+"host.field.operator" = "Operator";
+"host.field.password" = "Password";
+"host.field.accessKey" = "Access Key";
+"host.field.secretId" = "Secret Id";
+"host.field.secretKey" = "Secret Key";
+"host.field.domain" = "Domain";
+"host.field.folder" = "Folder";
+"host.field.saveKey" = "File Name";
+"host.field.url" = "API URL";
+"host.field.method" = "Method";
+"host.field.field" = "File field";
+"host.field.extensions" = "Fields";
+"host.field.headers" = "Headers";
+"host.field.owner" = "Owner";
+"host.field.repo" = "Repo";
+"host.field.branch" = "Branch";
+"host.field.token" = "Token";
+"host.field.username" = "Username";
+"host.field.cookieMode" = "Cookie Mode";
+"host.field.cookie" = "Cookie";
+"host.field.quality" = "Pic Quality";
+
+/* host field placeholder */
+"host.placeholder.operator" = "Operator name";
+"host.placeholder.operator-password" = "Operator password";
+"host.placeholder.repo" = "Just the repo name, not the repo URL";
+"host.placeholder.domain" = "domain:https://xxx.com";
+"host.placeholder.domain-has-default" = "Can be empty, there is a default domain";
+
 
 /*host type*/
 "host.type.-1" = "Custom";

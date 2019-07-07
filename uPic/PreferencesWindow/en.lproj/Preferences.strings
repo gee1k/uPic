@@ -63,7 +63,7 @@
 /* Class = "NSButtonCell"; title = "Launch uPic at login"; ObjectID = "ZbK-xW-anT"; */
 "ZbK-xW-anT.title" = "Launch uPic at login";
 
-/* Class = "NSTextFieldCell"; placeholderString = "前缀域名：https://"; ObjectID = "b48-7x-KE9"; */
+/* Class = "NSTextFieldCell"; placeholderString = "访问域名：https://"; ObjectID = "b48-7x-KE9"; */
 "b48-7x-KE9.placeholderString" = "domain: https://";
 
 /* Class = "NSTextFieldCell"; title = "Upload with Pasteboard:"; ObjectID = "bvy-v3-hhf"; */

@@ -34,7 +34,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         selectFileMenuItem.title = NSLocalizedString("status-menu.select-file", comment: "Select file")
         uploadPasteboardMenuItem.title = NSLocalizedString("status-menu.pasteboard", comment: "Upload with pasteboard")
         screenshotMenuItem.title = NSLocalizedString("status-menu.screenshot", comment: "Upload with pasteboard")
-        hostMenuItem.title = NSLocalizedString("status-menu.host", comment: "Host")
+//        hostMenuItem.title = NSLocalizedString("status-menu.host", comment: "Host")
         ouputFormatMenuItem.title = NSLocalizedString("status-menu.output", comment: "Choose output format")
         historyMenuItem.title = NSLocalizedString("status-menu.upload-history", comment: "upload history")
         preferenceMenuItem.title = NSLocalizedString("status-menu.preference", comment: "Open Preference")
@@ -185,14 +185,15 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @objc func clearHistory(_ sender: NSMenuItem) {
         ConfigManager.shared.clearHistoryList()
     }
+    
 
     func refreshDefaultHost() {
-        let outputFormat = Defaults[.defaultHostId]
+        let defaultHostId = Defaults[.defaultHostId]
 
         var hasDefault = false
         let items = hostMenuItem.submenu!.items
         for item in items {
-            if item.tag == outputFormat {
+            if item.tag == defaultHostId {
                 item.state = .on
                 hasDefault = true
             } else {
@@ -202,6 +203,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         if (!hasDefault && items.first != nil) {
             self.setDefaultHost(id: items.first!.tag)
+        }
+        
+        if let host = ConfigManager.shared.getDefaultHost() {
+            self.setHostMenuTitle(hostName: host.name)
         }
     }
 
@@ -219,6 +224,22 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     func setDefaultHost(id: Int) {
         Defaults[.defaultHostId] = id
         self.refreshDefaultHost()
+    }
+    
+    func setHostMenuTitle(hostName: String?) {
+        let hostMenuTitle = NSLocalizedString("status-menu.host", comment: "Host")
+        
+        if let subTitle = hostName {
+            
+            let str = "\(hostMenuTitle)        \(subTitle)"
+            let attributed = NSMutableAttributedString(string: str)
+            let subTitleAttr = [NSAttributedString.Key.font:NSFont.menuFont(ofSize: 12), NSAttributedString.Key.foregroundColor:NSColor.gray]
+            attributed.setAttributes(subTitleAttr, range: NSRange(hostMenuTitle.utf16.count+1 ..< str.utf16.count))
+            hostMenuItem.attributedTitle = attributed
+        } else {
+            hostMenuItem.title = hostMenuTitle
+        }
+        
     }
 
     func addObserver() {

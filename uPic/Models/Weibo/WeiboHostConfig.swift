@@ -20,15 +20,15 @@ class WeiboHostConfig: HostConfig {
     override func displayName(key: String) -> String {
         switch key {
         case "username":
-            return NSLocalizedString("host.username", comment: "username")
+            return NSLocalizedString("host.field.username", comment: "username")
         case "password":
-            return NSLocalizedString("host.password", comment: "password")
+            return NSLocalizedString("host.field.password", comment: "password")
         case "cookieMode":
-            return NSLocalizedString("host.cookieMode", comment: "cookieMode")
+            return NSLocalizedString("host.field.cookieMode", comment: "cookieMode")
         case "cookie":
-            return NSLocalizedString("host.cookie", comment: "cookie")
+            return NSLocalizedString("host.field.cookie", comment: "cookie")
         case "quality":
-            return NSLocalizedString("host.quality", comment: "quality")
+            return NSLocalizedString("host.field.quality", comment: "quality")
         default:
             return ""
         }

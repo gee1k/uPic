@@ -64,7 +64,21 @@ class CustomUploader: BaseUploader {
                 if headerArr.count < 2 {
                     continue
                 }
-                headers.add(HTTPHeader(name: String(headerArr[0]), value: String(headerArr[1])))
+                var value = String(headerArr[1])
+                switch value {
+                case "{filename}":
+                    value = fileName
+                    break
+                case "{path}":
+                    value = key
+                    break
+                case "{folder}":
+                    value = config.folder ?? ""
+                    break
+                default:
+                    break
+                }
+                headers.add(HTTPHeader(name: String(headerArr[0]), value: value))
             }
         }
         
@@ -78,7 +92,22 @@ class CustomUploader: BaseUploader {
                     if extensionArr.count < 2 {
                         continue
                     }
-                    multipartFormData.append(String(extensionArr[0]).data(using: .utf8)!, withName: String(extensionArr[1]))
+                    
+                    var value = String(extensionArr[1])
+                    switch value {
+                    case "{filename}":
+                        value = fileName
+                        break
+                    case "{path}":
+                        value = key
+                        break
+                    case "{folder}":
+                        value = config.folder ?? ""
+                        break
+                    default:
+                        break
+                    }
+                    multipartFormData.append(String(value).data(using: .utf8)!, withName: String(extensionArr[0]))
                 }
             }
             

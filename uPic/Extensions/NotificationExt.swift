@@ -40,7 +40,7 @@ class NotificationExt: NSObject {
     ///
     static func sendCopySuccessfulNotification(body: String? = "") {
         
-        NotificationExt.shared.sendNotification(title: "", subTitle: NSLocalizedString("upload.notification.success.subtitle", comment: "上传成功通知副标题"), body: body!)
+        NotificationExt.shared.sendNotification(title: NSLocalizedString("notification.success.title", comment: "成功通知标题"), subTitle: NSLocalizedString("upload.notification.success.subtitle", comment: "上传成功通知副标题"), body: body!)
     }
 
 
@@ -59,6 +59,12 @@ class NotificationExt: NSObject {
         NotificationExt.shared.sendNotification(title: NSLocalizedString("upload.notification.start.title", comment: "开始上传通知标题"), subTitle: NSLocalizedString("upload.notification.start.subtitle", comment: "开始上传通知副标题"), body: body!)
     }
 
+    ///
+    /// 发送当前上传任务还未完成通知
+    ///
+    static func sendUplodingNotification(body: String? = "") {
+        NotificationExt.shared.sendNotification(title: NSLocalizedString("upload.notification.warning.title", comment: ""), subTitle: NSLocalizedString("upload.notification.task-not-complete.subtitle", comment: ""), body: body!)
+    }
 
 }
 
@@ -90,6 +96,7 @@ extension NotificationExt: UNUserNotificationCenterDelegate {
                                               options: .customDismissAction)
         
         let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.removeAllDeliveredNotifications()
         notificationCenter.delegate = self
         notificationCenter.setNotificationCategories([category])
         notificationCenter.add(request) { (error) in
@@ -125,6 +132,8 @@ extension NotificationExt: NSUserNotificationCenterDelegate {
     
     func sendNotificationByOld(title: String, subTitle: String, body: String) -> Void {
         
+        NSUserNotificationCenter.default.removeAllDeliveredNotifications()
+        
         let userNotification = NSUserNotification()
         
         userNotification.title = title
@@ -137,7 +146,6 @@ extension NotificationExt: NSUserNotificationCenterDelegate {
         userNotification.soundName = NSUserNotificationDefaultSoundName
         
         NSUserNotificationCenter.default.delegate = self
-        NSUserNotificationCenter.default.removeAllDeliveredNotifications()
         NSUserNotificationCenter.default.deliver(userNotification)
         
     }
