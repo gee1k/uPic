@@ -13,11 +13,20 @@
 "general.continue" = "继续";
 "general.example" = "示例";
 
+/* 成功通知标题 */
+"notification.success.title" = "成功";
+
 /* 上传成功通知标题 */
 "upload.notification.success.title" = "上传成功";
 
+/* 提醒通知标题 */
+"upload.notification.warning.title" = "提醒";
+
 /* 上传成功通知副标题 */
 "upload.notification.success.subtitle" = "URL 已复制到剪切板，快去粘贴使用吧！";
+
+/* 当前上传任务还未完成通知副标题 */
+"upload.notification.task-not-complete.subtitle" = "当前上传任务还未结束！";
 
 /* 上传失败通知标题 */
 "upload.notification.error.title" = "上传失败";
@@ -91,29 +100,36 @@
 "anonymously-upload" = "文件将匿名上传至";
 
 /* host -- start */
-"host.region" = "区域";
-"host.bucket" = "空间名称";
-"host.operator" = "操作员";
-"host.password" = "密码";
-"host.accessKey" = "Access Key";
-"host.secretId" = "Secret Id";
-"host.secretKey" = "Secret Key";
-"host.domain" = "域名";
-"host.folder" = "文件夹";
-"host.saveKey" = "文件名";
-"host.url" = "上传地址";
-"host.method" = "请求方式";
-"host.field" = "文件字段名";
-"host.extensions" = "扩展字段";
-"host.headers" = "请求头";
-"host.owner" = "用户名";
-"host.repo" = "仓库";
-"host.branch" = "分支";
-"host.token" = "Token";
-"host.username" = "用户名";
-"host.cookieMode" = "Cookie 模式";
-"host.cookie" = "Cookie";
-"host.quality" = "图片质量";
+"host.field.region" = "区域";
+"host.field.bucket" = "空间名称";
+"host.field.operator" = "操作员";
+"host.field.password" = "密码";
+"host.field.accessKey" = "Access Key";
+"host.field.secretId" = "Secret Id";
+"host.field.secretKey" = "Secret Key";
+"host.field.domain" = "域名";
+"host.field.folder" = "文件夹";
+"host.field.saveKey" = "文件名";
+"host.field.url" = "API 地址";
+"host.field.method" = "请求方式";
+"host.field.field" = "文件字段名";
+"host.field.extensions" = "扩展字段";
+"host.field.headers" = "请求头";
+"host.field.owner" = "用户名";
+"host.field.repo" = "仓库名";
+"host.field.branch" = "分支";
+"host.field.token" = "Token";
+"host.field.username" = "用户名";
+"host.field.cookieMode" = "Cookie 模式";
+"host.field.cookie" = "Cookie";
+"host.field.quality" = "图片质量";
+
+/* host field placeholder */
+"host.placeholder.operator" = "操作员名称";
+"host.placeholder.operator-password" = "操作员密码";
+"host.placeholder.repo" = "只需要仓库名称，而不是仓库连接";
+"host.placeholder.domain" = "访问域名:https://xxx.com";
+"host.placeholder.domain-has-default" = "可为空，有默认域名";
 
 /*host type*/
 "host.type.-1" = "自定义";

@@ -19,6 +19,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var statusItemMenu: NSMenu!
 
+    var uploding = false
+    var needUploadFiles = [Any]()
+    var resultUrls = [String]()
+
     lazy var preferencesWindowController: PreferencesWindowController = {
         let storyboard = NSStoryboard(name: "Preferences", bundle: nil)
         return storyboard.instantiateInitialController() as? PreferencesWindowController ?? PreferencesWindowController()
@@ -26,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        
+
         self.resetNewVersionLaunchAtLogin()
 
         indicator.minValue = 0.0
@@ -43,11 +47,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ notification: Notification) {
         NSStatusBar.system.removeStatusItem(statusItem)
     }
-    
+
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         return true
     }
-    
+
     func resetNewVersionLaunchAtLogin() {
         guard let launchAtLogin = ConfigManager.shared.launchAtLogin else {
             return
@@ -110,11 +114,16 @@ extension AppDelegate {
     /* 选择文件 */
     @objc func selectFile() {
 
+        if self.uploding {
+            NotificationExt.sendUplodingNotification()
+            return
+        }
+
         NSApp.activate(ignoringOtherApps: true)
         let fileExtensions = BaseUploader.getFileExtensions()
 
         let openPanel = NSOpenPanel()
-        openPanel.allowsMultipleSelection = false
+        openPanel.allowsMultipleSelection = true
         openPanel.canChooseDirectories = false
         openPanel.canCreateDirectories = false
         openPanel.canChooseFiles = true
@@ -126,38 +135,40 @@ extension AppDelegate {
         openPanel.begin { (result) -> Void in
             openPanel.close()
             if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
-                let selectedPath = openPanel.url!.path
-                let url: URL = URL(fileURLWithPath: selectedPath)
-
-                self.uploadFile(url, data: nil)
+                self.uploadFiles(openPanel.urls)
             }
         }
     }
 
     @objc func uploadByPasteboard() {
-        let pasteboardType = NSPasteboard.general.types?.first
-
-        if (pasteboardType == NSPasteboard.PasteboardType.png) {
-            let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
-            self.uploadFile(nil, data: imgData!)
-        } else if (pasteboardType == NSPasteboard.PasteboardType.backwardsCompatibleFileURL) {
-
-            let filePath = NSPasteboard.general.string(forType: NSPasteboard.PasteboardType.backwardsCompatibleFileURL)!
-            let url = URL(string: filePath)!
-
-            let fileManager = FileManager.default
-            if (!url.isFileURL || !fileManager.fileExists(atPath: url.path)) {
-                debugPrint("复制的文件不存在或已被删除！")
-                NotificationExt.sendFileDoesNotExistNotification()
-                return
+        if self.uploding {
+            NotificationExt.sendUplodingNotification()
+            return
+        }
+        
+        if let filenames = NSPasteboard.general.propertyList(forType: NSPasteboard.PasteboardType("NSFilenamesPboardType")) as? [String] {
+            let fileExtensions = BaseUploader.getFileExtensions()
+            var urls = [URL]()
+            
+            for path in filenames {
+                if fileExtensions.contains(path.pathExtension.lowercased()) {
+                    urls.append(URL(fileURLWithPath: path))
+                }
             }
-            self.uploadFile(url, data: nil)
-        } else {
-            self.uploadFaild(errorMsg: NSLocalizedString("file-format-is-not-supported", comment: "文件格式不支持"))
+            if urls.count > 0 {
+                self.uploadFiles(urls)
+            } else {
+                NotificationExt.sendUploadErrorNotification(body: NSLocalizedString("file-format-is-not-supported", comment: "文件格式不支持"))
+            }
         }
     }
 
     @objc func screenshotAndUpload() {
+
+        if self.uploding {
+            NotificationExt.sendUplodingNotification()
+            return
+        }
 
         let task = Process()
         task.launchPath = "/usr/sbin/screencapture"
@@ -165,7 +176,10 @@ extension AppDelegate {
         task.launch()
         task.waitUntilExit()
 
-        self.uploadByPasteboard()
+        if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.png) {
+            let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
+            self.uploadFiles([imgData!])
+        }
     }
 
 
@@ -174,12 +188,39 @@ extension AppDelegate {
         }
     }
 
+    // 上传多个文件
+    func uploadFiles(_ files: [Any]) {
+        self.needUploadFiles = files
+        self.resultUrls.removeAll()
 
-    func uploadFile(_ url: URL?, data: Data?) {
-        if url != nil {
-            BaseUploader.upload(url: url!)
-        } else if (data != nil) {
-            BaseUploader.upload(data: data!)
+        if self.needUploadFiles.count == 0 {
+            return
+        }
+
+        NotificationExt.sendStartUploadNotification()
+        self.uploding = true
+        self.tickFileToUpload()
+    }
+
+    // 开始上传文件队列中的第一个文件，如果所有文件上传完成则表示当前上传任务结束
+    func tickFileToUpload() {
+        if self.needUploadFiles.count == 0 {
+            // done
+            self.uploding = false
+            if self.resultUrls.count > 0 {
+                let outputStr = self.copyUrls(urls: self.resultUrls)
+                NotificationExt.sendUploadSuccessfulNotification(body: outputStr)
+                self.resultUrls.removeAll()
+            }
+        } else {
+            // next file
+            let firstFile = self.needUploadFiles.first
+            if firstFile is URL {
+                BaseUploader.upload(url: firstFile as! URL)
+            } else if firstFile is Data {
+                BaseUploader.upload(data: firstFile as! Data)
+            }
+            self.needUploadFiles.removeFirst()
         }
     }
 
@@ -188,8 +229,29 @@ extension AppDelegate {
     ///
     func uploadCompleted(url: String) {
         self.setStatusBarIcon(isIndicator: false)
-        let outputUrl = self.copyUrl(url: url)
-        NotificationExt.sendUploadSuccessfulNotification(body: outputUrl)
+        self.resultUrls.append(url)
+        self.tickFileToUpload()
+    }
+    
+    ///
+    /// 上传失败时被调用
+    ///
+    func uploadFaild(errorMsg: String? = "") {
+        self.setStatusBarIcon(isIndicator: false)
+        NotificationExt.sendUploadErrorNotification(body: errorMsg)
+        self.tickFileToUpload()
+    }
+
+    ///
+    /// 上传进度更新时调用
+    ///
+    func uploadProgress(percent: Double) {
+        self.indicator.doubleValue = percent
+    }
+
+    func uploadStart() {
+        self.setStatusBarIcon(isIndicator: true)
+        self.indicator.doubleValue = 0.0
     }
     
     func copyUrl(url: String) -> String {
@@ -213,26 +275,34 @@ extension AppDelegate {
         
         return outputUrl
     }
-
-    ///
-    /// 上传失败时被调用
-    ///
-    func uploadFaild(errorMsg: String? = "") {
-        self.setStatusBarIcon(isIndicator: false)
-        NotificationExt.sendUploadErrorNotification(body: errorMsg)
-    }
-
-    ///
-    /// 上传进度更新时调用
-    ///
-    func uploadProgress(percent: Double) {
-        self.indicator.doubleValue = percent
-    }
-
-    func uploadStart() {
-        self.setStatusBarIcon(isIndicator: true)
-        self.indicator.doubleValue = 0.0
-        NotificationExt.sendStartUploadNotification()
+    
+    func copyUrls(urls: [String]) -> String {
+        var outputUrls = [String]()
+        let outputFormat = Defaults[.ouputFormat]
+        
+        for url in urls {
+            var outputUrl = ""
+            switch outputFormat {
+            case 1:
+                outputUrl = "<img src='\(url)'/>"
+                break
+            case 2:
+                outputUrl = "![pic](\(url))"
+                break
+            default:
+                outputUrl = url
+                
+            }
+            outputUrls.append(outputUrl)
+        }
+        
+        let outputStr = outputUrls.joined(separator: "\n")
+        
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.declareTypes([.string], owner: nil)
+        NSPasteboard.general.setString(outputStr, forType: .string)
+        
+        return outputStr
     }
 }
 
@@ -241,7 +311,7 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     // MARK: 拖拽文件
 
     func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        if sender.isValidFile {
+        if sender.isValid {
             if let button = statusItem.button {
                 button.image = NSImage(named: "uploadIcon")
             }
@@ -251,11 +321,13 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
 
     func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        // TODO: 需要支持所有格式文件/根据图床支持的格式再进行判断
-        if sender.isValidFile {
-            let fileUrl = sender.draggedFileURL!.absoluteURL
+        if sender.isValid {
             self.setStatusBarIcon()
-            self.uploadFile(fileUrl, data: nil)
+            var urls = [URL]()
+            for url in sender.draggedFileURLs {
+                urls.append(url.absoluteURL!)
+            }
+            self.uploadFiles(urls)
             return true
         }
         return false

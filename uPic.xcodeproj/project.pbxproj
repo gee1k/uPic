@@ -449,9 +449,8 @@
 		16A6DC5622AA375700813706 /* uPic */ = {
 			isa = PBXGroup;
 			children = (
-				162E5D4722C096FD001FAA46 /* Assets.xcassets */,
 				16A6DC5722AA375700813706 /* AppDelegate.swift */,
-				169F074322AF7A3D008E8525 /* StatusMenuController.swift */,
+				162E5D4722C096FD001FAA46 /* Assets.xcassets */,
 				163632ED22B2745A00805E7F /* Basic */,
 				1675516522AC165600D3EB6F /* Extensions */,
 				163F241E22B12E6700F81D03 /* General */,
@@ -461,6 +460,7 @@
 				164C39FE22B2AA5E003ADE39 /* Notifier */,
 				16068C7622AECB26004D39B7 /* PreferencesWindow */,
 				16A6DC6822AA3AD900813706 /* Supporting Files */,
+				16ADBE5E22D1D74D00E6C605 /* Views */,
 			);
 			path = uPic;
 			sourceTree = "<group>";
@@ -473,6 +473,14 @@
 				16A6DC6122AA375800813706 /* uPic.entitlements */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		16ADBE5E22D1D74D00E6C605 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				169F074322AF7A3D008E8525 /* StatusMenuController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		16EA204A22AF8AB30006FB9C /* uPicHelper */ = {

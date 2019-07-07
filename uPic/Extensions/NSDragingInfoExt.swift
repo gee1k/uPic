@@ -17,22 +17,31 @@ extension NSDraggingInfo {
         }
     }
 
-    var draggedFileURL: NSURL? {
-        let filenames = draggingPasteboard.propertyList(forType: NSPasteboard.PasteboardType("NSFilenamesPboardType")) as? [String]
-        let path = filenames?.first
-        return path.map(NSURL.init)
+    var draggedFileURLs: [NSURL] {
+        var urls = [NSURL]()
+        if let filenames = draggingPasteboard.propertyList(forType: NSPasteboard.PasteboardType("NSFilenamesPboardType")) as? [String] {
+            for path in filenames {
+                urls.append(NSURL(fileURLWithPath: path))
+            }
+        }
+        
+        if fileExtensions.count == 0 {
+            return urls
+        } else {
+            // 过滤不支持的文件
+            urls = urls.filter({url -> Bool in
+                guard let fileExtension = url.pathExtension?.lowercased() else {
+                    return false
+                }
+                
+                return fileExtensions.contains(fileExtension)
+            })
+        }
+        
+        return urls
     }
 
-    var isValidFile: Bool {
-        get {
-            if fileExtensions.count == 0 {
-                return true
-            }
-
-            guard let fileExtension = draggedFileURL?.pathExtension?.lowercased() else {
-                return false
-            }
-            return fileExtensions.contains(fileExtension)
-        }
+    var isValid: Bool {
+        return self.draggedFileURLs.count > 0
     }
 }

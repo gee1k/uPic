@@ -22,19 +22,19 @@ class TencentHostConfig: HostConfig {
     override func displayName(key: String) -> String {
         switch key {
         case "region":
-            return NSLocalizedString("host.region", comment: "region")
+            return NSLocalizedString("host.field.region", comment: "region")
         case "bucket":
-            return NSLocalizedString("host.bucket", comment: "bucket")
+            return NSLocalizedString("host.field.bucket", comment: "bucket")
         case "secretId":
-            return NSLocalizedString("host.secretId", comment: "secretId")
+            return NSLocalizedString("host.field.secretId", comment: "secretId")
         case "secretKey":
-            return NSLocalizedString("host.secretKey", comment: "secretKey")
+            return NSLocalizedString("host.field.secretKey", comment: "secretKey")
         case "domain":
-            return NSLocalizedString("host.domain", comment: "domain")
+            return NSLocalizedString("host.field.domain", comment: "domain")
         case "folder":
-            return NSLocalizedString("host.folder", comment: "folder")
+            return NSLocalizedString("host.field.folder", comment: "folder")
         case "saveKey":
-            return NSLocalizedString("host.saveKey", comment: "fileName")
+            return NSLocalizedString("host.field.saveKey", comment: "fileName")
         default:
             return ""
         }
