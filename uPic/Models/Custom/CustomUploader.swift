@@ -50,11 +50,6 @@ class CustomUploader: BaseUploader {
             mimeType = Util.getMimeType(pathExtension: "png")
         }
 
-        var key = fileName
-        if (config.folder != nil && config.folder!.count > 0) {
-            key = "\(config.folder!)/\(key)"
-        }
-
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
         if let headersStr = config.headers {
@@ -69,12 +64,6 @@ class CustomUploader: BaseUploader {
                 case "{filename}":
                     value = fileName
                     break
-                case "{path}":
-                    value = key
-                    break
-                case "{folder}":
-                    value = config.folder ?? ""
-                    break
                 default:
                     break
                 }
@@ -83,7 +72,6 @@ class CustomUploader: BaseUploader {
         }
         
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
-            multipartFormData.append(key.data(using: .utf8)!, withName: "key")
             
             if let extensionsStr = config.extensions {
                 let extensionsArr = extensionsStr.split(separator: Character("&"))
@@ -97,12 +85,6 @@ class CustomUploader: BaseUploader {
                     switch value {
                     case "{filename}":
                         value = fileName
-                        break
-                    case "{path}":
-                        value = key
-                        break
-                    case "{folder}":
-                        value = config.folder ?? ""
                         break
                     default:
                         break
@@ -124,7 +106,7 @@ class CustomUploader: BaseUploader {
         }.response(completionHandler: { response -> Void in
             switch response.result {
             case .success(_):
-                super.completed(url: "\(domain)/\(key)")
+                super.completed(url: "\(domain)/\(fileName)")
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)
             }

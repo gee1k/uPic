@@ -160,7 +160,12 @@ extension AppDelegate {
             } else {
                 NotificationExt.sendUploadErrorNotification(body: NSLocalizedString("file-format-is-not-supported", comment: "文件格式不支持"))
             }
+            
+        } else if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.png) {
+            let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
+            self.uploadFiles([imgData!])
         }
+        
     }
 
     @objc func screenshotAndUpload() {

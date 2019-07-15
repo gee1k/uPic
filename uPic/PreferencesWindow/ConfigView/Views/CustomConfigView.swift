@@ -9,6 +9,16 @@
 import Cocoa
 
 class CustomConfigView: ConfigView {
+    
+    var postConfigSheetController: CustomConfigSheetController?;
+    
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        
+        postConfigSheetController = (self.window?.contentViewController?.storyboard!.instantiateController(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CustomConfigSheetController").rawValue)
+            as! CustomConfigSheetController)
+        
+    }
 
     override func createView() {
         
@@ -16,7 +26,7 @@ class CustomConfigView: ConfigView {
             return
         }
         
-        let paddingTop = 30, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 75, labelHeight = 20, textAreaHeight = 50,
+        let paddingTop = 50, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 75, labelHeight = 20,
                 viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
                 textFieldX = labelWidth + paddingLeft + gapLeft, textFieldWidth = viewWidth - paddingLeft - textFieldX
 
@@ -70,61 +80,53 @@ class CustomConfigView: ConfigView {
         
         // MARK: field
         y = y - gapTop - labelHeight
+        let otherFieldsBtnWith = 100
+        
         let fieldLabel = NSTextField(labelWithString: "\(data.displayName(key: "field")):")
         fieldLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
         fieldLabel.alignment = .right
         fieldLabel.lineBreakMode = .byClipping
 
-        let fieldField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        let fieldField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth - otherFieldsBtnWith, height: labelHeight))
         fieldField.identifier = NSUserInterfaceItemIdentifier(rawValue: "field")
         fieldField.usesSingleLineMode = true
         fieldField.lineBreakMode = .byTruncatingTail
         fieldField.delegate = data
         fieldField.stringValue = data.field ?? ""
+        
+        
+        let otherFieldsBtn = NSButton(title: NSLocalizedString("host.field.other-fields", comment: "其他字段"), target: self, action: #selector(openCustomConfigSheet(_:)))
+        otherFieldsBtn.frame = NSRect(x: textFieldX + Int(fieldField.frame.width) + gapLeft, y: y, width: otherFieldsBtnWith, height: labelHeight)
+        otherFieldsBtn.imagePosition = .noImage
+        
         self.addSubview(fieldLabel)
         self.addSubview(fieldField)
+        self.addSubview(otherFieldsBtn)
         nextKeyViews.append(fieldField)
+        nextKeyViews.append(otherFieldsBtn)
         
-        // MARK: Extensions
+        
+        // MARK: resultPath
         y = y - gapTop - labelHeight
-        let extensionsLabel = NSTextField(labelWithString: "\(data.displayName(key: "extensions")):")
-        extensionsLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
-        extensionsLabel.alignment = .right
-        extensionsLabel.lineBreakMode = .byClipping
+        let resultLabel = NSTextField(labelWithString: "URL 路径:")
+        resultLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
+        resultLabel.alignment = .right
+        resultLabel.lineBreakMode = .byClipping
         
-        let extensionsField = NSTextField(frame: NSRect(x: textFieldX, y: y + labelHeight - textAreaHeight, width: textFieldWidth, height: textAreaHeight))
-        extensionsField.usesSingleLineMode = false
-        extensionsField.lineBreakMode = .byWordWrapping
-        extensionsField.cell?.wraps = true
-        extensionsField.identifier = NSUserInterfaceItemIdentifier(rawValue: "extensions")
-        extensionsField.delegate = data
-        extensionsField.stringValue = data.extensions ?? ""
-        extensionsField.placeholderString = "eg: key=value&key2=value2"
-        self.addSubview(extensionsLabel)
-        self.addSubview(extensionsField)
-        nextKeyViews.append(extensionsField)
+        let resultField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        resultField.identifier = NSUserInterfaceItemIdentifier(rawValue: "resultPath")
+        resultField.usesSingleLineMode = true
+        resultField.lineBreakMode = .byTruncatingTail
+        resultField.delegate = data
+        resultField.stringValue = data.resultPath ?? ""
+        resultField.placeholderString = NSLocalizedString("host.placeholder.resultPath", comment: "")
+        resultField.toolTip = NSLocalizedString("host.placeholder.resultPath", comment: "")
+        self.addSubview(resultLabel)
+        self.addSubview(resultField)
+        nextKeyViews.append(resultField)
         
-        // MARK: Headers
-        y = y - gapTop - textAreaHeight
-        let headersLabel = NSTextField(labelWithString: "\(data.displayName(key: "headers")):")
-        headersLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
-        headersLabel.alignment = .right
-        headersLabel.lineBreakMode = .byClipping
-        
-        let headersField = NSTextField(frame: NSRect(x: textFieldX, y: y + labelHeight - textAreaHeight, width: textFieldWidth, height: textAreaHeight))
-        headersField.usesSingleLineMode = false
-        headersField.lineBreakMode = .byWordWrapping
-        headersField.cell?.wraps = true
-        headersField.identifier = NSUserInterfaceItemIdentifier(rawValue: "headers")
-        headersField.delegate = data
-        headersField.stringValue = data.headers ?? ""
-        headersField.placeholderString = "eg: key=value&key2=value2"
-        self.addSubview(headersLabel)
-        self.addSubview(headersField)
-        nextKeyViews.append(headersField)
-
         // MARK: domain
-        y = y - gapTop - textAreaHeight
+        y = y - gapTop - labelHeight
         let settingsBtnWith = 40
 
         let domainLabel = NSTextField(labelWithString: "\(data.displayName(key: "domain")):")
@@ -138,7 +140,8 @@ class CustomConfigView: ConfigView {
         domainField.lineBreakMode = .byTruncatingTail
         domainField.delegate = data
         domainField.stringValue = data.domain ?? ""
-        domainField.placeholderString = NSLocalizedString("host.placeholder.domain", comment: "")
+        domainField.placeholderString = NSLocalizedString("host.placeholder.custom-domain", comment: "")
+        domainField.toolTip = NSLocalizedString("host.placeholder.custom-domain", comment: "")
         self.domainField = domainField
 
         let settingsBtn = NSButton(title: "", image: NSImage(named: NSImage.advancedName)!, target: self, action: #selector(openConfigSheet(_:)))
@@ -150,6 +153,7 @@ class CustomConfigView: ConfigView {
         self.addSubview(settingsBtn)
         nextKeyViews.append(domainField)
         nextKeyViews.append(settingsBtn)
+        
         
         // MARK: help
         y = y - gapTop - labelHeight
@@ -167,5 +171,9 @@ class CustomConfigView: ConfigView {
         if let menuItem = sender.selectedItem, let identifier = menuItem.identifier?.rawValue {
             self.data?.setValue(identifier, forKey: "method")
         }
+    }
+    
+    @objc func openCustomConfigSheet(_ sender: NSButton) {
+        self.window?.contentViewController?.presentAsSheet(postConfigSheetController!)
     }
 }

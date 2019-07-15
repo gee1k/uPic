@@ -16,8 +16,8 @@ class CustomHostConfig: HostConfig {
     dynamic var field: String!
     dynamic var extensions: String?
     dynamic var headers: String?
+    dynamic var resultPath: String?
     dynamic var domain: String?
-    dynamic var folder: String?
     dynamic var saveKey: String? = HostSaveKey.filename.rawValue
 
     override func displayName(key: String) -> String {
@@ -32,10 +32,10 @@ class CustomHostConfig: HostConfig {
             return NSLocalizedString("host.field.extensions", comment: "extensions")
         case "headers":
             return NSLocalizedString("host.field.headers", comment: "headers")
+        case "resultPath":
+            return NSLocalizedString("host.field.resultPath", comment: "resultPath")
         case "domain":
             return NSLocalizedString("host.field.domain", comment: "domain")
-        case "folder":
-            return NSLocalizedString("host.field.folder", comment: "folder")
         case "saveKey":
             return NSLocalizedString("host.field.saveKey", comment: "fileName")
         default:
@@ -50,8 +50,8 @@ class CustomHostConfig: HostConfig {
         dict["field"] = self.field
         dict["extensions"] = self.extensions
         dict["headers"] = self.headers
+        dict["resultPath"] = self.resultPath
         dict["domain"] = self.domain
-        dict["folder"] = self.folder
         dict["saveKey"] = self.saveKey
 
         return JSON(dict).rawString()!
@@ -69,8 +69,8 @@ class CustomHostConfig: HostConfig {
         config.field = json["field"].stringValue
         config.extensions = json["extensions"].stringValue
         config.headers = json["headers"].stringValue
+        config.resultPath = json["resultPath"].stringValue
         config.domain = json["domain"].stringValue
-        config.folder = json["folder"].stringValue
         config.saveKey = json["saveKey"].stringValue
         return config
     }

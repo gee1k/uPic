@@ -14,5 +14,11 @@ class PreferencesWindowController: NSWindowController {
         super.windowDidLoad()
         // Do view setup here.
     }
-
+    
+}
+extension PreferencesWindowController: NSWindowDelegate {
+    func windowWillClose(_ notification: Notification) {
+        // 关闭偏好设置时在去掉 Dock 栏显示应用图标
+        NSApp.setActivationPolicy(.accessory)
+    }
 }

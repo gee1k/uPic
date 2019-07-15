@@ -115,7 +115,8 @@
 "host.field.saveKey" = "File Name";
 "host.field.url" = "API URL";
 "host.field.method" = "Method";
-"host.field.field" = "File field";
+"host.field.field" = "File Field";
+"host.field.resultPath" = "URL Path";
 "host.field.extensions" = "Fields";
 "host.field.headers" = "Headers";
 "host.field.owner" = "Owner";
@@ -126,6 +127,7 @@
 "host.field.cookieMode" = "Cookie Mode";
 "host.field.cookie" = "Cookie";
 "host.field.quality" = "Pic Quality";
+"host.field.other-fields" = "Other fields";
 
 /* host field placeholder */
 "host.placeholder.operator" = "Operator name";
@@ -133,6 +135,8 @@
 "host.placeholder.repo" = "Just the repo name, not the repo URL";
 "host.placeholder.domain" = "domain:https://xxx.com";
 "host.placeholder.domain-has-default" = "Can be empty, there is a default domain";
+"host.placeholder.resultPath" = "The path to the URL field in Response JSON, eg: data/ URL";
+"host.placeholder.custom-domain" = "(optional),When filled, URL = domain + URL path value";
 
 
 /*host type*/
