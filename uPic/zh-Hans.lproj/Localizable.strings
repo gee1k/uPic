@@ -125,6 +125,8 @@
 "host.field.cookie" = "Cookie";
 "host.field.quality" = "图片质量";
 "host.field.other-fields" = "其他字段";
+"host.field.header-data" = "Headers 数据";
+"host.field.body-data" = "Body 数据";
 
 /* host field placeholder */
 "host.placeholder.operator" = "操作员名称";

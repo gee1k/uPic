@@ -128,6 +128,8 @@
 "host.field.cookie" = "Cookie";
 "host.field.quality" = "Pic Quality";
 "host.field.other-fields" = "Other fields";
+"host.field.header-data" = "Header Data";
+"host.field.body-data" = "Body Data";
 
 /* host field placeholder */
 "host.placeholder.operator" = "Operator name";
