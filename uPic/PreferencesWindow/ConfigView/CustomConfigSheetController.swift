@@ -58,7 +58,7 @@ class CustomConfigSheetController: NSViewController {
         var nextKeyViews: [NSView] = []
         
         if self.headers.count > 0 {
-            let headersTitle = NSTextField(labelWithString: "Header 数据")
+            let headersTitle = NSTextField(labelWithString: NSLocalizedString("host.field.header-data", comment: "Header 数据"))
             headersTitle.setFrameOrigin(NSPoint(x: paddingLeft, y: y))
             contentView.addSubview(headersTitle)
             
@@ -68,6 +68,7 @@ class CustomConfigSheetController: NSViewController {
                 keyField.identifier = NSUserInterfaceItemIdentifier(rawValue: "header-\(index)-key")
                 keyField.delegate = self
                 keyField.stringValue = header["key"] ?? ""
+                keyField.placeholderString = "key"
                 contentView.addSubview(keyField)
                 nextKeyViews.append(keyField)
                 
@@ -75,12 +76,12 @@ class CustomConfigSheetController: NSViewController {
                 valueField.identifier = NSUserInterfaceItemIdentifier(rawValue: "header-\(index)-value")
                 valueField.delegate = self
                 valueField.stringValue = header["value"] ?? ""
+                valueField.placeholderString = "value"
                 contentView.addSubview(valueField)
                 nextKeyViews.append(valueField)
                 
                 let removeBtn = NSButton(frame: NSRect(x:  gapLeft * 2 + paddingLeft + keyWidth + valueWidth, y: y, width: height, height: height))
                 removeBtn.identifier = NSUserInterfaceItemIdentifier(rawValue: "header-\(index)-remove_btn")
-                removeBtn.title = "删除"
                 removeBtn.image = NSImage(named: NSImage.removeTemplateName)
                 removeBtn.imagePosition = .imageOnly
                 removeBtn.target = self
@@ -92,7 +93,7 @@ class CustomConfigSheetController: NSViewController {
         if self.bodys.count > 0 {
             y = y + height + paddingTop
             
-            let bodyTitle = NSTextField(labelWithString: "Body 数据")
+            let bodyTitle = NSTextField(labelWithString: NSLocalizedString("host.field.body-data", comment: "Body 数据"))
             bodyTitle.setFrameOrigin(NSPoint(x: paddingLeft, y: y))
             contentView.addSubview(bodyTitle)
             
@@ -102,6 +103,7 @@ class CustomConfigSheetController: NSViewController {
                 keyField.identifier = NSUserInterfaceItemIdentifier(rawValue: "body-\(index)-key")
                 keyField.delegate = self
                 keyField.stringValue = body["key"] ?? ""
+                keyField.placeholderString = "key"
                 contentView.addSubview(keyField)
                 nextKeyViews.append(keyField)
                 
@@ -109,12 +111,12 @@ class CustomConfigSheetController: NSViewController {
                 valueField.identifier = NSUserInterfaceItemIdentifier(rawValue: "body-\(index)-value")
                 valueField.delegate = self
                 valueField.stringValue = body["value"] ?? ""
+                valueField.placeholderString = "value"
                 contentView.addSubview(valueField)
                 nextKeyViews.append(valueField)
                 
                 let removeBtn = NSButton(frame: NSRect(x:  gapLeft * 2 + paddingLeft + keyWidth + valueWidth, y: y, width: height, height: height))
                 removeBtn.identifier = NSUserInterfaceItemIdentifier(rawValue: "body-\(index)-remove_btn")
-                removeBtn.title = "删除"
                 removeBtn.image = NSImage(named: NSImage.removeTemplateName)
                 removeBtn.imagePosition = .imageOnly
                 removeBtn.target = self
