@@ -113,7 +113,8 @@
 "host.field.url" = "API 地址";
 "host.field.method" = "请求方式";
 "host.field.field" = "文件字段名";
-"host.field.extensions" = "扩展字段";
+"host.field.resultPath" = "URL 路径";
+"host.field.bodys" = "Bodys";
 "host.field.headers" = "请求头";
 "host.field.owner" = "用户名";
 "host.field.repo" = "仓库名";
@@ -123,6 +124,7 @@
 "host.field.cookieMode" = "Cookie 模式";
 "host.field.cookie" = "Cookie";
 "host.field.quality" = "图片质量";
+"host.field.other-fields" = "其他字段";
 
 /* host field placeholder */
 "host.placeholder.operator" = "操作员名称";
@@ -130,6 +132,8 @@
 "host.placeholder.repo" = "只需要仓库名称，而不是仓库连接";
 "host.placeholder.domain" = "访问域名:https://xxx.com";
 "host.placeholder.domain-has-default" = "可为空，有默认域名";
+"host.placeholder.resultPath" = "返回 JSON 中的URL字段的路径，如：data/url";
+"host.placeholder.custom-domain" = "(可选)，当填写时，URL = 前缀 + URL 路径值";
 
 /*host type*/
 "host.type.-1" = "自定义";
