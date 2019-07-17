@@ -34,7 +34,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         selectFileMenuItem.title = NSLocalizedString("status-menu.select-file", comment: "Select file")
         uploadPasteboardMenuItem.title = NSLocalizedString("status-menu.pasteboard", comment: "Upload with pasteboard")
         screenshotMenuItem.title = NSLocalizedString("status-menu.screenshot", comment: "Upload with pasteboard")
-//        hostMenuItem.title = NSLocalizedString("status-menu.host", comment: "Host")
+        hostMenuItem.title = NSLocalizedString("status-menu.host", comment: "Host")
         ouputFormatMenuItem.title = NSLocalizedString("status-menu.output", comment: "Choose output format")
         historyMenuItem.title = NSLocalizedString("status-menu.upload-history", comment: "upload history")
         preferenceMenuItem.title = NSLocalizedString("status-menu.preference", comment: "Open Preference")
@@ -64,7 +64,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     @IBAction func preferenceMenuItemClicked(_ sender: NSMenuItem) {
         let preferencesWindowController = (NSApplication.shared.delegate as? AppDelegate)?.preferencesWindowController
-        NSApp.activate(ignoringOtherApps: true)
         preferencesWindowController?.showWindow(sender)
     }
 

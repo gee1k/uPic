@@ -118,12 +118,11 @@ class ConfigView: NSView {
     
     func removeObserver() {
         PreferencesNotifier.removeObserver(observer: self, notification: .saveHostSettings)
-        PreferencesNotifier.addObserver(observer: self, selector: #selector(saveHostSettings), notification: .saveHostSettings)
     }
     
     @objc func openConfigSheet(_ sender: NSButton) {
         if let configSheetController = configSheetController {
-            let userInfo: [String: Any] = ["domain": self.data?.value(forKey: "domain") ?? "", "folder": self.data?.value(forKey: "folder") ?? "", "saveKey": self.data?.value(forKey: "saveKey") ?? HostSaveKey.dateFilename.rawValue]
+            let userInfo: [String: Any] = ["domain": self.data?.value(forKey: "domain") ?? "", "saveKey": self.data?.value(forKey: "saveKey") ?? HostSaveKey.dateFilename.rawValue]
             self.window?.contentViewController?.presentAsSheet(configSheetController)
             configSheetController.setData(userInfo: userInfo as [String: AnyObject])
             self.addObserver()
@@ -132,17 +131,16 @@ class ConfigView: NSView {
     }
     
     @objc func saveHostSettings(notification: Notification) {
+        self.removeObserver()
         guard let userInfo = notification.userInfo else {
             print("No userInfo found in notification")
             return
         }
         
         let domain = userInfo["domain"] as? String ?? ""
-        let folder = userInfo["folder"] as? String ?? ""
         let saveKey = userInfo["saveKey"] as? String ?? HostSaveKey.dateFilename.rawValue
         
         self.data?.setValue(domain, forKey: "domain")
-        self.data?.setValue(folder, forKey: "folder")
         self.data?.setValue(saveKey, forKey: "saveKey")
         
         domainField?.stringValue = domain

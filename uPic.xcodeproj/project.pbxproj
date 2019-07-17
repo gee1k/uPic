@@ -64,6 +64,9 @@
 		167DDBED22C76F6600B03357 /* GithubHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDBEC22C76F6600B03357 /* GithubHostConfig.swift */; };
 		167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDBEE22C7722200B03357 /* GithubUtil.swift */; };
 		167DDBF122C7784900B03357 /* GithubConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167DDBF022C7784900B03357 /* GithubConfigView.swift */; };
+		1683573C22DB0D0800985B10 /* CustomConfigSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1683573B22DB0D0800985B10 /* CustomConfigSheetController.swift */; };
+		1685AA3522DEC943008FBF1D /* FlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685AA3422DEC943008FBF1D /* FlippedView.swift */; };
+		1685AA3722DEEE6C008FBF1D /* CustomHostUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685AA3622DEEE6C008FBF1D /* CustomHostUtil.swift */; };
 		168A831122B606C000344E77 /* UpYunUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A2022B5FC7B00B1F923 /* UpYunUploader.swift */; };
 		1690E7E422BF111500FC81F8 /* QiniuConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */; };
 		1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E622BF12D200FC81F8 /* QiniuHostConfig.swift */; };
@@ -165,6 +168,9 @@
 		167DDBEC22C76F6600B03357 /* GithubHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubHostConfig.swift; sourceTree = "<group>"; };
 		167DDBEE22C7722200B03357 /* GithubUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUtil.swift; sourceTree = "<group>"; };
 		167DDBF022C7784900B03357 /* GithubConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubConfigView.swift; sourceTree = "<group>"; };
+		1683573B22DB0D0800985B10 /* CustomConfigSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfigSheetController.swift; sourceTree = "<group>"; };
+		1685AA3422DEC943008FBF1D /* FlippedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlippedView.swift; sourceTree = "<group>"; };
+		1685AA3622DEEE6C008FBF1D /* CustomHostUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHostUtil.swift; sourceTree = "<group>"; };
 		1690E7E022BE32B100FC81F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		1690E7E222BE32D500FC81F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiniuConfigView.swift; sourceTree = "<group>"; };
@@ -250,6 +256,7 @@
 				161C3BE022C4831B0092114F /* CustomUploader.swift */,
 				161C3BE222C483560092114F /* CustomHostConfig.swift */,
 				161C3BE622C49BE90092114F /* RequestMethods.swift */,
+				1685AA3622DEEE6C008FBF1D /* CustomHostUtil.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -264,6 +271,7 @@
 				1647474222B66ACE00F9575D /* Data+Extension.swift */,
 				165D908522C333740096FF38 /* PasteboardType+Extension.swift */,
 				165701A022C8A6E600C57EE9 /* Regex.swift */,
+				1685AA3422DEC943008FBF1D /* FlippedView.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -358,6 +366,7 @@
 			children = (
 				1646B80F22C7C485009271DF /* Views */,
 				1646B80D22C7C082009271DF /* ConfigView.swift */,
+				1683573B22DB0D0800985B10 /* CustomConfigSheetController.swift */,
 				166B4A5422B9CFD7001288ED /* ConfigSheetController.swift */,
 			);
 			path = ConfigView;
@@ -682,6 +691,7 @@
 				165701A322C8AE0A00C57EE9 /* WeiboUtil.swift in Sources */,
 				16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */,
 				1675516722ACAA0600D3EB6F /* UPicUpdater.swift in Sources */,
+				1685AA3522DEC943008FBF1D /* FlippedView.swift in Sources */,
 				16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */,
 				16995A3422B6008000B1F923 /* UpYunHostConfig.swift in Sources */,
 				1672762322AFF655007299C3 /* Host.swift in Sources */,
@@ -737,6 +747,7 @@
 				1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */,
 				1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */,
 				1662AC7322C0BBF7003AC924 /* AliyunRegion.swift in Sources */,
+				1683573C22DB0D0800985B10 /* CustomConfigSheetController.swift in Sources */,
 				169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */,
 				167DDBEB22C76F5000B03357 /* GithubUploader.swift in Sources */,
 				169F073922AF4549008E8525 /* GeneralPreferencesViewController.swift in Sources */,
@@ -748,6 +759,7 @@
 				1660FCBC22C11C7500372950 /* TencentUtil.swift in Sources */,
 				1660FCBA22C11C2300372950 /* TencentHostConfig.swift in Sources */,
 				167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */,
+				1685AA3722DEEE6C008FBF1D /* CustomHostUtil.swift in Sources */,
 				68BBB99780D7F4586458D4F5 /* AliyunUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
