@@ -117,7 +117,7 @@
 "host.field.method" = "Method";
 "host.field.field" = "File Field";
 "host.field.resultPath" = "URL Path";
-"host.field.extensions" = "Fields";
+"host.field.bodys" = "Bodys";
 "host.field.headers" = "Headers";
 "host.field.owner" = "Owner";
 "host.field.repo" = "Repo";

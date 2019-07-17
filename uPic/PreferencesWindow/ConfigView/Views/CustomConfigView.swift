@@ -19,6 +19,11 @@ class CustomConfigView: ConfigView {
             as! CustomConfigSheetController)
         
     }
+    
+    
+    deinit {
+        postConfigSheetController?.removeFromParent()
+    }
 
     override func createView() {
         
@@ -174,6 +179,37 @@ class CustomConfigView: ConfigView {
     }
     
     @objc func openCustomConfigSheet(_ sender: NSButton) {
-        self.window?.contentViewController?.presentAsSheet(postConfigSheetController!)
+        guard let data = self.data as? CustomHostConfig else {
+            return
+        }
+        
+        if let postConfigSheetController = postConfigSheetController {
+            self.window?.contentViewController?.presentAsSheet(postConfigSheetController)
+            postConfigSheetController.setData(headerStr: data.headers ?? "", bodyStr: data.bodys ?? "")
+            self.addCustomConfigObserver()
+        }
+    }
+    
+    func addCustomConfigObserver() {
+        PreferencesNotifier.addObserver(observer: self, selector: #selector(saveExtensionsSettings), notification: .saveCustomExtensionSettings)
+    }
+    
+    
+    func removeCustomConfigObserver() {
+        PreferencesNotifier.removeObserver(observer: self, notification: .saveCustomExtensionSettings)
+    }
+    
+    @objc func saveExtensionsSettings(notification: Notification) {
+        self.removeCustomConfigObserver()
+        guard let userInfo = notification.userInfo else {
+            print("No userInfo found in notification")
+            return
+        }
+        
+        let headers = userInfo["headers"] as? String ?? ""
+        let bodys = userInfo["bodys"] as? String ??  ""
+        
+        self.data?.setValue(headers, forKey: "headers")
+        self.data?.setValue(bodys, forKey: "bodys")
     }
 }

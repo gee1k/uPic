@@ -8,7 +8,7 @@
 
 import Cocoa
 import Alamofire
-import SwiftyXMLParser
+import SwiftyJSON
 
 class CustomUploader: BaseUploader {
 
@@ -30,10 +30,10 @@ class CustomUploader: BaseUploader {
         let field = config.field!
         let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
-        
+
         let httpMethod = HTTPMethod(rawValue: method) ?? HTTPMethod.post
-        
-        
+
+
         if url.isEmpty {
             super.faild(errorMsg: NSLocalizedString("bad-host-config", comment: "bad host config"))
             return
@@ -52,47 +52,37 @@ class CustomUploader: BaseUploader {
 
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
+
         if let headersStr = config.headers {
-            let headersArr = headersStr.split(separator: Character("&"))
-            for headerSr in headersArr {
-                let headerArr = headerSr.split(separator: Character("="))
-                if headerArr.count < 2 {
-                    continue
+            let headersArr = CustomHostUtil.parseHeadersOrBodys(headersStr)
+            for header in headersArr {
+                if let key = header["key"] {
+                    var value = header["value"] ?? ""
+                    if value == "{filename}" {
+                        value = fileName
+                    }
+
+                    headers.add(HTTPHeader(name: key, value: value))
                 }
-                var value = String(headerArr[1])
-                switch value {
-                case "{filename}":
-                    value = fileName
-                    break
-                default:
-                    break
-                }
-                headers.add(HTTPHeader(name: String(headerArr[0]), value: value))
             }
         }
-        
+
+
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
-            
-            if let extensionsStr = config.extensions {
-                let extensionsArr = extensionsStr.split(separator: Character("&"))
-                for extensions in extensionsArr {
-                    let extensionArr = extensions.split(separator: Character("="))
-                    if extensionArr.count < 2 {
-                        continue
+            if let bodysStr = config.bodys {
+                let bodysArr = CustomHostUtil.parseHeadersOrBodys(bodysStr)
+                for body in bodysArr {
+                    if let key = body["key"] {
+                        var value = body["value"] ?? ""
+                        if value == "{filename}" {
+                            value = fileName
+                        }
+
+                        multipartFormData.append(String(value).data(using: .utf8)!, withName: key)
                     }
-                    
-                    var value = String(extensionArr[1])
-                    switch value {
-                    case "{filename}":
-                        value = fileName
-                        break
-                    default:
-                        break
-                    }
-                    multipartFormData.append(String(value).data(using: .utf8)!, withName: String(extensionArr[0]))
                 }
             }
-            
+
             if fileUrl != nil {
                 multipartFormData.append(fileUrl!, withName: field, fileName: fileName, mimeType: mimeType)
             } else {
@@ -103,10 +93,15 @@ class CustomUploader: BaseUploader {
 
         AF.upload(multipartFormData: multipartFormDataGen, to: url, method: httpMethod, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
-        }.response(completionHandler: { response -> Void in
+            }.responseJSON(completionHandler: { response -> Void in
             switch response.result {
-            case .success(_):
-                super.completed(url: "\(domain)/\(fileName)")
+            case .success(let value):
+                let json = JSON(value)
+                var retUrl = CustomHostUtil.parseResultUrl(json, config.resultPath ?? "")
+                if !domain.isEmpty {
+                    retUrl = "\(domain)/\(retUrl)"
+                }
+                super.completed(url: retUrl)
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)
             }

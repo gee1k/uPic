@@ -118,7 +118,6 @@ class ConfigView: NSView {
     
     func removeObserver() {
         PreferencesNotifier.removeObserver(observer: self, notification: .saveHostSettings)
-        PreferencesNotifier.addObserver(observer: self, selector: #selector(saveHostSettings), notification: .saveHostSettings)
     }
     
     @objc func openConfigSheet(_ sender: NSButton) {
@@ -132,6 +131,7 @@ class ConfigView: NSView {
     }
     
     @objc func saveHostSettings(notification: Notification) {
+        self.removeObserver()
         guard let userInfo = notification.userInfo else {
             print("No userInfo found in notification")
             return

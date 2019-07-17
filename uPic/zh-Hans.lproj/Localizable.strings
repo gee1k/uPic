@@ -114,7 +114,7 @@
 "host.field.method" = "请求方式";
 "host.field.field" = "文件字段名";
 "host.field.resultPath" = "URL 路径";
-"host.field.extensions" = "扩展字段";
+"host.field.bodys" = "Bodys";
 "host.field.headers" = "请求头";
 "host.field.owner" = "用户名";
 "host.field.repo" = "仓库名";

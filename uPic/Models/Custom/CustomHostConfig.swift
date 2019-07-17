@@ -14,7 +14,7 @@ class CustomHostConfig: HostConfig {
     dynamic var url: String!
     dynamic var method: String! = RequestMethods.POST.rawValue
     dynamic var field: String!
-    dynamic var extensions: String?
+    dynamic var bodys: String?
     dynamic var headers: String?
     dynamic var resultPath: String?
     dynamic var domain: String?
@@ -28,8 +28,8 @@ class CustomHostConfig: HostConfig {
             return NSLocalizedString("host.field.method", comment: "method")
         case "field":
             return NSLocalizedString("host.field.field", comment: "field")
-        case "extensions":
-            return NSLocalizedString("host.field.extensions", comment: "extensions")
+        case "bodys":
+            return NSLocalizedString("host.field.bodys", comment: "bodys")
         case "headers":
             return NSLocalizedString("host.field.headers", comment: "headers")
         case "resultPath":
@@ -48,7 +48,7 @@ class CustomHostConfig: HostConfig {
         dict["url"] = self.url
         dict["method"] = self.method
         dict["field"] = self.field
-        dict["extensions"] = self.extensions
+        dict["bodys"] = self.bodys
         dict["headers"] = self.headers
         dict["resultPath"] = self.resultPath
         dict["domain"] = self.domain
@@ -67,7 +67,7 @@ class CustomHostConfig: HostConfig {
         config.url = json["url"].stringValue
         config.method = json["method"].stringValue
         config.field = json["field"].stringValue
-        config.extensions = json["extensions"].stringValue
+        config.bodys = json["bodys"].stringValue
         config.headers = json["headers"].stringValue
         config.resultPath = json["resultPath"].stringValue
         config.domain = json["domain"].stringValue
