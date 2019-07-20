@@ -1,4 +1,4 @@
 ---
 release_only: false
 ---
-{%include appcast_test.inc %}
+{%include appcast.inc %}
