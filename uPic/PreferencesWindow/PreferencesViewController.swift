@@ -22,11 +22,6 @@ class PreferencesViewController: NSViewController {
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        
-        // 将应用界面浮到最上层
-        NSApp.activate(ignoringOtherApps: true)
-        view.window?.makeKeyAndOrderFront(self)
-        
         // 打开偏好设置时在 Dock 栏显示应用图标，方便用户再次返回设置界面
         if NSApp.activationPolicy() == .accessory {
             NSApp.setActivationPolicy(.regular)

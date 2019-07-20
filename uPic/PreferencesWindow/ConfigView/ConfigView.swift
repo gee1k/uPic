@@ -122,7 +122,7 @@ class ConfigView: NSView {
     
     @objc func openConfigSheet(_ sender: NSButton) {
         if let configSheetController = configSheetController {
-            let userInfo: [String: Any] = ["domain": self.data?.value(forKey: "domain") ?? "", "saveKey": self.data?.value(forKey: "saveKey") ?? HostSaveKey.dateFilename.rawValue]
+            let userInfo: [String: Any] = ["domain": self.data?.value(forKey: "domain") ?? "", "folder": self.data?.value(forKey: "folder") ?? "", "saveKey": self.data?.value(forKey: "saveKey") ?? HostSaveKey.dateFilename.rawValue]
             self.window?.contentViewController?.presentAsSheet(configSheetController)
             configSheetController.setData(userInfo: userInfo as [String: AnyObject])
             self.addObserver()
