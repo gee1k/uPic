@@ -65,6 +65,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBAction func preferenceMenuItemClicked(_ sender: NSMenuItem) {
         let preferencesWindowController = (NSApplication.shared.delegate as? AppDelegate)?.preferencesWindowController
         preferencesWindowController?.showWindow(sender)
+        
+        // 将应用界面浮到最上层
+        NSApp.activate(ignoringOtherApps: true)
+        preferencesWindowController?.window?.makeKeyAndOrderFront(preferencesWindowController)
     }
 
     @IBAction func checkUpdateMenuItemClicked(_ sender: NSMenuItem) {

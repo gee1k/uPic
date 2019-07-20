@@ -81,6 +81,7 @@ class CustomConfigSheetController: NSViewController {
                 nextKeyViews.append(valueField)
                 
                 let removeBtn = NSButton(frame: NSRect(x:  gapLeft * 2 + paddingLeft + keyWidth + valueWidth, y: y, width: height, height: height))
+                removeBtn.bezelStyle = .texturedRounded
                 removeBtn.identifier = NSUserInterfaceItemIdentifier(rawValue: "header-\(index)-remove_btn")
                 removeBtn.image = NSImage(named: NSImage.removeTemplateName)
                 removeBtn.imagePosition = .imageOnly
@@ -88,10 +89,12 @@ class CustomConfigSheetController: NSViewController {
                 removeBtn.action = #selector(onRemoveItem(_:))
                 contentView.addSubview(removeBtn)
             }
+            
+            y = y + height
         }
         
         if self.bodys.count > 0 {
-            y = y + height + paddingTop
+            y = y + paddingTop
             
             let bodyTitle = NSTextField(labelWithString: NSLocalizedString("host.field.body-data", comment: "Body 数据"))
             bodyTitle.setFrameOrigin(NSPoint(x: paddingLeft, y: y))
@@ -116,6 +119,7 @@ class CustomConfigSheetController: NSViewController {
                 nextKeyViews.append(valueField)
                 
                 let removeBtn = NSButton(frame: NSRect(x:  gapLeft * 2 + paddingLeft + keyWidth + valueWidth, y: y, width: height, height: height))
+                removeBtn.bezelStyle = .texturedRounded
                 removeBtn.identifier = NSUserInterfaceItemIdentifier(rawValue: "body-\(index)-remove_btn")
                 removeBtn.image = NSImage(named: NSImage.removeTemplateName)
                 removeBtn.imagePosition = .imageOnly
@@ -159,18 +163,21 @@ class CustomConfigSheetController: NSViewController {
         if let identifier = sender.identifier?.rawValue {
             let args = identifier.split(separator: Character("-"))
             let type = args[0]
-            let index = Int(args[1])!
             
-            if (index < 0) {
+            guard let index = Int(args[1]) else {
                 return
             }
             
             if (type == "header") {
-                self.headers.remove(at: index)
-                self.refreshScroolView()
+                if (index >= 0 || index < self.headers.count) {
+                    self.headers.remove(at: index)
+                    self.refreshScroolView()
+                }
             } else if (type == "body") {
-                self.bodys.remove(at: index)
-                self.refreshScroolView()
+                if (index >= 0 || index < self.headers.count) {
+                    self.bodys.remove(at: index)
+                    self.refreshScroolView()
+                }
             }
             
         }
