@@ -131,16 +131,17 @@ class ConfigView: NSView {
     }
     
     @objc func saveHostSettings(notification: Notification) {
-        self.removeObserver()
         guard let userInfo = notification.userInfo else {
             print("No userInfo found in notification")
             return
         }
         
         let domain = userInfo["domain"] as? String ?? ""
+        let folder = userInfo["folder"] as? String ?? ""
         let saveKey = userInfo["saveKey"] as? String ?? HostSaveKey.dateFilename.rawValue
         
         self.data?.setValue(domain, forKey: "domain")
+        self.data?.setValue(folder, forKey: "folder")
         self.data?.setValue(saveKey, forKey: "saveKey")
         
         domainField?.stringValue = domain
