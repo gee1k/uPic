@@ -151,7 +151,7 @@ extension AppDelegate {
             var urls = [URL]()
             
             for path in filenames {
-                if fileExtensions.contains(path.pathExtension.lowercased()) {
+                if (fileExtensions.count == 0 || fileExtensions.contains(path.pathExtension.lowercased())) {
                     urls.append(URL(fileURLWithPath: path))
                 }
             }

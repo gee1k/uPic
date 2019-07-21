@@ -137,7 +137,7 @@
 "host.placeholder.repo" = "Just the repo name, not the repo URL";
 "host.placeholder.domain" = "domain:https://xxx.com";
 "host.placeholder.domain-has-default" = "Can be empty, there is a default domain";
-"host.placeholder.resultPath" = "The path to the URL field in Response JSON, eg: data/ URL";
+"host.placeholder.resultPath" = "The path to the URL field in Response JSON";
 "host.placeholder.custom-domain" = "(optional),When filled, URL = domain + URL path value";
 
 

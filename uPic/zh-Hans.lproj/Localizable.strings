@@ -134,7 +134,7 @@
 "host.placeholder.repo" = "只需要仓库名称，而不是仓库连接";
 "host.placeholder.domain" = "访问域名:https://xxx.com";
 "host.placeholder.domain-has-default" = "可为空，有默认域名";
-"host.placeholder.resultPath" = "返回 JSON 中的URL字段的路径，如：data/url";
+"host.placeholder.resultPath" = "返回 JSON 中的 URL 字段的路径";
 "host.placeholder.custom-domain" = "(可选)，当填写时，URL = 前缀 + URL 路径值";
 
 /*host type*/
