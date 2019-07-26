@@ -87,7 +87,7 @@
 - `微信`: `JSW5297` (请备注一下 uPic)
 - `Telegram`: [gee1k](https://t.me/gee1k)
 - `项目地址`: [Github](https://github.com/gee1k/uPic)
-- `uPic 产品交流群(Telegram)`:  [点击加入 TG 群](https://t.me/joinchat/GMoAxRT9NIRYmfIq1FpiTA)
+- `uPic 产品交流群(Telegram)`:  [点击加入 TG 群](https://t.me/upic_host)
 - `uPic 产品交流群(微信)`: 
 	<img src="https://raw.githubusercontent.com/gee1k/oss/master/personal/uPic-wechat.JPG" alt="uPic产品交流群" style="width: 300px;" align="center">
 
