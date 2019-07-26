@@ -42,13 +42,16 @@ class AliyunUploader: BaseUploader {
 
         var fileName = ""
         var mimeType = ""
-        if fileUrl != nil {
-            fileName = "\(hostSaveKey.getFileName(filename: fileUrl!.lastPathComponent.deletingPathExtension)).\(fileUrl!.pathExtension)"
-            mimeType = Util.getMimeType(pathExtension: fileUrl!.pathExtension)
-        } else {
+        if let fileUrl = fileUrl {
+            fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
+            mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
+        } else if let fileData = fileData {
             // MARK: 处理截图之类的图片，生成一个文件名
             fileName = "\(hostSaveKey.getFileName()).png"
             mimeType = Util.getMimeType(pathExtension: "png")
+        } else {
+            super.faild(errorMsg: "Invalid file")
+            return
         }
 
         var key = fileName

@@ -99,6 +99,8 @@
 /*匿名上传*/
 "anonymously-upload" = "文件将匿名上传至";
 
+"upload-by-uPic" = "使用 uPic 上传";
+
 /* host -- start */
 "host.field.region" = "区域";
 "host.field.bucket" = "空间名称";
@@ -147,6 +149,7 @@
 "host.type.6" = "Github";
 "host.type.7" = "码云 Gitee";
 "host.type.8" = "微博";
+"host.type.9" = "腾讯云开发者平台";
 
 /* HostSaveKey */
 "save-key.filename" = "文件名";

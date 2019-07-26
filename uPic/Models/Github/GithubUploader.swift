@@ -34,20 +34,24 @@ class GithubUploader: BaseUploader {
         var fileName = ""
         var fileBase64 = ""
         
-        if fileUrl != nil {
-            fileName = "\(hostSaveKey.getFileName(filename: fileUrl!.lastPathComponent.deletingPathExtension)).\(fileUrl!.pathExtension)"
+        if let fileUrl = fileUrl {
+            fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
             
             do {
-                let data = try Data(contentsOf: fileUrl!)
+                let data = try Data(contentsOf: fileUrl)
                 fileBase64 = data.toBase64()
             } catch {
                 super.faild(errorMsg: "Invalid file")
                 return
             }
-        } else {
+        } else if let fileData = fileData {
             // MARK: 处理截图之类的图片，生成一个文件名
-            fileName = "\(hostSaveKey.getFileName()).png"
-            fileBase64 = fileData!.toBase64()
+            let fileType = fileData.contentType() ?? "png"
+            fileName = "\(hostSaveKey.getFileName()).\(fileType)"
+            fileBase64 = fileData.toBase64()
+        } else {
+            super.faild(errorMsg: "Invalid file")
+            return
         }
         
         var filePath = fileName

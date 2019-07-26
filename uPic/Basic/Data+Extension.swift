@@ -47,4 +47,36 @@ extension Data {
         return String(data: self, encoding: .utf8)!
     }
     
+    func convertImageDataToJpg() -> Data? {
+        let bitmap = NSBitmapImageRep(data: self)
+        let jpg = bitmap?.representation(using: .jpeg, properties: [:])
+        return jpg
+    }
+    
+    func convertImageDataToPng() -> Data? {
+        let bitmap = NSBitmapImageRep(data: self)
+        let png = bitmap?.representation(using: .png, properties: [:])
+        return png
+    }
+    
+    func contentType() -> String? {
+        let c = self.bytes.first
+        
+        switch c {
+        case 0xFF:
+            return "jpg"
+        case 0x89:
+            return "png"
+        case 0x47:
+            return "gif"
+        case 0x49:
+            return "tiff"
+        case 0x4D:
+            return "tiff"
+        default:
+            return nil
+        }
+        
+    }
+    
 }

@@ -26,6 +26,10 @@ class PreferencesViewController: NSViewController {
         if NSApp.activationPolicy() == .accessory {
             NSApp.setActivationPolicy(.regular)
         }
+        
+        let userInfo: [AnyHashable: Any] = ["path": "121"]
+        DistributedNotificationCenter.default()
+            .postNotificationName(NSNotification.Name(rawValue: "uploadByFinder"), object: nil, userInfo: userInfo, deliverImmediately: true)
 
         // MARK: 偏好设置tab切换动画
         self.setWindowFrame()

@@ -47,19 +47,22 @@ class WeiboUploader: BaseUploader {
             var fileBase64 = ""
             var fileExtension = ".jpg"
             
-            if fileUrl != nil {
-                if fileUrl?.pathExtension == "gif" {
+            if let fileUrl = fileUrl  {
+                if fileUrl.pathExtension == "gif" {
                     fileExtension = ".gif"
                 }
                 do {
-                    let data = try Data(contentsOf: fileUrl!)
+                    let data = try Data(contentsOf: fileUrl)
                     fileBase64 = data.toBase64()
                 } catch {
                     super.faild(errorMsg: "Invalid file")
                     return
                 }
+            } else if let fileData = fileData {
+                fileBase64 = fileData.toBase64()
             } else {
-                fileBase64 = fileData!.toBase64()
+                super.faild(errorMsg: "Invalid file")
+                return
             }
             
             

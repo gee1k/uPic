@@ -36,15 +36,6 @@
 - [❤️ 赞助](#-赞助)
 
 
-
-> 📌 公告：请悉知
->
->  [❗【重要提示】v0.6.0 版升级到 v0.6.1 时请手动从 release 下载最新覆盖安装](https://github.com/gee1k/uPic/issues/12)
->
-> 给您带来的不便，很抱歉
-
-
-
 ## 📑 简介
 
 > **uPic 是一款 Mac 端的图床(文件)上传客户端**
@@ -62,7 +53,7 @@
 
 - ✅ 选择文件上传
 - ✅ 复制文件上传
-- ✅ 拖拽文件上传
+- ✅ 拖拽文件上传 `支持浏览器图片直接拖拽上传`
 - ✅ 截图上传
 
 #### 🖥 选择文件上传
@@ -127,7 +118,7 @@
 ## 🚀 安装
 
 - 下载安装包手动安装。下载地址：[https://github.com/gee1k/uPic/releases](https://github.com/gee1k/uPic/releases)
-- [homebrew](https://brew.sh/) 安装：`brew cask install upic`   `注意：由于提交安装包到 brew 需要等待官方统一，所以版本更新不是很及时`
+- [homebrew](https://brew.sh/) 安装：`brew cask install upic`   `注意：由于提交安装包到 brew 需要等待官方合并，所以版本更新不是很及时`
 
 ### ⬆️ 更新
 
@@ -142,6 +133,7 @@
 - `微信`: `JSW5297` (请备注一下 uPic)
 - `Telegram`: [gee1k](https://t.me/gee1k)
 - `项目地址`: [Github](https://github.com/gee1k/uPic)
+- `uPic 产品交流群(Telegram)`:  [点击加入 TG 群](https://t.me/joinchat/GMoAxRT9NIRYmfIq1FpiTA)
 - `uPic 产品交流群(微信)`: 
 	<img src="https://raw.githubusercontent.com/gee1k/oss/master/personal/uPic-wechat.JPG" alt="uPic产品交流群" style="width: 300px;" align="center">
 
