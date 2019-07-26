@@ -175,6 +175,9 @@ class HostPreferencesViewController: PreferencesViewController {
         addHostButton.menu?.addItem(imageItem)
         
         for type in HostType.allCases {
+            if type.disabled {
+                continue
+            }
             let menuItem = NSMenuItem(title: type.name, action: nil, keyEquivalent: "")
             menuItem.image = Host.getIconByType(type: type)
             menuItem.tag = type.rawValue
@@ -336,7 +339,7 @@ extension HostPreferencesViewController: NSTextFieldDelegate {
 extension HostPreferencesViewController: NSWindowDelegate {
    
     func windowShouldClose(_ sender: NSWindow) -> Bool {
-        if self.hostItemsChanged {
+        if self.hostItemsChanged, let window = self.view.window {
             let alert = NSAlert()
             alert.alertStyle = .warning
             alert.messageText = NSLocalizedString("general.warn", comment: "提醒")
@@ -344,12 +347,12 @@ extension HostPreferencesViewController: NSWindowDelegate {
             alert.addButton(withTitle: NSLocalizedString("general.continue", comment: "继续"))
             alert.addButton(withTitle: NSLocalizedString("general.cancel", comment: "取消"))
             alert.window.titlebarAppearsTransparent = true
-            alert.beginSheetModal(for: self.view.window!) { (response) in
+            alert.beginSheetModal(for: window) { (response) in
                 if response == .alertFirstButtonReturn {
                     self.resetButtonClicked(nil)
                     self.view.window?.close()
                 } else if response == .alertSecondButtonReturn {
-                    debugPrint("Cancel")
+                    NSLog("Cancel")
                 }
             }
             return false

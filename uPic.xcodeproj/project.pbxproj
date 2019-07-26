@@ -13,13 +13,17 @@
 		16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */; };
 		16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7B22AECD9F004D39B7 /* Constants.swift */; };
 		160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */; };
+		1618D1A522E99BAA00831601 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
+		1618D1A622E99BB800831601 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169F073D22AF53DE008E8525 /* Preferences.storyboard */; };
+		1618D1A822E99E2100831601 /* UploadNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618D1A722E99E2100831601 /* UploadNotifier.swift */; };
+		1618D1A922E99E9B00831601 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C39FF22B2AA6C003ADE39 /* Notifier.swift */; };
+		1618D1AA22E99EA400831601 /* UploadNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618D1A722E99E2100831601 /* UploadNotifier.swift */; };
 		161C3BE122C483380092114F /* CustomUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE022C4831B0092114F /* CustomUploader.swift */; };
 		161C3BE322C483560092114F /* CustomHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE222C483560092114F /* CustomHostConfig.swift */; };
 		161C3BE522C4870C0092114F /* CustomConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE422C4870B0092114F /* CustomConfigView.swift */; };
 		161C3BE722C49BE90092114F /* RequestMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE622C49BE90092114F /* RequestMethods.swift */; };
 		1623611B22AB935300E4025C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623611D22AB935300E4025C /* InfoPlist.strings */; };
 		1623612322AB951E00E4025C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
-		162E5D4822C096FD001FAA46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162E5D4722C096FD001FAA46 /* Assets.xcassets */; };
 		163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */; };
 		163632F122B274B400805E7F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F022B274B400805E7F /* Date+Extension.swift */; };
 		163632F322B2751D00805E7F /* BoolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F222B2751D00805E7F /* BoolType.swift */; };
@@ -82,16 +86,30 @@
 		169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F074322AF7A3D008E8525 /* StatusMenuController.swift */; };
 		16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A6DC5722AA375700813706 /* AppDelegate.swift */; };
 		16A6DC5F22AA375800813706 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16A6DC5D22AA375800813706 /* Main.storyboard */; };
+		16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDDFE22EA96AE0080E467 /* Assets.xcassets */; };
+		16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDE0222EAA2920080E467 /* Assets.xcassets */; };
 		16C4089F22AA6A7700AF2F0E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 16C4089E22AA6A7700AF2F0E /* Podfile */; };
 		16EA204C22AF8AB30006FB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA204B22AF8AB30006FB9C /* AppDelegate.swift */; };
 		16EA205022AF8AB40006FB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA204F22AF8AB40006FB9C /* Assets.xcassets */; };
 		16EA205322AF8AB40006FB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EA205122AF8AB40006FB9C /* Main.storyboard */; };
 		16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205B22AF8FB90006FB9C /* ConfigManager.swift */; };
+		16F7467422E994A300480A62 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F7467322E994A300480A62 /* FinderSync.swift */; };
+		16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 16F7467122E994A300480A62 /* uPicFinderExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		68BBB3EF25C92DCAE216A4DF /* AliyunUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB5C4550545707614BE4D /* AliyunUploader.swift */; };
 		68BBB6E5FFBB050D05107413 /* AliyunHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB8CF2838A67CA1AD438F /* AliyunHostConfig.swift */; };
 		68BBB99780D7F4586458D4F5 /* AliyunUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB2F5FAEEFFF55935F022 /* AliyunUtil.swift */; };
 		E3FDF6B8A725C97871C6B2D0 /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		16F7467722E994A300480A62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16A6DC4C22AA375700813706 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16F7467022E994A300480A62;
+			remoteInfo = uPicFinderExtension;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		16EA205922AF8C680006FB9C /* CopyFiles */ = {
@@ -104,6 +122,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		16F7467D22E994A300480A62 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +142,7 @@
 		16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		16068C7B22AECD9F004D39B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
+		1618D1A722E99E2100831601 /* UploadNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadNotifier.swift; sourceTree = "<group>"; };
 		161C3BE022C4831B0092114F /* CustomUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUploader.swift; sourceTree = "<group>"; };
 		161C3BE222C483560092114F /* CustomHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHostConfig.swift; sourceTree = "<group>"; };
 		161C3BE422C4870B0092114F /* CustomConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfigView.swift; sourceTree = "<group>"; };
@@ -124,7 +154,6 @@
 		1623612422AB951E00E4025C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1623612622AB951F00E4025C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1626E8C622AAB6B1006DCF0F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		162E5D4722C096FD001FAA46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextFieldCell+VerticallyCentered.swift"; sourceTree = "<group>"; };
 		163632F022B274B400805E7F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		163632F222B2751D00805E7F /* BoolType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolType.swift; sourceTree = "<group>"; };
@@ -190,6 +219,8 @@
 		16A6DC5E22AA375800813706 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16A6DC6022AA375800813706 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16A6DC6122AA375800813706 /* uPic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPic.entitlements; sourceTree = "<group>"; };
+		16BDDDFE22EA96AE0080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		16BDDE0222EAA2920080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16C4089E22AA6A7700AF2F0E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		16EA204922AF8AB30006FB9C /* uPicHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPicHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EA204B22AF8AB30006FB9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +230,10 @@
 		16EA205522AF8AB40006FB9C /* uPicHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPicHelper.entitlements; sourceTree = "<group>"; };
 		16EA205B22AF8FB90006FB9C /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
 		16EC9A0222ABBBB4001B6C89 /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16F7467122E994A300480A62 /* uPicFinderExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicFinderExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		16F7467322E994A300480A62 /* FinderSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSync.swift; sourceTree = "<group>"; };
+		16F7467522E994A300480A62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16F7467622E994A300480A62 /* uPicFinderExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPicFinderExtension.entitlements; sourceTree = "<group>"; };
 		68BBB2F5FAEEFFF55935F022 /* AliyunUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AliyunUtil.swift; sourceTree = "<group>"; };
 		68BBB5C4550545707614BE4D /* AliyunUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AliyunUploader.swift; sourceTree = "<group>"; };
 		68BBB8CF2838A67CA1AD438F /* AliyunHostConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AliyunHostConfig.swift; sourceTree = "<group>"; };
@@ -217,6 +252,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		16EA204622AF8AB30006FB9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16F7466E22E994A300480A62 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -332,6 +374,7 @@
 		164C39FE22B2AA5E003ADE39 /* Notifier */ = {
 			isa = PBXGroup;
 			children = (
+				1618D1A722E99E2100831601 /* UploadNotifier.swift */,
 				166B4A5622B9D118001288ED /* PreferencesNotifier.swift */,
 				164C39FF22B2AA6C003ADE39 /* Notifier.swift */,
 				164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */,
@@ -449,17 +492,19 @@
 				16A6DC5622AA375700813706 /* uPic */,
 				03D8014AD88C83CB6D88E879 /* Pods */,
 				16EA204A22AF8AB30006FB9C /* uPicHelper */,
+				16F7467222E994A300480A62 /* uPicFinderExtension */,
 				F517F004DFA2ACE018535745 /* Frameworks */,
 				16EC9A0222ABBBB4001B6C89 /* uPic.app */,
 				16EA204922AF8AB30006FB9C /* uPicHelper.app */,
+				16F7467122E994A300480A62 /* uPicFinderExtension.appex */,
 			);
 			sourceTree = "<group>";
 		};
 		16A6DC5622AA375700813706 /* uPic */ = {
 			isa = PBXGroup;
 			children = (
+				16BDDE0222EAA2920080E467 /* Assets.xcassets */,
 				16A6DC5722AA375700813706 /* AppDelegate.swift */,
-				162E5D4722C096FD001FAA46 /* Assets.xcassets */,
 				163632ED22B2745A00805E7F /* Basic */,
 				1675516522AC165600D3EB6F /* Extensions */,
 				163F241E22B12E6700F81D03 /* General */,
@@ -504,6 +549,17 @@
 			path = uPicHelper;
 			sourceTree = "<group>";
 		};
+		16F7467222E994A300480A62 /* uPicFinderExtension */ = {
+			isa = PBXGroup;
+			children = (
+				16F7467322E994A300480A62 /* FinderSync.swift */,
+				16F7467522E994A300480A62 /* Info.plist */,
+				16F7467622E994A300480A62 /* uPicFinderExtension.entitlements */,
+				16BDDDFE22EA96AE0080E467 /* Assets.xcassets */,
+			);
+			path = uPicFinderExtension;
+			sourceTree = "<group>";
+		};
 		68BBB87F2C3AEBDF2C914131 /* Aliyun */ = {
 			isa = PBXGroup;
 			children = (
@@ -537,10 +593,12 @@
 				16A6DC5222AA375700813706 /* Resources */,
 				8B11FF3895E709812B771F7E /* [CP] Embed Pods Frameworks */,
 				16EA205922AF8C680006FB9C /* CopyFiles */,
+				16F7467D22E994A300480A62 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				16F7467822E994A300480A62 /* PBXTargetDependency */,
 			);
 			name = uPic;
 			productName = uPic;
@@ -564,13 +622,30 @@
 			productReference = 16EA204922AF8AB30006FB9C /* uPicHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
+		16F7467022E994A300480A62 /* uPicFinderExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16F7467A22E994A300480A62 /* Build configuration list for PBXNativeTarget "uPicFinderExtension" */;
+			buildPhases = (
+				16F7466D22E994A300480A62 /* Sources */,
+				16F7466E22E994A300480A62 /* Frameworks */,
+				16F7466F22E994A300480A62 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = uPicFinderExtension;
+			productName = uPicFinderExtension;
+			productReference = 16F7467122E994A300480A62 /* uPicFinderExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		16A6DC4C22AA375700813706 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Svend Jin";
 				TargetAttributes = {
@@ -578,6 +653,9 @@
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1020;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
 							com.apple.Sandbox = {
 								enabled = 0;
 							};
@@ -588,6 +666,17 @@
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 0;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					16F7467022E994A300480A62 = {
+						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
 							};
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -612,6 +701,7 @@
 			targets = (
 				16A6DC5322AA375700813706 /* uPic */,
 				16EA204822AF8AB30006FB9C /* uPicHelper */,
+				16F7467022E994A300480A62 /* uPicFinderExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -625,7 +715,7 @@
 				16C4089F22AA6A7700AF2F0E /* Podfile in Resources */,
 				1623611B22AB935300E4025C /* InfoPlist.strings in Resources */,
 				169F073B22AF53DE008E8525 /* Preferences.storyboard in Resources */,
-				162E5D4822C096FD001FAA46 /* Assets.xcassets in Resources */,
+				16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */,
 				16A6DC5F22AA375800813706 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,6 +726,16 @@
 			files = (
 				16EA205022AF8AB40006FB9C /* Assets.xcassets in Resources */,
 				16EA205322AF8AB40006FB9C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16F7466F22E994A300480A62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1618D1A622E99BB800831601 /* Preferences.storyboard in Resources */,
+				16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */,
+				1618D1A522E99BAA00831601 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +809,7 @@
 				1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */,
 				163632F322B2751D00805E7F /* BoolType.swift in Sources */,
 				1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */,
+				1618D1A822E99E2100831601 /* UploadNotifier.swift in Sources */,
 				161C3BE722C49BE90092114F /* RequestMethods.swift in Sources */,
 				163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */,
 				164745EB22B618D700F9575D /* HostPreferencesViewController.swift in Sources */,
@@ -772,7 +873,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		16F7466D22E994A300480A62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1618D1AA22E99EA400831601 /* UploadNotifier.swift in Sources */,
+				1618D1A922E99E9B00831601 /* Notifier.swift in Sources */,
+				16F7467422E994A300480A62 /* FinderSync.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		16F7467822E994A300480A62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16F7467022E994A300480A62 /* uPicFinderExtension */;
+			targetProxy = 16F7467722E994A300480A62 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1623611D22AB935300E4025C /* InfoPlist.strings */ = {
@@ -945,6 +1064,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7D9210ACA587ED2CA41A506A /* Pods-uPic.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
@@ -969,6 +1089,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EF6E6B1F322C29A8668C8B00 /* Pods-uPic.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
@@ -1028,6 +1149,50 @@
 			};
 			name = Release;
 		};
+		16F7467B22E994A300480A62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
+				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.uPicFinderExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		16F7467C22E994A300480A62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
+				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.uPicFinderExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1054,6 +1219,15 @@
 			buildConfigurations = (
 				16EA205722AF8AB40006FB9C /* Debug */,
 				16EA205822AF8AB40006FB9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16F7467A22E994A300480A62 /* Build configuration list for PBXNativeTarget "uPicFinderExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16F7467B22E994A300480A62 /* Debug */,
+				16F7467C22E994A300480A62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

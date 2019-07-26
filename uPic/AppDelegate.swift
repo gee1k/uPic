@@ -9,6 +9,8 @@
 import Cocoa
 import SwiftyJSON
 import Alamofire
+import AppKit
+import ScriptingBridge
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -42,10 +44,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         indicator.isHidden = true
 
         setupStatusBar()
+
+        // 添加 Finder 右键文件上传监听
+        UploadNotifier.addObserver(observer: self, selector: #selector(uploadFilesFromFinderMenu), notification: .uploadFiles)
+        
+//        DistributedNotificationCenter.default()
+//            .addObserver(self, selector: #selector(uploadFilesFromFinderMenu), name: NSNotification.Name(rawValue: "uploadByFinder"), object: nil)
     }
 
     func applicationWillTerminate(_ notification: Notification) {
         NSStatusBar.system.removeStatusItem(statusItem)
+        // 移除 Finder 右键文件上传监听
+        UploadNotifier.removeObserver(observer: self, notification: .uploadFiles)
     }
 
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
@@ -60,6 +70,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             ConfigManager.shared.launchAtLogin = BoolType._false
             ConfigManager.shared.launchAtLogin = BoolType._true
         }
+    }
+    
+    // 在 Finder 中选中文件右键上传时调用的方法
+    @objc func uploadFilesFromFinderMenu(notification: Notification) {
+
+        let pathStr = notification.object as? String ?? ""
+        let paths = pathStr.split(separator: Character("\n"))
+        
+        let fileExtensions = BaseUploader.getFileExtensions()
+        var urls = [URL]()
+        
+        for path in paths {
+            let sPath = String(path)
+            if (fileExtensions.count == 0 || fileExtensions.contains(sPath.pathExtension.lowercased())) {
+                let url = URL(fileURLWithPath: sPath)
+                urls.append(url)
+            }
+        }
+        
+        if (urls.count == 0) {
+            NotificationExt.sendUploadErrorNotification(body: NSLocalizedString("file-format-is-not-supported", comment: "file-format-is-not-supported"))
+            return
+        }
+        
+        self.uploadFiles(urls)
     }
 
 }
@@ -77,9 +112,20 @@ extension AppDelegate {
                                      width: 16,
                                      height: 16)
             button.addSubview(indicator)
+
+            // 注册拖拽文件格式支持。使其支持浏览器拖拽的URL、tiff。以及Safari 有些情况(例如，百度搜图，在默认搜索列表。不进入详情时)下拖拽的时候获取到的是图片URL字符串
+            if #available(OSX 10.13, *) {
+                button.window?.registerForDraggedTypes([.URL, .fileURL, .string])
+            } else {
+                // Fallback on earlier versions
+                button.window?.registerForDraggedTypes([.png, .tiff, .pdf, .string])
+            }
+
         }
 
         statusItem.menu = statusItemMenu
+
+
     }
 
     func setStatusBarIcon(isIndicator: Bool = false) {
@@ -145,11 +191,11 @@ extension AppDelegate {
             NotificationExt.sendUplodingNotification()
             return
         }
-        
+
         if let filenames = NSPasteboard.general.propertyList(forType: NSPasteboard.PasteboardType("NSFilenamesPboardType")) as? [String] {
             let fileExtensions = BaseUploader.getFileExtensions()
             var urls = [URL]()
-            
+
             for path in filenames {
                 if (fileExtensions.count == 0 || fileExtensions.contains(path.pathExtension.lowercased())) {
                     urls.append(URL(fileURLWithPath: path))
@@ -160,12 +206,17 @@ extension AppDelegate {
             } else {
                 NotificationExt.sendUploadErrorNotification(body: NSLocalizedString("file-format-is-not-supported", comment: "文件格式不支持"))
             }
-            
+
         } else if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.png) {
             let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
             self.uploadFiles([imgData!])
+        } else if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.tiff) {
+            let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.tiff)
+            if let jpg = imgData?.convertImageDataToJpg() {
+                self.uploadFiles([jpg])
+            }
         }
-        
+
     }
 
     @objc func screenshotAndUpload() {
@@ -202,7 +253,7 @@ extension AppDelegate {
             return
         }
 
-        NotificationExt.sendStartUploadNotification()
+//        NotificationExt.sendStartUploadNotification()
         self.uploding = true
         self.tickFileToUpload()
     }
@@ -237,7 +288,7 @@ extension AppDelegate {
         self.resultUrls.append(url)
         self.tickFileToUpload()
     }
-    
+
     ///
     /// 上传失败时被调用
     ///
@@ -258,7 +309,7 @@ extension AppDelegate {
         self.setStatusBarIcon(isIndicator: true)
         self.indicator.doubleValue = 0.0
     }
-    
+
     func copyUrl(url: String) -> String {
         var outputUrl = ""
         let outputFormat = Defaults[.ouputFormat]
@@ -271,20 +322,20 @@ extension AppDelegate {
             break
         default:
             outputUrl = url
-            
+
         }
-        
+
         NSPasteboard.general.clearContents()
         NSPasteboard.general.declareTypes([.string], owner: nil)
         NSPasteboard.general.setString(outputUrl, forType: .string)
-        
+
         return outputUrl
     }
-    
+
     func copyUrls(urls: [String]) -> String {
         var outputUrls = [String]()
         let outputFormat = Defaults[.ouputFormat]
-        
+
         for url in urls {
             var outputUrl = ""
             switch outputFormat {
@@ -296,17 +347,17 @@ extension AppDelegate {
                 break
             default:
                 outputUrl = url
-                
+
             }
             outputUrls.append(outputUrl)
         }
-        
+
         let outputStr = outputUrls.joined(separator: "\n")
-        
+
         NSPasteboard.general.clearContents()
         NSPasteboard.general.declareTypes([.string], owner: nil)
         NSPasteboard.general.setString(outputStr, forType: .string)
-        
+
         return outputStr
     }
 }
@@ -328,11 +379,15 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
         if sender.isValid {
             self.setStatusBarIcon()
-            var urls = [URL]()
-            for url in sender.draggedFileURLs {
-                urls.append(url.absoluteURL!)
+            if sender.draggedFileURLs.count > 0 {
+                var urls = [URL]()
+                for url in sender.draggedFileURLs {
+                    urls.append(url.absoluteURL!)
+                }
+                self.uploadFiles(urls)
+            } else if let imageData = sender.draggedFromBrowserData {
+                self.uploadFiles([imageData])
             }
-            self.uploadFiles(urls)
             return true
         }
         return false
@@ -343,6 +398,7 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
 
     func draggingExited(_ sender: NSDraggingInfo?) {
+        self.setStatusBarIcon()
     }
 
     func draggingEnded(_ sender: NSDraggingInfo) {

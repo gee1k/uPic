@@ -101,6 +101,7 @@
 
 "alert.unsave_description" = "Continuing will lose unsaved data. Do you want to continue?";
 
+"upload-by-uPic" = "upload by uPic";
 
 /* host -- start */
 "host.field.region" = "Region";
@@ -151,6 +152,7 @@
 "host.type.6" = "Github";
 "host.type.7" = "Gitee";
 "host.type.8" = "Weibo";
+"host.type.9" = "Tencent Cloud Dev";
 
 /* HostSaveKey */
 "save-key.filename" = "filename";

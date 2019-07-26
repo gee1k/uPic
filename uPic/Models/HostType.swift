@@ -28,5 +28,11 @@ public enum HostType: Int, CaseIterable, Codable {
             }
         }
     }
+    
+    public var disabled: Bool {
+        get {
+            return false
+        }
+    }
 
 }
