@@ -110,7 +110,7 @@
 | 赞助方式 |  | 二维码 |
 | --- | --- | --- |
 | **支付宝** | | ![](./screenshot/qrcode/alipay-mini.jpeg) |
-| **微信** | | ![](./screenshot/qrcode/wechat-mini.jpeg) |
+| **微信** | | ![](./screenshot/qrcode/wechat-zs.JPG) |
 
 
 ## License
