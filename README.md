@@ -107,10 +107,9 @@
 
 如果你喜欢 uPic ，欢迎给我打赏
 
-| 赞助方式 |  | 二维码 |
-| --- | --- | --- |
-| **支付宝** | | ![](./screenshot/qrcode/alipay-mini.jpeg) |
-| **微信** | | ![](./screenshot/qrcode/wechat-zs.JPG) |
+| **支付宝** | **微信** |
+| --- | --- |
+| ![](./screenshot/qrcode/alipay-mini.jpeg) | ![](./screenshot/qrcode/wechat-zs.JPG) |
 
 
 ## License
