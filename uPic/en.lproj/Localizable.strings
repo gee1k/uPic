@@ -47,7 +47,6 @@
 /* 图床配置存在问题，请检查 */
 "bad-host-config" = "There is a problem with the map bed configuration, please check!";
 
-
 /* 清除历史上传成功通知标题 */
 "clear.notification.success.title" = "clear history successfully";
 
@@ -101,7 +100,7 @@
 
 "alert.unsave_description" = "Continuing will lose unsaved data. Do you want to continue?";
 
-"upload-by-uPic" = "upload by uPic";
+"upload-by-uPic" = "Upload by uPic";
 
 /* host -- start */
 "host.field.region" = "Region";
