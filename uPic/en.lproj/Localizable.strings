@@ -151,7 +151,7 @@
 "host.type.6" = "Github";
 "host.type.7" = "Gitee";
 "host.type.8" = "Weibo";
-"host.type.9" = "Tencent Cloud Dev";
+"host.type.9" = "Amazon S3";
 
 /* HostSaveKey */
 "save-key.filename" = "filename";

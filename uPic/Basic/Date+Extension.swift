@@ -34,9 +34,12 @@ extension Date {
         return formatter.string(from: self)
     }
 
-    func format(dateFormat: String? = "yyyy-MM-dd HH:mm:ss") -> String {
+    func format(dateFormat: String? = "yyyy-MM-dd HH:mm:ss", timeZone: TimeZone? = nil) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
+        if timeZone != nil {
+            formatter.timeZone = timeZone!
+        }
         return formatter.string(from: self)
     }
     
