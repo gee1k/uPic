@@ -25,6 +25,13 @@ class AboutPreferencesViewController: PreferencesViewController {
         }
         NSWorkspace.shared.open(url)
     }
+    
+    @IBAction func twitterButtonClicked(_ sender: NSButton) {
+        guard let url = URL(string: "https://twitter.com/geee1k") else {
+            return
+        }
+        NSWorkspace.shared.open(url)
+    }
 
     @IBAction func homePageButtonClicked(_ sender: NSButton) {
         guard let url = URL(string: "https://svend.cc") else {
@@ -40,14 +47,16 @@ class AboutPreferencesViewController: PreferencesViewController {
         NSWorkspace.shared.open(url)
     }
     
+    @IBAction func paypalButtonClicked(_ sender: NSButton) {
+        (NSApplication.shared.delegate as? AppDelegate)?.sponsorByPaypal()
+    }
+    
     @IBAction func alipayButtonClicked(_ sender: NSButton) {
-        guard let url = URL(string: "https://github.com/gee1k/uPic/blob/master/screenshot/qrcode/alipay-mini.jpeg") else { return }
-        NSWorkspace.shared.open(url)
+        (NSApplication.shared.delegate as? AppDelegate)?.sponsorByAlipay()
     }
     
     @IBAction func weChatPayButtonClicked(_ sender: NSButton) {
-        guard let url = URL(string: "https://github.com/gee1k/uPic/blob/master/screenshot/qrcode/wechat-mini.jpeg") else { return }
-        NSWorkspace.shared.open(url)
+        (NSApplication.shared.delegate as? AppDelegate)?.sponsorByWechatPay()
     }
     
 }

@@ -1,8 +1,8 @@
 //
-//  AliyunHostConfig.swift
+//  AmazonS3HostConfig.swift
 //  uPic
 //
-//  Created by Svend Jin on 2019/6/23.
+//  Created by Svend Jin on 2019/7/28.
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 @objcMembers
-class AliyunHostConfig: HostConfig {
+class AmazonS3HostConfig: HostConfig {
     dynamic var region: String!
     dynamic var bucket: String!
     dynamic var accessKey: String!
@@ -18,7 +18,7 @@ class AliyunHostConfig: HostConfig {
     dynamic var domain: String!
     dynamic var folder: String?
     dynamic var saveKey: String! = HostSaveKey.filename.rawValue
-    
+
     override func displayName(key: String) -> String {
         switch key {
         case "region":
@@ -39,7 +39,7 @@ class AliyunHostConfig: HostConfig {
             return ""
         }
     }
-    
+
     override func serialize() -> String {
         var dict = Dictionary<String, Any>()
         dict["region"] = self.region
@@ -49,12 +49,12 @@ class AliyunHostConfig: HostConfig {
         dict["domain"] = self.domain
         dict["folder"] = self.folder
         dict["saveKey"] = self.saveKey
-        
+
         return JSON(dict).rawString()!
     }
-    
-    static func deserialize(str: String?) -> AliyunHostConfig? {
-        let config = AliyunHostConfig()
+
+    static func deserialize(str: String?) -> AmazonS3HostConfig? {
+        let config = AmazonS3HostConfig()
         guard let str = str else {
             return config
         }

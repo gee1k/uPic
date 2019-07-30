@@ -52,7 +52,7 @@ public enum AliyunRegion: String, CaseIterable {
     case eu_central_1
     case eu_west_1
     case me_east_1
-
+    
     public var name: String {
         get {
             guard let regionDict = AliyunRegionDict.allRegion[self.rawValue], let cname = regionDict["name"] else {

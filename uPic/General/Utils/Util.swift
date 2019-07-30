@@ -13,6 +13,20 @@ typealias Action = () -> ()
 typealias CancelAction = (_ cancel: Bool ) -> ()
 
 class Util {
+    static func getFileData(filePath: String) -> Data? {
+        guard let fileHandle = FileHandle(forReadingAtPath: filePath) else {
+            return nil
+        }
+        return fileHandle.readDataToEndOfFile()
+    }
+    
+    static func getFileData(fileUrl: URL) -> Data? {
+        guard let fileHandle = try? FileHandle(forReadingFrom: fileUrl) else {
+            return nil
+        }
+        return fileHandle.readDataToEndOfFile()
+    }
+    
     static func getFileMd5(filePath: String) -> String? {
         guard let fileHandle = FileHandle(forReadingAtPath: filePath) else {
             return nil
@@ -27,7 +41,6 @@ class Util {
         }
         let data = fileHandle.readDataToEndOfFile()
         return data.toMd5()
-        
     }
     
     //根据后缀获取对应的Mime-Type
