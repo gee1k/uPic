@@ -982,7 +982,7 @@ Gw
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iaD-2F-byg">
-                                                <rect key="frame" x="62" y="14" width="223" height="22"/>
+                                                <rect key="frame" x="62" y="14" width="180" height="22"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="访问域名：https://" drawsBackground="YES" id="b48-7x-KE9">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -990,7 +990,7 @@ Gw
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g3J-J7-1Yp">
-                                                <rect key="frame" x="285" y="17" width="8" height="17"/>
+                                                <rect key="frame" x="242" y="17" width="8" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="4" id="tSW-bI-5hb"/>
                                                 </constraints>
@@ -1001,9 +1001,9 @@ Gw
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yYa-Ay-36r">
-                                                <rect key="frame" x="293" y="14" width="150" height="22"/>
+                                                <rect key="frame" x="250" y="14" width="120" height="22"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="150" id="0DC-VS-j2w"/>
+                                                    <constraint firstAttribute="width" constant="120" id="0DC-VS-j2w"/>
                                                 </constraints>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="文件夹：uploads/test" drawsBackground="YES" id="FDM-4e-Rn3">
                                                     <font key="font" metaFont="system"/>
@@ -1012,7 +1012,7 @@ Gw
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rUp-El-9TO">
-                                                <rect key="frame" x="443" y="17" width="8" height="17"/>
+                                                <rect key="frame" x="370" y="17" width="8" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="4" id="3TQ-5U-HOK"/>
                                                 </constraints>
@@ -1023,9 +1023,9 @@ Gw
                                                 </textFieldCell>
                                             </textField>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PdG-sA-v98">
-                                                <rect key="frame" x="449" y="12" width="134" height="25"/>
+                                                <rect key="frame" x="376" y="12" width="125" height="25"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="dh8-pB-vhu"/>
+                                                    <constraint firstAttribute="width" constant="120" id="dh8-pB-vhu"/>
                                                 </constraints>
                                                 <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="u67-Zl-pSe">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1036,6 +1036,17 @@ Gw
                                                     <action selector="onSaveKeyChanged:" target="vYP-vW-WfI" id="b8A-Dk-zqI"/>
                                                 </connections>
                                             </popUpButton>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WzS-TC-nU0">
+                                                <rect key="frame" x="500" y="14" width="80" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="aEq-bj-D1f"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="网址后缀" drawsBackground="YES" id="IG0-Ld-DT5">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="580" id="9D5-xf-JHT"/>
@@ -1048,8 +1059,10 @@ Gw
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -1147,6 +1160,7 @@ Gw
                         <outlet property="okButton" destination="Cqv-7d-RfY" id="ljM-aM-JSy"/>
                         <outlet property="previewLabel" destination="Bke-Yy-Wlx" id="bTJ-yX-6bI"/>
                         <outlet property="saveKeyPopUpButton" destination="PdG-sA-v98" id="4hf-zd-C95"/>
+                        <outlet property="suffixTextField" destination="WzS-TC-nU0" id="Gbe-t6-K3c"/>
                     </connections>
                 </viewController>
                 <customObject id="UnO-Ic-3Ip" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

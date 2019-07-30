@@ -14,6 +14,7 @@ class ConfigSheetController: NSViewController {
     @IBOutlet weak var folderTextField: NSTextField!
     @IBOutlet weak var folderSeparator: NSTextField!
     @IBOutlet weak var saveKeyPopUpButton: NSPopUpButton!
+    @IBOutlet weak var suffixTextField: NSTextField!
     @IBOutlet weak var previewLabel: NSTextField!
     @IBOutlet weak var cancelButton: NSButton!
     @IBOutlet weak var okButton: NSButton!
@@ -28,6 +29,11 @@ class ConfigSheetController: NSViewController {
         okButton.highlight(true)
         domainTextField.delegate = self
         folderTextField.delegate = self
+        
+        // folderTextField.isHidden = true
+        folderTextField.isHidden = true
+        folderSeparator.isHidden = true
+        suffixTextField.isHidden = true
     }
 
     @IBAction func onSaveKeyChanged(_ sender: NSPopUpButton) {
@@ -35,7 +41,7 @@ class ConfigSheetController: NSViewController {
     }
 
     @IBAction func okBtnClicked(_ sender: Any) {
-        let userInfo: [String: Any] = ["domain": self.domainTextField.stringValue, "folder": self.folderTextField.stringValue, "saveKey": saveKeyPopUpButton.selectedItem?.identifier?.rawValue ?? HostSaveKey.dateFilename.rawValue]
+        let userInfo: [String: Any] = ["domain": self.domainTextField.stringValue, "folder": self.folderTextField.stringValue, "saveKey": saveKeyPopUpButton.selectedItem?.identifier?.rawValue ?? HostSaveKey.dateFilename.rawValue, "suffix": self.suffixTextField.stringValue]
         PreferencesNotifier.postNotification(.saveHostSettings, object: "ConfigSheetController", userInfo: userInfo)
 
         self.dismiss(sender)
@@ -72,7 +78,7 @@ class ConfigSheetController: NSViewController {
         } else {
             text += "/\(HostSaveKey.random.getFileName(filename: testFilename))"
         }
-        previewLabel.stringValue = "\(text).jpg"
+        previewLabel.stringValue = "\(text).jpg\(suffixTextField.stringValue)"
     }
 
     func setData(userInfo: [String: AnyObject]) {
@@ -85,9 +91,14 @@ class ConfigSheetController: NSViewController {
         if let folder = userInfo["folder"] {
             let folder = folder as! String
             folderTextField.stringValue = folder
-        } else {
-            folderTextField.isHidden = true
-            folderSeparator.isHidden = true
+            folderTextField.isHidden = false
+            folderSeparator.isHidden = false
+        }
+        
+        if let suffix = userInfo["suffix"] {
+            let suffix = suffix as! String
+            suffixTextField.stringValue = suffix
+            suffixTextField.isHidden = false
         }
 
 

@@ -18,6 +18,7 @@ class AliyunHostConfig: HostConfig {
     dynamic var domain: String!
     dynamic var folder: String?
     dynamic var saveKey: String! = HostSaveKey.filename.rawValue
+    dynamic var suffix: String?
     
     override func displayName(key: String) -> String {
         switch key {
@@ -35,6 +36,8 @@ class AliyunHostConfig: HostConfig {
             return NSLocalizedString("host.field.folder", comment: "folder")
         case "saveKey":
             return NSLocalizedString("host.field.saveKey", comment: "fileName")
+        case "suffix":
+            return NSLocalizedString("host.field.suffix", comment: "suffix")
         default:
             return ""
         }
@@ -49,6 +52,7 @@ class AliyunHostConfig: HostConfig {
         dict["domain"] = self.domain
         dict["folder"] = self.folder
         dict["saveKey"] = self.saveKey
+        dict["suffix"] = self.suffix
         
         return JSON(dict).rawString()!
     }
@@ -67,6 +71,7 @@ class AliyunHostConfig: HostConfig {
         config.domain = json["domain"].stringValue
         config.folder = json["folder"].stringValue
         config.saveKey = json["saveKey"].stringValue
+        config.suffix = json["suffix"].stringValue
         return config
     }
 }

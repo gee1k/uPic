@@ -126,6 +126,13 @@ class HostConfig: NSObject, Codable {
         config?.observerValues()
         return config
     }
+    
+    func containsKey(key: String) -> Bool {
+        let morror = Mirror.init(reflecting: self)
+        return morror.children.contains(where: {(label, _ ) -> Bool in
+            return label == key
+        })
+    }
 
 }
 

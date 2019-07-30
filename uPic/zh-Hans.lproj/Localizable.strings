@@ -113,6 +113,7 @@
 "host.field.domain" = "域名";
 "host.field.folder" = "文件夹";
 "host.field.saveKey" = "文件名";
+"host.field.suffix" = "网址后缀";
 "host.field.url" = "API 地址";
 "host.field.method" = "请求方式";
 "host.field.field" = "文件字段名";

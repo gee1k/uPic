@@ -114,6 +114,7 @@
 "host.field.domain" = "Domain";
 "host.field.folder" = "Folder";
 "host.field.saveKey" = "File Name";
+"host.field.suffix" = "URL suffix";
 "host.field.url" = "API URL";
 "host.field.method" = "Method";
 "host.field.field" = "File Field";

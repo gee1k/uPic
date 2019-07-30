@@ -20,6 +20,8 @@
 /* Class = "NSTextFieldCell"; placeholderString = "文件夹：uploads/test"; ObjectID = "FDM-4e-Rn3"; */
 "FDM-4e-Rn3.placeholderString" = "folder: uploads/test";
 
+"IG0-Ld-DT5.placeholderString" = "URL suffix";
+
 /* Class = "NSTextFieldCell"; title = "/"; ObjectID = "FO4-fa-ZC2"; */
 "FO4-fa-ZC2.title" = "/";
 

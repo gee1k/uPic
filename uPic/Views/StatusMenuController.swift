@@ -139,8 +139,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             historyMenuItem.submenu?.addItem(menuItem)
             historyMenuItem.submenu?.delegate = self
             
+            let pathExtension = urlStr.pathExtension.lowercased()
             
-            let canPreview = previewTypes.contains(urlStr.pathExtension.lowercased())
+            let canPreview = previewTypes.contains(where: {type -> Bool in
+                return pathExtension.starts(with: type)
+            })
             if canPreview {
                 self.createPreviewImage(urlStr: urlStr)
             }

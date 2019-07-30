@@ -125,7 +125,12 @@ class ConfigView: NSView {
     
     @objc func openConfigSheet(_ sender: NSButton) {
         if let configSheetController = configSheetController {
-            let userInfo: [String: Any] = ["domain": self.data?.value(forKey: "domain") ?? "", "folder": self.data?.value(forKey: "folder") ?? "", "saveKey": self.data?.value(forKey: "saveKey") ?? HostSaveKey.dateFilename.rawValue]
+            var userInfo: [String: Any] = ["domain": self.data?.value(forKey: "domain") ?? "", "folder": self.data?.value(forKey: "folder") ?? "", "saveKey": self.data?.value(forKey: "saveKey") ?? HostSaveKey.dateFilename.rawValue]
+            
+            if self.data?.containsKey(key: "suffix") ?? false {
+                userInfo["suffix"] = self.data?.value(forKey: "suffix") ?? ""
+            }
+            
             self.window?.contentViewController?.presentAsSheet(configSheetController)
             configSheetController.setData(userInfo: userInfo as [String: AnyObject])
             self.addObserver()
@@ -146,6 +151,11 @@ class ConfigView: NSView {
         self.data?.setValue(domain, forKey: "domain")
         self.data?.setValue(folder, forKey: "folder")
         self.data?.setValue(saveKey, forKey: "saveKey")
+        
+        if self.data?.containsKey(key: "suffix") ?? false {
+            let suffix = userInfo["suffix"] as? String ?? ""
+            self.data?.setValue(suffix, forKey: "suffix")
+        }
         
         domainField?.stringValue = domain
     }

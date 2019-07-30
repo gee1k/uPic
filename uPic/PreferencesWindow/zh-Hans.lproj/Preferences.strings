@@ -66,6 +66,8 @@
 /* Class = "NSTextFieldCell"; placeholderString = "访问域名：https://"; ObjectID = "b48-7x-KE9"; */
 "b48-7x-KE9.placeholderString" = "访问域名：https://";
 
+"IG0-Ld-DT5.placeholderString" = "网址后缀";
+
 /* Class = "NSTextFieldCell"; title = "上传剪切板中的文件:"; ObjectID = "bvy-v3-hhf"; */
 "bvy-v3-hhf.title" = "上传剪切板中的文件:";
 

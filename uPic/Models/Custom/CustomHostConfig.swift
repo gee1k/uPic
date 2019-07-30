@@ -19,6 +19,7 @@ class CustomHostConfig: HostConfig {
     dynamic var resultPath: String?
     dynamic var domain: String?
     dynamic var saveKey: String? = HostSaveKey.filename.rawValue
+    dynamic var suffix: String?
 
     override func displayName(key: String) -> String {
         switch key {
@@ -38,6 +39,8 @@ class CustomHostConfig: HostConfig {
             return NSLocalizedString("host.field.domain", comment: "domain")
         case "saveKey":
             return NSLocalizedString("host.field.saveKey", comment: "fileName")
+        case "suffix":
+            return NSLocalizedString("host.field.suffix", comment: "suffix")
         default:
             return ""
         }
@@ -53,6 +56,7 @@ class CustomHostConfig: HostConfig {
         dict["resultPath"] = self.resultPath
         dict["domain"] = self.domain
         dict["saveKey"] = self.saveKey
+        dict["suffix"] = self.suffix
 
         return JSON(dict).rawString()!
     }
@@ -72,6 +76,7 @@ class CustomHostConfig: HostConfig {
         config.resultPath = json["resultPath"].stringValue
         config.domain = json["domain"].stringValue
         config.saveKey = json["saveKey"].stringValue
+        config.suffix = json["suffix"].stringValue
         return config
     }
 }
