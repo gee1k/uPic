@@ -90,6 +90,7 @@
 /* 菜单栏帮助 */
 "status-menu.help" = "Help";
 "status-menu.tutorial" = "Tutorial";
+"status-menu.sponsor" = "Sponsor";
 
 "alert.reset_preferences_title" = "Reset User Preferences?";
 "alert.reset_preferences_description" = "⚠️ Note that this will reset all user preferences";

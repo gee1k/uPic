@@ -25,6 +25,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var helpMenuItem: NSMenuItem!
     @IBOutlet weak var checkUpdateMenuItem: NSMenuItem!
     @IBOutlet weak var tutorialMenuItem: NSMenuItem!
+    @IBOutlet weak var sponsorMenuItem: NSMenuItem!
     @IBOutlet weak var quitMenuItem: NSMenuItem!
 
     override func awakeFromNib() {
@@ -41,6 +42,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         helpMenuItem.title = NSLocalizedString("status-menu.help", comment: "help")
         checkUpdateMenuItem.title = NSLocalizedString("status-menu.check-update", comment: "Check update")
         tutorialMenuItem.title = NSLocalizedString("status-menu.tutorial", comment: "Tutorial")
+        sponsorMenuItem.title = NSLocalizedString("status-menu.sponsor", comment: "Sponsor")
         quitMenuItem.title = NSLocalizedString("status-menu.quit", comment: "Quit")
 
         resetHostMenu()
@@ -82,7 +84,19 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         NSWorkspace.shared.open(url)
     }
-
+    
+    @IBAction func paypalMenuItemClicked(_ sender: Any) {
+        (NSApplication.shared.delegate as? AppDelegate)?.sponsorByPaypal()
+    }
+    
+    @IBAction func alipayMenuItemClicked(_ sender: Any) {
+        (NSApplication.shared.delegate as? AppDelegate)?.sponsorByAlipay()
+    }
+    
+    @IBAction func wechatPayMenuItemClicked(_ sender: Any) {
+        (NSApplication.shared.delegate as? AppDelegate)?.sponsorByWechatPay()
+    }
+    
     @IBAction func quitMenuItemClicked(_ sender: NSMenuItem) {
         NSApp.terminate(self)
     }

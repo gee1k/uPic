@@ -46,7 +46,7 @@ public class AmazonS3Region {
     }
     
     public static func endPoint(_ key: String) -> String {
-        if key == nil || key.isEmpty {
+        if key.isEmpty {
             return ""
         }
         return "s3.\(key).amazonaws.com"
