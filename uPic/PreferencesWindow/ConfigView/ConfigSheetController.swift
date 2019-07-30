@@ -29,6 +29,7 @@ class ConfigSheetController: NSViewController {
         okButton.highlight(true)
         domainTextField.delegate = self
         folderTextField.delegate = self
+        suffixTextField.delegate = self
         
         // folderTextField.isHidden = true
         folderTextField.isHidden = true
