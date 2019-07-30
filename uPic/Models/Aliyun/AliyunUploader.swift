@@ -11,35 +11,35 @@ import Alamofire
 import SwiftyXMLParser
 
 class AliyunUploader: BaseUploader {
-
+    
     static let shared = AliyunUploader()
     static let fileExtensions: [String] = []
-
+    
     func _upload(_ fileUrl: URL?, fileData: Data?) {
         guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {
             super.faild(errorMsg: NSLocalizedString("bad-host-config", comment: "bad host config"))
             return
         }
-
+        
         super.start()
-
+        
         let config = data as! AliyunHostConfig
-
-
+        
+        
         let bucket = config.bucket!
         let accessKey = config.accessKey!
         let secretKey = config.secretKey!
         let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
         let region = (config.region != nil ? AliyunRegion(rawValue: config.region!) : AliyunRegion.cn_hangzhou)!
-
+        
         let url = AliyunUtil.computeUrl(bucket: bucket, region: region)
-
+        
         if url.isEmpty {
             super.faild(errorMsg: NSLocalizedString("bad-host-config", comment: "bad host config"))
             return
         }
-
+        
         var fileName = ""
         var mimeType = ""
         if let fileUrl = fileUrl {
@@ -47,27 +47,28 @@ class AliyunUploader: BaseUploader {
             mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
         } else if let fileData = fileData {
             // MARK: 处理截图之类的图片，生成一个文件名
-            fileName = "\(hostSaveKey.getFileName()).png"
-            mimeType = Util.getMimeType(pathExtension: "png")
+            let fileType = fileData.contentType() ?? "png"
+            fileName = "\(hostSaveKey.getFileName()).\(fileType)"
+            mimeType = Util.getMimeType(pathExtension: fileType)
         } else {
             super.faild(errorMsg: "Invalid file")
             return
         }
-
+        
         var key = fileName
         if (config.folder != nil && config.folder!.count > 0) {
             key = "\(config.folder!)/\(key)"
         }
-
+        
         // MARK: 加密 policy
         var policyDict = Dictionary<String, Any>()
         let conditions = [["bucket": bucket], ["key": key]]
         policyDict["conditions"] = conditions
         let policy = AliyunUtil.getPolicy(policyDict: policyDict)
-
+        
         let signature = AliyunUtil.computeSignature(accessKeySecret: secretKey, encodePolicy: policy)
-
-
+        
+        
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
         
@@ -84,32 +85,32 @@ class AliyunUploader: BaseUploader {
                 multipartFormData.append(fileData!, withName: "file", fileName: fileName, mimeType: mimeType)
             }
         }
-
-
+        
+        
         AF.upload(multipartFormData: multipartFormDataGen, to: url, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
-        }.response(completionHandler: { response -> Void in
-            switch response.result {
-            case .success(_):
-                super.completed(url: "\(domain)/\(key)")
-            case .failure(let error):
-                var errorMessage = error.localizedDescription
-                if let data = response.data {
-                    let xml = XML.parse(data)
-                    if let errorMsg = xml.Error.Message.text {
-                        errorMessage = errorMsg
+            }.response(completionHandler: { response -> Void in
+                switch response.result {
+                case .success(_):
+                    super.completed(url: "\(domain)/\(key)\(config.suffix ?? "")")
+                case .failure(let error):
+                    var errorMessage = error.localizedDescription
+                    if let data = response.data {
+                        let xml = XML.parse(data)
+                        if let errorMsg = xml.Error.Message.text {
+                            errorMessage = errorMsg
+                        }
                     }
+                    super.faild(errorMsg: errorMessage)
                 }
-                super.faild(errorMsg: errorMessage)
-            }
-        })
-
+            })
+        
     }
-
+    
     func upload(_ fileUrl: URL) {
         self._upload(fileUrl, fileData: nil)
     }
-
+    
     func upload(_ fileData: Data) {
         self._upload(nil, fileData: fileData)
     }

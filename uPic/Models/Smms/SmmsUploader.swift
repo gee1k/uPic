@@ -50,9 +50,9 @@ class SmmsUploader: BaseUploader {
     }
 
     func upload(_ imgData: Data) {
+        
         self._upload({ (multipartFormData: MultipartFormData) in
-            multipartFormData.append(imgData, withName: "smfile", fileName: "smfile.png",
-                    mimeType: "image/png")
+            multipartFormData.append(imgData, withName: "smfile", fileName: "smfile.png")
         })
     }
 }

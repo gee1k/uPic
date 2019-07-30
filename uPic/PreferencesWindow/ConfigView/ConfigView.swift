@@ -41,6 +41,9 @@ class ConfigView: NSView {
         case .weibo:
             parentView.addSubview(WeiboConfigView(frame: parentView.frame, data: item.data))
             break
+        case .amazon_S3:
+            parentView.addSubview(AmazonS3ConfigView(frame: parentView.frame, data: item.data))
+            break
         default:
             let label = NSTextField(labelWithString: NSLocalizedString("anonymously-upload", comment: "匿名上传") + " \(item.name)")
             label.frame = NSRect(x: (parentView.frame.width - label.frame.width) / 2, y: parentView.frame.height - 50, width: label.frame.width, height: 20)
@@ -122,7 +125,12 @@ class ConfigView: NSView {
     
     @objc func openConfigSheet(_ sender: NSButton) {
         if let configSheetController = configSheetController {
-            let userInfo: [String: Any] = ["domain": self.data?.value(forKey: "domain") ?? "", "folder": self.data?.value(forKey: "folder") ?? "", "saveKey": self.data?.value(forKey: "saveKey") ?? HostSaveKey.dateFilename.rawValue]
+            var userInfo: [String: Any] = ["domain": self.data?.value(forKey: "domain") ?? "", "folder": self.data?.value(forKey: "folder") ?? "", "saveKey": self.data?.value(forKey: "saveKey") ?? HostSaveKey.dateFilename.rawValue]
+            
+            if self.data?.containsKey(key: "suffix") ?? false {
+                userInfo["suffix"] = self.data?.value(forKey: "suffix") ?? ""
+            }
+            
             self.window?.contentViewController?.presentAsSheet(configSheetController)
             configSheetController.setData(userInfo: userInfo as [String: AnyObject])
             self.addObserver()
@@ -143,6 +151,11 @@ class ConfigView: NSView {
         self.data?.setValue(domain, forKey: "domain")
         self.data?.setValue(folder, forKey: "folder")
         self.data?.setValue(saveKey, forKey: "saveKey")
+        
+        if self.data?.containsKey(key: "suffix") ?? false {
+            let suffix = userInfo["suffix"] as? String ?? ""
+            self.data?.setValue(suffix, forKey: "suffix")
+        }
         
         domainField?.stringValue = domain
     }

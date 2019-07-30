@@ -75,6 +75,8 @@ class HostConfig: NSObject, Codable {
             return GiteeHostConfig()
         case .weibo:
             return WeiboHostConfig()
+        case .amazon_S3:
+            return AmazonS3HostConfig()
         }
     }
 
@@ -116,10 +118,20 @@ class HostConfig: NSObject, Codable {
         case .weibo:
             config = WeiboHostConfig.deserialize(str: str)
             break
+        case .amazon_S3:
+            config = AmazonS3HostConfig.deserialize(str: str)
+            break
         }
 
         config?.observerValues()
         return config
+    }
+    
+    func containsKey(key: String) -> Bool {
+        let morror = Mirror.init(reflecting: self)
+        return morror.children.contains(where: {(label, _ ) -> Bool in
+            return label == key
+        })
     }
 
 }

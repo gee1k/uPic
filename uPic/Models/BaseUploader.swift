@@ -53,6 +53,9 @@ class BaseUploader {
         case .weibo:
             WeiboUploader.shared.upload(url)
             break
+        case .amazon_S3:
+            AmazonS3Uploader.shared.upload(url)
+            break
         }
     }
 
@@ -94,6 +97,9 @@ class BaseUploader {
         case .weibo:
             WeiboUploader.shared.upload(data)
             break
+        case .amazon_S3:
+            AmazonS3Uploader.shared.upload(data)
+            break
         }
     }
 
@@ -125,6 +131,8 @@ class BaseUploader {
             return GiteeUploader.fileExtensions
         case .weibo:
             return WeiboUploader.fileExtensions
+        case .amazon_S3:
+            return AmazonS3Uploader.fileExtensions
         }
     }
 

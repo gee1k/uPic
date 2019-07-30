@@ -52,7 +52,7 @@
 		1660FCBD22C11C7800372950 /* TencentRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660FCB622C11BA000372950 /* TencentRegion.swift */; };
 		1660FCBF22C1211900372950 /* TencentConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660FCBE22C1211800372950 /* TencentConfigView.swift */; };
 		1662AC7122C0AC53003AC924 /* AliyunConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662AC7022C0AC52003AC924 /* AliyunConfigView.swift */; };
-		1662AC7322C0BBF7003AC924 /* AliyunRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662AC7222C0BBF7003AC924 /* AliyunRegion.swift */; };
+		1662AC7322C0BBF7003AC924 /* AmazonS3Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662AC7222C0BBF7003AC924 /* AmazonS3Region.swift */; };
 		166B4A5322B9CB4D001288ED /* UpYunConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */; };
 		166B4A5522B9CFD7001288ED /* ConfigSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4A5422B9CFD7001288ED /* ConfigSheetController.swift */; };
 		166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4A5622B9D118001288ED /* PreferencesNotifier.swift */; };
@@ -61,6 +61,11 @@
 		1675516422AC102700D3EB6F /* NotificationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516322AC102700D3EB6F /* NotificationExt.swift */; };
 		1675516722ACAA0600D3EB6F /* UPicUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516622ACAA0600D3EB6F /* UPicUpdater.swift */; };
 		1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516922ACAA5900D3EB6F /* AppPublic.swift */; };
+		167D08A822ED88E7000F3BC0 /* AmazonS3ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D08A622ED88C2000F3BC0 /* AmazonS3ConfigView.swift */; };
+		167D08AA22ED8A27000F3BC0 /* AliyunHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D08A922ED8A27000F3BC0 /* AliyunHostConfig.swift */; };
+		167D08AC22ED8A4B000F3BC0 /* AliyunRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D08AB22ED8A4B000F3BC0 /* AliyunRegion.swift */; };
+		167D08AE22ED8A58000F3BC0 /* AliyunUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D08AD22ED8A58000F3BC0 /* AliyunUploader.swift */; };
+		167D08B022ED8A6C000F3BC0 /* AliyunUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D08AF22ED8A6C000F3BC0 /* AliyunUtil.swift */; };
 		167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D7F4822B4D2F500DD0A7A /* HostConfig.swift */; };
 		167D7F4B22B4D31300DD0A7A /* HostType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D7F4A22B4D31300DD0A7A /* HostType.swift */; };
 		167D7F4D22B4D43B00DD0A7A /* HostSaveKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D7F4C22B4D43B00DD0A7A /* HostSaveKey.swift */; };
@@ -95,9 +100,9 @@
 		16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205B22AF8FB90006FB9C /* ConfigManager.swift */; };
 		16F7467422E994A300480A62 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F7467322E994A300480A62 /* FinderSync.swift */; };
 		16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 16F7467122E994A300480A62 /* uPicFinderExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		68BBB3EF25C92DCAE216A4DF /* AliyunUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB5C4550545707614BE4D /* AliyunUploader.swift */; };
-		68BBB6E5FFBB050D05107413 /* AliyunHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB8CF2838A67CA1AD438F /* AliyunHostConfig.swift */; };
-		68BBB99780D7F4586458D4F5 /* AliyunUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB2F5FAEEFFF55935F022 /* AliyunUtil.swift */; };
+		68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */; };
+		68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */; };
+		68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */; };
 		E3FDF6B8A725C97871C6B2D0 /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -181,7 +186,7 @@
 		1660FCB922C11BA000372950 /* TencentHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TencentHostConfig.swift; sourceTree = "<group>"; };
 		1660FCBE22C1211800372950 /* TencentConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TencentConfigView.swift; sourceTree = "<group>"; };
 		1662AC7022C0AC52003AC924 /* AliyunConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliyunConfigView.swift; sourceTree = "<group>"; };
-		1662AC7222C0BBF7003AC924 /* AliyunRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliyunRegion.swift; sourceTree = "<group>"; };
+		1662AC7222C0BBF7003AC924 /* AmazonS3Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonS3Region.swift; sourceTree = "<group>"; };
 		166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpYunConfigView.swift; sourceTree = "<group>"; };
 		166B4A5422B9CFD7001288ED /* ConfigSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSheetController.swift; sourceTree = "<group>"; };
 		166B4A5622B9D118001288ED /* PreferencesNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesNotifier.swift; sourceTree = "<group>"; };
@@ -190,6 +195,11 @@
 		1675516322AC102700D3EB6F /* NotificationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExt.swift; sourceTree = "<group>"; };
 		1675516622ACAA0600D3EB6F /* UPicUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPicUpdater.swift; sourceTree = "<group>"; };
 		1675516922ACAA5900D3EB6F /* AppPublic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPublic.swift; sourceTree = "<group>"; };
+		167D08A622ED88C2000F3BC0 /* AmazonS3ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonS3ConfigView.swift; sourceTree = "<group>"; };
+		167D08A922ED8A27000F3BC0 /* AliyunHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliyunHostConfig.swift; sourceTree = "<group>"; };
+		167D08AB22ED8A4B000F3BC0 /* AliyunRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliyunRegion.swift; sourceTree = "<group>"; };
+		167D08AD22ED8A58000F3BC0 /* AliyunUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliyunUploader.swift; sourceTree = "<group>"; };
+		167D08AF22ED8A6C000F3BC0 /* AliyunUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliyunUtil.swift; sourceTree = "<group>"; };
 		167D7F4822B4D2F500DD0A7A /* HostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostConfig.swift; sourceTree = "<group>"; };
 		167D7F4A22B4D31300DD0A7A /* HostType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostType.swift; sourceTree = "<group>"; };
 		167D7F4C22B4D43B00DD0A7A /* HostSaveKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostSaveKey.swift; sourceTree = "<group>"; };
@@ -234,9 +244,9 @@
 		16F7467322E994A300480A62 /* FinderSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSync.swift; sourceTree = "<group>"; };
 		16F7467522E994A300480A62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16F7467622E994A300480A62 /* uPicFinderExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPicFinderExtension.entitlements; sourceTree = "<group>"; };
-		68BBB2F5FAEEFFF55935F022 /* AliyunUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AliyunUtil.swift; sourceTree = "<group>"; };
-		68BBB5C4550545707614BE4D /* AliyunUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AliyunUploader.swift; sourceTree = "<group>"; };
-		68BBB8CF2838A67CA1AD438F /* AliyunHostConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AliyunHostConfig.swift; sourceTree = "<group>"; };
+		68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Util.swift; sourceTree = "<group>"; };
+		68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Uploader.swift; sourceTree = "<group>"; };
+		68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3HostConfig.swift; sourceTree = "<group>"; };
 		7D9210ACA587ED2CA41A506A /* Pods-uPic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.debug.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.debug.xcconfig"; sourceTree = "<group>"; };
 		A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uPic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF6E6B1F322C29A8668C8B00 /* Pods-uPic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.release.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.release.xcconfig"; sourceTree = "<group>"; };
@@ -359,6 +369,7 @@
 		1646B80F22C7C485009271DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				167D08A622ED88C2000F3BC0 /* AmazonS3ConfigView.swift */,
 				1657019E22C897A400C57EE9 /* WeiboConfigView.swift */,
 				1662AC7022C0AC52003AC924 /* AliyunConfigView.swift */,
 				161C3BE422C4870B0092114F /* CustomConfigView.swift */,
@@ -418,20 +429,21 @@
 		1672762122AFF63A007299C3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1657019722C891DC00C57EE9 /* Weibo */,
-				1646B80222C7931E009271DF /* Gitee */,
 				1602ED9622ADEFB200AA8638 /* BaseUploader.swift */,
 				1672762222AFF655007299C3 /* Host.swift */,
 				167D7F4822B4D2F500DD0A7A /* HostConfig.swift */,
 				167D7F4C22B4D43B00DD0A7A /* HostSaveKey.swift */,
 				167D7F4A22B4D31300DD0A7A /* HostType.swift */,
 				68BBB87F2C3AEBDF2C914131 /* Aliyun */,
+				167D08A522ED8132000F3BC0 /* Amazon_S3 */,
 				161C3BDF22C4830A0092114F /* Custom */,
+				1646B80222C7931E009271DF /* Gitee */,
 				167DDBE922C76F3B00B03357 /* Github */,
 				1690E7E522BF113700FC81F8 /* Qiniu */,
 				167D7F4E22B4DB2500DD0A7A /* Smms */,
 				1660FCB522C11A9F00372950 /* Tencent */,
 				16995A1F22B5FC6800B1F923 /* UpYun */,
+				1657019722C891DC00C57EE9 /* Weibo */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -444,6 +456,17 @@
 				1675516622ACAA0600D3EB6F /* UPicUpdater.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		167D08A522ED8132000F3BC0 /* Amazon_S3 */ = {
+			isa = PBXGroup;
+			children = (
+				68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */,
+				68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */,
+				68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */,
+				1662AC7222C0BBF7003AC924 /* AmazonS3Region.swift */,
+			);
+			path = Amazon_S3;
 			sourceTree = "<group>";
 		};
 		167D7F4E22B4DB2500DD0A7A /* Smms */ = {
@@ -563,10 +586,10 @@
 		68BBB87F2C3AEBDF2C914131 /* Aliyun */ = {
 			isa = PBXGroup;
 			children = (
-				68BBB8CF2838A67CA1AD438F /* AliyunHostConfig.swift */,
-				68BBB5C4550545707614BE4D /* AliyunUploader.swift */,
-				68BBB2F5FAEEFFF55935F022 /* AliyunUtil.swift */,
-				1662AC7222C0BBF7003AC924 /* AliyunRegion.swift */,
+				167D08A922ED8A27000F3BC0 /* AliyunHostConfig.swift */,
+				167D08AB22ED8A4B000F3BC0 /* AliyunRegion.swift */,
+				167D08AD22ED8A58000F3BC0 /* AliyunUploader.swift */,
+				167D08AF22ED8A6C000F3BC0 /* AliyunUtil.swift */,
 			);
 			path = Aliyun;
 			sourceTree = "<group>";
@@ -790,6 +813,7 @@
 			files = (
 				165701A322C8AE0A00C57EE9 /* WeiboUtil.swift in Sources */,
 				16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */,
+				167D08AC22ED8A4B000F3BC0 /* AliyunRegion.swift in Sources */,
 				1675516722ACAA0600D3EB6F /* UPicUpdater.swift in Sources */,
 				1685AA3522DEC943008FBF1D /* FlippedView.swift in Sources */,
 				16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */,
@@ -812,8 +836,10 @@
 				1618D1A822E99E2100831601 /* UploadNotifier.swift in Sources */,
 				161C3BE722C49BE90092114F /* RequestMethods.swift in Sources */,
 				163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */,
+				167D08A822ED88E7000F3BC0 /* AmazonS3ConfigView.swift in Sources */,
 				164745EB22B618D700F9575D /* HostPreferencesViewController.swift in Sources */,
 				161C3BE322C483560092114F /* CustomHostConfig.swift in Sources */,
+				167D08AA22ED8A27000F3BC0 /* AliyunHostConfig.swift in Sources */,
 				1660FCBD22C11C7800372950 /* TencentRegion.swift in Sources */,
 				167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */,
 				164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */,
@@ -834,12 +860,14 @@
 				1660FCBF22C1211900372950 /* TencentConfigView.swift in Sources */,
 				1646B80A22C79483009271DF /* GiteeConfigView.swift in Sources */,
 				1660FCBB22C11C7200372950 /* TencentUploader.swift in Sources */,
+				167D08AE22ED8A58000F3BC0 /* AliyunUploader.swift in Sources */,
 				1647474522B66E3400F9575D /* Util.swift in Sources */,
 				1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */,
 				1662AC7122C0AC53003AC924 /* AliyunConfigView.swift in Sources */,
 				1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */,
 				1657019922C8922400C57EE9 /* WeiboHostConfig.swift in Sources */,
 				160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */,
+				167D08B022ED8A6C000F3BC0 /* AliyunUtil.swift in Sources */,
 				169F073722AF4549008E8525 /* AdvancedPreferencesViewController.swift in Sources */,
 				1646B80622C79337009271DF /* GiteeUploader.swift in Sources */,
 				16068C7522AEC1D1004D39B7 /* PreferencesViewController.swift in Sources */,
@@ -847,7 +875,7 @@
 				169F073A22AF4549008E8525 /* AboutPreferencesViewController.swift in Sources */,
 				1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */,
 				1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */,
-				1662AC7322C0BBF7003AC924 /* AliyunRegion.swift in Sources */,
+				1662AC7322C0BBF7003AC924 /* AmazonS3Region.swift in Sources */,
 				1683573C22DB0D0800985B10 /* CustomConfigSheetController.swift in Sources */,
 				169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */,
 				167DDBEB22C76F5000B03357 /* GithubUploader.swift in Sources */,
@@ -855,13 +883,13 @@
 				167D7F4D22B4D43B00DD0A7A /* HostSaveKey.swift in Sources */,
 				16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */,
 				161C3BE522C4870C0092114F /* CustomConfigView.swift in Sources */,
-				68BBB6E5FFBB050D05107413 /* AliyunHostConfig.swift in Sources */,
-				68BBB3EF25C92DCAE216A4DF /* AliyunUploader.swift in Sources */,
+				68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */,
+				68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */,
 				1660FCBC22C11C7500372950 /* TencentUtil.swift in Sources */,
 				1660FCBA22C11C2300372950 /* TencentHostConfig.swift in Sources */,
 				167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */,
 				1685AA3722DEEE6C008FBF1D /* CustomHostUtil.swift in Sources */,
-				68BBB99780D7F4586458D4F5 /* AliyunUtil.swift in Sources */,
+				68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

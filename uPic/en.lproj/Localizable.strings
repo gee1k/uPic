@@ -90,6 +90,7 @@
 /* 菜单栏帮助 */
 "status-menu.help" = "Help";
 "status-menu.tutorial" = "Tutorial";
+"status-menu.sponsor" = "Sponsor";
 
 "alert.reset_preferences_title" = "Reset User Preferences?";
 "alert.reset_preferences_description" = "⚠️ Note that this will reset all user preferences";
@@ -113,6 +114,7 @@
 "host.field.domain" = "Domain";
 "host.field.folder" = "Folder";
 "host.field.saveKey" = "File Name";
+"host.field.suffix" = "URL suffix";
 "host.field.url" = "API URL";
 "host.field.method" = "Method";
 "host.field.field" = "File Field";
@@ -151,7 +153,7 @@
 "host.type.6" = "Github";
 "host.type.7" = "Gitee";
 "host.type.8" = "Weibo";
-"host.type.9" = "Tencent Cloud Dev";
+"host.type.9" = "Amazon S3";
 
 /* HostSaveKey */
 "save-key.filename" = "filename";

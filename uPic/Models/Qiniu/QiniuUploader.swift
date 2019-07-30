@@ -42,8 +42,9 @@ class QiniuUploader: BaseUploader {
             mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
         } else if let fileData = fileData {
             // MARK: 处理截图之类的图片，生成一个文件名
-            fileName = "\(hostSaveKey.getFileName()).png"
-            mimeType = Util.getMimeType(pathExtension: "png")
+            let fileType = fileData.contentType() ?? "png"
+            fileName = "\(hostSaveKey.getFileName()).\(fileType)"
+            mimeType = Util.getMimeType(pathExtension: fileType)
         } else {
             super.faild(errorMsg: "Invalid file")
             return
@@ -83,7 +84,7 @@ class QiniuUploader: BaseUploader {
                 if error != nil && error!.count > 0 {
                     super.faild(errorMsg: error)
                 } else {
-                    super.completed(url: "\(domain)/\(key)")
+                    super.completed(url: "\(domain)/\(key)\(config.suffix ?? "")")
                 }
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)
