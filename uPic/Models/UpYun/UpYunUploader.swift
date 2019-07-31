@@ -52,7 +52,7 @@ class UpYunUploader: BaseUploader {
 
         var saveKey = fileName
         if (config.folder != nil && config.folder!.count > 0) {
-            saveKey = "\(config.folder!)\(saveKey)"
+            saveKey = "\(config.folder!)/\(saveKey)"
         }
 
         // MARK: 加密 policy
