@@ -1,8 +1,9 @@
+<div align="right"><strong><a href="./README-cn.md">🇨🇳中文</a></strong>  | <strong>🇬🇧English</strong></div>
 <div align="center">
   <img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/logo.png" alt="uPic">
 </div>
 
-# ☁️ 简洁的 Mac 图床客户端 uPic
+# ☁️ Terse image hosting client for Mac
 
 <div style="display: flex;justify-content: center;" align="center">
 	<a href="https://github.com/gee1k/uPic/releases/latest">
@@ -17,72 +18,73 @@
 </div>
 
 
-## 📑 简介
+## 📑 Introduction
 
-> **uPic(upload Picture) 是一款 Mac 端的图床(文件)上传客户端**
-> 可将图片、各种文件上传到配置好的指定提供商的对象存储中。
-> 然后快速获取可供互联网访问的文件 URL
+> **uPic(upload Picture) is a image(file) hosting client for Mac. **
+> You can upload images、files to specified provider’s OSD service which was configured.
+> Before uploading, you can get an url immediately which can be accessed on internet. 
 
-**💡 特点：** 无论是本地文件、或者屏幕截图都可自动上传，菜单栏显示实时上传进度。上传完成后文件链接自动复制到剪切板，让你无论是在写博客、灌水聊天都能快速插入图片。
-连接格式可以是普通 URL、HTML 或者 Markdown，仍由你掌控。
 
-**🔋 支持图床：** [smms](https://sm.ms/)、 [又拍云 USS](https://www.upyun.com/products/file-storage)、[七牛云 KODO](https://www.qiniu.com/products/kodo)、 [阿里云 OSS](https://www.aliyun.com/product/oss/)、 [腾讯云 COS](https://cloud.tencent.com/product/cos)、[微博](https://weibo.com/)、[Github](https://github.com/settings/tokens)、 [Gitee](https://gitee.com/profile/personal_access_tokens)、 [Amazon S3](https://aws.amazon.com/cn/s3/)、[自定义上传接口](https://blog.svend.cc/upic/tutorials/custom)、...
 
-## 🚀 如何安装
+**💡 Tips：** They can automatic uploading local file and screenshot,meanwhile the menu bar shows the uploading progress constantly.File's link will automatically copied to the clipboard when finish upload,make you insert pictures quickly when you are blogging or chatting.Link’s format can be a normal URL,HTML or Markdown,it's totally up to you.
 
-### 下载安装
-#### 1.Homebrew:
+**🔋 Support image hosting：**[smms](https://sm.ms/)、 [UPYUN USS](https://www.upyun.com/products/file-storage)、[qiniu KODO](https://www.qiniu.com/products/kodo)、 [Aliyun OSS](https://www.aliyun.com/product/oss/)、 [TencentCloud COS](https://cloud.tencent.com/product/cos)、[Weibo](https://weibo.com/)、[Github](https://github.com/settings/tokens)、 [Gitee](https://gitee.com/profile/personal_access_tokens)、 [Amazon S3](https://aws.amazon.com/cn/s3/)、[custom upload api](https://blog.svend.cc/upic/tutorials/custom)、...
+
+## 🚀 How to install
+
+
+### 1.Homebrew:
 ```
 brew cask install upic
 ```
-#### 2.手动
-从 [Github release](https://github.com/gee1k/uPic/releases) 下载。
-**如果访问 Github 下载困难的，可以从国内[Gitee release](https://gitee.com/gee1k/uPic/releases)下载。**
+### 2.Download from github
+ click [release](https://github.com/gee1k/uPic/releases) to download.
+ **If accessing Github is difficult to download, you can download it from [Gitee release](https://gitee.com/gee1k/uPic/releases).**
 
-### 检查 Finder 扩展权限
+### Check Finder Extensions's authority
 
-- 1.打开 uPic
+- 1.Run uPic
 
-- 2.打开`系统偏好设置` - `扩展` - `访达扩展` 确保 `uPicFinderExtension`是勾选状态
+- 2.Open`system preference` - `extensions` - `Finder Extensions` make sure that `uPicFinderExtension` is be selected
 
   <center>
-    <img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/finder-extension.png" height="300">
+    <img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/en-finder-extension.png" height="300">
   </center>
 
 
 
-## 🕹 使用方式
+## 🕹 How to use it
 
-| 功能 | 描述 | 预览 |
+| function | description | previewing |
 | --- | --- | --- |
-| **🖥 选择文件上传** | 从`Finder`选择文件上传 | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/selectFile.gif) |
-| **⌨️ 复制文件上传** | 上传已拷贝到剪切板的文件 | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/paste.gif) |
-| **🖱 拖拽本地文件上传** | 拖拽文件到状态栏上传 | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/drag-finder.gif) |
-| **🖱 拖拽浏览器图片上传** | 从浏览器拖拽图片到状态栏上传 | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/drag-browser.gif) |
-| **📸 截图上传** | 直接拉框截图上传 | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/screenshot.gif) |
-| **📂 Finder 中右键上传** | 右击文件上传 | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/finder-contextmenu.gif) |
+| **🖥 Pick** | choose file from `Finder` | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/en-selectFile.gif) |
+| **⌨️ Copy** | uploud file from clipboard | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/en-paste.gif) |
+| **🖱 Drag local file** | drag file to status bar | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/en-drag-finder.gif) |
+| **🖱 Drag from browser** | drag image to status bar from browser | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/en-drag-browser.gif) |
+| **📸 Screenshot** | capture a screenshot | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/en-screenshot.gif) |
+| **📂 Right click** | right click to upload | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/en-finder-contextmenu.gif) |
 
 
 
-## 🧰 更多功能
+## 🧰 More Functions
 
-**除了以上这些最基本的功能以外，uPic 还提供了一系列小功能让你使用起来更方便更顺心**
+**Except these basic functions,uPic also provides a series of small features to improve user experience.**
 
-<details><summary>1. ⌨︎ 全局快捷键</summary><br>
+<details><summary>1. ⌨︎ Global shortcut key</summary><br>
 <p>
 	<center>
-		<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/shortcuts.png" height="300">
+		<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/en-shortcuts.png" height="300">
 	</center>
 </p>
 </details>
-<details><summary>2. 🕦 上传历史</summary><br>
+<details><summary>2. 🕦 Upload history</summary><br>
 <p>
 	<center>
-		<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/history.png" height="300">
+		<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/en-history.png" height="300">
 	</center>
 </p>
 </details>
-<details><summary>3. 📢 更多功能等待你发现</summary><br>
+<details><summary>3. 📢 More functions are waiting for you to check it out</summary><br>
 <p>
 	...
 </p>
@@ -90,57 +92,57 @@ brew cask install upic
 
 
 
-## ❓ 常见问题
+## ❓ Question
 
 <details>
-	<summary>1.图床如何配置❓</summary>
+	<summary>1.How to configurate image hosting❓</summary>
 	<ul>
-		<li><a href="https://blog.svend.cc/upic/tutorials/weibo" target="_blank">uPic 图床配置教程 - 微博</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/upyun_uss" target="_blank">uPic 图床配置教程 - 又拍云</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/qiniu_kodo" target="_blank">uPic 图床配置教程 - 七牛云</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/aliyun_oss" target="_blank">uPic 图床配置教程 - 阿里云</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/tencent_cos" target="_blank">uPic 图床配置教程 - 腾讯云</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/amazon_s3" target="_blank">uPic 图床配置教程 - Amazon S3</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/github" target="_blank">uPic 图床配置教程 - Github</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/gitee" target="_blank">uPic 图床配置教程 - 码云(Gitee)</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/custom" target="_blank">uPic 图床配置教程 - 自定义上传</a></li>
+		<li><a href="https://blog.svend.cc/upic/tutorials/weibo/en" target="_blank">uPic configuration - Weibo</a></li>
+		<li><a href="https://blog.svend.cc/upic/tutorials/upyun_uss/en" target="_blank">uPic configuration - UPYUN</a></li>
+		<li><a href="https://blog.svend.cc/upic/tutorials/qiniu_kodo/en" target="_blank">uPic configuration - Qiniu</a></li>
+		<li><a href="https://blog.svend.cc/upic/tutorials/aliyun_oss/en" target="_blank">uPic configuration - Aliyun</a></li>
+		<li><a href="https://blog.svend.cc/upic/tutorials/tencent_cos/en" target="_blank">uPic configuration - Tencent Cloud</a></li>
+		<li><a href="https://blog.svend.cc/upic/tutorials/amazon_s3/en" target="_blank">uPic configuration - Amazon S3</a></li>
+		<li><a href="https://blog.svend.cc/upic/tutorials/github/en" target="_blank">uPic configuration - Github</a></li>
+		<li><a href="https://blog.svend.cc/upic/tutorials/gitee/en" target="_blank">uPic configuration - Gitee(Gitee)</a></li>
+		<li><a href="https://blog.svend.cc/upic/tutorials/custom/en" target="_blank">uPic configuration - Custom upload</a></li>
 	</ul>
 </details>
-<details><summary>2. Finder 扩展不工作了❓</summary><br>
-<p>由于 Finder 扩展是只要加上之后会一直都存在，所以当你遇到 Finder 扩展操作无反应的时候，可能是 uPic 主程序没有打开</p>
+<details><summary>2. Finder extension doesn't work❓</summary><br>
+<p>Because of Finder extension will always be selected after select action was done.So if you come across Finder extension operation is unresponsive,maybe uPic program was not runing.</p>
 </details>
 <details>
-	<summary>3.为什么我配置了图床，图片/文件却没有上传到我的图床中</summary>
+	<summary>3.Why I finished configuration of image hosting already,image/file upload failed?</summary>
 	<div>
-		<p>配置好的图床可以在菜单栏`图床`中选择。选中的图床就是您接下来文件会上传到的图床</p>
-		<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/default-host.png" width="450">
+		<p>maybe you choose the wrong image hosting,go to check it out~</p>
+		<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/en-default-host.png" width="450">
 	</div> 
 </details>
 
 
 
-## 💌 联系我
+## 💌 Contact information
 
 - `Email`: svend.jin@gmail.com
 - `Telegram`: [gee1k](https://t.me/gee1k)
-- `项目地址`: [Github](https://github.com/gee1k/uPic)
-- `uPic 产品交流群(Telegram)`:  [点击加入 TG 群](https://t.me/upic_host)
-- `微信群`:  <small>扫描下方二维码加好友拉你入群 ↓ </small>
+- `Github`: [Github](https://github.com/gee1k/uPic)
+- `uPic chat group(Telegram)`:  [click here to join in](https://t.me/upic_host)
+- `Wechat group`:  <small>scan the QR code below to join in ↓ </small>
 
 	<img src="https://raw.githubusercontent.com/gee1k/oss/master/personal/geee1k.JPG" height="200">
 
 
-## ❤️ 赞助
+## ❤️ Support
 
-如果你喜欢 uPic ，欢迎给我打赏
+If you like uPic,please hit the star button and thanks for your support.
 
-| **Paypal** | **支付宝** | **微信** |
+| **Paypal** | **Alipay** | **Wechat** |
 | :-: | :-: | :-: |
 | [@Geee1k](https://paypal.me/geee1k) | ![](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/alipay-mini.jpeg) | ![](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat-zs.JPG) |
 
-## 🤙 特别感谢
+## 🤙 Special thanks to
 
-### 翻译
+### Translators
 - [@m01i0ng](https://github.com/m01i0ng)
 - [@Jackxun123](https://github.com/Jackxun123)
 - [@kkkkkkyrie](https://github.com/kkkkkkyrie)
