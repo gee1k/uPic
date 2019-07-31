@@ -20,7 +20,7 @@
 
 ## 📑 Introduction
 
-> **uPic(upload Picture) is a image(file) hosting client for Mac. **
+> **uPic(upload Picture) is a image(file) hosting client for Mac.** 
 > You can upload images、files to specified provider’s OSD service which was configured.
 > Before uploading, you can get an url immediately which can be accessed on internet. 
 
