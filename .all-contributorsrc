@@ -1,0 +1,43 @@
+{
+  "projectName": "uPic",
+  "projectOwner": "gee1k",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md",
+    "README-cn.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "m01i0ng",
+      "name": "alley",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/19723234?v=4",
+      "profile": "https://alley.js.org",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "Jackxun123",
+      "name": "Jackxun123",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/33611532?v=4",
+      "profile": "https://github.com/Jackxun123",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "kkkkkkyrie",
+      "name": "eleven",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/30786071?v=4",
+      "profile": "https://github.com/kkkkkkyrie",
+      "contributions": [
+        "translation"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
