@@ -40,16 +40,19 @@ class AmazonS3Uploader: BaseUploader {
             return
         }
 
+        var retData = fileData
         var fileName = ""
         var mimeType = ""
         if let fileUrl = fileUrl {
             fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
             mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
+            retData = BaseUploaderUtil.compressImage(fileUrl)
         } else if let fileData = fileData {
             // MARK: 处理截图之类的图片，生成一个文件名
             let fileType = fileData.contentType() ?? "png"
             fileName = "\(hostSaveKey.getFileName()).\(fileType)"
             mimeType = Util.getMimeType(pathExtension: fileType)
+            retData = BaseUploaderUtil.compressImage(fileData)
         } else {
             super.faild(errorMsg: "Invalid file")
             return
@@ -94,10 +97,10 @@ class AmazonS3Uploader: BaseUploader {
             // 如不手动设置 content-type ， aws 默认会将文件的 content-type 设置为 binary/octet-stream 。访问时将会直接下载，而不是预览
             multipartFormData.append(mimeType.data(using: .utf8)!, withName: "content-type")
             
-            if fileUrl != nil {
+            if retData != nil {
+                multipartFormData.append(retData!, withName: "file", fileName: fileName, mimeType: mimeType)
+            } else if fileUrl != nil {
                 multipartFormData.append(fileUrl!, withName: "file", fileName: fileName, mimeType: mimeType)
-            } else {
-                multipartFormData.append(fileData!, withName: "file", fileName: fileName, mimeType: mimeType)
             }
         }
 

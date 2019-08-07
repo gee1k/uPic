@@ -45,14 +45,21 @@ class SmmsUploader: BaseUploader {
 
     func upload(_ fileUrl: URL) {
         self._upload({ (multipartFormData: MultipartFormData) in
-            multipartFormData.append(fileUrl, withName: "smfile")
+            
+            let retData = BaseUploaderUtil.compressImage(fileUrl)
+            if retData != nil {
+                multipartFormData.append(retData!, withName: "smfile")
+            } else {
+                multipartFormData.append(fileUrl, withName: "smfile")
+            }
+            
         })
     }
 
     func upload(_ imgData: Data) {
-        
+        let retData = BaseUploaderUtil.compressImage(imgData)
         self._upload({ (multipartFormData: MultipartFormData) in
-            multipartFormData.append(imgData, withName: "smfile", fileName: "smfile.png")
+            multipartFormData.append(retData, withName: "smfile", fileName: "smfile.png")
         })
     }
 }

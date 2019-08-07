@@ -57,7 +57,7 @@
 "status-menu.select-file" = "Select File";
 
 /* 状态栏菜单屏幕截图 */
-"status-menu.screenshot" = "Screenshot And Upload";
+"status-menu.screenshot" = "Screenshot and Upload";
 
 /* 状态栏菜单上传剪切板中的文件 */
 "status-menu.pasteboard" = "Upload copied file";
@@ -66,7 +66,10 @@
 "status-menu.host" = "Hosts";
 
 /* 状态栏菜单输出格式 */
-"status-menu.output" = "Output Format";
+"status-menu.output" = "Output format";
+
+/* 状态栏菜单上传前压缩图片 */
+"status-menu.compress-factor" = "Compress images before uploading";
 
 /* 状态栏菜单偏好设置 */
 "status-menu.preference" = "Preference";

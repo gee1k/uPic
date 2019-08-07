@@ -41,16 +41,19 @@ class TencentUploader: BaseUploader {
             return
         }
 
+        var retData = fileData
         var fileName = ""
         var mimeType = ""
         if let fileUrl = fileUrl {
             fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
             mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
+            retData = BaseUploaderUtil.compressImage(fileUrl)
         } else if let fileData = fileData {
             // MARK: 处理截图之类的图片，生成一个文件名
             let fileType = fileData.contentType() ?? "png"
             fileName = "\(hostSaveKey.getFileName()).\(fileType)"
             mimeType = Util.getMimeType(pathExtension: fileType)
+            retData = BaseUploaderUtil.compressImage(fileData)
         } else {
             super.faild(errorMsg: "Invalid file")
             return
@@ -97,10 +100,10 @@ class TencentUploader: BaseUploader {
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
             multipartFormData.append(key.data(using: .utf8)!, withName: "key")
             multipartFormData.append(policy.data(using: .utf8)!, withName: "policy")
-            if fileUrl != nil {
+            if retData != nil {
+                multipartFormData.append(retData!, withName: "file", fileName: fileName, mimeType: mimeType)
+            } else if fileUrl != nil {
                 multipartFormData.append(fileUrl!, withName: "file", fileName: fileName, mimeType: mimeType)
-            } else {
-                multipartFormData.append(fileData!, withName: "file", fileName: fileName, mimeType: mimeType)
             }
         }
         

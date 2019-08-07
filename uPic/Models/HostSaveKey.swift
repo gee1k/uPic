@@ -39,7 +39,7 @@ public enum HostSaveKey: String, CaseIterable, Codable {
         case .dateFilename:
             return "\(Date().format(dateFormat: "yyyy-MM-dd"))-\(filename!)"
         case .datetimeFilename:
-            return "\(Date().format(dateFormat: "yyyy-MM-dd HH:mm:ss"))-\(filename!)"
+            return "\(Date().format(dateFormat: "yyyy-MM-dd-HH:mm:ss"))-\(filename!)"
         case .random:
             return String.randomStr(len: 6)
         }

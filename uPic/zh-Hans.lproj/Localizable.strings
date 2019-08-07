@@ -67,6 +67,9 @@
 /* 状态栏菜单输出格式 */
 "status-menu.output" = "输出格式";
 
+/* 状态栏菜单上传前压缩图片 */
+"status-menu.compress-factor" = "上传前压缩图片";
+
 /* 状态栏菜单偏好设置 */
 "status-menu.preference" = "偏好设置";
 
