@@ -38,7 +38,8 @@ class GithubUploader: BaseUploader {
             fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
             
             do {
-                let data = try Data(contentsOf: fileUrl)
+                var data = try Data(contentsOf: fileUrl)
+                data = BaseUploaderUtil.compressImage(data)
                 fileBase64 = data.toBase64()
             } catch {
                 super.faild(errorMsg: "Invalid file")
@@ -48,7 +49,9 @@ class GithubUploader: BaseUploader {
             // MARK: 处理截图之类的图片，生成一个文件名
             let fileType = fileData.contentType() ?? "png"
             fileName = "\(hostSaveKey.getFileName()).\(fileType)"
-            fileBase64 = fileData.toBase64()
+            
+            let retData = BaseUploaderUtil.compressImage(fileData)
+            fileBase64 = retData.toBase64()
         } else {
             super.faild(errorMsg: "Invalid file")
             return

@@ -34,17 +34,20 @@ class QiniuUploader: BaseUploader {
         let domain = config.domain!
         let region = (config.region != nil ? QiniuRegion(rawValue: config.region!) : QiniuRegion.z0)!
 
+        var retData = fileData
         var fileName = ""
         var mimeType = ""
         
         if let fileUrl = fileUrl {
             fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
             mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
+            retData = BaseUploaderUtil.compressImage(fileUrl)
         } else if let fileData = fileData {
             // MARK: 处理截图之类的图片，生成一个文件名
             let fileType = fileData.contentType() ?? "png"
             fileName = "\(hostSaveKey.getFileName()).\(fileType)"
             mimeType = Util.getMimeType(pathExtension: fileType)
+            retData = BaseUploaderUtil.compressImage(fileData)
         } else {
             super.faild(errorMsg: "Invalid file")
             return
@@ -65,11 +68,12 @@ class QiniuUploader: BaseUploader {
         headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
         
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
-            if fileUrl != nil {
+            if retData != nil {
+                multipartFormData.append(retData!, withName: "file", fileName: fileName, mimeType: mimeType)
+            } else if fileUrl != nil {
                 multipartFormData.append(fileUrl!, withName: "file", fileName: fileName, mimeType: mimeType)
-            } else {
-                multipartFormData.append(fileData!, withName: "file", fileName: fileName, mimeType: mimeType)
             }
+            
             multipartFormData.append(token.data(using: .utf8)!, withName: "token")
             multipartFormData.append(key.data(using: .utf8)!, withName: "key")
         }

@@ -114,3 +114,10 @@
 "osM-Ga-s0H.title" = "Add Body field";
 "Cp0-zp-Dpm.title" = "Ok";
 "q1H-P0-jix.title" = "Cancel";
+
+/* HostPreferent more action button title */
+"dZy-kW-0lH.title" = "More";
+/* HostPreferent edit menu item title */
+"chO-9j-Fca.title" = "Edit";
+/* HostPreferent duplicate menu item title */
+"8lH-1K-GR0.title" = "Duplicate";
