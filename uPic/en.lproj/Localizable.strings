@@ -160,9 +160,15 @@
 
 /* HostSaveKey */
 "save-key.filename" = "filename";
+"save-key.random" = "random";
 "save-key.date-filename" = "date-filename";
 "save-key.datetime-filename" = "datetime-filename";
-"save-key.random" = "random";
+"save-key.second-filename" = "second-filename";
+"save-key.millisecond-filename" = "millisecond-filename";
+"save-key.date-random" = "date-random";
+"save-key.datetime-random" = "datetime-random";
+"save-key.second-random" = "second-random";
+"save-key.millisecond-random" = "millisecond-random";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "thumbnail";

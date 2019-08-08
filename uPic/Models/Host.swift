@@ -58,6 +58,12 @@ class Host: Equatable, CustomDebugStringConvertible, Codable {
 
         return JSON(dict).rawString()!
     }
+    
+    func copy() -> Host {
+        let newHost = Host.deserialize(str: self.serialize())
+        newHost.id = Date().timeStamp
+        return newHost
+    }
 
     static func deserialize(str: String) -> Host {
         let data = str.data(using: String.Encoding.utf8)!

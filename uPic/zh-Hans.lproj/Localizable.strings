@@ -158,9 +158,15 @@
 
 /* HostSaveKey */
 "save-key.filename" = "文件名";
+"save-key.random" = "随机";
 "save-key.date-filename" = "日期-文件名";
 "save-key.datetime-filename" = "日期时间-文件名";
-"save-key.random" = "随机";
+"save-key.second-filename" = "秒数-文件名";
+"save-key.millisecond-filename" = "毫秒数-文件名";
+"save-key.date-random" = "日期-随机";
+"save-key.datetime-random" = "日期时间-随机";
+"save-key.second-random" = "秒数-随机";
+"save-key.millisecond-random" = "毫秒数-随机";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "缩略图";
