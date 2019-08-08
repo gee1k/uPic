@@ -47,7 +47,7 @@ extension NSDraggingInfo {
     var draggedFromBrowserData: Data? {
         
         if let tiff = draggingPasteboard.data(forType: NSPasteboard.PasteboardType.tiff) {
-            let jpg = tiff.convertImageDataToJpg()
+            let jpg = tiff.convertImageData(.jpeg)
             return jpg
         } else if let pdf = draggingPasteboard.data(forType: NSPasteboard.PasteboardType.pdf) {
             return pdf
@@ -56,7 +56,7 @@ extension NSDraggingInfo {
         } else if let urlStr = draggingPasteboard.string(forType: NSPasteboard.PasteboardType.string) {
             if let url = URL(string: urlStr.urlEncoded()), let image = NSImage(contentsOf: url)  {
                 if image.isValid {
-                    let jpg = image.tiffRepresentation?.convertImageDataToJpg()
+                    let jpg = image.tiffRepresentation?.convertImageData(.jpeg)
                     return jpg
                 }
                 

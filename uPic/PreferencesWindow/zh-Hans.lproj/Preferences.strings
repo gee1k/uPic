@@ -114,3 +114,10 @@
 "osM-Ga-s0H.title" = "增加 Body 字段";
 "Cp0-zp-Dpm.title" = "确定";
 "q1H-P0-jix.title" = "取消";
+
+/* HostPreferent more action button title */
+"dZy-kW-0lH.title" = "更多";
+/* HostPreferent edit menu item title */
+"chO-9j-Fca.title" = "编辑";
+/* HostPreferent duplicate menu item title */
+"8lH-1K-GR0.title" = "复制";

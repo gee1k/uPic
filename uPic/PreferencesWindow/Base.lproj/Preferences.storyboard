@@ -227,7 +227,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qri-L6-ZRL">
-                                        <rect key="frame" x="0.0" y="21" width="125" height="23"/>
+                                        <rect key="frame" x="-0.5" y="21" width="125" height="23"/>
                                         <buttonCell key="cell" type="roundTextured" title="Reset preferences" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jyI-H7-qN3">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -589,7 +589,7 @@
                                                 <rect key="frame" x="0.0" y="258" width="405" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
-                                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="qFH-NW-ynh">
+                                            <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="qFH-NW-ynh">
                                                 <rect key="frame" x="405" y="0.0" width="15" height="258"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
@@ -799,35 +799,48 @@ Gw
                                                                     <action selector="removeHostButoonClicked:" target="5Ln-jV-uxk" id="fTj-2P-ayH"/>
                                                                 </connections>
                                                             </button>
-                                                            <button verticalHuggingPriority="750" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uSE-gv-t1a">
+                                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w1q-wY-Z6d">
                                                                 <rect key="frame" x="90" y="-1" width="90" height="22"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="BAa-dV-cvL"/>
-                                                                    <constraint firstAttribute="height" constant="20" id="mfx-yz-QOV"/>
+                                                                    <constraint firstAttribute="height" constant="20" id="Skj-re-2Qs"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="k91-WW-V0g"/>
                                                                 </constraints>
-                                                                <buttonCell key="cell" type="smallSquare" title="Edit" bezelStyle="smallSquare" image="NSAdvanced" imagePosition="leading" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iMV-pW-oNa">
+                                                                <popUpButtonCell key="cell" type="smallSquare" title="更多" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="dZy-kW-0lH" id="gVX-So-p6d">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="system"/>
-                                                                </buttonCell>
-                                                                <connections>
-                                                                    <action selector="editHostButoonClicked:" target="5Ln-jV-uxk" id="lGp-oa-gvy"/>
-                                                                </connections>
-                                                            </button>
+                                                                    <font key="font" metaFont="menu"/>
+                                                                    <menu key="menu" id="swQ-rx-gl1">
+                                                                        <items>
+                                                                            <menuItem title="更多" state="on" hidden="YES" id="dZy-kW-0lH">
+                                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="编辑" id="chO-9j-Fca">
+                                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                                                <connections>
+                                                                                    <action selector="editHostMenuItemClicked:" target="5Ln-jV-uxk" id="O8E-2U-fUK"/>
+                                                                                </connections>
+                                                                            </menuItem>
+                                                                            <menuItem title="复制" id="8lH-1K-GR0">
+                                                                                <connections>
+                                                                                    <action selector="duplicateHostMenuItemClicked:" target="5Ln-jV-uxk" id="sUX-Gu-Q12"/>
+                                                                                </connections>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpButtonCell>
+                                                            </popUpButton>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="uSE-gv-t1a" firstAttribute="top" secondItem="oeW-sl-ovV" secondAttribute="top" id="4qb-nw-4qr"/>
-                                                            <constraint firstItem="uSE-gv-t1a" firstAttribute="leading" secondItem="ReS-i2-SoX" secondAttribute="trailing" id="9J2-1v-YGs"/>
+                                                            <constraint firstAttribute="bottom" secondItem="w1q-wY-Z6d" secondAttribute="bottom" id="6dv-JL-Rgl"/>
                                                             <constraint firstAttribute="width" constant="180" id="KQl-Ng-VMF"/>
-                                                            <constraint firstAttribute="trailing" secondItem="uSE-gv-t1a" secondAttribute="trailing" id="Rqz-SY-ZQH"/>
                                                             <constraint firstItem="ReS-i2-SoX" firstAttribute="leading" secondItem="NP8-ad-xYM" secondAttribute="trailing" id="Wwf-re-v9f"/>
                                                             <constraint firstItem="NP8-ad-xYM" firstAttribute="leading" secondItem="oeW-sl-ovV" secondAttribute="leading" id="YuW-1v-3vu"/>
+                                                            <constraint firstItem="w1q-wY-Z6d" firstAttribute="top" secondItem="oeW-sl-ovV" secondAttribute="top" id="aR0-U1-g4j"/>
+                                                            <constraint firstItem="w1q-wY-Z6d" firstAttribute="leading" secondItem="ReS-i2-SoX" secondAttribute="trailing" id="dAa-XQ-bNf"/>
                                                             <constraint firstAttribute="bottom" secondItem="NP8-ad-xYM" secondAttribute="bottom" id="drv-sD-zNF"/>
                                                             <constraint firstItem="ReS-i2-SoX" firstAttribute="top" secondItem="oeW-sl-ovV" secondAttribute="top" id="ev2-O0-0Ab"/>
-                                                            <constraint firstItem="uSE-gv-t1a" firstAttribute="leading" secondItem="ReS-i2-SoX" secondAttribute="trailing" id="ivl-BH-MLv"/>
                                                             <constraint firstAttribute="bottom" secondItem="ReS-i2-SoX" secondAttribute="bottom" id="n4o-p1-5aU"/>
                                                             <constraint firstItem="NP8-ad-xYM" firstAttribute="top" secondItem="oeW-sl-ovV" secondAttribute="top" id="otp-he-i7h"/>
                                                             <constraint firstAttribute="height" constant="20" id="roM-00-ICC"/>
-                                                            <constraint firstAttribute="bottom" secondItem="uSE-gv-t1a" secondAttribute="bottom" id="vsM-Gd-9zE"/>
                                                         </constraints>
                                                         <visibilityPriorities>
                                                             <integer value="1000"/>
@@ -945,7 +958,8 @@ Gw
                     <connections>
                         <outlet property="addHostButton" destination="NP8-ad-xYM" id="SNK-Ar-9Ir"/>
                         <outlet property="configView" destination="6bq-nL-Uwf" id="o6K-V7-jUb"/>
-                        <outlet property="editHostButton" destination="uSE-gv-t1a" id="I14-e6-ujw"/>
+                        <outlet property="duplicateMenuItem" destination="8lH-1K-GR0" id="tWl-x6-ur1"/>
+                        <outlet property="moreActionButton" destination="w1q-wY-Z6d" id="XgW-9w-N6Q"/>
                         <outlet property="removeHostButton" destination="ReS-i2-SoX" id="RXR-sr-prh"/>
                         <outlet property="resetButton" destination="YZD-zT-qZX" id="s8R-LP-582"/>
                         <outlet property="saveButton" destination="XXZ-1C-FIq" id="J9M-BU-sT2"/>

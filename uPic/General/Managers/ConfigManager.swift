@@ -43,6 +43,7 @@ public class ConfigManager {
             return
         }
         Defaults[.launchAtLogin] = BoolType._false.rawValue
+        Defaults[.compressFactor] = 100
         Defaults.synchronize()
     }
 
@@ -130,3 +131,18 @@ extension ConfigManager {
         self.setHistoryList(items: [])
     }
 }
+
+extension ConfigManager {
+    // MARK: 上传前压缩图片，压缩率
+    var compressFactor: Int {
+        get {
+            return Defaults[.compressFactor] ?? 100
+        }
+        
+        set {
+            Defaults[.compressFactor] = newValue
+            Defaults.synchronize()
+        }
+    }
+}
+

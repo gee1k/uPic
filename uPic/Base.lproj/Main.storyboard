@@ -101,6 +101,7 @@
                 <customObject id="veO-oa-UPB" customClass="StatusMenuController" customModule="uPic" customModuleProvider="target">
                     <connections>
                         <outlet property="checkUpdateMenuItem" destination="yai-4F-Btp" id="klG-hy-GGO"/>
+                        <outlet property="compressFactorMenuItem" destination="eIU-EA-uQZ" id="uMq-Nm-vXy"/>
                         <outlet property="helpMenuItem" destination="2Jw-ET-3eH" id="Ubq-wz-L3N"/>
                         <outlet property="historyMenuItem" destination="EhO-Zw-XXj" id="okQ-0q-kK5"/>
                         <outlet property="hostMenuItem" destination="d02-bT-1Lv" id="Ah0-J0-Z4M"/>
@@ -164,6 +165,11 @@
                                     </menuItem>
                                 </items>
                             </menu>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="ijd-GZ-VTQ"/>
+                        <menuItem title="上传前压缩图片" id="eIU-EA-uQZ">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="上传前压缩图片" id="4yH-6k-LD0"/>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="bfM-jE-V7Q"/>
                         <menuItem title="上传历史" id="EhO-Zw-XXj">

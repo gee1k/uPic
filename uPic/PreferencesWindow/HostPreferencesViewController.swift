@@ -18,8 +18,9 @@ class HostPreferencesViewController: PreferencesViewController {
 
     @IBOutlet weak var addHostButton: NSPopUpButton!
     @IBOutlet weak var removeHostButton: NSButton!
-    @IBOutlet weak var editHostButton: NSButton!
-
+    @IBOutlet weak var moreActionButton: NSPopUpButton!
+    @IBOutlet weak var duplicateMenuItem: NSMenuItem!
+    
     @IBOutlet weak var configView: NSView!
 
     var hostItems: [Host]?
@@ -94,14 +95,28 @@ class HostPreferencesViewController: PreferencesViewController {
         self.deleteHost(index: self.selectedRow)
     }
 
-    @IBAction func editHostButoonClicked(_ sender: NSButton) {
+    @IBAction func editHostMenuItemClicked(_ sender: Any) {
         guard self.selectedRow > -1 else {
             return
         }
-
+        
         self.tableView.editColumn(0, row: self.selectedRow, with: nil, select: true)
     }
-
+    @IBAction func duplicateHostMenuItemClicked(_ sender: Any) {
+        guard self.selectedRow > -1, let hostItem = self.hostItems?[self.selectedRow] else {
+            return
+        }
+        
+        let newHost = hostItem.copy()
+        
+        newHost.data?.observerValues()
+        self.hostItems?.append(newHost)
+        self.tableView.reloadData()
+        self.hostItemsChanged = true
+        self.selectedRow = (self.hostItems?.count ?? 0) - 1
+        self.setDefaultSelectedHost()
+    }
+    
     //
     // save host config
     //
@@ -217,7 +232,11 @@ class HostPreferencesViewController: PreferencesViewController {
 
         let isSelected = self.selectedRow > -1
         self.removeHostButton.isEnabled = isSelected
-        self.editHostButton.isEnabled = isSelected
+        self.moreActionButton.isEnabled = isSelected
+        
+        if isSelected, let hostItem = self.hostItems?[self.selectedRow] {
+            duplicateMenuItem.isHidden = hostItem.type.isOnlyOne
+        }
     }
 
     // MARK: 添加图床
@@ -240,10 +259,9 @@ class HostPreferencesViewController: PreferencesViewController {
         // Delete the selected row data source
         self.hostItems?.remove(at: index)
 
+        self.selectedRow = -1
         self.hostItemsChanged = true
         self.resetAllowOnlyOneHostTypeVisible()
-
-        selectedRow = -1
         self.setDefaultSelectedHost()
     }
 

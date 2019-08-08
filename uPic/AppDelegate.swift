@@ -32,7 +32,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-
+        ConfigManager.shared.firstSetup()
+        
         self.resetNewVersionLaunchAtLogin()
 
         indicator.minValue = 0.0
@@ -212,7 +213,7 @@ extension AppDelegate {
             self.uploadFiles([imgData!])
         } else if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.tiff) {
             let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.tiff)
-            if let jpg = imgData?.convertImageDataToJpg() {
+            if let jpg = imgData?.convertImageData(.jpeg) {
                 self.uploadFiles([jpg])
             }
         }

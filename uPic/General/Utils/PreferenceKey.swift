@@ -16,6 +16,7 @@ struct Keys {
     static let ouputFormat = "uPic_OutputFormat"
     static let historyList = "uPic_HistoryList"
     static let historyLimit = "uPic_HistoryLimit"
+    static let compressFactor = "uPic_CompressFactor"
 }
 
 class DefaultsKeys {
@@ -45,6 +46,7 @@ extension DefaultsKeys {
     static let ouputFormat = DefaultsKey<Int>(Keys.ouputFormat)
     static let historyList = DefaultsKey<[String]>(Keys.historyList)
     static let historyLimit = DefaultsKey<Int>(Keys.historyLimit)
+    static let compressFactor = DefaultsKey<Int>(Keys.compressFactor)
 
 }
 
@@ -63,6 +65,15 @@ extension UserDefaults {
     subscript(key: DefaultsKey<Int>) -> Int? {
         get {
             return integer(forKey: key._key)
+        }
+        set {
+            set(newValue, forKey: key._key)
+        }
+    }
+    
+    subscript(key: DefaultsKey<Float>) -> Float? {
+        get {
+            return float(forKey: key._key)
         }
         set {
             set(newValue, forKey: key._key)
