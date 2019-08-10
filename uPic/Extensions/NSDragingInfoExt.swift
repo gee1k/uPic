@@ -54,14 +54,9 @@ extension NSDraggingInfo {
         } else if let png = draggingPasteboard.data(forType: NSPasteboard.PasteboardType.png) {
             return png
         } else if let urlStr = draggingPasteboard.string(forType: NSPasteboard.PasteboardType.string) {
-            if let url = URL(string: urlStr.urlEncoded()), let image = NSImage(contentsOf: url)  {
-                if image.isValid {
-                    let jpg = image.tiffRepresentation?.convertImageData(.jpeg)
-                    return jpg
-                }
-                
+            if let url = URL(string: urlStr.urlEncoded()), let data = try? Data(contentsOf: url)  {
+                return data
             }
-            
         }
         return nil
     }

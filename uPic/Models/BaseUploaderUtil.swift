@@ -10,7 +10,7 @@ import Foundation
 
 class BaseUploaderUtil {
     static func compressImage(_ data: Data) -> Data {
-        var factor:Int = ConfigManager.shared.compressFactor
+        let factor:Int = ConfigManager.shared.compressFactor
         
         if factor >= 100 {
             return data
@@ -24,7 +24,7 @@ class BaseUploaderUtil {
     }
     
     static func compressImage(_ url: URL) -> Data? {
-        var factor:Int = ConfigManager.shared.compressFactor
+        let factor:Int = ConfigManager.shared.compressFactor
         
         if factor >= 100 {
             return nil
@@ -32,9 +32,7 @@ class BaseUploaderUtil {
         
         let data = try? Data(contentsOf: url)
         // 压缩图片
-        debugPrint("origin data -> \(data?.bytes.count)")
         let retData = data?.compressImage(Float(factor) / 100)
-        debugPrint("compress data -> \(retData?.bytes.count)")
         return retData
     }
 }

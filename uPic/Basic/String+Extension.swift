@@ -75,6 +75,10 @@ extension String {
     }
 
     // 字符串增强
+    var isAbsolutePath: Bool {
+        return (self as NSString).isAbsolutePath
+    }
+    
     var lastPathComponent: String {
         return (self as NSString).lastPathComponent
     }
@@ -99,6 +103,23 @@ extension String {
     func appendingPathExtension(ext: String) -> String? {
         let nsSt = self as NSString
         return nsSt.appendingPathExtension(ext)
+    }
+    
+    func getFileTypeByPathExtension() -> NSBitmapImageRep.FileType? {
+        switch self.pathExtension {
+        case "png":
+            return NSBitmapImageRep.FileType.png
+        case "jpg":
+            return NSBitmapImageRep.FileType.jpeg
+        case "jpeg":
+            return NSBitmapImageRep.FileType.jpeg
+        case "gif":
+            return NSBitmapImageRep.FileType.gif
+        case "bmp":
+            return NSBitmapImageRep.FileType.bmp
+        default:
+            return nil
+        }
     }
 
 

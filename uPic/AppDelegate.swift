@@ -29,6 +29,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let storyboard = NSStoryboard(name: "Preferences", bundle: nil)
         return storyboard.instantiateInitialController() as? PreferencesWindowController ?? PreferencesWindowController()
     }()
+    
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        // 添加 url scheme 监听
+        NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(handleGetURLEvent(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -36,21 +42,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         self.resetNewVersionLaunchAtLogin()
 
-        indicator.minValue = 0.0
-        indicator.maxValue = 1.0
-        indicator.doubleValue = 0.0
-        indicator.isIndeterminate = false
-        indicator.controlSize = NSControl.ControlSize.small
-        indicator.style = NSProgressIndicator.Style.spinning
-        indicator.isHidden = true
-
         setupStatusBar()
 
         // 添加 Finder 右键文件上传监听
         UploadNotifier.addObserver(observer: self, selector: #selector(uploadFilesFromFinderMenu), notification: .uploadFiles)
-        
-//        DistributedNotificationCenter.default()
-//            .addObserver(self, selector: #selector(uploadFilesFromFinderMenu), name: NSNotification.Name(rawValue: "uploadByFinder"), object: nil)
     }
 
     func applicationWillTerminate(_ notification: Notification) {
@@ -58,7 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // 移除 Finder 右键文件上传监听
         UploadNotifier.removeObserver(observer: self, notification: .uploadFiles)
     }
-
+    
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         return true
     }
@@ -97,6 +92,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         self.uploadFiles(urls)
     }
+    
+    @objc func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
+        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue, let url = NSURL(string: urlString) {
+            // 解析出参数
+            var param = urlString
+            let i = "\(url.scheme!)://".count
+            param.removeFirst(i)
+            
+            var fileUrl: URL?
+            if param.isAbsolutePath {
+                fileUrl = URL(fileURLWithPath: param)
+            } else {
+                fileUrl = URL(string: param.urlDecoded())
+            }
+            
+            if let fileUrl = fileUrl, let data = try? Data(contentsOf: fileUrl)  {
+                self.uploadFiles([data])
+            }
+        }
+    }
 
 }
 
@@ -125,8 +140,15 @@ extension AppDelegate {
         }
 
         statusItem.menu = statusItemMenu
-
-
+        
+        // 初始化任务栏进度图标
+        indicator.minValue = 0.0
+        indicator.maxValue = 1.0
+        indicator.doubleValue = 0.0
+        indicator.isIndeterminate = false
+        indicator.controlSize = NSControl.ControlSize.small
+        indicator.style = NSProgressIndicator.Style.spinning
+        indicator.isHidden = true
     }
 
     func setStatusBarIcon(isIndicator: Bool = false) {
@@ -215,6 +237,12 @@ extension AppDelegate {
             let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.tiff)
             if let jpg = imgData?.convertImageData(.jpeg) {
                 self.uploadFiles([jpg])
+            }
+        } else {
+            if let urlStr = NSPasteboard.general.string(forType: NSPasteboard.PasteboardType.string) {
+                if let url = URL(string: urlStr.urlEncoded()), let data = try? Data(contentsOf: url)  {
+                    self.uploadFiles([data])
+                }
             }
         }
 

@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "idiom" : "mac",
+      "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
-      "filename" : "upload.png",
+      "idiom" : "universal",
+      "filename" : "light.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -16,8 +16,8 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
-      "filename" : "upload-dark.png",
+      "idiom" : "universal",
+      "filename" : "dark.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
@@ -27,35 +27,38 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "mac",
+      "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "idiom" : "mac",
-      "scale" : "2x",
+      "idiom" : "universal",
+      "filename" : "light@2x-1.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "light"
         }
-      ]
+      ],
+      "scale" : "2x"
     },
     {
-      "idiom" : "mac",
-      "scale" : "2x",
+      "idiom" : "universal",
+      "filename" : "dark@2x.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "dark"
         }
-      ]
+      ],
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }

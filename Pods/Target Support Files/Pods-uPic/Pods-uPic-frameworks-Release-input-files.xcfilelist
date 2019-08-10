@@ -3,6 +3,5 @@ ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
 ${BUILT_PRODUCTS_DIR}/MASShortcut/MASShortcut.framework
 ${PODS_ROOT}/Sparkle/Sparkle.framework
-${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework
