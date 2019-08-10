@@ -75,6 +75,10 @@ extension String {
     }
 
     // 字符串增强
+    var isAbsolutePath: Bool {
+        return (self as NSString).isAbsolutePath
+    }
+    
     var lastPathComponent: String {
         return (self as NSString).lastPathComponent
     }

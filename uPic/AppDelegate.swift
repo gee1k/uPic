@@ -100,7 +100,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let i = "\(url.scheme!)://".count
             param.removeFirst(i)
             
-            if let url = URL(string: param.urlDecoded()), let data = try? Data(contentsOf: url)  {
+            var fileUrl: URL?
+            if param.isAbsolutePath {
+                fileUrl = URL(fileURLWithPath: param)
+            } else {
+                fileUrl = URL(string: param.urlDecoded())
+            }
+            
+            if let fileUrl = fileUrl, let data = try? Data(contentsOf: fileUrl)  {
                 self.uploadFiles([data])
             }
         }
