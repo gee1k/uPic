@@ -11,10 +11,6 @@ import Foundation
 
 struct Constants {
     
-    struct Finder {
-        static let id = "com.apple.Finder"
-    }
-
     static let none = "None"
     static let launcherAppIdentifier = "com.svend.uPicHelper"
 

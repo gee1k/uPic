@@ -89,4 +89,24 @@ extension Data {
         }
         
     }
+    
+    func contentBitmapType() -> NSBitmapImageRep.FileType? {
+        let c = self.bytes.first
+        
+        switch c {
+        case 0xFF:
+            return .jpeg
+        case 0x89:
+            return .png
+        case 0x47:
+            return .gif
+        case 0x49:
+            return .jpeg
+        case 0x4D:
+            return .jpeg
+        default:
+            return nil
+        }
+        
+    }
 }

@@ -100,6 +100,23 @@ extension String {
         let nsSt = self as NSString
         return nsSt.appendingPathExtension(ext)
     }
+    
+    func getFileTypeByPathExtension() -> NSBitmapImageRep.FileType? {
+        switch self.pathExtension {
+        case "png":
+            return NSBitmapImageRep.FileType.png
+        case "jpg":
+            return NSBitmapImageRep.FileType.jpeg
+        case "jpeg":
+            return NSBitmapImageRep.FileType.jpeg
+        case "gif":
+            return NSBitmapImageRep.FileType.gif
+        case "bmp":
+            return NSBitmapImageRep.FileType.bmp
+        default:
+            return nil
+        }
+    }
 
 
     static let random_str_characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
