@@ -20,11 +20,11 @@ class HostPreferencesViewController: PreferencesViewController {
     @IBOutlet weak var removeHostButton: NSButton!
     @IBOutlet weak var moreActionButton: NSPopUpButton!
     @IBOutlet weak var duplicateMenuItem: NSMenuItem!
-    
+
     @IBOutlet weak var configView: NSView!
 
     var hostItems: [Host]?
-    
+
     // 配置更改状态变化节流函数
     var hostConfigChangedDebouncedFunc: CancelAction!
 
@@ -34,7 +34,7 @@ class HostPreferencesViewController: PreferencesViewController {
             self.refreshButtonStatus()
         }
     }
-    
+
     /* Obserber start */
     var selectedRow: Int = -1 {
         didSet {
@@ -53,9 +53,9 @@ class HostPreferencesViewController: PreferencesViewController {
 
         self.initAddHostTypes()
         self.initHostItems()
-        
+
         self.resetAllowOnlyOneHostTypeVisible()
-        
+
         self.selectedRow = 0
         self.setDefaultSelectedHost()
     }
@@ -64,7 +64,7 @@ class HostPreferencesViewController: PreferencesViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.delegate = self
-        
+
         self.refreshButtonStatus()
         self.addObserver()
     }
@@ -72,61 +72,55 @@ class HostPreferencesViewController: PreferencesViewController {
     override func viewDidDisappear() {
         super.viewDidDisappear()
         self.removeObserver()
-        
+
     }
-    
+
     @IBAction func addHostButtonClicked(_ sender: NSPopUpButton) {
         guard let selectedItem = self.addHostButton.selectedItem else {
             return
         }
-        
+
         guard let type: HostType = HostType(rawValue: selectedItem.tag) else {
             return
         }
-        
+
         self.addHost(type: type)
     }
 
     @IBAction func removeHostButoonClicked(_ sender: NSButton) {
-        guard self.selectedRow > -1 else {
-            return
+        if self.selectRowIsSafe() {
+            self.deleteHost(index: self.selectedRow)
         }
-
-        self.deleteHost(index: self.selectedRow)
     }
 
     @IBAction func editHostMenuItemClicked(_ sender: Any) {
-        guard self.selectedRow > -1 else {
-            return
+        if self.selectRowIsSafe() {
+            self.tableView.editColumn(0, row: self.selectedRow, with: nil, select: true)
         }
-        
-        self.tableView.editColumn(0, row: self.selectedRow, with: nil, select: true)
     }
     @IBAction func duplicateHostMenuItemClicked(_ sender: Any) {
-        guard self.selectedRow > -1, let hostItem = self.hostItems?[self.selectedRow] else {
-            return
+        if let hostItem = self.hostItemBySelectRow() {
+            let newHost = hostItem.copy()
+            self.selectedRow = self.selectedRow + 1
+
+            newHost.data?.observerValues()
+            self.hostItems?.insert(newHost, at: self.selectedRow)
+            self.tableView.reloadData()
+            self.hostItemsChanged = true
+            self.setDefaultSelectedHost()
         }
-        
-        let newHost = hostItem.copy()
-        
-        newHost.data?.observerValues()
-        self.hostItems?.append(newHost)
-        self.tableView.reloadData()
-        self.hostItemsChanged = true
-        self.selectedRow = (self.hostItems?.count ?? 0) - 1
-        self.setDefaultSelectedHost()
     }
-    
+
     //
     // save host config
     //
     @IBAction func saveButtonClicked(_ sender: Any?) {
-        
+
         // 取消一下节流函数的定时器，确保不会在点击保存按钮后，再重新计划安装状态
         if self.hostConfigChangedDebouncedFunc != nil {
             self.hostConfigChangedDebouncedFunc(true)
         }
-        
+
         // 先让当前正在编辑的输入框触发一下 editEnd 事件，来 trim 一下本身
         self.blurEditingTextField()
         ConfigManager.shared.setHostItems(items: self.hostItems!)
@@ -145,13 +139,14 @@ class HostPreferencesViewController: PreferencesViewController {
     @objc func tableViewClick(_ sender: Any) {
         configView.subviews.removeAll()
         self.selectedRow = tableView.selectedRow
-        guard tableView.selectedRow >= 0, let item = hostItems?[tableView.selectedRow] else {
-            return
+
+        if let item = self.hostItemBySelectRow() {
+            ConfigView.createConfigView(parentView: configView, item: item)
         }
 
-        ConfigView.createConfigView(parentView: configView, item: item)
+
     }
-    
+
     // MARK: 将正在编辑的输入框执行 endEdit
     func blurEditingTextField() {
         for view in self.configView.subviews {
@@ -182,13 +177,13 @@ class HostPreferencesViewController: PreferencesViewController {
         addHostButton.pullsDown = true
         addHostButton.removeAllItems()
         addHostButton.imagePosition = .imageOnly
-        
+
         let imageItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
         imageItem.image = NSImage(named: NSImage.addTemplateName)
         imageItem.identifier = NSUserInterfaceItemIdentifier(rawValue: "addImageTemplate")
         imageItem.isHidden = true
         addHostButton.menu?.addItem(imageItem)
-        
+
         for type in HostType.allCases {
             if type.disabled {
                 continue
@@ -198,7 +193,7 @@ class HostPreferencesViewController: PreferencesViewController {
             menuItem.tag = type.rawValue
             addHostButton.menu?.addItem(menuItem)
         }
-        
+
     }
 
     // MARK: 设置只允许添加一个实例的图床添加按钮是否可用
@@ -230,11 +225,11 @@ class HostPreferencesViewController: PreferencesViewController {
         self.saveButton.isEnabled = self.hostItemsChanged
         self.resetButton.isEnabled = self.hostItemsChanged
 
-        let isSelected = self.selectedRow > -1
+        let isSelected = self.selectRowIsSafe()
         self.removeHostButton.isEnabled = isSelected
         self.moreActionButton.isEnabled = isSelected
-        
-        if isSelected, let hostItem = self.hostItems?[self.selectedRow] {
+
+        if let hostItem = self.hostItemBySelectRow() {
             duplicateMenuItem.isHidden = hostItem.type.isOnlyOne
         }
     }
@@ -273,6 +268,20 @@ class HostPreferencesViewController: PreferencesViewController {
         }
     }
 
+    // 根据选择的行获取图床对象
+    func hostItemBySelectRow() -> Host? {
+        if self.selectRowIsSafe() {
+            return self.hostItems?[self.selectedRow] ?? nil
+        }
+
+        return nil
+    }
+
+    // 当前选择的行号是否安全
+    func selectRowIsSafe() -> Bool {
+        return self.selectedRow > -1 && self.selectedRow < self.hostItems?.count ?? 0
+    }
+
 
     @objc func hostConfigChanged() {
         hostConfigChangedDebouncedFunc(false)
@@ -284,7 +293,7 @@ class HostPreferencesViewController: PreferencesViewController {
             DispatchQueue.main.async {
                 self.hostItemsChanged = true
             }
-            
+
         }
         PreferencesNotifier.addObserver(observer: self, selector: #selector(hostConfigChanged), notification: .hostConfigChanged)
     }
@@ -355,7 +364,7 @@ extension HostPreferencesViewController: NSTextFieldDelegate {
 }
 
 extension HostPreferencesViewController: NSWindowDelegate {
-   
+
     func windowShouldClose(_ sender: NSWindow) -> Bool {
         if self.hostItemsChanged, let window = self.view.window {
             let alert = NSAlert()
@@ -378,7 +387,7 @@ extension HostPreferencesViewController: NSWindowDelegate {
             return true
         }
     }
-    
+
     func windowWillClose(_ notification: Notification) {
         // 关闭偏好设置时在去掉 Dock 栏显示应用图标
         NSApp.setActivationPolicy(.accessory)
