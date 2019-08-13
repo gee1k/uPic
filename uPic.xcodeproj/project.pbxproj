@@ -58,7 +58,6 @@
 		166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4A5622B9D118001288ED /* PreferencesNotifier.swift */; };
 		1672762322AFF655007299C3 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672762222AFF655007299C3 /* Host.swift */; };
 		1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */; };
-		1675516422AC102700D3EB6F /* NotificationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516322AC102700D3EB6F /* NotificationExt.swift */; };
 		1675516722ACAA0600D3EB6F /* UPicUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516622ACAA0600D3EB6F /* UPicUpdater.swift */; };
 		1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516922ACAA5900D3EB6F /* AppPublic.swift */; };
 		1675EC5322FB38240038DA33 /* BaseUploaderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675EC5222FB38240038DA33 /* BaseUploaderUtil.swift */; };
@@ -78,6 +77,7 @@
 		1685AA3522DEC943008FBF1D /* FlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685AA3422DEC943008FBF1D /* FlippedView.swift */; };
 		1685AA3722DEEE6C008FBF1D /* CustomHostUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685AA3622DEEE6C008FBF1D /* CustomHostUtil.swift */; };
 		168A831122B606C000344E77 /* UpYunUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A2022B5FC7B00B1F923 /* UpYunUploader.swift */; };
+		168EF2DD2302ABB20096DC1C /* NSUserNotificationCenter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168EF2DC2302ABB20096DC1C /* NSUserNotificationCenter+Extension.swift */; };
 		1690E7E422BF111500FC81F8 /* QiniuConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */; };
 		1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E622BF12D200FC81F8 /* QiniuHostConfig.swift */; };
 		1690E7E922BF1A6D00FC81F8 /* QiniuRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E822BF1A6D00FC81F8 /* QiniuRegion.swift */; };
@@ -193,7 +193,6 @@
 		166B4A5622B9D118001288ED /* PreferencesNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesNotifier.swift; sourceTree = "<group>"; };
 		1672762222AFF655007299C3 /* Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
 		1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDragingInfoExt.swift; sourceTree = "<group>"; };
-		1675516322AC102700D3EB6F /* NotificationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExt.swift; sourceTree = "<group>"; };
 		1675516622ACAA0600D3EB6F /* UPicUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPicUpdater.swift; sourceTree = "<group>"; };
 		1675516922ACAA5900D3EB6F /* AppPublic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPublic.swift; sourceTree = "<group>"; };
 		1675EC5222FB38240038DA33 /* BaseUploaderUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUploaderUtil.swift; sourceTree = "<group>"; };
@@ -212,6 +211,7 @@
 		1683573B22DB0D0800985B10 /* CustomConfigSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfigSheetController.swift; sourceTree = "<group>"; };
 		1685AA3422DEC943008FBF1D /* FlippedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlippedView.swift; sourceTree = "<group>"; };
 		1685AA3622DEEE6C008FBF1D /* CustomHostUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHostUtil.swift; sourceTree = "<group>"; };
+		168EF2DC2302ABB20096DC1C /* NSUserNotificationCenter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserNotificationCenter+Extension.swift"; sourceTree = "<group>"; };
 		1690E7E022BE32B100FC81F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		1690E7E222BE32D500FC81F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiniuConfigView.swift; sourceTree = "<group>"; };
@@ -326,6 +326,7 @@
 				165D908522C333740096FF38 /* PasteboardType+Extension.swift */,
 				165701A022C8A6E600C57EE9 /* Regex.swift */,
 				1685AA3422DEC943008FBF1D /* FlippedView.swift */,
+				168EF2DC2302ABB20096DC1C /* NSUserNotificationCenter+Extension.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -455,7 +456,6 @@
 			isa = PBXGroup;
 			children = (
 				1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */,
-				1675516322AC102700D3EB6F /* NotificationExt.swift */,
 				1675516622ACAA0600D3EB6F /* UPicUpdater.swift */,
 			);
 			path = Extensions;
@@ -825,7 +825,6 @@
 				1672762322AFF655007299C3 /* Host.swift in Sources */,
 				167DDBF122C7784900B03357 /* GithubConfigView.swift in Sources */,
 				1602ED9922ADF43800AA8638 /* SmmsUploader.swift in Sources */,
-				1675516422AC102700D3EB6F /* NotificationExt.swift in Sources */,
 				164745F022B65FE900F9575D /* String+Extension.swift in Sources */,
 				166B4A5322B9CB4D001288ED /* UpYunConfigView.swift in Sources */,
 				166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */,
@@ -848,6 +847,7 @@
 				167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */,
 				164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */,
 				164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */,
+				168EF2DD2302ABB20096DC1C /* NSUserNotificationCenter+Extension.swift in Sources */,
 				1657019D22C8953B00C57EE9 /* WeiboUploader.swift in Sources */,
 				1690E7ED22BF2E4F00FC81F8 /* QiniuUtil.swift in Sources */,
 				166B4A5522B9CFD7001288ED /* ConfigSheetController.swift in Sources */,
