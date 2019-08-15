@@ -57,7 +57,7 @@
 "status-menu.select-file" = "Select File";
 
 /* 状态栏菜单屏幕截图 */
-"status-menu.screenshot" = "Screenshot and Upload";
+"status-menu.screenshot" = "Screenshot and upload";
 
 /* 状态栏菜单上传剪切板中的文件 */
 "status-menu.pasteboard" = "Upload copied file";
