@@ -11,6 +11,7 @@ import SwiftyJSON
 import Alamofire
 import AppKit
 import ScriptingBridge
+import MASShortcut
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -42,7 +43,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         self.resetNewVersionLaunchAtLogin()
 
-        setupStatusBar()
+        self.setupStatusBar()
+        
+        self.bindShortcuts()
 
         // 添加 Finder 右键文件上传监听
         UploadNotifier.addObserver(observer: self, selector: #selector(uploadFilesFromFinderMenu), notification: .uploadFiles)
@@ -455,5 +458,22 @@ extension AppDelegate {
     func sponsorByWechatPay() {
         guard let url = URL(string: "https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat_pay.JPG") else { return }
         NSWorkspace.shared.open(url)
+    }
+}
+
+extension AppDelegate {
+    // Global shortcut
+    func bindShortcuts() {
+        MASShortcutBinder.shared()?.bindShortcut(withDefaultsKey: Constants.Key.selectFileShortcut) {
+            self.selectFile()
+        }
+        
+        MASShortcutBinder.shared()?.bindShortcut(withDefaultsKey: Constants.Key.pasteboardShortcut) {
+            self.uploadByPasteboard()
+        }
+        
+        MASShortcutBinder.shared()?.bindShortcut(withDefaultsKey: Constants.Key.screenshotShortcut) {
+            self.screenshotAndUpload()
+        }
     }
 }

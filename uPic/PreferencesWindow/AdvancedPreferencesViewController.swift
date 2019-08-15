@@ -25,25 +25,6 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         selectFileShortcut.associatedUserDefaultsKey = Constants.Key.selectFileShortcut
         pasteboardShortcut.associatedUserDefaultsKey = Constants.Key.pasteboardShortcut
         screenshotShortcut.associatedUserDefaultsKey = Constants.Key.screenshotShortcut
-
-        bindShortcuts()
-    }
-
-    func bindShortcuts() {
-        MASShortcutBinder.shared()?.bindShortcut(withDefaultsKey: Constants.Key.selectFileShortcut) {
-            let appDelegate = NSApplication.shared.delegate as! AppDelegate
-            appDelegate.selectFile()
-        }
-
-        MASShortcutBinder.shared()?.bindShortcut(withDefaultsKey: Constants.Key.pasteboardShortcut) {
-            let appDelegate = NSApplication.shared.delegate as! AppDelegate
-            appDelegate.uploadByPasteboard()
-        }
-
-        MASShortcutBinder.shared()?.bindShortcut(withDefaultsKey: Constants.Key.screenshotShortcut) {
-            let appDelegate = NSApplication.shared.delegate as! AppDelegate
-            appDelegate.screenshotAndUpload()
-        }
     }
 
     // MARK: Button Actions

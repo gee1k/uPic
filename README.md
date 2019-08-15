@@ -1,5 +1,4 @@
 <div align="right"><strong><a href="./README-cn.md">🇨🇳中文</a></strong>  | <strong>🇬🇧English</strong></div>
-
 <div align="center">
   <img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/logo.png" alt="uPic">
 </div>
@@ -119,7 +118,13 @@ brew cask install upic
 		<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/en-default-host.png" width="450">
 	</div> 
 </details>
-
+<details>
+<summary>4. Upload completed without notification❓</summary><br>
+<p><strong>For example, when the v0.10.5 version is changed, the notification method has changed, and the user may not receive the notification after the upload is completed. Can be solved by the following methods</strong></p>
+<p>1.In the <code>system preferences</code> - <code>Notifications</code>, find <code>uPic</code> in the list and delete (press the Delete key)</p>
+<p>2.Exit uPic and restart</p>
+<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/delete-notification.png" width="450">
+</details>
 
 
 ## 💌 Contact information

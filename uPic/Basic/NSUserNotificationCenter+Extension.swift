@@ -10,13 +10,13 @@ import Cocoa
 
 extension NSUserNotificationCenter {
     func post(title: String, info: String, subtitle: String? = nil) {
+        self.removeAllDeliveredNotifications()
+        
         let notification = NSUserNotification()
         notification.title = title
         notification.subtitle = subtitle
         notification.informativeText = info
-        notification.identifier = "NOTIFICATION_U_PIC"
         notification.userInfo = ["body": info]
-        self.removeAllDeliveredNotifications()
         self.delegate = UserNotificationCenterDelegate.shared
         self.deliver(notification)
     }

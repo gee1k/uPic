@@ -111,12 +111,20 @@ brew cask install upic
 <p>由于 Finder 扩展是只要加上之后会一直都存在，所以当你遇到 Finder 扩展操作无反应的时候，可能是 uPic 主程序没有打开</p>
 </details>
 <details>
-	<summary>3.为什么我配置了图床，图片/文件却没有上传到我的图床中</summary>
+<summary>3.为什么我配置了图床，图片/文件却没有上传到我的图床中</summary>
 	<div>
 		<p>配置好的图床可以在菜单栏`图床`中选择。选中的图床就是您接下来文件会上传到的图床</p>
 		<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/default-host.png" width="450">
 	</div> 
 </details>
+<details>
+<summary>4.上传完成没有通知❓</summary><br>
+<p><strong>如v0.10.5版本时通知方式发生了改变，可能会有用户在上传完成之后没有收到通知。可使用以下方法解决</strong></p>
+<p>1.在<code>系统偏好设置</code> - <code>通知</code>，列表中找到 <code>uPic</code> 选中并删除（按 Delete 键）</p>
+<p>2.退出 uPic 并重新启动</p>
+<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/delete-notification.png" width="450">
+</details>
+
 
 
 
