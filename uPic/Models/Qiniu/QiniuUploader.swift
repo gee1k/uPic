@@ -32,7 +32,7 @@ class QiniuUploader: BaseUploader {
         let secretKey = config.secretKey!
         let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
-        let region = (config.region != nil ? QiniuRegion(rawValue: config.region!) : QiniuRegion.z0)!
+        var region = QiniuRegion.formatRegion(config.region)
 
         var retData = fileData
         var fileName = ""

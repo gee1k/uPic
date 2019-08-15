@@ -51,4 +51,11 @@ public class AmazonS3Region {
         }
         return "s3.\(key).amazonaws.com"
     }
+    
+    public static func formatRegion(_ region: String?) -> String {
+        if let region = region, !region.isEmpty {
+            return region
+        }
+        return AmazonS3Region.allRegion.keys.first!
+    }
 }

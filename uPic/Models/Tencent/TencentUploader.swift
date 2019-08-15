@@ -31,7 +31,7 @@ class TencentUploader: BaseUploader {
         let secretKey = config.secretKey!
         let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
-        let region = (config.region != nil ? TencentRegion(rawValue: config.region!) : TencentRegion.ap_shanghai)!
+        let region = TencentRegion.formatRegion(config.region)
 
         let url = TencentUtil.computeUrl(bucket: bucket, region: region)
         let hostUri = TencentUtil.computeHost(bucket: bucket, region: region)
@@ -113,7 +113,11 @@ class TencentUploader: BaseUploader {
         }.response(completionHandler: { response -> Void in
             switch response.result {
             case .success(_):
-                super.completed(url: "\(domain)/\(key)\(config.suffix ?? "")")
+                if domain.isEmpty {
+                    super.completed(url: "\(url)/\(key)\(config.suffix ?? "")")
+                } else {
+                    super.completed(url: "\(domain)/\(key)\(config.suffix ?? "")")
+                }
             case .failure(let error):
                 var errorMessage = error.localizedDescription
                 if let data = response.data {

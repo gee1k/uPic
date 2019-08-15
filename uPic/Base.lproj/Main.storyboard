@@ -163,10 +163,15 @@
                                             <action selector="ouputFormatMenuItemClicked:" target="veO-oa-UPB" id="Xxd-x1-2BP"/>
                                         </connections>
                                     </menuItem>
+                                    <menuItem title="UBB" tag="3" id="Hz2-gj-luo">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="ouputFormatMenuItemClicked:" target="veO-oa-UPB" id="BYo-1k-amH"/>
+                                        </connections>
+                                    </menuItem>
                                 </items>
                             </menu>
                         </menuItem>
-                        <menuItem isSeparatorItem="YES" id="ijd-GZ-VTQ"/>
                         <menuItem title="上传前压缩图片" id="eIU-EA-uQZ">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="上传前压缩图片" id="4yH-6k-LD0"/>
@@ -199,34 +204,35 @@
                                             <action selector="guideMenuItemClicked:" target="veO-oa-UPB" id="PRm-Bb-SKG"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="赞助" id="yCF-Ec-Lgz">
+                                </items>
+                            </menu>
+                        </menuItem>
+                        <menuItem title="赞助" id="yCF-Ec-Lgz">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="赞助" id="iGe-NR-YFa">
+                                <items>
+                                    <menuItem title="Paypal" id="70g-zL-O4p">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <menu key="submenu" title="赞助" id="iGe-NR-YFa">
-                                            <items>
-                                                <menuItem title="Paypal" id="70g-zL-O4p">
-                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                    <connections>
-                                                        <action selector="paypalMenuItemClicked:" target="veO-oa-UPB" id="G5h-aO-WVm"/>
-                                                    </connections>
-                                                </menuItem>
-                                                <menuItem title="支付宝(Alipay)" id="aHw-Zc-eD7">
-                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                    <connections>
-                                                        <action selector="alipayMenuItemClicked:" target="veO-oa-UPB" id="SQA-fB-WmZ"/>
-                                                    </connections>
-                                                </menuItem>
-                                                <menuItem title="微信(WeChat)" id="Qky-3r-Bgs">
-                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                    <connections>
-                                                        <action selector="wechatPayMenuItemClicked:" target="veO-oa-UPB" id="vzQ-HN-NXw"/>
-                                                    </connections>
-                                                </menuItem>
-                                            </items>
-                                        </menu>
+                                        <connections>
+                                            <action selector="paypalMenuItemClicked:" target="veO-oa-UPB" id="G5h-aO-WVm"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="支付宝(Alipay)" id="aHw-Zc-eD7">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="alipayMenuItemClicked:" target="veO-oa-UPB" id="SQA-fB-WmZ"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="微信(WeChat)" id="Qky-3r-Bgs">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="wechatPayMenuItemClicked:" target="veO-oa-UPB" id="vzQ-HN-NXw"/>
+                                        </connections>
                                     </menuItem>
                                 </items>
                             </menu>
                         </menuItem>
+                        <menuItem isSeparatorItem="YES" id="M7L-b9-8Hc"/>
                         <menuItem title="退出" keyEquivalent="q" id="0JF-m2-1iq">
                             <connections>
                                 <action selector="quitMenuItemClicked:" target="veO-oa-UPB" id="e0d-Ue-lUF"/>

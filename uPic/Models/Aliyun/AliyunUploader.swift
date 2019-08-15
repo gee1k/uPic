@@ -31,7 +31,7 @@ class AliyunUploader: BaseUploader {
         let secretKey = config.secretKey!
         let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
-        let region = (config.region != nil ? AliyunRegion(rawValue: config.region!) : AliyunRegion.cn_hangzhou)!
+        let region = AliyunRegion.formatRegion(config.region)
         
         let url = AliyunUtil.computeUrl(bucket: bucket, region: region)
         
@@ -96,7 +96,11 @@ class AliyunUploader: BaseUploader {
             }.response(completionHandler: { response -> Void in
                 switch response.result {
                 case .success(_):
-                    super.completed(url: "\(domain)/\(key)\(config.suffix ?? "")")
+                    if domain.isEmpty {
+                        super.completed(url: "\(url)/\(key)\(config.suffix ?? "")")
+                    } else {
+                        super.completed(url: "\(domain)/\(key)\(config.suffix ?? "")")
+                    }
                 case .failure(let error):
                     var errorMessage = error.localizedDescription
                     if let data = response.data {

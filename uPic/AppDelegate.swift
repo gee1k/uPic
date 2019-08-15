@@ -131,10 +131,10 @@ extension AppDelegate {
 
             // 注册拖拽文件格式支持。使其支持浏览器拖拽的URL、tiff。以及Safari 有些情况(例如，百度搜图，在默认搜索列表。不进入详情时)下拖拽的时候获取到的是图片URL字符串
             if #available(OSX 10.13, *) {
-                button.window?.registerForDraggedTypes([.URL, .fileURL, .string])
+                button.window?.registerForDraggedTypes([.URL, .fileURL, .string, .html])
             } else {
                 // Fallback on earlier versions
-                button.window?.registerForDraggedTypes([.png, .tiff, .pdf, .string])
+                button.window?.registerForDraggedTypes([.png, .tiff, .pdf, .string, .html])
             }
 
         }
@@ -372,7 +372,11 @@ extension AppDelegate {
                 outputUrl = "<img src='\(url)'/>"
                 break
             case 2:
-                outputUrl = "![pic](\(url))"
+                outputUrl = "![](\(url))"
+                break
+            case 3:
+                // UBB
+                outputUrl = "[img]\(url)[/img]"
                 break
             default:
                 outputUrl = url
