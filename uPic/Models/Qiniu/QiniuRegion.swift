@@ -43,4 +43,11 @@ public enum QiniuRegion: String, CaseIterable {
             return url
         }
     }
+    
+    public static func formatRegion(_ region: String?) -> QiniuRegion {
+        if let region = region, !region.isEmpty {
+            return QiniuRegion(rawValue: region)!
+        }
+        return QiniuRegion.z0
+    }
 }

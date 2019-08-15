@@ -31,7 +31,7 @@ class AmazonS3Uploader: BaseUploader {
         let secretKey = config.secretKey!
         let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
-        let region = config.region!
+        let region = AmazonS3Region.formatRegion(config.region)
 
         let url = AmazonS3Util.computeUrl(bucket: bucket, region: region)
 

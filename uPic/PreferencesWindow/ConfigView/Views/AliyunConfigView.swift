@@ -45,8 +45,14 @@ class AliyunConfigView: ConfigView {
                 selectRegion = menuItem
             }
         }
+        
+        selectRegion = selectRegion ?? regionButtonPopUp.menu?.items.first
         if selectRegion != nil {
             regionButtonPopUp.select(selectRegion)
+            // 初次设置，手动处罚一下事件，将数据写入data
+            if (data.region == nil || data.region.isEmpty) {
+                self.regionChange(regionButtonPopUp)
+            }
         }
         
         self.addSubview(regionLabel)
