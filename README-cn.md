@@ -119,7 +119,7 @@ brew cask install upic
 </details>
 <details>
 <summary>4.上传完成没有通知❓</summary><br>
-<p><strong>如v0.10.5版本时通知方式发生了改变，可能会有用户在上传完成之后没有收到通知。可使用以下方法解决</strong></p>
+<p><strong>如v0.10.4版本时通知方式发生了改变，可能会有用户在上传完成之后没有收到通知。可使用以下方法解决</strong></p>
 <p>1.在<code>系统偏好设置</code> - <code>通知</code>，列表中找到 <code>uPic</code> 选中并删除（按 Delete 键）</p>
 <p>2.退出 uPic 并重新启动</p>
 <img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/delete-notification.png" width="450">
