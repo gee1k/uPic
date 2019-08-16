@@ -24,6 +24,7 @@
 		161C3BE722C49BE90092114F /* RequestMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE622C49BE90092114F /* RequestMethods.swift */; };
 		1623611B22AB935300E4025C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623611D22AB935300E4025C /* InfoPlist.strings */; };
 		1623612322AB951E00E4025C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
+		16248E32230673B6002131BB /* NotificationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16248E31230673B6002131BB /* NotificationExt.swift */; };
 		163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */; };
 		163632F122B274B400805E7F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F022B274B400805E7F /* Date+Extension.swift */; };
 		163632F322B2751D00805E7F /* BoolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F222B2751D00805E7F /* BoolType.swift */; };
@@ -77,7 +78,6 @@
 		1685AA3522DEC943008FBF1D /* FlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685AA3422DEC943008FBF1D /* FlippedView.swift */; };
 		1685AA3722DEEE6C008FBF1D /* CustomHostUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685AA3622DEEE6C008FBF1D /* CustomHostUtil.swift */; };
 		168A831122B606C000344E77 /* UpYunUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A2022B5FC7B00B1F923 /* UpYunUploader.swift */; };
-		168EF2DD2302ABB20096DC1C /* NSUserNotificationCenter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168EF2DC2302ABB20096DC1C /* NSUserNotificationCenter+Extension.swift */; };
 		1690E7E422BF111500FC81F8 /* QiniuConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */; };
 		1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E622BF12D200FC81F8 /* QiniuHostConfig.swift */; };
 		1690E7E922BF1A6D00FC81F8 /* QiniuRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E822BF1A6D00FC81F8 /* QiniuRegion.swift */; };
@@ -159,6 +159,7 @@
 		1623612022AB943100E4025C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		1623612422AB951E00E4025C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1623612622AB951F00E4025C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		16248E31230673B6002131BB /* NotificationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExt.swift; sourceTree = "<group>"; };
 		1626E8C622AAB6B1006DCF0F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextFieldCell+VerticallyCentered.swift"; sourceTree = "<group>"; };
 		163632F022B274B400805E7F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -211,7 +212,6 @@
 		1683573B22DB0D0800985B10 /* CustomConfigSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfigSheetController.swift; sourceTree = "<group>"; };
 		1685AA3422DEC943008FBF1D /* FlippedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlippedView.swift; sourceTree = "<group>"; };
 		1685AA3622DEEE6C008FBF1D /* CustomHostUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHostUtil.swift; sourceTree = "<group>"; };
-		168EF2DC2302ABB20096DC1C /* NSUserNotificationCenter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSUserNotificationCenter+Extension.swift"; sourceTree = "<group>"; };
 		1690E7E022BE32B100FC81F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		1690E7E222BE32D500FC81F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiniuConfigView.swift; sourceTree = "<group>"; };
@@ -326,7 +326,6 @@
 				165D908522C333740096FF38 /* PasteboardType+Extension.swift */,
 				165701A022C8A6E600C57EE9 /* Regex.swift */,
 				1685AA3422DEC943008FBF1D /* FlippedView.swift */,
-				168EF2DC2302ABB20096DC1C /* NSUserNotificationCenter+Extension.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -457,6 +456,7 @@
 			children = (
 				1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */,
 				1675516622ACAA0600D3EB6F /* UPicUpdater.swift */,
+				16248E31230673B6002131BB /* NotificationExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -847,7 +847,6 @@
 				167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */,
 				164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */,
 				164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */,
-				168EF2DD2302ABB20096DC1C /* NSUserNotificationCenter+Extension.swift in Sources */,
 				1657019D22C8953B00C57EE9 /* WeiboUploader.swift in Sources */,
 				1690E7ED22BF2E4F00FC81F8 /* QiniuUtil.swift in Sources */,
 				166B4A5522B9CFD7001288ED /* ConfigSheetController.swift in Sources */,
@@ -891,6 +890,7 @@
 				68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */,
 				1660FCBC22C11C7500372950 /* TencentUtil.swift in Sources */,
 				1660FCBA22C11C2300372950 /* TencentHostConfig.swift in Sources */,
+				16248E32230673B6002131BB /* NotificationExt.swift in Sources */,
 				167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */,
 				1685AA3722DEEE6C008FBF1D /* CustomHostUtil.swift in Sources */,
 				68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */,

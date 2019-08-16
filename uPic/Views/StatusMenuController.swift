@@ -237,7 +237,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     // copy history url
     @objc func copyUrl(_ sender: NSMenuItem) {
         let outputUrl = (NSApplication.shared.delegate as? AppDelegate)?.copyUrl(url: sender.title)
-        NSUserNotificationCenter.default.postCopySuccessfulNotice(outputUrl)
+        NotificationExt.shared.postCopySuccessfulNotice(outputUrl)
     }
 
     // clear all history

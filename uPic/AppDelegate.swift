@@ -89,7 +89,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if (urls.count == 0) {
-            NSUserNotificationCenter.default.postUploadErrorNotice(NSLocalizedString("file-format-is-not-supported", comment: ""))
+            NotificationExt.shared.postUploadErrorNotice(NSLocalizedString("file-format-is-not-supported", comment: ""))
             return
         }
         
@@ -187,7 +187,7 @@ extension AppDelegate {
     @objc func selectFile() {
 
         if self.uploding {
-            NSUserNotificationCenter.default.postUplodingNotice()
+            NotificationExt.shared.postUplodingNotice()
             return
         }
 
@@ -214,7 +214,7 @@ extension AppDelegate {
 
     @objc func uploadByPasteboard() {
         if self.uploding {
-            NSUserNotificationCenter.default.postUplodingNotice()
+            NotificationExt.shared.postUplodingNotice()
             return
         }
 
@@ -230,7 +230,7 @@ extension AppDelegate {
             if urls.count > 0 {
                 self.uploadFiles(urls)
             } else {
-                NSUserNotificationCenter.default.postUploadErrorNotice(NSLocalizedString("file-format-is-not-supported", comment: ""))
+                NotificationExt.shared.postUploadErrorNotice(NSLocalizedString("file-format-is-not-supported", comment: ""))
             }
 
         } else if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.png) {
@@ -254,7 +254,7 @@ extension AppDelegate {
     @objc func screenshotAndUpload() {
 
         if self.uploding {
-            NSUserNotificationCenter.default.postUplodingNotice()
+            NotificationExt.shared.postUplodingNotice()
             return
         }
 
@@ -297,7 +297,7 @@ extension AppDelegate {
             self.uploding = false
             if self.resultUrls.count > 0 {
                 let outputStr = self.copyUrls(urls: self.resultUrls)
-                NSUserNotificationCenter.default.postUploadSuccessfulNotice(outputStr)
+                NotificationExt.shared.postUploadSuccessfulNotice(outputStr)
                 self.resultUrls.removeAll()
             }
         } else {
@@ -326,7 +326,7 @@ extension AppDelegate {
     ///
     func uploadFaild(errorMsg: String? = "") {
         self.setStatusBarIcon(isIndicator: false)
-        NSUserNotificationCenter.default.postUploadErrorNotice(errorMsg)
+        NotificationExt.shared.postUploadErrorNotice(errorMsg)
         self.tickFileToUpload()
     }
 
