@@ -285,7 +285,6 @@ extension AppDelegate {
             return
         }
 
-//        NotificationExt.sendStartUploadNotification()
         self.uploding = true
         self.tickFileToUpload()
     }

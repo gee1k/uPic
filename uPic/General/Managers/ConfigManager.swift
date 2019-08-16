@@ -45,6 +45,8 @@ public class ConfigManager {
         Defaults[.launchAtLogin] = BoolType._false.rawValue
         Defaults[.compressFactor] = 100
         Defaults.synchronize()
+        
+        self.setHostItems(items: [Host.getDefaultHost()])
     }
 
     public func removeAllUserDefaults() {
