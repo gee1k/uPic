@@ -17,6 +17,7 @@ extension NSUserNotificationCenter {
         notification.subtitle = subtitle
         notification.informativeText = info
         notification.userInfo = ["body": info]
+        notification.soundName = NSUserNotificationDefaultSoundName
         self.delegate = UserNotificationCenterDelegate.shared
         self.deliver(notification)
     }
