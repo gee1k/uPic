@@ -44,6 +44,9 @@
 /* 文件格式不支持 */
 "file-format-is-not-supported" = "File format not supported!";
 
+/* 文件大小超过限制 */
+"file-is-over-the-size-limit" = "File is over the size limit! Limit:";
+
 /* 图床配置存在问题，请检查 */
 "bad-host-config" = "There is a problem with the map bed configuration, please check!";
 
@@ -135,6 +138,7 @@
 "host.field.other-fields" = "Other fields";
 "host.field.header-data" = "Header Data";
 "host.field.body-data" = "Body Data";
+"host.field.clientId" = "Client ID";
 
 /* host field placeholder */
 "host.placeholder.operator" = "Operator name";
@@ -157,6 +161,7 @@
 "host.type.7" = "Gitee";
 "host.type.8" = "Weibo";
 "host.type.9" = "Amazon S3";
+"host.type.10" = "Imgur";
 
 /* HostSaveKey */
 "save-key.filename" = "filename";

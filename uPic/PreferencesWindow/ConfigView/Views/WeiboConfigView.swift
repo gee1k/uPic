@@ -21,7 +21,7 @@ class WeiboConfigView: ConfigView {
             return
         }
         
-        let paddingTop = 50, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 80, labelHeight = 20,
+        let paddingTop = 50, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 90, labelHeight = 20,
         viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
         textFieldX = labelWidth + paddingLeft + gapLeft, textFieldWidth = viewWidth - paddingLeft - textFieldX
         

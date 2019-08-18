@@ -62,6 +62,9 @@
 		1675516722ACAA0600D3EB6F /* UPicUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516622ACAA0600D3EB6F /* UPicUpdater.swift */; };
 		1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516922ACAA5900D3EB6F /* AppPublic.swift */; };
 		1675EC5322FB38240038DA33 /* BaseUploaderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675EC5222FB38240038DA33 /* BaseUploaderUtil.swift */; };
+		167620ED230819C0008F8363 /* ImgurHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167620EC230819A9008F8363 /* ImgurHostConfig.swift */; };
+		167620EE23081B0C008F8363 /* ImgurUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167620EB2308199E008F8363 /* ImgurUploader.swift */; };
+		167620F023081DC0008F8363 /* ImgurConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167620EF23081DC0008F8363 /* ImgurConfigView.swift */; };
 		167D08A822ED88E7000F3BC0 /* AmazonS3ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D08A622ED88C2000F3BC0 /* AmazonS3ConfigView.swift */; };
 		167D08AA22ED8A27000F3BC0 /* AliyunHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D08A922ED8A27000F3BC0 /* AliyunHostConfig.swift */; };
 		167D08AC22ED8A4B000F3BC0 /* AliyunRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D08AB22ED8A4B000F3BC0 /* AliyunRegion.swift */; };
@@ -197,6 +200,9 @@
 		1675516622ACAA0600D3EB6F /* UPicUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPicUpdater.swift; sourceTree = "<group>"; };
 		1675516922ACAA5900D3EB6F /* AppPublic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPublic.swift; sourceTree = "<group>"; };
 		1675EC5222FB38240038DA33 /* BaseUploaderUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUploaderUtil.swift; sourceTree = "<group>"; };
+		167620EB2308199E008F8363 /* ImgurUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploader.swift; sourceTree = "<group>"; };
+		167620EC230819A9008F8363 /* ImgurHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurHostConfig.swift; sourceTree = "<group>"; };
+		167620EF23081DC0008F8363 /* ImgurConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurConfigView.swift; sourceTree = "<group>"; };
 		167D08A622ED88C2000F3BC0 /* AmazonS3ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonS3ConfigView.swift; sourceTree = "<group>"; };
 		167D08A922ED8A27000F3BC0 /* AliyunHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliyunHostConfig.swift; sourceTree = "<group>"; };
 		167D08AB22ED8A4B000F3BC0 /* AliyunRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliyunRegion.swift; sourceTree = "<group>"; };
@@ -371,6 +377,7 @@
 		1646B80F22C7C485009271DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				167620EF23081DC0008F8363 /* ImgurConfigView.swift */,
 				167D08A622ED88C2000F3BC0 /* AmazonS3ConfigView.swift */,
 				1657019E22C897A400C57EE9 /* WeiboConfigView.swift */,
 				1662AC7022C0AC52003AC924 /* AliyunConfigView.swift */,
@@ -431,6 +438,7 @@
 		1672762122AFF63A007299C3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				167620EA2308191A008F8363 /* Imgur */,
 				1602ED9622ADEFB200AA8638 /* BaseUploader.swift */,
 				1675EC5222FB38240038DA33 /* BaseUploaderUtil.swift */,
 				1672762222AFF655007299C3 /* Host.swift */,
@@ -459,6 +467,15 @@
 				16248E31230673B6002131BB /* NotificationExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		167620EA2308191A008F8363 /* Imgur */ = {
+			isa = PBXGroup;
+			children = (
+				167620EC230819A9008F8363 /* ImgurHostConfig.swift */,
+				167620EB2308199E008F8363 /* ImgurUploader.swift */,
+			);
+			path = Imgur;
 			sourceTree = "<group>";
 		};
 		167D08A522ED8132000F3BC0 /* Amazon_S3 */ = {
@@ -852,6 +869,7 @@
 				166B4A5522B9CFD7001288ED /* ConfigSheetController.swift in Sources */,
 				1647474322B66ACE00F9575D /* Data+Extension.swift in Sources */,
 				167D7F4B22B4D31300DD0A7A /* HostType.swift in Sources */,
+				167620EE23081B0C008F8363 /* ImgurUploader.swift in Sources */,
 				1690E7E422BF111500FC81F8 /* QiniuConfigView.swift in Sources */,
 				1690E7E922BF1A6D00FC81F8 /* QiniuRegion.swift in Sources */,
 				168A831122B606C000344E77 /* UpYunUploader.swift in Sources */,
@@ -865,6 +883,7 @@
 				1660FCBB22C11C7200372950 /* TencentUploader.swift in Sources */,
 				167D08AE22ED8A58000F3BC0 /* AliyunUploader.swift in Sources */,
 				1647474522B66E3400F9575D /* Util.swift in Sources */,
+				167620ED230819C0008F8363 /* ImgurHostConfig.swift in Sources */,
 				1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */,
 				1662AC7122C0AC53003AC924 /* AliyunConfigView.swift in Sources */,
 				1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */,
@@ -892,6 +911,7 @@
 				1660FCBA22C11C2300372950 /* TencentHostConfig.swift in Sources */,
 				16248E32230673B6002131BB /* NotificationExt.swift in Sources */,
 				167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */,
+				167620F023081DC0008F8363 /* ImgurConfigView.swift in Sources */,
 				1685AA3722DEEE6C008FBF1D /* CustomHostUtil.swift in Sources */,
 				68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */,
 			);

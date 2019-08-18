@@ -28,7 +28,7 @@ class GiteeUploader: BaseUploader {
         let repo = config.repo!
         let branch = config.branch!
         let token = config.token!
-        let hostSaveKey = (config.saveKey != nil ? HostSaveKey(rawValue: config.saveKey!) : HostSaveKey.dateFilename)!
+        let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain
         
         var fileName = ""
@@ -87,7 +87,12 @@ class GiteeUploader: BaseUploader {
                         super.completed(url: "\(domain!)/\(filePath)")
                     }
                 case .failure(let error):
-                    super.faild(errorMsg: error.localizedDescription)
+                    var errorMsg = error.localizedDescription
+                    if let data = response.data {
+                        let json = JSON(data)
+                        errorMsg = json["message"].stringValue
+                    }
+                    super.faild(errorMsg: errorMsg)
                 }
             })
         

@@ -219,9 +219,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
                 // 创建 NSImage 并验证其有效性，最后添加到对应的历史记录项的子菜单
                 if let image = NSImage(data: data!), image.isValid {
-                    let imgMenuItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+                    let imgMenuItem = NSMenuItem(title: "", action: #selector(self.copyUrl(_:)), keyEquivalent: "")
                     imgMenuItem.image = image
-                    imgMenuItem.image?.size = NSSize(width: 220, height: 230)
+                    imgMenuItem.toolTip = urlStr
+                    imgMenuItem.target = self
+                    imgMenuItem.image?.size = NSSize(width: 250, height: 230)
                     let imgSubMenu = NSMenu(title: "")
                     imgSubMenu.addItem(imgMenuItem)
                     menuItem.submenu = imgSubMenu
@@ -236,7 +238,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     // copy history url
     @objc func copyUrl(_ sender: NSMenuItem) {
-        let outputUrl = (NSApplication.shared.delegate as? AppDelegate)?.copyUrl(url: sender.title)
+        var url = sender.title
+        if (url.isEmpty) {
+            url = sender.toolTip ?? url
+        }
+        let outputUrl = (NSApplication.shared.delegate as? AppDelegate)?.copyUrl(url: url)
         NotificationExt.shared.postCopySuccessfulNotice(outputUrl)
     }
 

@@ -22,8 +22,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var statusItemMenu: NSMenu!
 
+    // 是否正在上传
     var uploding = false
+    // 需要上传的文件
     var needUploadFiles = [Any]()
+    // 上传成功的url
     var resultUrls = [String]()
 
     lazy var preferencesWindowController: PreferencesWindowController = {
@@ -302,12 +305,12 @@ extension AppDelegate {
         } else {
             // next file
             let firstFile = self.needUploadFiles.first
+            self.needUploadFiles.removeFirst()
             if firstFile is URL {
                 BaseUploader.upload(url: firstFile as! URL)
             } else if firstFile is Data {
                 BaseUploader.upload(data: firstFile as! Data)
             }
-            self.needUploadFiles.removeFirst()
         }
     }
 
