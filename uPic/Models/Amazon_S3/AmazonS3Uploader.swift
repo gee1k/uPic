@@ -123,7 +123,6 @@ class AmazonS3Uploader: BaseUploader {
                         errorMessage = errorMsg
                     }
                 }
-                debugPrint(errorMessage)
                 super.faild(errorMsg: errorMessage)
             }
         })

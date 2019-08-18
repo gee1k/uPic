@@ -49,6 +49,9 @@
 /* 文件格式不支持 */
 "file-format-is-not-supported" = "文件格式不支持！";
 
+/* 文件大小超过限制 */
+"file-is-over-the-size-limit" = "文件大小超过限制！限制:";
+
 /* 图床配置存在问题，请检查 */
 "bad-host-config" = "图床配置存在问题，请检查！";
 
@@ -134,6 +137,7 @@
 "host.field.other-fields" = "其他字段";
 "host.field.header-data" = "Headers 数据";
 "host.field.body-data" = "Body 数据";
+"host.field.clientId" = "Client ID";
 
 /* host field placeholder */
 "host.placeholder.operator" = "操作员名称";
@@ -155,6 +159,7 @@
 "host.type.7" = "码云 Gitee";
 "host.type.8" = "微博";
 "host.type.9" = "Amazon S3";
+"host.type.10" = "Imgur";
 
 /* HostSaveKey */
 "save-key.filename" = "文件名";

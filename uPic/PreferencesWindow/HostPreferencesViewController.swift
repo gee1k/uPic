@@ -57,7 +57,14 @@ class HostPreferencesViewController: PreferencesViewController {
         self.resetAllowOnlyOneHostTypeVisible()
 
         self.selectedRow = 0
-        self.setDefaultSelectedHost()
+    }
+    
+    override func viewDidLayout() {
+        super.viewDidLayout()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.setDefaultSelectedHost()
+        }
     }
 
 
@@ -143,8 +150,6 @@ class HostPreferencesViewController: PreferencesViewController {
         if let item = self.hostItemBySelectRow() {
             ConfigView.createConfigView(parentView: configView, item: item)
         }
-
-
     }
 
     // MARK: 将正在编辑的输入框执行 endEdit

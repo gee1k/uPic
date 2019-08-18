@@ -18,10 +18,21 @@ class BaseUploader {
         guard let host = ConfigManager.shared.getDefaultHost() else {
             return
         }
-
+        
         let fileExtensions = BaseUploader.getFileExtensions()
         if (!BaseUploader.checkFileExtensions(fileExtensions: fileExtensions, fileExtension: url.pathExtension)) {
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: NSLocalizedString("file-format-is-not-supported", comment: "文件格式不支持"))
             return
+        }
+        
+        if let attr = try? FileManager.default.attributesOfItem(atPath: url.path), let fileSize = attr[FileAttributeKey.size] as? UInt64 {
+            let limitSize = BaseUploader.getFileSizeLimit()
+            if (!BaseUploader.checkFileSize(fileSize: fileSize, limitSize: limitSize)) {
+                
+                let errorMsg = "\(NSLocalizedString("file-is-over-the-size-limit", comment: "文件大小超过限制"))\(ByteCountFormatter.string(fromByteCount: Int64(limitSize), countStyle: .binary))"
+                (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
+                return
+            }
         }
 
         /* 有新的图床在这里进行判断调用 */
@@ -56,6 +67,9 @@ class BaseUploader {
         case .amazon_S3:
             AmazonS3Uploader.shared.upload(url)
             break
+        case .imgur:
+            ImgurUploader.shared.upload(url)
+            break
         }
     }
 
@@ -65,6 +79,14 @@ class BaseUploader {
     ///
     static func upload(data: Data) {
         guard let host = ConfigManager.shared.getDefaultHost() else {
+            return
+        }
+        
+        let limitSize = BaseUploader.getFileSizeLimit()
+        if (!BaseUploader.checkFileSize(fileSize: UInt64(data.count), limitSize: limitSize)) {
+            
+            let errorMsg = "\(NSLocalizedString("file-is-over-the-size-limit", comment: "文件大小超过限制"))\(ByteCountFormatter.string(fromByteCount: Int64(limitSize), countStyle: .binary))"
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
             return
         }
 
@@ -100,6 +122,9 @@ class BaseUploader {
         case .amazon_S3:
             AmazonS3Uploader.shared.upload(data)
             break
+        case .imgur:
+            ImgurUploader.shared.upload(data)
+            break
         }
     }
 
@@ -133,6 +158,27 @@ class BaseUploader {
             return WeiboUploader.fileExtensions
         case .amazon_S3:
             return AmazonS3Uploader.fileExtensions
+        case .imgur:
+            return ImgurUploader.fileExtensions
+        }
+    }
+    
+    ///
+    /// 获取当前图床对应的文件大小限制
+    ///
+    static func getFileSizeLimit() -> UInt64 {
+        guard let host = ConfigManager.shared.getDefaultHost() else {
+            return 0
+        }
+        
+        /* 有新的图床在这里进行判断调用 */
+        switch host.type {
+        case .smms:
+            return SmmsUploader.limitSize
+        case .imgur:
+            return ImgurUploader.limitSize
+        default:
+            return 0
         }
     }
 
@@ -141,10 +187,19 @@ class BaseUploader {
             return true
         }
         let valid = fileExtensions.contains(fileExtension.lowercased())
-        if !valid {
-            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: NSLocalizedString("file-format-is-not-supported", comment: "文件格式不支持"))
-        }
         return valid
+    }
+    
+    private static func checkFileSize(fileSize: UInt64?, limitSize: UInt64) -> Bool {
+        guard let size = fileSize else {
+            return true
+        }
+        
+        if (limitSize <= 0) {
+            return true
+        }
+        
+        return size <= limitSize
     }
 
     func start() {

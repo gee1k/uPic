@@ -1,5 +1,5 @@
 //
-//  AliyunUploader.swift
+//  QiniuUploader.swift
 //  uPic
 //
 //  Created by Svend Jin on 2019/6/23.

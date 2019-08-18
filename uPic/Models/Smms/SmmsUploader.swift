@@ -14,9 +14,12 @@ class SmmsUploader: BaseUploader {
 
     static let shared = SmmsUploader()
 
-    let url = "https://sm.ms/api/upload"
-
     static let fileExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
+    
+    // limit 5M
+    static let limitSize: UInt64 = 5 * 1024 * 1024
+    
+    let url = "https://sm.ms/api/upload"
 
     func _upload(_ multipartFormData: @escaping ((MultipartFormData) -> Void)) {
         super.start()
@@ -27,9 +30,9 @@ class SmmsUploader: BaseUploader {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                let code = json["code"]
-                if "error" == code {
-                    let msg = json["msg"].stringValue
+                let success = json["success"].intValue
+                if 0 == success {
+                    let msg = json["message"].stringValue
                     super.faild(errorMsg: msg)
                 } else {
                     let data = json["data"]

@@ -17,9 +17,7 @@ class BaseUploaderUtil {
         }
         
         // 压缩图片
-        debugPrint("origin data -> \(data.bytes.count)")
         let retData = data.compressImage(Float(factor) / 100)
-        debugPrint("compress data -> \(retData.bytes.count)")
         return retData
     }
     
