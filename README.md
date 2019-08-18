@@ -104,7 +104,8 @@ brew cask install upic
 		<li><a href="https://blog.svend.cc/upic/tutorials/tencent_cos/en" target="_blank">uPic configuration - Tencent Cloud</a></li>
 		<li><a href="https://blog.svend.cc/upic/tutorials/amazon_s3/en" target="_blank">uPic configuration - Amazon S3</a></li>
 		<li><a href="https://blog.svend.cc/upic/tutorials/github/en" target="_blank">uPic configuration - Github</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/gitee/en" target="_blank">uPic configuration - Gitee(Gitee)</a></li>
+		<li><a href="https://blog.svend.cc/upic/tutorials/gitee/en" target="_blank">uPic configuration - Gitee</a></li>
+    <li><a href="https://blog.svend.cc/upic/tutorials/imgur/en" target="_blank">uPic configuration - Imgur</a></li>
 		<li><a href="https://blog.svend.cc/upic/tutorials/custom/en" target="_blank">uPic configuration - Custom upload</a></li>
 	</ul>
 </details>
