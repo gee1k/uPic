@@ -242,7 +242,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         if (url.isEmpty) {
             url = sender.toolTip ?? url
         }
-        let outputUrl = (NSApplication.shared.delegate as? AppDelegate)?.copyUrl(url: url)
+        let outputUrl = (NSApplication.shared.delegate as? AppDelegate)?.copyUrls(urls: [url])
         NotificationExt.shared.postCopySuccessfulNotice(outputUrl)
     }
 
