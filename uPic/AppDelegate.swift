@@ -344,28 +344,6 @@ extension AppDelegate {
         self.indicator.doubleValue = 0.0
     }
 
-    func copyUrl(url: String) -> String {
-        var outputUrl = ""
-        let outputFormat = Defaults[.ouputFormat]
-        switch outputFormat {
-        case 1:
-            outputUrl = "<img src='\(url)'/>"
-            break
-        case 2:
-            outputUrl = "![pic](\(url))"
-            break
-        default:
-            outputUrl = url
-
-        }
-
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.declareTypes([.string], owner: nil)
-        NSPasteboard.general.setString(outputUrl, forType: .string)
-
-        return outputUrl
-    }
-
     func copyUrls(urls: [String]) -> String {
         var outputUrls = [String]()
         let outputFormat = Defaults[.ouputFormat]
