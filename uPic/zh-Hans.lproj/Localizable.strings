@@ -106,7 +106,7 @@
 /*匿名上传*/
 "anonymously-upload" = "文件将匿名上传至";
 
-"upload-by-uPic" = "使用 uPic 上传";
+"upload-via-uPic" = "使用 uPic 上传";
 
 /* host -- start */
 "host.field.region" = "区域";
