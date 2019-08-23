@@ -61,17 +61,22 @@ class FinderSync: FIFinderSync {
 
                     fileNumber = fileNumber + 1
                 }
-
-                // 当文件数量为0，也就说明选择的都是文件夹，则不创建菜单
-                if fileNumber == 0 {
-                    return nil
-                }
-
+                
                 // 否则说明选中项中包含文件，则创建上传菜单
                 let menu = NSMenu(title: "")
                 let uploadMenuItem = NSMenuItem(title: NSLocalizedString("upload-via-uPic", comment: "使用uPic上传"), action: #selector(uploadFile(_:)), keyEquivalent: "")
                 uploadMenuItem.image = NSImage(named: "upload")
                 menu.addItem(uploadMenuItem)
+
+                // 当文件数量为0，也就说明选择的都是文件夹，则不创建菜单
+                if fileNumber == 0 {
+                    if menuKind == .contextualMenuForItems {
+                        return nil
+                    } else if menuKind == .toolbarItemMenu {
+                        uploadMenuItem.isEnabled = false
+                    }
+                }
+
                 return menu
             }
 
