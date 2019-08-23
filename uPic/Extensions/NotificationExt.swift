@@ -22,27 +22,27 @@ class NotificationExt:NSObject {
     }
     
     func postUploadErrorNotice(_ body: String? = "") {
-        self.post(title: NSLocalizedString("upload.notification.error.title", comment: ""),
+        self.post(title: NSLocalizedString("notification.upload.error.title", comment: ""),
                   info: body!)
     }
     
     func postUploadSuccessfulNotice(_ body: String? = "") {
-        self.post(title: NSLocalizedString("upload.notification.success.title", comment: ""),
-                  info: body!, subtitle: NSLocalizedString("upload.notification.success.subtitle", comment: ""))
+        self.post(title: NSLocalizedString("notification.upload.success.title", comment: ""),
+                  info: body!, subtitle: NSLocalizedString("notification.upload.success.subtitle", comment: ""))
     }
     
     func postCopySuccessfulNotice(_ body: String? = "") {
-        self.post(title: NSLocalizedString("upload.notification.success.subtitle", comment: ""),
+        self.post(title: NSLocalizedString("notification.upload.success.subtitle", comment: ""),
                   info: body!)
     }
     
     func postFileDoesNotExistNotice() {
-        self.post(title: NSLocalizedString("upload.notification.error.title", comment: ""),
+        self.post(title: NSLocalizedString("notification.upload.error.title", comment: ""),
                   info: NSLocalizedString("file-does-not-exist", comment: ""))
     }
     
     func postUplodingNotice(_ body: String? = "") {
-        self.post(title: NSLocalizedString("upload.notification.task-not-complete.subtitle", comment: ""),
+        self.post(title: NSLocalizedString("notification.upload.task-not-complete.subtitle", comment: ""),
                   info: body!)
     }
 }

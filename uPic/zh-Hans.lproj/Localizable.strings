@@ -15,98 +15,58 @@
 
 /* 成功通知标题 */
 "notification.success.title" = "成功";
-
 /* 上传成功通知标题 */
-"upload.notification.success.title" = "上传成功";
-
-/* 提醒通知标题 */
-"upload.notification.warning.title" = "提醒";
-
+"notification.upload.success.title" = "上传成功";
 /* 上传成功通知副标题 */
-"upload.notification.success.subtitle" = "URL 已复制到剪切板，快去粘贴使用吧！";
-
+"notification.upload.success.subtitle" = "URL 已复制到剪切板，快去粘贴使用吧！";
 /* 当前上传任务还未完成通知副标题 */
-"upload.notification.task-not-complete.subtitle" = "当前上传任务还未结束！";
-
-/* 上传失败通知标题 */
-"upload.notification.error.title" = "上传失败";
-
-/* 开始上传标题 */
-"upload.notification.start.title" = "开始上传";
-
-/* 开始上传副标题 */
-"upload.notification.start.subtitle" = "文件正在上传，请稍后！";
-
-/* 清除历史上传成功通知标题 */
-"clear.notification.success.title" = "清除历史上传成功";
-
-/* 清除历史上传失败通知标题 */
-"clear.notification.error.title" = "清除历史上传失败";
+"notification.upload.task-not-complete.subtitle" = "当前上传任务还未结束！";
 
 /* 复制的文件不存在 */
 "file-does-not-exist" = "复制的文件不存在或已被删除！";
-
 /* 文件格式不支持 */
 "file-format-is-not-supported" = "文件格式不支持！";
-
 /* 文件大小超过限制 */
 "file-is-over-the-size-limit" = "文件大小超过限制！限制:";
-
 /* 图床配置存在问题，请检查 */
 "bad-host-config" = "图床配置存在问题，请检查！";
+/*匿名上传*/
+"anonymously-upload" = "文件将匿名上传至";
+"upload-via-uPic" = "使用 uPic 上传";
+"tooltip.cancel-upload" = "右击取消当前上传任务";
 
 /* 状态栏菜单选择文件 */
 "status-menu.select-file" = "选择文件";
-
 /* 状态栏菜单屏幕截图 */
 "status-menu.screenshot" = "截图上传";
-
 /* 状态栏菜单上传剪切板中的文件 */
 "status-menu.pasteboard" = "上传已拷贝的文件";
-
 /* 状态栏菜单图床 */
 "status-menu.host" = "图床";
-
 /* 状态栏菜单输出格式 */
 "status-menu.output" = "输出格式";
-
 /* 状态栏菜单上传前压缩图片 */
 "status-menu.compress-factor" = "上传前压缩图片";
-
 /* 状态栏菜单偏好设置 */
 "status-menu.preference" = "偏好设置";
-
 /* 状态栏菜单退出 */
 "status-menu.quit" = "退出";
-
 /* 菜单栏检查更新按钮标题：检查更新 */
 "status-menu.check-update" = "检查更新";
-
 /* 菜单栏上传历史 */
 "status-menu.upload-history" = "上传历史";
-
 /* 菜单栏清空上传历史 */
 "status-menu.upload-history-clear" = "清空上传历史";
-
 /* 菜单栏没有上传历史 */
 "status-menu.upload-history-empty" = "暂无上传历史";
-
-
 /* 菜单栏帮助 */
 "status-menu.help" = "帮助";
 "status-menu.tutorial" = "使用教程";
 "status-menu.sponsor" = "赞助（打赏）";
 
 "alert.reset_preferences_title" = "重置用户偏好设置?";
-
 "alert.reset_preferences_description" = "⚠️ 注意这将会重置所有用户偏好设置";
-
 "alert.unsave_description" = "继续会丢失未保存数据，是否继续？";
-
-/*匿名上传*/
-"anonymously-upload" = "文件将匿名上传至";
-
-"upload-via-uPic" = "使用 uPic 上传";
 
 /* host -- start */
 "host.field.region" = "区域";
