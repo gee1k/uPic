@@ -11,7 +11,7 @@ import FinderSync
 
 class FinderSync: FIFinderSync {
 
-    
+
     override init() {
         super.init()
         // Set up the directory we are syncing.
@@ -27,53 +27,73 @@ class FinderSync: FIFinderSync {
             }
         }
     }
-    
+
+    // MARK: - Menu and toolbar item support
+
+    override var toolbarItemName: String {
+        return "uPic"
+    }
+
+    override var toolbarItemToolTip: String {
+        return "Upload selected files via uPic"
+    }
+
+    override var toolbarItemImage: NSImage {
+        return NSImage(named: "upload")!
+    }
+
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
         // Produce a menu for the extension.
-        
-        // 当前右键类型不是在 Finder 中的文件或者文件夹时不创建菜单
-        if menuKind != .contextualMenuForItems {
-            return nil
-        }
-        
-        // 获取当前选中的文件、文件夹
-        if let items = FIFinderSyncController.default().selectedItemURLs() {
-            // 统计选中项中，文件的数量
-            var fileNumber = 0
-            
-            for item in items {
-                var isDirectory: ObjCBool = false
-                let fileExists = FileManager.default.fileExists(atPath: item.path, isDirectory: &isDirectory)
-                if fileExists && isDirectory.boolValue {
-                    continue
+
+        switch menuKind {
+        case .contextualMenuForItems, .toolbarItemMenu:
+            // 获取当前选中的文件、文件夹
+            if let items = FIFinderSyncController.default().selectedItemURLs() {
+                // 统计选中项中，文件的数量
+                var fileNumber = 0
+
+                for item in items {
+                    var isDirectory: ObjCBool = false
+                    let fileExists = FileManager.default.fileExists(atPath: item.path, isDirectory: &isDirectory)
+                    if fileExists && isDirectory.boolValue {
+                        continue
+                    }
+
+                    fileNumber = fileNumber + 1
                 }
                 
-                fileNumber = fileNumber + 1
+                // 否则说明选中项中包含文件，则创建上传菜单
+                let menu = NSMenu(title: "")
+                let uploadMenuItem = NSMenuItem(title: NSLocalizedString("upload-via-uPic", comment: "使用uPic上传"), action: #selector(uploadFile(_:)), keyEquivalent: "")
+                uploadMenuItem.image = NSImage(named: "upload")
+                menu.addItem(uploadMenuItem)
+
+                // 当文件数量为0，也就说明选择的都是文件夹，则不创建菜单
+                if fileNumber == 0 {
+                    if menuKind == .contextualMenuForItems {
+                        return nil
+                    } else if menuKind == .toolbarItemMenu {
+                        uploadMenuItem.isEnabled = false
+                    }
+                }
+
+                return menu
             }
-            
-            // 当文件数量为0，也就说明选择的都是文件夹，则不创建菜单
-            if fileNumber == 0 {
-                return nil
-            }
-            
-            // 否则说明选中项中包含文件，则创建上传菜单
-            let menu = NSMenu(title: "")
-            let uploadMenuItem = NSMenuItem(title: NSLocalizedString("upload-by-uPic", comment: "使用uPic上传"), action: #selector(uploadFile(_:)), keyEquivalent: "")
-            uploadMenuItem.image = NSImage(named: "upload")
-            menu.addItem(uploadMenuItem)
-            return menu
+
+        default:
+            break
         }
-        
+
         return nil
-        
+
     }
-    
+
     @IBAction func uploadFile(_ sender: AnyObject?) {
         if let items = FIFinderSyncController.default().selectedItemURLs() {
             var path = ""
             for item in items {
                 let filePath = item.path
-                
+
                 // 从选中项中过滤掉文件夹项
                 var isDirectory: ObjCBool = false
                 let fileExists = FileManager.default.fileExists(atPath: filePath, isDirectory: &isDirectory)
@@ -84,7 +104,7 @@ class FinderSync: FIFinderSync {
             }
             UploadNotifier.postNotification(.uploadFiles, object: path)
         }
-        
+
     }
 
 }

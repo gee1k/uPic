@@ -59,7 +59,6 @@ extension NotificationExt: UNUserNotificationCenterDelegate {
             content.subtitle = subtitle
         }
         content.body = info
-        
         content.sound = UNNotificationSound.default
         content.userInfo = ["body": info]
         
@@ -68,7 +67,6 @@ extension NotificationExt: UNUserNotificationCenterDelegate {
                                             trigger: nil)
         
         let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.removeAllDeliveredNotifications()
         notificationCenter.delegate = self
         notificationCenter.setNotificationCategories([])
         notificationCenter.add(request) { (error) in
@@ -104,13 +102,11 @@ extension NotificationExt: NSUserNotificationCenterDelegate {
     
     func postByOld(title: String, info: String, subtitle: String? = nil) {
         
-        NSUserNotificationCenter.default.removeAllDeliveredNotifications()
         let notification = NSUserNotification()
         notification.title = title
         notification.subtitle = subtitle
         notification.informativeText = info
         notification.userInfo = ["body": info]
-        notification.identifier = "OLD_NOTIFICATION_U_PIC"
         notification.soundName = NSUserNotificationDefaultSoundName
         NSUserNotificationCenter.default.delegate = self
         NSUserNotificationCenter.default.deliver(notification)

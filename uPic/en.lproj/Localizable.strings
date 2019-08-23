@@ -107,7 +107,7 @@
 
 "alert.unsave_description" = "Continuing will lose unsaved data. Do you want to continue?";
 
-"upload-by-uPic" = "Upload by uPic";
+"upload-via-uPic" = "Upload via uPic";
 
 /* host -- start */
 "host.field.region" = "Region";
