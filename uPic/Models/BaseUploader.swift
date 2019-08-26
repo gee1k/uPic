@@ -7,9 +7,35 @@
 //
 
 import Cocoa
+import Alamofire
 
 class BaseUploader {
 
+    func start() {
+        (NSApplication.shared.delegate as? AppDelegate)?.uploadStart()
+    }
+
+    func progress(percent: Double) {
+        (NSApplication.shared.delegate as? AppDelegate)?.uploadProgress(percent: percent)
+    }
+
+    func completed(url: String) {
+        ConfigManager.shared.addHistory(url: url)
+        (NSApplication.shared.delegate as? AppDelegate)?.uploadCompleted(url: url)
+    }
+
+    func faild(errorMsg: String? = "") {
+        (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
+    }
+    
+    /*********************************************************** static *******************************************************************/
+    
+    static func cancelUpload() {
+        Session.default.session.getTasksWithCompletionHandler({ dataTasks, uploadTasks, downloadTasks in
+            uploadTasks.forEach { $0.cancel() }
+        })
+    }
+    
     ///
     /// 作为上传的统一入口
     /// As a unified entry point for uploads
@@ -34,7 +60,7 @@ class BaseUploader {
                 return
             }
         }
-
+        
         /* 有新的图床在这里进行判断调用 */
         switch host.type {
         case .smms:
@@ -72,7 +98,7 @@ class BaseUploader {
             break
         }
     }
-
+    
     ///
     /// 作为上传的统一入口
     /// As a unified entry point for uploads
@@ -89,7 +115,7 @@ class BaseUploader {
             (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
             return
         }
-
+        
         /* 有新的图床在这里进行判断调用 */
         switch host.type {
         case .smms:
@@ -127,7 +153,7 @@ class BaseUploader {
             break
         }
     }
-
+    
     ///
     /// 获取当前图床对应的支持文件格式
     ///
@@ -135,7 +161,7 @@ class BaseUploader {
         guard let host = ConfigManager.shared.getDefaultHost() else {
             return [String]()
         }
-
+        
         /* 有新的图床在这里进行判断调用 */
         switch host.type {
         case .smms:
@@ -181,7 +207,7 @@ class BaseUploader {
             return 0
         }
     }
-
+    
     private static func checkFileExtensions(fileExtensions: [String], fileExtension: String) -> Bool {
         if fileExtensions.count == 0 {
             return true
@@ -200,22 +226,5 @@ class BaseUploader {
         }
         
         return size <= limitSize
-    }
-
-    func start() {
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadStart()
-    }
-
-    func progress(percent: Double) {
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadProgress(percent: percent)
-    }
-
-    func completed(url: String) {
-        ConfigManager.shared.addHistory(url: url)
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadCompleted(url: url)
-    }
-
-    func faild(errorMsg: String? = "") {
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
     }
 }

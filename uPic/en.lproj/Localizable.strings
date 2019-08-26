@@ -16,83 +16,56 @@
 
 /* 成功通知标题 */
 "notification.success.title" = "Successfully";
-
 /* 上传成功通知标题 */
-"upload.notification.success.title" = "Uploaded successfully";
-
-/* 提醒通知标题 */
-"upload.notification.warning.title" = "Warning";
-
+"notification.upload.success.title" = "Uploaded successfully";
 /* 上传成功通知副标题 */
-"upload.notification.success.subtitle" = "URL has been copied to the clipboard, paste and use it!";
-
+"notification.upload.success.subtitle" = "URL has been copied to the clipboard, paste and use it!";
 /* 当前上传任务还未完成通知副标题 */
-"upload.notification.task-not-complete.subtitle" = "The current upload task is not complete";
-
+"notification.upload.task-not-complete.subtitle" = "The current upload task is not complete";
 /* 上传失败通知标题 */
-"upload.notification.error.title" = "Uploaded fail";
+"notification.upload.error.title" = "Uploaded fail";
 
-/* 开始上传标题 */
-"upload.notification.start.title" = "Start upload";
-
-/* 开始上传副标题 */
-"upload.notification.start.subtitle" = "Upload already started, please wait!";
 
 /* 文件不存在或已被删除 */
 "file-does-not-exist" = "The file does not exist or has been deleted!";
-
 /* 文件格式不支持 */
 "file-format-is-not-supported" = "File format not supported!";
-
 /* 文件大小超过限制 */
 "file-is-over-the-size-limit" = "File is over the size limit! Limit:";
-
 /* 图床配置存在问题，请检查 */
 "bad-host-config" = "There is a problem with the map bed configuration, please check!";
 
-/* 清除历史上传成功通知标题 */
-"clear.notification.success.title" = "clear history successfully";
+/*匿名上传*/
+"anonymously-upload" = "The file will be uploaded anonymously to";
+"upload-via-uPic" = "Upload via uPic";
+"tooltip.cancel-upload" = "Right click to cancel the current upload task";
 
-/* 清除历史上传失败通知标题 */
-"clear.notification.error.title" = "clear history fail";
+
 
 /* 状态栏菜单选择文件 */
 "status-menu.select-file" = "Select File";
-
 /* 状态栏菜单屏幕截图 */
 "status-menu.screenshot" = "Screenshot and upload";
-
 /* 状态栏菜单上传剪切板中的文件 */
 "status-menu.pasteboard" = "Upload copied file";
-
 /* 状态栏菜单图床 */
 "status-menu.host" = "Hosts";
-
 /* 状态栏菜单输出格式 */
 "status-menu.output" = "Output format";
-
 /* 状态栏菜单上传前压缩图片 */
 "status-menu.compress-factor" = "Compress images before uploading";
-
 /* 状态栏菜单偏好设置 */
 "status-menu.preference" = "Preference";
-
 /* 状态栏菜单退出 */
 "status-menu.quit" = "Quit";
-
 /* 菜单栏检查更新按钮标题：检查更新 */
 "status-menu.check-update" = "Check for updates";
-
 /* 菜单栏上传历史 */
 "status-menu.upload-history" = "Upload history";
-
 /* 菜单栏清空上传历史 */
 "status-menu.upload-history-clear" = "Clear upload history";
-
 /* 菜单栏没有上传历史 */
 "status-menu.upload-history-empty" = "No upload history";
-
-
 /* 菜单栏帮助 */
 "status-menu.help" = "Help";
 "status-menu.tutorial" = "Tutorial";
@@ -100,14 +73,8 @@
 
 "alert.reset_preferences_title" = "Reset User Preferences?";
 "alert.reset_preferences_description" = "⚠️ Note that this will reset all user preferences";
-
-
-/*匿名上传*/
-"anonymously-upload" = "The file will be uploaded anonymously to";
-
 "alert.unsave_description" = "Continuing will lose unsaved data. Do you want to continue?";
 
-"upload-by-uPic" = "Upload by uPic";
 
 /* host -- start */
 "host.field.region" = "Region";

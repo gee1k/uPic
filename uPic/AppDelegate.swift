@@ -134,6 +134,9 @@ extension AppDelegate {
                                      width: 16,
                                      height: 16)
             button.addSubview(indicator)
+            button.action = #selector(statusBarButtonClicked)
+            button.sendAction(on: [.leftMouseUp, .leftMouseDown,
+                                   .rightMouseUp, .rightMouseDown])
 
             // 注册拖拽文件格式支持。使其支持浏览器拖拽的URL、tiff。以及Safari 有些情况(例如，百度搜图，在默认搜索列表。不进入详情时)下拖拽的时候获取到的是图片URL字符串
             if #available(OSX 10.13, *) {
@@ -145,7 +148,7 @@ extension AppDelegate {
 
         }
 
-        statusItem.menu = statusItemMenu
+        statusItem.menu = nil
         
         // 初始化任务栏进度图标
         indicator.minValue = 0.0
@@ -155,6 +158,26 @@ extension AppDelegate {
         indicator.controlSize = NSControl.ControlSize.small
         indicator.style = NSProgressIndicator.Style.spinning
         indicator.isHidden = true
+        indicator.toolTip = NSLocalizedString("tooltip.cancel-upload", comment: "")
+    }
+    
+    @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
+        let event = NSApp.currentEvent!
+        if event.type == .leftMouseDown || event.type == .leftMouseUp
+            || event.modifierFlags.contains(.control)
+        {
+            statusItem.menu = statusItemMenu
+            statusItem.button?.performClick(self)
+            statusItem.menu = nil
+        } else if event.type == .rightMouseUp {
+            if uploding {
+                self.uploadCancel()
+            } else {
+                statusItem.menu = statusItemMenu
+                statusItem.button?.performClick(self)
+                statusItem.menu = nil
+            }
+        }
     }
 
     func setStatusBarIcon(isIndicator: Bool = false) {
@@ -342,6 +365,13 @@ extension AppDelegate {
     func uploadStart() {
         self.setStatusBarIcon(isIndicator: true)
         self.indicator.doubleValue = 0.0
+    }
+    
+    func uploadCancel() {
+        BaseUploader.cancelUpload()
+        self.needUploadFiles.removeAll()
+        self.resultUrls.removeAll()
+        self.uploding = false
     }
 
     func copyUrls(urls: [String]) -> String {

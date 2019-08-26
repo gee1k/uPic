@@ -22,27 +22,27 @@ class NotificationExt:NSObject {
     }
     
     func postUploadErrorNotice(_ body: String? = "") {
-        self.post(title: NSLocalizedString("upload.notification.error.title", comment: ""),
+        self.post(title: NSLocalizedString("notification.upload.error.title", comment: ""),
                   info: body!)
     }
     
     func postUploadSuccessfulNotice(_ body: String? = "") {
-        self.post(title: NSLocalizedString("upload.notification.success.title", comment: ""),
-                  info: body!, subtitle: NSLocalizedString("upload.notification.success.subtitle", comment: ""))
+        self.post(title: NSLocalizedString("notification.upload.success.title", comment: ""),
+                  info: body!, subtitle: NSLocalizedString("notification.upload.success.subtitle", comment: ""))
     }
     
     func postCopySuccessfulNotice(_ body: String? = "") {
-        self.post(title: NSLocalizedString("upload.notification.success.subtitle", comment: ""),
+        self.post(title: NSLocalizedString("notification.upload.success.subtitle", comment: ""),
                   info: body!)
     }
     
     func postFileDoesNotExistNotice() {
-        self.post(title: NSLocalizedString("upload.notification.error.title", comment: ""),
+        self.post(title: NSLocalizedString("notification.upload.error.title", comment: ""),
                   info: NSLocalizedString("file-does-not-exist", comment: ""))
     }
     
     func postUplodingNotice(_ body: String? = "") {
-        self.post(title: NSLocalizedString("upload.notification.task-not-complete.subtitle", comment: ""),
+        self.post(title: NSLocalizedString("notification.upload.task-not-complete.subtitle", comment: ""),
                   info: body!)
     }
 }
@@ -59,7 +59,6 @@ extension NotificationExt: UNUserNotificationCenterDelegate {
             content.subtitle = subtitle
         }
         content.body = info
-        
         content.sound = UNNotificationSound.default
         content.userInfo = ["body": info]
         
@@ -68,14 +67,21 @@ extension NotificationExt: UNUserNotificationCenterDelegate {
                                             trigger: nil)
         
         let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.removeAllDeliveredNotifications()
         notificationCenter.delegate = self
         notificationCenter.setNotificationCategories([])
-        notificationCenter.add(request) { (error) in
-            if error != nil {
-                // Handle any errors.
+        
+        notificationCenter.requestAuthorization(options: [.alert, .sound]) { (success, error) in
+            if success {
+                notificationCenter.add(request) { (error) in
+                    if error != nil {
+                        // Handle any errors.
+                    }
+                }
+            } else {
+                // user rejection
             }
         }
+        
         
     }
     
@@ -104,13 +110,11 @@ extension NotificationExt: NSUserNotificationCenterDelegate {
     
     func postByOld(title: String, info: String, subtitle: String? = nil) {
         
-        NSUserNotificationCenter.default.removeAllDeliveredNotifications()
         let notification = NSUserNotification()
         notification.title = title
         notification.subtitle = subtitle
         notification.informativeText = info
         notification.userInfo = ["body": info]
-        notification.identifier = "OLD_NOTIFICATION_U_PIC"
         notification.soundName = NSUserNotificationDefaultSoundName
         NSUserNotificationCenter.default.delegate = self
         NSUserNotificationCenter.default.deliver(notification)
