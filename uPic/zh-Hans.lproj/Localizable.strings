@@ -21,6 +21,8 @@
 "notification.upload.success.subtitle" = "URL 已复制到剪切板，快去粘贴使用吧！";
 /* 当前上传任务还未完成通知副标题 */
 "notification.upload.task-not-complete.subtitle" = "当前上传任务还未结束！";
+/* 上传失败通知标题 */
+"notification.upload.error.title" = "上传失败";
 
 /* 复制的文件不存在 */
 "file-does-not-exist" = "复制的文件不存在或已被删除！";

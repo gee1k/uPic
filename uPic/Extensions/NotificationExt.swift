@@ -69,11 +69,19 @@ extension NotificationExt: UNUserNotificationCenterDelegate {
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.delegate = self
         notificationCenter.setNotificationCategories([])
-        notificationCenter.add(request) { (error) in
-            if error != nil {
-                // Handle any errors.
+        
+        notificationCenter.requestAuthorization(options: [.alert, .sound]) { (success, error) in
+            if success {
+                notificationCenter.add(request) { (error) in
+                    if error != nil {
+                        // Handle any errors.
+                    }
+                }
+            } else {
+                // user rejection
             }
         }
+        
         
     }
     
