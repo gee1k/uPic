@@ -15,6 +15,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     @IBOutlet weak var statusMenu: NSMenu!
 
+    @IBOutlet weak var cancelUploadMenuItem: NSMenuItem!
+    @IBOutlet weak var cancelUploadMenuSeparator: NSMenuItem!
     @IBOutlet weak var selectFileMenuItem: NSMenuItem!
     @IBOutlet weak var uploadPasteboardMenuItem: NSMenuItem!
     @IBOutlet weak var screenshotMenuItem: NSMenuItem!
@@ -32,7 +34,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     override func awakeFromNib() {
 
         statusMenu.delegate = self
-
+        
+        cancelUploadMenuItem.title = NSLocalizedString("status-menu.cancel-upload", comment: "Select file")
         selectFileMenuItem.title = NSLocalizedString("status-menu.select-file", comment: "Select file")
         uploadPasteboardMenuItem.title = NSLocalizedString("status-menu.pasteboard", comment: "Upload with pasteboard")
         screenshotMenuItem.title = NSLocalizedString("status-menu.screenshot", comment: "Upload with pasteboard")
@@ -53,7 +56,29 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         resetCompressFactor()
         addObserver()
     }
-
+    
+    func menuWillOpen(_ menu: NSMenu) {
+        
+        refreshOutputFormat()
+        resetCompressFactor()
+        
+        // 正在上传
+        if (NSApplication.shared.delegate as? AppDelegate)?.uploding ?? false {
+            self.cancelUploadMenuItem.isHidden = false
+            self.cancelUploadMenuSeparator.isHidden = false
+        } else {
+            self.cancelUploadMenuItem.isHidden = true
+            self.cancelUploadMenuSeparator.isHidden = true
+        }
+    }
+    
+    // cancel upload
+    @IBAction func cancelUploadMenuItemClicked(_ sender: Any) {
+        (NSApplication.shared.delegate as? AppDelegate)?.uploadCancel()
+        self.cancelUploadMenuItem.isHidden = true
+        self.cancelUploadMenuSeparator.isHidden = true
+    }
+    
     // select files
     @IBAction func selectFileMenuItemClicked(_ sender: NSMenuItem) {
         (NSApplication.shared.delegate as? AppDelegate)?.selectFile()

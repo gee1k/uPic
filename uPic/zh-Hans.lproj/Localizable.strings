@@ -65,6 +65,8 @@
 "status-menu.help" = "帮助";
 "status-menu.tutorial" = "使用教程";
 "status-menu.sponsor" = "赞助（打赏）";
+/* cancel upload */
+"status-menu.cancel-upload" = "取消上传";
 
 "alert.reset_preferences_title" = "重置用户偏好设置?";
 "alert.reset_preferences_description" = "⚠️ 注意这将会重置所有用户偏好设置";
