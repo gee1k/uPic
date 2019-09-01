@@ -100,6 +100,8 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="veO-oa-UPB" customClass="StatusMenuController" customModule="uPic" customModuleProvider="target">
                     <connections>
+                        <outlet property="cancelUploadMenuItem" destination="Gxh-8r-tsq" id="hE4-jQ-xwi"/>
+                        <outlet property="cancelUploadMenuSeparator" destination="ggN-TB-JZW" id="V4H-J4-ftj"/>
                         <outlet property="checkUpdateMenuItem" destination="yai-4F-Btp" id="klG-hy-GGO"/>
                         <outlet property="compressFactorMenuItem" destination="eIU-EA-uQZ" id="uMq-Nm-vXy"/>
                         <outlet property="helpMenuItem" destination="2Jw-ET-3eH" id="Ubq-wz-L3N"/>
@@ -119,6 +121,13 @@
                 <customObject id="Oqi-DG-w38" customClass="SUUpdater"/>
                 <menu id="fqV-BN-CNE">
                     <items>
+                        <menuItem title="取消上传" id="Gxh-8r-tsq">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="cancelUploadMenuItemClicked:" target="veO-oa-UPB" id="rRC-ge-OFt"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="ggN-TB-JZW"/>
                         <menuItem title="选择文件" id="p0A-6d-cAU">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>

@@ -70,6 +70,8 @@
 "status-menu.help" = "Help";
 "status-menu.tutorial" = "Tutorial";
 "status-menu.sponsor" = "Sponsor";
+/* cancel upload */
+"status-menu.cancel-upload" = "Cancel upload";
 
 "alert.reset_preferences_title" = "Reset User Preferences?";
 "alert.reset_preferences_description" = "⚠️ Note that this will reset all user preferences";
