@@ -28,6 +28,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var helpMenuItem: NSMenuItem!
     @IBOutlet weak var checkUpdateMenuItem: NSMenuItem!
     @IBOutlet weak var tutorialMenuItem: NSMenuItem!
+    @IBOutlet weak var importHostsMenuItem: NSMenuItem!
+    @IBOutlet weak var exportHostsMenuItem: NSMenuItem!
+    
     @IBOutlet weak var sponsorMenuItem: NSMenuItem!
     @IBOutlet weak var quitMenuItem: NSMenuItem!
 
@@ -47,6 +50,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         helpMenuItem.title = NSLocalizedString("status-menu.help", comment: "help")
         checkUpdateMenuItem.title = NSLocalizedString("status-menu.check-update", comment: "Check update")
         tutorialMenuItem.title = NSLocalizedString("status-menu.tutorial", comment: "Tutorial")
+        importHostsMenuItem.title = NSLocalizedString("status-menu.import-hosts", comment: "")
+        exportHostsMenuItem.title = NSLocalizedString("status-menu.export-hosts", comment: "")
         sponsorMenuItem.title = NSLocalizedString("status-menu.sponsor", comment: "Sponsor")
         quitMenuItem.title = NSLocalizedString("status-menu.quit", comment: "Quit")
 
@@ -111,7 +116,18 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         NSWorkspace.shared.open(url)
     }
-
+    
+    // import hosts from config file
+    @IBAction func importHostsMenuItemClicked(_ sender: NSMenuItem) {
+        ConfigManager.shared.importHosts()
+    }
+    
+    // export hosts to config file
+    @IBAction func exportHostsMenuItemClicked(_ sender: NSMenuItem) {
+        ConfigManager.shared.exportHosts()
+    }
+    
+    
     // support -- paypal
     @IBAction func paypalMenuItemClicked(_ sender: Any) {
         (NSApplication.shared.delegate as? AppDelegate)?.sponsorByPaypal()

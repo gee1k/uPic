@@ -1187,7 +1187,7 @@ Gw
         <image name="NSAdvanced" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
-        <image name="about" width="256" height="256"/>
+        <image name="about" width="1024" height="1024"/>
         <image name="host" width="64" height="64"/>
     </resources>
 </document>

@@ -67,19 +67,18 @@ class HostPreferencesViewController: PreferencesViewController {
         }
     }
 
-
     override func viewDidAppear() {
         super.viewDidAppear()
         self.view.window?.delegate = self
 
         self.refreshButtonStatus()
+        self.initHostItems()
         self.addObserver()
     }
 
     override func viewDidDisappear() {
         super.viewDidDisappear()
         self.removeObserver()
-
     }
 
     @IBAction func addHostButtonClicked(_ sender: NSPopUpButton) {
@@ -154,6 +153,23 @@ class HostPreferencesViewController: PreferencesViewController {
 
     // MARK: 将正在编辑的输入框执行 endEdit
     func blurEditingTextField() {
+        for view in self.tableView.subviews {
+            if !(view is NSTableRowView) {
+                continue
+            }
+            for subView in view.subviews {
+                if !(subView is NSTableCellView) {
+                    continue
+                }
+                let sV = subView as! NSTableCellView
+                if let subTextField = sV.textField, let editor = subTextField.currentEditor() {
+                    subTextField.endEditing(editor)
+                }
+                
+            }
+        }
+        
+        
         for view in self.configView.subviews {
             for subView in view.subviews {
                 if !(subView is NSTextField) {
@@ -291,6 +307,7 @@ class HostPreferencesViewController: PreferencesViewController {
     @objc func hostConfigChanged() {
         hostConfigChangedDebouncedFunc(false)
     }
+    
 
     func addObserver() {
         // 设置监听配置变化的节流函数，当0.5秒后没有再次变化就刷新当前状态
@@ -369,7 +386,6 @@ extension HostPreferencesViewController: NSTextFieldDelegate {
 }
 
 extension HostPreferencesViewController: NSWindowDelegate {
-
     func windowShouldClose(_ sender: NSWindow) -> Bool {
         if self.hostItemsChanged, let window = self.view.window {
             let alert = NSAlert()

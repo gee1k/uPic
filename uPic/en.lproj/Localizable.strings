@@ -23,7 +23,23 @@
 /* 当前上传任务还未完成通知副标题 */
 "notification.upload.task-not-complete.subtitle" = "The current upload task is not complete";
 /* 上传失败通知标题 */
-"notification.upload.error.title" = "Uploaded fail";
+"notification.upload.error.title" = "Upload failed";
+
+/* 导入图床配置失败标题 */
+"notification.import.error.title" = "Import failed";
+/* 导入图床配置失败内容 */
+"notification.import.error.body" = "The configuration file is invalid, please check!";
+/* 导入图床配置成功内容 */
+"notification.import.success.body" = "The configuration has been imported, please check and use!";
+/* 导出图床配置失败标题 */
+"notification.export.error.title" = "Export failed";
+/* 导出图床配置失败内容 */
+"notification.export.error.body.no-hosts" = "No exportable hosts!";
+/* 导出图床配置失败内容2 */
+"notification.export.error.body.invalid" = "configuration export error!";
+/* 导出图床配置成功内容 */
+"notification.export.success.body" = "The configuration file is exported successfully, please save it properly!";
+
 
 
 /* 文件不存在或已被删除 */
@@ -69,6 +85,8 @@
 /* 菜单栏帮助 */
 "status-menu.help" = "Help";
 "status-menu.tutorial" = "Tutorial";
+"status-menu.import-hosts" = "Import hosts";
+"status-menu.export-hosts" = "Export hosts";
 "status-menu.sponsor" = "Sponsor";
 /* cancel upload */
 "status-menu.cancel-upload" = "Cancel upload";
@@ -76,7 +94,10 @@
 "alert.reset_preferences_title" = "Reset User Preferences?";
 "alert.reset_preferences_description" = "⚠️ Note that this will reset all user preferences";
 "alert.unsave_description" = "Continuing will lose unsaved data. Do you want to continue?";
-
+"alert.import_hosts_title" = "Import host configuration";
+"alert.import_hosts_description" = "⚠️ Please choose import method, merge or overwrite?";
+"alert.import_hosts_merge" = "merge";
+"alert.import_hosts_overwrite" = "⚠️ overwrite";
 
 /* host -- start */
 "host.field.region" = "Region";

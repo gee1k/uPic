@@ -104,9 +104,11 @@
                         <outlet property="cancelUploadMenuSeparator" destination="ggN-TB-JZW" id="V4H-J4-ftj"/>
                         <outlet property="checkUpdateMenuItem" destination="yai-4F-Btp" id="klG-hy-GGO"/>
                         <outlet property="compressFactorMenuItem" destination="eIU-EA-uQZ" id="uMq-Nm-vXy"/>
+                        <outlet property="exportHostsMenuItem" destination="Yuc-Vp-9Pd" id="JIW-vZ-WbR"/>
                         <outlet property="helpMenuItem" destination="2Jw-ET-3eH" id="Ubq-wz-L3N"/>
                         <outlet property="historyMenuItem" destination="EhO-Zw-XXj" id="okQ-0q-kK5"/>
                         <outlet property="hostMenuItem" destination="d02-bT-1Lv" id="Ah0-J0-Z4M"/>
+                        <outlet property="importHostsMenuItem" destination="HNM-7K-zzn" id="Jmj-DT-7ky"/>
                         <outlet property="ouputFormatMenuItem" destination="1BX-LF-q51" id="H54-M9-CBq"/>
                         <outlet property="preferenceMenuItem" destination="VW7-Z2-hXR" id="Mhm-Tb-F4W"/>
                         <outlet property="quitMenuItem" destination="0JF-m2-1iq" id="qTr-PH-bBg"/>
@@ -211,6 +213,18 @@
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="guideMenuItemClicked:" target="veO-oa-UPB" id="PRm-Bb-SKG"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="导入图床配置" id="HNM-7K-zzn">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="importHostsMenuItemClicked:" target="veO-oa-UPB" id="76m-Ru-6rH"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="导出图床配置" id="Yuc-Vp-9Pd">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="exportHostsMenuItemClicked:" target="veO-oa-UPB" id="ZAp-pp-wFi"/>
                                         </connections>
                                     </menuItem>
                                 </items>
