@@ -60,15 +60,15 @@ class Host: Equatable, CustomDebugStringConvertible, Codable {
     }
     
     func copy() -> Host {
-        let newHost = Host.deserialize(str: self.serialize())
+        let newHost = Host.deserialize(str: self.serialize())!
         newHost.id = Date().timeStamp
         return newHost
     }
 
-    static func deserialize(str: String) -> Host {
-        let data = str.data(using: String.Encoding.utf8)!
-        let json = try! JSON(data: data)
-        let type = HostType(rawValue: json["type"].intValue)!
+    static func deserialize(str: String) -> Host? {
+        guard let data = str.data(using: String.Encoding.utf8), let json = try? JSON(data: data),let type = HostType(rawValue: json["type"].intValue) else {
+            return nil
+        }
         let hostData = HostConfig.deserialize(type: type, str: json["data"].string)
 
         let host = Host(type, data: hostData)
