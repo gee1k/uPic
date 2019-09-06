@@ -36,7 +36,7 @@
 /* 导出图床配置失败内容2 */
 "notification.export.error.body.invalid" = "图床配置导出错误！";
 /* 导出图床配置成功内容 */
-"notification.export.success.body" = "配置文件导出成功，请妥善保存！";
+"notification.export.success.body" = "配置文件导出成功，请勿修改文件内容！";
 
 
 /* 复制的文件不存在 */

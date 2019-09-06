@@ -38,9 +38,7 @@
 /* 导出图床配置失败内容2 */
 "notification.export.error.body.invalid" = "configuration export error!";
 /* 导出图床配置成功内容 */
-"notification.export.success.body" = "The configuration file is exported successfully, please save it properly!";
-
-
+"notification.export.success.body" = "The configuration file is exported successfully, Do not modify the file contents!";
 
 /* 文件不存在或已被删除 */
 "file-does-not-exist" = "The file does not exist or has been deleted!";
