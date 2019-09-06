@@ -45,6 +45,27 @@ class NotificationExt:NSObject {
         self.post(title: NSLocalizedString("notification.upload.task-not-complete.subtitle", comment: ""),
                   info: body!)
     }
+    
+    
+    func postImportErrorNotice(_ body: String? = NSLocalizedString("notification.import.error.body", comment: "")) {
+        self.post(title: NSLocalizedString("notification.import.error.title", comment: ""),
+                  info: body!)
+    }
+    
+    func postImportSuccessfulNotice() {
+        self.post(title: NSLocalizedString("notification.success.title", comment: ""),
+                  info: NSLocalizedString("notification.import.success.body", comment: ""))
+    }
+    
+    func postExportErrorNotice(_ body: String? = NSLocalizedString("notification.export.error.body.invalid", comment: "")) {
+        self.post(title: NSLocalizedString("notification.upload.task-not-complete.subtitle", comment: ""),
+                  info: body!)
+    }
+    
+    func postExportSuccessfulNotice() {
+        self.post(title: NSLocalizedString("notification.success.title", comment: ""),
+                  info: NSLocalizedString("notification.export.success.body", comment: ""))
+    }
 }
 
 @available(OSX 10.14, *)

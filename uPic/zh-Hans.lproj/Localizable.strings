@@ -23,6 +23,21 @@
 "notification.upload.task-not-complete.subtitle" = "当前上传任务还未结束！";
 /* 上传失败通知标题 */
 "notification.upload.error.title" = "上传失败";
+/* 导入图床配置失败标题 */
+"notification.import.error.title" = "导入图床配置失败";
+/* 导入图床配置失败内容 */
+"notification.import.error.body" = "配置文件无效，请检查！";
+/* 导入图床配置成功内容 */
+"notification.import.success.body" = "图床配置已导入，请检查并使用！";
+/* 导出图床配置失败标题 */
+"notification.export.error.title" = "导出图床配置失败";
+/* 导出图床配置失败内容 */
+"notification.export.error.body.no-hosts" = "没有可导出的图床配置！";
+/* 导出图床配置失败内容2 */
+"notification.export.error.body.invalid" = "图床配置导出错误！";
+/* 导出图床配置成功内容 */
+"notification.export.success.body" = "配置文件导出成功，请勿修改文件内容！";
+
 
 /* 复制的文件不存在 */
 "file-does-not-exist" = "复制的文件不存在或已被删除！";
@@ -64,6 +79,8 @@
 /* 菜单栏帮助 */
 "status-menu.help" = "帮助";
 "status-menu.tutorial" = "使用教程";
+"status-menu.import-hosts" = "导入图床配置";
+"status-menu.export-hosts" = "导出图床配置";
 "status-menu.sponsor" = "赞助（打赏）";
 /* cancel upload */
 "status-menu.cancel-upload" = "取消上传";
@@ -71,6 +88,10 @@
 "alert.reset_preferences_title" = "重置用户偏好设置?";
 "alert.reset_preferences_description" = "⚠️ 注意这将会重置所有用户偏好设置";
 "alert.unsave_description" = "继续会丢失未保存数据，是否继续？";
+"alert.import_hosts_title" = "导入图床配置";
+"alert.import_hosts_description" = "⚠️ 请选择导入方式，合并还是覆盖？";
+"alert.import_hosts_merge" = "合并";
+"alert.import_hosts_overwrite" = "⚠️ 覆盖";
 
 /* host -- start */
 "host.field.region" = "区域";

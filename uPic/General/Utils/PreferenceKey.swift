@@ -87,7 +87,9 @@ extension UserDefaults {
                 for item in arr {
                     let str = item as! String
                     let host = Host.deserialize(str: str)
-                    result.append(host)
+                    if host != nil {
+                        result.append(host!)
+                    }
                 }
             }
             return result

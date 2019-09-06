@@ -148,3 +148,108 @@ extension ConfigManager {
     }
 }
 
+extension ConfigManager {
+    // import & export config
+    
+    func importHosts() {
+        NSApp.activate(ignoringOtherApps: true)
+        let openPanel = NSOpenPanel()
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = false
+        openPanel.canCreateDirectories = false
+        openPanel.allowedFileTypes = ["json"]
+        
+        openPanel.begin { (result) -> Void in
+            if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
+                guard let url = openPanel.url,
+                    let data = NSData(contentsOfFile: url.path),
+                    let array = try? JSONSerialization.jsonObject(with: data as Data) as? [String]
+                    else {
+                        NotificationExt.shared.postImportErrorNotice()
+                        return
+                }
+                let hostItems = array.map(){ str in
+                    return Host.deserialize(str: str)
+                    }.filter { $0 != nil }
+                if hostItems.count == 0 {
+                    NotificationExt.shared.postImportErrorNotice()
+                    return
+                }
+                
+                // choose import method
+                
+                let alert = NSAlert()
+                
+                alert.messageText = NSLocalizedString("alert.import_hosts_title", comment: "")
+                alert.informativeText = NSLocalizedString("alert.import_hosts_description", comment: "")
+                
+                alert.addButton(withTitle: NSLocalizedString("alert.import_hosts_merge", comment: "")).refusesFirstResponder = true
+                
+                alert.addButton(withTitle: NSLocalizedString("alert.import_hosts_overwrite", comment: "")).refusesFirstResponder = true
+                
+                let modalResult = alert.runModal()
+                
+                switch modalResult {
+                case .alertFirstButtonReturn:
+                    // current Items
+                    var currentHostItems = ConfigManager.shared.getHostItems()
+                    for host in hostItems {
+                        let isContains = currentHostItems.contains(where: {item in
+                            return item == host
+                        })
+                        if (!isContains) {
+                            currentHostItems.append(host!)
+                        }
+                    }
+                    ConfigManager.shared.setHostItems(items: currentHostItems)
+                    NotificationExt.shared.postImportSuccessfulNotice()
+                case .alertSecondButtonReturn:
+                    ConfigManager.shared.setHostItems(items: hostItems as! [Host])
+                    NotificationExt.shared.postImportSuccessfulNotice()
+                default:
+                    print("Cancel Import")
+                }
+            }
+        }
+    }
+    
+    func exportHosts() {
+        let hostItems = ConfigManager.shared.getHostItems()
+        if hostItems.count == 0 {
+            NotificationExt.shared.postExportErrorNotice(NSLocalizedString("notification.export.error.body.no-hosts", comment: ""))
+            return
+        }
+        
+        NSApp.activate(ignoringOtherApps: true)
+        let savePanel = NSSavePanel()
+        savePanel.directoryURL = URL(fileURLWithPath: NSHomeDirectory().appendingPathComponent(path: "Documents"))
+        savePanel.nameFieldStringValue = "uPic_hosts.json"
+        savePanel.allowsOtherFileTypes = false
+        savePanel.isExtensionHidden = true
+        savePanel.canCreateDirectories = true
+        savePanel.allowedFileTypes = ["json"]
+        
+        savePanel.begin { (result) -> Void in
+            if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
+                
+                guard let url = savePanel.url else {
+                    NotificationExt.shared.postImportErrorNotice()
+                    return
+                }
+                
+                let hostStrArr = hostItems.map(){ hostItem in
+                    return hostItem.serialize()
+                }
+                if (!JSONSerialization.isValidJSONObject(hostStrArr)) {
+                    NotificationExt.shared.postImportErrorNotice()
+                    return
+                }
+                let os = OutputStream(toFileAtPath: url.path, append: false)
+                os?.open()
+                JSONSerialization.writeJSONObject(hostStrArr, to: os!, options: .prettyPrinted, error: .none)
+                os?.close()
+                NotificationExt.shared.postExportSuccessfulNotice()
+            }
+        }
+    }
+}
