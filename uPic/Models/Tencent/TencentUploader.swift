@@ -70,7 +70,7 @@ class TencentUploader: BaseUploader {
         let signKey = qKeyTime.calculateHMACByKey(key: secretKey).toHexString()
         // MARK: 加密 policy
         var policyDict = Dictionary<String, Any>()
-        let conditions = [["bucket": bucket], ["key": key], ["q-sign-time": qKeyTime], ["q-sign-algorithm": qSignAlgorithm], ["q-ak": secretId]]
+        let conditions = [["bucket": bucket], ["key": key]]
         policyDict["conditions"] = conditions
         let policy = TencentUtil.getPolicy(policyDict: policyDict)
 
