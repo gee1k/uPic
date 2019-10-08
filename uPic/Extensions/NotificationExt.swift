@@ -83,7 +83,7 @@ extension NotificationExt: UNUserNotificationCenterDelegate {
         content.sound = UNNotificationSound.default
         content.userInfo = ["body": info]
         
-        let request = UNNotificationRequest(identifier: "U_PIC_REQUEST",
+        let request = UNNotificationRequest(identifier: "U_PIC_REQUEST_\(String.randomStr(len: 5))",
                                             content: content,
                                             trigger: nil)
         
