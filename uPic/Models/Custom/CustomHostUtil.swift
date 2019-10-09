@@ -38,7 +38,7 @@ class CustomHostUtil {
      */
     public static func parseResultUrl(_ json: JSON, _ resultPath: String) -> String {
         var retUrl = ""
-        var retJson = json
+        let retJson = json
 
         if !resultPath.isEmpty {
             if let pathJSON = try? JSON(data: resultPath.data(using: String.Encoding.utf8)!) {
