@@ -83,7 +83,7 @@ class GiteeConfigView: ConfigView {
         tokenLabel.alignment = .right
         tokenLabel.lineBreakMode = .byClipping
         
-        let tokenField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        let tokenField = NSSecureTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         tokenField.identifier = NSUserInterfaceItemIdentifier(rawValue: "token")
         tokenField.usesSingleLineMode = true
         tokenField.lineBreakMode = .byTruncatingTail
