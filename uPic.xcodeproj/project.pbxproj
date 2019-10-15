@@ -13,6 +13,7 @@
 		16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */; };
 		16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7B22AECD9F004D39B7 /* Constants.swift */; };
 		160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */; };
+		161502922355C09700BD76A4 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 161502912355C09700BD76A4 /* Podfile */; };
 		1618D1A522E99BAA00831601 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
 		1618D1A622E99BB800831601 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169F073D22AF53DE008E8525 /* Preferences.storyboard */; };
 		1618D1A822E99E2100831601 /* UploadNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618D1A722E99E2100831601 /* UploadNotifier.swift */; };
@@ -97,7 +98,6 @@
 		16A6DC5F22AA375800813706 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16A6DC5D22AA375800813706 /* Main.storyboard */; };
 		16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDDFE22EA96AE0080E467 /* Assets.xcassets */; };
 		16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDE0222EAA2920080E467 /* Assets.xcassets */; };
-		16C4089F22AA6A7700AF2F0E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 16C4089E22AA6A7700AF2F0E /* Podfile */; };
 		16EA204C22AF8AB30006FB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA204B22AF8AB30006FB9C /* AppDelegate.swift */; };
 		16EA205022AF8AB40006FB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA204F22AF8AB40006FB9C /* Assets.xcassets */; };
 		16EA205322AF8AB40006FB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EA205122AF8AB40006FB9C /* Main.storyboard */; };
@@ -107,7 +107,7 @@
 		68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */; };
 		68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */; };
 		68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */; };
-		E3FDF6B8A725C97871C6B2D0 /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +151,7 @@
 		16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		16068C7B22AECD9F004D39B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
+		161502912355C09700BD76A4 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		1618D1A722E99E2100831601 /* UploadNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadNotifier.swift; sourceTree = "<group>"; };
 		161C3BE022C4831B0092114F /* CustomUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUploader.swift; sourceTree = "<group>"; };
 		161C3BE222C483560092114F /* CustomHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHostConfig.swift; sourceTree = "<group>"; };
@@ -239,7 +240,6 @@
 		16A6DC6122AA375800813706 /* uPic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPic.entitlements; sourceTree = "<group>"; };
 		16BDDDFE22EA96AE0080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16BDDE0222EAA2920080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		16C4089E22AA6A7700AF2F0E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		16EA204922AF8AB30006FB9C /* uPicHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPicHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EA204B22AF8AB30006FB9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16EA204F22AF8AB40006FB9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -255,9 +255,9 @@
 		68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Util.swift; sourceTree = "<group>"; };
 		68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Uploader.swift; sourceTree = "<group>"; };
 		68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3HostConfig.swift; sourceTree = "<group>"; };
-		7D9210ACA587ED2CA41A506A /* Pods-uPic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.debug.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.debug.xcconfig"; sourceTree = "<group>"; };
 		A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uPic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF6E6B1F322C29A8668C8B00 /* Pods-uPic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.release.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.release.xcconfig"; sourceTree = "<group>"; };
+		B31C410193F6C634ECBC8F5F /* Pods-uPic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.debug.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.debug.xcconfig"; sourceTree = "<group>"; };
+		FA1B39CC17103449CC5099AD /* Pods-uPic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.release.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,7 +265,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3FDF6B8A725C97871C6B2D0 /* Pods_uPic.framework in Frameworks */,
+				8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,15 +286,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		03D8014AD88C83CB6D88E879 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7D9210ACA587ED2CA41A506A /* Pods-uPic.debug.xcconfig */,
-				EF6E6B1F322C29A8668C8B00 /* Pods-uPic.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		16068C7622AECB26004D39B7 /* PreferencesWindow */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,15 +522,15 @@
 		16A6DC4B22AA375700813706 = {
 			isa = PBXGroup;
 			children = (
-				16C4089E22AA6A7700AF2F0E /* Podfile */,
+				161502912355C09700BD76A4 /* Podfile */,
 				16A6DC5622AA375700813706 /* uPic */,
-				03D8014AD88C83CB6D88E879 /* Pods */,
 				16EA204A22AF8AB30006FB9C /* uPicHelper */,
 				16F7467222E994A300480A62 /* uPicFinderExtension */,
 				F517F004DFA2ACE018535745 /* Frameworks */,
 				16EC9A0222ABBBB4001B6C89 /* uPic.app */,
 				16EA204922AF8AB30006FB9C /* uPicHelper.app */,
 				16F7467122E994A300480A62 /* uPicFinderExtension.appex */,
+				FFE257116AEC8F0F743663E3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -621,6 +612,15 @@
 				A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFE257116AEC8F0F743663E3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B31C410193F6C634ECBC8F5F /* Pods-uPic.debug.xcconfig */,
+				FA1B39CC17103449CC5099AD /* Pods-uPic.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -754,8 +754,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				161502922355C09700BD76A4 /* Podfile in Resources */,
 				1623612322AB951E00E4025C /* Localizable.strings in Resources */,
-				16C4089F22AA6A7700AF2F0E /* Podfile in Resources */,
 				1623611B22AB935300E4025C /* InfoPlist.strings in Resources */,
 				169F073B22AF53DE008E8525 /* Preferences.storyboard in Resources */,
 				16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */,
@@ -1114,7 +1114,7 @@
 		};
 		16A6DC6522AA375800813706 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D9210ACA587ED2CA41A506A /* Pods-uPic.debug.xcconfig */;
+			baseConfigurationReference = B31C410193F6C634ECBC8F5F /* Pods-uPic.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1144,7 +1144,7 @@
 		};
 		16A6DC6622AA375800813706 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF6E6B1F322C29A8668C8B00 /* Pods-uPic.release.xcconfig */;
+			baseConfigurationReference = FA1B39CC17103449CC5099AD /* Pods-uPic.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
