@@ -27,6 +27,7 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
+.DS_Store
 
 ## Playgrounds
 timeline.xctimeline
@@ -46,7 +47,7 @@ playground.xcworkspace
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
-# Pods/
+Pods/
 
 # Carthage
 #
@@ -55,16 +56,5 @@ playground.xcworkspace
 
 Carthage/Build
 
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/#source-control
 
 .idea/
-
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/**/*.png
-fastlane/test_output
