@@ -84,7 +84,7 @@ class QiniuConfigView: ConfigView {
         accessKeyLabel.alignment = .right
         accessKeyLabel.lineBreakMode = .byClipping
         
-        let accessKeyField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        let accessKeyField = NSSecureTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         accessKeyField.identifier = NSUserInterfaceItemIdentifier(rawValue: "accessKey")
         accessKeyField.usesSingleLineMode = true
         accessKeyField.lineBreakMode = .byTruncatingTail
@@ -103,7 +103,7 @@ class QiniuConfigView: ConfigView {
         secretKeyLabel.alignment = .right
         secretKeyLabel.lineBreakMode = .byClipping
         
-        let secretKeyField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        let secretKeyField = NSSecureTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         secretKeyField.identifier = NSUserInterfaceItemIdentifier(rawValue: "secretKey")
         secretKeyField.usesSingleLineMode = true
         secretKeyField.lineBreakMode = .byTruncatingTail
