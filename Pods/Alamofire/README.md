@@ -18,9 +18,9 @@ Alamofire is an HTTP networking library written in Swift.
 - [Migration Guides](#migration-guides)
 - [Communication](#communication)
 - [Installation](#installation)
-- [Usage](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md)
-    - **Intro -** [Making a Request](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#making-a-request), [Response Handling](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#response-handling), [Response Validation](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#response-validation), [Response Caching](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#response-caching)
-	- **HTTP -** [HTTP Methods](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#http-methods), [Parameter Encoding](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#parameter-encoding), [HTTP Headers](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#http-headers), [Authentication](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#authentication)
+- [Usage](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#using-alamofire)
+    - [**Introduction -**](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#introduction) [Making Requests](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#making-requests), [Response Handling](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#response-handling), [Response Validation](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#response-validation), [Response Caching](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#response-caching)
+	- **HTTP -** [HTTP Methods](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#http-methods), [Parameters and Parameter Encoder](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md##request-parameters-and-parameter-encoders), [HTTP Headers](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#http-headers), [Authentication](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#authentication)
 	- **Large Data -** [Downloading Data to a File](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#downloading-data-to-a-file), [Uploading Data to a Server](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#uploading-data-to-a-server)
 	- **Tools -** [Statistical Metrics](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#statistical-metrics), [cURL Command Output](https://github.com/Alamofire/Alamofire/blob/master/Documentation/Usage.md#curl-command-output)
 - [Advanced Usage](https://github.com/Alamofire/Alamofire/blob/master/Documentation/AdvancedUsage.md)
@@ -63,7 +63,6 @@ In order to keep Alamofire focused specifically on core networking implementatio
 - Xcode 10.2+
 - Swift 5+
 
-
 ## Migration Guides
 
 - Alamofire 5.0 Migration Guide: To be written!
@@ -87,7 +86,7 @@ In order to keep Alamofire focused specifically on core networking implementatio
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate Alamofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'Alamofire', '~> 5.0.0-beta.5'
+pod 'Alamofire', '~> 5.0.0-rc.2'
 ```
 
 ### Carthage
@@ -95,7 +94,7 @@ pod 'Alamofire', '~> 5.0.0-beta.5'
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks. To integrate Alamofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "Alamofire/Alamofire" "5.0.0-beta.5"
+github "Alamofire/Alamofire" "5.0.0-rc.2"
 ```
 
 ### Swift Package Manager
@@ -104,11 +103,9 @@ The [Swift Package Manager](https://swift.org/package-manager/) is a tool for au
 
 Once you have your Swift package set up, adding Alamofire as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
 
-#### Swift 4
-
 ```swift
 dependencies: [
-    .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.0-beta.5")
+    .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.0-rc.2")
 ]
 ```
 
@@ -166,6 +163,7 @@ The following radars have been resolved over time after being filed against the 
   - (Resolved): 9/1/17 in Xcode 9 beta 6.
 - [`rdar://36082113`](http://openradar.appspot.com/radar?id=4942308441063424) - `URLSessionTaskMetrics` failing to link on watchOS 3.0+
   - (Resolved): Just add `CFNetwork` to your linked frameworks.
+  
 ## FAQ
 
 ### What's the origin of the name Alamofire?

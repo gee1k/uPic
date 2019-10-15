@@ -135,4 +135,8 @@ open class XML {
         
         return Parser(trimming: manner).parse(data)
     }
+    
+    open class func document(_ accessor: Accessor) throws -> String {
+        return try Converter(accessor).makeDocument()
+    }
 }

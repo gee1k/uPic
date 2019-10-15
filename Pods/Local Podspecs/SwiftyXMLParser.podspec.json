@@ -1,6 +1,6 @@
 {
   "name": "SwiftyXMLParser",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "summary": "Simple XML Parser implemented by Swift",
   "description": "This is a XML parser inspired by SwiftyJSON and SWXMLHash.\n\nNSXMLParser in Foundation framework is a kind of \"SAX\" parser. It has a enough performance but is a little inconvenient.\nSo we have implemented \"DOM\" parser wrapping it.",
   "homepage": "https://github.com/yahoojapan/SwiftyXMLParser.git",
@@ -17,6 +17,6 @@
   "requires_arc": true,
   "source": {
     "git": "https://github.com/yahoojapan/SwiftyXMLParser.git",
-    "tag": "5.0.0"
+    "tag": "5.1.0"
   }
 }

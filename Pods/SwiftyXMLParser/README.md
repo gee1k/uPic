@@ -226,12 +226,12 @@ entity.names ?<< xml.ResultSet.Result.Hit[1].Name.text // assign if it has text
 ```swift
 let numberOfHits = xml.ResultSet.Result.Hit.all?.count 
 ```
-### Check error
+### 8. Check error
 ```swift
 print(xml.ResultSet.Result.TypoKey) // -> "TypoKey not found."
 ```
 
-### Access as SequenceType
+### 9. Access as SequenceType
 + for-in
 ```swift
 for element in xml.ResultSet.Result.Hit {
@@ -242,6 +242,12 @@ for element in xml.ResultSet.Result.Hit {
 ```swift
 xml.ResultSet.Result.Hit.map { $0.Name.text }
 ```
+
+### 9. Generate XML document
+```swift
+print(Converter(xml.ResultSet).makeDocument())
+```
+
 
 ## Work with Alamofire
 SwiftyXMLParser goes well with [Alamofire](https://github.com/Alamofire/Alamofire). You can parse the response easily.
