@@ -449,3 +449,64 @@ extension XML {
         }
     }
 }
+
+extension XML {
+    /// Conveter to make xml document from Accessor.
+    public class Converter {
+        let accessor: XML.Accessor
+
+        public init(_ accessor: XML.Accessor) {
+            self.accessor = accessor
+        }
+        
+        /**
+         If Accessor object has correct XML path, return the XML element, otherwith return error
+         
+         example:
+         
+         ```
+         let xml = try! XML.parse("<?xml version="1.0" encoding="UTF-8"?><doc><name key="value">text</name></doc>")
+         let elem = xml.doc
+         
+         print(Converter(elem).makeDocument())
+         // => <?xml version="1.0" encoding="UTF-8"?><name key="value">text</name>
+         ```
+         
+         */
+        public func makeDocument() throws -> String {
+            if case .failure(let err) = accessor {
+                throw err
+            }
+
+            var doc: String = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+            for hit in accessor {
+                switch hit {
+                case .singleElement(let element):
+                    doc += traverse(element)
+                case .sequence(let elements):
+                    doc += elements.reduce("") { (sum, el) in sum + traverse(el) }
+                case .failure(let error):
+                    throw error
+                }
+            }
+
+            return doc
+        }
+
+        private func traverse(_ element: Element) -> String {
+            let name = element.name
+            let text = element.text ?? ""
+            let attrs = element.attributes.map { (k, v) in "\(k)=\"\(v)\""  }.joined(separator: " ")
+
+            let childDocs = element.childElements.reduce("", { (result, element) in
+                result + traverse(element)
+            })
+
+            if name == "XML.Parser.AbstructedDocumentRoot" {
+                return childDocs
+            } else {
+                return "<\(name) \(attrs)>\(text)\(childDocs)</\(name)>"
+            }
+        }
+    }
+}

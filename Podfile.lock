@@ -1,21 +1,21 @@
 PODS:
-  - Alamofire (5.0.0-beta.6)
-  - CryptoSwift (1.0.0)
-  - MASShortcut (2.3.6)
-  - Sparkle (1.21.3)
-  - SwiftyJSON (4.3.0)
-  - SwiftyXMLParser (5.0.0)
+  - Alamofire (5.0.0-rc.2)
+  - CryptoSwift (1.1.2)
+  - MASShortcut (2.4.0)
+  - Sparkle (1.22.0)
+  - SwiftyJSON (5.0.0)
+  - SwiftyXMLParser (5.1.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.0.0-beta.6)
+  - Alamofire (~> 5.0.0-rc.2)
   - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
   - MASShortcut
   - Sparkle
-  - SwiftyJSON (~> 4.0)
+  - SwiftyJSON
   - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - MASShortcut
     - Sparkle
@@ -30,20 +30,20 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CryptoSwift:
-    :commit: 50d1c03bc3420eb818c0bdfcbf1c203f174bad3e
+    :commit: 4ccfe9034a07af4b153657ba1cdac702ffcf8f2f
     :git: https://github.com/krzyzanowskim/CryptoSwift
   SwiftyXMLParser:
-    :commit: 13c1b5efa33c6238b5560d8625af4f1a24df2bd1
+    :commit: bc85162ecee60d6eb94b778648bc4c51e1c4d34f
     :git: https://github.com/yahoojapan/SwiftyXMLParser.git
 
 SPEC CHECKSUMS:
-  Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
-  CryptoSwift: b91cc3e6902875f4baa91fdf1042c1344108a53b
-  MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
-  Sparkle: 3f75576db8b0265adef36c43249d747f22d0b708
-  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
-  SwiftyXMLParser: 5ebb8793192f403fa8cc691045143906122a7a75
+  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  CryptoSwift: 31dacd1f13427439ddae5b5cbaae4c8dbc43047e
+  MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
+  Sparkle: 593ac2e677c07bcb6c3b22d621240e7cbedaab57
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SwiftyXMLParser: 8271497e0a37b5c04b0b167c77b4896e36175a21
 
-PODFILE CHECKSUM: 7c6c78f59e37e62627438dd88dae6ce9d1cbd10d
+PODFILE CHECKSUM: d426de3f20f6f6f0df58c0732d6bb48c0d8764b6
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.8.3
