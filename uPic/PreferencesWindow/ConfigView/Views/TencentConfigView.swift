@@ -85,7 +85,7 @@ class TencentConfigView: ConfigView {
         secretIdLabel.alignment = .right
         secretIdLabel.lineBreakMode = .byClipping
         
-        let secretIdField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        let secretIdField = NSSecureTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         secretIdField.identifier = NSUserInterfaceItemIdentifier(rawValue: "secretId")
         secretIdField.usesSingleLineMode = true
         secretIdField.lineBreakMode = .byTruncatingTail
@@ -104,7 +104,7 @@ class TencentConfigView: ConfigView {
         secretKeyLabel.alignment = .right
         secretKeyLabel.lineBreakMode = .byClipping
         
-        let secretKeyField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        let secretKeyField = NSSecureTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         secretKeyField.identifier = NSUserInterfaceItemIdentifier(rawValue: "secretKey")
         secretKeyField.usesSingleLineMode = true
         secretKeyField.lineBreakMode = .byTruncatingTail

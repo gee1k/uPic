@@ -68,14 +68,8 @@ class TencentUploader: BaseUploader {
         let qSignAlgorithm = "sha1"
         let qKeyTime = TencentUtil.getKeyTime()
         let signKey = qKeyTime.calculateHMACByKey(key: secretKey).toHexString()
-        // MARK: 加密 policy
-        var policyDict = Dictionary<String, Any>()
-        let conditions = [["bucket": bucket], ["key": key]]
-        policyDict["conditions"] = conditions
-        let policy = TencentUtil.getPolicy(policyDict: policyDict)
 
-        // improtant - start
-        let httpString = "post\n/\n\n\n"
+        let httpString = "post\n/\n\nhost=\(hostUri)\n"
         let stringToSign = "\(qSignAlgorithm)\n\(qKeyTime)\n\(httpString.toSha1())\n"
         let qSignature = stringToSign.calculateHMACByKey(key: signKey).toHexString()
 
@@ -84,7 +78,7 @@ class TencentUploader: BaseUploader {
             "q-ak=" + secretId,
             "q-sign-time=" + qKeyTime,
             "q-key-time=" + qKeyTime,
-            "q-header-list=",
+            "q-header-list=host",
             "q-url-param-list=",
             "q-signature=" + qSignature
         ].joined(separator: "&")
@@ -94,12 +88,10 @@ class TencentUploader: BaseUploader {
         headers.add(HTTPHeader.authorization(authorization))
         headers.add(HTTPHeader.contentType("multipart/form-data"))
         headers.add(HTTPHeader(name: "Host", value: hostUri))
-        // improtant - end
         
         
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
             multipartFormData.append(key.data(using: .utf8)!, withName: "key")
-            multipartFormData.append(policy.data(using: .utf8)!, withName: "policy")
             if retData != nil {
                 multipartFormData.append(retData!, withName: "file", fileName: fileName, mimeType: mimeType)
             } else if fileUrl != nil {

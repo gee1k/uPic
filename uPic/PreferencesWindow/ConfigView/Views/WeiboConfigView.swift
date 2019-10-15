@@ -73,7 +73,7 @@ class WeiboConfigView: ConfigView {
         passwordLabel.alignment = .right
         passwordLabel.lineBreakMode = .byClipping
         
-        let passwordField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        let passwordField = NSSecureTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         passwordField.identifier = NSUserInterfaceItemIdentifier(rawValue: "password")
         passwordField.usesSingleLineMode = true
         passwordField.lineBreakMode = .byTruncatingTail

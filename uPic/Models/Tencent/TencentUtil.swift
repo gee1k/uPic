@@ -12,18 +12,6 @@ import SwiftyJSON
 public class TencentUtil {
     private static let expiration = 1800
     private static let schema = "https://"
-
-    static func getPolicy(policyDict: Dictionary<String, Any>) -> String {
-        var policyDict = policyDict
-
-        if policyDict["expiration"] == nil {
-            policyDict["expiration"] = Date(timeIntervalSince1970: TimeInterval(Date().timeStamp + expiration)).toISOString()
-        }
-        
-        let policyJSON = JSON(policyDict)
-        let policyData = try! policyJSON.rawData()
-        return policyData.toBase64()
-    }
     
     static func computeUrl(bucket: String, region: TencentRegion) -> String {
         if region.endPoint.isEmpty {
