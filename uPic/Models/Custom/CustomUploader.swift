@@ -31,7 +31,7 @@ class CustomUploader: BaseUploader {
         let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
 
-        let httpMethod = HTTPMethod(rawValue: method) ?? HTTPMethod.post
+        let httpMethod = HTTPMethod(rawValue: method) 
 
 
         if url.isEmpty {

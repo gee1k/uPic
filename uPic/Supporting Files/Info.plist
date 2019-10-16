@@ -54,5 +54,7 @@
 	<true/>
 	<key>SUFeedURL</key>
 	<string>https://svend.cc/uPic/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>qrLszQ8rubF8+xZpLbXuoyDWME4L8d49Z/l+N12yIgg=</string>
 </dict>
 </plist>

@@ -32,7 +32,7 @@
 ## 🚀 如何安装
 
 ### 下载安装
-#### 1.Homebrew:
+#### 1.Homebrew(推荐):
 ```
 brew cask install upic
 ```
