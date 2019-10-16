@@ -33,7 +33,7 @@
 ## 🚀 How to install
 
 
-### 1.Homebrew:
+### 1.Homebrew(Recommend):
 ```
 brew cask install upic
 ```
