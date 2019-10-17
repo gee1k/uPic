@@ -125,7 +125,11 @@ brew cask install upic
 <p>2.退出 uPic 并重新启动</p>
 <img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/delete-notification.png" width="450">
 </details>
-
+<details>
+<summary>5.macOS 10.15 打不开，提示软件损坏❓</summary><br>
+<p><strong>在终端执行以下命令后即可正常打开 APP</strong></p>
+<p><code>sudo xattr -d com.apple.quarantine /Applications/uPic.app</code> </p>
+</details>
 
 
 
