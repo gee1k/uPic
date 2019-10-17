@@ -126,7 +126,11 @@ brew cask install upic
 <p>2.Exit uPic and restart</p>
 <img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/delete-notification.png" width="450">
 </details>
-
+<details>
+<summary>5.macOS 10.15 can't open, software is damaged❓</summary><br>
+<p><strong>After the terminal executes the following command, the APP can be opened normally.</strong></p>
+<p><code>sudo xattr -d com.apple.quarantine /Applications/uPic.app</code> </p>
+</details>
 
 ## 💌 Contact information
 
