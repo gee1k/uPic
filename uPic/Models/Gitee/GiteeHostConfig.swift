@@ -22,19 +22,19 @@ class GiteeHostConfig: HostConfig {
     override func displayName(key: String) -> String {
         switch key {
         case "owner":
-            return NSLocalizedString("host.field.owner", comment: "owner")
+            return "Owner".localized
         case "repo":
-            return NSLocalizedString("host.field.repo", comment: "repo")
+            return "Repo".localized
         case "branch":
-            return NSLocalizedString("host.field.branch", comment: "branch")
+            return "Branch".localized
         case "token":
-            return NSLocalizedString("host.field.token", comment: "token")
+            return "Token".localized
         case "domain":
-            return NSLocalizedString("host.field.domain", comment: "domain")
+            return "Domain".localized
         case "folder":
-            return NSLocalizedString("host.field.folder", comment: "folder")
+            return "Folder".localized
         case "saveKey":
-            return NSLocalizedString("host.field.saveKey", comment: "fileName")
+            return "File Name".localized
         default:
             return ""
         }

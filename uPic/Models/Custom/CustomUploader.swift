@@ -17,7 +17,7 @@ class CustomUploader: BaseUploader {
 
     func _upload(_ fileUrl: URL?, fileData: Data?) {
         guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {
-            super.faild(errorMsg: NSLocalizedString("bad-host-config", comment: "bad host config"))
+            super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
 
@@ -35,7 +35,7 @@ class CustomUploader: BaseUploader {
 
 
         if url.isEmpty {
-            super.faild(errorMsg: NSLocalizedString("bad-host-config", comment: "bad host config"))
+            super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
 

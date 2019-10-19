@@ -66,7 +66,7 @@ class ConfigSheetController: NSViewController {
     }
 
     func resetPreviewLabel() {
-        var text = "\(NSLocalizedString("general.example", comment: "example")):"
+        var text = "Example:".localized
         if (domainTextField.stringValue.count > 0) {
             text += domainTextField.stringValue
         }

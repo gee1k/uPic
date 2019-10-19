@@ -16,7 +16,7 @@ class ImgurHostConfig: HostConfig {
     override func displayName(key: String) -> String {
         switch key {
         case "clientId":
-            return NSLocalizedString("host.field.clientId", comment: "clientId")
+            return "Client ID".localized
         default:
             return ""
         }

@@ -180,12 +180,12 @@ extension ConfigManager {
                 
                 let alert = NSAlert()
                 
-                alert.messageText = NSLocalizedString("alert.import_hosts_title", comment: "")
-                alert.informativeText = NSLocalizedString("alert.import_hosts_description", comment: "")
+                alert.messageText = "Import host configuration".localized
+                alert.informativeText = "⚠️ Please choose import method, merge or overwrite?".localized
                 
-                alert.addButton(withTitle: NSLocalizedString("alert.import_hosts_merge", comment: "")).refusesFirstResponder = true
+                alert.addButton(withTitle: "merge".localized).refusesFirstResponder = true
                 
-                alert.addButton(withTitle: NSLocalizedString("alert.import_hosts_overwrite", comment: "")).refusesFirstResponder = true
+                alert.addButton(withTitle: "⚠️ overwrite".localized).refusesFirstResponder = true
                 
                 let modalResult = alert.runModal()
                 
@@ -216,7 +216,7 @@ extension ConfigManager {
     func exportHosts() {
         let hostItems = ConfigManager.shared.getHostItems()
         if hostItems.count == 0 {
-            NotificationExt.shared.postExportErrorNotice(NSLocalizedString("notification.export.error.body.no-hosts", comment: ""))
+            NotificationExt.shared.postExportErrorNotice("No exportable hosts!".localized)
             return
         }
         

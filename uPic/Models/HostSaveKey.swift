@@ -16,25 +16,25 @@ public enum HostSaveKey: String, CaseIterable, Codable {
         get {
             switch self {
             case .filename:
-                return NSLocalizedString("save-key.filename", comment: "filename")
+                return "filename".localized
             case .random:
-                return NSLocalizedString("save-key.random", comment: "random")
+                return "random".localized
             case .dateFilename:
-                return NSLocalizedString("save-key.date-filename", comment: "date-filename")
+                return "date-filename".localized
             case .datetimeFilename:
-                return NSLocalizedString("save-key.datetime-filename", comment: "datetime-filename")
+                return "datetime-filename".localized
             case .secondFilename:
-                return NSLocalizedString("save-key.second-filename", comment: "second-filename")
+                return "second-filename".localized
             case .millisecondFilename:
-                return NSLocalizedString("save-key.millisecond-filename", comment: "millisecond-filename")
+                return "millisecond-filename".localized
             case .dateRandom:
-                return NSLocalizedString("save-key.date-random", comment: "date-random")
+                return "date-random".localized
             case .datetimeRandom:
-                return NSLocalizedString("save-key.datetime-random", comment: "datetime-random")
+                return "datetime-random".localized
             case .secondRandom:
-                return NSLocalizedString("save-key.second-random", comment: "second-random")
+                return "second-random".localized
             case .millisecondRandom:
-                return NSLocalizedString("save-key.millisecond-random", comment: "millisecond-random")
+                return "millisecond-random".localized
             }
         }
     }

@@ -52,7 +52,7 @@ class GiteeConfigView: ConfigView {
         repoField.lineBreakMode = .byTruncatingTail
         repoField.delegate = data
         repoField.stringValue = data.repo ?? ""
-        repoField.placeholderString = NSLocalizedString("host.placeholder.repo", comment: "")
+        repoField.placeholderString = "Just the repo name, not the repo URL".localized
         self.addSubview(repoLabel)
         self.addSubview(repoField)
         nextKeyViews.append(repoField)
@@ -109,7 +109,7 @@ class GiteeConfigView: ConfigView {
         domainField.lineBreakMode = .byTruncatingTail
         domainField.delegate = data
         domainField.stringValue = data.domain ?? ""
-        domainField.placeholderString = NSLocalizedString("host.placeholder.domain-has-default", comment: "")
+        domainField.placeholderString = "Can be empty, there is a default domain".localized
         self.domainField = domainField
         
         let settingsBtn = NSButton(title: "", image: NSImage(named: NSImage.advancedName)!, target: self, action: #selector(openConfigSheet(_:)))

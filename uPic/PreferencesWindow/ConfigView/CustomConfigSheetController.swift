@@ -58,7 +58,7 @@ class CustomConfigSheetController: NSViewController {
         var nextKeyViews: [NSView] = []
         
         if self.headers.count > 0 {
-            let headersTitle = NSTextField(labelWithString: NSLocalizedString("host.field.header-data", comment: "Header 数据"))
+            let headersTitle = NSTextField(labelWithString: "Header Data".localized)
             headersTitle.setFrameOrigin(NSPoint(x: paddingLeft, y: y))
             contentView.addSubview(headersTitle)
             
@@ -96,7 +96,7 @@ class CustomConfigSheetController: NSViewController {
         if self.bodys.count > 0 {
             y = y + paddingTop
             
-            let bodyTitle = NSTextField(labelWithString: NSLocalizedString("host.field.body-data", comment: "Body 数据"))
+            let bodyTitle = NSTextField(labelWithString: "Body Data".localized)
             bodyTitle.setFrameOrigin(NSPoint(x: paddingLeft, y: y))
             contentView.addSubview(bodyTitle)
             

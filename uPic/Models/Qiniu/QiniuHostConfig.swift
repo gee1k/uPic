@@ -23,21 +23,21 @@ class QiniuHostConfig: HostConfig {
     override func displayName(key: String) -> String {
         switch key {
         case "region":
-            return NSLocalizedString("host.field.region", comment: "region")
+            return "Region".localized
         case "bucket":
-            return NSLocalizedString("host.field.bucket", comment: "bucket")
+            return "Bucket".localized
         case "accessKey":
-            return NSLocalizedString("host.field.accessKey", comment: "accessKey")
+            return "Access Key".localized
         case "secretKey":
-            return NSLocalizedString("host.field.secretKey", comment: "secretKey")
+            return "Secret Key".localized
         case "domain":
-            return NSLocalizedString("host.field.domain", comment: "domain")
+            return "Domain".localized
         case "folder":
-            return NSLocalizedString("host.field.folder", comment: "folder")
+            return "Folder".localized
         case "saveKey":
-            return NSLocalizedString("host.field.saveKey", comment: "fileName")
+            return "File Name".localized
         case "suffix":
-            return NSLocalizedString("host.field.suffix", comment: "suffix")
+            return "URL suffix".localized
         default:
             return ""
         }
