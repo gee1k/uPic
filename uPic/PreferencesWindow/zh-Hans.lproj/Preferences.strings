@@ -5,8 +5,8 @@
 /* Class = "NSTextFieldCell"; title = "⚠️ 注意这将会重置所有用户偏好设置"; ObjectID = "2Rg-te-FPU"; */
 "2Rg-te-FPU.title" = "⚠️ 注意这将会重置所有用户偏好设置";
 
-/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "4iB-qe-GQY"; */
-"4iB-qe-GQY.title" = "Cancel";
+/* Class = "NSButtonCell"; title = "取消"; ObjectID = "4iB-qe-GQY"; */
+"4iB-qe-GQY.title" = "取消";
 
 /* Class = "NSButtonCell"; title = "Paypal"; ObjectID = "59m-hG-lVw"; */
 "59m-hG-lVw.title" = "Paypal";
@@ -26,11 +26,11 @@
 /* Class = "NSButtonCell"; title = "增加 Header 字段"; ObjectID = "Ckh-A7-mxC"; */
 "Ckh-A7-mxC.title" = "增加 Header 字段";
 
-/* Class = "NSButtonCell"; title = "Ok"; ObjectID = "Cp0-zp-Dpm"; */
-"Cp0-zp-Dpm.title" = "Ok";
+/* Class = "NSButtonCell"; title = "确定"; ObjectID = "Cp0-zp-Dpm"; */
+"Cp0-zp-Dpm.title" = "确定";
 
-/* Class = "NSTextFieldCell"; placeholderString = "文件夹：uploads/test"; ObjectID = "FDM-4e-Rn3"; */
-"FDM-4e-Rn3.placeholderString" = "文件夹：uploads/test";
+/* Class = "NSTextFieldCell"; placeholderString = "文件夹:uploads/test"; ObjectID = "FDM-4e-Rn3"; */
+"FDM-4e-Rn3.placeholderString" = "文件夹:uploads/test";
 
 /* Class = "NSTextFieldCell"; title = "/"; ObjectID = "FO4-fa-ZC2"; */
 "FO4-fa-ZC2.title" = "/";
@@ -56,8 +56,8 @@
 /* Class = "NSTextFieldCell"; title = "0.1.0"; ObjectID = "Jnf-AX-bIr"; */
 "Jnf-AX-bIr.title" = "0.1.0";
 
-/* Class = "NSButtonCell"; title = "Ok"; ObjectID = "MYr-0a-uD1"; */
-"MYr-0a-uD1.title" = "Ok";
+/* Class = "NSButtonCell"; title = "确定"; ObjectID = "MYr-0a-uD1"; */
+"MYr-0a-uD1.title" = "确定";
 
 /* Class = "NSTextFieldCell"; title = "选择文件上传:"; ObjectID = "Mqt-Fp-Ssl"; */
 "Mqt-Fp-Ssl.title" = "选择文件上传:";
@@ -83,14 +83,14 @@
 /* Class = "NSTextFieldCell"; title = "截图长传"; ObjectID = "Xd9-iA-emU"; */
 "Xd9-iA-emU.title" = "截图长传";
 
-/* Class = "NSTextFieldCell"; title = "文件网址："; ObjectID = "ZK1-y8-8KP"; */
-"ZK1-y8-8KP.title" = "文件网址：";
+/* Class = "NSTextFieldCell"; title = "文件网址:"; ObjectID = "ZK1-y8-8KP"; */
+"ZK1-y8-8KP.title" = "文件网址:";
 
 /* Class = "NSButtonCell"; title = "登录时启动 uPic"; ObjectID = "ZbK-xW-anT"; */
 "ZbK-xW-anT.title" = "登录时启动 uPic";
 
-/* Class = "NSTextFieldCell"; placeholderString = "访问域名：https://"; ObjectID = "b48-7x-KE9"; */
-"b48-7x-KE9.placeholderString" = "访问域名：https://";
+/* Class = "NSTextFieldCell"; placeholderString = "访问域名:https://"; ObjectID = "b48-7x-KE9"; */
+"b48-7x-KE9.placeholderString" = "访问域名:https://";
 
 /* Class = "NSTextFieldCell"; title = "上传剪贴板中的文件:"; ObjectID = "bvy-v3-hhf"; */
 "bvy-v3-hhf.title" = "上传剪贴板中的文件:";
@@ -107,8 +107,8 @@
 /* Class = "NSButtonCell"; title = "支付宝"; ObjectID = "eWy-BH-pJy"; */
 "eWy-BH-pJy.title" = "支付宝";
 
-/* Class = "NSButtonCell"; title = "github.com/gee1k/uPic"; ObjectID = "f2V-P5-pQI"; */
-"f2V-P5-pQI.title" = "github.com/gee1k/uPic";
+/* Class = "NSButtonCell"; title = "https://github.com/gee1k/uPic"; ObjectID = "f2V-P5-pQI"; */
+"f2V-P5-pQI.title" = "https://github.com/gee1k/uPic";
 
 /* Class = "NSButtonCell"; title = "微信"; ObjectID = "fJL-Ts-QPI"; */
 "fJL-Ts-QPI.title" = "微信";
@@ -143,8 +143,8 @@
 /* Class = "NSButtonCell"; title = "增加 Body 字段"; ObjectID = "osM-Ga-s0H"; */
 "osM-Ga-s0H.title" = "增加 Body 字段";
 
-/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "q1H-P0-jix"; */
-"q1H-P0-jix.title" = "Cancel";
+/* Class = "NSButtonCell"; title = "取消"; ObjectID = "q1H-P0-jix"; */
+"q1H-P0-jix.title" = "取消";
 
-/* Class = "NSTextFieldCell"; title = "示例："; ObjectID = "t25-le-QEa"; */
-"t25-le-QEa.title" = "示例：";
+/* Class = "NSTextFieldCell"; title = "示例:"; ObjectID = "t25-le-QEa"; */
+"t25-le-QEa.title" = "示例:";
