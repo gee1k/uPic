@@ -254,7 +254,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 print(error.debugDescription)
             } else {
                 // 根据原始url找到对应的历史记录项
-                guard let originalUrlStr = response?.url?.absoluteString, let menuItem = self.historyMenuItem.submenu?.item(withTitle: originalUrlStr) else {
+                guard let originalUrlStr = response?.url?.absoluteString.urlDecoded(), let menuItem = self.historyMenuItem.submenu?.item(withTitle: originalUrlStr) else {
                     return
                 }
 

@@ -113,7 +113,7 @@ class CustomConfigView: ConfigView {
         
         // MARK: resultPath
         y = y - gapTop - labelHeight
-        let resultLabel = NSTextField(labelWithString: "URL 路径:")
+        let resultLabel = NSTextField(labelWithString: "\(data.displayName(key: "resultPath")):")
         resultLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
         resultLabel.alignment = .right
         resultLabel.lineBreakMode = .byClipping
@@ -162,9 +162,9 @@ class CustomConfigView: ConfigView {
         
         // MARK: help
         y = y - gapTop - labelHeight
-        let helpBtnSize = 21
         let helpBtn = NSButton(title: "", target: self, action: #selector(openTutorial(_:)))
-        helpBtn.frame = NSRect(x: viewWidth - helpBtnSize * 3 / 2, y: y, width: helpBtnSize, height: helpBtnSize)
+        let helpBtnWidth = Int(helpBtn.frame.width)
+        helpBtn.frame = NSRect(x: viewWidth - helpBtnWidth * 3 / 2, y: y, width: helpBtnWidth, height: Int(helpBtn.frame.height))
         helpBtn.bezelStyle = .helpButton
         helpBtn.setButtonType(.momentaryPushIn)
         helpBtn.toolTip = "https://blog.svend.cc/upic/tutorials/custom"

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 import CryptoSwift
 
 extension Data {

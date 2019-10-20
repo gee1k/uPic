@@ -21,9 +21,9 @@
 /* 上传成功通知标题 */
 "Uploaded successfully" = "上传成功";
 /* 上传成功通知副标题 */
-"notification.upload.success.subtitle" = "URL 已复制到剪切板，快去粘贴使用吧！";
+"URL has been copied to the clipboard, paste and use it!" = "URL 已复制到剪切板，快去粘贴使用吧！";
 /* 当前上传任务还未完成通知副标题 */
-"URL has been copied to the clipboard, paste and use it!" = "当前上传任务还未结束！";
+"The current upload task is not complete" = "当前上传任务还未结束！";
 /* 上传失败通知标题 */
 "Upload failed" = "上传失败";
 /* 导入图床配置失败标题 */

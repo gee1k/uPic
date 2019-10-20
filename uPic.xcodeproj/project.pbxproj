@@ -59,7 +59,6 @@
 		166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4A5622B9D118001288ED /* PreferencesNotifier.swift */; };
 		1672762322AFF655007299C3 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672762222AFF655007299C3 /* Host.swift */; };
 		1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */; };
-		1675516722ACAA0600D3EB6F /* UPicUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516622ACAA0600D3EB6F /* UPicUpdater.swift */; };
 		1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516922ACAA5900D3EB6F /* AppPublic.swift */; };
 		1675EC5322FB38240038DA33 /* BaseUploaderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675EC5222FB38240038DA33 /* BaseUploaderUtil.swift */; };
 		167620ED230819C0008F8363 /* ImgurHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167620EC230819A9008F8363 /* ImgurHostConfig.swift */; };
@@ -194,7 +193,6 @@
 		166B4A5622B9D118001288ED /* PreferencesNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesNotifier.swift; sourceTree = "<group>"; };
 		1672762222AFF655007299C3 /* Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
 		1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDragingInfoExt.swift; sourceTree = "<group>"; };
-		1675516622ACAA0600D3EB6F /* UPicUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPicUpdater.swift; sourceTree = "<group>"; };
 		1675516922ACAA5900D3EB6F /* AppPublic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPublic.swift; sourceTree = "<group>"; };
 		1675EC5222FB38240038DA33 /* BaseUploaderUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUploaderUtil.swift; sourceTree = "<group>"; };
 		167620EB2308199E008F8363 /* ImgurUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploader.swift; sourceTree = "<group>"; };
@@ -452,7 +450,6 @@
 			isa = PBXGroup;
 			children = (
 				1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */,
-				1675516622ACAA0600D3EB6F /* UPicUpdater.swift */,
 				16248E31230673B6002131BB /* NotificationExt.swift */,
 			);
 			path = Extensions;
@@ -830,7 +827,6 @@
 				165701A322C8AE0A00C57EE9 /* WeiboUtil.swift in Sources */,
 				16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */,
 				167D08AC22ED8A4B000F3BC0 /* AliyunRegion.swift in Sources */,
-				1675516722ACAA0600D3EB6F /* UPicUpdater.swift in Sources */,
 				1685AA3522DEC943008FBF1D /* FlippedView.swift in Sources */,
 				16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */,
 				1675EC5322FB38240038DA33 /* BaseUploaderUtil.swift in Sources */,
@@ -1116,11 +1112,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 20191016;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1146,11 +1142,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 20191016;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1172,10 +1168,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = uPicHelper/uPicHelper.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1195,10 +1191,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = uPicHelper/uPicHelper.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1218,10 +1214,10 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1243,10 +1239,10 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

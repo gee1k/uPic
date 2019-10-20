@@ -145,9 +145,9 @@ class TencentConfigView: ConfigView {
         
         // MARK: help
         y = y - gapTop * 2 - labelHeight
-        let helpBtnSize = 21
         let helpBtn = NSButton(title: "", target: self, action: #selector(openTutorial(_:)))
-        helpBtn.frame = NSRect(x: viewWidth - helpBtnSize * 3 / 2, y: y, width: helpBtnSize, height: helpBtnSize)
+        let helpBtnWidth = Int(helpBtn.frame.width)
+        helpBtn.frame = NSRect(x: viewWidth - helpBtnWidth * 3 / 2, y: y, width: helpBtnWidth, height: Int(helpBtn.frame.height))
         helpBtn.bezelStyle = .helpButton
         helpBtn.setButtonType(.momentaryPushIn)
         helpBtn.toolTip = "https://blog.svend.cc/upic/tutorials/tencent_cos"
