@@ -1,4 +1,12 @@
----
-release_only: true
----
-{%include appcast.inc %}
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>uPic</title>
+        <item>
+            <title>0.12.3</title>
+            <pubDate>周日, 20 10月 2019 14:50:52 +0800</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://svend.cc/uPic/uPic.dmg" sparkle:version="20191017" sparkle:shortVersionString="0.12.3" length="11594801" type="application/octet-stream" sparkle:edSignature="BEPBleBcp/1Y4FNRqtSYFeowQI3Jq6RvzE3vZoJzVdCj++IfdCkUhxLFZL1YkOaEzedyjP0BYgSN1EIRfGOUCA=="/>
+        </item>
+    </channel>
+</rss>
