@@ -122,8 +122,8 @@
 /* Class = "NSButtonCell"; title = "重置偏好设置"; ObjectID = "jyI-H7-qN3"; */
 "jyI-H7-qN3.title" = "重置偏好设置";
 
-/* Class = "NSViewController"; title = "About"; ObjectID = "k6X-N1-mVu"; */
-"k6X-N1-mVu.title" = "About";
+/* Class = "NSViewController"; title = "关于"; ObjectID = "k6X-N1-mVu"; */
+"k6X-N1-mVu.title" = "关于";
 
 /* Class = "NSTextFieldCell"; title = "/"; ObjectID = "kdM-To-7Hl"; */
 "kdM-To-7Hl.title" = "/";
