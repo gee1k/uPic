@@ -296,12 +296,6 @@ extension AppDelegate {
         }
     }
 
-
-    @objc func checkUpdate() {
-        UPicUpdater.shared.check() {
-        }
-    }
-
     // 上传多个文件
     func uploadFiles(_ files: [Any]) {
         self.needUploadFiles = files
