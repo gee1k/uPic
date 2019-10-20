@@ -17,6 +17,7 @@
 				sparkle:version="{{ release.published_at | date: "%Y%m%d" }}"
 				sparkle:shortVersionString="{{ release.tag_name }}"
 				type="application/octet-stream"
+				length="{{ release.assets[0].size }}"
 			/>
 		</item>
 		{%- endunless -%}
