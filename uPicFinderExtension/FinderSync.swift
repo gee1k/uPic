@@ -64,7 +64,7 @@ class FinderSync: FIFinderSync {
                 
                 // 否则说明选中项中包含文件，则创建上传菜单
                 let menu = NSMenu(title: "")
-                let uploadMenuItem = NSMenuItem(title: NSLocalizedString("upload-via-uPic", comment: "使用uPic上传"), action: #selector(uploadFile(_:)), keyEquivalent: "")
+                let uploadMenuItem = NSMenuItem(title: NSLocalizedString("Upload via uPic", comment: "Upload via uPic"), action: #selector(uploadFile(_:)), keyEquivalent: "")
                 uploadMenuItem.image = NSImage(named: "upload")
                 menu.addItem(uploadMenuItem)
 

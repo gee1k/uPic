@@ -100,7 +100,7 @@ class CustomConfigView: ConfigView {
         fieldField.stringValue = data.field ?? ""
         
         
-        let otherFieldsBtn = NSButton(title: NSLocalizedString("host.field.other-fields", comment: "其他字段"), target: self, action: #selector(openCustomConfigSheet(_:)))
+        let otherFieldsBtn = NSButton(title: "Other fields".localized, target: self, action: #selector(openCustomConfigSheet(_:)))
         otherFieldsBtn.frame = NSRect(x: textFieldX + Int(fieldField.frame.width) + gapLeft, y: y, width: otherFieldsBtnWith, height: labelHeight)
         otherFieldsBtn.imagePosition = .noImage
         
@@ -124,8 +124,8 @@ class CustomConfigView: ConfigView {
         resultField.lineBreakMode = .byTruncatingTail
         resultField.delegate = data
         resultField.stringValue = data.resultPath ?? ""
-        resultField.placeholderString = NSLocalizedString("host.placeholder.resultPath", comment: "")
-        resultField.toolTip = NSLocalizedString("host.placeholder.resultPath", comment: "")
+        resultField.placeholderString = "The path to the URL field in Response JSON".localized
+        resultField.toolTip = "The path to the URL field in Response JSON".localized
         self.addSubview(resultLabel)
         self.addSubview(resultField)
         nextKeyViews.append(resultField)
@@ -145,8 +145,8 @@ class CustomConfigView: ConfigView {
         domainField.lineBreakMode = .byTruncatingTail
         domainField.delegate = data
         domainField.stringValue = data.domain ?? ""
-        domainField.placeholderString = NSLocalizedString("host.placeholder.custom-domain", comment: "")
-        domainField.toolTip = NSLocalizedString("host.placeholder.custom-domain", comment: "")
+        domainField.placeholderString = "(optional),When filled, URL = domain + URL path value".localized
+        domainField.toolTip = "(optional),When filled, URL = domain + URL path value".localized
         self.domainField = domainField
 
         let settingsBtn = NSButton(title: "", image: NSImage(named: NSImage.advancedName)!, target: self, action: #selector(openConfigSheet(_:)))

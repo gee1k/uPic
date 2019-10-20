@@ -390,10 +390,10 @@ extension HostPreferencesViewController: NSWindowDelegate {
         if self.hostItemsChanged, let window = self.view.window {
             let alert = NSAlert()
             alert.alertStyle = .warning
-            alert.messageText = NSLocalizedString("general.warn", comment: "提醒")
-            alert.informativeText = NSLocalizedString("alert.unsave_description", comment: "继续退出，当前未保存数据将会丢失")
-            alert.addButton(withTitle: NSLocalizedString("general.continue", comment: "继续"))
-            alert.addButton(withTitle: NSLocalizedString("general.cancel", comment: "取消"))
+            alert.messageText = "Warning".localized
+            alert.informativeText = "Continuing will lose unsaved data. Do you want to continue?".localized
+            alert.addButton(withTitle: "Continue".localized)
+            alert.addButton(withTitle: "Cancel".localized)
             alert.window.titlebarAppearsTransparent = true
             alert.beginSheetModal(for: window) { (response) in
                 if response == .alertFirstButtonReturn {

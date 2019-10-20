@@ -38,22 +38,22 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         statusMenu.delegate = self
         
-        cancelUploadMenuItem.title = NSLocalizedString("status-menu.cancel-upload", comment: "Select file")
-        selectFileMenuItem.title = NSLocalizedString("status-menu.select-file", comment: "Select file")
-        uploadPasteboardMenuItem.title = NSLocalizedString("status-menu.pasteboard", comment: "Upload with pasteboard")
-        screenshotMenuItem.title = NSLocalizedString("status-menu.screenshot", comment: "Upload with pasteboard")
-        hostMenuItem.title = NSLocalizedString("status-menu.host", comment: "Host")
-        ouputFormatMenuItem.title = NSLocalizedString("status-menu.output", comment: "Choose output format")
-        compressFactorMenuItem.title = NSLocalizedString("status-menu.compress-factor", comment: "Compress images before uploading")
-        historyMenuItem.title = NSLocalizedString("status-menu.upload-history", comment: "upload history")
-        preferenceMenuItem.title = NSLocalizedString("status-menu.preference", comment: "Open Preference")
-        helpMenuItem.title = NSLocalizedString("status-menu.help", comment: "help")
-        checkUpdateMenuItem.title = NSLocalizedString("status-menu.check-update", comment: "Check update")
-        tutorialMenuItem.title = NSLocalizedString("status-menu.tutorial", comment: "Tutorial")
-        importHostsMenuItem.title = NSLocalizedString("status-menu.import-hosts", comment: "")
-        exportHostsMenuItem.title = NSLocalizedString("status-menu.export-hosts", comment: "")
-        sponsorMenuItem.title = NSLocalizedString("status-menu.sponsor", comment: "Sponsor")
-        quitMenuItem.title = NSLocalizedString("status-menu.quit", comment: "Quit")
+        cancelUploadMenuItem.title = "Cancel upload".localized
+        selectFileMenuItem.title = "Select File".localized
+        uploadPasteboardMenuItem.title = "Upload copied file".localized
+        screenshotMenuItem.title = "Screenshot and upload".localized
+        hostMenuItem.title = "Hosts".localized
+        ouputFormatMenuItem.title = "Output format".localized
+        compressFactorMenuItem.title = "Compress images before uploading".localized
+        historyMenuItem.title = "Upload history".localized
+        preferenceMenuItem.title = "Preference".localized
+        helpMenuItem.title = "Help".localized
+        checkUpdateMenuItem.title = "Check for updates".localized
+        tutorialMenuItem.title = "Tutorial".localized
+        importHostsMenuItem.title = "Import hosts".localized
+        exportHostsMenuItem.title = "Export hosts".localized
+        sponsorMenuItem.title = "Sponsor".localized
+        quitMenuItem.title = "Quit".localized
 
         resetHostMenu()
         resetUploadHistory()
@@ -189,7 +189,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         for factor in stride(from: 10, through: maxFactor, by: factorStep) {
             var title = "\(factor)%"
             if factor >= 100 {
-                title = "Off"
+                title = "Off".localized
             }
             let menuItem = NSMenuItem(title: title, action: #selector(changeCompressFactor(_:)), keyEquivalent: "")
             menuItem.tag = factor
@@ -229,11 +229,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         if ((historyMenuItem.submenu?.items.count ?? 0) > 0) {
             historyMenuItem.submenu?.addItem(NSMenuItem.separator())
-            let menuItem = NSMenuItem(title: NSLocalizedString("status-menu.upload-history-clear", comment: "clear history"), action: #selector(clearHistory(_:)), keyEquivalent: "")
+            let menuItem = NSMenuItem(title: "Clear upload history".localized, action: #selector(clearHistory(_:)), keyEquivalent: "")
             menuItem.target = self
             historyMenuItem.submenu?.addItem(menuItem)
         } else {
-            let menuItem = NSMenuItem(title: NSLocalizedString("status-menu.upload-history-empty", comment: "history is empty"), action: nil, keyEquivalent: "")
+            let menuItem = NSMenuItem(title: "No upload history".localized, action: nil, keyEquivalent: "")
             menuItem.target = self
             historyMenuItem.submenu?.addItem(menuItem)
         }
@@ -341,7 +341,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         var title = "\(compressFactor)%"
         if compressFactor >= 100 {
-            title = "Off"
+            title = "Off".localized
         }
         self.setCompressFactorMenuTitle(factorTitle: title)
     }
@@ -354,7 +354,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     // show current host name in hosts menu title
     func setHostMenuTitle(hostName: String?) {
-        let hostMenuTitle = NSLocalizedString("status-menu.host", comment: "Host")
+        let hostMenuTitle = "Hosts".localized
 
         if let subTitle = hostName {
 
@@ -371,7 +371,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     // show factor name in compress factor menu title
     func setCompressFactorMenuTitle(factorTitle: String?) {
-        let compressFactorMenuTitle = NSLocalizedString("status-menu.compress-factor", comment: "Compress images before uploading")
+        let compressFactorMenuTitle = "Compress images before uploading".localized
 
         if let subTitle = factorTitle {
             let str = "\(compressFactorMenuTitle)   \(subTitle)"

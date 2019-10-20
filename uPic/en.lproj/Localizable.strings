@@ -7,136 +7,134 @@
 */
 
 
-"general.ok" = "OK";
-"general.cancel" = "Cancel";
-"general.yes" = "Yes";
-"general.warn" = "Warning";
-"general.continue" = "Continue";
-"general.example" = "Example";
+"OK" = "OK";
+"Cancel" = "Cancel";
+"Yes" = "Yes";
+"Warning" = "Warning";
+"Continue" = "Continue";
+"Example:" = "Example:";
+"Off" = "Off";
+"APP Name" = "APP Name";
 
 /* 成功通知标题 */
-"notification.success.title" = "Successfully";
+"Successfully" = "Successfully";
 /* 上传成功通知标题 */
-"notification.upload.success.title" = "Uploaded successfully";
+"Uploaded successfully" = "Uploaded successfully";
 /* 上传成功通知副标题 */
-"notification.upload.success.subtitle" = "URL has been copied to the clipboard, paste and use it!";
+"URL has been copied to the clipboard, paste and use it!" = "URL has been copied to the clipboard, paste and use it!";
 /* 当前上传任务还未完成通知副标题 */
-"notification.upload.task-not-complete.subtitle" = "The current upload task is not complete";
+"The current upload task is not complete" = "The current upload task is not complete";
 /* 上传失败通知标题 */
-"notification.upload.error.title" = "Upload failed";
-
+"Upload failed" = "Upload failed";
 /* 导入图床配置失败标题 */
-"notification.import.error.title" = "Import failed";
+"Import failed" = "Import failed";
 /* 导入图床配置失败内容 */
-"notification.import.error.body" = "The configuration file is invalid, please check!";
+"The configuration file is invalid, please check!" = "The configuration file is invalid, please check!";
 /* 导入图床配置成功内容 */
-"notification.import.success.body" = "The configuration has been imported, please check and use!";
+"The configuration has been imported, please check and use!" = "The configuration has been imported, please check and use!";
 /* 导出图床配置失败标题 */
-"notification.export.error.title" = "Export failed";
+"Export failed" = "Export failed";
 /* 导出图床配置失败内容 */
-"notification.export.error.body.no-hosts" = "No exportable hosts!";
+"No exportable hosts!" = "No exportable hosts!";
 /* 导出图床配置失败内容2 */
-"notification.export.error.body.invalid" = "configuration export error!";
+"configuration export error!" = "configuration export error!";
 /* 导出图床配置成功内容 */
-"notification.export.success.body" = "The configuration file is exported successfully, Do not modify the file contents!";
+"The configuration file is exported successfully, Do not modify the file contents!" = "The configuration file is exported successfully, Do not modify the file contents!";
 
 /* 文件不存在或已被删除 */
-"file-does-not-exist" = "The file does not exist or has been deleted!";
+"The file does not exist or has been deleted!" = "The file does not exist or has been deleted!";
 /* 文件格式不支持 */
-"file-format-is-not-supported" = "File format not supported!";
+"File format not supported!" = "File format not supported!";
 /* 文件大小超过限制 */
-"file-is-over-the-size-limit" = "File is over the size limit! Limit:";
+"File is over the size limit! Limit:" = "File is over the size limit! Limit:";
 /* 图床配置存在问题，请检查 */
-"bad-host-config" = "There is a problem with the map bed configuration, please check!";
+"There is a problem with the map bed configuration, please check!" = "There is a problem with the map bed configuration, please check!";
 
 /*匿名上传*/
-"anonymously-upload" = "The file will be uploaded anonymously to";
-"upload-via-uPic" = "Upload via uPic";
-"tooltip.cancel-upload" = "Right click to cancel the current upload task";
-
-
+"The file will be uploaded anonymously to" = "The file will be uploaded anonymously to";
+"Upload via uPic" = "Upload via uPic";
+"Right click to cancel the current upload task" = "Right click to cancel the current upload task";
 
 /* 状态栏菜单选择文件 */
-"status-menu.select-file" = "Select File";
+"Select File" = "Select File";
 /* 状态栏菜单屏幕截图 */
-"status-menu.screenshot" = "Screenshot and upload";
+"Screenshot and upload" = "Screenshot and upload";
 /* 状态栏菜单上传剪切板中的文件 */
-"status-menu.pasteboard" = "Upload copied file";
+"Upload copied file" = "Upload copied file";
 /* 状态栏菜单图床 */
-"status-menu.host" = "Hosts";
+"Hosts" = "Hosts";
 /* 状态栏菜单输出格式 */
-"status-menu.output" = "Output format";
+"Output format" = "Output format";
 /* 状态栏菜单上传前压缩图片 */
-"status-menu.compress-factor" = "Compress images before uploading";
+"Compress images before uploading" = "Compress images before uploading";
 /* 状态栏菜单偏好设置 */
-"status-menu.preference" = "Preference";
+"Preference" = "Preference";
 /* 状态栏菜单退出 */
-"status-menu.quit" = "Quit";
+"Quit" = "Quit";
 /* 菜单栏检查更新按钮标题：检查更新 */
-"status-menu.check-update" = "Check for updates";
+"Check for updates" = "Check for updates";
 /* 菜单栏上传历史 */
-"status-menu.upload-history" = "Upload history";
+"Upload history" = "Upload history";
 /* 菜单栏清空上传历史 */
-"status-menu.upload-history-clear" = "Clear upload history";
+"Clear upload history" = "Clear upload history";
 /* 菜单栏没有上传历史 */
-"status-menu.upload-history-empty" = "No upload history";
+"No upload history" = "No upload history";
 /* 菜单栏帮助 */
-"status-menu.help" = "Help";
-"status-menu.tutorial" = "Tutorial";
-"status-menu.import-hosts" = "Import hosts";
-"status-menu.export-hosts" = "Export hosts";
-"status-menu.sponsor" = "Sponsor";
+"Help" = "Help";
+"Tutorial" = "Tutorial";
+"Import hosts" = "Import hosts";
+"Export hosts" = "Export hosts";
+"Sponsor" = "Sponsor";
 /* cancel upload */
-"status-menu.cancel-upload" = "Cancel upload";
+"Cancel upload" = "Cancel upload";
 
-"alert.reset_preferences_title" = "Reset User Preferences?";
-"alert.reset_preferences_description" = "⚠️ Note that this will reset all user preferences";
-"alert.unsave_description" = "Continuing will lose unsaved data. Do you want to continue?";
-"alert.import_hosts_title" = "Import host configuration";
-"alert.import_hosts_description" = "⚠️ Please choose import method, merge or overwrite?";
-"alert.import_hosts_merge" = "merge";
-"alert.import_hosts_overwrite" = "⚠️ overwrite";
+"Reset User Preferences?" = "Reset User Preferences?";
+"⚠️ Note that this will reset all user preferences" = "⚠️ Note that this will reset all user preferences";
+"Continuing will lose unsaved data. Do you want to continue?" = "Continuing will lose unsaved data. Do you want to continue?";
+"Import host configuration" = "Import host configuration";
+"⚠️ Please choose import method, merge or overwrite?" = "⚠️ Please choose import method, merge or overwrite?";
+"merge" = "merge";
+"⚠️ overwrite" = "⚠️ overwrite";
 
 /* host -- start */
-"host.field.region" = "Region";
-"host.field.bucket" = "Bucket";
-"host.field.operator" = "Operator";
-"host.field.password" = "Password";
-"host.field.accessKey" = "Access Key";
-"host.field.secretId" = "Secret Id";
-"host.field.secretKey" = "Secret Key";
-"host.field.domain" = "Domain";
-"host.field.folder" = "Folder";
-"host.field.saveKey" = "File Name";
-"host.field.suffix" = "URL suffix";
-"host.field.url" = "API URL";
-"host.field.method" = "Method";
-"host.field.field" = "File Field";
-"host.field.resultPath" = "URL Path";
-"host.field.bodys" = "Bodys";
-"host.field.headers" = "Headers";
-"host.field.owner" = "Owner";
-"host.field.repo" = "Repo";
-"host.field.branch" = "Branch";
-"host.field.token" = "Token";
-"host.field.username" = "Username";
-"host.field.cookieMode" = "Cookie Mode";
-"host.field.cookie" = "Cookie";
-"host.field.quality" = "Pic Quality";
-"host.field.other-fields" = "Other fields";
-"host.field.header-data" = "Header Data";
-"host.field.body-data" = "Body Data";
-"host.field.clientId" = "Client ID";
+"Region" = "Region";
+"Bucket" = "Bucket";
+"Operator" = "Operator";
+"Password" = "Password";
+"Access Key" = "Access Key";
+"Secret Id" = "Secret Id";
+"Secret Key" = "Secret Key";
+"Domain" = "Domain";
+"Folder" = "Folder";
+"File Name" = "File Name";
+"URL suffix" = "URL suffix";
+"API URL" = "API URL";
+"Method" = "Method";
+"File Field" = "File Field";
+"URL Path" = "URL Path";
+"Bodys" = "Bodys";
+"Headers" = "Headers";
+"Owner" = "Owner";
+"Repo" = "Repo";
+"Branch" = "Branch";
+"Token" = "Token";
+"Username" = "Username";
+"Cookie Mode" = "Cookie Mode";
+"Cookie" = "Cookie";
+"Pic Quality" = "Pic Quality";
+"Other fields" = "Other fields";
+"Header Data" = "Header Data";
+"Body Data" = "Body Data";
+"Client ID" = "Client ID";
 
 /* host field placeholder */
-"host.placeholder.operator" = "Operator name";
-"host.placeholder.operator-password" = "Operator password";
-"host.placeholder.repo" = "Just the repo name, not the repo URL";
-"host.placeholder.domain" = "domain:https://xxx.com";
-"host.placeholder.domain-has-default" = "Can be empty, there is a default domain";
-"host.placeholder.resultPath" = "The path to the URL field in Response JSON";
-"host.placeholder.custom-domain" = "(optional),When filled, URL = domain + URL path value";
-
+"Operator name" = "Operator name";
+"Operator password" = "Operator password";
+"Just the repo name, not the repo URL" = "Just the repo name, not the repo URL";
+"domain:https://xxx.com" = "domain:https://xxx.com";
+"Can be empty, there is a default domain" = "Can be empty, there is a default domain";
+"The path to the URL field in Response JSON" = "The path to the URL field in Response JSON";
+"(optional),When filled, URL = domain + URL path value" = "(optional),When filled, URL = domain + URL path value";
 
 /*host type*/
 "host.type.-1" = "Custom";
@@ -145,23 +143,23 @@
 "host.type.3" = "Upyun USS";
 "host.type.4" = "Aliyun OSS";
 "host.type.5" = "Tencent Cloud COS";
-"host.type.6" = "Github";
+"host.type.6" = "GitHub";
 "host.type.7" = "Gitee";
 "host.type.8" = "Weibo";
 "host.type.9" = "Amazon S3";
 "host.type.10" = "Imgur";
 
 /* HostSaveKey */
-"save-key.filename" = "filename";
-"save-key.random" = "random";
-"save-key.date-filename" = "date-filename";
-"save-key.datetime-filename" = "datetime-filename";
-"save-key.second-filename" = "second-filename";
-"save-key.millisecond-filename" = "millisecond-filename";
-"save-key.date-random" = "date-random";
-"save-key.datetime-random" = "datetime-random";
-"save-key.second-random" = "second-random";
-"save-key.millisecond-random" = "millisecond-random";
+"filename" = "filename";
+"random" = "random";
+"date-filename" = "date-filename";
+"datetime-filename" = "datetime-filename";
+"second-filename" = "second-filename";
+"millisecond-filename" = "millisecond-filename";
+"date-random" = "date-random";
+"datetime-random" = "datetime-random";
+"second-random" = "second-random";
+"millisecond-random" = "millisecond-random";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "thumbnail";
@@ -169,4 +167,4 @@
 "weibo.quality.large" = "original";
 
 /*eroor message*/
-"weibo.upload.error" = "Upload failed, please check the configuration!";
+"Upload failed, please check the configuration!" = "Upload failed, please check the configuration!";

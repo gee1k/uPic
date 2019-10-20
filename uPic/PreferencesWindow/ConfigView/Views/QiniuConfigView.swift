@@ -129,7 +129,7 @@ class QiniuConfigView: ConfigView {
         domainField.lineBreakMode = .byTruncatingTail
         domainField.delegate = data
         domainField.stringValue = data.domain ?? ""
-        domainField.placeholderString = NSLocalizedString("host.placeholder.domain", comment: "")
+        domainField.placeholderString = "domain:https://xxx.com".localized
         self.domainField = domainField
         
         let settingsBtn = NSButton(title: "", image: NSImage(named: NSImage.advancedName)!, target: self, action: #selector(openConfigSheet(_:)))

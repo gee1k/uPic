@@ -19,7 +19,7 @@ class WeiboUploader: BaseUploader {
 
     func _upload(_ fileUrl: URL?, fileData: Data?) {
         guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {
-            super.faild(errorMsg: NSLocalizedString("bad-host-config", comment: "bad host config"))
+            super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
 
@@ -35,10 +35,10 @@ class WeiboUploader: BaseUploader {
         let quality = config.quality!
         
         if cookieMode && cookie.isEmpty {
-            super.faild(errorMsg: NSLocalizedString("bad-host-config", comment: "bad host config"))
+            super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         } else if !cookieMode && (username.isEmpty || password.isEmpty) {
-            super.faild(errorMsg: NSLocalizedString("bad-host-config", comment: "bad host config"))
+            super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
         
@@ -85,7 +85,7 @@ class WeiboUploader: BaseUploader {
                         if let pidPid = WeiboUtil.parsePicPid(reponseString: value) {
                             super.completed(url: "https://ws1.sinaimg.cn/\(quality)/\(pidPid)\(fileExtension)")
                         } else {
-                            super.faild(errorMsg: NSLocalizedString("weibo.upload.error", comment: "上传失败，请检查配置！"))
+                            super.faild(errorMsg: "Upload failed, please check the configuration!".localized)
                         }
                     case .failure(let error):
                         super.faild(errorMsg: error.localizedDescription)

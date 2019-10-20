@@ -22,49 +22,49 @@ class NotificationExt:NSObject {
     }
     
     func postUploadErrorNotice(_ body: String? = "") {
-        self.post(title: NSLocalizedString("notification.upload.error.title", comment: ""),
+        self.post(title: "Upload failed".localized,
                   info: body!)
     }
     
     func postUploadSuccessfulNotice(_ body: String? = "") {
-        self.post(title: NSLocalizedString("notification.upload.success.title", comment: ""),
-                  info: body!, subtitle: NSLocalizedString("notification.upload.success.subtitle", comment: ""))
+        self.post(title: "Uploaded successfully".localized,
+                  info: body!, subtitle: "URL has been copied to the clipboard, paste and use it!".localized)
     }
     
     func postCopySuccessfulNotice(_ body: String? = "") {
-        self.post(title: NSLocalizedString("notification.upload.success.subtitle", comment: ""),
+        self.post(title: "URL has been copied to the clipboard, paste and use it!".localized,
                   info: body!)
     }
     
     func postFileDoesNotExistNotice() {
-        self.post(title: NSLocalizedString("notification.upload.error.title", comment: ""),
-                  info: NSLocalizedString("file-does-not-exist", comment: ""))
+        self.post(title: "Upload failed".localized,
+                  info: "The file does not exist or has been deleted!".localized)
     }
     
     func postUplodingNotice(_ body: String? = "") {
-        self.post(title: NSLocalizedString("notification.upload.task-not-complete.subtitle", comment: ""),
+        self.post(title: "The current upload task is not complete".localized,
                   info: body!)
     }
     
     
-    func postImportErrorNotice(_ body: String? = NSLocalizedString("notification.import.error.body", comment: "")) {
-        self.post(title: NSLocalizedString("notification.import.error.title", comment: ""),
+    func postImportErrorNotice(_ body: String? = "The configuration file is invalid, please check!".localized) {
+        self.post(title: "Import failed".localized,
                   info: body!)
     }
     
     func postImportSuccessfulNotice() {
-        self.post(title: NSLocalizedString("notification.success.title", comment: ""),
-                  info: NSLocalizedString("notification.import.success.body", comment: ""))
+        self.post(title: "Successfully".localized,
+                  info: "The configuration has been imported, please check and use!".localized)
     }
     
-    func postExportErrorNotice(_ body: String? = NSLocalizedString("notification.export.error.body.invalid", comment: "")) {
-        self.post(title: NSLocalizedString("notification.upload.task-not-complete.subtitle", comment: ""),
+    func postExportErrorNotice(_ body: String? = "configuration export error!".localized) {
+        self.post(title: "The current upload task is not complete".localized,
                   info: body!)
     }
     
     func postExportSuccessfulNotice() {
-        self.post(title: NSLocalizedString("notification.success.title", comment: ""),
-                  info: NSLocalizedString("notification.export.success.body", comment: ""))
+        self.post(title: "Successfully".localized,
+                  info: "The configuration file is exported successfully, Do not modify the file contents!".localized)
     }
 }
 

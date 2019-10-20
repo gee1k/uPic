@@ -32,14 +32,14 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     @IBAction func resetPreferencesButtonClicked(_ sender: NSButton) {
         let alert = NSAlert()
 
-        alert.messageText = NSLocalizedString("alert.reset_preferences_title", comment: "Reset User Preferences?")
-        alert.informativeText = NSLocalizedString("alert.reset_preferences_description", comment: "⚠️ Note that this will reset all user preferences")
+        alert.messageText = "Reset User Preferences?".localized
+        alert.informativeText = "⚠️ Note that this will reset all user preferences".localized
 
         // Add button and avoid the focus ring
-        let cancelString = NSLocalizedString("general.cancel", comment: "Cancel")
+        let cancelString = "Cancel".localized
         alert.addButton(withTitle: cancelString).refusesFirstResponder = true
 
-        let yesString = NSLocalizedString("general.yes", comment: "Yes")
+        let yesString = "Yes".localized
         alert.addButton(withTitle: yesString).refusesFirstResponder = true
 
         let modalResult = alert.runModal()

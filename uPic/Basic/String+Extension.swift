@@ -11,6 +11,11 @@ import CommonCrypto
 import CryptoSwift
 
 extension String {
+    
+    // 本地化
+    var localized: String {
+        return NSLocalizedString(self, comment: self)
+    }
 
     func toBytes() -> Array<UInt8> {
         return self.bytes

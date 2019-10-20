@@ -22,19 +22,19 @@ class UpYunHostConfig: HostConfig {
     override func displayName(key: String) -> String {
         switch key {
         case "bucket":
-            return NSLocalizedString("host.field.bucket", comment: "bucket")
+            return "Bucket".localized
         case "operatorName":
-            return NSLocalizedString("host.field.operator", comment: "operator")
+            return "Operator".localized
         case "password":
-            return NSLocalizedString("host.field.password", comment: "password")
+            return "Password".localized
         case "domain":
-            return NSLocalizedString("host.field.domain", comment: "domain")
+            return "Domain".localized
         case "folder":
-            return NSLocalizedString("host.field.folder", comment: "folder")
+            return "Folder".localized
         case "saveKey":
-            return NSLocalizedString("host.field.saveKey", comment: "fileName")
+            return "File Name".localized
         case "suffix":
-            return NSLocalizedString("host.field.suffix", comment: "suffix")
+            return "URL suffix".localized
         default:
             return ""
         }
