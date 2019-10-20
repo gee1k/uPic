@@ -47,7 +47,7 @@ class BaseUploader {
         
         let fileExtensions = BaseUploader.getFileExtensions()
         if (!BaseUploader.checkFileExtensions(fileExtensions: fileExtensions, fileExtension: url.pathExtension)) {
-            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: NSLocalizedString("file-format-is-not-supported", comment: "文件格式不支持"))
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: "File format not supported!".localized)
             return
         }
         
@@ -55,7 +55,7 @@ class BaseUploader {
             let limitSize = BaseUploader.getFileSizeLimit()
             if (!BaseUploader.checkFileSize(fileSize: fileSize, limitSize: limitSize)) {
                 
-                let errorMsg = "\(NSLocalizedString("file-is-over-the-size-limit", comment: "文件大小超过限制"))\(ByteCountFormatter.string(fromByteCount: Int64(limitSize), countStyle: .binary))"
+                let errorMsg = "\("File is over the size limit! Limit:".localized)\(ByteCountFormatter.string(fromByteCount: Int64(limitSize), countStyle: .binary))"
                 (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
                 return
             }
@@ -111,7 +111,7 @@ class BaseUploader {
         let limitSize = BaseUploader.getFileSizeLimit()
         if (!BaseUploader.checkFileSize(fileSize: UInt64(data.count), limitSize: limitSize)) {
             
-            let errorMsg = "\(NSLocalizedString("file-is-over-the-size-limit", comment: "文件大小超过限制"))\(ByteCountFormatter.string(fromByteCount: Int64(limitSize), countStyle: .binary))"
+            let errorMsg = "\("File is over the size limit! Limit:".localized)\(ByteCountFormatter.string(fromByteCount: Int64(limitSize), countStyle: .binary))"
             (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
             return
         }

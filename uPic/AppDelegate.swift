@@ -92,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if (urls.count == 0) {
-            NotificationExt.shared.postUploadErrorNotice(NSLocalizedString("file-format-is-not-supported", comment: ""))
+            NotificationExt.shared.postUploadErrorNotice("File format not supported!".localized)
             return
         }
         
@@ -158,7 +158,7 @@ extension AppDelegate {
         indicator.controlSize = NSControl.ControlSize.small
         indicator.style = NSProgressIndicator.Style.spinning
         indicator.isHidden = true
-        indicator.toolTip = NSLocalizedString("tooltip.cancel-upload", comment: "")
+        indicator.toolTip = "Right click to cancel the current upload task".localized
     }
     
     @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
@@ -256,7 +256,7 @@ extension AppDelegate {
             if urls.count > 0 {
                 self.uploadFiles(urls)
             } else {
-                NotificationExt.shared.postUploadErrorNotice(NSLocalizedString("file-format-is-not-supported", comment: ""))
+                NotificationExt.shared.postUploadErrorNotice("File format not supported!".localized)
             }
 
         } else if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.png) {

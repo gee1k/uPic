@@ -24,23 +24,23 @@ class CustomHostConfig: HostConfig {
     override func displayName(key: String) -> String {
         switch key {
         case "url":
-            return NSLocalizedString("host.field.url", comment: "url")
+            return "API URL".localized
         case "method":
-            return NSLocalizedString("host.field.method", comment: "method")
+            return "Method".localized
         case "field":
-            return NSLocalizedString("host.field.field", comment: "field")
+            return "File Field".localized
         case "bodys":
-            return NSLocalizedString("host.field.bodys", comment: "bodys")
+            return "Bodys".localized
         case "headers":
-            return NSLocalizedString("host.field.headers", comment: "headers")
+            return "Headers".localized
         case "resultPath":
-            return NSLocalizedString("host.field.resultPath", comment: "resultPath")
+            return "URL Path".localized
         case "domain":
-            return NSLocalizedString("host.field.domain", comment: "domain")
+            return "Domain".localized
         case "saveKey":
-            return NSLocalizedString("host.field.saveKey", comment: "fileName")
+            return "File Name".localized
         case "suffix":
-            return NSLocalizedString("host.field.suffix", comment: "suffix")
+            return "URL suffix".localized
         default:
             return ""
         }

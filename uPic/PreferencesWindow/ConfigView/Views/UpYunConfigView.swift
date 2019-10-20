@@ -52,7 +52,7 @@ class UpYunConfigView: ConfigView {
         operatorField.lineBreakMode = .byTruncatingTail
         operatorField.delegate = data
         operatorField.stringValue = data.operatorName ?? ""
-        operatorField.placeholderString = NSLocalizedString("host.placeholder.operator", comment: "")
+        operatorField.placeholderString = "Operator name".localized
         self.addSubview(operatorLabel)
         self.addSubview(operatorField)
         nextKeyViews.append(operatorField)
@@ -72,7 +72,7 @@ class UpYunConfigView: ConfigView {
         passwordField.lineBreakMode = .byTruncatingTail
         passwordField.delegate = data
         passwordField.stringValue = data.password ?? ""
-        passwordField.placeholderString = NSLocalizedString("host.placeholder.operator-password", comment: "")
+        passwordField.placeholderString = "Operator password".localized
         self.addSubview(passwordLabel)
         self.addSubview(passwordField)
         nextKeyViews.append(passwordField)
@@ -93,7 +93,7 @@ class UpYunConfigView: ConfigView {
         domainField.lineBreakMode = .byTruncatingTail
         domainField.delegate = data
         domainField.stringValue = data.domain ?? ""
-        domainField.placeholderString = NSLocalizedString("host.placeholder.domain", comment: "")
+        domainField.placeholderString = "domain:https://xxx.com".localized
         self.domainField = domainField
 
         let settingsBtn = NSButton(title: "", image: NSImage(named: NSImage.advancedName)!, target: self, action: #selector(openConfigSheet(_:)))
@@ -108,9 +108,9 @@ class UpYunConfigView: ConfigView {
         
         // MARK: help
         y = y - gapTop * 2 - labelHeight
-        let helpBtnSize = 21
         let helpBtn = NSButton(title: "", target: self, action: #selector(openTutorial(_:)))
-        helpBtn.frame = NSRect(x: viewWidth - helpBtnSize * 3 / 2, y: y, width: helpBtnSize, height: helpBtnSize)
+        let helpBtnWidth = Int(helpBtn.frame.width)
+        helpBtn.frame = NSRect(x: viewWidth - helpBtnWidth * 3 / 2, y: y, width: helpBtnWidth, height: Int(helpBtn.frame.height))
         helpBtn.bezelStyle = .helpButton
         helpBtn.setButtonType(.momentaryPushIn)
         helpBtn.toolTip = "https://blog.svend.cc/upic/tutorials/upyun_uss"

@@ -6,132 +6,135 @@
   Copyright © 2019 Svend Jin. All rights reserved.
 */
 
-"general.ok" = "好";
-"general.cancel" = "取消";
-"general.yes" = "是的";
-"general.warn" = "提醒";
-"general.continue" = "继续";
-"general.example" = "示例";
+
+"OK" = "好";
+"Cancel" = "取消";
+"Yes" = "是的";
+"Warning" = "提醒";
+"Continue" = "继续";
+"Example:" = "示例:";
+"Off" = "关闭";
+"APP Name" = "APP 名称";
 
 /* 成功通知标题 */
-"notification.success.title" = "成功";
+"Successfully" = "成功";
 /* 上传成功通知标题 */
-"notification.upload.success.title" = "上传成功";
+"Uploaded successfully" = "上传成功";
 /* 上传成功通知副标题 */
-"notification.upload.success.subtitle" = "URL 已复制到剪切板，快去粘贴使用吧！";
+"URL has been copied to the clipboard, paste and use it!" = "URL 已复制到剪切板，快去粘贴使用吧！";
 /* 当前上传任务还未完成通知副标题 */
-"notification.upload.task-not-complete.subtitle" = "当前上传任务还未结束！";
+"The current upload task is not complete" = "当前上传任务还未结束！";
 /* 上传失败通知标题 */
-"notification.upload.error.title" = "上传失败";
+"Upload failed" = "上传失败";
 /* 导入图床配置失败标题 */
-"notification.import.error.title" = "导入图床配置失败";
+"Import failed" = "导入图床配置失败";
 /* 导入图床配置失败内容 */
-"notification.import.error.body" = "配置文件无效，请检查！";
+"The configuration file is invalid, please check!" = "配置文件无效，请检查！";
 /* 导入图床配置成功内容 */
-"notification.import.success.body" = "图床配置已导入，请检查并使用！";
+"The configuration has been imported, please check and use!" = "图床配置已导入，请检查并使用！";
 /* 导出图床配置失败标题 */
-"notification.export.error.title" = "导出图床配置失败";
+"Export failed" = "导出图床配置失败";
 /* 导出图床配置失败内容 */
-"notification.export.error.body.no-hosts" = "没有可导出的图床配置！";
+"No exportable hosts!" = "没有可导出的图床配置！";
 /* 导出图床配置失败内容2 */
-"notification.export.error.body.invalid" = "图床配置导出错误！";
+"configuration export error!" = "图床配置导出错误！";
 /* 导出图床配置成功内容 */
-"notification.export.success.body" = "配置文件导出成功，请勿修改文件内容！";
-
+"The configuration file is exported successfully, Do not modify the file contents!" = "配置文件导出成功，请勿修改文件内容！";
 
 /* 复制的文件不存在 */
-"file-does-not-exist" = "复制的文件不存在或已被删除！";
+"The file does not exist or has been deleted!" = "复制的文件不存在或已被删除！";
 /* 文件格式不支持 */
-"file-format-is-not-supported" = "文件格式不支持！";
+"File format not supported!" = "文件格式不支持！";
 /* 文件大小超过限制 */
-"file-is-over-the-size-limit" = "文件大小超过限制！限制:";
+"File is over the size limit! Limit:" = "文件大小超过限制！限制:";
 /* 图床配置存在问题，请检查 */
-"bad-host-config" = "图床配置存在问题，请检查！";
+"There is a problem with the map bed configuration, please check!" = "图床配置存在问题，请检查！";
+
 /*匿名上传*/
-"anonymously-upload" = "文件将匿名上传至";
-"upload-via-uPic" = "使用 uPic 上传";
-"tooltip.cancel-upload" = "右击取消当前上传任务";
+"The file will be uploaded anonymously to" = "文件将匿名上传至";
+"Upload via uPic" = "使用 uPic 上传";
+"Right click to cancel the current upload task" = "右击取消当前上传任务";
 
 /* 状态栏菜单选择文件 */
-"status-menu.select-file" = "选择文件";
+"Select File" = "选择文件";
 /* 状态栏菜单屏幕截图 */
-"status-menu.screenshot" = "截图上传";
+"Screenshot and upload" = "截图上传";
 /* 状态栏菜单上传剪切板中的文件 */
-"status-menu.pasteboard" = "上传已拷贝的文件";
+"Upload copied file" = "上传已拷贝的文件";
 /* 状态栏菜单图床 */
-"status-menu.host" = "图床";
+"Hosts" = "图床";
 /* 状态栏菜单输出格式 */
-"status-menu.output" = "输出格式";
+"Output format" = "输出格式";
 /* 状态栏菜单上传前压缩图片 */
-"status-menu.compress-factor" = "上传前压缩图片";
+"Compress images before uploading" = "上传前压缩图片";
 /* 状态栏菜单偏好设置 */
-"status-menu.preference" = "偏好设置";
+"Preference" = "偏好设置";
 /* 状态栏菜单退出 */
-"status-menu.quit" = "退出";
+"Quit" = "退出";
 /* 菜单栏检查更新按钮标题：检查更新 */
-"status-menu.check-update" = "检查更新";
+"Check for updates" = "检查更新";
 /* 菜单栏上传历史 */
-"status-menu.upload-history" = "上传历史";
+"Upload history" = "上传历史";
 /* 菜单栏清空上传历史 */
-"status-menu.upload-history-clear" = "清空上传历史";
+"Clear upload history" = "清空上传历史";
 /* 菜单栏没有上传历史 */
-"status-menu.upload-history-empty" = "暂无上传历史";
+"No upload history" = "暂无上传历史";
 /* 菜单栏帮助 */
-"status-menu.help" = "帮助";
-"status-menu.tutorial" = "使用教程";
-"status-menu.import-hosts" = "导入图床配置";
-"status-menu.export-hosts" = "导出图床配置";
-"status-menu.sponsor" = "赞助（打赏）";
+"Help" = "帮助";
+"Tutorial" = "使用教程";
+"Import hosts" = "导入图床配置";
+"Export hosts" = "导出图床配置";
+"Sponsor" = "赞助（打赏）";
 /* cancel upload */
-"status-menu.cancel-upload" = "取消上传";
+"Cancel upload" = "取消上传";
 
-"alert.reset_preferences_title" = "重置用户偏好设置?";
-"alert.reset_preferences_description" = "⚠️ 注意这将会重置所有用户偏好设置";
-"alert.unsave_description" = "继续会丢失未保存数据，是否继续？";
-"alert.import_hosts_title" = "导入图床配置";
-"alert.import_hosts_description" = "⚠️ 请选择导入方式，合并还是覆盖？";
-"alert.import_hosts_merge" = "合并";
-"alert.import_hosts_overwrite" = "⚠️ 覆盖";
+"Reset User Preferences?" = "重置用户偏好设置?";
+"⚠️ Note that this will reset all user preferences" = "⚠️ 注意这将会重置所有用户偏好设置";
+"Continuing will lose unsaved data. Do you want to continue?" = "继续会丢失未保存数据，是否继续？";
+"Import host configuration" = "导入图床配置";
+"⚠️ Please choose import method, merge or overwrite?" = "⚠️ 请选择导入方式，合并还是覆盖？";
+"merge" = "合并";
+"⚠️ overwrite" = "⚠️ 覆盖";
 
 /* host -- start */
-"host.field.region" = "区域";
-"host.field.bucket" = "空间名称";
-"host.field.operator" = "操作员";
-"host.field.password" = "密码";
-"host.field.accessKey" = "Access Key";
-"host.field.secretId" = "Secret Id";
-"host.field.secretKey" = "Secret Key";
-"host.field.domain" = "域名";
-"host.field.folder" = "文件夹";
-"host.field.saveKey" = "文件名";
-"host.field.suffix" = "网址后缀";
-"host.field.url" = "API 地址";
-"host.field.method" = "请求方式";
-"host.field.field" = "文件字段名";
-"host.field.resultPath" = "URL 路径";
-"host.field.bodys" = "Bodys";
-"host.field.headers" = "请求头";
-"host.field.owner" = "用户名";
-"host.field.repo" = "仓库名";
-"host.field.branch" = "分支";
-"host.field.token" = "Token";
-"host.field.username" = "用户名";
-"host.field.cookieMode" = "Cookie 模式";
-"host.field.cookie" = "Cookie";
-"host.field.quality" = "图片质量";
-"host.field.other-fields" = "其他字段";
-"host.field.header-data" = "Headers 数据";
-"host.field.body-data" = "Body 数据";
-"host.field.clientId" = "Client ID";
+"Region" = "区域";
+"Bucket" = "空间名称";
+"Operator" = "操作员";
+"Password" = "密码";
+"Access Key" = "Access Key";
+"Secret Id" = "Secret Id";
+"Secret Key" = "Secret Key";
+"Domain" = "域名";
+"Folder" = "文件夹";
+"File Name" = "文件名";
+"URL suffix" = "网址后缀";
+"API URL" = "API 地址";
+"Method" = "请求方式";
+"File Field" = "文件字段名";
+"URL Path" = "URL 路径";
+"Bodys" = "Bodys";
+"Headers" = "请求头";
+"Owner" = "用户名";
+"Repo" = "仓库名";
+"Branch" = "分支";
+"Token" = "Token";
+"Username" = "用户名";
+"Cookie Mode" = "Cookie 模式";
+"Cookie" = "Cookie";
+"Pic Quality" = "图片质量";
+"Other fields" = "其他字段";
+"Header Data" = "Headers 数据";
+"Body Data" = "Body 数据";
+"Client ID" = "Client ID";
 
 /* host field placeholder */
-"host.placeholder.operator" = "操作员名称";
-"host.placeholder.operator-password" = "操作员密码";
-"host.placeholder.repo" = "只需要仓库名称，而不是仓库连接";
-"host.placeholder.domain" = "访问域名:https://xxx.com";
-"host.placeholder.domain-has-default" = "可为空，有默认域名";
-"host.placeholder.resultPath" = "返回 JSON 中的 URL 字段的路径";
-"host.placeholder.custom-domain" = "(可选)，当填写时，URL = 前缀 + URL 路径值";
+"Operator name" = "操作员名称";
+"Operator password" = "操作员密码";
+"Just the repo name, not the repo URL" = "只需要仓库名称，而不是仓库连接";
+"domain:https://xxx.com" = "访问域名:https://xxx.com";
+"Can be empty, there is a default domain" = "可为空，有默认域名";
+"The path to the URL field in Response JSON" = "返回 JSON 中的 URL 字段的路径";
+"(optional),When filled, URL = domain + URL path value" = "(可选)，当填写时，URL = 前缀 + URL 路径值";
 
 /*host type*/
 "host.type.-1" = "自定义";
@@ -140,23 +143,23 @@
 "host.type.3" = "又拍云 USS";
 "host.type.4" = "阿里云 OSS";
 "host.type.5" = "腾讯云 COS";
-"host.type.6" = "Github";
+"host.type.6" = "GitHub";
 "host.type.7" = "码云 Gitee";
 "host.type.8" = "微博";
 "host.type.9" = "Amazon S3";
 "host.type.10" = "Imgur";
 
 /* HostSaveKey */
-"save-key.filename" = "文件名";
-"save-key.random" = "随机";
-"save-key.date-filename" = "日期-文件名";
-"save-key.datetime-filename" = "日期时间-文件名";
-"save-key.second-filename" = "秒数-文件名";
-"save-key.millisecond-filename" = "毫秒数-文件名";
-"save-key.date-random" = "日期-随机";
-"save-key.datetime-random" = "日期时间-随机";
-"save-key.second-random" = "秒数-随机";
-"save-key.millisecond-random" = "毫秒数-随机";
+"filename" = "文件名";
+"random" = "随机";
+"date-filename" = "日期-文件名";
+"datetime-filename" = "日期时间-文件名";
+"second-filename" = "秒数-文件名";
+"millisecond-filename" = "毫秒数-文件名";
+"date-random" = "日期-随机";
+"datetime-random" = "日期时间-随机";
+"second-random" = "秒数-随机";
+"millisecond-random" = "毫秒数-随机";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "缩略图";
@@ -165,4 +168,4 @@
 
 
 /*eroor message*/
-"weibo.upload.error" = "上传失败，请检查配置！";
+"Upload failed, please check the configuration!" = "上传失败，请检查配置！";

@@ -11,7 +11,7 @@ import SwiftyJSON
 
 func getAppInfo() -> String {
     let infoDic = Bundle.main.infoDictionary
-    let appNameStr = NSLocalizedString("app-name", comment: "APP 名称")
+    let appNameStr = "APP Name".localized
     let versionStr = infoDic?["CFBundleShortVersionString"] as! String
     return appNameStr + " v" + versionStr
 }
@@ -20,7 +20,7 @@ func alertInfo(withText: String, withMessage: String) {
     let alert = NSAlert()
     alert.messageText = withText
     alert.informativeText = withMessage
-    alert.addButton(withTitle: NSLocalizedString("general.ok", comment: "确定"))
+    alert.addButton(withTitle: "OK".localized)
     alert.window.titlebarAppearsTransparent = true
     alert.runModal()
 }
