@@ -71,8 +71,8 @@
 /* Class = "NSTextFieldCell"; title = "💡 主页:"; ObjectID = "OjL-Zl-YKD"; */
 "OjL-Zl-YKD.title" = "💡 主页:";
 
-/* Class = "NSButtonCell"; title = "⚠️撤销"; ObjectID = "TD4-LI-X9U"; */
-"TD4-LI-X9U.title" = "⚠️撤销";
+/* Class = "NSButtonCell"; title = "⚠️ 撤销"; ObjectID = "TD4-LI-X9U"; */
+"TD4-LI-X9U.title" = "⚠️ 撤销";
 
 /* Class = "NSTextFieldCell"; title = "💸 捐赠:"; ObjectID = "Vjv-pA-ffP"; */
 "Vjv-pA-ffP.title" = "💸 捐赠:";

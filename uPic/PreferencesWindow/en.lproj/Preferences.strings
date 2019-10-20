@@ -71,8 +71,8 @@
 /* Class = "NSTextFieldCell"; title = "💡 HomePage:"; ObjectID = "OjL-Zl-YKD"; */
 "OjL-Zl-YKD.title" = "💡 HomePage:";
 
-/* Class = "NSButtonCell"; title = "⚠️Reset"; ObjectID = "TD4-LI-X9U"; */
-"TD4-LI-X9U.title" = "⚠️Reset";
+/* Class = "NSButtonCell"; title = "⚠️ Reset"; ObjectID = "TD4-LI-X9U"; */
+"TD4-LI-X9U.title" = "⚠️ Reset";
 
 /* Class = "NSTextFieldCell"; title = "💸 Donate:"; ObjectID = "Vjv-pA-ffP"; */
 "Vjv-pA-ffP.title" = "💸 Donate:";
