@@ -108,7 +108,7 @@ class CustomUploader: BaseUploader {
                 if !domain.isEmpty {
                     retUrl = "\(domain)/\(retUrl)"
                 }
-                super.completed(url: "\(retUrl)\(config.suffix ?? "")")
+                super.completed(url: "\(retUrl)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, nil)
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)
             }
