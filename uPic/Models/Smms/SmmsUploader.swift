@@ -21,7 +21,7 @@ class SmmsUploader: BaseUploader {
     
     let url = "https://sm.ms/api/upload"
 
-    func _upload(_ multipartFormData: @escaping ((MultipartFormData) -> Void)) {
+    func _upload(_ multipartFormData: @escaping ((MultipartFormData) -> Void), fileData: Data? = nil, fileUrl: URL? = nil) {
         super.start()
 
         AF.upload(multipartFormData: multipartFormData, to: url, method: HTTPMethod.post).validate().uploadProgress { progress in
@@ -37,7 +37,7 @@ class SmmsUploader: BaseUploader {
                 } else {
                     let data = json["data"]
                     let url = data["url"].stringValue
-                    super.completed(url: url)
+                    super.completed(url: url, fileData?.toBase64(), fileUrl, nil)
                 }
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)
@@ -48,21 +48,19 @@ class SmmsUploader: BaseUploader {
 
     func upload(_ fileUrl: URL) {
         self._upload({ (multipartFormData: MultipartFormData) in
-            
             let retData = BaseUploaderUtil.compressImage(fileUrl)
             if retData != nil {
                 multipartFormData.append(retData!, withName: "smfile")
             } else {
                 multipartFormData.append(fileUrl, withName: "smfile")
             }
-            
-        })
+        }, fileUrl: fileUrl)
     }
 
     func upload(_ imgData: Data) {
         let retData = BaseUploaderUtil.compressImage(imgData)
         self._upload({ (multipartFormData: MultipartFormData) in
             multipartFormData.append(retData, withName: "smfile", fileName: "smfile.png")
-        })
+        }, fileData: imgData)
     }
 }
