@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -106,6 +106,7 @@
                         <outlet property="compressFactorMenuItem" destination="eIU-EA-uQZ" id="uMq-Nm-vXy"/>
                         <outlet property="exportHostsMenuItem" destination="Yuc-Vp-9Pd" id="JIW-vZ-WbR"/>
                         <outlet property="helpMenuItem" destination="2Jw-ET-3eH" id="Ubq-wz-L3N"/>
+                        <outlet property="historyMenu" destination="MjM-mX-Ci5" id="b7E-HG-zZU"/>
                         <outlet property="historyMenuItem" destination="EhO-Zw-XXj" id="okQ-0q-kK5"/>
                         <outlet property="hostMenuItem" destination="d02-bT-1Lv" id="Ah0-J0-Z4M"/>
                         <outlet property="importHostsMenuItem" destination="HNM-7K-zzn" id="Jmj-DT-7ky"/>

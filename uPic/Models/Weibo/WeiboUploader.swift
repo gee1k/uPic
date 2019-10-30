@@ -83,7 +83,7 @@ class WeiboUploader: BaseUploader {
                     switch response.result {
                     case .success(let value):
                         if let pidPid = WeiboUtil.parsePicPid(reponseString: value) {
-                            super.completed(url: "https://ws1.sinaimg.cn/\(quality)/\(pidPid)\(fileExtension)")
+                            super.completed(url: "https://ws1.sinaimg.cn/\(quality)/\(pidPid)\(fileExtension)", fileBase64, fileUrl, nil)
                         } else {
                             super.faild(errorMsg: "Upload failed, please check the configuration!".localized)
                         }
