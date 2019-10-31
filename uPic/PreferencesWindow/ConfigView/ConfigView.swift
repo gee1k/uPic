@@ -95,6 +95,16 @@ class ConfigView: NSView {
         // Subclasses override
     }
     
+    func createHelpBtn(_ paddingRight: Int, _ y: Int, _ url: String) {
+        let helpBtn = NSButton(title: "", target: self, action: #selector(openTutorial(_:)))
+        let helpBtnWidth = Int(helpBtn.frame.width)
+        helpBtn.frame = NSRect(x: Int(self.frame.width) - helpBtnWidth - paddingRight, y: y, width: helpBtnWidth, height: Int(helpBtn.frame.height))
+        helpBtn.bezelStyle = .helpButton
+        helpBtn.setButtonType(.momentaryPushIn)
+        helpBtn.toolTip = url
+        self.addSubview(helpBtn)
+    }
+    
     func setNextKeyViews() {
         if nextKeyViews.count > 1 {
             for (index, item) in nextKeyViews.enumerated() {

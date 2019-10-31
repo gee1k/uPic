@@ -44,6 +44,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         ConfigManager.shared.firstSetup()
         
+        // Request notification permission
+        NotificationExt.requestAuthorization()
+        
         self.resetNewVersionLaunchAtLogin()
 
         self.setupStatusBar()
