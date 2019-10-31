@@ -260,11 +260,23 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
                 // 创建 NSImage 并验证其有效性，最后添加到对应的历史记录项的子菜单
                 if let image = NSImage(data: data!), image.isValid {
+                    var imageWidth: CGFloat = 300
+                    if image.size.width < imageWidth {
+                        imageWidth = image.size.width
+                    }
+                    let imageSize = NSSize(width: imageWidth, height: imageWidth / (image.size.width / image.size.height))
                     let imgMenuItem = NSMenuItem(title: "", action: #selector(self.copyUrl(_:)), keyEquivalent: "")
                     imgMenuItem.image = image
                     imgMenuItem.toolTip = urlStr
                     imgMenuItem.target = self
-                    imgMenuItem.image?.size = NSSize(width: 250, height: 230)
+
+                    DispatchQueue.main.async(execute: {
+                        let previewView = PreviewView()
+                        previewView.frame.size = imageSize
+                        previewView.imageView.image = image
+                        imgMenuItem.view = previewView
+                    })
+                    
                     let imgSubMenu = NSMenu(title: "")
                     imgSubMenu.addItem(imgMenuItem)
                     menuItem.submenu = imgSubMenu

@@ -15,7 +15,8 @@ class WeiboUploader: BaseUploader {
     static let shared = WeiboUploader()
     static let fileExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
     
-    let url = "http://picupload.service.weibo.com/interface/pic_upload.php?ori=1&mime=image%2Fjpeg&data=base64&url=0&markpos=1&logo=&nick=0&marks=1&app=miniblog"
+    let url = "https://picupload.weibo.com/interface/pic_upload.php?ori=1&mime=image%2Fjpeg&data=base64&url=0&markpos=1&logo=&nick=0&marks=1&app=miniblog"
+    
 
     func _upload(_ fileUrl: URL?, fileData: Data?) {
         guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {

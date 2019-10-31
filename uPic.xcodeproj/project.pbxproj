@@ -101,6 +101,7 @@
 		16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205B22AF8FB90006FB9C /* ConfigManager.swift */; };
 		16F7467422E994A300480A62 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F7467322E994A300480A62 /* FinderSync.swift */; };
 		16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 16F7467122E994A300480A62 /* uPicFinderExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4B66A850235ED44600DED242 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B66A84F235ED44600DED242 /* PreviewView.swift */; };
 		68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */; };
 		68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */; };
 		68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */; };
@@ -243,6 +244,7 @@
 		16F7467322E994A300480A62 /* FinderSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSync.swift; sourceTree = "<group>"; };
 		16F7467522E994A300480A62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16F7467622E994A300480A62 /* uPicFinderExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPicFinderExtension.entitlements; sourceTree = "<group>"; };
+		4B66A84F235ED44600DED242 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Util.swift; sourceTree = "<group>"; };
 		68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Uploader.swift; sourceTree = "<group>"; };
 		68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3HostConfig.swift; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 		16ADBE5E22D1D74D00E6C605 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4B66A84F235ED44600DED242 /* PreviewView.swift */,
 				169F074322AF7A3D008E8525 /* StatusMenuController.swift */,
 			);
 			path = Views;
@@ -867,6 +870,7 @@
 				168A831122B606C000344E77 /* UpYunUploader.swift in Sources */,
 				165701A122C8A6E600C57EE9 /* Regex.swift in Sources */,
 				163632F122B274B400805E7F /* Date+Extension.swift in Sources */,
+				4B66A850235ED44600DED242 /* PreviewView.swift in Sources */,
 				16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */,
 				167DDBED22C76F6600B03357 /* GithubHostConfig.swift in Sources */,
 				1646B80822C79349009271DF /* GiteeUtil.swift in Sources */,
@@ -1115,7 +1119,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20191020;
+				CURRENT_PROJECT_VERSION = 20191031;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1124,7 +1128,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.12.3;
+				MARKETING_VERSION = 0.12.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1145,7 +1149,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20191020;
+				CURRENT_PROJECT_VERSION = 20191031;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1154,7 +1158,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.12.3;
+				MARKETING_VERSION = 0.12.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
