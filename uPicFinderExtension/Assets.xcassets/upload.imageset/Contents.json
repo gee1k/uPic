@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "light-1.png",
       "scale" : "1x"
     },
     {
@@ -28,6 +29,7 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "light@2x-2.png",
       "scale" : "2x"
     },
     {
