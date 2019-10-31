@@ -39,7 +39,7 @@ class FinderSync: FIFinderSync {
     }
 
     override var toolbarItemImage: NSImage {
-        return NSImage(named: "upload")!
+        return NSImage(named: "icon")!
     }
 
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
