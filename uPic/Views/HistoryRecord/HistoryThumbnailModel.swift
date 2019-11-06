@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PreviewModel {
+struct HistoryThumbnailModel {
     var url: String = ""
     var fileName: String?
     var thumbnailWidth: CGFloat = 0
@@ -18,8 +18,8 @@ struct PreviewModel {
     var thumbnailData: Data?
     var isImage: Bool = false
     
-    static func keyValue(keyValue: [String: Any]) -> PreviewModel {
-        var model = PreviewModel()
+    static func keyValue(keyValue: [String: Any]) -> HistoryThumbnailModel {
+        var model = HistoryThumbnailModel()
         model.url = keyValue["url"] as! String
         model.fileName = keyValue["fileName"] as? String
         model.thumbnailWidth = keyValue["thumbnailWidth"] as! CGFloat

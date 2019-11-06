@@ -8,13 +8,13 @@
 
 import Cocoa
 
-public protocol PreviewFlowLayoutDelegateFlowLayout: NSCollectionViewDelegate {
+public protocol HistoryThumbnailFlowLayoutDelegate: NSCollectionViewDelegate {
     
     /// return height for item at indexPath
     func collectionView(_ collectionView: NSCollectionView, itemWidth: CGFloat,  heightForItemAt indexPath: IndexPath) -> CGFloat
 }
 
-class PreviewFlowLayout: NSCollectionViewFlowLayout {
+class HistoryThumbnailFlowLayout: NSCollectionViewFlowLayout {
     /// 列
     public var columnCount = 3
     /// 列间距
@@ -60,7 +60,7 @@ class PreviewFlowLayout: NSCollectionViewFlowLayout {
         let collectionViewW = collectionView?.frame.width ?? 0
         let width = (collectionViewW - edgeInset.left - edgeInset.right - (CGFloat(columnCount) - 1) * columnSpacing) / CGFloat(columnCount)
         
-        let layoutDelegate = collectionView?.delegate as? PreviewFlowLayoutDelegateFlowLayout
+        let layoutDelegate = collectionView?.delegate as? HistoryThumbnailFlowLayoutDelegate
         let height: CGFloat = layoutDelegate?.collectionView(collectionView!, itemWidth: width, heightForItemAt: indexPath) ?? 44
         
         
