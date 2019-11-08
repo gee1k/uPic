@@ -137,7 +137,7 @@ extension ConfigManager {
     
     public var historyLimit_New: Int {
         get {
-            let defaultLimit = 10
+            let defaultLimit = 100
             let limit =  Defaults[.historyLimit_New]
             if (limit == nil || limit == 0) {
                 return defaultLimit
@@ -150,10 +150,10 @@ extension ConfigManager {
         }
     }
     
-    func getHistoryList_New() -> [PreviewModel] {
+    func getHistoryList_New() -> [HistoryThumbnailModel] {
         let historyList = Defaults[.historyList_New] ?? [[String: Any]]()
-        let historyListModel: [PreviewModel] = historyList.map({ (item) -> PreviewModel in
-            return PreviewModel.keyValue(keyValue: item)
+        let historyListModel: [HistoryThumbnailModel] = historyList.map({ (item) -> HistoryThumbnailModel in
+            return HistoryThumbnailModel.keyValue(keyValue: item)
         })
         return historyListModel
     }
@@ -164,15 +164,15 @@ extension ConfigManager {
         ConfigNotifier.postNotification(.changeHistoryList)
     }
     
-    func addHistory_New(url: String, previewModel: PreviewModel) -> Void {
+    func addHistory_New(url: String, previewModel: HistoryThumbnailModel) -> Void {
         var list = self.getHistoryList_New().map { (model) -> [String: Any] in
             return model.toKeyValue()
         }
-        list.append(previewModel.toKeyValue())
+        list.insert(previewModel.toKeyValue(), at: 0)
         
-//        if list.count > self.historyLimit_New {
-//            list.removeFirst(list.count - self.historyLimit_New)
-//        }
+        if list.count > self.historyLimit_New {
+            list.removeFirst(list.count - self.historyLimit_New)
+        }
         
         self.setHistoryList_New(items: list)
     }

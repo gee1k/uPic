@@ -213,7 +213,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         let imgMenuItem = NSMenuItem()
         historyMenu.addItem(imgMenuItem)
         
-        let previewView = PreviewView()
+        let previewView = HistoryThumbnailView()
+        historyMenu.delegate = self
         previewView.superMenu = historyMenu
         previewView.frame.size = NSSize(width: 500, height: 400)
         imgMenuItem.view = previewView
