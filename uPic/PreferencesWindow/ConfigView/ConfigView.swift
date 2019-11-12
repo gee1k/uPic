@@ -99,7 +99,9 @@ class ConfigView: NSView {
         let helpBtn = NSButton(title: "", target: self, action: #selector(openTutorial(_:)))
         let helpBtnWidth = Int(helpBtn.frame.width)
         helpBtn.frame = NSRect(x: Int(self.frame.width) - helpBtnWidth - paddingRight, y: y, width: helpBtnWidth, height: Int(helpBtn.frame.height))
+        helpBtn.title = ""
         helpBtn.bezelStyle = .helpButton
+        helpBtn.imagePosition = .imageOnly
         helpBtn.setButtonType(.momentaryPushIn)
         helpBtn.toolTip = url
         self.addSubview(helpBtn)

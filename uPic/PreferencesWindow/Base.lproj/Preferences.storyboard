@@ -13,8 +13,7 @@
                 <windowController id="oOf-8k-ODW" customClass="PreferencesWindowController" customModule="uPic" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Preferences" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="5f3-UK-Rft">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="425" y="461" width="350" height="270"/>
+                        <rect key="contentRect" x="1142" y="692" width="350" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <connections>
                             <outlet property="delegate" destination="oOf-8k-ODW" id="NBT-Aq-4Qd"/>
@@ -233,7 +232,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qri-L6-ZRL">
-                                        <rect key="frame" x="-0.5" y="21" width="125" height="23"/>
+                                        <rect key="frame" x="0.0" y="21" width="125" height="23"/>
                                         <buttonCell key="cell" type="roundTextured" title="Reset preferences" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jyI-H7-qN3">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -994,7 +993,7 @@ Gw
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iaD-2F-byg">
-                                                <rect key="frame" x="62" y="15" width="180" height="21"/>
+                                                <rect key="frame" x="62" y="15" width="178" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="domain:https://" drawsBackground="YES" id="b48-7x-KE9">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1002,9 +1001,9 @@ Gw
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g3J-J7-1Yp">
-                                                <rect key="frame" x="242" y="17" width="8" height="16"/>
+                                                <rect key="frame" x="240" y="17" width="9" height="16"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="4" id="tSW-bI-5hb"/>
+                                                    <constraint firstAttribute="width" constant="5" id="tSW-bI-5hb"/>
                                                 </constraints>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="/" id="FO4-fa-ZC2">
                                                     <font key="font" metaFont="system"/>
@@ -1013,7 +1012,7 @@ Gw
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yYa-Ay-36r">
-                                                <rect key="frame" x="250" y="15" width="125" height="21"/>
+                                                <rect key="frame" x="249" y="15" width="125" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="125" id="0DC-VS-j2w"/>
                                                 </constraints>
@@ -1024,9 +1023,9 @@ Gw
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rUp-El-9TO">
-                                                <rect key="frame" x="375" y="17" width="8" height="16"/>
+                                                <rect key="frame" x="374" y="17" width="9" height="16"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="4" id="3TQ-5U-HOK"/>
+                                                    <constraint firstAttribute="width" constant="5" id="3TQ-5U-HOK"/>
                                                 </constraints>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="/" id="kdM-To-7Hl">
                                                     <font key="font" metaFont="system"/>
