@@ -129,6 +129,7 @@ class HostConfig: NSObject, Codable {
         }
 
         config?.observerValues()
+        config?.fixPrefixAndSuffix()
         return config
     }
     
@@ -137,6 +138,28 @@ class HostConfig: NSObject, Codable {
         return morror.children.contains(where: {(label, _ ) -> Bool in
             return label == key
         })
+    }
+    
+    // 修复用户有时候会不注意在 domain 后面多写一个 /。或者 folder 前后的 /
+    func fixPrefixAndSuffix() {
+        if self.containsKey(key: "domain") {
+            var domain = self.value(forKey: "domain") as! String
+            if domain.hasSuffix("/") {
+                domain.removeLast()
+                self.setValue(domain, forKey: "domain")
+            }
+        }
+        
+        if self.containsKey(key: "folder") {
+            var folder = self.value(forKey: "folder") as! String
+            if folder.hasPrefix("/") {
+                folder.removeFirst()
+            }
+            if folder.hasSuffix("/") {
+                folder.removeLast()
+            }
+            self.setValue(folder, forKey: "folder")
+        }
     }
 
 }
