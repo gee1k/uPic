@@ -43,24 +43,24 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    func toISOString() -> String {
-        return Date.ISOStringFromDate(date: self)
+    func toISOString(dateFormat: String? = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'") -> String {
+        return Date.ISOStringFromDate(date: self, dateFormat: dateFormat)
     }
     
-    static func ISOStringFromDate(date: Date) -> String {
+    static func ISOStringFromDate(date: Date, dateFormat: String? = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'") -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        dateFormatter.dateFormat = dateFormat
         
-        return dateFormatter.string(from: date).appending("Z")
+        return dateFormatter.string(from: date)
     }
     
-    static func dateFromISOString(string: String) -> Date? {
+    static func dateFromISOString(string: String, dateFormat: String? = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'") -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.dateFormat = dateFormat
         
         return dateFormatter.date(from: string)
     }

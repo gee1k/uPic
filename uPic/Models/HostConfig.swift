@@ -79,6 +79,8 @@ class HostConfig: NSObject, Codable {
             return AmazonS3HostConfig()
         case .imgur:
             return ImgurHostConfig()
+        case .baidu_BOS:
+            return BaiduHostConfig()
         }
     }
 
@@ -126,10 +128,13 @@ class HostConfig: NSObject, Codable {
         case .imgur:
             config = ImgurHostConfig.deserialize(str: str)
             break
+        case .baidu_BOS:
+            config = BaiduHostConfig.deserialize(str: str)
+            break
         }
 
         config?.observerValues()
-        config?.fixPrefixAndSuffix()
+//        config?.fixPrefixAndSuffix()
         return config
     }
     
