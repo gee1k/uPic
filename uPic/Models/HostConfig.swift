@@ -132,9 +132,9 @@ class HostConfig: NSObject, Codable {
             config = BaiduHostConfig.deserialize(str: str)
             break
         }
-
+        
+        config?.fixPrefixAndSuffix()
         config?.observerValues()
-//        config?.fixPrefixAndSuffix()
         return config
     }
     
@@ -153,17 +153,23 @@ class HostConfig: NSObject, Codable {
                 domain.removeLast()
                 self.setValue(domain, forKey: "domain")
             }
+            
+            if (!domain.hasPrefix("http://") && !domain.hasPrefix("https://")) {
+                domain = "http://\(domain)"
+                self.setValue(domain, forKey: "domain")
+            }
         }
         
         if self.containsKey(key: "folder") {
             var folder = self.value(forKey: "folder") as! String
             if folder.hasPrefix("/") {
                 folder.removeFirst()
+                self.setValue(folder, forKey: "folder")
             }
             if folder.hasSuffix("/") {
                 folder.removeLast()
+                self.setValue(folder, forKey: "folder")
             }
-            self.setValue(folder, forKey: "folder")
         }
     }
 

@@ -69,9 +69,8 @@ class BaiduUploader: BaseUploader {
         let conditions = [["bucket": bucket], ["key": key]]
         policyDict["conditions"] = conditions
         let policy = BaiduUtil.getPolicy(policyDict: policyDict)
-        debugPrint(policy)
+        
         let signature = BaiduUtil.computeSignature(accessKeySecret: secretKey, encodePolicy: policy)
-        debugPrint(signature)
         
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("multipart/form-data"))
