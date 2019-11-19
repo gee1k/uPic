@@ -148,6 +148,7 @@
 "host.type.8" = "微博";
 "host.type.9" = "Amazon S3";
 "host.type.10" = "Imgur";
+"host.type.11" = "百度云 BOS";
 
 /* HostSaveKey */
 "filename" = "文件名";

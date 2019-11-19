@@ -79,6 +79,8 @@ class HostConfig: NSObject, Codable {
             return AmazonS3HostConfig()
         case .imgur:
             return ImgurHostConfig()
+        case .baidu_BOS:
+            return BaiduHostConfig()
         }
     }
 
@@ -126,10 +128,13 @@ class HostConfig: NSObject, Codable {
         case .imgur:
             config = ImgurHostConfig.deserialize(str: str)
             break
+        case .baidu_BOS:
+            config = BaiduHostConfig.deserialize(str: str)
+            break
         }
-
-        config?.observerValues()
+        
         config?.fixPrefixAndSuffix()
+        config?.observerValues()
         return config
     }
     
@@ -148,17 +153,23 @@ class HostConfig: NSObject, Codable {
                 domain.removeLast()
                 self.setValue(domain, forKey: "domain")
             }
+            
+            if (!domain.hasPrefix("http://") && !domain.hasPrefix("https://")) {
+                domain = "http://\(domain)"
+                self.setValue(domain, forKey: "domain")
+            }
         }
         
         if self.containsKey(key: "folder") {
             var folder = self.value(forKey: "folder") as! String
             if folder.hasPrefix("/") {
                 folder.removeFirst()
+                self.setValue(folder, forKey: "folder")
             }
             if folder.hasSuffix("/") {
                 folder.removeLast()
+                self.setValue(folder, forKey: "folder")
             }
-            self.setValue(folder, forKey: "folder")
         }
     }
 

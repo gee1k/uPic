@@ -19,7 +19,6 @@ class PreferencesWindowController: NSWindowController {
 extension PreferencesWindowController: NSWindowDelegate {
     
     func windowWillBeginSheet(_ notification: Notification) {
-        print("ssss")
     }
     
     func windowWillClose(_ notification: Notification) {

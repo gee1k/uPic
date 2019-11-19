@@ -96,6 +96,9 @@ class BaseUploader {
         case .imgur:
             ImgurUploader.shared.upload(url)
             break
+        case .baidu_BOS:
+            BaiduUploader.shared.upload(url)
+            break
         }
     }
     
@@ -151,6 +154,9 @@ class BaseUploader {
         case .imgur:
             ImgurUploader.shared.upload(data)
             break
+        case .baidu_BOS:
+            BaiduUploader.shared.upload(data)
+            break
         }
     }
     
@@ -186,6 +192,8 @@ class BaseUploader {
             return AmazonS3Uploader.fileExtensions
         case .imgur:
             return ImgurUploader.fileExtensions
+        case .baidu_BOS:
+            return BaiduUploader.fileExtensions
         }
     }
     
