@@ -154,7 +154,7 @@ class HostConfig: NSObject, Codable {
                 self.setValue(domain, forKey: "domain")
             }
             
-            if (!domain.hasPrefix("http://") && !domain.hasPrefix("https://")) {
+            if (!domain.isEmpty && !domain.hasPrefix("http://") && !domain.hasPrefix("https://")) {
                 domain = "http://\(domain)"
                 self.setValue(domain, forKey: "domain")
             }
