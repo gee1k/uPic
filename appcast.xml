@@ -6,6 +6,44 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>V0.13.0 Release</title>
+			<description><![CDATA[<h2 id="-new-feature">✨ New Feature</h2>
+
+<ul>
+  <li>支持百度云 BOS</li>
+</ul>
+
+<h2 id="-bugs">🐛 Bugs</h2>
+
+<ul>
+  <li>修复 smms 图床在某些情况下压缩上传会失败的问题</li>
+  <li>修复域名、文件夹配置时多配置了<code class="language-plaintext highlighter-rouge">/</code>时会无法访问的问题</li>
+</ul>
+
+<hr />
+
+<h2 id="-new-feature-1">✨ New Feature</h2>
+
+<ul>
+  <li>Support Baidu Cloud BOS</li>
+</ul>
+
+<h2 id="-bugs-1">🐛 Bugs</h2>
+
+<ul>
+  <li>Fixed an issue where the smms graph bed would fail to upload in some cases.</li>
+  <li>Fixed an issue where domain name and folder configuration could be accessed when <code class="language-plaintext highlighter-rouge">/</code> was configured.</li>
+</ul>
+]]></description>
+			<pubDate>Tue, 19 Nov 2019 08:16:32 +0000</pubDate>
+			<enclosure
+				url="https://github.com/gee1k/uPic/releases/download/v0.13.0/uPic.dmg"
+				sparkle:version="20191119"
+				sparkle:shortVersionString="v0.13.0"
+				type="application/octet-stream"
+				sparkle:edSignature="2oSjyDu80k54i5tp2iTCoAe/7Ws0JyjR/4RsmUxgS58o7iHyJiyqnOa4dIhY/FUCk/uxxVk8xa7TTjqKj8tJDw==" length="11607268"
+			/>
+		</item><item>
 			<title>V0.12.4 Release</title>
 			<description><![CDATA[<h2 id="-bugs">🐛 Bugs</h2>
 <ul>
