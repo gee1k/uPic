@@ -71,13 +71,22 @@ class ConfigSheetController: NSViewController {
             text += domainTextField.stringValue
         }
         if (folderTextField.stringValue.count > 0) {
-            text += "/\(folderTextField.stringValue)"
+            if !text.hasSuffix("/") {
+                text += "/"
+            }
+            text += "\(folderTextField.stringValue)"
         }
         if let selectedItem = saveKeyPopUpButton.selectedItem, let identifier = selectedItem.identifier {
             let key = HostSaveKey(rawValue: identifier.rawValue)!
-            text += "/\(key.getFileName(filename: testFilename))"
+            if !text.hasSuffix("/") {
+                text += "/"
+            }
+            text += "\(key.getFileName(filename: testFilename))"
         } else {
-            text += "/\(HostSaveKey.random.getFileName(filename: testFilename))"
+            if !text.hasSuffix("/") {
+                text += "/"
+            }
+            text += "\(HostSaveKey.random.getFileName(filename: testFilename))"
         }
         previewLabel.stringValue = "\(text).jpg\(suffixTextField.stringValue)"
     }
