@@ -32,7 +32,7 @@
 
 <ul>
   <li>Fixed an issue where the smms graph bed would fail to upload in some cases.</li>
-  <li>Fixed an issue where domain name and folder configuration could be accessed when <code class="language-plaintext highlighter-rouge">/</code> was configured.</li>
+  <li>Fixed an issue where domain and folder configuration could be accessed when <code class="language-plaintext highlighter-rouge">/</code> was configured.</li>
 </ul>
 ]]></description>
 			<pubDate>Tue, 19 Nov 2019 08:16:32 +0000</pubDate>
