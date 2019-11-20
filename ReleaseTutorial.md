@@ -1,4 +1,4 @@
-- 1. Download the latest [appcast_pre.xml](https://svend.cc/uPic/appcast_pre.xml)
+- 1. Download the latest [appcast_pre.xml](https://gee1k.github.io/uPic/appcast_pre.xml)
 - 2. Get the dmg's Sparkle signature
      
      ```
