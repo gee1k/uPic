@@ -132,6 +132,54 @@ extension ConfigManager {
     func clearHistoryList() -> Void {
         self.setHistoryList(items: [])
     }
+    
+    // MRAK: nlnlnull 尝试新历史记录
+    
+    public var historyLimit_New: Int {
+        get {
+            let defaultLimit = 100
+            let limit =  Defaults[.historyLimit_New]
+            if (limit == nil || limit == 0) {
+                return defaultLimit
+            }
+            return limit!
+        }
+        
+        set {
+            Defaults[.historyLimit_New] = newValue
+        }
+    }
+    
+    func getHistoryList_New() -> [HistoryThumbnailModel] {
+        let historyList = Defaults[.historyList_New] ?? [[String: Any]]()
+        let historyListModel: [HistoryThumbnailModel] = historyList.map({ (item) -> HistoryThumbnailModel in
+            return HistoryThumbnailModel.keyValue(keyValue: item)
+        })
+        return historyListModel
+    }
+    
+    func setHistoryList_New(items: [[String: Any]]) -> Void {
+        Defaults[.historyList_New] = items
+        Defaults.synchronize()
+        ConfigNotifier.postNotification(.changeHistoryList)
+    }
+    
+    func addHistory_New(url: String, previewModel: HistoryThumbnailModel) -> Void {
+        var list = self.getHistoryList_New().map { (model) -> [String: Any] in
+            return model.toKeyValue()
+        }
+        list.insert(previewModel.toKeyValue(), at: 0)
+        
+        if list.count > self.historyLimit_New {
+            list.removeFirst(list.count - self.historyLimit_New)
+        }
+        
+        self.setHistoryList_New(items: list)
+    }
+    
+    func clearHistoryList_New() -> Void {
+        self.setHistoryList_New(items: [])
+    }
 }
 
 extension ConfigManager {

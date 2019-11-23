@@ -79,7 +79,7 @@ class ImgurUploader: BaseUploader {
                 case .success(let value):
                     let json = JSON(value)
                     if json["success"].boolValue {
-                        super.completed(url: json["data"]["link"].stringValue.urlDecoded())
+                        super.completed(url: json["data"]["link"].stringValue.urlDecoded(), fileBase64, fileUrl, fileName)
                     } else {
                         let error = json["data"]["error"]
                         let errorMsg = error.string ?? error["message"].stringValue
