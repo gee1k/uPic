@@ -55,6 +55,8 @@
 "Upload via uPic" = "使用 uPic 上传";
 "Right click to cancel the current upload task" = "右击取消当前上传任务";
 
+"Did not get the file URL" = "没有获取到文件URL";
+
 /* 状态栏菜单选择文件 */
 "Select File" = "选择文件";
 /* 状态栏菜单屏幕截图 */
