@@ -6,6 +6,23 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.14.0 Release</title>
+			<description>
+			<![CDATA[
+			<h2 id="-features">✨ Features</h2> <ul> <li>上传历史功能全新改版。感谢<a href="https://github.com/nlnlnull">@nlnnull</a>、<a href="https://github.com/L1cardo">@L1cardo</a> <blockquote> <p>由于此功能改动较大，之前的上传历史将无法保留。请悉知</p> </blockquote> </li> </ul> <hr /> <h2 id="-features-1">✨ Features</h2> <ul> <li>A new revision of the upload history feature. thank<a href="https://github.com/nlnlnull">@nlnnull</a>、<a href="https://github.com/L1cardo">@L1cardo</a> <blockquote> <p>Due to the large changes in this feature, the previous upload history will not be retained.</p> </blockquote> </li> </ul>
+			]]>
+			</description>
+			<pubDate>Sun, 24 Nov 2019 04:36:04 +0000</pubDate>
+			<enclosure 
+				   url="https://github.com/gee1k/uPic/releases/download/v0.14.0/uPic.dmg" 
+				   sparkle:version="20191124" 
+				   sparkle:shortVersionString="v0.14.0" 
+				   type="application/octet-stream" 
+				   sparkle:edSignature="u77pSRpiqQ6GN2GoFpYEakWN8fldl+0/rQonDepzhsmZKrNzCCHgJ6gBekGQyczBSVHf7eu2uQAbqkudRaKSDA==" 
+				   length="12371116"
+				   />
+		</item>
+		<item>
 			<title>V0.13.0 Release</title>
 			<description><![CDATA[<h2 id="-new-feature">✨ New Feature</h2>
 
