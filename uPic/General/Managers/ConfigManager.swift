@@ -93,48 +93,6 @@ extension ConfigManager {
 extension ConfigManager {
     // MARK: 上传历史
     
-    public var historyLimit: Int {
-        get {
-            let defaultLimit = 10
-            let limit =  Defaults[.historyLimit]
-            if (limit == nil || limit == 0) {
-                return defaultLimit
-            }
-            return limit!
-        }
-        
-        set {
-            Defaults[.historyLimit] = newValue
-        }
-    }
-    
-    func getHistoryList() -> [String] {
-        return Defaults[.historyList] ?? [String]()
-    }
-    
-    func setHistoryList(items: [String]) -> Void {
-        Defaults[.historyList] = items
-        Defaults.synchronize()
-        ConfigNotifier.postNotification(.changeHistoryList)
-    }
-    
-    func addHistory(url: String) -> Void {
-        var list = self.getHistoryList()
-        list.append(url)
-        
-        if list.count > self.historyLimit {
-            list.removeFirst(list.count - self.historyLimit)
-        }
-        
-        self.setHistoryList(items: list)
-    }
-    
-    func clearHistoryList() -> Void {
-        self.setHistoryList(items: [])
-    }
-    
-    // MRAK: nlnlnull 尝试新历史记录
-    
     public var historyLimit_New: Int {
         get {
             let defaultLimit = 100

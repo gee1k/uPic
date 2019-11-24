@@ -68,7 +68,7 @@ class HistoryThumbnailView: NSView {
         clearHistoryButton = NSButton(image: NSImage(named: "cleanButton")!, target: self, action: #selector(clearHistory))
         clearHistoryButton.appearance = NSAppearance(named: NSAppearance.Name.aqua)
         clearHistoryButton.bezelStyle = .smallSquare
-        clearHistoryButton.toolTip = "清除历史记录"
+        clearHistoryButton.toolTip = "Clear upload history".localized
         clearHistoryButton.isTransparent = true
         addSubview(clearHistoryButton)
         
@@ -87,7 +87,7 @@ class HistoryThumbnailView: NSView {
     override func layout() {
         super.layout()
         mainScrollView.frame = NSRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height)
-        clearHistoryButton.frame = NSRect(x: bounds.size.width - 54, y: 0, width: 44, height: 44)
+        clearHistoryButton.frame = NSRect(x: bounds.size.width - 60, y: 0, width: 44, height: 44)
     }
     
     

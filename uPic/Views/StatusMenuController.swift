@@ -229,12 +229,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         let outputUrl = (NSApplication.shared.delegate as? AppDelegate)?.copyUrls(urls: [url])
         NotificationExt.shared.postCopySuccessfulNotice(outputUrl)
     }
-
-    // clear all history
-    @objc func clearHistory(_ sender: NSMenuItem) {
-        ConfigManager.shared.clearHistoryList()
-    }
-
+    
     // refresh current host to select
     func refreshDefaultHost() {
         let defaultHostId = Defaults[.defaultHostId]

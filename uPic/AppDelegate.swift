@@ -193,7 +193,7 @@ extension AppDelegate {
             }
 
         } else {
-            let icon = NSImage(named: NSImage.Name("statusIcon"))
+            let icon = NSImage(named: "statusIcon")
             icon!.isTemplate = true
             DispatchQueue.main.async {
                 self.statusItem.button?.image = icon
