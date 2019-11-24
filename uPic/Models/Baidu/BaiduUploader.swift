@@ -96,9 +96,9 @@ class BaiduUploader: BaseUploader {
                 switch response.result {
                 case .success(_):
                     if domain.isEmpty {
-                        super.completed(url: "\(url)/\(key)\(config.suffix ?? "")")
+                        super.completed(url: "\(url)/\(key)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
                     } else {
-                        super.completed(url: "\(domain)/\(key)\(config.suffix ?? "")")
+                        super.completed(url: "\(domain)/\(key)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
                     }
                 case .failure(let error):
                     var errorMessage = error.localizedDescription

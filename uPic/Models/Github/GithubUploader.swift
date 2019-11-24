@@ -83,9 +83,9 @@ class GithubUploader: BaseUploader {
                         return
                     }
                     if domain == nil || domain!.isEmpty {
-                        super.completed(url: json["content"]["download_url"].stringValue.urlDecoded())
+                        super.completed(url: json["content"]["download_url"].stringValue.urlDecoded(), fileBase64, fileUrl, fileName)
                     } else {
-                        super.completed(url: "\(domain!)/\(filePath)")
+                        super.completed(url: "\(domain!)/\(filePath)", fileBase64, fileUrl, fileName)
                     }
                 case .failure(let error):
                     var errorMsg = error.localizedDescription

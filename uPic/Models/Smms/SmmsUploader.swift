@@ -63,7 +63,7 @@ class SmmsUploader: BaseUploader {
                 } else {
                     let data = json["data"]
                     let url = data["url"].stringValue
-                    super.completed(url: url)
+                    super.completed(url: url, fileData?.toBase64(), fileUrl, nil)
                 }
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)

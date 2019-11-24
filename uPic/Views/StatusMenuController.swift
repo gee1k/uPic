@@ -15,6 +15,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     @IBOutlet weak var statusMenu: NSMenu!
 
+    @IBOutlet weak var historyMenu: NSMenu!
+    
     @IBOutlet weak var cancelUploadMenuItem: NSMenuItem!
     @IBOutlet weak var cancelUploadMenuSeparator: NSMenuItem!
     @IBOutlet weak var selectFileMenuItem: NSMenuItem!
@@ -204,89 +206,18 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     // reset upload history menu list
     @objc func resetUploadHistory() {
-        let historyList = ConfigManager.shared.getHistoryList()
-        historyMenuItem.submenu?.removeAllItems()
-        for urlStr in historyList.reversed() {
-            if urlStr.isEmpty {
-                continue
-            }
 
-            let menuItem = NSMenuItem(title: urlStr, action: #selector(copyUrl(_:)), keyEquivalent: "")
-            menuItem.target = self
-
-            historyMenuItem.submenu?.addItem(menuItem)
-            historyMenuItem.submenu?.delegate = self
-
-            let pathExtension = urlStr.pathExtension.lowercased()
-
-            let canPreview = previewTypes.contains(where: { type -> Bool in
-                return pathExtension.starts(with: type)
-            })
-            if canPreview {
-                self.createPreviewImage(urlStr: urlStr)
-            }
-        }
-
-        if ((historyMenuItem.submenu?.items.count ?? 0) > 0) {
-            historyMenuItem.submenu?.addItem(NSMenuItem.separator())
-            let menuItem = NSMenuItem(title: "Clear upload history".localized, action: #selector(clearHistory(_:)), keyEquivalent: "")
-            menuItem.target = self
-            historyMenuItem.submenu?.addItem(menuItem)
-        } else {
-            let menuItem = NSMenuItem(title: "No upload history".localized, action: nil, keyEquivalent: "")
-            menuItem.target = self
-            historyMenuItem.submenu?.addItem(menuItem)
-        }
-    }
-
-    // 异步请求、创建历史记录预览图
-    func createPreviewImage(urlStr: String) {
-        guard let url = URL(string: urlStr.urlEncoded()) else {
-            return
-        }
-
-        var request = URLRequest(url: url)
-        request.timeoutInterval = 10
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request, completionHandler: {
-            (data, response, error) -> Void in
-            if error != nil {
-                print(error.debugDescription)
-            } else {
-                // 根据原始url找到对应的历史记录项
-                guard let originalUrlStr = response?.url?.absoluteString.urlDecoded(), let menuItem = self.historyMenuItem.submenu?.item(withTitle: originalUrlStr) else {
-                    return
-                }
-
-                // 创建 NSImage 并验证其有效性，最后添加到对应的历史记录项的子菜单
-                if let image = NSImage(data: data!), image.isValid {
-                    var imageWidth: CGFloat = 300
-                    if image.size.width < imageWidth {
-                        imageWidth = image.size.width
-                    }
-                    let imageSize = NSSize(width: imageWidth, height: imageWidth / (image.size.width / image.size.height))
-                    let imgMenuItem = NSMenuItem(title: "", action: #selector(self.copyUrl(_:)), keyEquivalent: "")
-                    imgMenuItem.image = image
-                    imgMenuItem.toolTip = urlStr
-                    imgMenuItem.target = self
-
-                    DispatchQueue.main.async(execute: {
-                        let previewView = PreviewView()
-                        previewView.frame.size = imageSize
-                        previewView.imageView.image = image
-                        imgMenuItem.view = previewView
-                    })
-                    
-                    let imgSubMenu = NSMenu(title: "")
-                    imgSubMenu.addItem(imgMenuItem)
-                    menuItem.submenu = imgSubMenu
-                }
-
-            }
-        }) as URLSessionTask
-
-        //使用resume方法启动任务
-        dataTask.resume()
+        historyMenu.cancelTracking()
+        historyMenu.removeAllItems()
+        
+        let imgMenuItem = NSMenuItem()
+        historyMenu.addItem(imgMenuItem)
+        
+        let previewView = HistoryThumbnailView()
+        historyMenu.delegate = self
+        previewView.superMenu = historyMenu
+        previewView.frame.size = NSSize(width: 500, height: 400)
+        imgMenuItem.view = previewView
     }
 
     // copy history url
@@ -298,12 +229,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         let outputUrl = (NSApplication.shared.delegate as? AppDelegate)?.copyUrls(urls: [url])
         NotificationExt.shared.postCopySuccessfulNotice(outputUrl)
     }
-
-    // clear all history
-    @objc func clearHistory(_ sender: NSMenuItem) {
-        ConfigManager.shared.clearHistoryList()
-    }
-
+    
     // refresh current host to select
     func refreshDefaultHost() {
         let defaultHostId = Defaults[.defaultHostId]

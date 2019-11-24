@@ -15,7 +15,9 @@ struct Keys {
     static let defaultHostId = "uPic_DefaultHostId"
     static let ouputFormat = "uPic_OutputFormat"
     static let historyList = "uPic_HistoryList"
+    static let historyList_New = "uPic_HistoryList_New"
     static let historyLimit = "uPic_HistoryLimit"
+    static let historyLimit_New = "uPic_HistoryLimit_New"
     static let compressFactor = "uPic_CompressFactor"
 }
 
@@ -44,8 +46,8 @@ extension DefaultsKeys {
     static let hostItems = DefaultsKey<[Host]>(Keys.hostItems)
     static let defaultHostId = DefaultsKey<Int>(Keys.defaultHostId)
     static let ouputFormat = DefaultsKey<Int>(Keys.ouputFormat)
-    static let historyList = DefaultsKey<[String]>(Keys.historyList)
-    static let historyLimit = DefaultsKey<Int>(Keys.historyLimit)
+    static let historyList_New = DefaultsKey<[[String: Any]]>(Keys.historyList_New)
+    static let historyLimit_New = DefaultsKey<Int>(Keys.historyLimit_New)
     static let compressFactor = DefaultsKey<Int>(Keys.compressFactor)
 
 }
@@ -109,6 +111,15 @@ extension UserDefaults {
     subscript(key: DefaultsKey<[String]>) -> [String]? {
         get {
             return array(forKey: key._key) as? [String]
+        }
+        set {
+            set(newValue, forKey: key._key)
+        }
+    }
+    
+    subscript(key: DefaultsKey<[[String: Any]]>) -> [[String: Any]]? {
+        get {
+            return array(forKey: key._key) as? [[String: Any]]
         }
         set {
             set(newValue, forKey: key._key)

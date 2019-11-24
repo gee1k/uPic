@@ -193,7 +193,7 @@ extension AppDelegate {
             }
 
         } else {
-            let icon = NSImage(named: NSImage.Name("statusIcon"))
+            let icon = NSImage(named: "statusIcon")
             icon!.isTemplate = true
             DispatchQueue.main.async {
                 self.statusItem.button?.image = icon
@@ -297,6 +297,12 @@ extension AppDelegate {
             let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
             self.uploadFiles([imgData!])
         }
+    }
+
+
+    @objc func checkUpdate() {
+//        UPicUpdater.shared.check() {
+//        }
     }
 
     // 上传多个文件

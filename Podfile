@@ -10,4 +10,6 @@ use_frameworks!
     pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "master"
     pod "SwiftyXMLParser", :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Sparkle'
+    pod 'Kingfisher'
+    pod 'SnapKit', '~> 5.0.0'
 end

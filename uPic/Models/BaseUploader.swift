@@ -19,8 +19,55 @@ class BaseUploader {
         (NSApplication.shared.delegate as? AppDelegate)?.uploadProgress(percent: percent)
     }
 
-    func completed(url: String) {
-        ConfigManager.shared.addHistory(url: url)
+    func completed(url: String, _ fileData: String?, _ fileUrl: URL?, _ fileName: String?) {
+        var thumbnailFileData: Data?
+        var thumbnailFileDataBase64String: String?
+        if let fileUrl = fileUrl {
+            do { thumbnailFileData = try Data(contentsOf: fileUrl) } catch { }
+            thumbnailFileDataBase64String = thumbnailFileData?.toBase64()
+        } else {
+            thumbnailFileDataBase64String = fileData
+        }
+
+        let thumbnailWidth: CGFloat = 160
+        var thumbnailHeight: CGFloat = thumbnailWidth * 0.5
+        var thumbnailData: Data?
+        var previewWidth: CGFloat = 0
+        var previewHeight: CGFloat = 0
+        let bigSize: CGFloat = 450
+        var isImage: Bool = false
+        if let thumbnailFileDataBase64String = thumbnailFileDataBase64String, let decodedData = Data(base64Encoded: thumbnailFileDataBase64String), let image = NSImage(data: decodedData) {
+            previewWidth = image.size.width
+            previewHeight = image.size.height
+            let originalScale: CGFloat = previewWidth / previewHeight
+            if previewWidth > bigSize {
+                previewWidth = bigSize
+                previewHeight = previewWidth / originalScale
+            }
+            
+            if previewHeight > bigSize {
+                previewHeight = bigSize
+                previewWidth = bigSize * originalScale
+            }
+            
+            let imageSize = NSSize(width: thumbnailWidth, height: thumbnailWidth / originalScale)
+            thumbnailData = image.resizeImage(size: imageSize).tiffRepresentation
+            thumbnailHeight = imageSize.height
+            isImage = true
+        }
+        
+        var previewModel = HistoryThumbnailModel()
+        previewModel.url = url
+        previewModel.fileName = fileName
+        previewModel.thumbnailWidth = thumbnailWidth
+        previewModel.thumbnailHeight = thumbnailHeight + 20
+        previewModel.previewWidth = previewWidth
+        previewModel.previewHeight = previewHeight
+        previewModel.thumbnailData = thumbnailData
+        previewModel.isImage = isImage
+        
+        ConfigManager.shared.addHistory_New(url: url, previewModel: previewModel)
+//        ConfigManager.shared.addHistory(url: url)
         (NSApplication.shared.delegate as? AppDelegate)?.uploadCompleted(url: url)
     }
 

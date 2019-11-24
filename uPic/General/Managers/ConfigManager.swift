@@ -93,10 +93,10 @@ extension ConfigManager {
 extension ConfigManager {
     // MARK: 上传历史
     
-    public var historyLimit: Int {
+    public var historyLimit_New: Int {
         get {
-            let defaultLimit = 10
-            let limit =  Defaults[.historyLimit]
+            let defaultLimit = 100
+            let limit =  Defaults[.historyLimit_New]
             if (limit == nil || limit == 0) {
                 return defaultLimit
             }
@@ -104,33 +104,39 @@ extension ConfigManager {
         }
         
         set {
-            Defaults[.historyLimit] = newValue
+            Defaults[.historyLimit_New] = newValue
         }
     }
     
-    func getHistoryList() -> [String] {
-        return Defaults[.historyList] ?? [String]()
+    func getHistoryList_New() -> [HistoryThumbnailModel] {
+        let historyList = Defaults[.historyList_New] ?? [[String: Any]]()
+        let historyListModel: [HistoryThumbnailModel] = historyList.map({ (item) -> HistoryThumbnailModel in
+            return HistoryThumbnailModel.keyValue(keyValue: item)
+        })
+        return historyListModel
     }
     
-    func setHistoryList(items: [String]) -> Void {
-        Defaults[.historyList] = items
+    func setHistoryList_New(items: [[String: Any]]) -> Void {
+        Defaults[.historyList_New] = items
         Defaults.synchronize()
         ConfigNotifier.postNotification(.changeHistoryList)
     }
     
-    func addHistory(url: String) -> Void {
-        var list = self.getHistoryList()
-        list.append(url)
+    func addHistory_New(url: String, previewModel: HistoryThumbnailModel) -> Void {
+        var list = self.getHistoryList_New().map { (model) -> [String: Any] in
+            return model.toKeyValue()
+        }
+        list.insert(previewModel.toKeyValue(), at: 0)
         
-        if list.count > self.historyLimit {
-            list.removeFirst(list.count - self.historyLimit)
+        if list.count > self.historyLimit_New {
+            list.removeFirst(list.count - self.historyLimit_New)
         }
         
-        self.setHistoryList(items: list)
+        self.setHistoryList_New(items: list)
     }
     
-    func clearHistoryList() -> Void {
-        self.setHistoryList(items: [])
+    func clearHistoryList_New() -> Void {
+        self.setHistoryList_New(items: [])
     }
 }
 
