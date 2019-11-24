@@ -105,6 +105,10 @@ class CustomUploader: BaseUploader {
             case .success(let value):
                 let json = JSON(value)
                 var retUrl = CustomHostUtil.parseResultUrl(json, config.resultPath ?? "")
+                if retUrl.isEmpty {
+                    super.faild(errorMsg: "Did not get the file URL".localized)
+                    return
+                }
                 if !domain.isEmpty {
                     retUrl = "\(domain)/\(retUrl)"
                 }
