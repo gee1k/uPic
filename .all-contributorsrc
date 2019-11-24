@@ -46,6 +46,25 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "nlnlnull",
+      "name": "null",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/17818831?v=4",
+      "profile": "https://github.com/nlnlnull",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "L1cardo",
+      "name": "Licardo",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/33802186?v=4",
+      "profile": "https://licardo.cn",
+      "contributions": [
+        "code",
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7
