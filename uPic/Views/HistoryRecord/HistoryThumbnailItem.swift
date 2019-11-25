@@ -17,7 +17,7 @@ class HistoryThumbnailItem: NSCollectionViewItem {
     
     private var clickCopyButton: NSButton!
     
-    private var fileNameScrollView: NSScrollView!
+    private var fileNameScrollView: HistoryPreviewCustomScrollView!
     
     private(set) var fileName: NSTextField!
     /// 计时器
@@ -29,9 +29,9 @@ class HistoryThumbnailItem: NSCollectionViewItem {
     
     var copyUrl: (() -> Void)?
     
-    var lastFileNameScrollContentOffsetX: CGFloat = 0
+    private var lastFileNameScrollContentOffsetX: CGFloat = 0
     
-    var defaultFileNameScrollContentOffset: NSPoint = .zero
+    private var defaultFileNameScrollContentOffset: NSPoint?
     
     private var contentView: HistoryThumbnailContentView!
     
@@ -63,10 +63,11 @@ class HistoryThumbnailItem: NSCollectionViewItem {
         fileName.appearance = NSAppearance(named: NSAppearance.Name.aqua)
         fileName.textColor = NSColor.white
         
-        fileNameScrollView = NSScrollView()
+        fileNameScrollView = HistoryPreviewCustomScrollView()
         fileNameScrollView.backgroundColor = NSColor.clear
         fileNameScrollView.documentView = fileName
         fileNameScrollView.drawsBackground = false
+        fileNameScrollView.documentView?.scroll(.zero)
         contentView.addSubview(fileNameScrollView)
     }
     
@@ -93,7 +94,6 @@ class HistoryThumbnailItem: NSCollectionViewItem {
             guard let self = self else { return }
             switch status {
             case .entered:
-                self.defaultFileNameScrollContentOffset = self.fileNameScrollView.documentVisibleRect.origin
                 self.dispatchTimer(timeInterval: 0.5) { [weak self] in
                     guard let self = self else { return }
                     self.mouseStatusHandler?(.entered, point, mouseView)
@@ -103,8 +103,7 @@ class HistoryThumbnailItem: NSCollectionViewItem {
             case .exited:
                 self.mouseStatusHandler?(.exited, point, mouseView)
                 self.cancelTimer()
-                self.cancelScrollTimer()
-                self.fileNameScrollView.documentView?.scroll(self.defaultFileNameScrollContentOffset)
+                self.cancelScrollTimer(true)
             case .moved:
                 self.mouseStatusHandler?(.moved, point, mouseView)
             }
@@ -115,10 +114,14 @@ class HistoryThumbnailItem: NSCollectionViewItem {
     }
     
     private func beginScrollFileName() {
-        cancelScrollTimer()
+        cancelScrollTimer(true)
         guard fileName.frame.width - (abs(fileName.frame.minX) * 2) > fileNameScrollView.frame.width else {
             return
         }
+        if defaultFileNameScrollContentOffset == nil {
+            defaultFileNameScrollContentOffset = fileNameScrollView.documentVisibleRect.origin
+        }
+        var bestRightDuration: CGFloat = 0
         let queue: DispatchQueue = DispatchQueue.global()
         let scrollTimer = DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: 0), queue: queue)
         _scrollTimer = scrollTimer
@@ -126,13 +129,19 @@ class HistoryThumbnailItem: NSCollectionViewItem {
         scrollTimer.setEventHandler(handler: { [weak self] in
             DispatchQueue.main.async(execute: {
                 guard let self = self else { return }
-                let x = self.fileNameScrollView.documentVisibleRect.origin.x + 1
+                var x = self.fileNameScrollView.documentVisibleRect.origin.x + 1
+                if (x + self.view.bounds.width) > self.fileNameScrollView.documentView?.frame.size.width ?? 0 {
+                    x = (self.fileNameScrollView.documentView?.frame.size.width ?? 0) - self.fileNameScrollView.frame.size.width
+                }
                 self.fileNameScrollView.documentView?.scroll(NSPoint(x: x, y: 0))
                 if self.fileNameScrollView.documentVisibleRect.origin.x == self.lastFileNameScrollContentOffsetX {
-                    self.cancelScrollTimer()
-                    return
+                    bestRightDuration += CGFloat(fileNameScrollAnimationTime)
+                    if bestRightDuration >= 3 {
+                        self.cancelScrollTimer(true)
+                        self.beginScrollFileName()
+                    }
                 }
-                self.lastFileNameScrollContentOffsetX = x
+                self.lastFileNameScrollContentOffsetX = self.fileNameScrollView.documentVisibleRect.origin.x
             })
         })
         scrollTimer.resume()
@@ -143,9 +152,12 @@ class HistoryThumbnailItem: NSCollectionViewItem {
         _timer?.cancel()
     }
     
-    private func cancelScrollTimer() {
+    func cancelScrollTimer(_ resetLeft: Bool = false) {
         lastFileNameScrollContentOffsetX = 0
         _scrollTimer?.cancel()
+        if resetLeft, let defaultFileNameScrollContentOffset = defaultFileNameScrollContentOffset {
+            fileNameScrollView.documentView?.scroll(defaultFileNameScrollContentOffset)
+        }
     }
     
     private func dispatchTimer(timeInterval: TimeInterval, handler:@escaping ()->()) {

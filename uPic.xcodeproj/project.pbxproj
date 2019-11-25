@@ -116,6 +116,7 @@
 		4BB6C412236295DC0046FDC0 /* HistoryThumbnailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6C411236295DC0046FDC0 /* HistoryThumbnailModel.swift */; };
 		4BBA45BB235F081C0079F253 /* HistoryThumbnailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA45B9235F081C0079F253 /* HistoryThumbnailItem.swift */; };
 		4BEFD811238B738E00BBE64D /* HistoryThumbnailConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */; };
+		4BEFD813238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */; };
 		68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */; };
 		68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */; };
 		68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */; };
@@ -273,6 +274,7 @@
 		4BB6C411236295DC0046FDC0 /* HistoryThumbnailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailModel.swift; sourceTree = "<group>"; };
 		4BBA45B9235F081C0079F253 /* HistoryThumbnailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailItem.swift; sourceTree = "<group>"; };
 		4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailConstant.swift; sourceTree = "<group>"; };
+		4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPreviewCustomScrollView.swift; sourceTree = "<group>"; };
 		68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Util.swift; sourceTree = "<group>"; };
 		68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Uploader.swift; sourceTree = "<group>"; };
 		68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3HostConfig.swift; sourceTree = "<group>"; };
@@ -645,6 +647,7 @@
 				4B09F11323695F8D000208BD /* HistoryThumbnailContentView.swift */,
 				4B112CA623603DBB009E79B4 /* HistoryThumbnailFlowLayout.swift */,
 				4B98704E2361A87700EDED1B /* HistoryPreviewViewController.swift */,
+				4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */,
 			);
 			path = HistoryRecord;
 			sourceTree = "<group>";
@@ -925,6 +928,7 @@
 				167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */,
 				164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */,
 				164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */,
+				4BEFD813238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift in Sources */,
 				1657019D22C8953B00C57EE9 /* WeiboUploader.swift in Sources */,
 				1690E7ED22BF2E4F00FC81F8 /* QiniuUtil.swift in Sources */,
 				166B4A5522B9CFD7001288ED /* ConfigSheetController.swift in Sources */,

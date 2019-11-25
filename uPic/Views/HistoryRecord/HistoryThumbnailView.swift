@@ -103,8 +103,9 @@ class HistoryThumbnailView: NSView {
     @objc // 滑动
     private func boundsDidChangeNotification(notification: NSNotification) {
         if prePopover.isShown {
-            self.prePopover.performClose(self)
+            prePopover.performClose(self)
         }
+        currentCell?.cancelScrollTimer(true)
     }
     
 }
@@ -128,10 +129,10 @@ extension HistoryThumbnailView: NSCollectionViewDataSource {
             self?.superMenu.cancelTracking()
         }
         item.mouseStatusHandler = { [weak self] status, point, mouseView in
-            self?.currentCell = item
             guard let self = self else {
                 return
             }
+            self.currentCell = item
             guard model.isImage == true else {
                 if self.prePopover.isShown { self.prePopover.performClose(item.view) }
                 return
