@@ -134,13 +134,7 @@ class WeiboConfigView: ConfigView {
         
         // MARK: help
         y = y - gapTop * 2 - labelHeight
-        let helpBtn = NSButton(title: "", target: self, action: #selector(openTutorial(_:)))
-        let helpBtnWidth = Int(helpBtn.frame.width)
-        helpBtn.frame = NSRect(x: viewWidth - helpBtnWidth * 3 / 2, y: y, width: helpBtnWidth, height: Int(helpBtn.frame.height))
-        helpBtn.bezelStyle = .helpButton
-        helpBtn.setButtonType(.momentaryPushIn)
-        helpBtn.toolTip = "https://blog.svend.cc/upic/tutorials/weibo"
-        self.addSubview(helpBtn)
+        super.createHelpBtn(paddingLeft, y, "https://blog.svend.cc/upic/tutorials/weibo")
     }
     
     @objc func cookieModeChanged(_ sender: NSButton) {

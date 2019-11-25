@@ -47,6 +47,9 @@ class ConfigView: NSView {
         case .imgur:
             parentView.addSubview(ImgurConfigView(frame: parentView.frame, data: item.data))
             break
+        case .baidu_BOS:
+            parentView.addSubview(BaiduConfigView(frame: parentView.frame, data: item.data))
+            break
         default:
             let label = NSTextField(labelWithString: "The file will be uploaded anonymously to".localized + " \(item.name)")
             label.frame = NSRect(x: (parentView.frame.width - label.frame.width) / 2, y: parentView.frame.height - 50, width: label.frame.width, height: 20)
@@ -93,6 +96,18 @@ class ConfigView: NSView {
     
     func createView() {
         // Subclasses override
+    }
+    
+    func createHelpBtn(_ paddingRight: Int, _ y: Int, _ url: String) {
+        let helpBtn = NSButton(title: "", target: self, action: #selector(openTutorial(_:)))
+        let helpBtnWidth = Int(helpBtn.frame.width)
+        helpBtn.frame = NSRect(x: Int(self.frame.width) - helpBtnWidth - paddingRight, y: y, width: helpBtnWidth, height: Int(helpBtn.frame.height))
+        helpBtn.title = ""
+        helpBtn.bezelStyle = .helpButton
+        helpBtn.imagePosition = .imageOnly
+        helpBtn.setButtonType(.momentaryPushIn)
+        helpBtn.toolTip = url
+        self.addSubview(helpBtn)
     }
     
     func setNextKeyViews() {

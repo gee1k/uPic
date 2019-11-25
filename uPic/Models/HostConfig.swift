@@ -79,6 +79,8 @@ class HostConfig: NSObject, Codable {
             return AmazonS3HostConfig()
         case .imgur:
             return ImgurHostConfig()
+        case .baidu_BOS:
+            return BaiduHostConfig()
         }
     }
 
@@ -126,8 +128,12 @@ class HostConfig: NSObject, Codable {
         case .imgur:
             config = ImgurHostConfig.deserialize(str: str)
             break
+        case .baidu_BOS:
+            config = BaiduHostConfig.deserialize(str: str)
+            break
         }
-
+        
+        config?.fixPrefixAndSuffix()
         config?.observerValues()
         return config
     }
@@ -137,6 +143,34 @@ class HostConfig: NSObject, Codable {
         return morror.children.contains(where: {(label, _ ) -> Bool in
             return label == key
         })
+    }
+    
+    // 修复用户有时候会不注意在 domain 后面多写一个 /。或者 folder 前后的 /
+    func fixPrefixAndSuffix() {
+        if self.containsKey(key: "domain") {
+            var domain = self.value(forKey: "domain") as! String
+            if domain.hasSuffix("/") {
+                domain.removeLast()
+                self.setValue(domain, forKey: "domain")
+            }
+            
+            if (!domain.isEmpty && !domain.hasPrefix("http://") && !domain.hasPrefix("https://")) {
+                domain = "http://\(domain)"
+                self.setValue(domain, forKey: "domain")
+            }
+        }
+        
+        if self.containsKey(key: "folder") {
+            var folder = self.value(forKey: "folder") as! String
+            if folder.hasPrefix("/") {
+                folder.removeFirst()
+                self.setValue(folder, forKey: "folder")
+            }
+            if folder.hasSuffix("/") {
+                folder.removeLast()
+                self.setValue(folder, forKey: "folder")
+            }
+        }
     }
 
 }

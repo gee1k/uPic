@@ -46,9 +46,7 @@ extension DefaultsKeys {
     static let hostItems = DefaultsKey<[Host]>(Keys.hostItems)
     static let defaultHostId = DefaultsKey<Int>(Keys.defaultHostId)
     static let ouputFormat = DefaultsKey<Int>(Keys.ouputFormat)
-    static let historyList = DefaultsKey<[String]>(Keys.historyList)
     static let historyList_New = DefaultsKey<[[String: Any]]>(Keys.historyList_New)
-    static let historyLimit = DefaultsKey<Int>(Keys.historyLimit)
     static let historyLimit_New = DefaultsKey<Int>(Keys.historyLimit_New)
     static let compressFactor = DefaultsKey<Int>(Keys.compressFactor)
 

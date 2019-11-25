@@ -55,6 +55,8 @@
 "Upload via uPic" = "Upload via uPic";
 "Right click to cancel the current upload task" = "Right click to cancel the current upload task";
 
+"Did not get the file URL" = "Did not get the file URL";
+
 /* 状态栏菜单选择文件 */
 "Select File" = "Select File";
 /* 状态栏菜单屏幕截图 */
@@ -148,6 +150,7 @@
 "host.type.8" = "Weibo";
 "host.type.9" = "Amazon S3";
 "host.type.10" = "Imgur";
+"host.type.11" = "Baidu Cloud BOS";
 
 /* HostSaveKey */
 "filename" = "filename";

@@ -1,10 +1,11 @@
 PODS:
   - Alamofire (5.0.0-rc.2)
-  - CryptoSwift (1.1.2)
-  - Kingfisher (5.8.3):
-    - Kingfisher/Core (= 5.8.3)
-  - Kingfisher/Core (5.8.3)
+  - CryptoSwift (1.2.0)
+  - Kingfisher (5.9.0):
+    - Kingfisher/Core (= 5.9.0)
+  - Kingfisher/Core (5.9.0)
   - MASShortcut (2.4.0)
+  - SnapKit (5.0.1)
   - Sparkle (1.22.0)
   - SwiftyJSON (5.0.0)
   - SwiftyXMLParser (5.1.0)
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
   - Kingfisher
   - MASShortcut
+  - SnapKit (~> 5.0.0)
   - Sparkle
   - SwiftyJSON
   - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
@@ -23,6 +25,7 @@ SPEC REPOS:
     - Alamofire
     - Kingfisher
     - MASShortcut
+    - SnapKit
     - Sparkle
     - SwiftyJSON
 
@@ -35,7 +38,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CryptoSwift:
-    :commit: 4ccfe9034a07af4b153657ba1cdac702ffcf8f2f
+    :commit: de6030ce08110b9c6c27310b47b1a4ffc98c4173
     :git: https://github.com/krzyzanowskim/CryptoSwift
   SwiftyXMLParser:
     :commit: bc85162ecee60d6eb94b778648bc4c51e1c4d34f
@@ -43,13 +46,14 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
-  CryptoSwift: 31dacd1f13427439ddae5b5cbaae4c8dbc43047e
-  Kingfisher: b7e4cb65ff24c264bd2a1284b75b974d907afd94
+  CryptoSwift: 40e374e45291d8dceedcb0d6184da94533eaabdf
+  Kingfisher: ff98240aebb7302bdc4f1ecd701761030ce18b16
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Sparkle: 593ac2e677c07bcb6c3b22d621240e7cbedaab57
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwiftyXMLParser: 8271497e0a37b5c04b0b167c77b4896e36175a21
 
-PODFILE CHECKSUM: ac6e11c89e7fcce79af21091d4f49a896e232c45
+PODFILE CHECKSUM: 52b4a11e25d2b5c9c278b36d5f1a95acfef8bc5e
 
 COCOAPODS: 1.8.4

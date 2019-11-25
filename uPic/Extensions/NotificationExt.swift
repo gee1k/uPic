@@ -91,15 +91,9 @@ extension NotificationExt: UNUserNotificationCenterDelegate {
         notificationCenter.delegate = self
         notificationCenter.setNotificationCategories([])
         
-        notificationCenter.requestAuthorization(options: [.alert, .sound]) { (success, error) in
-            if success {
-                notificationCenter.add(request) { (error) in
-                    if error != nil {
-                        // Handle any errors.
-                    }
-                }
-            } else {
-                // user rejection
+        notificationCenter.add(request) { (error) in
+            if error != nil {
+                // Handle any errors.
             }
         }
         
@@ -155,4 +149,21 @@ extension NotificationExt: NSUserNotificationCenterDelegate {
         return true
     }
     
+}
+
+extension NotificationExt {
+    // MARK: 请求通知权限
+    static func requestAuthorization () {
+        if #available(OSX 10.14, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (success, error) in
+                if success {
+                    // user accept
+                } else {
+                    // user rejection
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
 }

@@ -11,10 +11,10 @@ import Alamofire
 import Kingfisher
 
 extension NSUserInterfaceItemIdentifier {
-    static let collectionViewItem = NSUserInterfaceItemIdentifier(NSStringFromClass(PreviewItem.self))
+    static let collectionViewItem = NSUserInterfaceItemIdentifier(NSStringFromClass(HistoryThumbnailItem.self))
 }
 
-class PreviewView: NSView {
+class HistoryThumbnailView: NSView {
     
     private(set) var preViewImageView: NSImageView!
     
@@ -26,12 +26,11 @@ class PreviewView: NSView {
     
     private var prePopover: NSPopover!
     
-    private var preImageViewController: PreImageViewController!
+    private var preImageViewController: HistoryPreviewViewController!
     
-    private var currentPreItemModel: PreviewModel!
+    private var currentPreItemModel: HistoryThumbnailModel!
 
-    private var currentCell: PreviewItem?
-    
+    private var currentCell: HistoryThumbnailItem?
     
     var superMenu: NSMenu!
     
@@ -42,25 +41,23 @@ class PreviewView: NSView {
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         initializeView()
-        
     }
     
-    func initializeView() {
+    private func initializeView() {
         
-        let flowLayout = PreviewFlowLayout()
+        let flowLayout = HistoryThumbnailFlowLayout()
         flowLayout.edgeInset = NSEdgeInsets(top: 10.0, left: 5, bottom: 10.0, right: 5)
         flowLayout.columnCount = 3
         flowLayout.lineSpacing = 4
-        flowLayout.columnSpacing = 4
         
         mainCollectionView = NSCollectionView(frame: bounds)
         mainCollectionView.backgroundColors = [NSColor.clear]
         mainCollectionView.collectionViewLayout = flowLayout
-        mainCollectionView.register(PreviewItem.self, forItemWithIdentifier: .collectionViewItem)
+        mainCollectionView.register(HistoryThumbnailItem.self, forItemWithIdentifier: .collectionViewItem)
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
         
-        mainScrollView = NSScrollView()
+        mainScrollView = NSScrollView(frame: bounds)
         mainScrollView.backgroundColor = NSColor.clear
         mainScrollView.documentView = mainCollectionView
         addSubview(mainScrollView)
@@ -69,21 +66,20 @@ class PreviewView: NSView {
         center.addObserver(self, selector: #selector(boundsDidChangeNotification(notification:)), name: NSView.boundsDidChangeNotification, object: mainScrollView.contentView)
         
         clearHistoryButton = NSButton(image: NSImage(named: "cleanButton")!, target: self, action: #selector(clearHistory))
-//        clearHistoryButton.isHighlighted = true
+        clearHistoryButton.appearance = NSAppearance(named: NSAppearance.Name.aqua)
         clearHistoryButton.bezelStyle = .smallSquare
-//        clearHistoryButton.isTransparent = true
+        clearHistoryButton.toolTip = "Clear upload history".localized
+        clearHistoryButton.isTransparent = true
         addSubview(clearHistoryButton)
         
-        preImageViewController = PreImageViewController(nibName: "PreImageViewController", bundle: nil)
+        preImageViewController = HistoryPreviewViewController()
         prePopover = NSPopover()
         prePopover.contentViewController = preImageViewController
         prePopover.animates = false
-        prePopover.delegate = self
     }
     
     @objc
     private func clearHistory() {
-        print("清理")
         ConfigManager.shared.clearHistoryList_New()
         mainCollectionView.reloadData()
     }
@@ -91,8 +87,7 @@ class PreviewView: NSView {
     override func layout() {
         super.layout()
         mainScrollView.frame = NSRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height)
-        mainCollectionView.frame = mainScrollView.bounds
-        clearHistoryButton.frame = NSRect(x: bounds.size.width - 49, y: 0, width: 44, height: 44)
+        clearHistoryButton.frame = NSRect(x: bounds.size.width - 60, y: 0, width: 44, height: 44)
     }
     
     
@@ -107,21 +102,17 @@ class PreviewView: NSView {
         if prePopover.isShown {
             self.prePopover.performClose(self)
         }
-        if let item = currentCell, item.fileName.isHidden == false {
-            item.fileName.isHidden = true
-        }
     }
     
 }
 
-extension PreviewView: NSCollectionViewDataSource {
+extension HistoryThumbnailView: NSCollectionViewDataSource {
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let historyList = ConfigManager.shared.getHistoryList_New()
         let model = historyList[indexPath.item]
-        let item = collectionView.makeItem(withIdentifier: .collectionViewItem, for: indexPath) as! PreviewItem
+        let item = collectionView.makeItem(withIdentifier: .collectionViewItem, for: indexPath) as! HistoryThumbnailItem
         let urlString = model.url
-        //        let url = URL(string: urlString.urlEncoded())!
-        item.fileName.stringValue = model.fileName != nil ? model.fileName! : "我没名字"
+        item.fileName.stringValue = URL(string: urlString.urlEncoded())!.lastPathComponent
         if model.isImage == true {
             if let imageData = model.thumbnailData {
                 item.previewImageView.image = NSImage(data: imageData)
@@ -130,26 +121,33 @@ extension PreviewView: NSCollectionViewDataSource {
             item.previewImageView.image = NSImage(named: "fileImage")
         }
         item.copyUrl = { [weak self] in
-            self?.copyUrl(urlString)
+            self?.copyUrl(urlString.urlEncoded())
             self?.superMenu.cancelTracking()
         }
-        item.mouseStatusHandler = { [weak self] status in
+        item.mouseStatusHandler = { [weak self] status, point, mouseView in
             self?.currentCell = item
             guard let self = self else {
                 return
             }
             guard model.isImage == true else {
+                if self.prePopover.isShown { self.prePopover.performClose(item.view) }
                 return
             }
             switch status {
             case .entered:
                 self.currentPreItemModel = model
-                self.prePopover.show(relativeTo: item.view.bounds, of: item.view, preferredEdge: NSRectEdge.maxX)
-                self.preImageViewController.updatePreImage(url: urlString.urlEncoded())
+                guard mouseView.window != nil else {
+                    return
+                }
+                self.prePopover.show(relativeTo: mouseView.bounds, of: mouseView, preferredEdge: NSRectEdge.maxX)
+                self.preImageViewController.updatePreImage(url: urlString.urlEncoded(), size: NSSize(width: model.previewWidth, height: model.previewHeight))
             case .exited:
-                self.prePopover.performClose(item.view)
+                if self.prePopover.isShown {
+                    self.prePopover.performClose(item.view)
+                }
+                break
             case .moved:
-                self.prePopover.performClose(item.view)
+                break
             }
         }
         return item
@@ -157,7 +155,7 @@ extension PreviewView: NSCollectionViewDataSource {
     
 }
 
-extension PreviewView: NSCollectionViewDelegate {
+extension HistoryThumbnailView: NSCollectionViewDelegate {
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         let historyList = ConfigManager.shared.getHistoryList_New()
         clearHistoryButton.isHidden = historyList.count == 0
@@ -165,7 +163,7 @@ extension PreviewView: NSCollectionViewDelegate {
     }
 }
 
-extension PreviewView: NSCollectionViewDelegateFlowLayout {
+extension HistoryThumbnailView: NSCollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         let historyList = ConfigManager.shared.getHistoryList_New()
         let model = historyList[indexPath.item]
@@ -176,7 +174,7 @@ extension PreviewView: NSCollectionViewDelegateFlowLayout {
     }
 }
 
-extension PreviewView: PreviewFlowLayoutDelegateFlowLayout {
+extension HistoryThumbnailView: HistoryThumbnailFlowLayoutDelegate {
     func collectionView(_ collectionView: NSCollectionView, itemWidth: CGFloat, heightForItemAt indexPath: IndexPath) -> CGFloat {
         let historyList = ConfigManager.shared.getHistoryList_New()
         let model = historyList[indexPath.item]
@@ -184,10 +182,8 @@ extension PreviewView: PreviewFlowLayoutDelegateFlowLayout {
     }
 }
 
-extension PreviewView: NSPopoverDelegate {
-    func popoverDidShow(_ notification: Notification) {
-        let size = NSSize(width: currentPreItemModel.previewWidth, height: currentPreItemModel.previewHeight)
-        prePopover.contentSize = size
+extension HistoryThumbnailView: NSMenuDelegate {
+    func menuWillOpen(_ menu: NSMenu) {
+        mainCollectionView.reloadData()
     }
-    
 }

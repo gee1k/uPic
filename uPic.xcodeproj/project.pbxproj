@@ -95,21 +95,26 @@
 		16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A6DC5722AA375700813706 /* AppDelegate.swift */; };
 		16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDDFE22EA96AE0080E467 /* Assets.xcassets */; };
 		16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDE0222EAA2920080E467 /* Assets.xcassets */; };
+		16D20B5523838AB1006D8D01 /* BaiduRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B54238388D8006D8D01 /* BaiduRegion.swift */; };
+		16D20B5623838AB5006D8D01 /* BaiduHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B532383889F006D8D01 /* BaiduHostConfig.swift */; };
+		16D20B58238390F2006D8D01 /* BaiduUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B57238390F2006D8D01 /* BaiduUploader.swift */; };
+		16D20B5A238390F4006D8D01 /* BaiduUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B59238390F4006D8D01 /* BaiduUtil.swift */; };
+		16D20B5C238392C9006D8D01 /* BaiduConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */; };
 		16EA204C22AF8AB30006FB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA204B22AF8AB30006FB9C /* AppDelegate.swift */; };
 		16EA205022AF8AB40006FB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA204F22AF8AB40006FB9C /* Assets.xcassets */; };
 		16EA205322AF8AB40006FB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EA205122AF8AB40006FB9C /* Main.storyboard */; };
 		16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205B22AF8FB90006FB9C /* ConfigManager.swift */; };
 		16F7467422E994A300480A62 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F7467322E994A300480A62 /* FinderSync.swift */; };
 		16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 16F7467122E994A300480A62 /* uPicFinderExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		4B09F112236933E2000208BD /* VerticalCenteringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09F111236933E2000208BD /* VerticalCenteringCell.swift */; };
-		4B112CA723603DBB009E79B4 /* PreviewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B112CA623603DBB009E79B4 /* PreviewFlowLayout.swift */; };
-		4B66A850235ED44600DED242 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B66A84F235ED44600DED242 /* PreviewView.swift */; };
+		4B09F11423695F8D000208BD /* HistoryThumbnailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09F11323695F8D000208BD /* HistoryThumbnailContentView.swift */; };
+		4B112CA723603DBB009E79B4 /* HistoryThumbnailFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B112CA623603DBB009E79B4 /* HistoryThumbnailFlowLayout.swift */; };
+		4B2B3354236BC5AB00C9F2CA /* NSButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2B3353236BC5AB00C9F2CA /* NSButtonExtension.swift */; };
+		4B2B3356236C3B6400C9F2CA /* NSViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2B3355236C3B6400C9F2CA /* NSViewExtension.swift */; };
+		4B66A850235ED44600DED242 /* HistoryThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B66A84F235ED44600DED242 /* HistoryThumbnailView.swift */; };
 		4B6C62FA23613AEF008E3735 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6C62F923613AEF008E3735 /* NSImageExtension.swift */; };
-		4B9870502361A87700EDED1B /* PreImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B98704E2361A87700EDED1B /* PreImageViewController.swift */; };
-		4B9870512361A87700EDED1B /* PreImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B98704F2361A87700EDED1B /* PreImageViewController.xib */; };
-		4BB6C412236295DC0046FDC0 /* PreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6C411236295DC0046FDC0 /* PreviewModel.swift */; };
-		4BBA45BB235F081C0079F253 /* PreviewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA45B9235F081C0079F253 /* PreviewItem.swift */; };
-		4BBA45BE235F0AB20079F253 /* PreviewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BBA45BD235F0AB20079F253 /* PreviewItem.xib */; };
+		4B9870502361A87700EDED1B /* HistoryPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B98704E2361A87700EDED1B /* HistoryPreviewViewController.swift */; };
+		4BB6C412236295DC0046FDC0 /* HistoryThumbnailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6C411236295DC0046FDC0 /* HistoryThumbnailModel.swift */; };
+		4BBA45BB235F081C0079F253 /* HistoryThumbnailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA45B9235F081C0079F253 /* HistoryThumbnailItem.swift */; };
 		68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */; };
 		68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */; };
 		68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */; };
@@ -240,6 +245,11 @@
 		16A6DC6122AA375800813706 /* uPic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPic.entitlements; sourceTree = "<group>"; };
 		16BDDDFE22EA96AE0080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16BDDE0222EAA2920080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		16D20B532383889F006D8D01 /* BaiduHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduHostConfig.swift; sourceTree = "<group>"; };
+		16D20B54238388D8006D8D01 /* BaiduRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduRegion.swift; sourceTree = "<group>"; };
+		16D20B57238390F2006D8D01 /* BaiduUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduUploader.swift; sourceTree = "<group>"; };
+		16D20B59238390F4006D8D01 /* BaiduUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduUtil.swift; sourceTree = "<group>"; };
+		16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduConfigView.swift; sourceTree = "<group>"; };
 		16EA204922AF8AB30006FB9C /* uPicHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPicHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16EA204B22AF8AB30006FB9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16EA204F22AF8AB40006FB9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -252,15 +262,15 @@
 		16F7467322E994A300480A62 /* FinderSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSync.swift; sourceTree = "<group>"; };
 		16F7467522E994A300480A62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16F7467622E994A300480A62 /* uPicFinderExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPicFinderExtension.entitlements; sourceTree = "<group>"; };
-		4B09F111236933E2000208BD /* VerticalCenteringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCenteringCell.swift; sourceTree = "<group>"; };
-		4B112CA623603DBB009E79B4 /* PreviewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewFlowLayout.swift; sourceTree = "<group>"; };
-		4B66A84F235ED44600DED242 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		4B09F11323695F8D000208BD /* HistoryThumbnailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailContentView.swift; sourceTree = "<group>"; };
+		4B112CA623603DBB009E79B4 /* HistoryThumbnailFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailFlowLayout.swift; sourceTree = "<group>"; };
+		4B2B3353236BC5AB00C9F2CA /* NSButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSButtonExtension.swift; sourceTree = "<group>"; };
+		4B2B3355236C3B6400C9F2CA /* NSViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewExtension.swift; sourceTree = "<group>"; };
+		4B66A84F235ED44600DED242 /* HistoryThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailView.swift; sourceTree = "<group>"; };
 		4B6C62F923613AEF008E3735 /* NSImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImageExtension.swift; sourceTree = "<group>"; };
-		4B98704E2361A87700EDED1B /* PreImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreImageViewController.swift; sourceTree = "<group>"; };
-		4B98704F2361A87700EDED1B /* PreImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreImageViewController.xib; sourceTree = "<group>"; };
-		4BB6C411236295DC0046FDC0 /* PreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModel.swift; sourceTree = "<group>"; };
-		4BBA45B9235F081C0079F253 /* PreviewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewItem.swift; sourceTree = "<group>"; };
-		4BBA45BD235F0AB20079F253 /* PreviewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewItem.xib; sourceTree = "<group>"; };
+		4B98704E2361A87700EDED1B /* HistoryPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPreviewViewController.swift; sourceTree = "<group>"; };
+		4BB6C411236295DC0046FDC0 /* HistoryThumbnailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailModel.swift; sourceTree = "<group>"; };
+		4BBA45B9235F081C0079F253 /* HistoryThumbnailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailItem.swift; sourceTree = "<group>"; };
 		68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Util.swift; sourceTree = "<group>"; };
 		68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Uploader.swift; sourceTree = "<group>"; };
 		68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3HostConfig.swift; sourceTree = "<group>"; };
@@ -382,6 +392,7 @@
 		1646B80F22C7C485009271DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */,
 				167620EF23081DC0008F8363 /* ImgurConfigView.swift */,
 				167D08A622ED88C2000F3BC0 /* AmazonS3ConfigView.swift */,
 				1657019E22C897A400C57EE9 /* WeiboConfigView.swift */,
@@ -443,7 +454,6 @@
 		1672762122AFF63A007299C3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				167620EA2308191A008F8363 /* Imgur */,
 				1602ED9622ADEFB200AA8638 /* BaseUploader.swift */,
 				1675EC5222FB38240038DA33 /* BaseUploaderUtil.swift */,
 				1672762222AFF655007299C3 /* Host.swift */,
@@ -452,9 +462,11 @@
 				167D7F4A22B4D31300DD0A7A /* HostType.swift */,
 				68BBB87F2C3AEBDF2C914131 /* Aliyun */,
 				167D08A522ED8132000F3BC0 /* Amazon_S3 */,
+				16D20B522383887E006D8D01 /* Baidu */,
 				161C3BDF22C4830A0092114F /* Custom */,
 				1646B80222C7931E009271DF /* Gitee */,
 				167DDBE922C76F3B00B03357 /* Github */,
+				167620EA2308191A008F8363 /* Imgur */,
 				1690E7E522BF113700FC81F8 /* Qiniu */,
 				167D7F4E22B4DB2500DD0A7A /* Smms */,
 				1660FCB522C11A9F00372950 /* Tencent */,
@@ -470,6 +482,8 @@
 				1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */,
 				16248E31230673B6002131BB /* NotificationExt.swift */,
 				4B6C62F923613AEF008E3735 /* NSImageExtension.swift */,
+				4B2B3355236C3B6400C9F2CA /* NSViewExtension.swift */,
+				4B2B3353236BC5AB00C9F2CA /* NSButtonExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -579,10 +593,21 @@
 		16ADBE5E22D1D74D00E6C605 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4B66A851235F02A000DED242 /* Preview */,
+				4B66A851235F02A000DED242 /* HistoryRecord */,
 				169F074322AF7A3D008E8525 /* StatusMenuController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		16D20B522383887E006D8D01 /* Baidu */ = {
+			isa = PBXGroup;
+			children = (
+				16D20B54238388D8006D8D01 /* BaiduRegion.swift */,
+				16D20B57238390F2006D8D01 /* BaiduUploader.swift */,
+				16D20B532383889F006D8D01 /* BaiduHostConfig.swift */,
+				16D20B59238390F4006D8D01 /* BaiduUtil.swift */,
+			);
+			path = Baidu;
 			sourceTree = "<group>";
 		};
 		16EA204A22AF8AB30006FB9C /* uPicHelper */ = {
@@ -608,19 +633,17 @@
 			path = uPicFinderExtension;
 			sourceTree = "<group>";
 		};
-		4B66A851235F02A000DED242 /* Preview */ = {
+		4B66A851235F02A000DED242 /* HistoryRecord */ = {
 			isa = PBXGroup;
 			children = (
-				4BB6C411236295DC0046FDC0 /* PreviewModel.swift */,
-				4B66A84F235ED44600DED242 /* PreviewView.swift */,
-				4BBA45B9235F081C0079F253 /* PreviewItem.swift */,
-				4BBA45BD235F0AB20079F253 /* PreviewItem.xib */,
-				4B112CA623603DBB009E79B4 /* PreviewFlowLayout.swift */,
-				4B98704E2361A87700EDED1B /* PreImageViewController.swift */,
-				4B98704F2361A87700EDED1B /* PreImageViewController.xib */,
-				4B09F111236933E2000208BD /* VerticalCenteringCell.swift */,
+				4BB6C411236295DC0046FDC0 /* HistoryThumbnailModel.swift */,
+				4B66A84F235ED44600DED242 /* HistoryThumbnailView.swift */,
+				4BBA45B9235F081C0079F253 /* HistoryThumbnailItem.swift */,
+				4B09F11323695F8D000208BD /* HistoryThumbnailContentView.swift */,
+				4B112CA623603DBB009E79B4 /* HistoryThumbnailFlowLayout.swift */,
+				4B98704E2361A87700EDED1B /* HistoryPreviewViewController.swift */,
 			);
-			path = Preview;
+			path = HistoryRecord;
 			sourceTree = "<group>";
 		};
 		68BBB87F2C3AEBDF2C914131 /* Aliyun */ = {
@@ -787,9 +810,7 @@
 				1623611B22AB935300E4025C /* InfoPlist.strings in Resources */,
 				96F2D368235B424D001F74A5 /* Main.storyboard in Resources */,
 				169F073B22AF53DE008E8525 /* Preferences.storyboard in Resources */,
-				4B9870512361A87700EDED1B /* PreImageViewController.xib in Resources */,
 				16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */,
-				4BBA45BE235F0AB20079F253 /* PreviewItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,33 +882,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BB6C412236295DC0046FDC0 /* PreviewModel.swift in Sources */,
+				4BB6C412236295DC0046FDC0 /* HistoryThumbnailModel.swift in Sources */,
 				165701A322C8AE0A00C57EE9 /* WeiboUtil.swift in Sources */,
 				16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */,
 				167D08AC22ED8A4B000F3BC0 /* AliyunRegion.swift in Sources */,
 				1685AA3522DEC943008FBF1D /* FlippedView.swift in Sources */,
 				16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */,
+				16D20B58238390F2006D8D01 /* BaiduUploader.swift in Sources */,
 				1675EC5322FB38240038DA33 /* BaseUploaderUtil.swift in Sources */,
 				16995A3422B6008000B1F923 /* UpYunHostConfig.swift in Sources */,
 				1672762322AFF655007299C3 /* Host.swift in Sources */,
 				167DDBF122C7784900B03357 /* GithubConfigView.swift in Sources */,
-				4B09F112236933E2000208BD /* VerticalCenteringCell.swift in Sources */,
 				1602ED9922ADF43800AA8638 /* SmmsUploader.swift in Sources */,
 				164745F022B65FE900F9575D /* String+Extension.swift in Sources */,
+				4B2B3354236BC5AB00C9F2CA /* NSButtonExtension.swift in Sources */,
 				166B4A5322B9CB4D001288ED /* UpYunConfigView.swift in Sources */,
 				166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */,
+				16D20B5523838AB1006D8D01 /* BaiduRegion.swift in Sources */,
 				1646B80E22C7C082009271DF /* ConfigView.swift in Sources */,
+				16D20B5A238390F4006D8D01 /* BaiduUtil.swift in Sources */,
 				1690E7EB22BF2D9400FC81F8 /* QiniuUploader.swift in Sources */,
 				1657019B22C8934000C57EE9 /* WeiboqQuality.swift in Sources */,
 				165D908622C333740096FF38 /* PasteboardType+Extension.swift in Sources */,
 				16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */,
+				16D20B5623838AB5006D8D01 /* BaiduHostConfig.swift in Sources */,
 				1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */,
 				163632F322B2751D00805E7F /* BoolType.swift in Sources */,
 				1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */,
 				1618D1A822E99E2100831601 /* UploadNotifier.swift in Sources */,
+				4B09F11423695F8D000208BD /* HistoryThumbnailContentView.swift in Sources */,
 				161C3BE722C49BE90092114F /* RequestMethods.swift in Sources */,
 				163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */,
 				167D08A822ED88E7000F3BC0 /* AmazonS3ConfigView.swift in Sources */,
+				4B2B3356236C3B6400C9F2CA /* NSViewExtension.swift in Sources */,
 				164745EB22B618D700F9575D /* HostPreferencesViewController.swift in Sources */,
 				161C3BE322C483560092114F /* CustomHostConfig.swift in Sources */,
 				167D08AA22ED8A27000F3BC0 /* AliyunHostConfig.swift in Sources */,
@@ -907,7 +934,7 @@
 				165701A122C8A6E600C57EE9 /* Regex.swift in Sources */,
 				4B6C62FA23613AEF008E3735 /* NSImageExtension.swift in Sources */,
 				163632F122B274B400805E7F /* Date+Extension.swift in Sources */,
-				4B66A850235ED44600DED242 /* PreviewView.swift in Sources */,
+				4B66A850235ED44600DED242 /* HistoryThumbnailView.swift in Sources */,
 				16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */,
 				167DDBED22C76F6600B03357 /* GithubHostConfig.swift in Sources */,
 				1646B80822C79349009271DF /* GiteeUtil.swift in Sources */,
@@ -920,11 +947,11 @@
 				1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */,
 				1662AC7122C0AC53003AC924 /* AliyunConfigView.swift in Sources */,
 				1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */,
-				4B9870502361A87700EDED1B /* PreImageViewController.swift in Sources */,
+				4B9870502361A87700EDED1B /* HistoryPreviewViewController.swift in Sources */,
 				1657019922C8922400C57EE9 /* WeiboHostConfig.swift in Sources */,
 				160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */,
 				167D08B022ED8A6C000F3BC0 /* AliyunUtil.swift in Sources */,
-				4B112CA723603DBB009E79B4 /* PreviewFlowLayout.swift in Sources */,
+				4B112CA723603DBB009E79B4 /* HistoryThumbnailFlowLayout.swift in Sources */,
 				169F073722AF4549008E8525 /* AdvancedPreferencesViewController.swift in Sources */,
 				1646B80622C79337009271DF /* GiteeUploader.swift in Sources */,
 				16068C7522AEC1D1004D39B7 /* PreferencesViewController.swift in Sources */,
@@ -946,8 +973,9 @@
 				1660FCBA22C11C2300372950 /* TencentHostConfig.swift in Sources */,
 				16248E32230673B6002131BB /* NotificationExt.swift in Sources */,
 				167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */,
+				16D20B5C238392C9006D8D01 /* BaiduConfigView.swift in Sources */,
 				167620F023081DC0008F8363 /* ImgurConfigView.swift in Sources */,
-				4BBA45BB235F081C0079F253 /* PreviewItem.swift in Sources */,
+				4BBA45BB235F081C0079F253 /* HistoryThumbnailItem.swift in Sources */,
 				1685AA3722DEEE6C008FBF1D /* CustomHostUtil.swift in Sources */,
 				68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */,
 			);
@@ -1157,10 +1185,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20191020;
-				DEVELOPMENT_TEAM = EEH44D56FW;
+				CURRENT_PROJECT_VERSION = 20191124;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1168,7 +1196,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.12.3;
+				MARKETING_VERSION = 0.14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1187,10 +1215,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20191020;
-				DEVELOPMENT_TEAM = EEH44D56FW;
+				CURRENT_PROJECT_VERSION = 20191124;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1198,7 +1226,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.12.3;
+				MARKETING_VERSION = 0.14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1213,9 +1241,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = uPicHelper/uPicHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = EEH44D56FW;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1236,9 +1264,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = uPicHelper/uPicHelper.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = EEH44D56FW;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1259,9 +1287,9 @@
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = EEH44D56FW;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1284,9 +1312,9 @@
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = EEH44D56FW;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
