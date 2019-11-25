@@ -10,6 +10,7 @@ import Cocoa
 import Alamofire
 import Kingfisher
 
+
 extension NSUserInterfaceItemIdentifier {
     static let collectionViewItem = NSUserInterfaceItemIdentifier(NSStringFromClass(HistoryThumbnailItem.self))
 }
@@ -46,11 +47,12 @@ class HistoryThumbnailView: NSView {
     private func initializeView() {
         
         let flowLayout = HistoryThumbnailFlowLayout()
-        flowLayout.edgeInset = NSEdgeInsets(top: 10.0, left: 5, bottom: 10.0, right: 5)
-        flowLayout.columnCount = 3
-        flowLayout.lineSpacing = 4
+        flowLayout.edgeInset = NSEdgeInsets(top: historyRecordLeftRightInsetGlobal, left: 5, bottom: 50.0, right: historyRecordLeftRightInsetGlobal)
+        flowLayout.columnCount = previewLineNumberGlobal
+        flowLayout.lineSpacing = previewLineSpacingGlobal
         
         mainCollectionView = NSCollectionView(frame: bounds)
+        
         mainCollectionView.backgroundColors = [NSColor.clear]
         mainCollectionView.collectionViewLayout = flowLayout
         mainCollectionView.register(HistoryThumbnailItem.self, forItemWithIdentifier: .collectionViewItem)
@@ -76,6 +78,7 @@ class HistoryThumbnailView: NSView {
         prePopover = NSPopover()
         prePopover.contentViewController = preImageViewController
         prePopover.animates = false
+        
     }
     
     @objc
@@ -167,10 +170,7 @@ extension HistoryThumbnailView: NSCollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         let historyList = ConfigManager.shared.getHistoryList_New()
         let model = historyList[indexPath.item]
-        let itemSize = NSSize(width: model.thumbnailWidth,
-                              height: model.thumbnailHeight)
-        
-        return itemSize
+        return model.thumbnailSize
     }
 }
 

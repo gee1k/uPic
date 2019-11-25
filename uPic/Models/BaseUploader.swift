@@ -30,8 +30,6 @@ class BaseUploader {
                 thumbnailFileDataBase64String = fileData
             }
 
-            let thumbnailWidth: CGFloat = 160
-            var thumbnailHeight: CGFloat = thumbnailWidth * 0.5
             var thumbnailData: Data?
             var previewWidth: CGFloat = 0
             var previewHeight: CGFloat = 0
@@ -51,17 +49,14 @@ class BaseUploader {
                     previewWidth = bigSize * originalScale
                 }
                 
-                let imageSize = NSSize(width: thumbnailWidth, height: thumbnailWidth / originalScale)
+                let imageSize = NSSize(width: previewDefaulWidthGlobal, height: previewDefaulWidthGlobal / originalScale)
                 thumbnailData = image.resizeImage(size: imageSize).tiffRepresentation
-                thumbnailHeight = imageSize.height
                 isImage = true
             }
             
             var previewModel = HistoryThumbnailModel()
             previewModel.url = url
             previewModel.fileName = fileName
-            previewModel.thumbnailWidth = thumbnailWidth
-            previewModel.thumbnailHeight = thumbnailHeight + 20
             previewModel.previewWidth = previewWidth
             previewModel.previewHeight = previewHeight
             previewModel.thumbnailData = thumbnailData
