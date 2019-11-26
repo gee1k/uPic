@@ -13,22 +13,36 @@ import SnapKit
 
 class HistoryThumbnailItem: NSCollectionViewItem {
     
+    private var fileNameLeftRightSpacing: CGFloat = 5
+    
     private(set) var previewImageView: NSImageView!
     
     private var clickCopyButton: NSButton!
     
-    private(set) var fileName: NSTextField!
+    private(set) var fileNameView: NSView!
+    
+    private(set) var fileName: HistoryThumbnailLabel!
     /// 计时器
     private var _timer: DispatchSourceTimer?
+    
+    private var _scrollTimer: DispatchSourceTimer?
     
     var mouseStatusHandler: ((MouseStatus, NSPoint?, NSView) -> Void)?
     
     var copyUrl: (() -> Void)?
     
+    private var fileNameLeft: Constraint?
+    
     private var contentView: HistoryThumbnailContentView!
     
+    private var whetherToScrollSequentially: Bool = true
+    
+    func updateTrackingAreas() {
+        contentView.updateTrackingAreas()
+    }
+    
     override func loadView() {
-        contentView = HistoryThumbnailContentView()
+        contentView = HistoryThumbnailContentView(frame: .zero, turnOnMonitoring: true)
         view = contentView
     }
     
@@ -45,14 +59,12 @@ class HistoryThumbnailItem: NSCollectionViewItem {
         clickCopyButton = NSButton()
         clickCopyButton.isTransparent = true
         contentView.addSubview(clickCopyButton)
-        fileName = NSTextField()
-        fileName.canDrawSubviewsIntoLayer = true
-        fileName.cell = VerticalCenteringCell()
-        fileName.alignment = .center
-        fileName.isEditable = false
-        fileName.appearance = NSAppearance(named: NSAppearance.Name.aqua)
-        fileName.textColor = NSColor.white
-        contentView.addSubview(fileName)
+        
+        fileNameView = NSView()
+        contentView.addSubview(fileNameView)
+        
+        fileName = HistoryThumbnailLabel()
+        fileNameView.addSubview(fileName)
     }
     
     private func addConstraintCustom() {
@@ -60,10 +72,17 @@ class HistoryThumbnailItem: NSCollectionViewItem {
             make.left.right.top.equalToSuperview()
             make.bottom.equalToSuperview().inset(20)
         }
-        fileName.snp.makeConstraints { (make) in
-            make.left.right.equalTo(previewImageView)
-            make.top.equalTo(previewImageView.snp.bottom)
+        
+        fileNameView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview().inset(fileNameLeftRightSpacing)
             make.bottom.equalToSuperview()
+            make.height.equalTo(20)
+        }
+        fileName.snp.makeConstraints { (make) in
+            fileNameLeft = make.left.equalToSuperview().constraint
+            make.bottom.equalToSuperview()
+            make.height.equalTo(20)
+            make.width.greaterThanOrEqualTo(fileNameView)
         }
         clickCopyButton.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -72,17 +91,21 @@ class HistoryThumbnailItem: NSCollectionViewItem {
     
     private func addBindSignal() {
         contentView.mouseStatusHandler = { [weak self] status, point, mouseView in
+            guard let self = self else { return }
             switch status {
             case .entered:
-                self?.dispatchTimer(timeInterval: 0.5) { [weak self] in
-                    self?.mouseStatusHandler?(.entered, point, mouseView)
-                    self?.cancelTimer()
+                HistoryThumbnailTimer.shared.dispatchTimer(timeInterval: 0.5) { [weak self] timer in
+                    guard let self = self else { return }
+                    self.mouseStatusHandler?(.entered, point, mouseView)
+                    timer.cancel()
+                    self.beginScrollFileName()
                 }
             case .exited:
-                self?.mouseStatusHandler?(.exited, point, mouseView)
-                self?.cancelTimer()
+                self.mouseStatusHandler?(.exited, point, mouseView)
+                HistoryThumbnailTimer.shared.cancelAllTimer()
+                self.fileNameLeft?.update(offset: 0)
             case .moved:
-                self?.mouseStatusHandler?(.moved, point, mouseView)
+                self.mouseStatusHandler?(.moved, point, mouseView)
             }
         }
         clickCopyButton.addTarget { [weak self] (_) in
@@ -90,35 +113,37 @@ class HistoryThumbnailItem: NSCollectionViewItem {
         }
     }
     
-    private func cancelTimer() {
-        _timer?.cancel()
-    }
-    
-    private func dispatchTimer(timeInterval: TimeInterval, handler:@escaping ()->()) {
-        cancelTimer()
-        let timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
-        _timer = timer
-        timer.schedule(wallDeadline: .now() + timeInterval, repeating: timeInterval)
-        timer.setEventHandler(handler: {
-            DispatchQueue.main.async {
-                handler()
+    private func beginScrollFileName() {
+        guard fileName.frame.size.width != fileNameView.frame.size.width else { return }
+        var stayTime: CGFloat = 0
+        HistoryThumbnailTimer.shared.dispatchScrollTimer(timeInterval: fileNameScrollAnimationTime) { [weak self] timer in
+            guard let self = self else { return }
+            let fileNameWidth = self.fileName.frame.size.width
+            let fileNameMinX = self.fileName.frame.origin.x
+            var newLeft: CGFloat = 0
+            if self.whetherToScrollSequentially {
+                newLeft = fileNameMinX - 1
+            } else {
+                newLeft = fileNameMinX + 1
             }
-            
-        })
-        timer.resume()
+            let fileNameMaxX = newLeft + fileNameWidth
+            if fileNameMaxX <= self.fileNameView.bounds.width, self.whetherToScrollSequentially == true {
+                stayTime += CGFloat(fileNameScrollAnimationTime)
+                if stayTime >= fileNameScrollingTime {
+                    stayTime = 0
+                    self.whetherToScrollSequentially = false
+                }
+                return
+            } else if fileNameMinX >= 0, self.whetherToScrollSequentially == false {
+                stayTime += CGFloat(fileNameScrollAnimationTime)
+                if stayTime >= fileNameScrollingTime {
+                    stayTime = 0
+                    self.whetherToScrollSequentially = true
+                }
+                return
+            }
+            self.fileNameLeft?.update(offset: newLeft)
+        }
+        return
     }
-}
-
-class VerticalCenteringCell: NSTextFieldCell {
-    
-    override func drawingRect(forBounds rect: NSRect) -> NSRect {
-        var newRect: NSRect = super.drawingRect(forBounds: rect)
-        let textSize: NSSize = cellSize(forBounds: rect)
-        let heightDelta: CGFloat = newRect.size.height - textSize.height
-        guard heightDelta > 0 else { return newRect }
-        newRect.size.height = textSize.height
-        newRect.origin.y += heightDelta * 0.5
-        return newRect
-    }
-
 }
