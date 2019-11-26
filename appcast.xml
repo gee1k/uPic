@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.14.1 Release</title>
+			<description>
+			<![CDATA[
+			<h2 id="-bugs">🐛 Bugs</h2> <ul> <li>修复上传完成后返回的 URL 为空时会导致上传历史功能崩溃的问题</li> <li>修复历史记录计时器重复调用的问题</li> </ul> <h2 id="-optimize">🎨 Optimize</h2> <ul> <li>优化滑动时的展示&amp;消失逻辑</li> <li>文件名过长可滚动展示</li> </ul> <hr /> <h2 id="-bugs-1">🐛 Bugs</h2> <ul> <li>Fixed upload history crash when the file URL is empty after a successful upload.</li> <li>Fixed the bug that the history timer is called repeatedly.</li> </ul> <h2 id="-optimize-1">🎨 Optimize</h2> <ul> <li>Optimize the display &amp; disappear logic when sliding.</li> <li>The filename is too long to scroll.</li> </ul>
+			]]>
+			</description>
+			<pubDate>Tue, 26 Nov 2019 08:26:08 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.14.1/uPic.dmg" sparkle:version="20191126" sparkle:shortVersionString="v0.14.1" type="application/octet-stream" sparkle:edSignature="mSA71GoWleYIC/2HSuMtUGv0KW4IBmu6l3GRDBmZw+AMuU85Z0nyhKbjjmkZtxJQWvKZ9ov0kUIUVFQc46PHAg==" length="12373905"/>
+		</item>
+		<item>
 			<title>v0.14.0 Release</title>
 			<description>
 			<![CDATA[
@@ -26,32 +36,33 @@
 			<title>V0.13.0 Release</title>
 			<description><![CDATA[<h2 id="-new-feature">✨ New Feature</h2>
 
-<ul>
-  <li>支持百度云 BOS</li>
-</ul>
+				<ul>
+				  <li>支持百度云 BOS</li>
+				</ul>
 
-<h2 id="-bugs">🐛 Bugs</h2>
+				<h2 id="-bugs">🐛 Bugs</h2>
 
-<ul>
-  <li>修复 smms 图床在某些情况下压缩上传会失败的问题</li>
-  <li>修复域名、文件夹配置时多配置了<code class="language-plaintext highlighter-rouge">/</code>时会无法访问的问题</li>
-</ul>
+				<ul>
+				  <li>修复 smms 图床在某些情况下压缩上传会失败的问题</li>
+				  <li>修复域名、文件夹配置时多配置了<code class="language-plaintext highlighter-rouge">/</code>时会无法访问的问题</li>
+				</ul>
 
-<hr />
+				<hr />
 
-<h2 id="-new-feature-1">✨ New Feature</h2>
+				<h2 id="-new-feature-1">✨ New Feature</h2>
 
-<ul>
-  <li>Support Baidu Cloud BOS</li>
-</ul>
+				<ul>
+				  <li>Support Baidu Cloud BOS</li>
+				</ul>
 
-<h2 id="-bugs-1">🐛 Bugs</h2>
+				<h2 id="-bugs-1">🐛 Bugs</h2>
 
-<ul>
-  <li>Fixed an issue where the smms graph bed would fail to upload in some cases.</li>
-  <li>Fixed an issue where domain and folder configuration could be accessed when <code class="language-plaintext highlighter-rouge">/</code> was configured.</li>
-</ul>
-]]></description>
+				<ul>
+				  <li>Fixed an issue where the smms graph bed would fail to upload in some cases.</li>
+				  <li>Fixed an issue where domain and folder configuration could be accessed when <code class="language-plaintext highlighter-rouge">/</code> was configured.</li>
+				</ul>
+				]]>
+			</description>
 			<pubDate>Tue, 19 Nov 2019 08:16:32 +0000</pubDate>
 			<enclosure
 				url="https://github.com/gee1k/uPic/releases/download/v0.13.0/uPic.dmg"
@@ -61,35 +72,37 @@
 				sparkle:edSignature="r7TRo6P89HeheWctdR4miJwtqOM9TcWJ/wvpi4x9JhFQkGBpWb9ptYvuu896oWP8j7W3cZgsruLGHprfLGjuDg=="
 				length="11613600"
 			/>
-		</item><item>
+		</item>
+		<item>
 			<title>V0.12.4 Release</title>
 			<description><![CDATA[<h2 id="-bugs">🐛 Bugs</h2>
-<ul>
-  <li>修复weibo上传报错 403 的问题</li>
-  <li>修复切换系统主题后 Finder 中的图标不能及时调整颜色</li>
-</ul>
+				<ul>
+				  <li>修复weibo上传报错 403 的问题</li>
+				  <li>修复切换系统主题后 Finder 中的图标不能及时调整颜色</li>
+				</ul>
 
-<h2 id="-optimize">🎨 Optimize</h2>
-<ul>
-  <li>调整配置界面帮助按钮的位置</li>
-  <li>调整通知权限请求时机</li>
-  <li>优化上传历史图片预览效果</li>
-</ul>
+				<h2 id="-optimize">🎨 Optimize</h2>
+				<ul>
+				  <li>调整配置界面帮助按钮的位置</li>
+				  <li>调整通知权限请求时机</li>
+				  <li>优化上传历史图片预览效果</li>
+				</ul>
 
-<hr />
-<h2 id="-bugs-1">🐛 Bugs</h2>
-<ul>
-  <li>Fix the problem of weibo upload error 403</li>
-  <li>Fix After switching the system theme, the icons in the Finder cannot adjust the color in time.</li>
-</ul>
+				<hr />
+				<h2 id="-bugs-1">🐛 Bugs</h2>
+				<ul>
+				  <li>Fix the problem of weibo upload error 403</li>
+				  <li>Fix After switching the system theme, the icons in the Finder cannot adjust the color in time.</li>
+				</ul>
 
-<h2 id="-optimize-1">🎨 Optimize</h2>
-<ul>
-  <li>Adjust the position of the configuration interface help button</li>
-  <li>Adjust notification permission request timing</li>
-  <li>Optimize upload history image preview</li>
-</ul>
-]]></description>
+				<h2 id="-optimize-1">🎨 Optimize</h2>
+				<ul>
+				  <li>Adjust the position of the configuration interface help button</li>
+				  <li>Adjust notification permission request timing</li>
+				  <li>Optimize upload history image preview</li>
+				</ul>
+				]]>
+			</description>
 			<pubDate>Thu, 31 Oct 2019 08:19:45 +0000</pubDate>
 			<enclosure
 				url="https://github.com/gee1k/uPic/releases/download/v0.12.4/uPic.dmg"
