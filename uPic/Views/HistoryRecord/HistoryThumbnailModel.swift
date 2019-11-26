@@ -7,12 +7,26 @@
 //
 
 import Foundation
+import Cocoa
 
 struct HistoryThumbnailModel {
     var url: String = ""
     var fileName: String?
-    var thumbnailWidth: CGFloat = 0
-    var thumbnailHeight: CGFloat = 0
+    var thumbnailSize: NSSize {
+        return NSSize(width: thumbnailWidth, height: thumbnailHeight)
+    }
+    var thumbnailWidth: CGFloat {
+        return previewWidthGlobal
+    }
+    var thumbnailHeight: CGFloat {
+        var height: CGFloat = 0
+        guard let imageData = thumbnailData, let image = NSImage(data: imageData) else {
+            height = thumbnailWidth * 0.5 + 20
+            return height
+        }
+        height = thumbnailWidth * (image.size.height / image.size.width) + 20
+        return height
+    }
     var previewWidth: CGFloat = 0
     var previewHeight: CGFloat = 0
     var thumbnailData: Data?
@@ -22,8 +36,6 @@ struct HistoryThumbnailModel {
         var model = HistoryThumbnailModel()
         model.url = keyValue["url"] as! String
         model.fileName = keyValue["fileName"] as? String
-        model.thumbnailWidth = keyValue["thumbnailWidth"] as! CGFloat
-        model.thumbnailHeight = keyValue["thumbnailHeight"] as! CGFloat
         model.previewWidth = keyValue["previewWidth"] as! CGFloat
         model.previewHeight = keyValue["previewHeight"] as! CGFloat
         model.thumbnailData = keyValue["thumbnailData"] as? Data
@@ -35,8 +47,6 @@ struct HistoryThumbnailModel {
         var historyKeyValue: [String: Any] = [:]
         historyKeyValue["url"] = url
         historyKeyValue["fileName"] = fileName
-        historyKeyValue["thumbnailWidth"] = thumbnailWidth
-        historyKeyValue["thumbnailHeight"] = thumbnailHeight
         historyKeyValue["previewWidth"] = previewWidth
         historyKeyValue["previewHeight"] = previewHeight
         if let thumbnailData = thumbnailData {

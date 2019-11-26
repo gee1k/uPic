@@ -9,6 +9,8 @@
 import Cocoa
 import Alamofire
 import Kingfisher
+import SnapKit
+
 
 extension NSUserInterfaceItemIdentifier {
     static let collectionViewItem = NSUserInterfaceItemIdentifier(NSStringFromClass(HistoryThumbnailItem.self))
@@ -41,25 +43,29 @@ class HistoryThumbnailView: NSView {
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         initializeView()
+        addConstraintCustom()
     }
     
     private func initializeView() {
-        
         let flowLayout = HistoryThumbnailFlowLayout()
-        flowLayout.edgeInset = NSEdgeInsets(top: 10.0, left: 5, bottom: 10.0, right: 5)
-        flowLayout.columnCount = 3
-        flowLayout.lineSpacing = 4
+        flowLayout.edgeInset = NSEdgeInsets(top: historyRecordLeftRightInsetGlobal, left: 5, bottom: 50.0, right: historyRecordLeftRightInsetGlobal)
+        flowLayout.columnCount = previewLineNumberGlobal
+        flowLayout.lineSpacing = previewLineSpacingGlobal
         
         mainCollectionView = NSCollectionView(frame: bounds)
+        
         mainCollectionView.backgroundColors = [NSColor.clear]
         mainCollectionView.collectionViewLayout = flowLayout
         mainCollectionView.register(HistoryThumbnailItem.self, forItemWithIdentifier: .collectionViewItem)
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
         
+        let clipView = NSClipView()
+        clipView.documentView = mainCollectionView
+        
         mainScrollView = NSScrollView(frame: bounds)
         mainScrollView.backgroundColor = NSColor.clear
-        mainScrollView.documentView = mainCollectionView
+        mainScrollView.contentView = clipView
         addSubview(mainScrollView)
         mainScrollView.contentView.postsBoundsChangedNotifications = true
         let center = NotificationCenter.default
@@ -68,7 +74,7 @@ class HistoryThumbnailView: NSView {
         clearHistoryButton = NSButton(image: NSImage(named: "cleanButton")!, target: self, action: #selector(clearHistory))
         clearHistoryButton.appearance = NSAppearance(named: NSAppearance.Name.aqua)
         clearHistoryButton.bezelStyle = .smallSquare
-        clearHistoryButton.toolTip = "Clear upload history".localized
+        clearHistoryButton.toolTip = "\("Clear upload history".localized) \(ConfigManager.shared.getHistoryList_New().count)"
         clearHistoryButton.isTransparent = true
         addSubview(clearHistoryButton)
         
@@ -78,18 +84,24 @@ class HistoryThumbnailView: NSView {
         prePopover.animates = false
     }
     
+    private func addConstraintCustom () {
+        
+        mainScrollView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        clearHistoryButton.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview()
+            make.width.height.equalTo(44)
+        }
+    }
+    
     @objc
     private func clearHistory() {
         ConfigManager.shared.clearHistoryList_New()
         mainCollectionView.reloadData()
     }
-    
-    override func layout() {
-        super.layout()
-        mainScrollView.frame = NSRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height)
-        clearHistoryButton.frame = NSRect(x: bounds.size.width - 60, y: 0, width: 44, height: 44)
-    }
-    
     
     // copy history url
     @objc func copyUrl(_ url: String) {
@@ -99,9 +111,7 @@ class HistoryThumbnailView: NSView {
     
     @objc // 滑动
     private func boundsDidChangeNotification(notification: NSNotification) {
-        if prePopover.isShown {
-            self.prePopover.performClose(self)
-        }
+        currentCell?.updateTrackingAreas()
     }
     
 }
@@ -112,7 +122,7 @@ extension HistoryThumbnailView: NSCollectionViewDataSource {
         let model = historyList[indexPath.item]
         let item = collectionView.makeItem(withIdentifier: .collectionViewItem, for: indexPath) as! HistoryThumbnailItem
         let urlString = model.url
-        item.fileName.stringValue = URL(string: urlString.urlEncoded())!.lastPathComponent
+        item.fileName.fileName.stringValue = URL(string: urlString.urlEncoded())!.lastPathComponent
         if model.isImage == true {
             if let imageData = model.thumbnailData {
                 item.previewImageView.image = NSImage(data: imageData)
@@ -125,10 +135,10 @@ extension HistoryThumbnailView: NSCollectionViewDataSource {
             self?.superMenu.cancelTracking()
         }
         item.mouseStatusHandler = { [weak self] status, point, mouseView in
-            self?.currentCell = item
             guard let self = self else {
                 return
             }
+            self.currentCell = item
             guard model.isImage == true else {
                 if self.prePopover.isShown { self.prePopover.performClose(item.view) }
                 return
@@ -167,10 +177,7 @@ extension HistoryThumbnailView: NSCollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         let historyList = ConfigManager.shared.getHistoryList_New()
         let model = historyList[indexPath.item]
-        let itemSize = NSSize(width: model.thumbnailWidth,
-                              height: model.thumbnailHeight)
-        
-        return itemSize
+        return model.thumbnailSize
     }
 }
 
@@ -184,6 +191,6 @@ extension HistoryThumbnailView: HistoryThumbnailFlowLayoutDelegate {
 
 extension HistoryThumbnailView: NSMenuDelegate {
     func menuWillOpen(_ menu: NSMenu) {
-        mainCollectionView.reloadData()
+//        mainCollectionView.reloadData()
     }
 }

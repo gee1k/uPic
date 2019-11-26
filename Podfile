@@ -1,3 +1,6 @@
+source 'https://cdn.cocoapods.org/'
+install! 'cocoapods', :generate_multiple_pod_projects => true
+inhibit_all_warnings!
 platform :osx, '10.12'
 
 target 'uPic' do

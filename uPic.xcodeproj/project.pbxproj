@@ -115,6 +115,10 @@
 		4B9870502361A87700EDED1B /* HistoryPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B98704E2361A87700EDED1B /* HistoryPreviewViewController.swift */; };
 		4BB6C412236295DC0046FDC0 /* HistoryThumbnailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6C411236295DC0046FDC0 /* HistoryThumbnailModel.swift */; };
 		4BBA45BB235F081C0079F253 /* HistoryThumbnailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA45B9235F081C0079F253 /* HistoryThumbnailItem.swift */; };
+		4BC11BDC238CD8CD001641A6 /* HistoryThumbnailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC11BDB238CD8CD001641A6 /* HistoryThumbnailLabel.swift */; };
+		4BC11BDE238CFD53001641A6 /* HistoryThumbnailTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC11BDD238CFD53001641A6 /* HistoryThumbnailTimer.swift */; };
+		4BEFD811238B738E00BBE64D /* HistoryThumbnailConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */; };
+		4BEFD813238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */; };
 		68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */; };
 		68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */; };
 		68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */; };
@@ -271,6 +275,10 @@
 		4B98704E2361A87700EDED1B /* HistoryPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPreviewViewController.swift; sourceTree = "<group>"; };
 		4BB6C411236295DC0046FDC0 /* HistoryThumbnailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailModel.swift; sourceTree = "<group>"; };
 		4BBA45B9235F081C0079F253 /* HistoryThumbnailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailItem.swift; sourceTree = "<group>"; };
+		4BC11BDB238CD8CD001641A6 /* HistoryThumbnailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailLabel.swift; sourceTree = "<group>"; };
+		4BC11BDD238CFD53001641A6 /* HistoryThumbnailTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailTimer.swift; sourceTree = "<group>"; };
+		4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailConstant.swift; sourceTree = "<group>"; };
+		4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPreviewCustomScrollView.swift; sourceTree = "<group>"; };
 		68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Util.swift; sourceTree = "<group>"; };
 		68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Uploader.swift; sourceTree = "<group>"; };
 		68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3HostConfig.swift; sourceTree = "<group>"; };
@@ -636,12 +644,16 @@
 		4B66A851235F02A000DED242 /* HistoryRecord */ = {
 			isa = PBXGroup;
 			children = (
+				4BC11BDB238CD8CD001641A6 /* HistoryThumbnailLabel.swift */,
+				4BC11BDD238CFD53001641A6 /* HistoryThumbnailTimer.swift */,
+				4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */,
 				4BB6C411236295DC0046FDC0 /* HistoryThumbnailModel.swift */,
 				4B66A84F235ED44600DED242 /* HistoryThumbnailView.swift */,
 				4BBA45B9235F081C0079F253 /* HistoryThumbnailItem.swift */,
 				4B09F11323695F8D000208BD /* HistoryThumbnailContentView.swift */,
 				4B112CA623603DBB009E79B4 /* HistoryThumbnailFlowLayout.swift */,
 				4B98704E2361A87700EDED1B /* HistoryPreviewViewController.swift */,
+				4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */,
 			);
 			path = HistoryRecord;
 			sourceTree = "<group>";
@@ -909,6 +921,7 @@
 				1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */,
 				163632F322B2751D00805E7F /* BoolType.swift in Sources */,
 				1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */,
+				4BC11BDC238CD8CD001641A6 /* HistoryThumbnailLabel.swift in Sources */,
 				1618D1A822E99E2100831601 /* UploadNotifier.swift in Sources */,
 				4B09F11423695F8D000208BD /* HistoryThumbnailContentView.swift in Sources */,
 				161C3BE722C49BE90092114F /* RequestMethods.swift in Sources */,
@@ -922,6 +935,7 @@
 				167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */,
 				164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */,
 				164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */,
+				4BEFD813238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift in Sources */,
 				1657019D22C8953B00C57EE9 /* WeiboUploader.swift in Sources */,
 				1690E7ED22BF2E4F00FC81F8 /* QiniuUtil.swift in Sources */,
 				166B4A5522B9CFD7001288ED /* ConfigSheetController.swift in Sources */,
@@ -945,6 +959,7 @@
 				1647474522B66E3400F9575D /* Util.swift in Sources */,
 				167620ED230819C0008F8363 /* ImgurHostConfig.swift in Sources */,
 				1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */,
+				4BC11BDE238CFD53001641A6 /* HistoryThumbnailTimer.swift in Sources */,
 				1662AC7122C0AC53003AC924 /* AliyunConfigView.swift in Sources */,
 				1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */,
 				4B9870502361A87700EDED1B /* HistoryPreviewViewController.swift in Sources */,
@@ -957,6 +972,7 @@
 				16068C7522AEC1D1004D39B7 /* PreferencesViewController.swift in Sources */,
 				161C3BE122C483380092114F /* CustomUploader.swift in Sources */,
 				169F073A22AF4549008E8525 /* AboutPreferencesViewController.swift in Sources */,
+				4BEFD811238B738E00BBE64D /* HistoryThumbnailConstant.swift in Sources */,
 				1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */,
 				1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */,
 				1662AC7322C0BBF7003AC924 /* AmazonS3Region.swift in Sources */,
@@ -1187,7 +1203,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20191124;
+				CURRENT_PROJECT_VERSION = 20191126;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1196,7 +1212,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.14.0;
+				MARKETING_VERSION = 0.14.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1217,7 +1233,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20191124;
+				CURRENT_PROJECT_VERSION = 20191126;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1226,7 +1242,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.14.0;
+				MARKETING_VERSION = 0.14.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1240,7 +1256,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = uPicHelper/uPicHelper.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
@@ -1263,7 +1279,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = uPicHelper/uPicHelper.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
@@ -1286,7 +1302,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
@@ -1311,7 +1327,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
