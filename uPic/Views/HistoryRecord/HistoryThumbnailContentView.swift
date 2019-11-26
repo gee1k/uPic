@@ -55,6 +55,16 @@ class HistoryThumbnailContentView: NSView {
         let newBounds = NSRect(x: 5, y: 5, width: bounds.width - 10, height: bounds.height - 10)
         trackingArea = NSTrackingArea(rect: newBounds, options: options, owner: self, userInfo: nil)
         addTrackingArea(trackingArea!)
+        
+        guard var mouseLocation = window?.mouseLocationOutsideOfEventStream else {
+            return
+        }
+        mouseLocation = convert(mouseLocation, from: nil)
+        if NSPointInRect(mouseLocation, bounds) {
+            mouseEntered(with: NSEvent())
+        } else {
+            mouseExited(with: NSEvent())
+        }
     }
     
     private func removeTrackingArea() {

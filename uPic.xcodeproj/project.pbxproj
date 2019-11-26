@@ -116,6 +116,7 @@
 		4BB6C412236295DC0046FDC0 /* HistoryThumbnailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6C411236295DC0046FDC0 /* HistoryThumbnailModel.swift */; };
 		4BBA45BB235F081C0079F253 /* HistoryThumbnailItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA45B9235F081C0079F253 /* HistoryThumbnailItem.swift */; };
 		4BC11BDC238CD8CD001641A6 /* HistoryThumbnailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC11BDB238CD8CD001641A6 /* HistoryThumbnailLabel.swift */; };
+		4BC11BDE238CFD53001641A6 /* HistoryThumbnailTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC11BDD238CFD53001641A6 /* HistoryThumbnailTimer.swift */; };
 		4BEFD811238B738E00BBE64D /* HistoryThumbnailConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */; };
 		4BEFD813238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */; };
 		68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */; };
@@ -275,6 +276,7 @@
 		4BB6C411236295DC0046FDC0 /* HistoryThumbnailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailModel.swift; sourceTree = "<group>"; };
 		4BBA45B9235F081C0079F253 /* HistoryThumbnailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailItem.swift; sourceTree = "<group>"; };
 		4BC11BDB238CD8CD001641A6 /* HistoryThumbnailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailLabel.swift; sourceTree = "<group>"; };
+		4BC11BDD238CFD53001641A6 /* HistoryThumbnailTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailTimer.swift; sourceTree = "<group>"; };
 		4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailConstant.swift; sourceTree = "<group>"; };
 		4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPreviewCustomScrollView.swift; sourceTree = "<group>"; };
 		68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Util.swift; sourceTree = "<group>"; };
@@ -643,6 +645,7 @@
 			isa = PBXGroup;
 			children = (
 				4BC11BDB238CD8CD001641A6 /* HistoryThumbnailLabel.swift */,
+				4BC11BDD238CFD53001641A6 /* HistoryThumbnailTimer.swift */,
 				4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */,
 				4BB6C411236295DC0046FDC0 /* HistoryThumbnailModel.swift */,
 				4B66A84F235ED44600DED242 /* HistoryThumbnailView.swift */,
@@ -956,6 +959,7 @@
 				1647474522B66E3400F9575D /* Util.swift in Sources */,
 				167620ED230819C0008F8363 /* ImgurHostConfig.swift in Sources */,
 				1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */,
+				4BC11BDE238CFD53001641A6 /* HistoryThumbnailTimer.swift in Sources */,
 				1662AC7122C0AC53003AC924 /* AliyunConfigView.swift in Sources */,
 				1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */,
 				4B9870502361A87700EDED1B /* HistoryPreviewViewController.swift in Sources */,

@@ -111,11 +111,7 @@ class HistoryThumbnailView: NSView {
     
     @objc // 滑动
     private func boundsDidChangeNotification(notification: NSNotification) {
-        if prePopover.isShown {
-            prePopover.performClose(self)
-        }
-        currentCell?.cancelScrollTimer()
-        currentCell?.cancelTimer()
+        currentCell?.updateTrackingAreas()
     }
     
 }

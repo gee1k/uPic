@@ -37,6 +37,10 @@ class HistoryThumbnailItem: NSCollectionViewItem {
     
     private var whetherToScrollSequentially: Bool = true
     
+    func updateTrackingAreas() {
+        contentView.updateTrackingAreas()
+    }
+    
     override func loadView() {
         contentView = HistoryThumbnailContentView(frame: .zero, turnOnMonitoring: true)
         view = contentView
@@ -90,16 +94,16 @@ class HistoryThumbnailItem: NSCollectionViewItem {
             guard let self = self else { return }
             switch status {
             case .entered:
-                self.dispatchTimer(timeInterval: 0.5) { [weak self] in
+                HistoryThumbnailTimer.shared.dispatchTimer(timeInterval: 0.5) { [weak self] timer in
                     guard let self = self else { return }
                     self.mouseStatusHandler?(.entered, point, mouseView)
-                    self.cancelTimer()
+                    timer.cancel()
                     self.beginScrollFileName()
                 }
             case .exited:
                 self.mouseStatusHandler?(.exited, point, mouseView)
-                self.cancelTimer()
-                self.cancelScrollTimer()
+                HistoryThumbnailTimer.shared.cancelAllTimer()
+                self.fileNameLeft?.update(offset: 0)
             case .moved:
                 self.mouseStatusHandler?(.moved, point, mouseView)
             }
@@ -111,13 +115,8 @@ class HistoryThumbnailItem: NSCollectionViewItem {
     
     private func beginScrollFileName() {
         guard fileName.frame.size.width != fileNameView.frame.size.width else { return }
-        cancelScrollTimer()
-        if _scrollTimer != nil { return }
         var stayTime: CGFloat = 0
-        let scrollTimer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
-        _scrollTimer = scrollTimer
-        scrollTimer.schedule(wallDeadline: .now(), repeating: fileNameScrollAnimationTime)
-        scrollTimer.setEventHandler(handler: { [weak self] in
+        HistoryThumbnailTimer.shared.dispatchScrollTimer(timeInterval: fileNameScrollAnimationTime) { [weak self] timer in
             guard let self = self else { return }
             let fileNameWidth = self.fileName.frame.size.width
             let fileNameMinX = self.fileName.frame.origin.x
@@ -144,29 +143,7 @@ class HistoryThumbnailItem: NSCollectionViewItem {
                 return
             }
             self.fileNameLeft?.update(offset: newLeft)
-        })
-        scrollTimer.resume()
+        }
         return
-    }
-    
-    func cancelTimer() {
-        _timer?.cancel()
-    }
-    
-    func cancelScrollTimer() {
-        fileNameLeft?.update(offset: 0)
-        _scrollTimer?.cancel()
-    }
-    
-    private func dispatchTimer(timeInterval: TimeInterval, handler:@escaping ()->()) {
-        cancelTimer()
-        if _timer != nil { return }
-        let timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
-        _timer = timer
-        timer.schedule(wallDeadline: .now() + timeInterval, repeating: timeInterval)
-        timer.setEventHandler(handler: {
-            handler()
-        })
-        timer.resume()
     }
 }
