@@ -13,13 +13,15 @@ import SnapKit
 
 class HistoryThumbnailItem: NSCollectionViewItem {
     
+    private var fileNameLeftRightSpacing: CGFloat = 5
+    
     private(set) var previewImageView: NSImageView!
     
     private var clickCopyButton: NSButton!
     
-    private var fileNameScrollView: HistoryPreviewCustomScrollView!
+    private(set) var fileNameView: NSView!
     
-    private(set) var fileName: NSTextField!
+    private(set) var fileName: HistoryThumbnailLabel!
     /// 计时器
     private var _timer: DispatchSourceTimer?
     
@@ -29,14 +31,14 @@ class HistoryThumbnailItem: NSCollectionViewItem {
     
     var copyUrl: (() -> Void)?
     
-    private var lastFileNameScrollContentOffsetX: CGFloat = 0
-    
-    private var defaultFileNameScrollContentOffset: NSPoint?
+    private var fileNameLeft: Constraint?
     
     private var contentView: HistoryThumbnailContentView!
     
+    private var whetherToScrollSequentially: Bool = true
+    
     override func loadView() {
-        contentView = HistoryThumbnailContentView()
+        contentView = HistoryThumbnailContentView(frame: .zero, turnOnMonitoring: true)
         view = contentView
     }
     
@@ -54,21 +56,11 @@ class HistoryThumbnailItem: NSCollectionViewItem {
         clickCopyButton.isTransparent = true
         contentView.addSubview(clickCopyButton)
         
-        fileName = NSTextField()
-        fileName.backgroundColor = NSColor.clear
-        fileName.canDrawSubviewsIntoLayer = true
-        fileName.cell = VerticalCenteringCell()
-        fileName.alignment = .center
-        fileName.isEditable = false
-        fileName.appearance = NSAppearance(named: NSAppearance.Name.aqua)
-        fileName.textColor = NSColor.white
+        fileNameView = NSView()
+        contentView.addSubview(fileNameView)
         
-        fileNameScrollView = HistoryPreviewCustomScrollView()
-        fileNameScrollView.backgroundColor = NSColor.clear
-        fileNameScrollView.documentView = fileName
-        fileNameScrollView.drawsBackground = false
-        fileNameScrollView.documentView?.scroll(.zero)
-        contentView.addSubview(fileNameScrollView)
+        fileName = HistoryThumbnailLabel()
+        fileNameView.addSubview(fileName)
     }
     
     private func addConstraintCustom() {
@@ -76,13 +68,17 @@ class HistoryThumbnailItem: NSCollectionViewItem {
             make.left.right.top.equalToSuperview()
             make.bottom.equalToSuperview().inset(20)
         }
-        fileNameScrollView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(previewImageView)
-            make.top.equalTo(previewImageView.snp.bottom)
+        
+        fileNameView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview().inset(fileNameLeftRightSpacing)
             make.bottom.equalToSuperview()
+            make.height.equalTo(20)
         }
         fileName.snp.makeConstraints { (make) in
-            make.width.greaterThanOrEqualTo(fileNameScrollView.snp.width).priority(.high)
+            fileNameLeft = make.left.equalToSuperview().constraint
+            make.bottom.equalToSuperview()
+            make.height.equalTo(20)
+            make.width.greaterThanOrEqualTo(fileNameView)
         }
         clickCopyButton.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -103,7 +99,7 @@ class HistoryThumbnailItem: NSCollectionViewItem {
             case .exited:
                 self.mouseStatusHandler?(.exited, point, mouseView)
                 self.cancelTimer()
-                self.cancelScrollTimer(true)
+                self.cancelScrollTimer()
             case .moved:
                 self.mouseStatusHandler?(.moved, point, mouseView)
             }
@@ -114,77 +110,63 @@ class HistoryThumbnailItem: NSCollectionViewItem {
     }
     
     private func beginScrollFileName() {
-        cancelScrollTimer(true)
-        guard fileName.frame.width - (abs(fileName.frame.minX) * 2) > fileNameScrollView.frame.width else {
-            return
-        }
-        if defaultFileNameScrollContentOffset == nil {
-            defaultFileNameScrollContentOffset = fileNameScrollView.documentVisibleRect.origin
-        }
-        var bestRightDuration: CGFloat = 0
-        let queue: DispatchQueue = DispatchQueue.global()
-        let scrollTimer = DispatchSource.makeTimerSource(flags: DispatchSource.TimerFlags(rawValue: 0), queue: queue)
+        guard fileName.frame.size.width != fileNameView.frame.size.width else { return }
+        cancelScrollTimer()
+        if _scrollTimer != nil { return }
+        var stayTime: CGFloat = 0
+        let scrollTimer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
         _scrollTimer = scrollTimer
-        scrollTimer.schedule(deadline: .now(), repeating: fileNameScrollAnimationTime, leeway: DispatchTimeInterval.seconds(0))
+        scrollTimer.schedule(wallDeadline: .now(), repeating: fileNameScrollAnimationTime)
         scrollTimer.setEventHandler(handler: { [weak self] in
-            DispatchQueue.main.async(execute: {
-                guard let self = self else { return }
-                var x = self.fileNameScrollView.documentVisibleRect.origin.x + 1
-                if (x + self.view.bounds.width) > self.fileNameScrollView.documentView?.frame.size.width ?? 0 {
-                    x = (self.fileNameScrollView.documentView?.frame.size.width ?? 0) - self.fileNameScrollView.frame.size.width
+            guard let self = self else { return }
+            let fileNameWidth = self.fileName.frame.size.width
+            let fileNameMinX = self.fileName.frame.origin.x
+            var newLeft: CGFloat = 0
+            if self.whetherToScrollSequentially {
+                newLeft = fileNameMinX - 1
+            } else {
+                newLeft = fileNameMinX + 1
+            }
+            let fileNameMaxX = newLeft + fileNameWidth
+            if fileNameMaxX <= self.fileNameView.bounds.width, self.whetherToScrollSequentially == true {
+                stayTime += CGFloat(fileNameScrollAnimationTime)
+                if stayTime >= fileNameScrollingTime {
+                    stayTime = 0
+                    self.whetherToScrollSequentially = false
                 }
-                self.fileNameScrollView.documentView?.scroll(NSPoint(x: x, y: 0))
-                if self.fileNameScrollView.documentVisibleRect.origin.x == self.lastFileNameScrollContentOffsetX {
-                    bestRightDuration += CGFloat(fileNameScrollAnimationTime)
-                    if bestRightDuration >= 3 {
-                        self.cancelScrollTimer(true)
-                        self.beginScrollFileName()
-                    }
+                return
+            } else if fileNameMinX >= 0, self.whetherToScrollSequentially == false {
+                stayTime += CGFloat(fileNameScrollAnimationTime)
+                if stayTime >= fileNameScrollingTime {
+                    stayTime = 0
+                    self.whetherToScrollSequentially = true
                 }
-                self.lastFileNameScrollContentOffsetX = self.fileNameScrollView.documentVisibleRect.origin.x
-            })
+                return
+            }
+            self.fileNameLeft?.update(offset: newLeft)
         })
         scrollTimer.resume()
         return
     }
     
-    private func cancelTimer() {
+    func cancelTimer() {
         _timer?.cancel()
     }
     
-    func cancelScrollTimer(_ resetLeft: Bool = false) {
-        lastFileNameScrollContentOffsetX = 0
+    func cancelScrollTimer() {
+        fileNameLeft?.update(offset: 0)
         _scrollTimer?.cancel()
-        if resetLeft, let defaultFileNameScrollContentOffset = defaultFileNameScrollContentOffset {
-            fileNameScrollView.documentView?.scroll(defaultFileNameScrollContentOffset)
-        }
     }
     
     private func dispatchTimer(timeInterval: TimeInterval, handler:@escaping ()->()) {
         cancelTimer()
+        if _timer != nil { return }
         let timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
         _timer = timer
         timer.schedule(wallDeadline: .now() + timeInterval, repeating: timeInterval)
         timer.setEventHandler(handler: {
-            DispatchQueue.main.async {
-                handler()
-            }
-            
+            handler()
         })
         timer.resume()
     }
-}
-
-class VerticalCenteringCell: NSTextFieldCell {
-    
-    override func drawingRect(forBounds rect: NSRect) -> NSRect {
-        var newRect: NSRect = super.drawingRect(forBounds: rect)
-        let textSize: NSSize = cellSize(forBounds: rect)
-        let heightDelta: CGFloat = newRect.size.height - textSize.height
-        guard heightDelta > 0 else { return newRect }
-        newRect.size.height = textSize.height
-        newRect.origin.y += heightDelta * 0.5
-        return newRect
-    }
-    
 }

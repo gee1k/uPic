@@ -22,7 +22,7 @@ class HistoryPreviewViewController: NSViewController {
     private var heightConstraint: Constraint!
     
     override func loadView() {
-        contentView = HistoryThumbnailContentView()
+        contentView = HistoryThumbnailContentView(frame: .zero, turnOnMonitoring: false)
         view = contentView
     }
     

@@ -22,12 +22,13 @@ class HistoryThumbnailContentView: NSView {
     
     var mousePointView: NSView!
     
-    override init(frame frameRect: NSRect) {
+    var turnOnMonitoring: Bool = true
+    
+    init(frame frameRect: NSRect, turnOnMonitoring: Bool = true) {
         super.init(frame: frameRect)
         mousePointView = NSView(frame: NSRect(x: 0, y: 0, width: 30, height: 30))
         mousePointView.wantsLayer = true
         mousePointView.layer?.backgroundColor = NSColor.clear.cgColor
-//        mousePointView.layer?.backgroundColor = NSColor.red.cgColor
         addSubview(mousePointView)
     }
     
@@ -46,8 +47,11 @@ class HistoryThumbnailContentView: NSView {
     }
     
     private func createTrackingArea() {
+        if turnOnMonitoring == false {
+            return
+        }
         removeTrackingArea()
-        let options : NSTrackingArea.Options = [.mouseEnteredAndExited, .activeAlways]
+        let options : NSTrackingArea.Options = [.mouseEnteredAndExited, .activeInKeyWindow]
         let newBounds = NSRect(x: 5, y: 5, width: bounds.width - 10, height: bounds.height - 10)
         trackingArea = NSTrackingArea(rect: newBounds, options: options, owner: self, userInfo: nil)
         addTrackingArea(trackingArea!)

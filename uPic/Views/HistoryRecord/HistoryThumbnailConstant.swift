@@ -37,3 +37,7 @@ var previewDefaulWidthGlobal: CGFloat {
 var fileNameScrollAnimationTime: TimeInterval {
     return 0.03
 }
+
+var fileNameScrollingTime: CGFloat {
+    return 1
+}
