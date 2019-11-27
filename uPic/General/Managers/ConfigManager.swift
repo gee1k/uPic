@@ -43,13 +43,7 @@ public class ConfigManager {
             return
         }
         Defaults[.launchAtLogin] = BoolType._false.rawValue
-        Defaults[.compressFactor] = Int(100)
-        Defaults[.historyRecordWidth] = Float(500)
-        Defaults[.historyRecordColumns] = Int(3)
-        Defaults[.historyRecordSpacing] = Float(5)
-        Defaults[.historyRecordPadding] = Float(5)
-        Defaults[.historyRecordFileNameScrollSpeed] = Double(30)
-        Defaults[.historyRecordFileNameScrollWaitTime] = Float(1)
+        Defaults[.compressFactor] = 100
         Defaults.synchronize()
         
         self.setHostItems(items: [Host.getDefaultHost()])
@@ -126,7 +120,7 @@ extension ConfigManager {
     func setHistoryList_New(items: [[String: Any]]) -> Void {
         Defaults[.historyList_New] = items
         Defaults.synchronize()
-        ConfigNotifier.postNotification(.changeHistoryList)
+        ConfigNotifier.postNotification(.updateHistoryList)
     }
     
     func addHistory_New(url: String, previewModel: HistoryThumbnailModel) -> Void {
