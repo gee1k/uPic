@@ -38,6 +38,7 @@
 		164745F022B65FE900F9575D /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164745EF22B65FE900F9575D /* String+Extension.swift */; };
 		1647474322B66ACE00F9575D /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474222B66ACE00F9575D /* Data+Extension.swift */; };
 		1647474522B66E3400F9575D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474422B66E3400F9575D /* Util.swift */; };
+		1648A216238E742600B99B9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1648A214238E742600B99B9D /* Main.storyboard */; };
 		164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C39FF22B2AA6C003ADE39 /* Notifier.swift */; };
 		164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */; };
 		1657019922C8922400C57EE9 /* WeiboHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1657019822C8920400C57EE9 /* WeiboHostConfig.swift */; };
@@ -123,7 +124,6 @@
 		68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */; };
 		68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */; };
 		8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; };
-		96F2D368235B424D001F74A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F2D36A235B424D001F74A5 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +190,9 @@
 		164745EF22B65FE900F9575D /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1647474222B66ACE00F9575D /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		1647474422B66E3400F9575D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		1648A215238E742600B99B9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1648A217238E742F00B99B9D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		1648A218238E743200B99B9D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		164C39FF22B2AA6C003ADE39 /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigNotifier.swift; sourceTree = "<group>"; };
 		1657019822C8920400C57EE9 /* WeiboHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboHostConfig.swift; sourceTree = "<group>"; };
@@ -283,9 +286,6 @@
 		68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Uploader.swift; sourceTree = "<group>"; };
 		68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3HostConfig.swift; sourceTree = "<group>"; };
 		96F23538238E2CE800414C98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
-		96F2353A238E2D1C00414C98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		96F2353C238E2D1D00414C98 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		96F2D369235B424D001F74A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96F2D378235B48CF001F74A5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uPic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B31C410193F6C634ECBC8F5F /* Pods-uPic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.debug.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -572,7 +572,7 @@
 		16A6DC5622AA375700813706 /* uPic */ = {
 			isa = PBXGroup;
 			children = (
-				96F2D36A235B424D001F74A5 /* Main.storyboard */,
+				1648A214238E742600B99B9D /* Main.storyboard */,
 				16BDDE0222EAA2920080E467 /* Assets.xcassets */,
 				16A6DC5722AA375700813706 /* AppDelegate.swift */,
 				1623612522AB951E00E4025C /* Localizable.strings */,
@@ -819,8 +819,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1623612322AB951E00E4025C /* Localizable.strings in Resources */,
+				1648A216238E742600B99B9D /* Main.storyboard in Resources */,
 				1623611B22AB935300E4025C /* InfoPlist.strings in Resources */,
-				96F2D368235B424D001F74A5 /* Main.storyboard in Resources */,
 				169F073B22AF53DE008E8525 /* Preferences.storyboard in Resources */,
 				16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */,
 			);
@@ -1044,6 +1044,16 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		1648A214238E742600B99B9D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1648A215238E742600B99B9D /* Base */,
+				1648A217238E742F00B99B9D /* en */,
+				1648A218238E743200B99B9D /* zh-Hans */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		169F073D22AF53DE008E8525 /* Preferences.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1058,16 +1068,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				16EA205222AF8AB40006FB9C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		96F2D36A235B424D001F74A5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				96F2D369235B424D001F74A5 /* Base */,
-				96F2353A238E2D1C00414C98 /* en */,
-				96F2353C238E2D1D00414C98 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
