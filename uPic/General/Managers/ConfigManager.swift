@@ -119,7 +119,7 @@ extension ConfigManager {
     func setHistoryList_New(items: [[String: Any]]) -> Void {
         Defaults[.historyList_New] = items
         Defaults.synchronize()
-        ConfigNotifier.postNotification(.changeHistoryList)
+        ConfigNotifier.postNotification(.updateHistoryList)
     }
     
     func addHistory_New(url: String, previewModel: HistoryThumbnailModel) -> Void {

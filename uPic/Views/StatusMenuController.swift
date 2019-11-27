@@ -214,7 +214,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         historyMenu.addItem(imgMenuItem)
         
         let previewView = HistoryThumbnailView()
-        historyMenu.delegate = self
+        historyMenu.delegate = previewView
         previewView.superMenu = historyMenu
         previewView.frame.size = NSSize(width: historyRecordViewWidthGlobal, height: 400)
         imgMenuItem.view = previewView
@@ -325,11 +325,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     func addObserver() {
         ConfigNotifier.addObserver(observer: self, selector: #selector(resetHostMenu), notification: .changeHostItems)
-        ConfigNotifier.addObserver(observer: self, selector: #selector(resetUploadHistory), notification: .changeHistoryList)
     }
 
     func removeObserver() {
         ConfigNotifier.removeObserver(observer: self, notification: .changeHostItems)
-        ConfigNotifier.removeObserver(observer: self, notification: .changeHistoryList)
     }
 }

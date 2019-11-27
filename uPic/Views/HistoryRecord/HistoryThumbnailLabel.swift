@@ -12,6 +12,12 @@ class HistoryThumbnailLabel: NSView {
 
     private(set) var fileName: NSTextField!
     
+    var stringValue: String = "" {
+        didSet {
+            fileName.stringValue = stringValue
+        }
+    }
+    
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         
