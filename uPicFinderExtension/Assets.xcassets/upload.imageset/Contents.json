@@ -56,27 +56,30 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "light@3x-1.png",
       "scale" : "3x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
+      "filename" : "light@3x.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "light"
         }
-      ]
+      ],
+      "scale" : "3x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
+      "filename" : "dark@3x.png",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "dark"
         }
-      ]
+      ],
+      "scale" : "3x"
     }
   ],
   "info" : {
