@@ -28,6 +28,10 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        resetAllValues()
+    }
+    
+    func resetAllValues() {
         selectFileShortcut.associatedUserDefaultsKey = Constants.Key.selectFileShortcut
         pasteboardShortcut.associatedUserDefaultsKey = Constants.Key.pasteboardShortcut
         screenshotShortcut.associatedUserDefaultsKey = Constants.Key.screenshotShortcut
@@ -82,6 +86,9 @@ class AdvancedPreferencesViewController: PreferencesViewController {
             ConfigManager.shared.firstSetup()
             _ = NSApplication.shared.delegate as! AppDelegate
 //            appDelegate.setStatusToggle()
+            
+            // reset all values
+            resetAllValues()
         default:
             print("Cancel Resetting User Preferences")
         }
