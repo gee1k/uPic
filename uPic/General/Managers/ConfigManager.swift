@@ -50,13 +50,18 @@ public class ConfigManager {
     }
 
     public func removeAllUserDefaults() {
-        // 提前取出图床配置
-        let hostItems = self.getHostItems()
-        let domain = Bundle.main.bundleIdentifier!
-        Defaults.removePersistentDomain(forName: domain)
-        // 清除所有用户设置后，再重新写入图床配置
-        self.setHostItems(items: hostItems)
+        
+        let ignoreKeys = [Keys.hostItems, Keys.defaultHostId, Keys.historyList]
+        
+        let dics = Defaults.dictionaryRepresentation()
+        for key in dics {
+            if ignoreKeys.contains(key.key) {
+                continue
+            }
+            Defaults.removeObject(forKey: key.key)
+        }
         Defaults.synchronize()
+        
     }
 
 }
@@ -96,7 +101,7 @@ extension ConfigManager {
     public var historyLimit_New: Int {
         get {
             let defaultLimit = 100
-            let limit = Defaults[.historyLimit_New]
+            let limit = Defaults[.historyLimit]
             if (limit == nil || limit == 0) {
                 return defaultLimit
             }
@@ -104,13 +109,13 @@ extension ConfigManager {
         }
         
         set {
-            Defaults[.historyLimit_New] = newValue
+            Defaults[.historyLimit] = newValue
             Defaults.synchronize()
         }
     }
     
     func getHistoryList_New() -> [HistoryThumbnailModel] {
-        let historyList = Defaults[.historyList_New] ?? [[String: Any]]()
+        let historyList = Defaults[.historyList] ?? [[String: Any]]()
         let historyListModel: [HistoryThumbnailModel] = historyList.map({ (item) -> HistoryThumbnailModel in
             return HistoryThumbnailModel.keyValue(keyValue: item)
         })
@@ -118,7 +123,7 @@ extension ConfigManager {
     }
     
     func setHistoryList_New(items: [[String: Any]]) -> Void {
-        Defaults[.historyList_New] = items
+        Defaults[.historyList] = items
         Defaults.synchronize()
         ConfigNotifier.postNotification(.updateHistoryList)
     }

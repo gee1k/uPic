@@ -14,11 +14,10 @@ struct Keys {
     static let hostItems = "uPic_hostItems"
     static let defaultHostId = "uPic_DefaultHostId"
     static let ouputFormat = "uPic_OutputFormat"
-    static let historyList = "uPic_HistoryList"
-    static let historyList_New = "uPic_HistoryList_New"
-    static let historyLimit = "uPic_HistoryLimit"
-    static let historyLimit_New = "uPic_HistoryLimit_New"
+    static let historyList = "uPic_HistoryList_New"
+    static let historyLimit = "uPic_HistoryLimit_New"
     static let compressFactor = "uPic_CompressFactor"
+    // historyRecord
     static let historyRecordWidth = "uPic_HistoryRecordWidth"
     static let historyRecordColumns = "uPic_HistoryRecordColumns"
     static let historyRecordSpacing = "uPic_HistoryRecordSpacing"
@@ -52,8 +51,8 @@ extension DefaultsKeys {
     static let hostItems = DefaultsKey<[Host]>(Keys.hostItems)
     static let defaultHostId = DefaultsKey<Int>(Keys.defaultHostId)
     static let ouputFormat = DefaultsKey<Int>(Keys.ouputFormat)
-    static let historyList_New = DefaultsKey<[[String: Any]]>(Keys.historyList_New)
-    static let historyLimit_New = DefaultsKey<Int>(Keys.historyLimit_New)
+    static let historyList = DefaultsKey<[[String: Any]]>(Keys.historyList)
+    static let historyLimit = DefaultsKey<Int>(Keys.historyLimit)
     static let compressFactor = DefaultsKey<Int>(Keys.compressFactor)
     static let historyRecordWidth = DefaultsKey<Float>(Keys.historyRecordWidth)
     static let historyRecordColumns = DefaultsKey<Int>(Keys.historyRecordColumns)
