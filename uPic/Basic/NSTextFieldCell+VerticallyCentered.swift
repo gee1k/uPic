@@ -21,4 +21,5 @@ class VerticallyCenteredTextFieldCell: NSTextFieldCell {
         }
         return newRect
     }
+
 }

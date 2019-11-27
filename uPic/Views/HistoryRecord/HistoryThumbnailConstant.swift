@@ -9,36 +9,58 @@
 import Foundation
 
 /// 历史记录总宽
-var historyRecordViewWidthGlobal: CGFloat {
-    return CGFloat(Defaults[.historyRecordWidth]!)
+var HistoryRecordWidthGlobal: CGFloat {
+    guard let width = Defaults[.historyRecordWidth], width > 0 else {
+        return 500
+    }
+    return CGFloat(width)
 }
 /// 预览图列数
-var previewLineNumberGlobal: Int {
-    return Defaults[.historyRecordColumns]!
+var HistoryRecordColumnsGlobal: Int {
+    guard let columns = Defaults[.historyRecordColumns], columns > 0 else {
+        return 3
+    }
+    return columns
 }
 /// 预览图间距
-var previewLineSpacingGlobal: CGFloat {
-    return CGFloat(Defaults[.historyRecordSpacing]!)
+var HistoryRecordSpacingGlobal: CGFloat {
+    guard let spacing = Defaults[.historyRecordSpacing], spacing > 0 else {
+        return 5
+    }
+    return CGFloat(spacing)
 }
 /// 历史记录内边距
-var historyRecordLeftRightInsetGlobal: CGFloat {
-    return CGFloat(Defaults[.historyRecordPadding]!)
+var HistoryRecordPaddingGlobal: CGFloat {
+    guard let inset = Defaults[.historyRecordPadding], inset > 0 else {
+        return 5
+    }
+    return CGFloat(inset)
 }
 /// 预览图宽度
-var previewWidthGlobal: CGFloat {
-    return (historyRecordViewWidthGlobal - CGFloat((previewLineNumberGlobal - 1)) * previewLineSpacingGlobal - historyRecordLeftRightInsetGlobal * 2) / CGFloat(previewLineNumberGlobal)
+var PreviewWidthGlobal: CGFloat {
+    return (HistoryRecordWidthGlobal - CGFloat((HistoryRecordColumnsGlobal - 1)) * HistoryRecordSpacingGlobal - HistoryRecordPaddingGlobal * 2) / CGFloat(HistoryRecordColumnsGlobal)
 }
 /// 预览图默认宽度
-var previewDefaulWidthGlobal: CGFloat {
-    return 300
+var PreviewDefaulWidthGlobal: CGFloat {
+    return HistoryRecordWidthGlobal - HistoryRecordPaddingGlobal * 2
 }
 
-/// 文件名滚动时间速度 s 单位
-var fileNameScrollAnimationTime: TimeInterval {
-    return (1 / Defaults[.historyRecordFileNameScrollSpeed]!)
+/// 文件名滚动速率百分比 1s 为基数
+var HistoryRecordFileNameScrollSpeedGlobal: TimeInterval {
+    guard let speed = Defaults[.historyRecordFileNameScrollSpeed], speed > 0 else {
+        return 30
+    }
+    return speed
+}
+
+var HistoryRecordFileNameScrollSpeed: TimeInterval {
+    return 1 * (HistoryRecordFileNameScrollSpeedGlobal / 1000)
 }
 
 /// 下次滚动等待时间
-var fileNameScrollingTime: CGFloat {
-    return CGFloat(Defaults[.historyRecordFileNameScrollWaitTime]!)
+var HistoryRecordFileNameScrollWaitTimeGlobal: CGFloat {
+    guard let time = Defaults[.historyRecordFileNameScrollWaitTime], time > 0 else {
+        return 1
+    }
+    return CGFloat(time)
 }

@@ -57,10 +57,10 @@ class HistoryThumbnailView: NSView {
     
     private func initializeView() {
         let flowLayout = HistoryThumbnailFlowLayout()
-        flowLayout.columnCount = previewLineNumberGlobal
-        flowLayout.minimumColumnSpacing = Float(previewLineSpacingGlobal)
-        flowLayout.minimumInteritemSpacing = Float(previewLineSpacingGlobal)
-        flowLayout.sectionInset = NSEdgeInsets(top: historyRecordLeftRightInsetGlobal, left: 5, bottom: 50.0, right: historyRecordLeftRightInsetGlobal)
+        flowLayout.columnCount = HistoryRecordColumnsGlobal
+        flowLayout.minimumColumnSpacing = Float(HistoryRecordSpacingGlobal)
+        flowLayout.minimumInteritemSpacing = Float(HistoryRecordSpacingGlobal)
+        flowLayout.sectionInset = NSEdgeInsets(top: 5, left: HistoryRecordPaddingGlobal, bottom: 50.0, right: HistoryRecordPaddingGlobal)
         
         mainCollectionView = NSCollectionView(frame: bounds)
         
@@ -218,6 +218,7 @@ extension HistoryThumbnailView: NSMenuDelegate {
         mainCollectionView.reloadData()
         mainClipView.documentView = mainCollectionView
         mainClipView.documentView?.scroll(lastContentOffset)
+        clearHistoryButton.toolTip = "\("Clear history record".localized) \(ConfigManager.shared.getHistoryList_New().count)"
     }
 
     func menuDidClose(_ menu: NSMenu) {

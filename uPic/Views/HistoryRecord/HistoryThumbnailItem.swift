@@ -116,7 +116,7 @@ class HistoryThumbnailItem: NSCollectionViewItem {
     private func beginScrollFileName() {
         guard fileName.frame.size.width != fileNameView.frame.size.width else { return }
         var stayTime: CGFloat = 0
-        HistoryThumbnailTimer.shared.dispatchScrollTimer(timeInterval: fileNameScrollAnimationTime) { [weak self] timer in
+        HistoryThumbnailTimer.shared.dispatchScrollTimer(timeInterval: HistoryRecordFileNameScrollSpeed) { [weak self] timer in
             guard let self = self else { return }
             let fileNameWidth = self.fileName.frame.size.width
             let fileNameMinX = self.fileName.frame.origin.x
@@ -128,15 +128,15 @@ class HistoryThumbnailItem: NSCollectionViewItem {
             }
             let fileNameMaxX = newLeft + fileNameWidth
             if fileNameMaxX <= self.fileNameView.bounds.width, self.whetherToScrollSequentially == true {
-                stayTime += CGFloat(fileNameScrollAnimationTime)
-                if stayTime >= fileNameScrollingTime {
+                stayTime += CGFloat(HistoryRecordFileNameScrollSpeed)
+                if stayTime >= HistoryRecordFileNameScrollWaitTimeGlobal {
                     stayTime = 0
                     self.whetherToScrollSequentially = false
                 }
                 return
             } else if fileNameMinX >= 0, self.whetherToScrollSequentially == false {
-                stayTime += CGFloat(fileNameScrollAnimationTime)
-                if stayTime >= fileNameScrollingTime {
+                stayTime += CGFloat(HistoryRecordFileNameScrollSpeed)
+                if stayTime >= HistoryRecordFileNameScrollWaitTimeGlobal {
                     stayTime = 0
                     self.whetherToScrollSequentially = true
                 }

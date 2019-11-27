@@ -16,7 +16,7 @@ struct HistoryThumbnailModel {
         return NSSize(width: thumbnailWidth, height: thumbnailHeight)
     }
     var thumbnailWidth: CGFloat {
-        return previewWidthGlobal
+        return PreviewWidthGlobal
     }
     var thumbnailHeight: CGFloat {
         var height: CGFloat = 0
