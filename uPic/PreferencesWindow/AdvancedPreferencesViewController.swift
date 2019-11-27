@@ -48,7 +48,18 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         historyRecordFileNameScrollWaitTime.stringValue = "\(HistoryRecordFileNameScrollWaitTimeGlobal)"
     }
 
-
+    @IBAction func didClickHistoryRecordConfigurationResetButton(_ sender: NSButton) {
+        Defaults[.historyRecordWidth] = Float(500)
+        Defaults[.historyRecordColumns] = Int(3)
+        Defaults[.historyRecordSpacing] = Float(5)
+        Defaults[.historyRecordPadding] = Float(5)
+        Defaults[.historyRecordFileNameScrollSpeed] = Double(30)
+        Defaults[.historyRecordFileNameScrollWaitTime] = Float(1)
+        
+        setHistoryRecordTextFieldDefaultText()
+        ConfigNotifier.postNotification(.changeHistoryList)
+    }
+    
     @IBAction func didClickHistoryRecordConfigurationSaveButton(_ sender: NSButton) {
         Defaults[.historyRecordWidth] = Float(historyRecordWidth.stringValue)
         Defaults[.historyRecordColumns] = Int(historyRecordColumns.stringValue)

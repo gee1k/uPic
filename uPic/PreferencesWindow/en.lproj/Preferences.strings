@@ -17,6 +17,9 @@
 /* Class = "NSWindow"; title = "Preferences"; ObjectID = "5f3-UK-Rft"; */
 "5f3-UK-Rft.title" = "Preferences";
 
+/* Class = "NSButtonCell"; title = "Reset"; ObjectID = "8gb-uy-oRd"; */
+"8gb-uy-oRd.title" = "Reset";
+
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "8lH-1K-GR0"; */
 "8lH-1K-GR0.title" = "Copy";
 
@@ -27,7 +30,7 @@
 "AYG-Uz-MYq.title" = "Spacing:";
 
 /* Class = "NSTextFieldCell"; title = "File name scroll speed:"; ObjectID = "BBZ-i9-B2g"; */
-"BBZ-i9-B2g.title" = "File name scroll speed(ms):";
+"BBZ-i9-B2g.title" = "File name scroll speed:";
 
 /* Class = "NSButtonCell"; title = "Add Header Field"; ObjectID = "Ckh-A7-mxC"; */
 "Ckh-A7-mxC.title" = "Add Header Field";
@@ -75,7 +78,7 @@
 "OKr-1C-5jV.title" = "🐦 Twitter:";
 
 /* Class = "NSTextFieldCell"; title = "File name scroll wait time:"; ObjectID = "ON0-aF-BNd"; */
-"ON0-aF-BNd.title" = "File name scroll wait time(s):";
+"ON0-aF-BNd.title" = "File name scroll wait time:";
 
 /* Class = "NSBox"; title = "Header and Body Data"; ObjectID = "OaN-c4-l0X"; */
 "OaN-c4-l0X.title" = "Header and Body Data";
