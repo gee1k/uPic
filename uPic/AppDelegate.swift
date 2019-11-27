@@ -52,7 +52,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.setupStatusBar()
         
         self.bindShortcuts()
-
+        
+        self.setHistoryRecordConfigurationToDefault()
+        
         // 添加 Finder 右键文件上传监听
         UploadNotifier.addObserver(observer: self, selector: #selector(uploadFilesFromFinderMenu), notification: .uploadFiles)
     }
@@ -74,6 +76,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if launchAtLogin == ._true {
             ConfigManager.shared.launchAtLogin = BoolType._false
             ConfigManager.shared.launchAtLogin = BoolType._true
+        }
+    }
+    
+    // 设定历史记录选项初始值
+    func setHistoryRecordConfigurationToDefault() {
+        if Defaults[.historyRecordWidth] == 0.0 {
+            Defaults[.historyRecordWidth] = Float(500)
+        }
+        if Defaults[.historyRecordColumns] == 0 {
+            Defaults[.historyRecordColumns] = Int(3)
+        }
+        if Defaults[.historyRecordSpacing] == 0.0 {
+            Defaults[.historyRecordSpacing] = Float(5)
+        }
+        if Defaults[.historyRecordPadding] == 0.0 {
+            Defaults[.historyRecordPadding] = Float(5)
+        }
+        if Defaults[.historyRecordFileNameScrollSpeed] == 0.0 {
+            Defaults[.historyRecordFileNameScrollSpeed] = Double(30)
+        }
+        if Defaults[.historyRecordFileNameScrollWaitTime] == 0.0 {
+            Defaults[.historyRecordFileNameScrollWaitTime] = Float(1)
         }
     }
     

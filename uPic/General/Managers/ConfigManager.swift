@@ -43,7 +43,13 @@ public class ConfigManager {
             return
         }
         Defaults[.launchAtLogin] = BoolType._false.rawValue
-        Defaults[.compressFactor] = 100
+        Defaults[.compressFactor] = Int(100)
+        Defaults[.historyRecordWidth] = Float(500)
+        Defaults[.historyRecordColumns] = Int(3)
+        Defaults[.historyRecordSpacing] = Float(5)
+        Defaults[.historyRecordPadding] = Float(5)
+        Defaults[.historyRecordFileNameScrollSpeed] = Double(30)
+        Defaults[.historyRecordFileNameScrollWaitTime] = Float(1)
         Defaults.synchronize()
         
         self.setHostItems(items: [Host.getDefaultHost()])
@@ -96,7 +102,7 @@ extension ConfigManager {
     public var historyLimit_New: Int {
         get {
             let defaultLimit = 100
-            let limit =  Defaults[.historyLimit_New]
+            let limit = Defaults[.historyLimit_New]
             if (limit == nil || limit == 0) {
                 return defaultLimit
             }
@@ -105,6 +111,7 @@ extension ConfigManager {
         
         set {
             Defaults[.historyLimit_New] = newValue
+            Defaults.synchronize()
         }
     }
     

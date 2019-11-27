@@ -10,19 +10,19 @@ import Foundation
 
 /// 历史记录总宽
 var historyRecordViewWidthGlobal: CGFloat {
-    return 500
+    return CGFloat(Defaults[.historyRecordWidth]!)
 }
 /// 预览图列数
 var previewLineNumberGlobal: Int {
-    return 3
+    return Defaults[.historyRecordColumns]!
 }
 /// 预览图间距
 var previewLineSpacingGlobal: CGFloat {
-    return 5
+    return CGFloat(Defaults[.historyRecordSpacing]!)
 }
 /// 历史记录内边距
 var historyRecordLeftRightInsetGlobal: CGFloat {
-    return 5
+    return CGFloat(Defaults[.historyRecordPadding]!)
 }
 /// 预览图宽度
 var previewWidthGlobal: CGFloat {
@@ -35,9 +35,10 @@ var previewDefaulWidthGlobal: CGFloat {
 
 /// 文件名滚动时间速度 s 单位
 var fileNameScrollAnimationTime: TimeInterval {
-    return 0.03
+    return (1 / Defaults[.historyRecordFileNameScrollSpeed]!)
 }
 
+/// 下次滚动等待时间
 var fileNameScrollingTime: CGFloat {
-    return 1
+    return CGFloat(Defaults[.historyRecordFileNameScrollWaitTime]!)
 }

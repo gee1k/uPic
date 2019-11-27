@@ -57,38 +57,12 @@
 
 "Did not get the file URL" = "Did not get the file URL";
 
-/* 状态栏菜单选择文件 */
-"Select File" = "Select File";
-/* 状态栏菜单屏幕截图 */
-"Screenshot and upload" = "Screenshot and upload";
-/* 状态栏菜单上传剪切板中的文件 */
-"Upload copied file" = "Upload copied file";
 /* 状态栏菜单图床 */
 "Hosts" = "Hosts";
 /* 状态栏菜单输出格式 */
 "Output format" = "Output format";
 /* 状态栏菜单上传前压缩图片 */
 "Compress images before uploading" = "Compress images before uploading";
-/* 状态栏菜单偏好设置 */
-"Preference" = "Preference";
-/* 状态栏菜单退出 */
-"Quit" = "Quit";
-/* 菜单栏检查更新按钮标题：检查更新 */
-"Check for updates" = "Check for updates";
-/* 菜单栏上传历史 */
-"Upload history" = "Upload history";
-/* 菜单栏清空上传历史 */
-"Clear upload history" = "Clear upload history";
-/* 菜单栏没有上传历史 */
-"No upload history" = "No upload history";
-/* 菜单栏帮助 */
-"Help" = "Help";
-"Tutorial" = "Tutorial";
-"Import hosts" = "Import hosts";
-"Export hosts" = "Export hosts";
-"Sponsor" = "Sponsor";
-/* cancel upload */
-"Cancel upload" = "Cancel upload";
 
 "Reset User Preferences?" = "Reset User Preferences?";
 "⚠️ Note that this will reset all user preferences" = "⚠️ Note that this will reset all user preferences";
