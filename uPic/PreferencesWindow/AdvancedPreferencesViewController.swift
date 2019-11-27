@@ -27,7 +27,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         selectFileShortcut.associatedUserDefaultsKey = Constants.Key.selectFileShortcut
         pasteboardShortcut.associatedUserDefaultsKey = Constants.Key.pasteboardShortcut
         screenshotShortcut.associatedUserDefaultsKey = Constants.Key.screenshotShortcut
@@ -36,12 +36,12 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     }
     
     func setHistoryRecordTextFieldDefaultText() {
-        historyRecordWidth.stringValue = "\(Defaults[.historyRecordWidth]!)"
-        historyRecordColumns.stringValue = "\(Defaults[.historyRecordColumns]!)"
-        historyRecordSpacing.stringValue = "\(Defaults[.historyRecordSpacing]!)"
-        historyRecordPadding.stringValue = "\(Defaults[.historyRecordPadding]!)"
-        historyRecordFileNameScrollSpeed.stringValue = "\(Defaults[.historyRecordFileNameScrollSpeed]!)"
-        historyRecordFileNameScrollWaitTime.stringValue = "\(Defaults[.historyRecordFileNameScrollWaitTime]!)"
+        historyRecordWidth.stringValue = "\(HistoryRecordWidthGlobal)"
+        historyRecordColumns.stringValue = "\(HistoryRecordColumnsGlobal)"
+        historyRecordSpacing.stringValue = "\(HistoryRecordSpacingGlobal)"
+        historyRecordPadding.stringValue = "\(HistoryRecordPaddingGlobal)"
+        historyRecordFileNameScrollSpeed.stringValue = "\(HistoryRecordFileNameScrollSpeedGlobal)"
+        historyRecordFileNameScrollWaitTime.stringValue = "\(HistoryRecordFileNameScrollWaitTimeGlobal)"
     }
 
 

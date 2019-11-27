@@ -22,6 +22,8 @@ class HistoryThumbnailView: NSView {
     
     private var mainCollectionView: NSCollectionView!
     
+    private var mainClipView: NSClipView!
+    
     private var mainScrollView: NSScrollView!
     
     private var clearHistoryButton: NSButton!
@@ -34,7 +36,13 @@ class HistoryThumbnailView: NSView {
 
     private var currentCell: HistoryThumbnailItem?
     
+    private var lastContentOffset: NSPoint = .zero
+    
+    private var reductionSlip: Bool = false
+    
     var superMenu: NSMenu!
+    
+    private var menuIsOpen: Bool = false
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -44,13 +52,15 @@ class HistoryThumbnailView: NSView {
         super.init(frame: frameRect)
         initializeView()
         addConstraintCustom()
+        registrationNotice()
     }
     
     private func initializeView() {
         let flowLayout = HistoryThumbnailFlowLayout()
-        flowLayout.edgeInset = NSEdgeInsets(top: historyRecordLeftRightInsetGlobal, left: 5, bottom: 50.0, right: historyRecordLeftRightInsetGlobal)
-        flowLayout.columnCount = previewLineNumberGlobal
-        flowLayout.lineSpacing = previewLineSpacingGlobal
+        flowLayout.columnCount = HistoryRecordColumnsGlobal
+        flowLayout.minimumColumnSpacing = Float(HistoryRecordSpacingGlobal)
+        flowLayout.minimumInteritemSpacing = Float(HistoryRecordSpacingGlobal)
+        flowLayout.sectionInset = NSEdgeInsets(top: 5, left: HistoryRecordPaddingGlobal, bottom: 50.0, right: HistoryRecordPaddingGlobal)
         
         mainCollectionView = NSCollectionView(frame: bounds)
         
@@ -60,12 +70,12 @@ class HistoryThumbnailView: NSView {
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
         
-        let clipView = NSClipView()
-        clipView.documentView = mainCollectionView
+        mainClipView = NSClipView()
+        mainClipView.documentView = mainCollectionView
         
         mainScrollView = NSScrollView(frame: bounds)
         mainScrollView.backgroundColor = NSColor.clear
-        mainScrollView.contentView = clipView
+        mainScrollView.contentView = mainClipView
         addSubview(mainScrollView)
         mainScrollView.contentView.postsBoundsChangedNotifications = true
         let center = NotificationCenter.default
@@ -85,7 +95,6 @@ class HistoryThumbnailView: NSView {
     }
     
     private func addConstraintCustom () {
-        
         mainScrollView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -96,11 +105,23 @@ class HistoryThumbnailView: NSView {
             make.width.height.equalTo(44)
         }
     }
+
+    private func registrationNotice() {
+        ConfigNotifier.addObserver(observer: self, selector: #selector(updateHistoryList), notification: .updateHistoryList)
+    }
+    
+    @objc private func updateHistoryList() {
+        if menuIsOpen == true {
+            mainCollectionView.reloadData()
+            clearHistoryButton.toolTip = "\("Clear upload history".localized) \(ConfigManager.shared.getHistoryList_New().count)"
+        }
+    }
     
     @objc
     private func clearHistory() {
         ConfigManager.shared.clearHistoryList_New()
         mainCollectionView.reloadData()
+        lastContentOffset = .zero
     }
     
     // copy history url
@@ -112,6 +133,15 @@ class HistoryThumbnailView: NSView {
     @objc // 滑动
     private func boundsDidChangeNotification(notification: NSNotification) {
         currentCell?.updateTrackingAreas()
+        guard reductionSlip == false else {
+            reductionSlip = false
+            return
+        }
+        lastContentOffset = mainScrollView.documentVisibleRect.origin
+    }
+    
+    deinit {
+        ConfigNotifier.removeObserver(observer: self, notification: .updateHistoryList)
     }
     
 }
@@ -173,24 +203,25 @@ extension HistoryThumbnailView: NSCollectionViewDelegate {
     }
 }
 
-extension HistoryThumbnailView: NSCollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
+extension HistoryThumbnailView: HistoryThumbnailFlowLayoutDelegate {
+    func collectionView(_ collectionView: NSCollectionView, layout: NSCollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let historyList = ConfigManager.shared.getHistoryList_New()
         let model = historyList[indexPath.item]
         return model.thumbnailSize
     }
 }
 
-extension HistoryThumbnailView: HistoryThumbnailFlowLayoutDelegate {
-    func collectionView(_ collectionView: NSCollectionView, itemWidth: CGFloat, heightForItemAt indexPath: IndexPath) -> CGFloat {
-        let historyList = ConfigManager.shared.getHistoryList_New()
-        let model = historyList[indexPath.item]
-        return model.thumbnailHeight
-    }
-}
-
 extension HistoryThumbnailView: NSMenuDelegate {
     func menuWillOpen(_ menu: NSMenu) {
-//        mainCollectionView.reloadData()
+        reductionSlip = true
+        menuIsOpen = true
+        mainCollectionView.reloadData()
+        mainClipView.documentView = mainCollectionView
+        mainClipView.documentView?.scroll(lastContentOffset)
+        clearHistoryButton.toolTip = "\("Clear history record".localized) \(ConfigManager.shared.getHistoryList_New().count)"
+    }
+
+    func menuDidClose(_ menu: NSMenu) {
+        menuIsOpen = false
     }
 }
