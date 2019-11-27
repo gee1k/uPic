@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.0.0-rc.2)
+  - Alamofire (5.0.0-rc.3)
   - CryptoSwift (1.2.0)
   - Kingfisher (5.9.0):
     - Kingfisher/Core (= 5.9.0)
@@ -11,7 +11,7 @@ PODS:
   - SwiftyXMLParser (5.1.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.0.0-rc.2)
+  - Alamofire (~> 5.0.0-rc.3)
   - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
   - Kingfisher
   - MASShortcut
@@ -45,7 +45,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/yahoojapan/SwiftyXMLParser.git
 
 SPEC CHECKSUMS:
-  Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
   CryptoSwift: 40e374e45291d8dceedcb0d6184da94533eaabdf
   Kingfisher: ff98240aebb7302bdc4f1ecd701761030ce18b16
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
@@ -54,6 +54,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwiftyXMLParser: 8271497e0a37b5c04b0b167c77b4896e36175a21
 
-PODFILE CHECKSUM: 3db51175519b196167037cd55cbc3403dd631842
+PODFILE CHECKSUM: 565b96ccb1bd03559a1e77f0afdb53addedee28a
 
 COCOAPODS: 1.8.4

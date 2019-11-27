@@ -84,7 +84,7 @@ class HistoryThumbnailView: NSView {
         clearHistoryButton = NSButton(image: NSImage(named: "cleanButton")!, target: self, action: #selector(clearHistory))
         clearHistoryButton.appearance = NSAppearance(named: NSAppearance.Name.aqua)
         clearHistoryButton.bezelStyle = .smallSquare
-        clearHistoryButton.toolTip = "\("Clear upload history".localized) \(ConfigManager.shared.getHistoryList_New().count)"
+        clearHistoryButton.toolTip = "\("Clear history record".localized) \(ConfigManager.shared.getHistoryList_New().count)"
         clearHistoryButton.isTransparent = true
         addSubview(clearHistoryButton)
         

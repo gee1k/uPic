@@ -57,38 +57,12 @@
 
 "Did not get the file URL" = "没有获取到文件URL";
 
-/* 状态栏菜单选择文件 */
-"Select File" = "选择文件";
-/* 状态栏菜单屏幕截图 */
-"Screenshot and upload" = "截图上传";
-/* 状态栏菜单上传剪切板中的文件 */
-"Upload copied file" = "上传已拷贝的文件";
 /* 状态栏菜单图床 */
 "Hosts" = "图床";
 /* 状态栏菜单输出格式 */
 "Output format" = "输出格式";
 /* 状态栏菜单上传前压缩图片 */
 "Compress images before uploading" = "上传前压缩图片";
-/* 状态栏菜单偏好设置 */
-"Preference" = "偏好设置";
-/* 状态栏菜单退出 */
-"Quit" = "退出";
-/* 菜单栏检查更新按钮标题：检查更新 */
-"Check for updates" = "检查更新";
-/* 菜单栏上传历史 */
-"Upload history" = "上传历史";
-/* 菜单栏清空上传历史 */
-"Clear upload history" = "清空上传历史";
-/* 菜单栏没有上传历史 */
-"No upload history" = "暂无上传历史";
-/* 菜单栏帮助 */
-"Help" = "帮助";
-"Tutorial" = "使用教程";
-"Import hosts" = "导入图床配置";
-"Export hosts" = "导出图床配置";
-"Sponsor" = "赞助（打赏）";
-/* cancel upload */
-"Cancel upload" = "取消上传";
 
 "Reset User Preferences?" = "重置用户偏好设置?";
 "⚠️ Note that this will reset all user preferences" = "⚠️ 注意这将会重置所有用户偏好设置";
