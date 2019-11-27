@@ -17,6 +17,9 @@
 /* Class = "NSWindow"; title = "Preferences"; ObjectID = "5f3-UK-Rft"; */
 "5f3-UK-Rft.title" = "偏好设置";
 
+/* Class = "NSButtonCell"; title = "Reset"; ObjectID = "8gb-uy-oRd"; */
+"8gb-uy-oRd.title" = "重置";
+
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "8lH-1K-GR0"; */
 "8lH-1K-GR0.title" = "复制";
 
