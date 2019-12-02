@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.14.2</title>
+			<description>
+			<![CDATA[
+			<h1 id="new">New</h1> <ul> <li>Add history record configuration. (Thanks to <a href="https://github.com/L1cardo">L1cardo</a>)</li> </ul> <h1 id="improved">Improved</h1> <ul> <li>Overly long file names can be scrolled. (Thanks to <a href="https://github.com/nlnlnull">nlnlnull</a>)</li> <li>Addresses a bug where history timers are repeatedly called. (Thanks to <a href="https://github.com/nlnlnull">nlnlnull</a>)</li> <li>Optimize the display &amp; disappear logic when sliding. (Thanks to <a href="https://github.com/nlnlnull">nlnlnull</a>)</li> </ul>
+			]]>
+			</description>
+			<pubDate>Mon, 02 Dec 2019 05:20:05 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.14.2/uPic.dmg" sparkle:version="20191202" sparkle:shortVersionString="v0.14.2" type="application/octet-stream" sparkle:edSignature="RqnNnmKVmGPsTXBHkofohZuRlit/xm9vfKZO3tcbAWWxh2yp2Ik1jH8rguJE/+oGm6b1SXdEGTcKuWOfQj0QDA==" length="12417688"/>
+		</item>
+		<item>
 			<title>v0.14.1 Release</title>
 			<description>
 			<![CDATA[
