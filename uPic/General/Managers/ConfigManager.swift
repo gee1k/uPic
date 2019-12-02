@@ -8,15 +8,15 @@
 
 import Foundation
 import Cocoa
-import ServiceManagement
+import LoginServiceKit
 
 public class ConfigManager {
-
+    
     // static
     public static var shared = ConfigManager()
-
+    
     // instance
-
+    
     public var firstUsage: BoolType {
         if Defaults[.firstUsage] == nil {
             Defaults[.firstUsage] = BoolType._false.rawValue
@@ -25,30 +25,19 @@ public class ConfigManager {
             return ._false
         }
     }
-
-    public var launchAtLogin: BoolType? {
-        get {
-            return Defaults[.launchAtLogin].map(BoolType.init(rawValue:)) ?? nil
-        }
-
-        set {
-            Defaults[.launchAtLogin] = newValue?.rawValue
-            
-            SMLoginItemSetEnabled(Constants.launcherAppIdentifier as CFString, newValue?.bool ?? false)
-        }
-    }
     
     public func firstSetup() {
         guard firstUsage == ._true else {
             return
         }
-        Defaults[.launchAtLogin] = BoolType._false.rawValue
         Defaults[.compressFactor] = 100
         Defaults.synchronize()
         
         self.setHostItems(items: [Host.getDefaultHost()])
+        
+        LoginServiceKit.removeLoginItems()
     }
-
+    
     public func removeAllUserDefaults() {
         // 提前取出图床配置
         let hostItems = self.getHostItems()
@@ -71,7 +60,7 @@ public class ConfigManager {
             self.setHistoryList_New(items: list)
         }
     }
-
+    
 }
 
 
@@ -87,7 +76,6 @@ extension ConfigManager {
         Defaults.synchronize()
         ConfigNotifier.postNotification(.changeHostItems)
     }
-    
     
     func getDefaultHost() -> Host? {
         guard let defaultHostId = Defaults[.defaultHostId], let hostItems = Defaults[.hostItems] else {
@@ -190,7 +178,7 @@ extension ConfigManager {
                 }
                 let hostItems = array.map(){ str in
                     return Host.deserialize(str: str)
-                    }.filter { $0 != nil }
+                }.filter { $0 != nil }
                 if hostItems.count == 0 {
                     NotificationExt.shared.postImportErrorNotice()
                     return

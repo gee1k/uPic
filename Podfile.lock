@@ -4,6 +4,7 @@ PODS:
   - Kingfisher (5.9.0):
     - Kingfisher/Core (= 5.9.0)
   - Kingfisher/Core (5.9.0)
+  - LoginServiceKit (2.1.0)
   - MASShortcut (2.4.0)
   - SnapKit (5.0.1)
   - Sparkle (1.22.0)
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
   - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
   - Kingfisher
+  - LoginServiceKit (from `https://github.com/Clipy/LoginServiceKit.git`)
   - MASShortcut
   - SnapKit (~> 5.0.0)
   - Sparkle
@@ -33,6 +35,8 @@ EXTERNAL SOURCES:
   CryptoSwift:
     :branch: master
     :git: https://github.com/krzyzanowskim/CryptoSwift
+  LoginServiceKit:
+    :git: https://github.com/Clipy/LoginServiceKit.git
   SwiftyXMLParser:
     :git: https://github.com/yahoojapan/SwiftyXMLParser.git
 
@@ -40,6 +44,9 @@ CHECKOUT OPTIONS:
   CryptoSwift:
     :commit: de6030ce08110b9c6c27310b47b1a4ffc98c4173
     :git: https://github.com/krzyzanowskim/CryptoSwift
+  LoginServiceKit:
+    :commit: 01b162248760b5fed4c7bffebee37eb92351b41b
+    :git: https://github.com/Clipy/LoginServiceKit.git
   SwiftyXMLParser:
     :commit: bc85162ecee60d6eb94b778648bc4c51e1c4d34f
     :git: https://github.com/yahoojapan/SwiftyXMLParser.git
@@ -48,12 +55,13 @@ SPEC CHECKSUMS:
   Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
   CryptoSwift: 40e374e45291d8dceedcb0d6184da94533eaabdf
   Kingfisher: ff98240aebb7302bdc4f1ecd701761030ce18b16
+  LoginServiceKit: 9a8b258c3111fa0d9585615052f778b08be92302
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Sparkle: 593ac2e677c07bcb6c3b22d621240e7cbedaab57
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwiftyXMLParser: 8271497e0a37b5c04b0b167c77b4896e36175a21
 
-PODFILE CHECKSUM: 565b96ccb1bd03559a1e77f0afdb53addedee28a
+PODFILE CHECKSUM: 8af186af5701d6bdb9b11224181c373b78833da2
 
 COCOAPODS: 1.8.4

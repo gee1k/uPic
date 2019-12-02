@@ -28,7 +28,6 @@
 		163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */; };
 		163632F122B274B400805E7F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F022B274B400805E7F /* Date+Extension.swift */; };
 		163632F322B2751D00805E7F /* BoolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632F222B2751D00805E7F /* BoolType.swift */; };
-		16396F6422C918AF00E2EA73 /* uPicHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16EA204922AF8AB30006FB9C /* uPicHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1646B80622C79337009271DF /* GiteeUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80422C79325009271DF /* GiteeUploader.swift */; };
 		1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80522C79325009271DF /* GiteeHostConfig.swift */; };
 		1646B80822C79349009271DF /* GiteeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1646B80322C79325009271DF /* GiteeUtil.swift */; };
@@ -101,9 +100,6 @@
 		16D20B58238390F2006D8D01 /* BaiduUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B57238390F2006D8D01 /* BaiduUploader.swift */; };
 		16D20B5A238390F4006D8D01 /* BaiduUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B59238390F4006D8D01 /* BaiduUtil.swift */; };
 		16D20B5C238392C9006D8D01 /* BaiduConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */; };
-		16EA204C22AF8AB30006FB9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA204B22AF8AB30006FB9C /* AppDelegate.swift */; };
-		16EA205022AF8AB40006FB9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16EA204F22AF8AB40006FB9C /* Assets.xcassets */; };
-		16EA205322AF8AB40006FB9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16EA205122AF8AB40006FB9C /* Main.storyboard */; };
 		16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205B22AF8FB90006FB9C /* ConfigManager.swift */; };
 		16F7467422E994A300480A62 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F7467322E994A300480A62 /* FinderSync.swift */; };
 		16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 16F7467122E994A300480A62 /* uPicFinderExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -143,7 +139,6 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				16396F6422C918AF00E2EA73 /* uPicHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,12 +252,6 @@
 		16D20B57238390F2006D8D01 /* BaiduUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduUploader.swift; sourceTree = "<group>"; };
 		16D20B59238390F4006D8D01 /* BaiduUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduUtil.swift; sourceTree = "<group>"; };
 		16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduConfigView.swift; sourceTree = "<group>"; };
-		16EA204922AF8AB30006FB9C /* uPicHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPicHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		16EA204B22AF8AB30006FB9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		16EA204F22AF8AB40006FB9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		16EA205222AF8AB40006FB9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		16EA205422AF8AB40006FB9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		16EA205522AF8AB40006FB9C /* uPicHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPicHelper.entitlements; sourceTree = "<group>"; };
 		16EA205B22AF8FB90006FB9C /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
 		16EC9A0222ABBBB4001B6C89 /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16F7467122E994A300480A62 /* uPicFinderExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicFinderExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -298,13 +287,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		16EA204622AF8AB30006FB9C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,11 +541,9 @@
 			isa = PBXGroup;
 			children = (
 				16A6DC5622AA375700813706 /* uPic */,
-				16EA204A22AF8AB30006FB9C /* uPicHelper */,
 				16F7467222E994A300480A62 /* uPicFinderExtension */,
 				F517F004DFA2ACE018535745 /* Frameworks */,
 				16EC9A0222ABBBB4001B6C89 /* uPic.app */,
-				16EA204922AF8AB30006FB9C /* uPicHelper.app */,
 				16F7467122E994A300480A62 /* uPicFinderExtension.appex */,
 				FFE257116AEC8F0F743663E3 /* Pods */,
 			);
@@ -616,18 +596,6 @@
 				16D20B59238390F4006D8D01 /* BaiduUtil.swift */,
 			);
 			path = Baidu;
-			sourceTree = "<group>";
-		};
-		16EA204A22AF8AB30006FB9C /* uPicHelper */ = {
-			isa = PBXGroup;
-			children = (
-				16EA204B22AF8AB30006FB9C /* AppDelegate.swift */,
-				16EA204F22AF8AB40006FB9C /* Assets.xcassets */,
-				16EA205122AF8AB40006FB9C /* Main.storyboard */,
-				16EA205422AF8AB40006FB9C /* Info.plist */,
-				16EA205522AF8AB40006FB9C /* uPicHelper.entitlements */,
-			);
-			path = uPicHelper;
 			sourceTree = "<group>";
 		};
 		16F7467222E994A300480A62 /* uPicFinderExtension */ = {
@@ -712,23 +680,6 @@
 			productReference = 16EC9A0222ABBBB4001B6C89 /* uPic.app */;
 			productType = "com.apple.product-type.application";
 		};
-		16EA204822AF8AB30006FB9C /* uPicHelper */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 16EA205622AF8AB40006FB9C /* Build configuration list for PBXNativeTarget "uPicHelper" */;
-			buildPhases = (
-				16EA204522AF8AB30006FB9C /* Sources */,
-				16EA204622AF8AB30006FB9C /* Frameworks */,
-				16EA204722AF8AB30006FB9C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = uPicHelper;
-			productName = uPicHelper;
-			productReference = 16EA204922AF8AB30006FB9C /* uPicHelper.app */;
-			productType = "com.apple.product-type.application";
-		};
 		16F7467022E994A300480A62 /* uPicFinderExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 16F7467A22E994A300480A62 /* Build configuration list for PBXNativeTarget "uPicFinderExtension" */;
@@ -768,17 +719,6 @@
 							};
 						};
 					};
-					16EA204822AF8AB30006FB9C = {
-						CreatedOnToolsVersion = 10.2.1;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.Mac = {
-								enabled = 0;
-							};
-							com.apple.Sandbox = {
-								enabled = 1;
-							};
-						};
-					};
 					16F7467022E994A300480A62 = {
 						CreatedOnToolsVersion = 10.3;
 						SystemCapabilities = {
@@ -807,7 +747,6 @@
 			projectRoot = "";
 			targets = (
 				16A6DC5322AA375700813706 /* uPic */,
-				16EA204822AF8AB30006FB9C /* uPicHelper */,
 				16F7467022E994A300480A62 /* uPicFinderExtension */,
 			);
 		};
@@ -823,15 +762,6 @@
 				1623611B22AB935300E4025C /* InfoPlist.strings in Resources */,
 				169F073B22AF53DE008E8525 /* Preferences.storyboard in Resources */,
 				16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		16EA204722AF8AB30006FB9C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				16EA205022AF8AB40006FB9C /* Assets.xcassets in Resources */,
-				16EA205322AF8AB40006FB9C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -997,14 +927,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		16EA204522AF8AB30006FB9C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				16EA204C22AF8AB30006FB9C /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		16F7466D22E994A300480A62 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1062,14 +984,6 @@
 				961AA898238E9764005A25C9 /* en */,
 			);
 			name = Preferences.storyboard;
-			sourceTree = "<group>";
-		};
-		16EA205122AF8AB40006FB9C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				16EA205222AF8AB40006FB9C /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1204,7 +1118,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 20191202;
-				DEVELOPMENT_TEAM = W863J6W8DZ;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1234,7 +1148,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 20191202;
-				DEVELOPMENT_TEAM = W863J6W8DZ;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1251,52 +1165,6 @@
 			};
 			name = Release;
 		};
-		16EA205722AF8AB40006FB9C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = uPicHelper/uPicHelper.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = W863J6W8DZ;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = uPicHelper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPicHelper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		16EA205822AF8AB40006FB9C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = uPicHelper/uPicHelper.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = W863J6W8DZ;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = uPicHelper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPicHelper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		16F7467B22E994A300480A62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1305,7 +1173,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = W863J6W8DZ;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1330,7 +1198,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = W863J6W8DZ;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1364,15 +1232,6 @@
 			buildConfigurations = (
 				16A6DC6522AA375800813706 /* Debug */,
 				16A6DC6622AA375800813706 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		16EA205622AF8AB40006FB9C /* Build configuration list for PBXNativeTarget "uPicHelper" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				16EA205722AF8AB40006FB9C /* Debug */,
-				16EA205822AF8AB40006FB9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

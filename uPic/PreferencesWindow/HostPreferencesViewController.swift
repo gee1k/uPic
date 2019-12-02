@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import ServiceManagement
 import SwiftyJSON
 
 class HostPreferencesViewController: PreferencesViewController {
