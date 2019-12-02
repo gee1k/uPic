@@ -17,11 +17,20 @@
 /* Class = "NSWindow"; title = "Preferences"; ObjectID = "5f3-UK-Rft"; */
 "5f3-UK-Rft.title" = "Preferences";
 
+/* Class = "NSButtonCell"; title = "Reset"; ObjectID = "8gb-uy-oRd"; */
+"8gb-uy-oRd.title" = "Reset";
+
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "8lH-1K-GR0"; */
 "8lH-1K-GR0.title" = "Copy";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "8px-ng-UpC"; */
 "8px-ng-UpC.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Spacing:"; ObjectID = "AYG-Uz-MYq"; */
+"AYG-Uz-MYq.title" = "Spacing:";
+
+/* Class = "NSTextFieldCell"; title = "File name scroll speed:"; ObjectID = "BBZ-i9-B2g"; */
+"BBZ-i9-B2g.title" = "File name scroll speed:";
 
 /* Class = "NSButtonCell"; title = "Add Header Field"; ObjectID = "Ckh-A7-mxC"; */
 "Ckh-A7-mxC.title" = "Add Header Field";
@@ -62,8 +71,14 @@
 /* Class = "NSTextFieldCell"; title = "Open file Selection:"; ObjectID = "Mqt-Fp-Ssl"; */
 "Mqt-Fp-Ssl.title" = "Open file Selection:";
 
+/* Class = "NSTextFieldCell"; title = "Columns:"; ObjectID = "N1b-Cf-tno"; */
+"N1b-Cf-tno.title" = "Columns:";
+
 /* Class = "NSTextFieldCell"; title = "🐦 Twitter:"; ObjectID = "OKr-1C-5jV"; */
 "OKr-1C-5jV.title" = "🐦 Twitter:";
+
+/* Class = "NSTextFieldCell"; title = "File name scroll wait time:"; ObjectID = "ON0-aF-BNd"; */
+"ON0-aF-BNd.title" = "File name scroll wait time:";
 
 /* Class = "NSBox"; title = "Header and Body Data"; ObjectID = "OaN-c4-l0X"; */
 "OaN-c4-l0X.title" = "Header and Body Data";
@@ -74,14 +89,17 @@
 /* Class = "NSButtonCell"; title = "⚠️ Reset"; ObjectID = "TD4-LI-X9U"; */
 "TD4-LI-X9U.title" = "⚠️ Reset";
 
+/* Class = "NSTextFieldCell"; title = "History record"; ObjectID = "UN0-Iq-Cop"; */
+"UN0-Iq-Cop.title" = "History record";
+
 /* Class = "NSTextFieldCell"; title = "💸 Donate:"; ObjectID = "Vjv-pA-ffP"; */
 "Vjv-pA-ffP.title" = "💸 Donate:";
 
 /* Class = "NSTextFieldCell"; title = "✉️ Contact:"; ObjectID = "Vu4-Wz-Agk"; */
 "Vu4-Wz-Agk.title" = "✉️ Contact:";
 
-/* Class = "NSTextFieldCell"; title = "Upload with Screenshot:"; ObjectID = "Xd9-iA-emU"; */
-"Xd9-iA-emU.title" = "Upload with Screenshot:";
+/* Class = "NSTextFieldCell"; title = "Upload from Screenshot:"; ObjectID = "Xd9-iA-emU"; */
+"Xd9-iA-emU.title" = "Upload from Screenshot:";
 
 /* Class = "NSTextFieldCell"; title = "file url:"; ObjectID = "ZK1-y8-8KP"; */
 "ZK1-y8-8KP.title" = "file url:";
@@ -89,11 +107,14 @@
 /* Class = "NSButtonCell"; title = "Launch uPic at login"; ObjectID = "ZbK-xW-anT"; */
 "ZbK-xW-anT.title" = "Launch uPic at login";
 
-/* Class = "NSTextFieldCell"; placeholderString = "domain: https://"; ObjectID = "b48-7x-KE9"; */
-"b48-7x-KE9.placeholderString" = "domain: https://";
+/* Class = "NSTextFieldCell"; placeholderString = "domain:https://"; ObjectID = "b48-7x-KE9"; */
+"b48-7x-KE9.placeholderString" = "domain:https://";
 
-/* Class = "NSTextFieldCell"; title = "Upload with Pasteboard:"; ObjectID = "bvy-v3-hhf"; */
-"bvy-v3-hhf.title" = "Upload with Pasteboard:";
+/* Class = "NSTextFieldCell"; title = "Padding:"; ObjectID = "bp8-mz-gke"; */
+"bp8-mz-gke.title" = "Padding:";
+
+/* Class = "NSTextFieldCell"; title = "Upload from Pasteboard:"; ObjectID = "bvy-v3-hhf"; */
+"bvy-v3-hhf.title" = "Upload from Pasteboard:";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "chO-9j-Fca"; */
 "chO-9j-Fca.title" = "Edit";
@@ -116,11 +137,17 @@
 /* Class = "NSButtonCell"; title = "@geee1k"; ObjectID = "i90-se-6z8"; */
 "i90-se-6z8.title" = "@geee1k";
 
+/* Class = "NSTextFieldCell"; title = "Width:"; ObjectID = "iRI-j6-BHQ"; */
+"iRI-j6-BHQ.title" = "Width:";
+
 /* Class = "NSTextFieldCell"; title = "Reset"; ObjectID = "jcs-Ou-OZ2"; */
 "jcs-Ou-OZ2.title" = "Reset";
 
 /* Class = "NSButtonCell"; title = "Reset preferences"; ObjectID = "jyI-H7-qN3"; */
 "jyI-H7-qN3.title" = "Reset preferences";
+
+/* Class = "NSButtonCell"; title = "Save"; ObjectID = "k4M-cg-63L"; */
+"k4M-cg-63L.title" = "Save";
 
 /* Class = "NSViewController"; title = "About"; ObjectID = "k6X-N1-mVu"; */
 "k6X-N1-mVu.title" = "About";
@@ -130,9 +157,6 @@
 
 /* Class = "NSTextFieldCell"; title = "uPic"; ObjectID = "mOB-su-ZM1"; */
 "mOB-su-ZM1.title" = "uPic";
-
-/* Class = "NSButtonCell"; title = "Button"; ObjectID = "n0U-xp-8UI"; */
-"n0U-xp-8UI.title" = "Button";
 
 /* Class = "NSTextFieldCell"; title = "uPic will automatically launch at login."; ObjectID = "ngT-lX-vFA"; */
 "ngT-lX-vFA.title" = "uPic will automatically launch at login.";

@@ -49,7 +49,7 @@ class BaseUploader {
                     previewWidth = bigSize * originalScale
                 }
                 
-                let imageSize = NSSize(width: previewDefaulWidthGlobal, height: previewDefaulWidthGlobal / originalScale)
+                let imageSize = NSSize(width: PreviewDefaulWidthGlobal, height: PreviewDefaulWidthGlobal / originalScale)
                 thumbnailData = image.resizeImage(size: imageSize).tiffRepresentation
                 isImage = true
             }

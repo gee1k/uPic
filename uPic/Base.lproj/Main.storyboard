@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -100,62 +100,50 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="veO-oa-UPB" customClass="StatusMenuController" customModule="uPic" customModuleProvider="target">
                     <connections>
-                        <outlet property="cancelUploadMenuItem" destination="Gxh-8r-tsq" id="hE4-jQ-xwi"/>
+                        <outlet property="cancelUploadMenuItem" destination="Gxh-8r-tsq" id="Bqs-5p-sfy"/>
                         <outlet property="cancelUploadMenuSeparator" destination="ggN-TB-JZW" id="V4H-J4-ftj"/>
-                        <outlet property="checkUpdateMenuItem" destination="yai-4F-Btp" id="klG-hy-GGO"/>
                         <outlet property="compressFactorMenuItem" destination="eIU-EA-uQZ" id="uMq-Nm-vXy"/>
-                        <outlet property="exportHostsMenuItem" destination="Yuc-Vp-9Pd" id="JIW-vZ-WbR"/>
-                        <outlet property="helpMenuItem" destination="2Jw-ET-3eH" id="Ubq-wz-L3N"/>
                         <outlet property="historyMenu" destination="MjM-mX-Ci5" id="b7E-HG-zZU"/>
-                        <outlet property="historyMenuItem" destination="EhO-Zw-XXj" id="okQ-0q-kK5"/>
                         <outlet property="hostMenuItem" destination="d02-bT-1Lv" id="Ah0-J0-Z4M"/>
-                        <outlet property="importHostsMenuItem" destination="HNM-7K-zzn" id="Jmj-DT-7ky"/>
                         <outlet property="ouputFormatMenuItem" destination="1BX-LF-q51" id="H54-M9-CBq"/>
-                        <outlet property="preferenceMenuItem" destination="VW7-Z2-hXR" id="Mhm-Tb-F4W"/>
-                        <outlet property="quitMenuItem" destination="0JF-m2-1iq" id="qTr-PH-bBg"/>
-                        <outlet property="screenshotMenuItem" destination="ueU-fm-1nn" id="lV8-I2-PPX"/>
-                        <outlet property="selectFileMenuItem" destination="p0A-6d-cAU" id="G7k-5Y-yGX"/>
-                        <outlet property="sponsorMenuItem" destination="yCF-Ec-Lgz" id="ay4-ZY-qfZ"/>
                         <outlet property="statusMenu" destination="fqV-BN-CNE" id="XoS-be-xDF"/>
-                        <outlet property="tutorialMenuItem" destination="O8o-6e-fZn" id="3FX-T4-S1c"/>
-                        <outlet property="uploadPasteboardMenuItem" destination="orX-KL-q11" id="MyG-41-1SW"/>
                     </connections>
                 </customObject>
                 <customObject id="Oqi-DG-w38" customClass="SUUpdater"/>
                 <menu id="fqV-BN-CNE">
                     <items>
-                        <menuItem title="取消上传" id="Gxh-8r-tsq">
+                        <menuItem title="Cancel upload" id="Gxh-8r-tsq">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="cancelUploadMenuItemClicked:" target="veO-oa-UPB" id="rRC-ge-OFt"/>
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="ggN-TB-JZW"/>
-                        <menuItem title="选择文件" id="p0A-6d-cAU">
+                        <menuItem title="Select file" id="p0A-6d-cAU">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="selectFileMenuItemClicked:" target="veO-oa-UPB" id="yXR-uI-dbU"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="上传剪切板中的文件" id="orX-KL-q11">
+                        <menuItem title="Upload from clipboard" id="orX-KL-q11">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="uploadPasteboardMenuItemClicked:" target="veO-oa-UPB" id="2eR-9E-643"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="截图上传" id="ueU-fm-1nn">
+                        <menuItem title="Upload from screenshot" id="ueU-fm-1nn">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="screenshotMenuItemClicked:" target="veO-oa-UPB" id="hJ1-oS-CNS"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="图床" id="d02-bT-1Lv">
+                        <menuItem title="Host" id="d02-bT-1Lv">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="图床" id="J3c-l3-LmQ"/>
+                            <menu key="submenu" title="Host" id="J3c-l3-LmQ"/>
                         </menuItem>
-                        <menuItem title="输出格式" id="1BX-LF-q51">
+                        <menuItem title="Output format" id="1BX-LF-q51">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="输出格式" id="XmF-iN-Y0V">
+                            <menu key="submenu" title="Output format" id="XmF-iN-Y0V">
                                 <items>
                                     <menuItem title="URL" id="U1c-9i-q5b">
                                         <modifierMask key="keyEquivalentModifierMask"/>
@@ -184,45 +172,45 @@
                                 </items>
                             </menu>
                         </menuItem>
-                        <menuItem title="上传前压缩图片" id="eIU-EA-uQZ">
+                        <menuItem title="Compress images before uploading" id="eIU-EA-uQZ">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="上传前压缩图片" id="4yH-6k-LD0"/>
+                            <menu key="submenu" title="Compress images before uploading" id="4yH-6k-LD0"/>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="bfM-jE-V7Q"/>
-                        <menuItem title="上传历史" id="EhO-Zw-XXj">
+                        <menuItem title="History record" id="EhO-Zw-XXj">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="上传历史" id="MjM-mX-Ci5"/>
+                            <menu key="submenu" title="History record" id="MjM-mX-Ci5"/>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="9go-zg-sPT"/>
-                        <menuItem title="偏好设置" id="VW7-Z2-hXR">
+                        <menuItem title="Preferences..." id="VW7-Z2-hXR">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="preferenceMenuItemClicked:" target="veO-oa-UPB" id="dVz-M2-Nxa"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="帮助" id="2Jw-ET-3eH">
+                        <menuItem title="Help" id="2Jw-ET-3eH">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="帮助" id="Z6H-TN-83r">
+                            <menu key="submenu" title="Help" id="Z6H-TN-83r">
                                 <items>
-                                    <menuItem title="检查更新" id="yai-4F-Btp">
+                                    <menuItem title="Check for updates..." id="yai-4F-Btp">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="checkForUpdates:" target="Oqi-DG-w38" id="D85-2L-1Ob"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="使用教程" id="O8o-6e-fZn">
+                                    <menuItem title="Tutorial" id="O8o-6e-fZn">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="guideMenuItemClicked:" target="veO-oa-UPB" id="PRm-Bb-SKG"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="导入图床配置" id="HNM-7K-zzn">
+                                    <menuItem title="Import host configuration" id="HNM-7K-zzn">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="importHostsMenuItemClicked:" target="veO-oa-UPB" id="76m-Ru-6rH"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="导出图床配置" id="Yuc-Vp-9Pd">
+                                    <menuItem title="Export host configuration" id="Yuc-Vp-9Pd">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="exportHostsMenuItemClicked:" target="veO-oa-UPB" id="ZAp-pp-wFi"/>
@@ -231,9 +219,9 @@
                                 </items>
                             </menu>
                         </menuItem>
-                        <menuItem title="赞助" id="yCF-Ec-Lgz">
+                        <menuItem title="Donate" id="yCF-Ec-Lgz">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="赞助" id="iGe-NR-YFa">
+                            <menu key="submenu" title="Donate" id="iGe-NR-YFa">
                                 <items>
                                     <menuItem title="Paypal" id="70g-zL-O4p">
                                         <modifierMask key="keyEquivalentModifierMask"/>
@@ -241,13 +229,13 @@
                                             <action selector="paypalMenuItemClicked:" target="veO-oa-UPB" id="G5h-aO-WVm"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="支付宝(Alipay)" id="aHw-Zc-eD7">
+                                    <menuItem title="Alipay" id="aHw-Zc-eD7">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="alipayMenuItemClicked:" target="veO-oa-UPB" id="SQA-fB-WmZ"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="微信(WeChat)" id="Qky-3r-Bgs">
+                                    <menuItem title="WeChat" id="Qky-3r-Bgs">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="wechatPayMenuItemClicked:" target="veO-oa-UPB" id="vzQ-HN-NXw"/>
@@ -257,7 +245,7 @@
                             </menu>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="M7L-b9-8Hc"/>
-                        <menuItem title="退出" keyEquivalent="q" id="0JF-m2-1iq">
+                        <menuItem title="Quit" keyEquivalent="q" id="0JF-m2-1iq">
                             <connections>
                                 <action selector="quitMenuItemClicked:" target="veO-oa-UPB" id="e0d-Ue-lUF"/>
                             </connections>

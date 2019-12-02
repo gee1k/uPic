@@ -14,11 +14,16 @@ struct Keys {
     static let hostItems = "uPic_hostItems"
     static let defaultHostId = "uPic_DefaultHostId"
     static let ouputFormat = "uPic_OutputFormat"
-    static let historyList = "uPic_HistoryList"
-    static let historyList_New = "uPic_HistoryList_New"
-    static let historyLimit = "uPic_HistoryLimit"
-    static let historyLimit_New = "uPic_HistoryLimit_New"
+    static let historyList = "uPic_HistoryList_New"
+    static let historyLimit = "uPic_HistoryLimit_New"
     static let compressFactor = "uPic_CompressFactor"
+    // historyRecord
+    static let historyRecordWidth = "uPic_HistoryRecordWidth"
+    static let historyRecordColumns = "uPic_HistoryRecordColumns"
+    static let historyRecordSpacing = "uPic_HistoryRecordSpacing"
+    static let historyRecordPadding = "uPic_HistoryRecordPadding"
+    static let historyRecordFileNameScrollSpeed = "uPic_HistoryRecordFileNameScrollSpeed"
+    static let historyRecordFileNameScrollWaitTime = "uPic_HistoryRecordFileNameScrollWaitTime"
 }
 
 class DefaultsKeys {
@@ -46,9 +51,15 @@ extension DefaultsKeys {
     static let hostItems = DefaultsKey<[Host]>(Keys.hostItems)
     static let defaultHostId = DefaultsKey<Int>(Keys.defaultHostId)
     static let ouputFormat = DefaultsKey<Int>(Keys.ouputFormat)
-    static let historyList_New = DefaultsKey<[[String: Any]]>(Keys.historyList_New)
-    static let historyLimit_New = DefaultsKey<Int>(Keys.historyLimit_New)
+    static let historyList = DefaultsKey<[[String: Any]]>(Keys.historyList)
+    static let historyLimit = DefaultsKey<Int>(Keys.historyLimit)
     static let compressFactor = DefaultsKey<Int>(Keys.compressFactor)
+    static let historyRecordWidth = DefaultsKey<Float>(Keys.historyRecordWidth)
+    static let historyRecordColumns = DefaultsKey<Int>(Keys.historyRecordColumns)
+    static let historyRecordSpacing = DefaultsKey<Float>(Keys.historyRecordSpacing)
+    static let historyRecordPadding = DefaultsKey<Float>(Keys.historyRecordPadding)
+    static let historyRecordFileNameScrollSpeed = DefaultsKey<Double>(Keys.historyRecordFileNameScrollSpeed)
+    static let historyRecordFileNameScrollWaitTime = DefaultsKey<Float>(Keys.historyRecordFileNameScrollWaitTime)
 
 }
 
@@ -67,6 +78,15 @@ extension UserDefaults {
     subscript(key: DefaultsKey<Int>) -> Int? {
         get {
             return integer(forKey: key._key)
+        }
+        set {
+            set(newValue, forKey: key._key)
+        }
+    }
+    
+    subscript(key: DefaultsKey<Double>) -> Double? {
+        get {
+            return double(forKey: key._key)
         }
         set {
             set(newValue, forKey: key._key)

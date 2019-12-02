@@ -1,21 +1,21 @@
 
-/* Class = "NSMenuItem"; title = "退出"; ObjectID = "0JF-m2-1iq"; */
-"0JF-m2-1iq.title" = "退出";
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "0JF-m2-1iq"; */
+"0JF-m2-1iq.title" = "Quit";
 
-/* Class = "NSMenuItem"; title = "输出格式"; ObjectID = "1BX-LF-q51"; */
-"1BX-LF-q51.title" = "输出格式";
+/* Class = "NSMenuItem"; title = "Output format"; ObjectID = "1BX-LF-q51"; */
+"1BX-LF-q51.title" = "Output format";
 
 /* Class = "NSMenuItem"; title = "uPic"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "uPic";
 
-/* Class = "NSMenuItem"; title = "帮助"; ObjectID = "2Jw-ET-3eH"; */
-"2Jw-ET-3eH.title" = "帮助";
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "2Jw-ET-3eH"; */
+"2Jw-ET-3eH.title" = "Help";
 
 /* Class = "NSMenuItem"; title = "Quit uPic"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Quit uPic";
 
-/* Class = "NSMenu"; title = "上传前压缩图片"; ObjectID = "4yH-6k-LD0"; */
-"4yH-6k-LD0.title" = "上传前压缩图片";
+/* Class = "NSMenu"; title = "Compress images before uploading"; ObjectID = "4yH-6k-LD0"; */
+"4yH-6k-LD0.title" = "Compress images before uploading";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
 "5QF-Oa-p0T.title" = "Edit";
@@ -35,26 +35,26 @@
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
 "DVo-aG-piG.title" = "Close";
 
-/* Class = "NSMenuItem"; title = "上传历史"; ObjectID = "EhO-Zw-XXj"; */
-"EhO-Zw-XXj.title" = "上传历史";
+/* Class = "NSMenuItem"; title = "History record"; ObjectID = "EhO-Zw-XXj"; */
+"EhO-Zw-XXj.title" = "History record";
 
-/* Class = "NSMenuItem"; title = "取消上传"; ObjectID = "Gxh-8r-tsq"; */
-"Gxh-8r-tsq.title" = "取消上传";
+/* Class = "NSMenuItem"; title = "Cancel upload"; ObjectID = "Gxh-8r-tsq"; */
+"Gxh-8r-tsq.title" = "Cancel upload";
 
-/* Class = "NSMenuItem"; title = "导入图床配置"; ObjectID = "HNM-7K-zzn"; */
-"HNM-7K-zzn.title" = "导入图床配置";
+/* Class = "NSMenuItem"; title = "Import host configuration"; ObjectID = "HNM-7K-zzn"; */
+"HNM-7K-zzn.title" = "Import host configuration";
 
 /* Class = "NSMenuItem"; title = "UBB"; ObjectID = "Hz2-gj-luo"; */
 "Hz2-gj-luo.title" = "UBB";
 
-/* Class = "NSMenu"; title = "图床"; ObjectID = "J3c-l3-LmQ"; */
-"J3c-l3-LmQ.title" = "图床";
+/* Class = "NSMenu"; title = "Host"; ObjectID = "J3c-l3-LmQ"; */
+"J3c-l3-LmQ.title" = "Host";
 
-/* Class = "NSMenu"; title = "上传历史"; ObjectID = "MjM-mX-Ci5"; */
-"MjM-mX-Ci5.title" = "上传历史";
+/* Class = "NSMenu"; title = "History record"; ObjectID = "MjM-mX-Ci5"; */
+"MjM-mX-Ci5.title" = "History record";
 
-/* Class = "NSMenuItem"; title = "使用教程"; ObjectID = "O8o-6e-fZn"; */
-"O8o-6e-fZn.title" = "使用教程";
+/* Class = "NSMenuItem"; title = "Tutorial"; ObjectID = "O8o-6e-fZn"; */
+"O8o-6e-fZn.title" = "Tutorial";
 
 /* Class = "NSMenuItem"; title = "Markdown"; ObjectID = "Opc-aA-hUg"; */
 "Opc-aA-hUg.title" = "Markdown";
@@ -68,20 +68,20 @@
 /* Class = "NSMenuItem"; title = "URL"; ObjectID = "U1c-9i-q5b"; */
 "U1c-9i-q5b.title" = "URL";
 
-/* Class = "NSMenuItem"; title = "偏好设置"; ObjectID = "VW7-Z2-hXR"; */
-"VW7-Z2-hXR.title" = "偏好设置";
+/* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "VW7-Z2-hXR"; */
+"VW7-Z2-hXR.title" = "Preferences...";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "W48-6f-4Dl"; */
 "W48-6f-4Dl.title" = "Edit";
 
-/* Class = "NSMenu"; title = "输出格式"; ObjectID = "XmF-iN-Y0V"; */
-"XmF-iN-Y0V.title" = "输出格式";
+/* Class = "NSMenu"; title = "Output format"; ObjectID = "XmF-iN-Y0V"; */
+"XmF-iN-Y0V.title" = "Output format";
 
-/* Class = "NSMenuItem"; title = "导出图床配置"; ObjectID = "Yuc-Vp-9Pd"; */
-"Yuc-Vp-9Pd.title" = "导出图床配置";
+/* Class = "NSMenuItem"; title = "Export host configuration"; ObjectID = "Yuc-Vp-9Pd"; */
+"Yuc-Vp-9Pd.title" = "Export host configuration";
 
-/* Class = "NSMenu"; title = "帮助"; ObjectID = "Z6H-TN-83r"; */
-"Z6H-TN-83r.title" = "帮助";
+/* Class = "NSMenu"; title = "Help"; ObjectID = "Z6H-TN-83r"; */
+"Z6H-TN-83r.title" = "Help";
 
 /* Class = "NSMenuItem"; title = "Alipay"; ObjectID = "aHw-Zc-eD7"; */
 "aHw-Zc-eD7.title" = "Alipay";
@@ -89,8 +89,8 @@
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "File";
 
-/* Class = "NSMenuItem"; title = "图床"; ObjectID = "d02-bT-1Lv"; */
-"d02-bT-1Lv.title" = "图床";
+/* Class = "NSMenuItem"; title = "Host"; ObjectID = "d02-bT-1Lv"; */
+"d02-bT-1Lv.title" = "Host";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
 "dMs-cI-mzQ.title" = "File";
@@ -98,20 +98,20 @@
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "dRJ-4n-Yzg"; */
 "dRJ-4n-Yzg.title" = "Undo";
 
-/* Class = "NSMenuItem"; title = "上传前压缩图片"; ObjectID = "eIU-EA-uQZ"; */
-"eIU-EA-uQZ.title" = "上传前压缩图片";
+/* Class = "NSMenuItem"; title = "Compress images before uploading"; ObjectID = "eIU-EA-uQZ"; */
+"eIU-EA-uQZ.title" = "Compress images before uploading";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "gVA-U4-sdL"; */
 "gVA-U4-sdL.title" = "Paste";
 
-/* Class = "NSMenu"; title = "赞助"; ObjectID = "iGe-NR-YFa"; */
-"iGe-NR-YFa.title" = "赞助";
+/* Class = "NSMenu"; title = "Donate"; ObjectID = "iGe-NR-YFa"; */
+"iGe-NR-YFa.title" = "Donate";
 
-/* Class = "NSMenuItem"; title = "上传剪切板中的文件"; ObjectID = "orX-KL-q11"; */
-"orX-KL-q11.title" = "上传剪切板中的文件";
+/* Class = "NSMenuItem"; title = "Upload from clipboard"; ObjectID = "orX-KL-q11"; */
+"orX-KL-q11.title" = "Upload from clipboard";
 
-/* Class = "NSMenuItem"; title = "选择文件"; ObjectID = "p0A-6d-cAU"; */
-"p0A-6d-cAU.title" = "选择文件";
+/* Class = "NSMenuItem"; title = "Select file"; ObjectID = "p0A-6d-cAU"; */
+"p0A-6d-cAU.title" = "Select file";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "pa3-QI-u2k"; */
 "pa3-QI-u2k.title" = "Delete";
@@ -122,8 +122,8 @@
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "uRl-iY-unG"; */
 "uRl-iY-unG.title" = "Cut";
 
-/* Class = "NSMenuItem"; title = "截图上传"; ObjectID = "ueU-fm-1nn"; */
-"ueU-fm-1nn.title" = "截图上传";
+/* Class = "NSMenuItem"; title = "Upload from screenshot"; ObjectID = "ueU-fm-1nn"; */
+"ueU-fm-1nn.title" = "Upload from screenshot";
 
 /* Class = "NSMenuItem"; title = "HTML"; ObjectID = "wCN-Y7-fdU"; */
 "wCN-Y7-fdU.title" = "HTML";
@@ -131,8 +131,8 @@
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "x3v-GG-iWU"; */
 "x3v-GG-iWU.title" = "Copy";
 
-/* Class = "NSMenuItem"; title = "赞助"; ObjectID = "yCF-Ec-Lgz"; */
-"yCF-Ec-Lgz.title" = "赞助";
+/* Class = "NSMenuItem"; title = "Donate"; ObjectID = "yCF-Ec-Lgz"; */
+"yCF-Ec-Lgz.title" = "Donate";
 
-/* Class = "NSMenuItem"; title = "检查更新"; ObjectID = "yai-4F-Btp"; */
-"yai-4F-Btp.title" = "检查更新";
+/* Class = "NSMenuItem"; title = "Check for updates..."; ObjectID = "yai-4F-Btp"; */
+"yai-4F-Btp.title" = "Check for updates...";

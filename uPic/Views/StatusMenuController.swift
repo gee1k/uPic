@@ -14,49 +14,17 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     let previewTypes = ["jpeg", "jpg", "png", "gif", "bmp", "tiff"]
 
     @IBOutlet weak var statusMenu: NSMenu!
-
     @IBOutlet weak var historyMenu: NSMenu!
-    
     @IBOutlet weak var cancelUploadMenuItem: NSMenuItem!
     @IBOutlet weak var cancelUploadMenuSeparator: NSMenuItem!
-    @IBOutlet weak var selectFileMenuItem: NSMenuItem!
-    @IBOutlet weak var uploadPasteboardMenuItem: NSMenuItem!
-    @IBOutlet weak var screenshotMenuItem: NSMenuItem!
     @IBOutlet weak var hostMenuItem: NSMenuItem!
     @IBOutlet weak var ouputFormatMenuItem: NSMenuItem!
     @IBOutlet weak var compressFactorMenuItem: NSMenuItem!
-    @IBOutlet weak var historyMenuItem: NSMenuItem!
-    @IBOutlet weak var preferenceMenuItem: NSMenuItem!
-    @IBOutlet weak var helpMenuItem: NSMenuItem!
-    @IBOutlet weak var checkUpdateMenuItem: NSMenuItem!
-    @IBOutlet weak var tutorialMenuItem: NSMenuItem!
-    @IBOutlet weak var importHostsMenuItem: NSMenuItem!
-    @IBOutlet weak var exportHostsMenuItem: NSMenuItem!
-    
-    @IBOutlet weak var sponsorMenuItem: NSMenuItem!
-    @IBOutlet weak var quitMenuItem: NSMenuItem!
 
     override func awakeFromNib() {
 
         statusMenu.delegate = self
         
-        cancelUploadMenuItem.title = "Cancel upload".localized
-        selectFileMenuItem.title = "Select File".localized
-        uploadPasteboardMenuItem.title = "Upload copied file".localized
-        screenshotMenuItem.title = "Screenshot and upload".localized
-        hostMenuItem.title = "Hosts".localized
-        ouputFormatMenuItem.title = "Output format".localized
-        compressFactorMenuItem.title = "Compress images before uploading".localized
-        historyMenuItem.title = "Upload history".localized
-        preferenceMenuItem.title = "Preference".localized
-        helpMenuItem.title = "Help".localized
-        checkUpdateMenuItem.title = "Check for updates".localized
-        tutorialMenuItem.title = "Tutorial".localized
-        importHostsMenuItem.title = "Import hosts".localized
-        exportHostsMenuItem.title = "Export hosts".localized
-        sponsorMenuItem.title = "Sponsor".localized
-        quitMenuItem.title = "Quit".localized
-
         resetHostMenu()
         resetUploadHistory()
         refreshOutputFormat()
@@ -204,7 +172,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         self.refreshCompressFactor()
     }
 
-    // reset upload history menu list
+    // reset history record menu list
     @objc func resetUploadHistory() {
 
         historyMenu.cancelTracking()
@@ -214,9 +182,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         historyMenu.addItem(imgMenuItem)
         
         let previewView = HistoryThumbnailView()
-        historyMenu.delegate = self
+        historyMenu.delegate = previewView
         previewView.superMenu = historyMenu
-        previewView.frame.size = NSSize(width: historyRecordViewWidthGlobal, height: 400)
+        previewView.frame.size = NSSize(width: HistoryRecordWidthGlobal, height: 400)
         imgMenuItem.view = previewView
     }
 
@@ -264,6 +232,37 @@ class StatusMenuController: NSObject, NSMenuDelegate {
                 item.state = .off
             }
         }
+        
+        var title = ""
+        switch Defaults[.ouputFormat] {
+        case 0:
+            title = "URL"
+        case 1:
+            title = "HTML"
+        case 2:
+            title = "Markdown"
+        case 3:
+            title = "UBB"
+        default:
+            title = ""
+        }
+        
+        self.setOutputFormatMenuTitle(factorTitle: title)
+    }
+    
+    func setOutputFormatMenuTitle(factorTitle: String?) {
+        let outputFormatTitle = "Output format".localized
+
+        if let subTitle = factorTitle {
+
+            let str = "\(outputFormatTitle)   \(subTitle)"
+            let attributed = NSMutableAttributedString(string: str)
+            let subTitleAttr = [NSAttributedString.Key.font: NSFont.menuFont(ofSize: 12), NSAttributedString.Key.foregroundColor: NSColor.gray]
+            attributed.setAttributes(subTitleAttr, range: NSRange(outputFormatTitle.utf16.count + 1 ..< str.utf16.count))
+            ouputFormatMenuItem.attributedTitle = attributed
+        } else {
+            ouputFormatMenuItem.title = outputFormatTitle
+        }
     }
 
     // refresh compress factor to select
@@ -296,7 +295,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         if let subTitle = hostName {
 
-            let str = "\(hostMenuTitle)        \(subTitle)"
+            let str = "\(hostMenuTitle)   \(subTitle)"
             let attributed = NSMutableAttributedString(string: str)
             let subTitleAttr = [NSAttributedString.Key.font: NSFont.menuFont(ofSize: 12), NSAttributedString.Key.foregroundColor: NSColor.gray]
             attributed.setAttributes(subTitleAttr, range: NSRange(hostMenuTitle.utf16.count + 1 ..< str.utf16.count))

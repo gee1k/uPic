@@ -52,7 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.setupStatusBar()
         
         self.bindShortcuts()
-
+        
         // 添加 Finder 右键文件上传监听
         UploadNotifier.addObserver(observer: self, selector: #selector(uploadFilesFromFinderMenu), notification: .uploadFiles)
     }
