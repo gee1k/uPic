@@ -49,15 +49,19 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     }
 
     @IBAction func didClickHistoryRecordConfigurationResetButton(_ sender: NSButton) {
-        Defaults[.historyRecordWidth] = Float(500)
-        Defaults[.historyRecordColumns] = Int(3)
-        Defaults[.historyRecordSpacing] = Float(5)
-        Defaults[.historyRecordPadding] = Float(5)
-        Defaults[.historyRecordFileNameScrollSpeed] = Double(30)
-        Defaults[.historyRecordFileNameScrollWaitTime] = Float(1)
         
-        setHistoryRecordTextFieldDefaultText()
-        ConfigNotifier.postNotification(.changeHistoryList)
+        Defaults.removeObject(forKey: Keys.historyRecordWidth)
+        Defaults.removeObject(forKey: Keys.historyRecordColumns)
+        Defaults.removeObject(forKey: Keys.historyRecordSpacing)
+        Defaults.removeObject(forKey: Keys.historyRecordPadding)
+        Defaults.removeObject(forKey: Keys.historyRecordFileNameScrollSpeed)
+        Defaults.removeObject(forKey: Keys.historyRecordFileNameScrollWaitTime)
+        Defaults.synchronize()
+        
+        DispatchQueue.main.async {
+            self.setHistoryRecordTextFieldDefaultText()
+            ConfigNotifier.postNotification(.changeHistoryList)
+        }
     }
     
     @IBAction func didClickHistoryRecordConfigurationSaveButton(_ sender: NSButton) {
@@ -95,11 +99,12 @@ class AdvancedPreferencesViewController: PreferencesViewController {
             SMLoginItemSetEnabled(Constants.launcherAppIdentifier as CFString, false)
             ConfigManager.shared.removeAllUserDefaults()
             ConfigManager.shared.firstSetup()
-            _ = NSApplication.shared.delegate as! AppDelegate
-//            appDelegate.setStatusToggle()
             
-            // reset all values
-            resetAllValues()
+            DispatchQueue.main.async {
+                ConfigNotifier.postNotification(.changeHistoryList)
+                self.resetAllValues()
+            }
+            
         default:
             print("Cancel Resetting User Preferences")
         }

@@ -50,18 +50,26 @@ public class ConfigManager {
     }
 
     public func removeAllUserDefaults() {
+        // 提前取出图床配置
+        let hostItems = self.getHostItems()
+        let defaultHostId = Defaults[.defaultHostId]
+        let historyList = self.getHistoryList_New()
         
-        let ignoreKeys = [Keys.hostItems, Keys.defaultHostId, Keys.historyList]
-        
-        let dics = Defaults.dictionaryRepresentation()
-        for key in dics {
-            if ignoreKeys.contains(key.key) {
-                continue
-            }
-            Defaults.removeObject(forKey: key.key)
-        }
+        let domain = Bundle.main.bundleIdentifier!
+        Defaults.removePersistentDomain(forName: domain)
         Defaults.synchronize()
         
+        DispatchQueue.main.async {
+            // 清除所有用户设置后，再重新写入图床配置
+            self.setHostItems(items: hostItems)
+            Defaults[.defaultHostId] = defaultHostId
+            
+            let list = historyList.map { (model) -> [String: Any] in
+                return model.toKeyValue()
+            }
+            
+            self.setHistoryList_New(items: list)
+        }
     }
 
 }
