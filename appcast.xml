@@ -9,7 +9,7 @@
 			<title>v0.14.2</title>
 			<description>
 			<![CDATA[
-			<h1 id="new">New</h1> <ul> <li>Add history record configuration. (Thanks to <a href="https://github.com/L1cardo">L1cardo</a>)</li> </ul> <h1 id="improved">Improved</h1> <ul> <li>Overly long file names can be scrolled. (Thanks to <a href="https://github.com/nlnlnull">nlnlnull</a>)</li> <li>Addresses a bug where history timers are repeatedly called. (Thanks to <a href="https://github.com/nlnlnull">nlnlnull</a>)</li> <li>Optimize the display &amp; disappear logic when sliding. (Thanks to <a href="https://github.com/nlnlnull">nlnlnull</a>)</li> </ul>
+			<h1 id="new">New</h1> <ul> <li>新增上传历史配置功能。(感谢 <a href="https://github.com/L1cardo">L1cardo</a>)</li> </ul> <h1 id="improved">Improved</h1> <ul> <li>过长文件名可滚动展示。(感谢 <a href="https://github.com/nlnlnull">nlnlnull</a>)</li> <li>解决历史记录计时器重复调用的 Bug。(感谢 <a href="https://github.com/nlnlnull">nlnlnull</a>)</li> <li>优化滑动时的展示&amp;消失逻辑。(感谢 <a href="https://github.com/nlnlnull">nlnlnull</a>)</li> </ul> <hr /> <h1 id="new-1">New</h1> <ul> <li>Add history record configuration. (Thanks to <a href="https://github.com/L1cardo">L1cardo</a>)</li> </ul> <h1 id="improved-1">Improved</h1> <ul> <li>Overly long file names can be scrolled. (Thanks to <a href="https://github.com/nlnlnull">nlnlnull</a>)</li> <li>Addresses a bug where history timers are repeatedly called. (Thanks to <a href="https://github.com/nlnlnull">nlnlnull</a>)</li> <li>Optimize the display &amp; disappear logic when sliding. (Thanks to <a href="https://github.com/nlnlnull">nlnlnull</a>)</li> </ul>
 			]]>
 			</description>
 			<pubDate>Mon, 02 Dec 2019 05:20:05 +0000</pubDate>
