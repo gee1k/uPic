@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import ServiceManagement
+import LoginServiceKit
 
 class GeneralPreferencesViewController: PreferencesViewController {
 
@@ -31,15 +31,14 @@ class GeneralPreferencesViewController: PreferencesViewController {
     }
 
     @IBAction func launchButtonClicked(_ sender: NSButton) {
-        let isLaunch = launchButton.state == .on
-        let launchAtLogin: BoolType = isLaunch ? ._true : ._false
-        ConfigManager.shared.launchAtLogin = launchAtLogin
+        if sender.state == .on {
+            LoginServiceKit.addLoginItems()
+        } else if sender.state == .off {
+            LoginServiceKit.removeLoginItems()
+        }
     }
 
     func refreshButtonState() {
-        guard let launchAtLogin = ConfigManager.shared.launchAtLogin else {
-            return
-        }
-        launchButton.state = launchAtLogin == ._true ? .on : .off
+        launchButton.state = LoginServiceKit.isExistLoginItems() ? .on : .off
     }
 }

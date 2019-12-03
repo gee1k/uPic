@@ -12,7 +12,6 @@ import Foundation
 struct Constants {
     
     static let none = "None"
-    static let launcherAppIdentifier = "com.svend.uPicHelper"
 
     struct Key {
         static let selectFileShortcut = "uPic_SelectFileShortcut"

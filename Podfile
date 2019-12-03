@@ -15,4 +15,6 @@ use_frameworks!
     pod 'Sparkle'
     pod 'Kingfisher'
     pod 'SnapKit', '~> 5.0.0'
+    pod 'LoginServiceKit', :git => 'https://github.com/Clipy/LoginServiceKit.git'
+
 end

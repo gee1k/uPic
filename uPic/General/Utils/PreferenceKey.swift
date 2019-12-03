@@ -10,7 +10,6 @@ import Foundation
 
 struct Keys {
     static let firstUsage = "uPic_FirstUsage"
-    static let launchAtLogin = "uPic_LaunchAtLogin"
     static let hostItems = "uPic_hostItems"
     static let defaultHostId = "uPic_DefaultHostId"
     static let ouputFormat = "uPic_OutputFormat"
@@ -47,7 +46,6 @@ extension DefaultsKeys {
 
     // value example: BoolType._true.rawValue
     static let firstUsage = DefaultsKey<String>(Keys.firstUsage)
-    static let launchAtLogin = DefaultsKey<String>(Keys.launchAtLogin)
     static let hostItems = DefaultsKey<[Host]>(Keys.hostItems)
     static let defaultHostId = DefaultsKey<Int>(Keys.defaultHostId)
     static let ouputFormat = DefaultsKey<Int>(Keys.ouputFormat)
