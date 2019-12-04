@@ -16,5 +16,6 @@ use_frameworks!
     pod 'Kingfisher'
     pod 'SnapKit', '~> 5.0.0'
     pod 'LoginServiceKit', :git => 'https://github.com/Clipy/LoginServiceKit.git'
+    pod "libminipng"
 
 end

@@ -43,7 +43,7 @@ class QiniuUploader: BaseUploader {
             mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
             retData = BaseUploaderUtil.compressImage(fileUrl)
         } else if let fileData = fileData {
-            // MARK: 处理截图之类的图片，生成一个文件名
+            // 处理截图之类的图片，生成一个文件名
             let fileType = fileData.contentType() ?? "png"
             fileName = "\(hostSaveKey.getFileName()).\(fileType)"
             mimeType = Util.getMimeType(pathExtension: fileType)
