@@ -9,23 +9,22 @@
 import Cocoa
 
 class WeiboConfigView: ConfigView {
-    
-    override var settings: Bool {
-        return false
+    override init(frame frameRect: NSRect, data: HostConfig?) {
+        super.init(frame: frameRect, data: data)
+        
+        self.paddingTop = 50
     }
     
+    required init?(coder decoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func createView() {
+        super.createView()
         
         guard let data = self.data as? WeiboHostConfig else {
             return
         }
-        
-        let paddingTop = 50, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 90, labelHeight = 20,
-        viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
-        textFieldX = labelWidth + paddingLeft + gapLeft, textFieldWidth = viewWidth - paddingLeft - textFieldX
-        
-        var y = viewHeight - paddingTop
         
         // MARK: cookie mode
         
@@ -134,7 +133,7 @@ class WeiboConfigView: ConfigView {
         
         // MARK: help
         y = y - gapTop * 2 - labelHeight
-        super.createHelpBtn(paddingLeft, y, "https://blog.svend.cc/upic/tutorials/weibo")
+        super.createHelpBtn("https://blog.svend.cc/upic/tutorials/weibo")
     }
     
     @objc func cookieModeChanged(_ sender: NSButton) {

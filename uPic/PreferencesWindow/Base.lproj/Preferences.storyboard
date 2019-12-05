@@ -81,7 +81,7 @@
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ct1-0Y-gVn">
                                         <rect key="frame" x="18" y="0.0" width="203" height="14"/>
                                         <textFieldCell key="cell" selectable="YES" title="uPic will automatically launch at login." id="ngT-lX-vFA">
-                                            <font key="font" metaFont="menu" size="11"/>
+                                            <font key="font" metaFont="message" size="11"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -532,7 +532,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qri-L6-ZRL">
-                                        <rect key="frame" x="0.0" y="21" width="125" height="23"/>
+                                        <rect key="frame" x="-0.5" y="21" width="125" height="23"/>
                                         <buttonCell key="cell" type="roundTextured" title="Reset preferences" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jyI-H7-qN3">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -544,7 +544,7 @@
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="3HK-ud-hMQ">
                                         <rect key="frame" x="-2" y="0.0" width="252" height="14"/>
                                         <textFieldCell key="cell" selectable="YES" title="⚠️ Note that this will reset all user preferences" id="2Rg-te-FPU">
-                                            <font key="font" metaFont="menu" size="11"/>
+                                            <font key="font" metaFont="message" size="11"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1013,26 +1013,26 @@ Gw
             <objects>
                 <viewController title="Host" id="5Ln-jV-uxk" customClass="HostPreferencesViewController" customModule="uPic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="2op-TW-FtL">
-                        <rect key="frame" x="0.0" y="0.0" width="580" height="350"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="380"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7C9-Pv-TkL">
-                                <rect key="frame" x="20" y="10" width="540" height="320"/>
+                                <rect key="frame" x="20" y="10" width="560" height="350"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v6x-VK-RXa">
-                                        <rect key="frame" x="0.0" y="40" width="540" height="280"/>
+                                        <rect key="frame" x="0.0" y="40" width="560" height="310"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ViR-1p-Yza">
-                                                <rect key="frame" x="0.0" y="0.0" width="180" height="280"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="180" height="310"/>
                                                 <subviews>
                                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sm9-DK-5aJ">
-                                                        <rect key="frame" x="0.0" y="20" width="180" height="260"/>
+                                                        <rect key="frame" x="0.0" y="20" width="180" height="290"/>
                                                         <clipView key="contentView" id="Pq9-sM-HF5">
-                                                            <rect key="frame" x="1" y="1" width="178" height="258"/>
+                                                            <rect key="frame" x="1" y="1" width="178" height="288"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" viewBased="YES" id="5jU-eP-q6p">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="178" height="258"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="178" height="288"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1084,7 +1084,7 @@ Gw
                                                         </clipView>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="180" id="EgS-Z2-OZc"/>
-                                                            <constraint firstAttribute="height" constant="260" id="vhT-51-iy3"/>
+                                                            <constraint firstAttribute="height" constant="290" id="vhT-51-iy3"/>
                                                         </constraints>
                                                         <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="LRo-HQ-S7t">
                                                             <rect key="frame" x="1" y="119" width="223" height="15"/>
@@ -1184,7 +1184,7 @@ Gw
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="180" id="5S7-WM-Okp"/>
-                                                    <constraint firstAttribute="height" constant="280" id="Ech-0n-8YU"/>
+                                                    <constraint firstAttribute="height" constant="310" id="Ech-0n-8YU"/>
                                                     <constraint firstItem="Sm9-DK-5aJ" firstAttribute="leading" secondItem="ViR-1p-Yza" secondAttribute="leading" id="FU0-C0-dj4"/>
                                                     <constraint firstItem="oeW-sl-ovV" firstAttribute="leading" secondItem="ViR-1p-Yza" secondAttribute="leading" id="IgD-nU-mso"/>
                                                     <constraint firstAttribute="trailing" secondItem="Sm9-DK-5aJ" secondAttribute="trailing" id="QvN-Ok-CRQ"/>
@@ -1203,9 +1203,9 @@ Gw
                                                 </customSpacing>
                                             </stackView>
                                             <box boxType="custom" cornerRadius="4" title="HostSettings" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="dEW-XT-ogl">
-                                                <rect key="frame" x="180" y="0.0" width="360" height="280"/>
+                                                <rect key="frame" x="180" y="0.0" width="380" height="310"/>
                                                 <view key="contentView" identifier="UpYunConfigView" id="6bq-nL-Uwf">
-                                                    <rect key="frame" x="1" y="1" width="358" height="278"/>
+                                                    <rect key="frame" x="1" y="1" width="378" height="308"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </view>
                                                 <color key="borderColor" red="0.068882533479999994" green="0.068882533479999994" blue="0.068882533479999994" alpha="0.10252546715352111" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1214,9 +1214,9 @@ Gw
                                         <constraints>
                                             <constraint firstItem="ViR-1p-Yza" firstAttribute="top" secondItem="v6x-VK-RXa" secondAttribute="top" id="2ys-4R-BVu"/>
                                             <constraint firstItem="dEW-XT-ogl" firstAttribute="leading" secondItem="ViR-1p-Yza" secondAttribute="trailing" id="EIc-af-WB7"/>
-                                            <constraint firstAttribute="height" constant="280" id="GM9-WX-mPN"/>
+                                            <constraint firstAttribute="height" constant="310" id="GM9-WX-mPN"/>
                                             <constraint firstItem="ViR-1p-Yza" firstAttribute="leading" secondItem="v6x-VK-RXa" secondAttribute="leading" id="Pfd-ke-u2v"/>
-                                            <constraint firstAttribute="width" constant="540" id="XeX-pO-RB7"/>
+                                            <constraint firstAttribute="width" constant="560" id="XeX-pO-RB7"/>
                                             <constraint firstAttribute="bottom" secondItem="ViR-1p-Yza" secondAttribute="bottom" id="slZ-rn-fik"/>
                                         </constraints>
                                         <visibilityPriorities>
@@ -1229,10 +1229,10 @@ Gw
                                         </customSpacing>
                                     </stackView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="cdE-pR-Z2E">
-                                        <rect key="frame" x="0.0" y="0.0" width="540" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XXZ-1C-FIq">
-                                                <rect key="frame" x="442" y="2" width="97" height="32"/>
+                                                <rect key="frame" x="449" y="2" width="97" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nvN-EI-scz">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1243,7 +1243,7 @@ Gw
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZD-zT-qZX">
-                                                <rect key="frame" x="345" y="2" width="97" height="32"/>
+                                                <rect key="frame" x="352" y="2" width="97" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="push" title="⚠️ Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TD4-LI-X9U">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1256,7 +1256,7 @@ Gw
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Int-N1-hYx"/>
-                                            <constraint firstAttribute="width" constant="540" id="pmV-WU-sax"/>
+                                            <constraint firstAttribute="width" constant="560" id="pmV-WU-sax"/>
                                         </constraints>
                                     </customView>
                                 </subviews>

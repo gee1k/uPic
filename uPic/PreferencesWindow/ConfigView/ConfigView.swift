@@ -13,6 +13,34 @@ class ConfigView: NSView {
     var settings: Bool {
         return true
     }
+    
+    var paddingTop: Int = 30
+    var paddingLeft: Int = 6
+    var gapTop: Int = 10
+    var gapLeft: Int = 5
+    var labelWidth: Int = 75
+    var labelHeight: Int = 20
+    
+    var viewWidth: Int {
+        return Int(self.frame.width)
+    }
+    
+    var viewHeight: Int {
+        return Int(self.frame.height)
+    }
+    
+    
+    var textFieldX: Int {
+        return labelWidth + paddingLeft + gapLeft
+    }
+    
+    
+    var textFieldWidth: Int {
+        return viewWidth - paddingLeft - textFieldX
+    }
+    
+    var y: Int = 0
+    
     // 创建配置界面
     static func createConfigView(parentView: NSView, item: Host) {
         // MARK: 根据当前选择的图床，创建对应的配置界面
@@ -96,12 +124,87 @@ class ConfigView: NSView {
     
     func createView() {
         // Subclasses override
+        
+        // Initialize the y value
+        self.y = self.viewHeight - self.paddingTop
     }
     
-    func createHelpBtn(_ paddingRight: Int, _ y: Int, _ url: String) {
+    
+    /// Create domain input
+    /// - Parameters:
+    ///   - data: The host object being edited
+    ///   - paddingLeft: The distance to the left of the label
+    ///   - y: y-axis
+    ///   - labelWidth: labelWidth
+    ///   - labelHeight: labelHeight
+    ///   - textFieldX: textFieldX
+    ///   - textFieldWidth: textFieldWidth
+    func createDomainField(_ data: HostConfig) {
+        let domainLabel = NSTextField(labelWithString: "\(data.displayName(key: "domain")):")
+        domainLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
+        domainLabel.alignment = .right
+        domainLabel.lineBreakMode = .byClipping
+
+        let domainField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        domainField.identifier = NSUserInterfaceItemIdentifier(rawValue: "domain")
+        domainField.usesSingleLineMode = true
+        domainField.lineBreakMode = .byTruncatingTail
+        domainField.delegate = data
+        domainField.stringValue = data.value(forKey: "domain") as? String ?? ""
+        domainField.placeholderString = "domain:https://xxx.com".localized
+        self.domainField = domainField
+        self.addSubview(domainLabel)
+        self.addSubview(domainField)
+        nextKeyViews.append(domainField)
+    }
+    
+    /// Create save key input
+    /// - Parameters:
+    ///   - data: The host object being edited
+    ///   - paddingLeft: The distance to the left of the label
+    ///   - y: y-axis
+    ///   - labelWidth: labelWidth
+    ///   - labelHeight: labelHeight
+    ///   - textFieldX: textFieldX
+    ///   - textFieldWidth: textFieldWidth
+    func createSaveKeyField(_ data: HostConfig) {
+        let saveKeyPathLabel = NSTextField(labelWithString: "\(data.displayName(key: "saveKeyPath")):")
+        saveKeyPathLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
+        saveKeyPathLabel.alignment = .right
+        saveKeyPathLabel.lineBreakMode = .byClipping
+
+        let saveKeyPathField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        saveKeyPathField.identifier = NSUserInterfaceItemIdentifier(rawValue: "saveKeyPath")
+        saveKeyPathField.usesSingleLineMode = true
+        saveKeyPathField.lineBreakMode = .byTruncatingTail
+        saveKeyPathField.delegate = data
+        saveKeyPathField.stringValue = data.value(forKey: "saveKeyPath") as? String ?? ""
+        saveKeyPathField.placeholderString = "uPic/{filename}{.suffix}"
+        self.addSubview(saveKeyPathLabel)
+        self.addSubview(saveKeyPathField)
+        nextKeyViews.append(saveKeyPathField)
+        
+        let saveKeyPathTips = NSTextField(wrappingLabelWithString: "Save Key Tips".localized)
+        saveKeyPathTips.frame = NSRect(x: textFieldX, y: y - labelHeight * 3 / 2 - 55, width: textFieldWidth, height: 80)
+        saveKeyPathTips.font = NSFont.userFont(ofSize: 12.0)
+        saveKeyPathTips.lineBreakMode = .byWordWrapping
+        saveKeyPathTips.cell?.wraps = true
+        saveKeyPathTips.isSelectable = true
+        
+        self.addSubview(saveKeyPathTips)
+        
+    }
+    
+    
+    /// Create help button
+    /// - Parameters:
+    ///   - paddingRight: Distance to the right
+    ///   - y: y-axis
+    ///   - url: Help document address
+    func createHelpBtn(_ url: String) {
         let helpBtn = NSButton(title: "", target: self, action: #selector(openTutorial(_:)))
         let helpBtnWidth = Int(helpBtn.frame.width)
-        helpBtn.frame = NSRect(x: Int(self.frame.width) - helpBtnWidth - paddingRight, y: y, width: helpBtnWidth, height: Int(helpBtn.frame.height))
+        helpBtn.frame = NSRect(x: Int(self.frame.width) - helpBtnWidth - paddingLeft, y: 0, width: helpBtnWidth, height: Int(helpBtn.frame.height))
         helpBtn.title = ""
         helpBtn.bezelStyle = .helpButton
         helpBtn.imagePosition = .imageOnly

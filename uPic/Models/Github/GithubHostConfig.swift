@@ -18,6 +18,7 @@ class GithubHostConfig: HostConfig {
     dynamic var domain: String?
     dynamic var folder: String?
     dynamic var saveKey: String! = HostSaveKey.filename.rawValue
+    dynamic var saveKeyPath: String?
     
     override func displayName(key: String) -> String {
         switch key {
@@ -33,6 +34,8 @@ class GithubHostConfig: HostConfig {
             return "Domain".localized
         case "folder":
             return "Folder".localized
+        case "saveKeyPath":
+            return "Save Key".localized
         case "saveKey":
             return "File Name".localized
         default:
@@ -49,6 +52,7 @@ class GithubHostConfig: HostConfig {
         dict["domain"] = self.domain
         dict["folder"] = self.folder
         dict["saveKey"] = self.saveKey
+        dict["saveKeyPath"] = self.saveKeyPath
         
         return JSON(dict).rawString()!
     }
@@ -67,6 +71,7 @@ class GithubHostConfig: HostConfig {
         config.domain = json["domain"].stringValue
         config.folder = json["folder"].stringValue
         config.saveKey = json["saveKey"].stringValue
+        config.saveKeyPath = json["saveKeyPath"].stringValue
         return config
     }
 }

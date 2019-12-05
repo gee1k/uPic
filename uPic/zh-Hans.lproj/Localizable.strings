@@ -102,6 +102,7 @@
 "Header Data" = "Headers 数据";
 "Body Data" = "Body 数据";
 "Client ID" = "Client ID";
+"Save Key" = "保存路径";
 
 /* host field placeholder */
 "Operator name" = "操作员名称";
@@ -111,6 +112,8 @@
 "Can be empty, there is a default domain" = "可为空，有默认域名";
 "The path to the URL field in Response JSON" = "返回 JSON 中的 URL 字段的路径";
 "(optional),When filled, URL = domain + URL path value" = "(可选)，当填写时，URL = 前缀 + URL 路径值";
+
+"Save Key Tips" = "支持 {year} {mon} {day} {hours} {minutes} {seconds} {since_seconds} {since_milliseconds} {random} {filename} {.suffix} 等变量。比如：上传的图片为 uPic.jpg，设定为 “uPic/{filename}{.suffix}”，则会保存到 “uPic/uPic.jpg”。";
 
 /*host type*/
 "host.type.-1" = "自定义";

@@ -102,6 +102,7 @@
 "Header Data" = "Header Data";
 "Body Data" = "Body Data";
 "Client ID" = "Client ID";
+"Save Key" = "Save Key";
 
 /* host field placeholder */
 "Operator name" = "Operator name";
@@ -111,6 +112,8 @@
 "Can be empty, there is a default domain" = "Can be empty, there is a default domain";
 "The path to the URL field in Response JSON" = "The path to the URL field in Response JSON";
 "(optional),When filled, URL = domain + URL path value" = "(optional),When filled, URL = domain + URL path value";
+
+"Save Key Tips" = "Support {year} {mon} {day} {hours} {minutes} {seconds} {since_seconds} {since_milliseconds} {random} {filename} {.suffix} vars. For example, you upload file uPic.jpg, set to \"uPic/{filename}{.suffix}\" will be saved to: uPic/uPic.jpg.";
 
 /*host type*/
 "host.type.-1" = "Custom";
