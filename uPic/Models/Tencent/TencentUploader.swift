@@ -29,9 +29,10 @@ class TencentUploader: BaseUploader {
         let bucket = config.bucket!
         let secretId = config.secretId!
         let secretKey = config.secretKey!
-        let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
         let region = TencentRegion.formatRegion(config.region)
+        
+        let saveKeyPath = config.saveKeyPath
 
         let url = TencentUtil.computeUrl(bucket: bucket, region: region)
         let hostUri = TencentUtil.computeHost(bucket: bucket, region: region)
@@ -41,28 +42,14 @@ class TencentUploader: BaseUploader {
             return
         }
 
-        var retData = fileData
-        var fileName = ""
-        var mimeType = ""
-        if let fileUrl = fileUrl {
-            fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
-            mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
-            retData = BaseUploaderUtil.compressImage(fileUrl)
-        } else if let fileData = fileData {
-            // MARK: 处理截图之类的图片，生成一个文件名
-            let fileType = fileData.contentType() ?? "png"
-            fileName = "\(hostSaveKey.getFileName()).\(fileType)"
-            mimeType = Util.getMimeType(pathExtension: fileType)
-            retData = BaseUploaderUtil.compressImage(fileData)
-        } else {
+        guard let configuration = BaseUploaderUtil.getSaveConfiguration(fileUrl, fileData, saveKeyPath) else {
             super.faild(errorMsg: "Invalid file")
             return
         }
-
-        var key = fileName
-        if (config.folder != nil && config.folder!.count > 0) {
-            key = "\(config.folder!)/\(key)"
-        }
+        let retData = configuration["retData"] as? Data
+        let fileName = configuration["fileName"] as! String
+        let mimeType = configuration["mimeType"] as! String
+        let saveKey = configuration["saveKey"] as! String
 
         // MARK: 签名部分
         let qSignAlgorithm = "sha1"
@@ -91,7 +78,7 @@ class TencentUploader: BaseUploader {
         
         
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
-            multipartFormData.append(key.data(using: .utf8)!, withName: "key")
+            multipartFormData.append(saveKey.data(using: .utf8)!, withName: "key")
             if retData != nil {
                 multipartFormData.append(retData!, withName: "file", fileName: fileName, mimeType: mimeType)
             } else if fileUrl != nil {
@@ -106,9 +93,9 @@ class TencentUploader: BaseUploader {
             switch response.result {
             case .success(_):
                 if domain.isEmpty {
-                    super.completed(url: "\(url)/\(key)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
+                    super.completed(url: "\(url)/\(saveKey)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
                 } else {
-                    super.completed(url: "\(domain)/\(key)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
                 }
             case .failure(let error):
                 var errorMessage = error.localizedDescription

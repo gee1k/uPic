@@ -11,16 +11,12 @@ import Cocoa
 class GithubConfigView: ConfigView {
     
     override func createView() {
+        super.createView()
         
         guard let data = self.data as? GithubHostConfig else {
             return
         }
         
-        let paddingTop = 50, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 75, labelHeight = 20,
-        viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
-        textFieldX = labelWidth + paddingLeft + gapLeft, textFieldWidth = viewWidth - paddingLeft - textFieldX
-        
-        var y = viewHeight - paddingTop
         
         // MARK: owner
         let ownerLabel = NSTextField(labelWithString: "\(data.displayName(key: "owner")):")
@@ -93,38 +89,18 @@ class GithubConfigView: ConfigView {
         self.addSubview(tokenField)
         nextKeyViews.append(tokenField)
         
-        
+       
         // MARK: domain
         y = y - gapTop - labelHeight
-        let settingsBtnWith = 40
-        
-        let domainLabel = NSTextField(labelWithString: "\(data.displayName(key: "domain")):")
-        domainLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
-        domainLabel.alignment = .right
-        domainLabel.lineBreakMode = .byClipping
-        
-        let domainField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth - settingsBtnWith, height: labelHeight))
-        domainField.identifier = NSUserInterfaceItemIdentifier(rawValue: "domain")
-        domainField.usesSingleLineMode = true
-        domainField.lineBreakMode = .byTruncatingTail
-        domainField.delegate = data
-        domainField.stringValue = data.domain ?? ""
-        domainField.placeholderString = "Can be empty, there is a default domain".localized
-        self.domainField = domainField
-        
-        let settingsBtn = NSButton(title: "", image: NSImage(named: NSImage.advancedName)!, target: self, action: #selector(openConfigSheet(_:)))
-        settingsBtn.frame = NSRect(x: textFieldX + Int(domainField.frame.width) + gapLeft, y: y, width: settingsBtnWith, height: labelHeight)
-        settingsBtn.imagePosition = .imageOnly
-        
-        self.addSubview(domainLabel)
-        self.addSubview(domainField)
-        self.addSubview(settingsBtn)
-        nextKeyViews.append(domainField)
-        nextKeyViews.append(settingsBtn)
+        self.createDomainField(data)
+        self.domainField?.placeholderString = "Can be empty, there is a default domain".localized
+        // MARK: saveKeyPath
+        y = y - gapTop - labelHeight
+        self.createSaveKeyField(data)
         
         // MARK: help
         y = y - gapTop * 2 - labelHeight
-        super.createHelpBtn(paddingLeft, y, "https://blog.svend.cc/upic/tutorials/github")
+        super.createHelpBtn("https://blog.svend.cc/upic/tutorials/github")
     }
     
     

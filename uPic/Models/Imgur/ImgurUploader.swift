@@ -34,31 +34,12 @@ class ImgurUploader: BaseUploader {
 
         let clientId = config.clientId!
 
-        var fileName = ""
-        var fileBase64 = ""
-        
-        if let fileUrl = fileUrl {
-            fileName = fileUrl.lastPathComponent
-            
-            do {
-                var data = try Data(contentsOf: fileUrl)
-                data = BaseUploaderUtil.compressImage(data)
-                fileBase64 = data.toBase64()
-            } catch {
-                super.faild(errorMsg: "Invalid file")
-                return
-            }
-        } else if let fileData = fileData {
-            // MARK: 处理截图之类的图片，生成一个文件名
-            let fileType = fileData.contentType() ?? "png"
-            fileName = "\(HostSaveKey.random.getFileName()).\(fileType)"
-            
-            let retData = BaseUploaderUtil.compressImage(fileData)
-            fileBase64 = retData.toBase64()
-        } else {
+        guard let configuration = BaseUploaderUtil.getSaveConfigurationWithB64(fileUrl, fileData, nil) else {
             super.faild(errorMsg: "Invalid file")
             return
         }
+        let fileBase64 = configuration["fileBase64"] as! String
+        let fileName = configuration["fileName"] as! String
 
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.authorization("Client-ID \(clientId)"))

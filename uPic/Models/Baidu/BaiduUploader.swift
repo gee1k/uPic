@@ -29,9 +29,10 @@ class BaiduUploader: BaseUploader {
         let bucket = config.bucket!
         let accessKey = config.accessKey!
         let secretKey = config.secretKey!
-        let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
         let region = BaiduRegion.formatRegion(config.region)
+        
+        let saveKeyPath = config.saveKeyPath
         
         let url = BaiduUtil.computeUrl(bucket: bucket, region: region)
         
@@ -40,33 +41,19 @@ class BaiduUploader: BaseUploader {
             return
         }
         
-        var retData = fileData
-        var fileName = ""
-        var mimeType = ""
-        if let fileUrl = fileUrl {
-            fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
-            mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
-            retData = BaseUploaderUtil.compressImage(fileUrl)
-        } else if let fileData = fileData {
-            retData = BaseUploaderUtil.compressImage(fileData)
-            // 处理截图之类的图片，生成一个文件名
-            let fileType = fileData.contentType() ?? "png"
-            fileName = "\(hostSaveKey.getFileName()).\(fileType)"
-            mimeType = Util.getMimeType(pathExtension: fileType)
-        } else {
+        guard let configuration = BaseUploaderUtil.getSaveConfiguration(fileUrl, fileData, saveKeyPath) else {
             super.faild(errorMsg: "Invalid file")
             return
         }
-        
-        
-        var key = fileName
-        if (config.folder != nil && config.folder!.count > 0) {
-            key = "\(config.folder!)/\(key)"
-        }
+        let retData = configuration["retData"] as? Data
+        let fileName = configuration["fileName"] as! String
+        let mimeType = configuration["mimeType"] as! String
+        let saveKey = configuration["saveKey"] as! String
+
         
         // MARK: 加密 policy
         var policyDict = Dictionary<String, Any>()
-        let conditions = [["bucket": bucket], ["key": key]]
+        let conditions = [["bucket": bucket], ["key": saveKey]]
         policyDict["conditions"] = conditions
         let policy = BaiduUtil.getPolicy(policyDict: policyDict)
         
@@ -77,7 +64,7 @@ class BaiduUploader: BaseUploader {
         
         
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
-            multipartFormData.append(key.data(using: .utf8)!, withName: "key")
+            multipartFormData.append(saveKey.data(using: .utf8)!, withName: "key")
             multipartFormData.append(accessKey.data(using: .utf8)!, withName: "accessKey")
             multipartFormData.append(policy.data(using: .utf8)!, withName: "policy")
             multipartFormData.append(signature.data(using: .utf8)!, withName: "signature")
@@ -96,9 +83,9 @@ class BaiduUploader: BaseUploader {
                 switch response.result {
                 case .success(_):
                     if domain.isEmpty {
-                        super.completed(url: "\(url)/\(key)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
+                        super.completed(url: "\(url)/\(saveKey)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
                     } else {
-                        super.completed(url: "\(domain)/\(key)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
+                        super.completed(url: "\(domain)/\(saveKey)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
                     }
                 case .failure(let error):
                     var errorMessage = error.localizedDescription

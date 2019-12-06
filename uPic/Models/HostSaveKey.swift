@@ -38,6 +38,32 @@ public enum HostSaveKey: String, CaseIterable, Codable {
             }
         }
     }
+    
+    // FIXME: 临时处理 filename 的数据到新版的 saveKey 中。后续版本需要移除
+    public func _getSaveKeyPathPattern() -> String {
+        switch self {
+        case .filename:
+            return "{filename}{.suffix}"
+        case .random:
+            return "{random}{.suffix}"
+        case .dateFilename:
+            return "{year}-{mon}-{day}-{filename}{.suffix}"
+        case .datetimeFilename:
+            return "{year}{mon}{day}{hours}{minutes}{seconds}-{filename}{.suffix}"
+        case .secondFilename:
+            return "{since_seconds}-{filename}{.suffix}"
+        case .millisecondFilename:
+            return "{since_milliseconds}-{filename}{.suffix}"
+        case .dateRandom:
+            return "{year}-{mon}-{day}-{random}{.suffix}"
+        case .datetimeRandom:
+            return "{year}{mon}{day}{hours}{minutes}{seconds}-{random}{.suffix}"
+        case .secondRandom:
+            return "{since_seconds}-{random}{.suffix}"
+        case .millisecondRandom:
+            return "{since_milliseconds}-{random}{.suffix}"
+        }
+    }
 
     public func getFileName(filename: String? = nil) -> String {
         var filename = filename
