@@ -43,9 +43,7 @@ public class ConfigManager {
     
     //MARK: 临时处理 folder、filename 的数据到新版的 saveKey 中。后续版本需要移除
     private func _upgradeHostData() {
-        if Defaults.bool(forKey: "_upgradedHostData") {
-            return
-        }
+        var changed = false
         let hostItems = self.getHostItems()
         for host in hostItems {
             if (host.data == nil || !host.data!.containsKey(key: "saveKeyPath")) {
@@ -55,6 +53,8 @@ public class ConfigManager {
             if let saveKeyPath = data.value(forKey: "saveKeyPath") as? String, !saveKeyPath.isEmpty {
                 continue
             }
+            
+            changed = true
             
             var saveKeyPath = ""
             
@@ -75,8 +75,9 @@ public class ConfigManager {
             host.data?.setValue(saveKeyPath, forKey: "saveKeyPath")
         }
         
-        self.setHostItems(items: hostItems)
-        Defaults.set(true, forKey: "_upgradedHostData")
+        if changed {
+            self.setHostItems(items: hostItems)
+        }
     }
     
     public func removeAllUserDefaults() {
