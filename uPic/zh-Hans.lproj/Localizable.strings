@@ -103,6 +103,7 @@
 "Body Data" = "Body 数据";
 "Client ID" = "Client ID";
 "Save Key" = "保存路径";
+"Use CDN" = "使用默认 CDN 加速访问";
 
 /* host field placeholder */
 "Operator name" = "操作员名称";

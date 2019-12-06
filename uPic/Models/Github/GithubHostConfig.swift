@@ -19,6 +19,7 @@ class GithubHostConfig: HostConfig {
     dynamic var folder: String?
     dynamic var saveKey: String! = HostSaveKey.filename.rawValue
     dynamic var saveKeyPath: String?
+    dynamic var useCdn: String! = "0"
     
     override func displayName(key: String) -> String {
         switch key {
@@ -38,6 +39,8 @@ class GithubHostConfig: HostConfig {
             return "Save Key".localized
         case "saveKey":
             return "File Name".localized
+        case "useCdn":
+            return "Use CDN".localized
         default:
             return ""
         }
@@ -53,6 +56,7 @@ class GithubHostConfig: HostConfig {
         dict["folder"] = self.folder
         dict["saveKey"] = self.saveKey
         dict["saveKeyPath"] = self.saveKeyPath
+        dict["useCdn"] = self.useCdn
         
         return JSON(dict).rawString()!
     }
@@ -72,6 +76,18 @@ class GithubHostConfig: HostConfig {
         config.folder = json["folder"].stringValue
         config.saveKey = json["saveKey"].stringValue
         config.saveKeyPath = json["saveKeyPath"].stringValue
+        config.useCdn = json["useCdn"].stringValue
         return config
+    }
+    
+    override func controlTextDidChange(_ obj: Notification) {
+        super.controlTextDidChange(obj)
+        if self.useCdn != "1" {
+            return
+        }
+        let keys = ["owner", "repo", "branch"]
+        if let textField = obj.object as? NSTextField, let key = textField.identifier?.rawValue, keys.contains(key) {
+            PreferencesNotifier.postNotification(.githubCDNAutoComplete)
+        }
     }
 }
