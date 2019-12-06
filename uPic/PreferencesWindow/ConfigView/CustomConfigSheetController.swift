@@ -210,9 +210,9 @@ extension CustomConfigSheetController: NSTextFieldDelegate {
             let value = textField.stringValue
             let trimValue = value.trim()
             
-            if (type == "header") {
+            if (type == "header" && index < self.headers.count) {
                 self.headers[index][field] = trimValue
-            } else if (type == "body") {
+            } else if (type == "body" && index < self.bodys.count) {
                 self.bodys[index][field] = trimValue
             }
         }
@@ -231,9 +231,9 @@ extension CustomConfigSheetController: NSTextFieldDelegate {
             }
             
             
-            if (type == "header") {
+            if (type == "header" && index < self.headers.count) {
                 textField.stringValue = self.headers[index][field] ?? textField.stringValue
-            } else if (type == "body") {
+            } else if (type == "body" && index < self.bodys.count) {
                 textField.stringValue = self.bodys[index][field] ?? textField.stringValue
             }
         }

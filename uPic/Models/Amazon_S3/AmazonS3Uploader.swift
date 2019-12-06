@@ -29,10 +29,11 @@ class AmazonS3Uploader: BaseUploader {
         let bucket = config.bucket!
         let accessKey = config.accessKey!
         let secretKey = config.secretKey!
-        let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
         let region = AmazonS3Region.formatRegion(config.region)
-
+        
+        let saveKeyPath = config.saveKeyPath
+        
         let url = AmazonS3Util.computeUrl(bucket: bucket, region: region)
 
         if url.isEmpty {
@@ -40,28 +41,14 @@ class AmazonS3Uploader: BaseUploader {
             return
         }
 
-        var retData = fileData
-        var fileName = ""
-        var mimeType = ""
-        if let fileUrl = fileUrl {
-            fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
-            mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
-            retData = BaseUploaderUtil.compressImage(fileUrl)
-        } else if let fileData = fileData {
-            // MARK: 处理截图之类的图片，生成一个文件名
-            let fileType = fileData.contentType() ?? "png"
-            fileName = "\(hostSaveKey.getFileName()).\(fileType)"
-            mimeType = Util.getMimeType(pathExtension: fileType)
-            retData = BaseUploaderUtil.compressImage(fileData)
-        } else {
+        guard let configuration = BaseUploaderUtil.getSaveConfiguration(fileUrl, fileData, saveKeyPath) else {
             super.faild(errorMsg: "Invalid file")
             return
         }
-
-        var key = fileName
-        if (config.folder != nil && config.folder!.count > 0) {
-            key = "\(config.folder!)/\(key)"
-        }
+        let retData = configuration["retData"] as? Data
+        let fileName = configuration["fileName"] as! String
+        let mimeType = configuration["mimeType"] as! String
+        let saveKey = configuration["saveKey"] as! String
         
 
         // MARK: 加密 policy
@@ -87,7 +74,7 @@ class AmazonS3Uploader: BaseUploader {
 
 
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
-            multipartFormData.append(key.data(using: .utf8)!, withName: "key")
+            multipartFormData.append(saveKey.data(using: .utf8)!, withName: "key")
             multipartFormData.append("public-read".data(using: .utf8)!, withName: "acl")
             multipartFormData.append(credential.data(using: .utf8)!, withName: "X-Amz-Credential")
             multipartFormData.append(AmazonS3Util.ALGORITHM.data(using: .utf8)!, withName: "X-Amz-Algorithm")
@@ -111,9 +98,9 @@ class AmazonS3Uploader: BaseUploader {
             switch response.result {
             case .success(_):
                 if domain.isEmpty {
-                    super.completed(url: "\(url)/\(key)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
+                    super.completed(url: "\(url)/\(saveKey)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
                 } else {
-                    super.completed(url: "\(domain)/\(key)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
                 }
             case .failure(let error):
                 var errorMessage = error.localizedDescription

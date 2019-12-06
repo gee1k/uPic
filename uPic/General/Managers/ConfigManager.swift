@@ -8,15 +8,15 @@
 
 import Foundation
 import Cocoa
-import ServiceManagement
+import LoginServiceKit
 
 public class ConfigManager {
-
+    
     // static
     public static var shared = ConfigManager()
-
+    
     // instance
-
+    
     public var firstUsage: BoolType {
         if Defaults[.firstUsage] == nil {
             Defaults[.firstUsage] = BoolType._false.rawValue
@@ -25,30 +25,60 @@ public class ConfigManager {
             return ._false
         }
     }
-
-    public var launchAtLogin: BoolType? {
-        get {
-            return Defaults[.launchAtLogin].map(BoolType.init(rawValue:)) ?? nil
-        }
-
-        set {
-            Defaults[.launchAtLogin] = newValue?.rawValue
-            
-            SMLoginItemSetEnabled(Constants.launcherAppIdentifier as CFString, newValue?.bool ?? false)
-        }
-    }
     
     public func firstSetup() {
+        //FIXME: 临时处理 folder、filename 的数据到新版的 saveKey 中。后续版本需要移除
+        self._upgradeHostData()
+        
         guard firstUsage == ._true else {
             return
         }
-        Defaults[.launchAtLogin] = BoolType._false.rawValue
         Defaults[.compressFactor] = 100
         Defaults.synchronize()
         
         self.setHostItems(items: [Host.getDefaultHost()])
+        
+        LoginServiceKit.removeLoginItems()
     }
-
+    
+    //MARK: 临时处理 folder、filename 的数据到新版的 saveKey 中。后续版本需要移除
+    private func _upgradeHostData() {
+        if Defaults.bool(forKey: "_upgradedHostData") {
+            return
+        }
+        let hostItems = self.getHostItems()
+        for host in hostItems {
+            if (host.data == nil || !host.data!.containsKey(key: "saveKeyPath")) {
+                continue
+            }
+            let data = host.data!
+            if let saveKeyPath = data.value(forKey: "saveKeyPath") as? String, !saveKeyPath.isEmpty {
+                continue
+            }
+            
+            var saveKeyPath = ""
+            
+            if data.containsKey(key: "folder") {
+                if let folder = data.value(forKey: "folder") as? String, !folder.isEmpty {
+                    saveKeyPath += "\(folder)/"
+                }
+            }
+            
+            if data.containsKey(key: "saveKey") {
+                if let saveKey = data.value(forKey: "saveKey") as? String, let saveKeyObj = HostSaveKey(rawValue: saveKey) {
+                    saveKeyPath += saveKeyObj._getSaveKeyPathPattern()
+                } else {
+                    saveKeyPath += HostSaveKey.filename._getSaveKeyPathPattern()
+                }
+            }
+            
+            host.data?.setValue(saveKeyPath, forKey: "saveKeyPath")
+        }
+        
+        self.setHostItems(items: hostItems)
+        Defaults.set(true, forKey: "_upgradedHostData")
+    }
+    
     public func removeAllUserDefaults() {
         // 提前取出图床配置
         let hostItems = self.getHostItems()
@@ -71,7 +101,7 @@ public class ConfigManager {
             self.setHistoryList_New(items: list)
         }
     }
-
+    
 }
 
 
@@ -87,7 +117,6 @@ extension ConfigManager {
         Defaults.synchronize()
         ConfigNotifier.postNotification(.changeHostItems)
     }
-    
     
     func getDefaultHost() -> Host? {
         guard let defaultHostId = Defaults[.defaultHostId], let hostItems = Defaults[.hostItems] else {
@@ -190,7 +219,7 @@ extension ConfigManager {
                 }
                 let hostItems = array.map(){ str in
                     return Host.deserialize(str: str)
-                    }.filter { $0 != nil }
+                }.filter { $0 != nil }
                 if hostItems.count == 0 {
                     NotificationExt.shared.postImportErrorNotice()
                     return

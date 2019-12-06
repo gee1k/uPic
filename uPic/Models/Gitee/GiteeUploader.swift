@@ -28,44 +28,21 @@ class GiteeUploader: BaseUploader {
         let repo = config.repo!
         let branch = config.branch!
         let token = config.token!
-        let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain
         
-        var fileName = ""
-        var fileBase64 = ""
+        let saveKeyPath = config.saveKeyPath
         
-        if let fileUrl = fileUrl {
-            fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
-            
-            do {
-                var data = try Data(contentsOf: fileUrl)
-                data = BaseUploaderUtil.compressImage(data)
-                fileBase64 = data.toBase64()
-            } catch {
-                super.faild(errorMsg: "Invalid file")
-                return
-            }
-        } else if let fileData = fileData {
-            // MARK: 处理截图之类的图片，生成一个文件名
-            let fileType = fileData.contentType() ?? "png"
-            fileName = "\(hostSaveKey.getFileName()).\(fileType)"
-            
-            let retData = BaseUploaderUtil.compressImage(fileData)
-            fileBase64 = retData.toBase64()
-        } else {
+        guard let configuration = BaseUploaderUtil.getSaveConfigurationWithB64(fileUrl, fileData, saveKeyPath) else {
             super.faild(errorMsg: "Invalid file")
             return
         }
+        let fileBase64 = configuration["fileBase64"] as! String
+        let fileName = configuration["fileName"] as! String
+        let saveKey = configuration["saveKey"] as! String
         
-        var filePath = fileName
-        if (config.folder != nil && !config.folder!.isEmpty) {
-            filePath = "\(config.folder!)/\(filePath)"
-        }
-        
-        
-        let url = GiteeUtil.getUrl(owner: owner, repo: repo, filePath: filePath)
+        let url = GiteeUtil.getUrl(owner: owner, repo: repo, filePath: saveKey)
 
-        let parameters = GiteeUtil.getRequestParameters(token: token, branch: branch, filePath: filePath, b64Content: fileBase64)
+        let parameters = GiteeUtil.getRequestParameters(token: token, branch: branch, filePath: saveKey, b64Content: fileBase64)
         
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/json"))
@@ -84,7 +61,7 @@ class GiteeUploader: BaseUploader {
                     if domain == nil || domain!.isEmpty {
                         super.completed(url: json["content"]["download_url"].stringValue.urlDecoded(), fileBase64, fileUrl, fileName)
                     } else {
-                        super.completed(url: "\(domain!)/\(filePath)", fileBase64, fileUrl, fileName)
+                        super.completed(url: "\(domain!)/\(saveKey)", fileBase64, fileUrl, fileName)
                     }
                 case .failure(let error):
                     var errorMsg = error.localizedDescription

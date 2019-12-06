@@ -18,6 +18,7 @@ class GiteeHostConfig: HostConfig {
     dynamic var domain: String?
     dynamic var folder: String?
     dynamic var saveKey: String! = HostSaveKey.filename.rawValue
+    dynamic var saveKeyPath: String?
     
     override func displayName(key: String) -> String {
         switch key {
@@ -35,6 +36,8 @@ class GiteeHostConfig: HostConfig {
             return "Folder".localized
         case "saveKey":
             return "File Name".localized
+        case "saveKeyPath":
+            return "Save Key".localized
         default:
             return ""
         }
@@ -49,6 +52,7 @@ class GiteeHostConfig: HostConfig {
         dict["domain"] = self.domain
         dict["folder"] = self.folder
         dict["saveKey"] = self.saveKey
+        dict["saveKeyPath"] = self.saveKeyPath
         
         return JSON(dict).rawString()!
     }
@@ -67,6 +71,7 @@ class GiteeHostConfig: HostConfig {
         config.domain = json["domain"].stringValue
         config.folder = json["folder"].stringValue
         config.saveKey = json["saveKey"].stringValue
+        config.saveKeyPath = json["saveKeyPath"].stringValue
         return config
     }
 }

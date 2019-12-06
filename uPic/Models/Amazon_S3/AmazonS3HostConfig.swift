@@ -18,6 +18,7 @@ class AmazonS3HostConfig: HostConfig {
     dynamic var domain: String!
     dynamic var folder: String?
     dynamic var saveKey: String! = HostSaveKey.filename.rawValue
+    dynamic var saveKeyPath: String?
     dynamic var suffix: String?
 
     override func displayName(key: String) -> String {
@@ -36,6 +37,8 @@ class AmazonS3HostConfig: HostConfig {
             return "Folder".localized
         case "saveKey":
             return "File Name".localized
+        case "saveKeyPath":
+            return "Save Key".localized
         case "suffix":
             return "URL suffix".localized
         default:
@@ -52,6 +55,7 @@ class AmazonS3HostConfig: HostConfig {
         dict["domain"] = self.domain
         dict["folder"] = self.folder
         dict["saveKey"] = self.saveKey
+        dict["saveKeyPath"] = self.saveKeyPath
         dict["suffix"] = self.suffix
 
         return JSON(dict).rawString()!
@@ -71,6 +75,7 @@ class AmazonS3HostConfig: HostConfig {
         config.domain = json["domain"].stringValue
         config.folder = json["folder"].stringValue
         config.saveKey = json["saveKey"].stringValue
+        config.saveKeyPath = json["saveKeyPath"].stringValue
         config.suffix = json["suffix"].stringValue
         return config
     }

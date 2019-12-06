@@ -32,31 +32,18 @@ class UpYunUploader: BaseUploader {
         let bucket = config.bucket!
         let operatorName = config.operatorName!
         let password = config.password!
-        let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
+        
+        let saveKeyPath = config.saveKeyPath
 
-        var retData = fileData
-        var fileName = ""
-        var mimeType = ""
-        if let fileUrl = fileUrl {
-            fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
-            mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
-            retData = BaseUploaderUtil.compressImage(fileUrl)
-        } else if let fileData = fileData {
-            // MARK: 处理截图之类的图片，生成一个文件名
-            let fileType = fileData.contentType() ?? "png"
-            fileName = "\(hostSaveKey.getFileName()).\(fileType)"
-            mimeType = Util.getMimeType(pathExtension: fileType)
-            retData = BaseUploaderUtil.compressImage(fileData)
-        } else {
+        guard let configuration = BaseUploaderUtil.getSaveConfiguration(fileUrl, fileData, saveKeyPath) else {
             super.faild(errorMsg: "Invalid file")
             return
         }
-
-        var saveKey = fileName
-        if (config.folder != nil && config.folder!.count > 0) {
-            saveKey = "\(config.folder!)/\(saveKey)"
-        }
+        let retData = configuration["retData"] as? Data
+        let fileName = configuration["fileName"] as! String
+        let mimeType = configuration["mimeType"] as! String
+        let saveKey = configuration["saveKey"] as! String
 
         // MARK: 加密 policy
         var policyDict = Dictionary<String, Any>()

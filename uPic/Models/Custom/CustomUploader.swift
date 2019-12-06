@@ -28,34 +28,25 @@ class CustomUploader: BaseUploader {
         let url = config.url!
         let method = config.method!
         let field = config.field!
-        let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
-
+        
         let httpMethod = HTTPMethod(rawValue: method) 
-
+        
+        let saveKeyPath = config.saveKeyPath
 
         if url.isEmpty {
             super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
 
-        var retData = fileData
-        var fileName = ""
-        var mimeType = ""
-        if let fileUrl = fileUrl {
-            fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
-            mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
-            retData = BaseUploaderUtil.compressImage(fileUrl)
-        } else if let fileData = fileData {
-            // MARK: 处理截图之类的图片，生成一个文件名
-            let fileType = fileData.contentType() ?? "png"
-            fileName = "\(hostSaveKey.getFileName()).\(fileType)"
-            mimeType = Util.getMimeType(pathExtension: fileType)
-            retData = BaseUploaderUtil.compressImage(fileData)
-        } else {
+        guard let configuration = BaseUploaderUtil.getSaveConfiguration(fileUrl, fileData, saveKeyPath) else {
             super.faild(errorMsg: "Invalid file")
             return
         }
+        let retData = configuration["retData"] as? Data
+        let fileName = configuration["fileName"] as! String
+        let mimeType = configuration["mimeType"] as! String
+        let saveKey = configuration["saveKey"] as! String
 
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
@@ -89,7 +80,7 @@ class CustomUploader: BaseUploader {
                     }
                 }
             }
-
+            multipartFormData.append(saveKey.data(using: .utf8)!, withName: "key")
             if retData != nil {
                 multipartFormData.append(retData!, withName: field, fileName: fileName, mimeType: mimeType)
             } else if fileUrl != nil {

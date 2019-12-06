@@ -10,17 +10,17 @@ import Cocoa
 
 class GithubConfigView: ConfigView {
     
+    deinit {
+        PreferencesNotifier.removeObserver(observer: self, notification: .githubCDNAutoComplete)
+    }
+    
     override func createView() {
+        super.createView()
         
         guard let data = self.data as? GithubHostConfig else {
             return
         }
-        
-        let paddingTop = 50, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 75, labelHeight = 20,
-        viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
-        textFieldX = labelWidth + paddingLeft + gapLeft, textFieldWidth = viewWidth - paddingLeft - textFieldX
-        
-        var y = viewHeight - paddingTop
+        PreferencesNotifier.addObserver(observer: self, selector: #selector(autoCompleteCDN), notification: .githubCDNAutoComplete)
         
         // MARK: owner
         let ownerLabel = NSTextField(labelWithString: "\(data.displayName(key: "owner")):")
@@ -96,37 +96,70 @@ class GithubConfigView: ConfigView {
         
         // MARK: domain
         y = y - gapTop - labelHeight
-        let settingsBtnWith = 40
+        self.createDomainField(data)
+        self.domainField?.placeholderString = "Can be empty, there is a default domain".localized
         
-        let domainLabel = NSTextField(labelWithString: "\(data.displayName(key: "domain")):")
-        domainLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
-        domainLabel.alignment = .right
-        domainLabel.lineBreakMode = .byClipping
+        // MARK: Use CDN
+        y = y - gapTop - labelHeight
         
-        let domainField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth - settingsBtnWith, height: labelHeight))
-        domainField.identifier = NSUserInterfaceItemIdentifier(rawValue: "domain")
-        domainField.usesSingleLineMode = true
-        domainField.lineBreakMode = .byTruncatingTail
-        domainField.delegate = data
-        domainField.stringValue = data.domain ?? ""
-        domainField.placeholderString = "Can be empty, there is a default domain".localized
-        self.domainField = domainField
+        let useCdnLabel = NSTextField(labelWithString: "\(data.displayName(key: "useCdn")):")
+        useCdnLabel.frame = NSRect(x: viewWidth - 25 - Int(useCdnLabel.frame.width), y: y, width: Int(useCdnLabel.frame.width), height: labelHeight)
+        useCdnLabel.alignment = .right
+        useCdnLabel.lineBreakMode = .byClipping
         
-        let settingsBtn = NSButton(title: "", image: NSImage(named: NSImage.advancedName)!, target: self, action: #selector(openConfigSheet(_:)))
-        settingsBtn.frame = NSRect(x: textFieldX + Int(domainField.frame.width) + gapLeft, y: y, width: settingsBtnWith, height: labelHeight)
-        settingsBtn.imagePosition = .imageOnly
         
-        self.addSubview(domainLabel)
-        self.addSubview(domainField)
-        self.addSubview(settingsBtn)
-        nextKeyViews.append(domainField)
-        nextKeyViews.append(settingsBtn)
+        let useCdnBtn = NSButton(frame: NSRect(x: viewWidth - 25, y: y, width: 50, height: labelHeight))
+        useCdnBtn.title = ""
+        useCdnBtn.target = self
+        useCdnBtn.action = #selector(useCdnChanged(_:))
+        useCdnBtn.identifier = NSUserInterfaceItemIdentifier(rawValue: "useCdn")
+        useCdnBtn.setButtonType(.switch)
+        useCdnBtn.allowsMixedState = false
+        useCdnBtn.state = NSControl.StateValue(rawValue: Int(data.useCdn) ?? 0)
+        self.addSubview(useCdnLabel)
+        self.addSubview(useCdnBtn)
+       
+        // MARK: saveKeyPath
+        y = y - gapTop - labelHeight
+        self.createSaveKeyField(data)
         
         // MARK: help
         y = y - gapTop * 2 - labelHeight
-        super.createHelpBtn(paddingLeft, y, "https://blog.svend.cc/upic/tutorials/github")
+        super.createHelpBtn("https://blog.svend.cc/upic/tutorials/github")
     }
     
+    
+    @objc func useCdnChanged(_ sender: NSButton) {
+        let value = sender.state.rawValue
+        if value == 0 {
+            self.domainField?.stringValue = ""
+            self.data?.setValue("", forKey: "domain")
+            
+        } else {
+            self.autoCompleteCDN()
+        }
+        
+        self.data?.setValue(String(value), forKey: "useCdn")
+    }
+    
+    /// auto complete cdn domain
+    @objc func autoCompleteCDN() {
+        var owner = self.data?.value(forKey: "owner") as? String
+        if owner == nil || owner!.isEmpty {
+            owner = "{owner}"
+        }
+        var repo = self.data?.value(forKey: "repo") as? String
+        if repo == nil || repo!.isEmpty {
+            repo = "{repo}"
+        }
+        var branch = self.data?.value(forKey: "branch") as? String
+        if branch == nil || branch!.isEmpty {
+            branch = "{branch}"
+        }
+        let domain = "https://cdn.jsdelivr.net/gh/\(owner!)/\(repo!)@\(branch!)/"
+        self.domainField?.stringValue = domain
+        self.data?.setValue(domain, forKey: "domain")
+    }
     
 }
 
