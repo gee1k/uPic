@@ -30,35 +30,21 @@ class QiniuUploader: BaseUploader {
         let bucket = config.bucket!
         let accessKey = config.accessKey!
         let secretKey = config.secretKey!
-        let hostSaveKey = HostSaveKey(rawValue: config.saveKey!)!
         let domain = config.domain!
         var region = QiniuRegion.formatRegion(config.region)
-
-        var retData = fileData
-        var fileName = ""
-        var mimeType = ""
         
-        if let fileUrl = fileUrl {
-            fileName = "\(hostSaveKey.getFileName(filename: fileUrl.lastPathComponent.deletingPathExtension)).\(fileUrl.pathExtension)"
-            mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
-            retData = BaseUploaderUtil.compressImage(fileUrl)
-        } else if let fileData = fileData {
-            // MARK: 处理截图之类的图片，生成一个文件名
-            let fileType = fileData.contentType() ?? "png"
-            fileName = "\(hostSaveKey.getFileName()).\(fileType)"
-            mimeType = Util.getMimeType(pathExtension: fileType)
-            retData = BaseUploaderUtil.compressImage(fileData)
-        } else {
+        let saveKeyPath = config.saveKeyPath
+
+        guard let configuration = BaseUploaderUtil.getSaveConfiguration(fileUrl, fileData, saveKeyPath) else {
             super.faild(errorMsg: "Invalid file")
             return
         }
+        let retData = configuration["retData"] as? Data
+        let fileName = configuration["fileName"] as! String
+        let mimeType = configuration["mimeType"] as! String
+        let saveKey = configuration["saveKey"] as! String
 
-        var key = fileName
-        if (config.folder != nil && config.folder!.count > 0) {
-            key = "\(config.folder!)/\(key)"
-        }
-
-        let scope = "\(bucket):\(key)"
+        let scope = "\(bucket):\(saveKey)"
 
         // MARK: 生成 token
         let token = QiniuUtil.getToken(scope: scope, accessKey: accessKey, secretKey: secretKey)
@@ -75,7 +61,7 @@ class QiniuUploader: BaseUploader {
             }
             
             multipartFormData.append(token.data(using: .utf8)!, withName: "token")
-            multipartFormData.append(key.data(using: .utf8)!, withName: "key")
+            multipartFormData.append(saveKey.data(using: .utf8)!, withName: "key")
         }
 
         AF.upload(multipartFormData: multipartFormDataGen, to: region.url, headers: headers).validate().uploadProgress { progress in
@@ -88,7 +74,7 @@ class QiniuUploader: BaseUploader {
                 if error != nil && error!.count > 0 {
                     super.faild(errorMsg: error)
                 } else {
-                    super.completed(url: "\(domain)/\(key)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
                 }
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)

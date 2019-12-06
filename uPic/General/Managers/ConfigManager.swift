@@ -44,7 +44,6 @@ public class ConfigManager {
     //MARK: 临时处理 folder、filename 的数据到新版的 saveKey 中。后续版本需要移除
     private func _upgradeHostData() {
         if Defaults.bool(forKey: "_upgradedHostData") {
-            debugPrint("upgraded")
             return
         }
         let hostItems = self.getHostItems()
@@ -62,27 +61,20 @@ public class ConfigManager {
             if data.containsKey(key: "folder") {
                 if let folder = data.value(forKey: "folder") as? String, !folder.isEmpty {
                     saveKeyPath += "\(folder)/"
-                    debugPrint("folder -> \(folder)")
                 }
             }
             
             if data.containsKey(key: "saveKey") {
                 if let saveKey = data.value(forKey: "saveKey") as? String, let saveKeyObj = HostSaveKey(rawValue: saveKey) {
-                    debugPrint("saveKey -> \(saveKey)")
                     saveKeyPath += saveKeyObj._getSaveKeyPathPattern()
                 } else {
                     saveKeyPath += HostSaveKey.filename._getSaveKeyPathPattern()
                 }
             }
-            debugPrint("saveKeyPath -> \(saveKeyPath)")
-            host.data?.setValue(saveKeyPath, forKey: "saveKeyPath")
-            // 检查是否含有 floder、saveKey
-            // 并按floder和、saveKey 转换拼接为现有格式的 saveKeyPath
-            // 然后重新写入Defaults、并标记已经转换过，下次打开时判断不在转换
             
+            host.data?.setValue(saveKeyPath, forKey: "saveKeyPath")
         }
         
-        debugPrint(hostItems)
         self.setHostItems(items: hostItems)
         Defaults.set(true, forKey: "_upgradedHostData")
     }

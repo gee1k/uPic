@@ -9,14 +9,9 @@
 import Cocoa
 
 class WeiboConfigView: ConfigView {
-    override init(frame frameRect: NSRect, data: HostConfig?) {
-        super.init(frame: frameRect, data: data)
-        
-        self.paddingTop = 50
-    }
     
-    required init?(coder decoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override var paddingTop: Int {
+        return 50
     }
     
     override func createView() {

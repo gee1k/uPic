@@ -9,7 +9,7 @@
 import Cocoa
 
 class BaiduConfigView: ConfigView {
-
+    
     override func createView() {
         super.createView()
         

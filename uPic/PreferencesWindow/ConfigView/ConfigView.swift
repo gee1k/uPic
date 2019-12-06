@@ -10,16 +10,24 @@ import Cocoa
 
 class ConfigView: NSView {
     
-    var settings: Bool {
-        return true
+    var paddingTop: Int {
+        return 30
     }
-    
-    var paddingTop: Int = 30
-    var paddingLeft: Int = 6
-    var gapTop: Int = 10
-    var gapLeft: Int = 5
-    var labelWidth: Int = 75
-    var labelHeight: Int = 20
+    var paddingLeft: Int {
+        return 6
+    }
+    var gapTop: Int {
+        return 10
+    }
+    var gapLeft: Int {
+        return 5
+    }
+    var labelWidth: Int {
+        return 75
+    }
+    var labelHeight: Int {
+        return 20
+    }
     
     var viewWidth: Int {
         return Int(self.frame.width)
@@ -89,8 +97,6 @@ class ConfigView: NSView {
     
     var domainField: NSTextField?
     
-    var configSheetController: ConfigSheetController?
-    
     var nextKeyViews:[NSView] = [NSView]()
     
     override func draw(_ dirtyRect: NSRect) {
@@ -100,11 +106,6 @@ class ConfigView: NSView {
         self.createView()
         
         self.setNextKeyViews()
-        
-        if self.settings {
-            configSheetController = (self.window?.contentViewController?.storyboard!.instantiateController(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ConfigSheetController").rawValue)
-                as! ConfigSheetController)
-        }
     }
     
     
@@ -116,10 +117,6 @@ class ConfigView: NSView {
     
     required init?(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    deinit {
-        configSheetController?.removeFromParent()
     }
     
     func createView() {
@@ -172,17 +169,34 @@ class ConfigView: NSView {
         saveKeyPathLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
         saveKeyPathLabel.alignment = .right
         saveKeyPathLabel.lineBreakMode = .byClipping
+        
 
-        let saveKeyPathField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        let suffixEnable: Bool = data.containsKey(key: "suffix")
+        let suffixWidth: Int = suffixEnable ? 40 : 0
+
+        let saveKeyPathField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth - suffixWidth, height: labelHeight))
         saveKeyPathField.identifier = NSUserInterfaceItemIdentifier(rawValue: "saveKeyPath")
         saveKeyPathField.usesSingleLineMode = true
         saveKeyPathField.lineBreakMode = .byTruncatingTail
         saveKeyPathField.delegate = data
-        saveKeyPathField.stringValue = data.value(forKey: "saveKeyPath") as? String ?? ""
+        saveKeyPathField.stringValue = data.value(forKey: "saveKeyPath") as? String ?? BaseUploaderUtil._defaultSaveKeyPath
         saveKeyPathField.placeholderString = "uPic/{filename}{.suffix}"
         self.addSubview(saveKeyPathLabel)
         self.addSubview(saveKeyPathField)
         nextKeyViews.append(saveKeyPathField)
+        
+        if suffixEnable {
+            let suffixField = NSTextField(frame: NSRect(x: textFieldX + textFieldWidth - suffixWidth, y: y, width: suffixWidth, height: labelHeight))
+            suffixField.identifier = NSUserInterfaceItemIdentifier(rawValue: "suffix")
+            suffixField.usesSingleLineMode = true
+            suffixField.lineBreakMode = .byTruncatingTail
+            suffixField.delegate = data
+            suffixField.stringValue = data.value(forKey: "suffix") as? String ?? ""
+            suffixField.placeholderString = "!w"
+            suffixField.toolTip = "Suffix Tips".localized
+            self.addSubview(suffixField)
+            nextKeyViews.append(suffixField)
+        }
         
         let saveKeyPathTips = NSTextField(wrappingLabelWithString: "Save Key Tips".localized)
         saveKeyPathTips.frame = NSRect(x: textFieldX, y: y - labelHeight * 3 / 2 - 55, width: textFieldWidth, height: 80)
@@ -236,49 +250,11 @@ class ConfigView: NSView {
     }
     
     func addObserver() {
-        PreferencesNotifier.addObserver(observer: self, selector: #selector(saveHostSettings), notification: PreferencesNotifier.Notification.saveHostSettings)
+        
     }
     
     
     func removeObserver() {
-        PreferencesNotifier.removeObserver(observer: self, notification: .saveHostSettings)
-    }
-    
-    @objc func openConfigSheet(_ sender: NSButton) {
-        if let configSheetController = configSheetController {
-            var userInfo: [String: Any] = ["domain": self.data?.value(forKey: "domain") ?? "", "folder": self.data?.value(forKey: "folder") ?? "", "saveKey": self.data?.value(forKey: "saveKey") ?? HostSaveKey.dateFilename.rawValue]
-            
-            if self.data?.containsKey(key: "suffix") ?? false {
-                userInfo["suffix"] = self.data?.value(forKey: "suffix") ?? ""
-            }
-            
-            self.window?.contentViewController?.presentAsSheet(configSheetController)
-            configSheetController.setData(userInfo: userInfo as [String: AnyObject])
-            self.addObserver()
-        }
-        
-    }
-    
-    @objc func saveHostSettings(notification: Notification) {
-        guard let userInfo = notification.userInfo else {
-            print("No userInfo found in notification")
-            return
-        }
-        
-        let domain = userInfo["domain"] as? String ?? ""
-        let folder = userInfo["folder"] as? String ?? ""
-        let saveKey = userInfo["saveKey"] as? String ?? HostSaveKey.dateFilename.rawValue
-        
-        self.data?.setValue(domain, forKey: "domain")
-        self.data?.setValue(folder, forKey: "folder")
-        self.data?.setValue(saveKey, forKey: "saveKey")
-        
-        if self.data?.containsKey(key: "suffix") ?? false {
-            let suffix = userInfo["suffix"] as? String ?? ""
-            self.data?.setValue(suffix, forKey: "suffix")
-        }
-        
-        domainField?.stringValue = domain
     }
     
 }

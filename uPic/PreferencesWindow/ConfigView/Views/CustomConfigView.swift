@@ -150,32 +150,6 @@ class CustomConfigView: ConfigView {
         }
     }
     
-    @objc override func openConfigSheet(_ sender: NSButton) {
-        if let configSheetController = configSheetController {
-            let userInfo: [String: Any] = ["domain": self.data?.value(forKey: "domain") ?? "", "saveKey": self.data?.value(forKey: "saveKey") ?? HostSaveKey.dateFilename.rawValue]
-            self.window?.contentViewController?.presentAsSheet(configSheetController)
-            configSheetController.setData(userInfo: userInfo as [String: AnyObject])
-            self.addObserver()
-        }
-        
-    }
-    
-    @objc override func saveHostSettings(notification: Notification) {
-        self.removeObserver()
-        guard let userInfo = notification.userInfo else {
-            print("No userInfo found in notification")
-            return
-        }
-        
-        let domain = userInfo["domain"] as? String ?? ""
-        let saveKey = userInfo["saveKey"] as? String ?? HostSaveKey.dateFilename.rawValue
-        
-        self.data?.setValue(domain, forKey: "domain")
-        self.data?.setValue(saveKey, forKey: "saveKey")
-        
-        domainField?.stringValue = domain
-    }
-    
     @objc func openCustomConfigSheet(_ sender: NSButton) {
         guard let data = self.data as? CustomHostConfig else {
             return

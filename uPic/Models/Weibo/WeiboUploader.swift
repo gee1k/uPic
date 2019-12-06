@@ -45,29 +45,16 @@ class WeiboUploader: BaseUploader {
         
         // MARK: 上传
         func _uploadHandler(_ loginCookie: String?) {
-            var fileBase64 = ""
-            var fileExtension = ".jpg"
-         
-            if let fileUrl = fileUrl  {
-                if fileUrl.pathExtension == "gif" {
-                    fileExtension = ".gif"
-                }
-                do {
-                    var data = try Data(contentsOf: fileUrl)
-                    data = BaseUploaderUtil.compressImage(data)
-                    fileBase64 = data.toBase64()
-                } catch {
-                    super.faild(errorMsg: "Invalid file")
-                    return
-                }
-            } else if let fileData = fileData {
-                let retData = BaseUploaderUtil.compressImage(fileData)
-                fileBase64 = retData.toBase64()
-            } else {
+
+            
+            guard let configuration = BaseUploaderUtil.getSaveConfigurationWithB64(fileUrl, fileData, nil) else {
                 super.faild(errorMsg: "Invalid file")
                 return
             }
+            let fileBase64 = configuration["fileBase64"] as! String
+            let fileName = configuration["fileName"] as! String
             
+            var fileExtension = fileName.pathExtension == "gif" ? ".gif" : ".jpg"
             
             var headers = HTTPHeaders()
             if let loginCookie = loginCookie {
