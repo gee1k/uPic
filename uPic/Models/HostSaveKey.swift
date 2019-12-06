@@ -49,19 +49,19 @@ public enum HostSaveKey: String, CaseIterable, Codable {
         case .dateFilename:
             return "{year}-{mon}-{day}-{filename}{.suffix}"
         case .datetimeFilename:
-            return "{year}{mon}{day}{hours}{minutes}{seconds}-{filename}{.suffix}"
+            return "{year}{mon}{day}{hour}{minute}{second}-{filename}{.suffix}"
         case .secondFilename:
-            return "{since_seconds}-{filename}{.suffix}"
+            return "{since_second}-{filename}{.suffix}"
         case .millisecondFilename:
-            return "{since_milliseconds}-{filename}{.suffix}"
+            return "{since_millisecond}-{filename}{.suffix}"
         case .dateRandom:
             return "{year}-{mon}-{day}-{random}{.suffix}"
         case .datetimeRandom:
-            return "{year}{mon}{day}{hours}{minutes}{seconds}-{random}{.suffix}"
+            return "{year}{mon}{day}{hour}{minute}{second}-{random}{.suffix}"
         case .secondRandom:
-            return "{since_seconds}-{random}{.suffix}"
+            return "{since_second}-{random}{.suffix}"
         case .millisecondRandom:
-            return "{since_milliseconds}-{random}{.suffix}"
+            return "{since_millisecond}-{random}{.suffix}"
         }
     }
 
