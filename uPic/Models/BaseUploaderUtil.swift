@@ -41,8 +41,6 @@ class BaseUploaderUtil {
             return data
         }
         
-        // && self.contentType() != "gif" && bitmap.canBeCompressed(using: .jpeg)
-        
         let repData = bitmap.representation(using: .jpeg, properties: [.compressionFactor: factor])
         return repData ?? data
     }
