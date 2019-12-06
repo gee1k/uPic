@@ -118,6 +118,7 @@ class GithubConfigView: ConfigView {
         useCdnBtn.state = NSControl.StateValue(rawValue: Int(data.useCdn) ?? 0)
         self.addSubview(useCdnLabel)
         self.addSubview(useCdnBtn)
+        self.useCdnChanged(useCdnBtn)
        
         // MARK: saveKeyPath
         y = y - gapTop - labelHeight
@@ -134,8 +135,9 @@ class GithubConfigView: ConfigView {
         if value == 0 {
             self.domainField?.stringValue = ""
             self.data?.setValue("", forKey: "domain")
-            
+            self.domainField?.isEnabled = true
         } else {
+            self.domainField?.isEnabled = false
             self.autoCompleteCDN()
         }
         
