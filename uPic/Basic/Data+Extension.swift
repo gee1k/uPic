@@ -54,22 +54,6 @@ extension Data {
         return data
     }
     
-    /**
-     压缩图片，只支持压缩图片，压缩之后图片格式是 jpg。
-     gif，以及其他非图片均不能压缩
-     factor: 压缩率 0~1
-     */
-    func compressImage(_ factor: Float = 0.7) -> Data {
-        guard let bitmap = NSBitmapImageRep(data: self) else {
-            return self
-        }
-        if (factor > 0.0 && factor < 1.0 && self.contentType() != "gif" && bitmap.canBeCompressed(using: .jpeg)) {
-            let repData = bitmap.representation(using: .jpeg, properties: [.compressionFactor: factor])
-            return repData ?? self
-        }
-        return self
-    }
-    
     func contentType() -> String? {
         let c = self.bytes.first
         
