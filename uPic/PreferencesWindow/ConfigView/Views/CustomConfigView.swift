@@ -26,16 +26,12 @@ class CustomConfigView: ConfigView {
     }
 
     override func createView() {
+        super.createView()
         
         guard let data = self.data as? CustomHostConfig else {
             return
         }
         
-        let paddingTop = 50, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 75, labelHeight = 20,
-                viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
-                textFieldX = labelWidth + paddingLeft + gapLeft, textFieldWidth = viewWidth - paddingLeft - textFieldX
-
-        var y = viewHeight - paddingTop
         // MARK: url
         let urlLabel = NSTextField(labelWithString: "\(data.displayName(key: "url")):")
         urlLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
@@ -130,39 +126,21 @@ class CustomConfigView: ConfigView {
         self.addSubview(resultField)
         nextKeyViews.append(resultField)
         
+        
         // MARK: domain
         y = y - gapTop - labelHeight
-        let settingsBtnWith = 40
-
-        let domainLabel = NSTextField(labelWithString: "\(data.displayName(key: "domain")):")
-        domainLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
-        domainLabel.alignment = .right
-        domainLabel.lineBreakMode = .byClipping
-
-        let domainField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth - settingsBtnWith, height: labelHeight))
-        domainField.identifier = NSUserInterfaceItemIdentifier(rawValue: "domain")
-        domainField.usesSingleLineMode = true
-        domainField.lineBreakMode = .byTruncatingTail
-        domainField.delegate = data
-        domainField.stringValue = data.domain ?? ""
-        domainField.placeholderString = "(optional),When filled, URL = domain + URL path value".localized
-        domainField.toolTip = "(optional),When filled, URL = domain + URL path value".localized
-        self.domainField = domainField
-
-        let settingsBtn = NSButton(title: "", image: NSImage(named: NSImage.advancedName)!, target: self, action: #selector(openConfigSheet(_:)))
-        settingsBtn.frame = NSRect(x: textFieldX + Int(domainField.frame.width) + gapLeft, y: y, width: settingsBtnWith, height: labelHeight)
-        settingsBtn.imagePosition = .imageOnly
-
-        self.addSubview(domainLabel)
-        self.addSubview(domainField)
-        self.addSubview(settingsBtn)
-        nextKeyViews.append(domainField)
-        nextKeyViews.append(settingsBtn)
+        self.createDomainField(data)
+        self.domainField?.placeholderString = "(optional),When filled, URL = domain + URL path value".localized
+        self.domainField?.toolTip = "(optional),When filled, URL = domain + URL path value".localized
+        
+        // MARK: saveKeyPath
+        y = y - gapTop - labelHeight
+        self.createSaveKeyField(data)
         
         
         // MARK: help
         y = y - gapTop - labelHeight
-        super.createHelpBtn(paddingLeft, y, "https://blog.svend.cc/upic/tutorials/custom")
+        super.createHelpBtn("https://blog.svend.cc/upic/tutorials/custom")
         
     }
     
@@ -170,32 +148,6 @@ class CustomConfigView: ConfigView {
         if let menuItem = sender.selectedItem, let identifier = menuItem.identifier?.rawValue {
             self.data?.setValue(identifier, forKey: "method")
         }
-    }
-    
-    @objc override func openConfigSheet(_ sender: NSButton) {
-        if let configSheetController = configSheetController {
-            let userInfo: [String: Any] = ["domain": self.data?.value(forKey: "domain") ?? "", "saveKey": self.data?.value(forKey: "saveKey") ?? HostSaveKey.dateFilename.rawValue]
-            self.window?.contentViewController?.presentAsSheet(configSheetController)
-            configSheetController.setData(userInfo: userInfo as [String: AnyObject])
-            self.addObserver()
-        }
-        
-    }
-    
-    @objc override func saveHostSettings(notification: Notification) {
-        self.removeObserver()
-        guard let userInfo = notification.userInfo else {
-            print("No userInfo found in notification")
-            return
-        }
-        
-        let domain = userInfo["domain"] as? String ?? ""
-        let saveKey = userInfo["saveKey"] as? String ?? HostSaveKey.dateFilename.rawValue
-        
-        self.data?.setValue(domain, forKey: "domain")
-        self.data?.setValue(saveKey, forKey: "saveKey")
-        
-        domainField?.stringValue = domain
     }
     
     @objc func openCustomConfigSheet(_ sender: NSButton) {

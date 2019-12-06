@@ -4,6 +4,7 @@ PODS:
   - Kingfisher (5.9.0):
     - Kingfisher/Core (= 5.9.0)
   - Kingfisher/Core (5.9.0)
+  - libminipng (0.0.5)
   - LoginServiceKit (2.1.0)
   - MASShortcut (2.4.0)
   - SnapKit (5.0.1)
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
   - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
   - Kingfisher
+  - libminipng
   - LoginServiceKit (from `https://github.com/Clipy/LoginServiceKit.git`)
   - MASShortcut
   - SnapKit (~> 5.0.0)
@@ -26,6 +28,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Kingfisher
+    - libminipng
     - MASShortcut
     - SnapKit
     - Sparkle
@@ -55,6 +58,7 @@ SPEC CHECKSUMS:
   Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
   CryptoSwift: 40e374e45291d8dceedcb0d6184da94533eaabdf
   Kingfisher: ff98240aebb7302bdc4f1ecd701761030ce18b16
+  libminipng: c5f4492bf378d3de8dfa3afd4c4372480f52fa9f
   LoginServiceKit: 9a8b258c3111fa0d9585615052f778b08be92302
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
@@ -62,6 +66,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwiftyXMLParser: 8271497e0a37b5c04b0b167c77b4896e36175a21
 
-PODFILE CHECKSUM: 8af186af5701d6bdb9b11224181c373b78833da2
+PODFILE CHECKSUM: 38c87f478d677bfc48171bec49e79bf4e098e1b4
 
 COCOAPODS: 1.8.4

@@ -147,6 +147,14 @@ class HostConfig: NSObject, Codable {
     
     // 修复用户有时候会不注意在 domain 后面多写一个 /。或者 folder 前后的 /
     func fixPrefixAndSuffix() {
+        if self.containsKey(key: "saveKeyPath") {
+            var saveKeyPath = self.value(forKey: "saveKeyPath") as! String
+            if saveKeyPath.hasPrefix("/") {
+                saveKeyPath.removeFirst()
+                self.setValue(saveKeyPath, forKey: "saveKeyPath")
+            }
+        }
+        
         if self.containsKey(key: "domain") {
             var domain = self.value(forKey: "domain") as! String
             if domain.hasSuffix("/") {

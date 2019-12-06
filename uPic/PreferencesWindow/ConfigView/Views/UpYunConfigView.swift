@@ -9,19 +9,22 @@
 import Cocoa
 
 class UpYunConfigView: ConfigView {
-
+    
+    override var paddingTop: Int {
+        return 50
+    }
+    
+    override var labelWidth: Int {
+        return 65
+    }
+    
     override func createView() {
+        super.createView()
         
         guard let data = self.data as? UpYunHostConfig else {
             return
         }
-
-        let paddingTop = 50, paddingLeft = 10, gapTop = 10, gapLeft = 5, labelWidth = 65, labelHeight = 20,
-                viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
-                textFieldX = labelWidth + paddingLeft + gapLeft, textFieldWidth = viewWidth - paddingLeft - textFieldX
-
-        var y = viewHeight - paddingTop
-
+        
         // MARK: Bucket
         let bucketLabel = NSTextField(labelWithString: "\(data.displayName(key: "bucket")):")
         bucketLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
@@ -76,39 +79,18 @@ class UpYunConfigView: ConfigView {
         self.addSubview(passwordLabel)
         self.addSubview(passwordField)
         nextKeyViews.append(passwordField)
-
-
+        
         // MARK: domain
         y = y - gapTop - labelHeight
-        let settingsBtnWith = 40
-
-        let domainLabel = NSTextField(labelWithString: "\(data.displayName(key: "domain")):")
-        domainLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
-        domainLabel.alignment = .right
-        domainLabel.lineBreakMode = .byClipping
-
-        let domainField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth - settingsBtnWith, height: labelHeight))
-        domainField.identifier = NSUserInterfaceItemIdentifier(rawValue: "domain")
-        domainField.usesSingleLineMode = true
-        domainField.lineBreakMode = .byTruncatingTail
-        domainField.delegate = data
-        domainField.stringValue = data.domain ?? ""
-        domainField.placeholderString = "domain:https://xxx.com".localized
-        self.domainField = domainField
-
-        let settingsBtn = NSButton(title: "", image: NSImage(named: NSImage.advancedName)!, target: self, action: #selector(openConfigSheet(_:)))
-        settingsBtn.frame = NSRect(x: textFieldX + Int(domainField.frame.width) + gapLeft, y: y, width: settingsBtnWith, height: labelHeight)
-        settingsBtn.imagePosition = .imageOnly
-
-        self.addSubview(domainLabel)
-        self.addSubview(domainField)
-        self.addSubview(settingsBtn)
-        nextKeyViews.append(domainField)
-        nextKeyViews.append(settingsBtn)
+        self.createDomainField(data)
+        // MARK: saveKeyPath
+        y = y - gapTop - labelHeight
+        self.createSaveKeyField(data)
+        
         
         // MARK: help
         y = y - gapTop * 2 - labelHeight
-        super.createHelpBtn(paddingLeft, y, "https://blog.svend.cc/upic/tutorials/upyun_uss")
+        super.createHelpBtn("https://blog.svend.cc/upic/tutorials/upyun_uss")
         
     }
 

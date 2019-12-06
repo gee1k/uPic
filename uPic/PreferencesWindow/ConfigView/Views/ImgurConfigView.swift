@@ -10,17 +10,17 @@ import Cocoa
 
 class ImgurConfigView: ConfigView {
     
+    override var paddingTop: Int {
+        return 50
+    }
+    
     override func createView() {
+        super.createView()
         
         guard let data = self.data as? ImgurHostConfig else {
             return
         }
         
-        let paddingTop = 50, paddingLeft = 6, gapTop = 10, gapLeft = 5, labelWidth = 75, labelHeight = 20,
-        viewWidth = Int(self.frame.width), viewHeight = Int(self.frame.height),
-        textFieldX = labelWidth + paddingLeft + gapLeft, textFieldWidth = viewWidth - paddingLeft - textFieldX
-        
-        var y = viewHeight - paddingTop
       
         // MARK: clientId
         let clientIdLabel = NSTextField(labelWithString: "\(data.displayName(key: "clientId")):")
@@ -40,7 +40,7 @@ class ImgurConfigView: ConfigView {
         
         // MARK: help
         y = y - gapTop * 2 - labelHeight
-        super.createHelpBtn(paddingLeft, y, "https://blog.svend.cc/upic/tutorials/imgur")
+        super.createHelpBtn("https://blog.svend.cc/upic/tutorials/imgur")
     }
     
 }
