@@ -249,12 +249,4 @@ class ConfigView: NSView {
         NSWorkspace.shared.open(url)
     }
     
-    func addObserver() {
-        
-    }
-    
-    
-    func removeObserver() {
-    }
-    
 }

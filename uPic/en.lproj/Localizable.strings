@@ -103,6 +103,7 @@
 "Body Data" = "Body Data";
 "Client ID" = "Client ID";
 "Save Key" = "Save Key";
+"Use CDN" = "Use the default CDN to speed access";
 
 /* host field placeholder */
 "Operator name" = "Operator name";

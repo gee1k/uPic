@@ -120,7 +120,6 @@ class BaseUploaderUtil {
                         .replacingOccurrences(of: "{random}", with: _getRrandomFileName(nil))
                         .replacingOccurrences(of: "{.suffix}", with: ".\(fileExtension)")
         
-        debugPrint(keyPath)
         return keyPath
     }
     
