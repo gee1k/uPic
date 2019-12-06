@@ -133,8 +133,6 @@ class GithubConfigView: ConfigView {
     @objc func useCdnChanged(_ sender: NSButton) {
         let value = sender.state.rawValue
         if value == 0 {
-            self.domainField?.stringValue = ""
-            self.data?.setValue("", forKey: "domain")
             self.domainField?.isEnabled = true
         } else {
             self.domainField?.isEnabled = false
