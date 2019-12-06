@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.15.0</title>
+			<description>
+			<![CDATA[
+			<h1 id="-new">✨ New</h1> <ul> <li>正式支持 PNG 压缩。</li> <li>Github 图床配置添加默认 CDN 选项。（默认使用 jsdelivr）</li> </ul> <h1 id="-improved">🎨 Improved</h1> <ul> <li>优化改进图床配置界面及代码逻辑。</li> <li>优化程序自启动实现方案，采用 LoginItem 方法实现。在系统设置中可见。 (感谢 <a href="https://github.com/L1cardo">L1cardo</a>)</li> </ul> <hr /> <h1 id="-new-1">✨ New</h1> <ul> <li>Add PNG compression support.</li> <li>Github host adds default CDN options. (jsdelivr is used by default)</li> </ul> <h1 id="-improved-1">🎨 Improved</h1> <ul> <li>Improved host configuration interface and code.</li> <li>Improve the implementation method of self-starting by using LoginItem. Visible in system settings. (Thanks to <a href="https://github.com/L1cardo">L1cardo</a>)</li> </ul>
+			]]>
+			</description>
+			<pubDate>Fri, 06 Dec 2019 15:02:17 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.15.0/uPic.dmg" sparkle:version="20191206" sparkle:shortVersionString="v0.15.0" type="application/octet-stream" sparkle:edSignature="PXd8RiflEcMMpemhGhjRg53GCMzl1pZNESszYHJKXN8oQ7UdLIZFzI2pIGJSVMbXATqBzgyTD1c+1wEEGFflAg==" length="9270452"/>
+		</item>
+		<item>
 			<title>v0.14.2</title>
 			<description>
 			<![CDATA[
