@@ -176,6 +176,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 Authored and maintained by Svend with help from contributors ([list](https://github.com/gee1k/uPic/contributors)).
 
 > Blog [@Svend](https://svend.cc) · GitHub [@gee1k](https://github.com/gee1k) · Twitter [@geee1k](https://twitter.com/geee1k) · Telegram Channel [@uPic 产品交流群](https://t.me/upic_host)
+> 
 > 微信群 <small>扫描下方二维码加好友拉你入群 ↓ </small>
 
 <img src="https://raw.githubusercontent.com/gee1k/oss/master/personal/geee1k.JPG" height="200">
