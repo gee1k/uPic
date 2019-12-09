@@ -7,7 +7,7 @@
 
 <div style="display: flex;justify-content: center;" align="center">
 	<a href="https://github.com/gee1k/uPic/releases/latest">
-    <img src="https://img.shields.io/github/release/gee1k/uPic?label=version&style=flat-square" alt="">
+    <a href="https://opencollective.com/uPic" alt="Financial Contributors on Open Collective"><img src="https://opencollective.com/uPic/all/badge.svg?label=financial+contributors" /></a> <img src="https://img.shields.io/github/release/gee1k/uPic?label=version&style=flat-square" alt="">
   </a>
 	<a href="https://github.com/gee1k/uPic/releases" style="margin: 0 5px;">
     <img src="https://img.shields.io/github/downloads/gee1k/uPic/total.svg?style=flat-square" alt="">
@@ -174,3 +174,33 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/gee1k/uPic/graphs/contributors"><img src="https://opencollective.com/uPic/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/uPic/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/uPic"><img src="https://opencollective.com/uPic/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/uPic/contribute)]
+
+<a href="https://opencollective.com/uPic/organization/0/website"><img src="https://opencollective.com/uPic/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/uPic/organization/1/website"><img src="https://opencollective.com/uPic/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/uPic/organization/2/website"><img src="https://opencollective.com/uPic/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/uPic/organization/3/website"><img src="https://opencollective.com/uPic/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/uPic/organization/4/website"><img src="https://opencollective.com/uPic/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/uPic/organization/5/website"><img src="https://opencollective.com/uPic/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/uPic/organization/6/website"><img src="https://opencollective.com/uPic/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/uPic/organization/7/website"><img src="https://opencollective.com/uPic/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/uPic/organization/8/website"><img src="https://opencollective.com/uPic/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/uPic/organization/9/website"><img src="https://opencollective.com/uPic/organization/9/avatar.svg"></a>
