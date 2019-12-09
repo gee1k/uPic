@@ -163,6 +163,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Jackxun123"><img src="https://avatars2.githubusercontent.com/u/33611532?v=4" width="100px;" alt="Jackxun123"/><br /><sub><b>Jackxun123</b></sub></a><br /><a href="#translation-Jackxun123" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/kkkkkkyrie"><img src="https://avatars2.githubusercontent.com/u/30786071?v=4" width="100px;" alt="eleven"/><br /><sub><b>eleven</b></sub></a><br /><a href="#translation-kkkkkkyrie" title="Translation">🌍</a></td>
     <td align="center"><a href="https://immx.io/"><img src="https://avatars1.githubusercontent.com/u/16921591?v=4" width="100px;" alt="zhucebuliaomax"/><br /><sub><b>zhucebuliaomax</b></sub></a><br /><a href="#design-ihatework" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/nlnlnull"><img src="https://avatars3.githubusercontent.com/u/17818831?v=4" width="100px;" alt="null"/><br /><sub><b>null</b></sub></a><br /><a href="https://github.com/gee1k/uPic/commits?author=nlnlnull" title="Code">💻</a></td>
+    <td align="center"><a href="https://licardo.cn"><img src="https://avatars1.githubusercontent.com/u/33802186?v=4" width="100px;" alt="Licardo"/><br /><sub><b>Licardo</b></sub></a><br /><a href="https://github.com/gee1k/uPic/commits?author=L1cardo" title="Code">💻</a> <a href="#design-L1cardo" title="Design">🎨</a></td>
   </tr>
 </table>
 
@@ -175,6 +177,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 **uPic** © [Svend](https://github.com/gee1k), Released under the [MIT](./LICENSE) License.<br>
 Authored and maintained by Svend with help from contributors ([list](https://github.com/gee1k/uPic/contributors)).
 
-> Blog [@Svend](https://svend.cc) · GitHub [@gee1k](https://github.com/gee1k) · Twitter [@geee1k](https://twitter.com/geee1k) · Telegram Channel [@uPic 产品交流群](https://t.me/upic_host) · Wechat group <small>scan the QR code below to join in ↓ </small>
+> Blog [@Svend](https://svend.cc) · GitHub [@gee1k](https://github.com/gee1k) · Twitter [@geee1k](https://twitter.com/geee1k) · Telegram Channel [@uPic 产品交流群](https://t.me/upic_host)
+> Wechat group <small>scan the QR code below to join in ↓ </small>
 
 <img src="https://raw.githubusercontent.com/gee1k/oss/master/personal/geee1k.JPG" height="200">

@@ -532,7 +532,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qri-L6-ZRL">
-                                        <rect key="frame" x="-0.5" y="21" width="125" height="23"/>
+                                        <rect key="frame" x="0.0" y="21" width="125" height="23"/>
                                         <buttonCell key="cell" type="roundTextured" title="Reset preferences" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jyI-H7-qN3">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -889,33 +889,33 @@
             <objects>
                 <viewController storyboardIdentifier="CustomConfigSheetController" id="Ozx-L1-Bxg" customClass="CustomConfigSheetController" customModule="uPic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="CbM-da-dkU">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="380"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box title="Header and Body Data" translatesAutoresizingMaskIntoConstraints="NO" id="OaN-c4-l0X">
-                                <rect key="frame" x="7" y="66" width="436" height="304"/>
+                                <rect key="frame" x="7" y="106" width="436" height="284"/>
                                 <view key="contentView" id="xaD-ZQ-LNf">
-                                    <rect key="frame" x="3" y="3" width="430" height="284"/>
+                                    <rect key="frame" x="3" y="3" width="430" height="264"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFc-2u-BgZ">
-                                            <rect key="frame" x="5" y="5" width="420" height="274"/>
+                                            <rect key="frame" x="5" y="5" width="420" height="254"/>
                                             <clipView key="contentView" id="DcA-Kj-FKb">
-                                                <rect key="frame" x="0.0" y="0.0" width="405" height="259"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="405" height="239"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hh8-yt-xyd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="390" height="244"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="390" height="224"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     </view>
                                                 </subviews>
                                             </clipView>
                                             <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="No7-94-RGW">
-                                                <rect key="frame" x="0.0" y="259" width="405" height="15"/>
+                                                <rect key="frame" x="0.0" y="239" width="405" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="qFH-NW-ynh">
-                                                <rect key="frame" x="405" y="0.0" width="15" height="259"/>
+                                                <rect key="frame" x="405" y="0.0" width="15" height="239"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
@@ -930,10 +930,30 @@
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="FXz-X6-6Pl">
-                                <rect key="frame" x="10" y="10" width="430" height="60"/>
+                                <rect key="frame" x="10" y="10" width="430" height="100"/>
                                 <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M3i-Qr-Okm">
+                                        <rect key="frame" x="4" y="66" width="145" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Add Header Field" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ckh-A7-mxC">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="addHeaderBtnClicked:" target="Ozx-L1-Bxg" id="B0c-lU-Eo2"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kZA-s6-5MO">
+                                        <rect key="frame" x="159" y="66" width="132" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Add Body Field" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="osM-Ga-s0H">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="addBodyBtnClicked:" target="Ozx-L1-Bxg" id="cFH-cd-8ap"/>
+                                        </connections>
+                                    </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yw2-YH-Daz">
-                                        <rect key="frame" x="354" y="-7" width="82" height="32"/>
+                                        <rect key="frame" x="354" y="-5" width="82" height="32"/>
                                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cp0-zp-Dpm">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -945,28 +965,8 @@ DQ
                                             <action selector="okBtnClicked:" target="Ozx-L1-Bxg" id="xSw-VB-eaW"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M3i-Qr-Okm">
-                                        <rect key="frame" x="14" y="26" width="145" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Add Header Field" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ckh-A7-mxC">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="addHeaderBtnClicked:" target="Ozx-L1-Bxg" id="B0c-lU-Eo2"/>
-                                        </connections>
-                                    </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kZA-s6-5MO">
-                                        <rect key="frame" x="159" y="26" width="132" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Add Body Field" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="osM-Ga-s0H">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="addBodyBtnClicked:" target="Ozx-L1-Bxg" id="cFH-cd-8ap"/>
-                                        </connections>
-                                    </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YWU-oU-UGk">
-                                        <rect key="frame" x="272" y="-7" width="82" height="32"/>
+                                        <rect key="frame" x="272" y="-5" width="82" height="32"/>
                                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="q1H-P0-jix">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -978,19 +978,32 @@ Gw
                                             <action selector="dismissController:" target="Ozx-L1-Bxg" id="837-jl-nLl"/>
                                         </connections>
                                     </button>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8u9-Jh-uDe">
+                                        <rect key="frame" x="8" y="31" width="404" height="34"/>
+                                        <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" id="R0i-0c-6TZ">
+                                            <font key="font" metaFont="system" size="12"/>
+                                            <string key="title">Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {saveKey} and etc.</string>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="YWU-oU-UGk" firstAttribute="top" secondItem="8u9-Jh-uDe" secondAttribute="bottom" constant="8" symbolic="YES" id="0ZD-K0-U4A"/>
                                     <constraint firstItem="kZA-s6-5MO" firstAttribute="leading" secondItem="FXz-X6-6Pl" secondAttribute="leading" constant="165" id="6AX-1d-Rvu"/>
                                     <constraint firstItem="YWU-oU-UGk" firstAttribute="baseline" secondItem="Yw2-YH-Daz" secondAttribute="baseline" id="7ns-O2-Caz"/>
                                     <constraint firstItem="YWU-oU-UGk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FXz-X6-6Pl" secondAttribute="leading" constant="20" symbolic="YES" id="A4C-hd-kEA"/>
-                                    <constraint firstItem="M3i-Qr-Okm" firstAttribute="leading" secondItem="FXz-X6-6Pl" secondAttribute="leading" constant="20" id="GZZ-cj-xt7"/>
-                                    <constraint firstItem="YWU-oU-UGk" firstAttribute="top" secondItem="kZA-s6-5MO" secondAttribute="bottom" constant="12" symbolic="YES" id="Gpq-7V-hXe"/>
+                                    <constraint firstItem="M3i-Qr-Okm" firstAttribute="leading" secondItem="FXz-X6-6Pl" secondAttribute="leading" constant="10" id="GZZ-cj-xt7"/>
+                                    <constraint firstItem="YWU-oU-UGk" firstAttribute="top" secondItem="kZA-s6-5MO" secondAttribute="bottom" constant="50" id="Gpq-7V-hXe"/>
+                                    <constraint firstItem="8u9-Jh-uDe" firstAttribute="top" secondItem="M3i-Qr-Okm" secondAttribute="bottom" constant="8" symbolic="YES" id="GrU-Ww-LgD"/>
                                     <constraint firstAttribute="trailing" secondItem="YWU-oU-UGk" secondAttribute="trailing" constant="82" id="GzT-Zw-8WP"/>
                                     <constraint firstItem="Yw2-YH-Daz" firstAttribute="leading" secondItem="YWU-oU-UGk" secondAttribute="trailing" constant="12" symbolic="YES" id="IL8-dq-fN9"/>
                                     <constraint firstAttribute="trailing" secondItem="Yw2-YH-Daz" secondAttribute="trailing" id="IkK-F0-0hq"/>
-                                    <constraint firstItem="kZA-s6-5MO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="M3i-Qr-Okm" secondAttribute="trailing" symbolic="YES" id="bdG-Tx-DwH"/>
+                                    <constraint firstItem="kZA-s6-5MO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="M3i-Qr-Okm" secondAttribute="trailing" constant="12" symbolic="YES" id="bdG-Tx-DwH"/>
+                                    <constraint firstAttribute="trailing" secondItem="8u9-Jh-uDe" secondAttribute="trailing" constant="20" symbolic="YES" id="seE-0y-ygC"/>
                                     <constraint firstItem="kZA-s6-5MO" firstAttribute="baseline" secondItem="M3i-Qr-Okm" secondAttribute="baseline" id="tEO-Ga-0oK"/>
                                     <constraint firstAttribute="trailing" secondItem="kZA-s6-5MO" secondAttribute="trailing" constant="145" id="vz3-OK-kNl"/>
+                                    <constraint firstItem="8u9-Jh-uDe" firstAttribute="leading" secondItem="M3i-Qr-Okm" secondAttribute="leading" id="xdM-pT-q7o"/>
                                     <constraint firstItem="kZA-s6-5MO" firstAttribute="top" secondItem="FXz-X6-6Pl" secondAttribute="top" constant="6" id="zvZ-pB-fnx"/>
                                 </constraints>
                             </customView>
@@ -998,12 +1011,12 @@ Gw
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="OaN-c4-l0X" secondAttribute="trailing" constant="10" id="0Gl-0i-7oU"/>
                             <constraint firstAttribute="bottom" secondItem="FXz-X6-6Pl" secondAttribute="bottom" constant="10" id="AHm-0n-lvQ"/>
-                            <constraint firstItem="FXz-X6-6Pl" firstAttribute="top" secondItem="CbM-da-dkU" secondAttribute="top" constant="310" id="Qr7-cG-1ye"/>
+                            <constraint firstItem="FXz-X6-6Pl" firstAttribute="top" secondItem="CbM-da-dkU" secondAttribute="top" constant="290" id="Qr7-cG-1ye"/>
                             <constraint firstAttribute="trailing" secondItem="FXz-X6-6Pl" secondAttribute="trailing" constant="10" id="UxA-7C-A7e"/>
                             <constraint firstItem="OaN-c4-l0X" firstAttribute="leading" secondItem="CbM-da-dkU" secondAttribute="leading" constant="10" id="eo7-ci-WKC"/>
                             <constraint firstItem="OaN-c4-l0X" firstAttribute="top" secondItem="CbM-da-dkU" secondAttribute="top" constant="10" id="i2e-jG-UDd"/>
                             <constraint firstItem="FXz-X6-6Pl" firstAttribute="leading" secondItem="CbM-da-dkU" secondAttribute="leading" constant="10" id="lCR-xU-C0M"/>
-                            <constraint firstAttribute="bottom" secondItem="OaN-c4-l0X" secondAttribute="bottom" constant="70" id="qe8-5e-nW9"/>
+                            <constraint firstAttribute="bottom" secondItem="OaN-c4-l0X" secondAttribute="bottom" constant="110" id="qe8-5e-nW9"/>
                         </constraints>
                     </view>
                     <connections>
