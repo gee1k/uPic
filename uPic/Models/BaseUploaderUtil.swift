@@ -92,7 +92,20 @@ class BaseUploaderUtil {
     ///   - saveKeyPath: 文件保存路径（含变量）
     ///   - filenameComponent: 文件名,含后缀
     static func parseSaveKeyPath(_ saveKeyPath: String?, _ filenameComponent: String) -> String {
-        var keyPath = (saveKeyPath != nil && !saveKeyPath!.isEmpty) ? saveKeyPath! : _defaultSaveKeyPath
+        let keyPath = (saveKeyPath != nil && !saveKeyPath!.isEmpty) ? saveKeyPath! : _defaultSaveKeyPath
+        return _parseVariables(keyPath, filenameComponent, otherVariables: nil)
+    }
+    
+    /// 转换字符串中的变量
+    /// - Parameters:
+    ///   - str: 字符串（含变量）
+    ///   - filenameComponent: 文件名,含后缀
+    ///   - otherVariables: 额外变量及值 （变量名：value）
+    static func _parseVariables(_ str: String, _ filenameComponent: String, otherVariables: [String: String]?) -> String {
+        if str.isEmpty {
+            return str
+        }
+        
         let filename = filenameComponent.lastPathComponent.deletingPathExtension
         let fileExtension = filenameComponent.pathExtension
         let now = Date()
@@ -108,7 +121,7 @@ class BaseUploaderUtil {
         // The number of millisecond since 1970
         let sinceMillisecond = now.milliStamp
         
-        keyPath = keyPath.replacingOccurrences(of: "{year}", with: "\(year)")
+        var result = str.replacingOccurrences(of: "{year}", with: "\(year)")
                         .replacingOccurrences(of: "{month}", with: "\(month)")
                         .replacingOccurrences(of: "{day}", with: "\(day)")
                         .replacingOccurrences(of: "{hour}", with: "\(hour)")
@@ -120,7 +133,13 @@ class BaseUploaderUtil {
                         .replacingOccurrences(of: "{random}", with: _getRrandomFileName(nil))
                         .replacingOccurrences(of: "{.suffix}", with: ".\(fileExtension)")
         
-        return keyPath
+        if let varables = otherVariables, varables.count > 0 {
+            for (key, value) in varables {
+                result = result.replacingOccurrences(of: "{\(key)}", with: value)
+            }
+        }
+        
+        return result
     }
     
     

@@ -50,15 +50,16 @@ class CustomUploader: BaseUploader {
 
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
+        
+        
+        let otherVariables = ["saveKey": saveKey]
 
         if let headersStr = config.headers {
             let headersArr = CustomHostUtil.parseHeadersOrBodys(headersStr)
             for header in headersArr {
                 if let key = header["key"] {
                     var value = header["value"] ?? ""
-                    if value == "{filename}" {
-                        value = fileName
-                    }
+                    value = BaseUploaderUtil._parseVariables(value, fileName, otherVariables: otherVariables)
 
                     headers.add(HTTPHeader(name: key, value: value))
                 }
@@ -72,9 +73,7 @@ class CustomUploader: BaseUploader {
                 for body in bodysArr {
                     if let key = body["key"] {
                         var value = body["value"] ?? ""
-                        if value == "{filename}" {
-                            value = fileName
-                        }
+                        value = BaseUploaderUtil._parseVariables(value, fileName, otherVariables: otherVariables)
 
                         multipartFormData.append(String(value).data(using: .utf8)!, withName: key)
                     }
