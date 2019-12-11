@@ -13,7 +13,10 @@
     <img src="https://img.shields.io/github/downloads/gee1k/uPic/total.svg?style=flat-square" alt="">
   </a> 
   <a href="https://github.com/gee1k/uPic/blob/master/LICENSE">
-		<img alt="GitHub" src="https://img.shields.io/github/license/gee1k/uPic?style=flat-square">
+	<img alt="GitHub" src="https://img.shields.io/github/license/gee1k/uPic?style=flat-square">
+    </a>
+	<a href="https://travis-ci.org/gee1k/uPic" style="margin: 0 5px;">
+		<img src="https://img.shields.io/travis/gee1k/uPic.svg?style=flat-square">
 	</a>
 </div>
 

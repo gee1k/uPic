@@ -1,7 +1,7 @@
-language: objective-c
+language: swift
 matrix:
   include:
-    - osx_image: xcode11
+    - osx_image: xcode11.2
 branches:
   only:
     - master
