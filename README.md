@@ -7,13 +7,16 @@
 
 <div style="display: flex;justify-content: center;" align="center">
 	<a href="https://github.com/gee1k/uPic/releases/latest">
-    <a href="https://opencollective.com/uPic" alt="Financial Contributors on Open Collective"><img src="https://opencollective.com/uPic/all/badge.svg?label=financial+contributors" /></a> <img src="https://img.shields.io/github/release/gee1k/uPic?label=version&style=flat-square" alt="">
+    <img src="https://img.shields.io/github/release/gee1k/uPic?label=version&style=flat-square" alt="">
   </a>
 	<a href="https://github.com/gee1k/uPic/releases" style="margin: 0 5px;">
     <img src="https://img.shields.io/github/downloads/gee1k/uPic/total.svg?style=flat-square" alt="">
   </a> 
   <a href="https://github.com/gee1k/uPic/blob/master/LICENSE">
-		<img alt="GitHub" src="https://img.shields.io/github/license/gee1k/uPic?style=flat-square">
+	<img alt="GitHub" src="https://img.shields.io/github/license/gee1k/uPic?style=flat-square">
+    </a>
+	<a href="https://travis-ci.org/gee1k/uPic" style="margin: 0 5px;">
+		<img src="https://img.shields.io/travis/gee1k/uPic.svg?style=flat-square">
 	</a>
 </div>
 
