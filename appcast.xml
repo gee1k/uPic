@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.15.1</title>
+			<description>
+			<![CDATA[
+			<h1 id="-new">✨ New</h1> <ul> <li>自定义图床配置中的 Header、Body 值均支持变量语法。</li> <li>添加图床配置一键测试上传功能</li> </ul> <hr /> <h1 id="-new-1">✨ New</h1> <ul> <li>Add support for variables for custom host Header and Body property values</li> <li>Add test host configuration upload button</li> </ul>
+			]]>
+			</description>
+			<pubDate>Thu, 12 Dec 2019 09:28:48 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.15.1/uPic.dmg" sparkle:version="20191212" sparkle:shortVersionString="v0.15.1" type="application/octet-stream" sparkle:edSignature="FdsAyp1dTOjWqwPeakihgpQZlNHL9IIO2Nzy+809vMaJoQdgLy8Xq7rTmxAVDUsy6bYxUV3jKpUkA/KRabaDCQ==" length="9267640"/>
+		</item>
+		<item>
 			<title>v0.15.0</title>
 			<description>
 			<![CDATA[
