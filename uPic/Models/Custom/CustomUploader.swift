@@ -15,8 +15,8 @@ class CustomUploader: BaseUploader {
     static let shared = CustomUploader()
     static let fileExtensions: [String] = []
 
-    func _upload(_ fileUrl: URL?, fileData: Data?) {
-        guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {
+    func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
+        guard let data = host.data else {
             super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
@@ -50,15 +50,16 @@ class CustomUploader: BaseUploader {
 
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
+        
+        
+        let otherVariables = ["saveKey": saveKey]
 
         if let headersStr = config.headers {
             let headersArr = CustomHostUtil.parseHeadersOrBodys(headersStr)
             for header in headersArr {
                 if let key = header["key"] {
                     var value = header["value"] ?? ""
-                    if value == "{filename}" {
-                        value = fileName
-                    }
+                    value = BaseUploaderUtil._parseVariables(value, fileName, otherVariables: otherVariables)
 
                     headers.add(HTTPHeader(name: key, value: value))
                 }
@@ -72,9 +73,7 @@ class CustomUploader: BaseUploader {
                 for body in bodysArr {
                     if let key = body["key"] {
                         var value = body["value"] ?? ""
-                        if value == "{filename}" {
-                            value = fileName
-                        }
+                        value = BaseUploaderUtil._parseVariables(value, fileName, otherVariables: otherVariables)
 
                         multipartFormData.append(String(value).data(using: .utf8)!, withName: key)
                     }
@@ -110,12 +109,12 @@ class CustomUploader: BaseUploader {
         })
 
     }
-
-    func upload(_ fileUrl: URL) {
-        self._upload(fileUrl, fileData: nil)
+    
+    func upload(_ fileUrl: URL, host: Host) {
+        self._upload(fileUrl, fileData: nil, host: host)
     }
-
-    func upload(_ fileData: Data) {
-        self._upload(nil, fileData: fileData)
+    
+    func upload(_ fileData: Data, host: Host) {
+        self._upload(nil, fileData: fileData, host: host)
     }
 }

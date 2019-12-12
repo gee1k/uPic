@@ -21,7 +21,7 @@ class SmmsUploader: BaseUploader {
     
     let url = "https://sm.ms/api/upload"
 
-    func _upload(_ fileUrl: URL?, fileData: Data?) {
+    func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
         super.start()
 
         guard let configuration = BaseUploaderUtil.getSaveConfiguration(fileUrl, fileData, nil) else {
@@ -61,12 +61,12 @@ class SmmsUploader: BaseUploader {
         })
 
     }
-
-    func upload(_ fileUrl: URL) {
-        self._upload(fileUrl, fileData: nil)
+    
+    func upload(_ fileUrl: URL, host: Host) {
+        self._upload(fileUrl, fileData: nil, host: host)
     }
     
-    func upload(_ fileData: Data) {
-        self._upload(nil, fileData: fileData)
+    func upload(_ fileData: Data, host: Host) {
+        self._upload(nil, fileData: fileData, host: host)
     }
 }
