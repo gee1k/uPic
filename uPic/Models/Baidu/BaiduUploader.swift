@@ -15,8 +15,8 @@ class BaiduUploader: BaseUploader {
     static let shared = BaiduUploader()
     static let fileExtensions: [String] = []
     
-    func _upload(_ fileUrl: URL?, fileData: Data?) {
-        guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {
+    func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
+        guard let data = host.data else {
             super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
@@ -100,11 +100,11 @@ class BaiduUploader: BaseUploader {
         
     }
     
-    func upload(_ fileUrl: URL) {
-        self._upload(fileUrl, fileData: nil)
+    func upload(_ fileUrl: URL, host: Host) {
+        self._upload(fileUrl, fileData: nil, host: host)
     }
     
-    func upload(_ fileData: Data) {
-        self._upload(nil, fileData: fileData)
+    func upload(_ fileData: Data, host: Host) {
+        self._upload(nil, fileData: fileData, host: host)
     }
 }

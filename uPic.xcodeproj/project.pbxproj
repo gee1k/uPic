@@ -94,6 +94,7 @@
 		16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A6DC5722AA375700813706 /* AppDelegate.swift */; };
 		16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDDFE22EA96AE0080E467 /* Assets.xcassets */; };
 		16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDE0222EAA2920080E467 /* Assets.xcassets */; };
+		16C176F523A208A80089B933 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C176F423A208A80089B933 /* NSImage+Extension.swift */; };
 		16D20B5523838AB1006D8D01 /* BaiduRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B54238388D8006D8D01 /* BaiduRegion.swift */; };
 		16D20B5623838AB5006D8D01 /* BaiduHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B532383889F006D8D01 /* BaiduHostConfig.swift */; };
 		16D20B58238390F2006D8D01 /* BaiduUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B57238390F2006D8D01 /* BaiduUploader.swift */; };
@@ -246,6 +247,7 @@
 		16A6DC6122AA375800813706 /* uPic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPic.entitlements; sourceTree = "<group>"; };
 		16BDDDFE22EA96AE0080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16BDDE0222EAA2920080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		16C176F423A208A80089B933 /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
 		16D20B532383889F006D8D01 /* BaiduHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduHostConfig.swift; sourceTree = "<group>"; };
 		16D20B54238388D8006D8D01 /* BaiduRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduRegion.swift; sourceTree = "<group>"; };
 		16D20B57238390F2006D8D01 /* BaiduUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduUploader.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				165D908522C333740096FF38 /* PasteboardType+Extension.swift */,
 				165701A022C8A6E600C57EE9 /* Regex.swift */,
 				1685AA3422DEC943008FBF1D /* FlippedView.swift */,
+				16C176F423A208A80089B933 /* NSImage+Extension.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -883,6 +886,7 @@
 				1660FCBB22C11C7200372950 /* TencentUploader.swift in Sources */,
 				167D08AE22ED8A58000F3BC0 /* AliyunUploader.swift in Sources */,
 				1647474522B66E3400F9575D /* Util.swift in Sources */,
+				16C176F523A208A80089B933 /* NSImage+Extension.swift in Sources */,
 				167620ED230819C0008F8363 /* ImgurHostConfig.swift in Sources */,
 				1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */,
 				4BC11BDE238CFD53001641A6 /* HistoryThumbnailTimer.swift in Sources */,
