@@ -20,7 +20,7 @@
 
 **👬Chat: _[Telegram](https://t.me/upic_host), [Twitter](https://twitter.com/geee1k), [Weibo](https://weibo.com/6436660358), [Wechat Group](https://raw.githubusercontent.com/gee1k/oss/master/personal/geee1k.JPG)_**
 
-**☕️Donate: _[Paypal](https://paypal.me/geee1k), [Alipay](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/alipay-mini.jpeg), [WechatPay](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat-zs.JPG)_**
+**☕️Donate: _[Paypal](https://paypal.me/geee1k), [Alipay](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/alipay.JPG), [WechatPay](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat_pay.JPG)_**
 
 ## 📑 Introduction
 
