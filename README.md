@@ -1,4 +1,4 @@
-<div align="right"><strong>🇨🇳中文</strong>  | <strong><a href="./README.md">🇬🇧English</a></strong></div>
+<div align="right"><strong><a href="./README-cn.md">🇨🇳中文</a></strong>  | <strong>🇬🇧English</strong></div>
 <div align="center">
   <img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/logo.png" alt="uPic">
   <br>
