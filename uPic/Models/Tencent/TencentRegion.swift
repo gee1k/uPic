@@ -9,16 +9,19 @@
 import Foundation
 
 class TencentRegionDict {
+    /// https://cloud.tencent.com/document/product/436/6224
     static let allRegion = [
         // 内地
         "ap_beijing_1": ["name": "北京一区", "endPoint": "cos.ap-beijing-1"],
         "ap_beijing": ["name": "北京", "endPoint": "cos.ap-beijing"],
+        "ap_nanjing": ["name": "南京", "endPoint": "cos.ap-nanjing"],
         "ap_shanghai": ["name": "上海（华东）", "endPoint": "cos.ap-shanghai"],
         "ap_guangzhou": ["name": "广州（华南）", "endPoint": "cos.ap-guangzhou"],
         "ap_chengdu": ["name": "成都（西南）", "endPoint": "cos.ap-chengdu"],
         "ap_chongqing": ["name": "重庆", "endPoint": "cos.ap-chongqing"],
         "ap_shenzhen_fsi": ["name": "深圳金融", "endPoint": "cos.ap-shenzhen-fsi"],
         "ap_shanghai_fsi": ["name": "上海金融", "endPoint": "cos.ap-shanghai-fsi"],
+        "ap_beijing_fsi": ["name": "北京金融", "endPoint": "cos.ap-beijing-fsi"],
         // 中国香港及海外地域
         "ap_hongkong": ["name": "香港", "endPoint": "cos.ap-hongkong"],
         "ap_singapore": ["name": "新加坡", "endPoint": "cos.ap-singapore"],

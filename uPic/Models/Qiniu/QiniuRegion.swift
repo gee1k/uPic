@@ -9,6 +9,7 @@
 import Foundation
 
 class QiniuRegionDict {
+    /// https://developer.qiniu.com/kodo/manual/1671/region-endpoint
     static let allRegion = [
         "z0": ["name": "华东", "url": "https://upload.qiniup.com"],
         "z1": ["name": "华北", "url": "https://upload-z1.qiniup.com"],

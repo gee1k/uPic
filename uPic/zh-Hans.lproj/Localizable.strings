@@ -148,7 +148,7 @@
 "weibo.quality.mw690" = "中等大小";
 "weibo.quality.large" = "原图";
 
-"Test the upload" = "测试上传";
+"Validate" = "验证";
 
 /*eroor message*/
 "Upload failed, please check the configuration!" = "上传失败，请检查配置！";

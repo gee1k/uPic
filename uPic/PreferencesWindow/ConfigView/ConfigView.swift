@@ -232,7 +232,7 @@ class ConfigView: NSView {
         self.addSubview(helpBtn)
         
         // testing
-        let testBtn = NSButton(title: "Test the upload".localized, target: self, action: #selector(testUpload(_:)))
+        let testBtn = NSButton(title: "Validate".localized, target: self, action: #selector(testUpload(_:)))
         let testBtnWidth = Int(testBtn.frame.width)
         testBtn.frame = NSRect(x: Int(self.frame.width) - testBtnWidth - helpBtnWidth - paddingLeft, y: 0, width: testBtnWidth, height: Int(testBtn.frame.height))
         self.addSubview(testBtn)

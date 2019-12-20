@@ -9,14 +9,16 @@
 import Foundation
 
 class AliyunRegionDict {
+    /// https://help.aliyun.com/document_detail/31837.html?spm=a2c4g.11186623.3.3.61247c57V4n0QD
     static let allRegion = [
-        "cn_hangzhou": ["name": "华东 1", "endPoint": "oss-cn-hangzhou"],
-        "cn_shanghai": ["name": "华东 2", "endPoint": "oss-cn-shanghai"],
-        "cn_qingdao": ["name": "华北 1", "endPoint": "oss-cn-qingdao"],
-        "cn_beijing": ["name": "华北 2", "endPoint": "oss-cn-beijing"],
-        "cn_zhangjiakou": ["name": "华北 3", "endPoint": "oss-cn-zhangjiakou"],
-        "cn_huhehaote": ["name": "华北 5", "endPoint": "oss-cn-huhehaote"],
-        "cn_shenzhen": ["name": "华南 1", "endPoint": "oss-cn-shenzhen"],
+        "cn_hangzhou": ["name": "华东 1（杭州）", "endPoint": "oss-cn-hangzhou"],
+        "cn_shanghai": ["name": "华东 2（上海）", "endPoint": "oss-cn-shanghai"],
+        "cn_qingdao": ["name": "华北 1（青岛）", "endPoint": "oss-cn-qingdao"],
+        "cn_beijing": ["name": "华北 2（北京）", "endPoint": "oss-cn-beijing"],
+        "cn_zhangjiakou": ["name": "华北 3（张家口）", "endPoint": "oss-cn-zhangjiakou"],
+        "cn_huhehaote": ["name": "华北 5（呼和浩特）", "endPoint": "oss-cn-huhehaote"],
+        "cn_shenzhen": ["name": "华南 1（深圳）", "endPoint": "oss-cn-shenzhen"],
+        "cn_chengdu": ["name": "西南 1（成都）", "endPoint": "oss-cn-chengdu"],
         "cn_hongkong": ["name": "香港", "endPoint": "oss-cn-hongkong"],
         "us_west_1": ["name": "美国西部 1（硅谷）", "endPoint": "oss-us-west-1"],
         "us_east_1": ["name": "美国东部 1（弗吉尼亚）", "endPoint": "oss-us-east-1"],
