@@ -57,6 +57,10 @@ class AliyunRegion {
     
     /// FIXME： 将旧版区域转为新版格式，几个版本的迭代后需删除
     public static func upgradeFromOld(_ oldRegion: String) -> String {
+        if (oldRegion.starts(with: "oss-")) {
+            return oldRegion
+        }
+        
         if oldRegion.isEmpty {
             return ""
         }

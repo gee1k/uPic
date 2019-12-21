@@ -29,17 +29,20 @@ class BaiduConfigView: ConfigView {
         regionButtonPopUp.identifier = NSUserInterfaceItemIdentifier(rawValue: "region")
         
         var selectRegion: NSMenuItem?
-        for region in BaiduRegion.allRegion {
-            let title = BaiduRegion.name(region.key)
-            let endPoint = BaiduRegion.endPoint(region.key)
+        
+        let sortedKeys = Array(BaiduRegion.allRegion.keys).sorted()
+        
+        for key in sortedKeys {
+            let title = BaiduRegion.name(key)
+            let endPoint = BaiduRegion.endPoint(key)
             let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
-            menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: region.key)
+            menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: key)
             regionButtonPopUp.menu?.addItem(menuItem)
             if endPoint.isEmpty {
                 menuItem.isEnabled = false
             }
             
-            if data.region == region.key {
+            if data.region == key {
                 selectRegion = menuItem
             }
         }
