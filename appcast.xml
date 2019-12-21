@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.15.2</title>
+			<description>
+			<![CDATA[
+			<ul> <li>更新：阿里云、腾讯云区域信息。 fixes #60</li> <li>改进：阿里云、腾讯云区域管理的代码逻辑。</li> <li>改进：Finder 中右键上传方式修改为 URL Scheme 方式。支持在 uPic 为开启状态下，自动开启 APP 并上传。 fixes #59</li> <li> <h2 id="修改图床配置中验证按钮的文字">修改：图床配置中验证按钮的文字</h2> </li> <li>Update: Aliyun and Tencent Cloud region. fixes #60</li> <li>Improved: Alibaba Cloud and Tencent Cloud area management code logic.</li> <li>Improved: Finder context menu upload is invoked by URL Scheme. When uPic is not started, it can automatically apply and upload. fixes #59</li> <li>Fixed: host verification label.</li> </ul>
+			]]>
+			</description>
+			<pubDate>Sat, 21 Dec 2019 05:44:46 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.15.2/uPic.dmg" sparkle:version="20191221" sparkle:shortVersionString="v0.15.2" type="application/octet-stream" sparkle:edSignature="N31+iIXkK21TvfoiwgtjD49dROmOn/INqLbO3V+PhGX6/2ZWV3I73050a72LcxD3vroitIfNXBn37GXNWZpFAg==" length="9262440"/>
+		</item>
+		<item>
 			<title>v0.15.1</title>
 			<description>
 			<![CDATA[
