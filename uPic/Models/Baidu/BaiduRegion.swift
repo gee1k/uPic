@@ -9,6 +9,7 @@
 import Foundation
 
 public class BaiduRegion {
+    /// https://cloud.baidu.com/doc/BOS/s/Ck1rk80hn#%E8%8E%B7%E5%8F%96%E8%AE%BF%E9%97%AE%E5%9F%9F%E5%90%8D
     public static let allRegion = [
         "bj": ["name": "华北-北京"],
         "bd": ["name": "华北-保定"],

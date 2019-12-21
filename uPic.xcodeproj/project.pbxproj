@@ -92,6 +92,8 @@
 		169F073B22AF53DE008E8525 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169F073D22AF53DE008E8525 /* Preferences.storyboard */; };
 		169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F074322AF7A3D008E8525 /* StatusMenuController.swift */; };
 		16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A6DC5722AA375700813706 /* AppDelegate.swift */; };
+		16B4F0BC23ADCFAC00846BD3 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164745EF22B65FE900F9575D /* String+Extension.swift */; };
+		16B4F0BE23ADD09300846BD3 /* String+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4F0BD23ADCFFF00846BD3 /* String+Crypto.swift */; };
 		16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDDFE22EA96AE0080E467 /* Assets.xcassets */; };
 		16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDE0222EAA2920080E467 /* Assets.xcassets */; };
 		16C176F523A208A80089B933 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C176F423A208A80089B933 /* NSImage+Extension.swift */; };
@@ -245,6 +247,7 @@
 		16A6DC5722AA375700813706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16A6DC6022AA375800813706 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16A6DC6122AA375800813706 /* uPic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPic.entitlements; sourceTree = "<group>"; };
+		16B4F0BD23ADCFFF00846BD3 /* String+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Crypto.swift"; sourceTree = "<group>"; };
 		16BDDDFE22EA96AE0080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16BDDE0222EAA2920080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16C176F423A208A80089B933 /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
@@ -329,6 +332,7 @@
 		163632ED22B2745A00805E7F /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				16B4F0BD23ADCFFF00846BD3 /* String+Crypto.swift */,
 				163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */,
 				163632F022B274B400805E7F /* Date+Extension.swift */,
 				163632F222B2751D00805E7F /* BoolType.swift */,
@@ -827,6 +831,7 @@
 				4BB6C412236295DC0046FDC0 /* HistoryThumbnailModel.swift in Sources */,
 				165701A322C8AE0A00C57EE9 /* WeiboUtil.swift in Sources */,
 				16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */,
+				16B4F0BE23ADD09300846BD3 /* String+Crypto.swift in Sources */,
 				167D08AC22ED8A4B000F3BC0 /* AliyunRegion.swift in Sources */,
 				1685AA3522DEC943008FBF1D /* FlippedView.swift in Sources */,
 				16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */,
@@ -931,6 +936,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16B4F0BC23ADCFAC00846BD3 /* String+Extension.swift in Sources */,
 				1618D1AA22E99EA400831601 /* UploadNotifier.swift in Sources */,
 				1618D1A922E99E9B00831601 /* Notifier.swift in Sources */,
 				16F7467422E994A300480A62 /* FinderSync.swift in Sources */,

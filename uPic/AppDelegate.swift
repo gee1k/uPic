@@ -69,6 +69,39 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func uploadFilesFromFinderMenu(notification: Notification) {
         
         let pathStr = notification.object as? String ?? ""
+        uploadFilesFromPaths(pathStr)
+    }
+    
+    @objc func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
+        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue, let url = NSURL(string: urlString) {
+            
+            // 解析出参数
+            var param = urlString
+            let i = "\(url.scheme!)://".count
+            param.removeFirst(i)
+            
+            /// 解析参数类型
+            let keyValue = param.split(separator: "?")
+            switch keyValue.first {
+            case "files":
+                if (keyValue.count == 2) {
+                    let pathStr = String(keyValue.last ?? "")
+                    self.uploadFilesFromPaths(pathStr.urlDecoded())
+                }
+            case "url":
+                if (keyValue.count == 2) {
+                    let url = String(keyValue.last ?? "")
+                    if let fileUrl = URL(string: url.urlDecoded()), let data = try? Data(contentsOf: fileUrl)  {
+                        self.uploadFiles([data])
+                    }
+                }
+            default:
+                debugPrint(keyValue)
+            }
+        }
+    }
+    
+    func uploadFilesFromPaths(_ pathStr: String) {
         let paths = pathStr.split(separator: Character("\n"))
         
         let fileExtensions = BaseUploader.getFileExtensions()
@@ -88,26 +121,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         self.uploadFiles(urls)
-    }
-    
-    @objc func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
-        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue, let url = NSURL(string: urlString) {
-            // 解析出参数
-            var param = urlString
-            let i = "\(url.scheme!)://".count
-            param.removeFirst(i)
-            
-            var fileUrl: URL?
-            if param.isAbsolutePath {
-                fileUrl = URL(fileURLWithPath: param)
-            } else {
-                fileUrl = URL(string: param.urlDecoded())
-            }
-            
-            if let fileUrl = fileUrl, let data = try? Data(contentsOf: fileUrl)  {
-                self.uploadFiles([data])
-            }
-        }
     }
     
 }

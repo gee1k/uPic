@@ -52,7 +52,10 @@ class AliyunUploader: BaseUploader {
         
         // MARK: 加密 policy
         var policyDict = Dictionary<String, Any>()
-        let conditions = [["bucket": bucket], ["key": saveKey]]
+        let conditions = [
+            ["bucket": bucket],
+            ["key": saveKey]
+        ]
         policyDict["conditions"] = conditions
         let policy = AliyunUtil.getPolicy(policyDict: policyDict)
         
@@ -68,6 +71,7 @@ class AliyunUploader: BaseUploader {
             multipartFormData.append(accessKey.data(using: .utf8)!, withName: "OSSAccessKeyId")
             multipartFormData.append(policy.data(using: .utf8)!, withName: "policy")
             multipartFormData.append(signature.data(using: .utf8)!, withName: "Signature")
+            multipartFormData.append(mimeType.data(using: .utf8)!, withName: "Content-Type")
             
             if retData != nil {
                 multipartFormData.append(retData!, withName: "file", fileName: fileName, mimeType: mimeType)

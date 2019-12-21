@@ -8,8 +8,9 @@
 
 import Foundation
 
-class QiniuRegionDict {
+class QiniuRegion {
     /// https://developer.qiniu.com/kodo/manual/1671/region-endpoint
+    
     static let allRegion = [
         "z0": ["name": "华东", "url": "https://upload.qiniup.com"],
         "z1": ["name": "华北", "url": "https://upload-z1.qiniup.com"],
@@ -17,38 +18,25 @@ class QiniuRegionDict {
         "na0": ["name": "北美", "url": "https://upload-na0.qiniup.com"],
         "as0": ["name": "东南亚", "url": "https://upload-as0.qiniup.com"]
     ]
-}
-
-public enum QiniuRegion: String, CaseIterable {
-    case z0
-    case z1
-    case z2
-    case na0
-    case as0
     
-    public var name: String {
-        get {
-            guard let regionDict = QiniuRegionDict.allRegion[self.rawValue], let cname = regionDict["name"] else {
-                return self.rawValue
-            }
-            
-            return "【\(cname)】\(self.rawValue)"
+    public static func name(_ key: String) -> String {
+        guard let regionDict = allRegion[key] else {
+            return key
         }
+        return regionDict["name"] ?? key
     }
     
-    public var url: String {
-        get {
-            guard let regionDict = QiniuRegionDict.allRegion[self.rawValue], let url = regionDict["url"] else {
-                return ""
-            }
-            return url
+    public static func endPoint(_ key: String) -> String? {
+        guard let regionDict = allRegion[key] else {
+            return nil
         }
+        return regionDict["url"]
     }
     
-    public static func formatRegion(_ region: String?) -> QiniuRegion {
+    public static func formatRegion(_ region: String?) -> String {
         if let region = region, !region.isEmpty {
-            return QiniuRegion(rawValue: region)!
+            return region
         }
-        return QiniuRegion.z0
+        return QiniuRegion.allRegion.keys.first!
     }
 }
