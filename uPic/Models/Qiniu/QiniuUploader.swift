@@ -34,11 +34,18 @@ class QiniuUploader: BaseUploader {
         var region = QiniuRegion.formatRegion(config.region)
         
         let saveKeyPath = config.saveKeyPath
+        
+        
+        guard let url = QiniuRegion.endPoint(region) else {
+            super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
+            return
+        }
 
         guard let configuration = BaseUploaderUtil.getSaveConfiguration(fileUrl, fileData, saveKeyPath) else {
             super.faild(errorMsg: "Invalid file")
             return
         }
+        
         let retData = configuration["retData"] as? Data
         let fileName = configuration["fileName"] as! String
         let mimeType = configuration["mimeType"] as! String
@@ -64,7 +71,7 @@ class QiniuUploader: BaseUploader {
             multipartFormData.append(saveKey.data(using: .utf8)!, withName: "key")
         }
 
-        AF.upload(multipartFormData: multipartFormDataGen, to: region.url, headers: headers).validate().uploadProgress { progress in
+        AF.upload(multipartFormData: multipartFormDataGen, to: url, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
         }.responseJSON(completionHandler: { response -> Void in
             switch response.result {

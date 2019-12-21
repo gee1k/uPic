@@ -31,12 +31,17 @@ class QiniuConfigView: ConfigView {
         regionButtonPopUp.identifier = NSUserInterfaceItemIdentifier(rawValue: "region")
         
         var selectRegion: NSMenuItem?
-        for region in QiniuRegion.allCases {
-            let menuItem = NSMenuItem(title: region.name, action: nil, keyEquivalent: "")
-            menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: region.rawValue)
+        for region in QiniuRegion.allRegion {
+            let title = QiniuRegion.name(region.key)
+            let endPoint = QiniuRegion.endPoint(region.key)
+            let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
+            menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: region.key)
             regionButtonPopUp.menu?.addItem(menuItem)
+            if endPoint == nil || endPoint!.isEmpty {
+                menuItem.isEnabled = false
+            }
             
-            if data.region == region.rawValue {
+            if data.region == region.key {
                 selectRegion = menuItem
             }
         }

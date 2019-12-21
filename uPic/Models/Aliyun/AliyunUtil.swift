@@ -32,11 +32,14 @@ public class AliyunUtil {
         return encodePolicy.calculateHMACByKey(key: accessKeySecret).toBase64() ?? ""
     }
     
-    static func computeUrl(bucket: String, region: AliyunRegion) -> String {
-        if region.endPoint.isEmpty {
+    static func computeUrl(bucket: String, region: String) -> String {
+        
+        let endPoint = AliyunRegion.endPoint(region)
+        
+        if endPoint.isEmpty {
             return ""
         }
         
-        return "\(schema)\(bucket).\(region.endPoint)"
+        return "\(schema)\(bucket).\(endPoint)"
     }
 }
