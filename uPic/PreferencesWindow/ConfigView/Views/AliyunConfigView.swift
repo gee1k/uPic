@@ -29,17 +29,20 @@ class AliyunConfigView: ConfigView {
         regionButtonPopUp.identifier = NSUserInterfaceItemIdentifier(rawValue: "region")
         
         var selectRegion: NSMenuItem?
-        for region in AliyunRegion.allRegion {
-            let title = AliyunRegion.name(region.key)
-            let endPoint = AliyunRegion.endPoint(region.key)
+        
+        let sortedKeys = Array(AliyunRegion.allRegion.keys).sorted()
+        
+        for key in sortedKeys {
+            let title = AliyunRegion.name(key)
+            let endPoint = AliyunRegion.endPoint(key)
             let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
-            menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: region.key)
+            menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: key)
             regionButtonPopUp.menu?.addItem(menuItem)
             if endPoint.isEmpty {
                 menuItem.isEnabled = false
             }
             
-            if data.region == region.key {
+            if data.region == key {
                 selectRegion = menuItem
             }
         }
