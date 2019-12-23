@@ -14,6 +14,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     let previewTypes = ["jpeg", "jpg", "png", "gif", "bmp", "tiff"]
 
     @IBOutlet weak var statusMenu: NSMenu!
+    @IBOutlet weak var uploadFromSelectFileMenuItem: NSMenuItem!
+    
+    @IBOutlet weak var uploadFromPasteboardMenuItem: NSMenuItem!
+    @IBOutlet weak var uploadFromScreenshotMenuItem: NSMenuItem!
     @IBOutlet weak var historyMenu: NSMenu!
     @IBOutlet weak var cancelUploadMenuItem: NSMenuItem!
     @IBOutlet weak var cancelUploadMenuSeparator: NSMenuItem!
@@ -24,6 +28,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     override func awakeFromNib() {
 
         statusMenu.delegate = self
+        
+        /// Set shortcut key for upload menu
+        setupItemShortcut(uploadFromSelectFileMenuItem, Constants.Key.selectFileShortcut)
+        setupItemShortcut(uploadFromPasteboardMenuItem, Constants.Key.pasteboardShortcut)
+        setupItemShortcut(uploadFromScreenshotMenuItem, Constants.Key.screenshotShortcut)
         
         resetHostMenu()
         resetUploadHistory()
@@ -330,5 +339,26 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     func removeObserver() {
         ConfigNotifier.removeObserver(observer: self, notification: .changeHostItems)
         ConfigNotifier.removeObserver(observer: self, notification: .changeHistoryList)
+    }
+}
+
+// MARK: - Shortcut key configuration
+extension StatusMenuController {
+    
+    
+    /// Read the global shortcut key configuration in the mashshortcut to the menu bar option
+    /// - Parameters:
+    ///   - item: Menu item
+    ///   - key: MASShortcut key
+    func setupItemShortcut(_ item: NSMenuItem, _ key: String) {
+        
+        guard let data = Defaults.data(forKey: key), let shortcut = NSKeyedUnarchiver.unarchiveObject(with: data) as? MASShortcut else {
+            item.keyEquivalent = ""
+            item.keyEquivalentModifierMask = []
+            return
+        }
+        
+        item.keyEquivalent = shortcut.keyCodeStringForKeyEquivalent
+        item.keyEquivalentModifierMask = shortcut.modifierFlags
     }
 }
