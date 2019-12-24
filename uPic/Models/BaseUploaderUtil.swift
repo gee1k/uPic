@@ -16,7 +16,7 @@ class BaseUploaderUtil {
     /// - Parameters:
     ///   - data: jpg Data
     ///   - factor: 压缩率 0~100
-    private static func compressPng(_ data: Data, factor: Int = 100) -> Data {
+    public static func compressPng(_ data: Data, factor: Int = 100) -> Data {
         if (factor <= 0 || factor >= 100) {
            return data
         }
@@ -178,34 +178,34 @@ class BaseUploaderUtil {
     ///   - fileData: The file Data
     ///   - saveKeyPath: Save  key configuration
     static func getSaveConfigurationWithB64(_ fileUrl: URL?, _ fileData: Data?, _ saveKeyPath: String?) -> [String: Any]? {
+        var retData = fileData
         var fileName = ""
-        var fileBase64 = ""
+        var fileBase64: String? = ""
         var mimeType = ""
         
         if let fileUrl = fileUrl {
             fileName = fileUrl.lastPathComponent
             mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
-            do {
-                var data = try Data(contentsOf: fileUrl)
-                data = BaseUploaderUtil.compressImage(data)
-                fileBase64 = data.toBase64()
-            } catch {
-                return nil
-            }
+            retData = BaseUploaderUtil.compressImage(fileUrl)
+            fileBase64 = retData?.toBase64()
         } else if let fileData = fileData {
             // 处理截图之类的图片，生成一个文件名
             let fileExtension = fileData.contentType() ?? "png"
             fileName = BaseUploaderUtil._getRrandomFileName(fileExtension)
             mimeType = Util.getMimeType(pathExtension: fileExtension)
-            let retData = BaseUploaderUtil.compressImage(fileData)
-            fileBase64 = retData.toBase64()
+            retData = BaseUploaderUtil.compressImage(fileData)
+            fileBase64 = retData?.toBase64()
         } else {
+            return nil
+        }
+        
+        if fileBase64 == nil {
             return nil
         }
         
         let saveKey = BaseUploaderUtil.parseSaveKeyPath(saveKeyPath, fileName)
         
-        return ["fileBase64": fileBase64 as Any, "fileName": fileName, "mimeType": mimeType, "saveKey": saveKey]
+        return ["retData": retData as Any, "fileBase64": fileBase64 as Any, "fileName": fileName, "mimeType": mimeType, "saveKey": saveKey]
     }
     
     

@@ -38,6 +38,7 @@ class ImgurUploader: BaseUploader {
             super.faild(errorMsg: "Invalid file")
             return
         }
+        let retData = configuration["retData"] as? Data
         let fileBase64 = configuration["fileBase64"] as! String
         let fileName = configuration["fileName"] as! String
 
@@ -60,7 +61,7 @@ class ImgurUploader: BaseUploader {
                 case .success(let value):
                     let json = JSON(value)
                     if json["success"].boolValue {
-                        super.completed(url: json["data"]["link"].stringValue.urlDecoded(), fileBase64, fileUrl, fileName)
+                        super.completed(url: json["data"]["link"].stringValue.urlDecoded(), retData, fileUrl, fileName)
                     } else {
                         let error = json["data"]["error"]
                         let errorMsg = error.string ?? error["message"].stringValue

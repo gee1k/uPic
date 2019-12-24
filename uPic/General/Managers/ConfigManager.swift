@@ -14,8 +14,9 @@ public class ConfigManager {
     
     // static
     public static var shared = ConfigManager()
-    
     // instance
+    
+    var historyList: [HistoryThumbnailModel]!
     
     public var firstUsage: BoolType {
         if Defaults[.firstUsage] == nil {
@@ -27,8 +28,8 @@ public class ConfigManager {
     }
     
     public func firstSetup() {
-        //FIXME: 临时处理 folder、filename 的数据到新版的 saveKey 中。后续版本需要移除
-        self._upgradeHostData()
+        // Cahce history list
+        let _ = getHistoryList()
         
         guard firstUsage == ._true else {
             return
@@ -41,50 +42,11 @@ public class ConfigManager {
         LoginServiceKit.removeLoginItems()
     }
     
-    //MARK: 临时处理 folder、filename 的数据到新版的 saveKey 中。后续版本需要移除
-    private func _upgradeHostData() {
-        var changed = false
-        let hostItems = self.getHostItems()
-        for host in hostItems {
-            if (host.data == nil || !host.data!.containsKey(key: "saveKeyPath")) {
-                continue
-            }
-            let data = host.data!
-            if let saveKeyPath = data.value(forKey: "saveKeyPath") as? String, !saveKeyPath.isEmpty {
-                continue
-            }
-            
-            changed = true
-            
-            var saveKeyPath = ""
-            
-            if data.containsKey(key: "folder") {
-                if let folder = data.value(forKey: "folder") as? String, !folder.isEmpty {
-                    saveKeyPath += "\(folder)/"
-                }
-            }
-            
-            if data.containsKey(key: "saveKey") {
-                if let saveKey = data.value(forKey: "saveKey") as? String, let saveKeyObj = HostSaveKey(rawValue: saveKey) {
-                    saveKeyPath += saveKeyObj._getSaveKeyPathPattern()
-                } else {
-                    saveKeyPath += HostSaveKey.filename._getSaveKeyPathPattern()
-                }
-            }
-            
-            host.data?.setValue(saveKeyPath, forKey: "saveKeyPath")
-        }
-        
-        if changed {
-            self.setHostItems(items: hostItems)
-        }
-    }
     
     public func removeAllUserDefaults() {
         // 提前取出图床配置
         let hostItems = self.getHostItems()
         let defaultHostId = Defaults[.defaultHostId]
-        let historyList = self.getHistoryList_New()
         
         let domain = Bundle.main.bundleIdentifier!
         Defaults.removePersistentDomain(forName: domain)
@@ -94,21 +56,13 @@ public class ConfigManager {
             // 清除所有用户设置后，再重新写入图床配置
             self.setHostItems(items: hostItems)
             Defaults[.defaultHostId] = defaultHostId
-            
-            let list = historyList.map { (model) -> [String: Any] in
-                return model.toKeyValue()
-            }
-            
-            self.setHistoryList_New(items: list)
         }
     }
     
 }
 
-
+// MARK: - Host configuration and default host
 extension ConfigManager {
-    // MARK: 图床配置和默认图床
-    
     func getHostItems() -> [Host] {
         return Defaults[.hostItems] ?? [Host]()
     }
@@ -132,11 +86,9 @@ extension ConfigManager {
     }
 }
 
-
+// MARK: - Upload history
 extension ConfigManager {
-    // MARK: 上传历史
-    
-    public var historyLimit_New: Int {
+    public var historyLimit: Int {
         get {
             let defaultLimit = 100
             let limit = Defaults[.historyLimit]
@@ -152,40 +104,52 @@ extension ConfigManager {
         }
     }
     
-    func getHistoryList_New() -> [HistoryThumbnailModel] {
-        let historyList = Defaults[.historyList] ?? [[String: Any]]()
-        let historyListModel: [HistoryThumbnailModel] = historyList.map({ (item) -> HistoryThumbnailModel in
-            return HistoryThumbnailModel.keyValue(keyValue: item)
-        })
-        return historyListModel
+    func getHistoryList() -> [HistoryThumbnailModel] {
+        if historyList != nil {
+            return historyList
+        }
+        
+        // FIXME: - workaround 转移旧版历史记录到 db
+        if let historyList = Defaults[.historyList] {
+            let oldHistoryListModel: [HistoryThumbnailModel] = historyList.map({ (item) -> HistoryThumbnailModel in
+               return HistoryThumbnailModel.keyValue(keyValue: item)
+            })
+
+            DBManager.shared.insertHistorys(oldHistoryListModel)
+            Defaults.removeObject(forKey: Keys.historyList)
+        }
+
+        historyList = DBManager.shared.getHistoryList()
+        return historyList
     }
     
-    func setHistoryList_New(items: [[String: Any]]) -> Void {
-        Defaults[.historyList] = items
-        Defaults.synchronize()
+    func addHistory(_ previewModel: HistoryThumbnailModel) -> Void {
+        historyList.insert(previewModel, at: 0)
+        let offset = historyList.count - self.historyLimit
+        if offset > 0 {
+            // Because the results of the query are already sorted backwards, the first is the last
+            historyList.removeLast(offset)
+        }
+        DispatchQueue.global().async {
+            if offset > 0 {
+                DBManager.shared.deleteHositoryFirst(offset)
+            }
+            DBManager.shared.insertHistory(previewModel)
+        }
         ConfigNotifier.postNotification(.updateHistoryList)
     }
     
-    func addHistory_New(url: String, previewModel: HistoryThumbnailModel) -> Void {
-        var list = self.getHistoryList_New().map { (model) -> [String: Any] in
-            return model.toKeyValue()
+    func clearHistoryList() -> Void {
+        historyList.removeAll()
+        DispatchQueue.global().async {
+            DBManager.shared.clearHistory()
         }
-        list.insert(previewModel.toKeyValue(), at: 0)
-        
-        if list.count > self.historyLimit_New {
-            list.removeFirst(list.count - self.historyLimit_New)
-        }
-        
-        self.setHistoryList_New(items: list)
-    }
-    
-    func clearHistoryList_New() -> Void {
-        self.setHistoryList_New(items: [])
+        ConfigNotifier.postNotification(.updateHistoryList)
     }
 }
 
+// MARK: - Compression ratio of compressed images before upload
 extension ConfigManager {
-    // MARK: 上传前压缩图片，压缩率
     var compressFactor: Int {
         get {
             return Defaults[.compressFactor] ?? 100
@@ -197,10 +161,8 @@ extension ConfigManager {
         }
     }
 }
-
+// MARK: - Import, Export host configuretion
 extension ConfigManager {
-    // import & export config
-    
     func importHosts() {
         NSApp.activate(ignoringOtherApps: true)
         let openPanel = NSOpenPanel()

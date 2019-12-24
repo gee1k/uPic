@@ -51,6 +51,7 @@ class WeiboUploader: BaseUploader {
                 super.faild(errorMsg: "Invalid file")
                 return
             }
+            let retData = configuration["retData"] as? Data
             let fileBase64 = configuration["fileBase64"] as! String
             let fileName = configuration["fileName"] as! String
             
@@ -71,7 +72,7 @@ class WeiboUploader: BaseUploader {
                     switch response.result {
                     case .success(let value):
                         if let pidPid = WeiboUtil.parsePicPid(reponseString: value) {
-                            super.completed(url: "https://ws1.sinaimg.cn/\(quality)/\(pidPid)\(fileExtension)", fileBase64, fileUrl, nil)
+                            super.completed(url: "https://ws1.sinaimg.cn/\(quality)/\(pidPid)\(fileExtension)", retData, fileUrl, nil)
                         } else {
                             super.faild(errorMsg: "Upload failed, please check the configuration!".localized)
                         }

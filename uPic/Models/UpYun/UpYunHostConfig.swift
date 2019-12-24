@@ -15,8 +15,6 @@ class UpYunHostConfig: HostConfig {
     dynamic var operatorName: String?
     dynamic var password: String?
     dynamic var domain: String?
-    dynamic var folder: String?
-    dynamic var saveKey: String? = HostSaveKey.filename.rawValue
     dynamic var saveKeyPath: String?
     dynamic var suffix: String?
 
@@ -30,10 +28,6 @@ class UpYunHostConfig: HostConfig {
             return "Password".localized
         case "domain":
             return "Domain".localized
-        case "folder":
-            return "Folder".localized
-        case "saveKey":
-            return "File Name".localized
         case "saveKeyPath":
             return "Save Key".localized
         case "suffix":
@@ -49,8 +43,6 @@ class UpYunHostConfig: HostConfig {
         dict["operatorName"] = self.operatorName
         dict["password"] = self.password
         dict["domain"] = self.domain
-        dict["folder"] = self.folder
-        dict["saveKey"] = self.saveKey
         dict["saveKeyPath"] = self.saveKeyPath
         dict["suffix"] = self.suffix
 
@@ -68,8 +60,6 @@ class UpYunHostConfig: HostConfig {
         config.operatorName = json["operatorName"].stringValue
         config.password = json["password"].stringValue
         config.domain = json["domain"].stringValue
-        config.folder = json["folder"].stringValue
-        config.saveKey = json["saveKey"].stringValue
         config.saveKeyPath = json["saveKeyPath"].stringValue
         config.suffix = json["suffix"].stringValue
         return config

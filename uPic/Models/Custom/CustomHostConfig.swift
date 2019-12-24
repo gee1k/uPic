@@ -18,7 +18,6 @@ class CustomHostConfig: HostConfig {
     dynamic var headers: String?
     dynamic var resultPath: String?
     dynamic var domain: String?
-    dynamic var saveKey: String? = HostSaveKey.filename.rawValue
     dynamic var saveKeyPath: String?
     dynamic var suffix: String?
 
@@ -38,8 +37,6 @@ class CustomHostConfig: HostConfig {
             return "URL Path".localized
         case "domain":
             return "Domain".localized
-        case "saveKey":
-            return "File Name".localized
         case "saveKeyPath":
             return "Save Key".localized
         case "suffix":
@@ -58,7 +55,6 @@ class CustomHostConfig: HostConfig {
         dict["headers"] = self.headers
         dict["resultPath"] = self.resultPath
         dict["domain"] = self.domain
-        dict["saveKey"] = self.saveKey
         dict["saveKeyPath"] = self.saveKeyPath
         dict["suffix"] = self.suffix
 
@@ -79,7 +75,6 @@ class CustomHostConfig: HostConfig {
         config.headers = json["headers"].stringValue
         config.resultPath = json["resultPath"].stringValue
         config.domain = json["domain"].stringValue
-        config.saveKey = json["saveKey"].stringValue
         config.saveKeyPath = json["saveKeyPath"].stringValue
         config.suffix = json["suffix"].stringValue
         return config

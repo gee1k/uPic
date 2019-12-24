@@ -16,8 +16,6 @@ class TencentHostConfig: HostConfig {
     dynamic var secretId: String?
     dynamic var secretKey: String?
     dynamic var domain: String?
-    dynamic var folder: String?
-    dynamic var saveKey: String? = HostSaveKey.filename.rawValue
     dynamic var saveKeyPath: String?
     dynamic var suffix: String?
 
@@ -33,10 +31,6 @@ class TencentHostConfig: HostConfig {
             return "Secret Key".localized
         case "domain":
             return "Domain".localized
-        case "folder":
-            return "Folder".localized
-        case "saveKey":
-            return "File Name".localized
         case "saveKeyPath":
             return "Save Key".localized
         case "suffix":
@@ -53,8 +47,6 @@ class TencentHostConfig: HostConfig {
         dict["secretId"] = self.secretId
         dict["secretKey"] = self.secretKey
         dict["domain"] = self.domain
-        dict["folder"] = self.folder
-        dict["saveKey"] = self.saveKey
         dict["saveKeyPath"] = self.saveKeyPath
         dict["suffix"] = self.suffix
 
@@ -68,7 +60,7 @@ class TencentHostConfig: HostConfig {
         }
         let data = str.data(using: String.Encoding.utf8)
         let json = try! JSON(data: data!)
-        /// FIXME： 将旧版区域转为新版格式，几个版本的迭代后需删除
+        // FIXME： 将旧版区域转为新版格式，几个版本的迭代后需删除
         
         config.region = TencentRegion.upgradeFromOld(json["region"].stringValue)
 //        config.region = json["region"].stringValue
@@ -76,8 +68,6 @@ class TencentHostConfig: HostConfig {
         config.secretId = json["secretId"].stringValue
         config.secretKey = json["secretKey"].stringValue
         config.domain = json["domain"].stringValue
-        config.folder = json["folder"].stringValue
-        config.saveKey = json["saveKey"].stringValue
         config.saveKeyPath = json["saveKeyPath"].stringValue
         config.suffix = json["suffix"].stringValue
         return config

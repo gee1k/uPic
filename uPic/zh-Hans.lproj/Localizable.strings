@@ -81,8 +81,6 @@
 "Secret Id" = "Secret Id";
 "Secret Key" = "Secret Key";
 "Domain" = "域名";
-"Folder" = "文件夹";
-"File Name" = "文件名";
 "URL suffix" = "网址后缀";
 "API URL" = "API 地址";
 "Method" = "请求方式";
@@ -130,18 +128,6 @@
 "host.type.9" = "Amazon S3";
 "host.type.10" = "Imgur";
 "host.type.11" = "百度云 BOS";
-
-/* HostSaveKey */
-"filename" = "文件名";
-"random" = "随机";
-"date-filename" = "日期-文件名";
-"datetime-filename" = "日期时间-文件名";
-"second-filename" = "秒数-文件名";
-"millisecond-filename" = "毫秒数-文件名";
-"date-random" = "日期-随机";
-"datetime-random" = "日期时间-随机";
-"second-random" = "秒数-随机";
-"millisecond-random" = "毫秒数-随机";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "缩略图";
