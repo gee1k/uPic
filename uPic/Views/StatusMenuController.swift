@@ -29,11 +29,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         statusMenu.delegate = self
         
-        /// Set shortcut key for upload menu
-        setupItemShortcut(uploadFromSelectFileMenuItem, Constants.Key.selectFileShortcut)
-        setupItemShortcut(uploadFromPasteboardMenuItem, Constants.Key.pasteboardShortcut)
-        setupItemShortcut(uploadFromScreenshotMenuItem, Constants.Key.screenshotShortcut)
-        
         resetHostMenu()
         resetUploadHistory()
         refreshOutputFormat()
@@ -42,6 +37,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func menuWillOpen(_ menu: NSMenu) {
+        // Set shortcut key for upload menu
+        setupItemShortcut(uploadFromSelectFileMenuItem, Constants.Key.selectFileShortcut)
+        setupItemShortcut(uploadFromPasteboardMenuItem, Constants.Key.pasteboardShortcut)
+        setupItemShortcut(uploadFromScreenshotMenuItem, Constants.Key.screenshotShortcut)
+        
         (NSApplication.shared.delegate as? AppDelegate)?.unbindShortcuts()
         
         refreshOutputFormat()
