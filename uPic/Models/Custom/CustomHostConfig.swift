@@ -11,15 +11,15 @@ import SwiftyJSON
 
 @objcMembers
 class CustomHostConfig: HostConfig {
-    dynamic var url: String!
+    dynamic var url: String! = ""
     dynamic var method: String! = RequestMethods.POST.rawValue
-    dynamic var field: String!
+    dynamic var field: String! = ""
     dynamic var bodys: String?
     dynamic var headers: String?
     dynamic var resultPath: String?
-    dynamic var domain: String?
+    dynamic var domain: String! = ""
     dynamic var saveKeyPath: String?
-    dynamic var suffix: String?
+    dynamic var suffix: String! = ""
 
     override func displayName(key: String) -> String {
         switch key {

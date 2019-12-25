@@ -11,13 +11,13 @@ import SwiftyJSON
 
 @objcMembers
 class BaiduHostConfig: HostConfig {
-    dynamic var region: String!
-    dynamic var bucket: String!
-    dynamic var accessKey: String!
-    dynamic var secretKey: String!
-    dynamic var domain: String!
+    dynamic var region: String! = ""
+    dynamic var bucket: String! = ""
+    dynamic var accessKey: String! = ""
+    dynamic var secretKey: String! = ""
+    dynamic var domain: String! = ""
     dynamic var saveKeyPath: String?
-    dynamic var suffix: String?
+    dynamic var suffix: String! = ""
     
     override func displayName(key: String) -> String {
         switch key {

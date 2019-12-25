@@ -84,7 +84,7 @@ class UpYunUploader: BaseUploader {
                 let json = JSON(value)
                 let code = json["code"]
                 if 200 == code {
-                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix ?? "")", retData, fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix!)", retData, fileUrl, fileName)
                 } else {
                     super.faild(errorMsg: json["message"].string)
                 }

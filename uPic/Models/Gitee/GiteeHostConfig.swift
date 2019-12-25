@@ -14,8 +14,8 @@ class GiteeHostConfig: HostConfig {
     dynamic var owner: String! = ""
     dynamic var repo: String! = ""
     dynamic var branch: String! = "master"
-    dynamic var token: String!
-    dynamic var domain: String?
+    dynamic var token: String! = ""
+    dynamic var domain: String! = ""
     dynamic var saveKeyPath: String?
     
     override func displayName(key: String) -> String {
