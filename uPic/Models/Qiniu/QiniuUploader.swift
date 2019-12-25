@@ -81,7 +81,7 @@ class QiniuUploader: BaseUploader {
                 if error != nil && error!.count > 0 {
                     super.faild(errorMsg: error)
                 } else {
-                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix!)", retData, fileUrl, fileName)
                 }
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)

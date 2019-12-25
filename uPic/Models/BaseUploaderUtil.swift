@@ -16,7 +16,7 @@ class BaseUploaderUtil {
     /// - Parameters:
     ///   - data: jpg Data
     ///   - factor: 压缩率 0~100
-    private static func compressPng(_ data: Data, factor: Int = 100) -> Data {
+    public static func compressPng(_ data: Data, factor: Int = 100) -> Data {
         if (factor <= 0 || factor >= 100) {
            return data
         }
@@ -178,36 +178,74 @@ class BaseUploaderUtil {
     ///   - fileData: The file Data
     ///   - saveKeyPath: Save  key configuration
     static func getSaveConfigurationWithB64(_ fileUrl: URL?, _ fileData: Data?, _ saveKeyPath: String?) -> [String: Any]? {
+        var retData = fileData
         var fileName = ""
-        var fileBase64 = ""
+        var fileBase64: String? = ""
         var mimeType = ""
         
         if let fileUrl = fileUrl {
             fileName = fileUrl.lastPathComponent
             mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
-            do {
-                var data = try Data(contentsOf: fileUrl)
-                data = BaseUploaderUtil.compressImage(data)
-                fileBase64 = data.toBase64()
-            } catch {
-                return nil
-            }
+            retData = BaseUploaderUtil.compressImage(fileUrl)
+            fileBase64 = retData?.toBase64()
         } else if let fileData = fileData {
             // 处理截图之类的图片，生成一个文件名
             let fileExtension = fileData.contentType() ?? "png"
             fileName = BaseUploaderUtil._getRrandomFileName(fileExtension)
             mimeType = Util.getMimeType(pathExtension: fileExtension)
-            let retData = BaseUploaderUtil.compressImage(fileData)
-            fileBase64 = retData.toBase64()
+            retData = BaseUploaderUtil.compressImage(fileData)
+            fileBase64 = retData?.toBase64()
         } else {
+            return nil
+        }
+        
+        if fileBase64 == nil {
             return nil
         }
         
         let saveKey = BaseUploaderUtil.parseSaveKeyPath(saveKeyPath, fileName)
         
-        return ["fileBase64": fileBase64 as Any, "fileName": fileName, "mimeType": mimeType, "saveKey": saveKey]
+        return ["retData": retData as Any, "fileBase64": fileBase64 as Any, "fileName": fileName, "mimeType": mimeType, "saveKey": saveKey]
     }
     
     
+    /// Format output URL
+    /// - Parameter url: Original url
+    static func formatOutputURL(_ url: String) -> String {
+        let outputFormat = Defaults[.ouputFormat]
+        
+        var filename = url.lastPathComponent.deletingPathExtension.trim()
+        let tempArr = filename.components(separatedBy: .whitespaces).map{ $0.trim() }.filter{ !$0.isEmpty }
+        filename = tempArr.joined(separator: "")
+        
+        
+        var outputUrl = ""
+        switch outputFormat {
+        case 1:
+            outputUrl = "<img src='\(url)' alt='\(filename)'/>"
+            break
+        case 2:
+            outputUrl = "![\(filename)](\(url))"
+            break
+        case 3:
+            // UBB
+            outputUrl = "[img]\(url)[/img]"
+            break
+        default:
+            outputUrl = url
+            
+        }
+        
+        return outputUrl
+    }
     
+    /// Format output URL
+    /// - Parameter urls: Original urls
+    static func formatOutputUrls(_ urls: [String]) -> [String] {
+        
+        let outputUrls = urls.map{ (item) in
+            return BaseUploaderUtil.formatOutputURL(item)
+        }
+        return outputUrls
+    }
 }

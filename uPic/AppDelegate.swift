@@ -100,31 +100,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
-    
-    func uploadFilesFromPaths(_ pathStr: String) {
-        let paths = pathStr.split(separator: Character("\n"))
-        
-        let fileExtensions = BaseUploader.getFileExtensions()
-        var urls = [URL]()
-        
-        for path in paths {
-            let sPath = String(path)
-            if (fileExtensions.count == 0 || fileExtensions.contains(sPath.pathExtension.lowercased())) {
-                let url = URL(fileURLWithPath: sPath)
-                urls.append(url)
-            }
-        }
-        
-        if (urls.count == 0) {
-            NotificationExt.shared.postUploadErrorNotice("File format not supported!".localized)
-            return
-        }
-        
-        self.uploadFiles(urls)
-    }
-    
 }
-
+// MARK: - Statusbar
 extension AppDelegate {
     
     func setupStatusBar() {
@@ -211,6 +188,7 @@ extension AppDelegate {
     
 }
 
+// MARK: - Upload file
 extension AppDelegate {
     
     /* 选择文件 */
@@ -300,10 +278,27 @@ extension AppDelegate {
         }
     }
     
-    
-    @objc func checkUpdate() {
-        //        UPicUpdater.shared.check() {
-        //        }
+    /// Upload multiple file paths separated by  \n
+    func uploadFilesFromPaths(_ pathStr: String) {
+        let paths = pathStr.split(separator: Character("\n"))
+        
+        let fileExtensions = BaseUploader.getFileExtensions()
+        var urls = [URL]()
+        
+        for path in paths {
+            let sPath = String(path)
+            if (fileExtensions.count == 0 || fileExtensions.contains(sPath.pathExtension.lowercased())) {
+                let url = URL(fileURLWithPath: sPath)
+                urls.append(url)
+            }
+        }
+        
+        if (urls.count == 0) {
+            NotificationExt.shared.postUploadErrorNotice("File format not supported!".localized)
+            return
+        }
+        
+        self.uploadFiles(urls)
     }
     
     // 上传多个文件
@@ -379,31 +374,9 @@ extension AppDelegate {
     }
     
     func copyUrls(urls: [String]) -> String {
-        var outputUrls = [String]()
-        let outputFormat = Defaults[.ouputFormat]
         
-        for url in urls {
-            var outputUrl = ""
-            switch outputFormat {
-            case 1:
-                outputUrl = "<img src='\(url)'/>"
-                break
-            case 2:
-                outputUrl = "![](\(url))"
-                break
-            case 3:
-                // UBB
-                outputUrl = "[img]\(url)[/img]"
-                break
-            default:
-                outputUrl = url
-                
-            }
-            outputUrls.append(outputUrl)
-        }
-        
+        let outputUrls = BaseUploaderUtil.formatOutputUrls(urls)
         let outputStr = outputUrls.joined(separator: "\n")
-        
         NSPasteboard.general.clearContents()
         NSPasteboard.general.declareTypes([.string], owner: nil)
         NSPasteboard.general.setString(outputStr, forType: .string)
@@ -412,10 +385,8 @@ extension AppDelegate {
     }
 }
 
+// MARK: - Drag and drop file upload
 extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
-    
-    // MARK: 拖拽文件
-    
     func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         if sender.isValid {
             if let button = statusItem.button {
@@ -428,7 +399,7 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     
     func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
         if sender.isValid {
-            self.setStatusBarIcon()
+            self.setStatusBarIcon(isIndicator: false)
             if sender.draggedFileURLs.count > 0 {
                 var urls = [URL]()
                 for url in sender.draggedFileURLs {
@@ -448,7 +419,7 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
     
     func draggingExited(_ sender: NSDraggingInfo?) {
-        self.setStatusBarIcon()
+        self.setStatusBarIcon(isIndicator: false)
     }
     
     func draggingEnded(_ sender: NSDraggingInfo) {
@@ -475,8 +446,9 @@ extension AppDelegate {
     }
 }
 
+// MARK: - Global shortcut
 extension AppDelegate {
-    // Global shortcut
+    
     func bindShortcuts() {
         MASShortcutBinder.shared()?.bindShortcut(withDefaultsKey: Constants.Key.selectFileShortcut) {
             self.selectFile()
@@ -489,5 +461,11 @@ extension AppDelegate {
         MASShortcutBinder.shared()?.bindShortcut(withDefaultsKey: Constants.Key.screenshotShortcut) {
             self.screenshotAndUpload()
         }
+    }
+    
+    func unbindShortcuts() {
+        MASShortcutBinder.shared()?.breakBinding(withDefaultsKey: Constants.Key.selectFileShortcut)
+        MASShortcutBinder.shared()?.breakBinding(withDefaultsKey: Constants.Key.pasteboardShortcut)
+        MASShortcutBinder.shared()?.breakBinding(withDefaultsKey: Constants.Key.screenshotShortcut)
     }
 }
