@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.15.3</title>
+			<description>
+			<![CDATA[
+			<ul> <li>修复: 自定义图床上传时崩溃。</li> <li>改进: 菜单栏中的上传菜单项显示其全局快捷键。</li> <li>改进: 优化上传历史记录储存方式和缩略图大小。</li> <li>优化: 删除保存路径改版的 workaround 代码。</li> <li>改进: 其他的一些小问题优化。</li> </ul> <hr /> <ul> <li>Fixed: Custom host crashes on upload.</li> <li>Improved: The upload menu item in the menu bar shows its global shortcuts.</li> <li>Improved: Optimize upload history storage and thumbnail size.</li> <li>Improved: Removed workaround code for save path revision.</li> <li>Improved: Optimization of other minor issues.</li> </ul>
+			]]>
+			</description>
+			<pubDate>Wed, 25 Dec 2019 05:58:06 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.15.3/uPic.dmg" sparkle:version="20191225" sparkle:shortVersionString="v0.15.3" type="application/octet-stream" sparkle:edSignature="rucSE6pawe92/prE9tOPmSEYbUwBVJI1ufgAJult5+gyGtcC1PtmqrzaiFsQGrlFrA2zKIZ/nQ1Po2k96N8bDQ==" length="10434727"/>
+		</item>
+		<item>
 			<title>v0.15.2</title>
 			<description>
 			<![CDATA[
