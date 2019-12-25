@@ -42,6 +42,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func menuWillOpen(_ menu: NSMenu) {
+        (NSApplication.shared.delegate as? AppDelegate)?.unbindShortcuts()
         
         refreshOutputFormat()
         resetCompressFactor()
@@ -54,6 +55,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.cancelUploadMenuItem.isHidden = true
             self.cancelUploadMenuSeparator.isHidden = true
         }
+    }
+    
+    func menuDidClose(_ menu: NSMenu) {
+        (NSApplication.shared.delegate as? AppDelegate)?.bindShortcuts()
     }
     
     // cancel upload
