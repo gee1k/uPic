@@ -42,6 +42,8 @@ class HistoryThumbnailView: NSView {
     
     var superMenu: NSMenu!
     
+    var historyList: [HistoryThumbnailModel] = []
+    
     private var menuIsOpen: Bool = false
     
     required init?(coder: NSCoder) {
@@ -50,6 +52,7 @@ class HistoryThumbnailView: NSView {
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
+        
         initializeView()
         addConstraintCustom()
         registrationNotice()
@@ -84,7 +87,7 @@ class HistoryThumbnailView: NSView {
         clearHistoryButton = NSButton(image: NSImage(named: "cleanButton")!, target: self, action: #selector(clearHistory))
         clearHistoryButton.appearance = NSAppearance(named: NSAppearance.Name.aqua)
         clearHistoryButton.bezelStyle = .smallSquare
-        clearHistoryButton.toolTip = "\("Clear history record".localized) \(ConfigManager.shared.getHistoryList_New().count)"
+        clearHistoryButton.toolTip = "\("Clear history record".localized) \(historyList.count)"
         clearHistoryButton.isTransparent = true
         addSubview(clearHistoryButton)
         
@@ -111,15 +114,17 @@ class HistoryThumbnailView: NSView {
     }
     
     @objc private func updateHistoryList() {
+        historyList = ConfigManager.shared.getHistoryList()
         if menuIsOpen == true {
             mainCollectionView.reloadData()
-            clearHistoryButton.toolTip = "\("Clear upload history".localized) \(ConfigManager.shared.getHistoryList_New().count)"
+            clearHistoryButton.toolTip = "\("Clear upload history".localized) \(historyList.count)"
         }
     }
     
     @objc
     private func clearHistory() {
-        ConfigManager.shared.clearHistoryList_New()
+        ConfigManager.shared.clearHistoryList()
+        historyList = ConfigManager.shared.getHistoryList()
         mainCollectionView.reloadData()
         lastContentOffset = .zero
     }
@@ -148,7 +153,6 @@ class HistoryThumbnailView: NSView {
 
 extension HistoryThumbnailView: NSCollectionViewDataSource {
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let historyList = ConfigManager.shared.getHistoryList_New()
         let model = historyList[indexPath.item]
         let item = collectionView.makeItem(withIdentifier: .collectionViewItem, for: indexPath) as! HistoryThumbnailItem
         let urlString = model.url
@@ -197,7 +201,6 @@ extension HistoryThumbnailView: NSCollectionViewDataSource {
 
 extension HistoryThumbnailView: NSCollectionViewDelegate {
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        let historyList = ConfigManager.shared.getHistoryList_New()
         clearHistoryButton.isHidden = historyList.count == 0
         return historyList.count
     }
@@ -205,7 +208,6 @@ extension HistoryThumbnailView: NSCollectionViewDelegate {
 
 extension HistoryThumbnailView: HistoryThumbnailFlowLayoutDelegate {
     func collectionView(_ collectionView: NSCollectionView, layout: NSCollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let historyList = ConfigManager.shared.getHistoryList_New()
         let model = historyList[indexPath.item]
         return model.thumbnailSize
     }
@@ -218,7 +220,7 @@ extension HistoryThumbnailView: NSMenuDelegate {
         mainCollectionView.reloadData()
         mainClipView.documentView = mainCollectionView
         mainClipView.documentView?.scroll(lastContentOffset)
-        clearHistoryButton.toolTip = "\("Clear history record".localized) \(ConfigManager.shared.getHistoryList_New().count)"
+        clearHistoryButton.toolTip = "\("Clear history record".localized) \(historyList.count)"
     }
 
     func menuDidClose(_ menu: NSMenu) {

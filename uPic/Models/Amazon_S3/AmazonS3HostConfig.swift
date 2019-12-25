@@ -11,15 +11,13 @@ import SwiftyJSON
 
 @objcMembers
 class AmazonS3HostConfig: HostConfig {
-    dynamic var region: String!
-    dynamic var bucket: String!
-    dynamic var accessKey: String!
-    dynamic var secretKey: String!
-    dynamic var domain: String!
-    dynamic var folder: String?
-    dynamic var saveKey: String! = HostSaveKey.filename.rawValue
+    dynamic var region: String! = ""
+    dynamic var bucket: String! = ""
+    dynamic var accessKey: String! = ""
+    dynamic var secretKey: String! = ""
+    dynamic var domain: String! = ""
     dynamic var saveKeyPath: String?
-    dynamic var suffix: String?
+    dynamic var suffix: String! = ""
 
     override func displayName(key: String) -> String {
         switch key {
@@ -33,10 +31,6 @@ class AmazonS3HostConfig: HostConfig {
             return "Secret Key".localized
         case "domain":
             return "Domain".localized
-        case "folder":
-            return "Folder".localized
-        case "saveKey":
-            return "File Name".localized
         case "saveKeyPath":
             return "Save Key".localized
         case "suffix":
@@ -53,8 +47,6 @@ class AmazonS3HostConfig: HostConfig {
         dict["accessKey"] = self.accessKey
         dict["secretKey"] = self.secretKey
         dict["domain"] = self.domain
-        dict["folder"] = self.folder
-        dict["saveKey"] = self.saveKey
         dict["saveKeyPath"] = self.saveKeyPath
         dict["suffix"] = self.suffix
 
@@ -73,8 +65,6 @@ class AmazonS3HostConfig: HostConfig {
         config.accessKey = json["accessKey"].stringValue
         config.secretKey = json["secretKey"].stringValue
         config.domain = json["domain"].stringValue
-        config.folder = json["folder"].stringValue
-        config.saveKey = json["saveKey"].stringValue
         config.saveKeyPath = json["saveKeyPath"].stringValue
         config.suffix = json["suffix"].stringValue
         return config

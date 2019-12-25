@@ -9,8 +9,14 @@ PODS:
   - MASShortcut (2.4.0)
   - SnapKit (5.0.1)
   - Sparkle (1.22.0)
+  - SQLiteRepairKit (1.2.2):
+    - WCDBOptimizedSQLCipher (~> 1.2.0)
   - SwiftyJSON (5.0.0)
   - SwiftyXMLParser (5.1.0)
+  - WCDB.swift (1.0.8.2):
+    - SQLiteRepairKit (~> 1.2.0)
+    - WCDBOptimizedSQLCipher (~> 1.2.0)
+  - WCDBOptimizedSQLCipher (1.2.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
@@ -23,6 +29,7 @@ DEPENDENCIES:
   - Sparkle
   - SwiftyJSON
   - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
+  - WCDB.swift
 
 SPEC REPOS:
   trunk:
@@ -32,7 +39,10 @@ SPEC REPOS:
     - MASShortcut
     - SnapKit
     - Sparkle
+    - SQLiteRepairKit
     - SwiftyJSON
+    - WCDB.swift
+    - WCDBOptimizedSQLCipher
 
 EXTERNAL SOURCES:
   CryptoSwift:
@@ -63,9 +73,12 @@ SPEC CHECKSUMS:
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Sparkle: 593ac2e677c07bcb6c3b22d621240e7cbedaab57
+  SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwiftyXMLParser: 8271497e0a37b5c04b0b167c77b4896e36175a21
+  WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
+  WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
 
-PODFILE CHECKSUM: 38c87f478d677bfc48171bec49e79bf4e098e1b4
+PODFILE CHECKSUM: 5d4929949fea5a9aff12eeae4ddf2cd5adcff85d
 
 COCOAPODS: 1.8.4

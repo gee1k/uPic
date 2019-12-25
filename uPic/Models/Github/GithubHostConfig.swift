@@ -14,10 +14,8 @@ class GithubHostConfig: HostConfig {
     dynamic var owner: String! = ""
     dynamic var repo: String! = ""
     dynamic var branch: String! = "master"
-    dynamic var token: String!
-    dynamic var domain: String?
-    dynamic var folder: String?
-    dynamic var saveKey: String! = HostSaveKey.filename.rawValue
+    dynamic var token: String! = ""
+    dynamic var domain: String! = ""
     dynamic var saveKeyPath: String?
     dynamic var useCdn: String! = "0"
     
@@ -33,12 +31,8 @@ class GithubHostConfig: HostConfig {
             return "Token".localized
         case "domain":
             return "Domain".localized
-        case "folder":
-            return "Folder".localized
         case "saveKeyPath":
             return "Save Key".localized
-        case "saveKey":
-            return "File Name".localized
         case "useCdn":
             return "Use CDN".localized
         default:
@@ -53,8 +47,6 @@ class GithubHostConfig: HostConfig {
         dict["branch"] = self.branch
         dict["token"] = self.token
         dict["domain"] = self.domain
-        dict["folder"] = self.folder
-        dict["saveKey"] = self.saveKey
         dict["saveKeyPath"] = self.saveKeyPath
         dict["useCdn"] = self.useCdn
         
@@ -73,8 +65,6 @@ class GithubHostConfig: HostConfig {
         config.branch = json["branch"].stringValue
         config.token = json["token"].stringValue
         config.domain = json["domain"].stringValue
-        config.folder = json["folder"].stringValue
-        config.saveKey = json["saveKey"].stringValue
         config.saveKeyPath = json["saveKeyPath"].stringValue
         config.useCdn = json["useCdn"].stringValue
         return config

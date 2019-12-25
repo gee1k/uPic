@@ -91,6 +91,7 @@ class CustomUploader: BaseUploader {
         AF.upload(multipartFormData: multipartFormDataGen, to: url, method: httpMethod, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
             }.responseJSON(completionHandler: { response -> Void in
+                debugPrint(response)
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -102,7 +103,7 @@ class CustomUploader: BaseUploader {
                 if !domain.isEmpty {
                     retUrl = "\(domain)/\(retUrl)"
                 }
-                super.completed(url: "\(retUrl)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, nil)
+                super.completed(url: "\(retUrl)\(config.suffix!)", retData, fileUrl, nil)
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)
             }

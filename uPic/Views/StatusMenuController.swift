@@ -14,6 +14,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     let previewTypes = ["jpeg", "jpg", "png", "gif", "bmp", "tiff"]
 
     @IBOutlet weak var statusMenu: NSMenu!
+    @IBOutlet weak var uploadFromSelectFileMenuItem: NSMenuItem!
+    
+    @IBOutlet weak var uploadFromPasteboardMenuItem: NSMenuItem!
+    @IBOutlet weak var uploadFromScreenshotMenuItem: NSMenuItem!
     @IBOutlet weak var historyMenu: NSMenu!
     @IBOutlet weak var cancelUploadMenuItem: NSMenuItem!
     @IBOutlet weak var cancelUploadMenuSeparator: NSMenuItem!
@@ -25,6 +29,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
         statusMenu.delegate = self
         
+        /// Set shortcut key for upload menu
+        setupItemShortcut(uploadFromSelectFileMenuItem, Constants.Key.selectFileShortcut)
+        setupItemShortcut(uploadFromPasteboardMenuItem, Constants.Key.pasteboardShortcut)
+        setupItemShortcut(uploadFromScreenshotMenuItem, Constants.Key.screenshotShortcut)
+        
         resetHostMenu()
         resetUploadHistory()
         refreshOutputFormat()
@@ -33,6 +42,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
     
     func menuWillOpen(_ menu: NSMenu) {
+        (NSApplication.shared.delegate as? AppDelegate)?.unbindShortcuts()
         
         refreshOutputFormat()
         resetCompressFactor()
@@ -45,6 +55,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             self.cancelUploadMenuItem.isHidden = true
             self.cancelUploadMenuSeparator.isHidden = true
         }
+    }
+    
+    func menuDidClose(_ menu: NSMenu) {
+        (NSApplication.shared.delegate as? AppDelegate)?.bindShortcuts()
     }
     
     // cancel upload
@@ -181,7 +195,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         let imgMenuItem = NSMenuItem()
         historyMenu.addItem(imgMenuItem)
         
+        let historyList = ConfigManager.shared.getHistoryList()
         let previewView = HistoryThumbnailView()
+        previewView.historyList = historyList
         historyMenu.delegate = previewView
         previewView.superMenu = historyMenu
         previewView.frame.size = NSSize(width: HistoryRecordWidthGlobal, height: 400)
@@ -330,5 +346,26 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     func removeObserver() {
         ConfigNotifier.removeObserver(observer: self, notification: .changeHostItems)
         ConfigNotifier.removeObserver(observer: self, notification: .changeHistoryList)
+    }
+}
+
+// MARK: - Shortcut key configuration
+extension StatusMenuController {
+    
+    
+    /// Read the global shortcut key configuration in the mashshortcut to the menu bar option
+    /// - Parameters:
+    ///   - item: Menu item
+    ///   - key: MASShortcut key
+    func setupItemShortcut(_ item: NSMenuItem, _ key: String) {
+        
+        guard let data = Defaults.data(forKey: key), let shortcut = NSKeyedUnarchiver.unarchiveObject(with: data) as? MASShortcut else {
+            item.keyEquivalent = ""
+            item.keyEquivalentModifierMask = []
+            return
+        }
+        
+        item.keyEquivalent = shortcut.keyCodeStringForKeyEquivalent
+        item.keyEquivalentModifierMask = shortcut.modifierFlags
     }
 }
