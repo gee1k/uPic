@@ -50,6 +50,8 @@
 /* 图床配置存在问题，请检查 */
 "There is a problem with the map bed configuration, please check!" = "图床配置存在问题，请检查！";
 
+"App is already running" = "uPic 已经在运行！";
+
 /*匿名上传*/
 "The file will be uploaded anonymously to" = "文件将匿名上传至";
 "Upload via uPic" = "使用 uPic 上传";
@@ -138,3 +140,14 @@
 
 /*eroor message*/
 "Upload failed, please check the configuration!" = "上传失败，请检查配置！";
+
+
+/* cli */
+"Path and URL of the file to upload" = "待上传的文件路径和 URL。（最少一个，以空格分隔）";
+"Output url format" = "输出的url格式，支持 url、html、markdown(md)、ubb。";
+"Prints a help message" = "打印帮助信息。";
+
+/* cli error msg */
+"Found illegal paths or URLs" = "找到{count}条不合法的路径或 URL。";
+"Legal paths or URLs" = "{count}条合法的路径或 URL。";
+"No legal path or URL" = "没有合法的路径或 URL。";

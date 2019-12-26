@@ -211,40 +211,23 @@ class BaseUploaderUtil {
     
     /// Format output URL
     /// - Parameter url: Original url
-    static func formatOutputURL(_ url: String) -> String {
-        let outputFormat = Defaults[.ouputFormat]
-        
-        var filename = url.lastPathComponent.deletingPathExtension.trim()
-        let tempArr = filename.components(separatedBy: .whitespaces).map{ $0.trim() }.filter{ !$0.isEmpty }
-        filename = tempArr.joined(separator: "")
-        
-        
-        var outputUrl = ""
-        switch outputFormat {
-        case 1:
-            outputUrl = "<img src='\(url)' alt='\(filename)'/>"
-            break
-        case 2:
-            outputUrl = "![\(filename)](\(url))"
-            break
-        case 3:
-            // UBB
-            outputUrl = "[img]\(url)[/img]"
-            break
-        default:
-            outputUrl = url
-            
+    /// - Parameter outputType: output type
+    static func formatOutputURL(_ url: String, _ outputType: OutputType? = nil) -> String {
+        var outputType: OutputType? = outputType
+        if outputType == nil {
+            outputType = ConfigManager.shared.getOutputType()
         }
         
-        return outputUrl
+        return outputType!.formatUrl(url)
     }
     
     /// Format output URL
     /// - Parameter urls: Original urls
-    static func formatOutputUrls(_ urls: [String]) -> [String] {
+    /// - Parameter outputType: output type
+    static func formatOutputUrls(_ urls: [String], _ outputType: OutputType? = nil) -> [String] {
         
         let outputUrls = urls.map{ (item) in
-            return BaseUploaderUtil.formatOutputURL(item)
+            return BaseUploaderUtil.formatOutputURL(item, outputType)
         }
         return outputUrls
     }

@@ -66,6 +66,10 @@ class NotificationExt:NSObject {
         self.post(title: "Successfully".localized,
                   info: "The configuration file is exported successfully, Do not modify the file contents!".localized)
     }
+    
+    func postAppIsAlreadyRunningNotice() {
+        self.post(title: "uPic", info: "App is already running".localized)
+    }
 }
 
 @available(OSX 10.14, *)

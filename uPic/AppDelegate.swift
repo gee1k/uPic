@@ -13,6 +13,7 @@ import AppKit
 import ScriptingBridge
 import MASShortcut
 
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
@@ -29,35 +30,60 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // 上传成功的url
     var resultUrls = [String]()
     
+    // MARK: - Cli Support
+    // 上传来源
+    var uploadSourceType: UploadSourceType! = .normal
+    
     lazy var preferencesWindowController: PreferencesWindowController = {
         let storyboard = NSStoryboard(name: "Preferences", bundle: nil)
         return storyboard.instantiateInitialController() as? PreferencesWindowController ?? PreferencesWindowController()
     }()
     
+    
     func applicationWillFinishLaunching(_ notification: Notification) {
-        // 添加 url scheme 监听
-        NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(handleGetURLEvent(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+        
+        // Set status bar icon and progress icon
+        setupStatusBar()
+        
+        let isCommandLineState = Cli.shared.handleCommandLine()
+        if isCommandLineState {
+            return
+        } else {
+            // Register events and status bar menus only in non-command line mode
+            
+            // Request notification permission
+            NotificationExt.requestAuthorization()
+            
+            let currentApplication = NSRunningApplication.current
+            
+            let applications = NSWorkspace.shared.runningApplications.filter{ $0.bundleIdentifier == currentApplication.bundleIdentifier }
+            if applications.count > 1 {
+                NotificationExt.shared.postAppIsAlreadyRunningNotice()
+                currentApplication.terminate()
+            }
+            
+            registerStatusBarEvents()
+            
+            bindShortcuts()
+            
+            // Add Finder context menu file upload listener
+            UploadNotifier.addObserver(observer: self, selector: #selector(uploadFilesFromFinderMenu), notification: .uploadFiles)
+            
+            // Add URL scheme listening
+            NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(handleGetURLEvent(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+        }
+        
         
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         ConfigManager.shared.firstSetup()
-        
-        // Request notification permission
-        NotificationExt.requestAuthorization()
-        
-        self.setupStatusBar()
-        
-        self.bindShortcuts()
-        
-        // 添加 Finder 右键文件上传监听
-        UploadNotifier.addObserver(observer: self, selector: #selector(uploadFilesFromFinderMenu), notification: .uploadFiles)
     }
     
     func applicationWillTerminate(_ notification: Notification) {
         NSStatusBar.system.removeStatusItem(statusItem)
-        // 移除 Finder 右键文件上传监听
+        // Remove Finder context menu file upload listener
         UploadNotifier.removeObserver(observer: self, notification: .uploadFiles)
     }
     
@@ -65,7 +91,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
     
-    // 在 Finder 中选中文件右键上传时调用的方法
+    // Finder context menu file upload listener
     @objc func uploadFilesFromFinderMenu(notification: Notification) {
         
         let pathStr = notification.object as? String ?? ""
@@ -73,31 +99,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
-        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue, let url = NSURL(string: urlString) {
-            
-            // 解析出参数
-            var param = urlString
-            let i = "\(url.scheme!)://".count
-            param.removeFirst(i)
-            
-            /// 解析参数类型
-            let keyValue = param.split(separator: "?")
-            switch keyValue.first {
-            case "files":
-                if (keyValue.count == 2) {
-                    let pathStr = String(keyValue.last ?? "")
-                    self.uploadFilesFromPaths(pathStr.urlDecoded())
-                }
-            case "url":
-                if (keyValue.count == 2) {
-                    let url = String(keyValue.last ?? "")
-                    if let fileUrl = URL(string: url.urlDecoded()), let data = try? Data(contentsOf: fileUrl)  {
-                        self.uploadFiles([data])
-                    }
-                }
-            default:
-                debugPrint(keyValue)
-            }
+        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue{
+            URLSchemeExt.shared.handleURL(urlString)
         }
     }
 }
@@ -105,16 +108,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 extension AppDelegate {
     
     func setupStatusBar() {
+        setStatusBarIcon()
+        setupStatusBarIndicator()
+    }
+    
+    private func setupStatusBarIndicator() {
         if let button = statusItem.button {
-            self.setStatusBarIcon()
-            button.window?.delegate = self
-            
-            button.window?.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
             indicator.frame = NSRect(x: (button.frame.width - 16) / 2,
                                      y: (button.frame.height - 16) / 2,
                                      width: 16,
                                      height: 16)
             button.addSubview(indicator)
+        }
+        // 初始化任务栏进度图标
+        indicator.minValue = 0.0
+        indicator.maxValue = 1.0
+        indicator.doubleValue = 0.0
+        indicator.isIndeterminate = false
+        indicator.controlSize = NSControl.ControlSize.small
+        indicator.style = NSProgressIndicator.Style.spinning
+        indicator.isHidden = true
+        indicator.toolTip = "Right click to cancel the current upload task".localized
+    }
+    
+    private func registerStatusBarEvents() {
+        statusItem.menu = nil
+        
+        if let button = statusItem.button {
+            
+            button.window?.delegate = self
+            
+            button.window?.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
             button.action = #selector(statusBarButtonClicked)
             button.sendAction(on: [.leftMouseUp, .leftMouseDown,
                                    .rightMouseUp, .rightMouseDown])
@@ -128,18 +152,6 @@ extension AppDelegate {
             }
             
         }
-        
-        statusItem.menu = nil
-        
-        // 初始化任务栏进度图标
-        indicator.minValue = 0.0
-        indicator.maxValue = 1.0
-        indicator.doubleValue = 0.0
-        indicator.isIndeterminate = false
-        indicator.controlSize = NSControl.ControlSize.small
-        indicator.style = NSProgressIndicator.Style.spinning
-        indicator.isHidden = true
-        indicator.toolTip = "Right click to cancel the current upload task".localized
     }
     
     @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
@@ -302,7 +314,10 @@ extension AppDelegate {
     }
     
     // 上传多个文件
-    func uploadFiles(_ files: [Any]) {
+    // MARK: - Cli Support
+    func uploadFiles(_ files: [Any], _ uploadSourceType: UploadSourceType? = .normal) {
+        self.uploadSourceType = uploadSourceType
+        
         self.needUploadFiles = files
         self.resultUrls.removeAll()
         
@@ -319,11 +334,17 @@ extension AppDelegate {
         if self.needUploadFiles.count == 0 {
             // done
             self.uploding = false
+            // MARK: - Cli Support
             if self.resultUrls.count > 0 {
                 let outputStr = self.copyUrls(urls: self.resultUrls)
                 NotificationExt.shared.postUploadSuccessfulNotice(outputStr)
-                self.resultUrls.removeAll()
             }
+            
+            if uploadSourceType == UploadSourceType.cli {
+                Cli.shared.uploadDone(self.resultUrls)
+            }
+            
+            self.resultUrls.removeAll()
         } else {
             // next file
             let firstFile = self.needUploadFiles.first
@@ -332,6 +353,8 @@ extension AppDelegate {
                 BaseUploader.upload(url: firstFile as! URL)
             } else if firstFile is Data {
                 BaseUploader.upload(data: firstFile as! Data)
+            } else {
+                tickFileToUpload()
             }
         }
     }
@@ -342,6 +365,12 @@ extension AppDelegate {
     func uploadCompleted(url: String) {
         self.setStatusBarIcon(isIndicator: false)
         self.resultUrls.append(url)
+        
+        // MARK: - Cli Support
+        if self.uploadSourceType == UploadSourceType.cli {
+            Cli.shared.uploadProgress(url)
+        }
+        
         self.tickFileToUpload()
     }
     
@@ -374,8 +403,13 @@ extension AppDelegate {
     }
     
     func copyUrls(urls: [String]) -> String {
+        // MARK: - Cli Support
+        var outputType: OutputType? = nil
+        if uploadSourceType == UploadSourceType.cli {
+            outputType = OutputType(value: Cli.shared.output.value)
+        }
         
-        let outputUrls = BaseUploaderUtil.formatOutputUrls(urls)
+        let outputUrls = BaseUploaderUtil.formatOutputUrls(urls, outputType)
         let outputStr = outputUrls.joined(separator: "\n")
         NSPasteboard.general.clearContents()
         NSPasteboard.general.declareTypes([.string], owner: nil)
@@ -428,7 +462,7 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
 }
 
 extension AppDelegate {
-    // sponsor 
+    // sponsor
     
     func sponsorByPaypal() {
         guard let url = URL(string: "https://paypal.me/geee1k") else { return }
