@@ -26,12 +26,41 @@ class Cli {
     
     func handleCommandLine() -> Bool {
         // handle arguments
-        let arguments = ProcessInfo.processInfo.arguments.dropFirst()
-        guard arguments.count > 0 else { return false }
+        let arguments = clearMacosAppTakeParameters()
+//        let arguments = ["uPic", "-u", "/Users/svend/Desktop/uPicv0.15.3.png", "/Users/svend/Desktop/uPicv0.15.3%202.png", "/Users/svend/Desktop", "http://qiniu.svend.cc/uPic/2019%2012%2026g8WCtu.png", "-o", "md"]
+//        let arguments = ["uPic", "-h"]
+        guard arguments.count > 1 else { return false }
         
-        var args: [String] = []
+        cliKit = CommandLineKit(arguments: arguments)
+        
+        validPathList = []
+        
+        upload = MultiStringOption(shortFlag: "u", longFlag: "upload", helpMessage: "Path and URL of the file to upload".localized)
+        output = StringOption(shortFlag: "o", longFlag: "output", helpMessage: "Output url format".localized)
+        let help = BoolOption(shortFlag: "h", longFlag: "help", helpMessage: "Prints a help message".localized)
+        cliKit.addOptions(upload, output, help)
+        do {
+            try cliKit.parse()
+        } catch {
+            cliKit.printUsage(error)
+            exit(EX_USAGE)
+        }
+        
+        if let paths = upload.value {
+            startUpload(paths)
+        } else if help.value {
+            cliKit.printUsage()
+            exit(EX_USAGE)
+        }
+        
+        return true
+    }
+    
+    private func clearMacosAppTakeParameters() -> [String] {
+        let arguments = ProcessInfo.processInfo.arguments
+        var cleardArguments: [String]  = []
+        
         var dropNextArg = false
-
         for arg in arguments {
           if dropNextArg {
             dropNextArg = false
@@ -40,33 +69,11 @@ class Cli {
           if arg.hasPrefix("-NS") {
             dropNextArg = true
           } else {
-            args.append(arg)
+            cleardArguments.append(arg)
           }
         }
         
-        guard args.count > 0 else { return false }
-        
-        validPathList = []
-        
-        cliKit = CommandLineKit(arguments: args)
-        // cliKit = CommandLineKit(arguments: ["uPic", "-u", "/Users/svend/Desktop/uPicv0.15.3.png", "/Users/svend/Desktop/uPicv0.15.3%202.png", "/Users/svend/Desktop", "http://qiniu.svend.cc/uPic/2019%2012%2026g8WCtu.png", "-o", "md"])
-        
-        upload = MultiStringOption(shortFlag: "u", longFlag: "upload", required: true, helpMessage: "Path and URL of the file to upload".localized)
-        output = StringOption(shortFlag: "o", longFlag: "output", helpMessage: "Output url format".localized)
-        let help = BoolOption(shortFlag: "h", longFlag: "help", helpMessage: "Prints a help message".localized)
-        cliKit.addOptions(upload, output, help)
-        do {
-          try cliKit.parse()
-        } catch {
-          cliKit.printUsage(error)
-          exit(EX_USAGE)
-        }
-        
-        if let paths = upload.value {
-            startUpload(paths)
-        }
-        
-        return true
+        return cleardArguments
     }
     
 }

@@ -18,7 +18,7 @@ import MASShortcut
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     /* 状态栏菜单 */
-    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    var statusItem: NSStatusItem? = nil
     let indicator = NSProgressIndicator()
     
     @IBOutlet weak var statusItemMenu: NSMenu!
@@ -41,37 +41,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     func applicationWillFinishLaunching(_ notification: Notification) {
+        let isCommandLineState = Cli.shared.handleCommandLine()
+        if isCommandLineState {
+            return
+        }
+        
+        // Register events and status bar menus only in non-command line mode
+        
+        // Request notification permission
+        NotificationExt.requestAuthorization()
+        
+        let currentApplication = NSRunningApplication.current
+        
+        let applications = NSWorkspace.shared.runningApplications.filter{ $0.bundleIdentifier == currentApplication.bundleIdentifier }
+        if applications.count > 1 {
+            NotificationExt.shared.postAppIsAlreadyRunningNotice()
+            currentApplication.terminate()
+        }
         
         // Set status bar icon and progress icon
         setupStatusBar()
         
-        let isCommandLineState = Cli.shared.handleCommandLine()
-        if isCommandLineState {
-            return
-        } else {
-            // Register events and status bar menus only in non-command line mode
-            
-            // Request notification permission
-            NotificationExt.requestAuthorization()
-            
-            let currentApplication = NSRunningApplication.current
-            
-            let applications = NSWorkspace.shared.runningApplications.filter{ $0.bundleIdentifier == currentApplication.bundleIdentifier }
-            if applications.count > 1 {
-                NotificationExt.shared.postAppIsAlreadyRunningNotice()
-                currentApplication.terminate()
-            }
-            
-            registerStatusBarEvents()
-            
-            bindShortcuts()
-            
-            // Add Finder context menu file upload listener
-            UploadNotifier.addObserver(observer: self, selector: #selector(uploadFilesFromFinderMenu), notification: .uploadFiles)
-            
-            // Add URL scheme listening
-            NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(handleGetURLEvent(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
-        }
+        bindShortcuts()
+        
+        // Add Finder context menu file upload listener
+        UploadNotifier.addObserver(observer: self, selector: #selector(uploadFilesFromFinderMenu), notification: .uploadFiles)
+        
+        // Add URL scheme listening
+        NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(handleGetURLEvent(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
         
         
     }
@@ -82,7 +79,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationWillTerminate(_ notification: Notification) {
-        NSStatusBar.system.removeStatusItem(statusItem)
+        if let statusItem = statusItem {
+            NSStatusBar.system.removeStatusItem(statusItem)
+        }
         // Remove Finder context menu file upload listener
         UploadNotifier.removeObserver(observer: self, notification: .uploadFiles)
     }
@@ -108,11 +107,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 extension AppDelegate {
     
     func setupStatusBar() {
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         setStatusBarIcon()
         setupStatusBarIndicator()
+        
+        registerStatusBarEvents()
     }
     
     private func setupStatusBarIndicator() {
+        guard let statusItem = statusItem else {
+            return
+        }
         if let button = statusItem.button {
             indicator.frame = NSRect(x: (button.frame.width - 16) / 2,
                                      y: (button.frame.height - 16) / 2,
@@ -132,6 +137,9 @@ extension AppDelegate {
     }
     
     private func registerStatusBarEvents() {
+        guard let statusItem = statusItem else {
+            return
+        }
         statusItem.menu = nil
         
         if let button = statusItem.button {
@@ -155,6 +163,9 @@ extension AppDelegate {
     }
     
     @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
+        guard let statusItem = statusItem else {
+            return
+        }
         let event = NSApp.currentEvent!
         if event.type == .leftMouseDown || event.type == .leftMouseUp
             || event.modifierFlags.contains(.control)
@@ -174,10 +185,13 @@ extension AppDelegate {
     }
     
     func setStatusBarIcon(isIndicator: Bool = false) {
+        guard let statusItem = statusItem else {
+            return
+        }
         
         if isIndicator {
             DispatchQueue.main.async {
-                self.statusItem.button?.image = nil
+                statusItem.button?.image = nil
                 self.indicator.doubleValue = 0.0
                 self.indicator.isHidden = false
             }
@@ -186,7 +200,7 @@ extension AppDelegate {
             let icon = NSImage(named: "statusIcon")
             icon!.isTemplate = true
             DispatchQueue.main.async {
-                self.statusItem.button?.image = icon
+                statusItem.button?.image = icon
                 self.indicator.isHidden = true
             }
         }
@@ -333,18 +347,7 @@ extension AppDelegate {
     func tickFileToUpload() {
         if self.needUploadFiles.count == 0 {
             // done
-            self.uploding = false
-            // MARK: - Cli Support
-            if self.resultUrls.count > 0 {
-                let outputStr = self.copyUrls(urls: self.resultUrls)
-                NotificationExt.shared.postUploadSuccessfulNotice(outputStr)
-            }
-            
-            if uploadSourceType == UploadSourceType.cli {
-                Cli.shared.uploadDone(self.resultUrls)
-            }
-            
-            self.resultUrls.removeAll()
+            uploadDone()
         } else {
             // next file
             let firstFile = self.needUploadFiles.first
@@ -402,6 +405,21 @@ extension AppDelegate {
         self.uploding = false
     }
     
+    func uploadDone() {
+        self.uploding = false
+        // MARK: - Cli Support
+        if uploadSourceType == UploadSourceType.cli {
+            Cli.shared.uploadDone(self.resultUrls)
+        } else {
+            if self.resultUrls.count > 0 {
+                let outputStr = self.copyUrls(urls: self.resultUrls)
+                NotificationExt.shared.postUploadSuccessfulNotice(outputStr)
+            }
+        }
+        
+        self.resultUrls.removeAll()
+    }
+    
     func copyUrls(urls: [String]) -> String {
         // MARK: - Cli Support
         var outputType: OutputType? = nil
@@ -423,7 +441,7 @@ extension AppDelegate {
 extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         if sender.isValid {
-            if let button = statusItem.button {
+            if let statusItem = statusItem, let button = statusItem.button {
                 button.image = NSImage(named: "uploadIcon")
             }
             return .copy
