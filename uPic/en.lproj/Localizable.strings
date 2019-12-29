@@ -81,8 +81,6 @@
 "Secret Id" = "Secret Id";
 "Secret Key" = "Secret Key";
 "Domain" = "Domain";
-"Folder" = "Folder";
-"File Name" = "File Name";
 "URL suffix" = "URL suffix";
 "API URL" = "API URL";
 "Method" = "Method";
@@ -131,22 +129,12 @@
 "host.type.10" = "Imgur";
 "host.type.11" = "Baidu Cloud BOS";
 
-/* HostSaveKey */
-"filename" = "filename";
-"random" = "random";
-"date-filename" = "date-filename";
-"datetime-filename" = "datetime-filename";
-"second-filename" = "second-filename";
-"millisecond-filename" = "millisecond-filename";
-"date-random" = "date-random";
-"datetime-random" = "datetime-random";
-"second-random" = "second-random";
-"millisecond-random" = "millisecond-random";
-
 /* weibo quality*/
 "weibo.quality.thumbnail" = "thumbnail";
 "weibo.quality.mw690" = "medium size";
 "weibo.quality.large" = "original";
+
+"Validate" = "Validate";
 
 /*eroor message*/
 "Upload failed, please check the configuration!" = "Upload failed, please check the configuration!";

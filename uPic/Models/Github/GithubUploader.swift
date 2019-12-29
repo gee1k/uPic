@@ -14,8 +14,8 @@ class GithubUploader: BaseUploader {
     static let shared = GithubUploader()
     static let fileExtensions: [String] = []
     
-    func _upload(_ fileUrl: URL?, fileData: Data?) {
-        guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {
+    func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
+        guard let data = host.data else {
             super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
@@ -36,6 +36,7 @@ class GithubUploader: BaseUploader {
             super.faild(errorMsg: "Invalid file")
             return
         }
+        let retData = configuration["retData"] as? Data
         let fileBase64 = configuration["fileBase64"] as! String
         let fileName = configuration["fileName"] as! String
         let saveKey = configuration["saveKey"] as! String
@@ -61,9 +62,9 @@ class GithubUploader: BaseUploader {
                         return
                     }
                     if domain == nil || domain!.isEmpty {
-                        super.completed(url: json["content"]["download_url"].stringValue.urlDecoded(), fileBase64, fileUrl, fileName)
+                        super.completed(url: json["content"]["download_url"].stringValue.urlDecoded(), retData, fileUrl, fileName)
                     } else {
-                        super.completed(url: "\(domain!)/\(saveKey)", fileBase64, fileUrl, fileName)
+                        super.completed(url: "\(domain!)/\(saveKey)", retData, fileUrl, fileName)
                     }
                 case .failure(let error):
                     var errorMsg = error.localizedDescription
@@ -77,11 +78,11 @@ class GithubUploader: BaseUploader {
         
     }
     
-    func upload(_ fileUrl: URL) {
-        self._upload(fileUrl, fileData: nil)
+    func upload(_ fileUrl: URL, host: Host) {
+        self._upload(fileUrl, fileData: nil, host: host)
     }
     
-    func upload(_ fileData: Data) {
-        self._upload(nil, fileData: fileData)
+    func upload(_ fileData: Data, host: Host) {
+        self._upload(nil, fileData: fileData, host: host)
     }
 }

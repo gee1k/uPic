@@ -8,10 +8,23 @@
 
 import Foundation
 import Cocoa
+import WCDBSwift
 
-struct HistoryThumbnailModel {
+class HistoryThumbnailModel: TableCodable {
+    var identifier: Int? = nil
     var url: String = ""
-    var fileName: String?
+    var previewWidth: Double = 0
+    var previewHeight: Double = 0
+    var thumbnailData: Data?
+    var isImage: Bool = false
+    
+    var isAutoIncrement: Bool { return true }
+    
+    // dynamic
+    var fileName: String {
+        return url.lastPathComponent
+    }
+    
     var thumbnailSize: NSSize {
         return NSSize(width: thumbnailWidth, height: thumbnailHeight)
     }
@@ -27,17 +40,29 @@ struct HistoryThumbnailModel {
         height = thumbnailWidth * (image.size.height / image.size.width) + 20
         return height
     }
-    var previewWidth: CGFloat = 0
-    var previewHeight: CGFloat = 0
-    var thumbnailData: Data?
-    var isImage: Bool = false
+    
+    enum CodingKeys: String, CodingTableKey {
+        typealias Root = HistoryThumbnailModel
+        static let objectRelationalMapping = TableBinding(CodingKeys.self)
+        case identifier
+        case url
+        case previewWidth
+        case previewHeight
+        case thumbnailData
+        case isImage
+        
+        static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
+            return [
+                identifier: ColumnConstraintBinding(isPrimary: true),
+            ]
+        }
+    }
     
     static func keyValue(keyValue: [String: Any]) -> HistoryThumbnailModel {
-        var model = HistoryThumbnailModel()
+        let model = HistoryThumbnailModel()
         model.url = keyValue["url"] as! String
-        model.fileName = keyValue["fileName"] as? String
-        model.previewWidth = keyValue["previewWidth"] as! CGFloat
-        model.previewHeight = keyValue["previewHeight"] as! CGFloat
+        model.previewWidth = keyValue["previewWidth"] as! Double
+        model.previewHeight = keyValue["previewHeight"] as! Double
         model.thumbnailData = keyValue["thumbnailData"] as? Data
         model.isImage = keyValue["isImage"] as! Bool
         return model
@@ -46,7 +71,6 @@ struct HistoryThumbnailModel {
     func toKeyValue() -> [String: Any] {
         var historyKeyValue: [String: Any] = [:]
         historyKeyValue["url"] = url
-        historyKeyValue["fileName"] = fileName
         historyKeyValue["previewWidth"] = previewWidth
         historyKeyValue["previewHeight"] = previewHeight
         if let thumbnailData = thumbnailData {

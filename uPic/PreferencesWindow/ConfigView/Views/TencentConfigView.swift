@@ -29,15 +29,20 @@ class TencentConfigView: ConfigView {
         regionButtonPopUp.identifier = NSUserInterfaceItemIdentifier(rawValue: "region")
         
         var selectRegion: NSMenuItem?
-        for region in TencentRegion.allCases {
-            let menuItem = NSMenuItem(title: region.name, action: nil, keyEquivalent: "")
-            menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: region.rawValue)
+        
+        let sortedKeys = Array(TencentRegion.allRegion.keys).sorted()
+        
+        for key in sortedKeys {
+            let title = TencentRegion.name(key)
+            let endPoint = TencentRegion.endPoint(key)
+            let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
+            menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: key)
             regionButtonPopUp.menu?.addItem(menuItem)
-            if region.endPoint.isEmpty {
+            if endPoint.isEmpty {
                 menuItem.isEnabled = false
             }
             
-            if data.region == region.rawValue {
+            if data.region == key {
                 selectRegion = menuItem
             }
         }

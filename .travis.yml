@@ -1,0 +1,17 @@
+language: swift
+matrix:
+  include:
+    - osx_image: xcode11.2
+branches:
+  only:
+    - master
+env:
+  global:
+    - LC_CTYPE=en_US.UTF-8
+before_install:
+  - gem install cocoapods
+  - gem install xcpretty -N
+  - pod install
+script:
+  - set -o pipefail
+  - xcodebuild clean build -workspace uPic.xcworkspace -scheme uPic -sdk macosx -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGN_REQUIRED=NO | xcpretty -c

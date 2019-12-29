@@ -74,6 +74,8 @@ class CustomConfigSheetController: NSViewController {
                 
                 let valueField = NSTextField(frame: NSRect(x: paddingLeft + keyWidth + gapLeft, y: y, width: valueWidth, height: height))
                 valueField.identifier = NSUserInterfaceItemIdentifier(rawValue: "header-\(index)-value")
+                valueField.usesSingleLineMode = true
+                valueField.lineBreakMode = .byTruncatingTail
                 valueField.delegate = self
                 valueField.stringValue = header["value"] ?? ""
                 valueField.placeholderString = "value"
@@ -112,6 +114,8 @@ class CustomConfigSheetController: NSViewController {
                 
                 let valueField = NSTextField(frame: NSRect(x: paddingLeft + keyWidth + gapLeft, y: y, width: valueWidth, height: height))
                 valueField.identifier = NSUserInterfaceItemIdentifier(rawValue: "body-\(index)-value")
+                valueField.usesSingleLineMode = true
+                valueField.lineBreakMode = .byTruncatingTail
                 valueField.delegate = self
                 valueField.stringValue = body["value"] ?? ""
                 valueField.placeholderString = "value"

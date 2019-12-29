@@ -18,8 +18,8 @@ class UpYunUploader: BaseUploader {
 
     static let fileExtensions: [String] = []
 
-    func _upload(_ fileUrl: URL?, fileData: Data?) {
-        guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {
+    func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
+        guard let data = host.data else {
             super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
@@ -84,7 +84,7 @@ class UpYunUploader: BaseUploader {
                 let json = JSON(value)
                 let code = json["code"]
                 if 200 == code {
-                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix!)", retData, fileUrl, fileName)
                 } else {
                     super.faild(errorMsg: json["message"].string)
                 }
@@ -94,12 +94,12 @@ class UpYunUploader: BaseUploader {
         })
 
     }
-
-    func upload(_ fileUrl: URL) {
-        self._upload(fileUrl, fileData: nil)
+    
+    func upload(_ fileUrl: URL, host: Host) {
+        self._upload(fileUrl, fileData: nil, host: host)
     }
-
-    func upload(_ fileData: Data) {
-        self._upload(nil, fileData: fileData)
+    
+    func upload(_ fileData: Data, host: Host) {
+        self._upload(nil, fileData: fileData, host: host)
     }
 }

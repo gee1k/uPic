@@ -10,6 +10,10 @@ import Cocoa
 
 class GithubConfigView: ConfigView {
     
+    override var gapTop: Int {
+        return 5
+    }
+    
     deinit {
         PreferencesNotifier.removeObserver(observer: self, notification: .githubCDNAutoComplete)
     }
@@ -133,15 +137,18 @@ class GithubConfigView: ConfigView {
     @objc func useCdnChanged(_ sender: NSButton) {
         let value = sender.state.rawValue
         if value == 0 {
-            self.domainField?.stringValue = ""
-            self.data?.setValue("", forKey: "domain")
             self.domainField?.isEnabled = true
         } else {
             self.domainField?.isEnabled = false
             self.autoCompleteCDN()
         }
         
-        self.data?.setValue(String(value), forKey: "useCdn")
+        let strValue = String(value)
+        
+        if self.data?.value(forKey: "useCdn") as? String != strValue {
+            self.data?.setValue(strValue, forKey: "useCdn")
+        }
+        
     }
     
     /// auto complete cdn domain
@@ -158,9 +165,12 @@ class GithubConfigView: ConfigView {
         if branch == nil || branch!.isEmpty {
             branch = "{branch}"
         }
-        let domain = "https://cdn.jsdelivr.net/gh/\(owner!)/\(repo!)@\(branch!)/"
-        self.domainField?.stringValue = domain
-        self.data?.setValue(domain, forKey: "domain")
+        let domain = "https://cdn.jsdelivr.net/gh/\(owner!)/\(repo!)@\(branch!)"
+        
+        if self.domainField?.stringValue != domain {
+            self.domainField?.stringValue = domain
+            self.data?.setValue(domain, forKey: "domain")
+        }
     }
     
 }

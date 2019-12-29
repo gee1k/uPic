@@ -15,8 +15,8 @@ class AmazonS3Uploader: BaseUploader {
     static let shared = AmazonS3Uploader()
     static let fileExtensions: [String] = []
 
-    func _upload(_ fileUrl: URL?, fileData: Data?) {
-        guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {
+    func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
+        guard let data = host.data else {
             super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
@@ -98,9 +98,9 @@ class AmazonS3Uploader: BaseUploader {
             switch response.result {
             case .success(_):
                 if domain.isEmpty {
-                    super.completed(url: "\(url)/\(saveKey)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
+                    super.completed(url: "\(url)/\(saveKey)\(config.suffix!)", retData, fileUrl, fileName)
                 } else {
-                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix!)", retData, fileUrl, fileName)
                 }
             case .failure(let error):
                 var errorMessage = error.localizedDescription
@@ -115,12 +115,12 @@ class AmazonS3Uploader: BaseUploader {
         })
 
     }
-
-    func upload(_ fileUrl: URL) {
-        self._upload(fileUrl, fileData: nil)
+    
+    func upload(_ fileUrl: URL, host: Host) {
+        self._upload(fileUrl, fileData: nil, host: host)
     }
-
-    func upload(_ fileData: Data) {
-        self._upload(nil, fileData: fileData)
+    
+    func upload(_ fileData: Data, host: Host) {
+        self._upload(nil, fileData: fileData, host: host)
     }
 }

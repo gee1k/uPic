@@ -5,9 +5,6 @@
 /* Class = "NSTextFieldCell"; title = "⚠️ Note that this will reset all user preferences"; ObjectID = "2Rg-te-FPU"; */
 "2Rg-te-FPU.title" = "⚠️ Note that this will reset all user preferences";
 
-/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "4iB-qe-GQY"; */
-"4iB-qe-GQY.title" = "Cancel";
-
 /* Class = "NSButtonCell"; title = "Paypal"; ObjectID = "59m-hG-lVw"; */
 "59m-hG-lVw.title" = "Paypal";
 
@@ -38,12 +35,6 @@
 /* Class = "NSButtonCell"; title = "OK"; ObjectID = "Cp0-zp-Dpm"; */
 "Cp0-zp-Dpm.title" = "OK";
 
-/* Class = "NSTextFieldCell"; placeholderString = "folder:uploads/test"; ObjectID = "FDM-4e-Rn3"; */
-"FDM-4e-Rn3.placeholderString" = "folder:uploads/test";
-
-/* Class = "NSTextFieldCell"; title = "/"; ObjectID = "FO4-fa-ZC2"; */
-"FO4-fa-ZC2.title" = "/";
-
 /* Class = "NSTextFieldCell"; title = "Shortcuts"; ObjectID = "FpP-Q9-flS"; */
 "FpP-Q9-flS.title" = "Shortcuts";
 
@@ -56,17 +47,11 @@
 /* Class = "NSTextFieldCell"; title = "💻 GitHub:"; ObjectID = "How-dP-tcX"; */
 "How-dP-tcX.title" = "💻 GitHub:";
 
-/* Class = "NSTextFieldCell"; placeholderString = "URL suffix"; ObjectID = "IG0-Ld-DT5"; */
-"IG0-Ld-DT5.placeholderString" = "URL suffix";
-
 /* Class = "NSButtonCell"; title = "svend.jin@gmail.com"; ObjectID = "IPL-yO-Vkp"; */
 "IPL-yO-Vkp.title" = "svend.jin@gmail.com";
 
 /* Class = "NSTextFieldCell"; title = "0.1.0"; ObjectID = "Jnf-AX-bIr"; */
 "Jnf-AX-bIr.title" = "0.1.0";
-
-/* Class = "NSButtonCell"; title = "OK"; ObjectID = "MYr-0a-uD1"; */
-"MYr-0a-uD1.title" = "OK";
 
 /* Class = "NSTextFieldCell"; title = "Open file Selection:"; ObjectID = "Mqt-Fp-Ssl"; */
 "Mqt-Fp-Ssl.title" = "Open file Selection:";
@@ -86,6 +71,9 @@
 /* Class = "NSTextFieldCell"; title = "💡 HomePage:"; ObjectID = "OjL-Zl-YKD"; */
 "OjL-Zl-YKD.title" = "💡 HomePage:";
 
+/* Class = "NSTextFieldCell"; title = "Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {saveKey} and etc."; ObjectID = "R0i-0c-6TZ"; */
+"R0i-0c-6TZ.title" = "Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {saveKey} and etc.";
+
 /* Class = "NSButtonCell"; title = "⚠️ Reset"; ObjectID = "TD4-LI-X9U"; */
 "TD4-LI-X9U.title" = "⚠️ Reset";
 
@@ -101,14 +89,8 @@
 /* Class = "NSTextFieldCell"; title = "Upload from Screenshot:"; ObjectID = "Xd9-iA-emU"; */
 "Xd9-iA-emU.title" = "Upload from Screenshot:";
 
-/* Class = "NSTextFieldCell"; title = "file url:"; ObjectID = "ZK1-y8-8KP"; */
-"ZK1-y8-8KP.title" = "file url:";
-
 /* Class = "NSButtonCell"; title = "Launch uPic at login"; ObjectID = "ZbK-xW-anT"; */
 "ZbK-xW-anT.title" = "Launch uPic at login";
-
-/* Class = "NSTextFieldCell"; placeholderString = "domain:https://"; ObjectID = "b48-7x-KE9"; */
-"b48-7x-KE9.placeholderString" = "domain:https://";
 
 /* Class = "NSTextFieldCell"; title = "Padding:"; ObjectID = "bp8-mz-gke"; */
 "bp8-mz-gke.title" = "Padding:";
@@ -152,9 +134,6 @@
 /* Class = "NSViewController"; title = "About"; ObjectID = "k6X-N1-mVu"; */
 "k6X-N1-mVu.title" = "About";
 
-/* Class = "NSTextFieldCell"; title = "/"; ObjectID = "kdM-To-7Hl"; */
-"kdM-To-7Hl.title" = "/";
-
 /* Class = "NSTextFieldCell"; title = "uPic"; ObjectID = "mOB-su-ZM1"; */
 "mOB-su-ZM1.title" = "uPic";
 
@@ -169,6 +148,3 @@
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "q1H-P0-jix"; */
 "q1H-P0-jix.title" = "Cancel";
-
-/* Class = "NSTextFieldCell"; title = "eg:"; ObjectID = "t25-le-QEa"; */
-"t25-le-QEa.title" = "eg:";

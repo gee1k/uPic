@@ -21,8 +21,8 @@ class ImgurUploader: BaseUploader {
     
     let url = "https://api.imgur.com/3/image";
 
-    func _upload(_ fileUrl: URL?, fileData: Data?) {
-        guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {
+    func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
+        guard let data = host.data else {
             super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
@@ -38,6 +38,7 @@ class ImgurUploader: BaseUploader {
             super.faild(errorMsg: "Invalid file")
             return
         }
+        let retData = configuration["retData"] as? Data
         let fileBase64 = configuration["fileBase64"] as! String
         let fileName = configuration["fileName"] as! String
 
@@ -60,7 +61,7 @@ class ImgurUploader: BaseUploader {
                 case .success(let value):
                     let json = JSON(value)
                     if json["success"].boolValue {
-                        super.completed(url: json["data"]["link"].stringValue.urlDecoded(), fileBase64, fileUrl, fileName)
+                        super.completed(url: json["data"]["link"].stringValue.urlDecoded(), retData, fileUrl, fileName)
                     } else {
                         let error = json["data"]["error"]
                         let errorMsg = error.string ?? error["message"].stringValue
@@ -71,12 +72,12 @@ class ImgurUploader: BaseUploader {
                 }
             })
     }
-
-    func upload(_ fileUrl: URL) {
-        self._upload(fileUrl, fileData: nil)
+    
+    func upload(_ fileUrl: URL, host: Host) {
+        self._upload(fileUrl, fileData: nil, host: host)
     }
-
-    func upload(_ fileData: Data) {
-        self._upload(nil, fileData: fileData)
+    
+    func upload(_ fileData: Data, host: Host) {
+        self._upload(nil, fileData: fileData, host: host)
     }
 }

@@ -8,76 +8,60 @@
 
 import Foundation
 
-class TencentRegionDict {
-    static let allRegion = [
-        // 内地
-        "ap_beijing_1": ["name": "北京一区", "endPoint": "cos.ap-beijing-1"],
-        "ap_beijing": ["name": "北京", "endPoint": "cos.ap-beijing"],
-        "ap_shanghai": ["name": "上海（华东）", "endPoint": "cos.ap-shanghai"],
-        "ap_guangzhou": ["name": "广州（华南）", "endPoint": "cos.ap-guangzhou"],
-        "ap_chengdu": ["name": "成都（西南）", "endPoint": "cos.ap-chengdu"],
-        "ap_chongqing": ["name": "重庆", "endPoint": "cos.ap-chongqing"],
-        "ap_shenzhen_fsi": ["name": "深圳金融", "endPoint": "cos.ap-shenzhen-fsi"],
-        "ap_shanghai_fsi": ["name": "上海金融", "endPoint": "cos.ap-shanghai-fsi"],
-        // 中国香港及海外地域
-        "ap_hongkong": ["name": "香港", "endPoint": "cos.ap-hongkong"],
-        "ap_singapore": ["name": "新加坡", "endPoint": "cos.ap-singapore"],
-        "ap_mumbai": ["name": "孟买", "endPoint": "cos.ap-mumbai"],
-        "ap_seoul": ["name": "首尔", "endPoint": "cos.ap-seoul"],
-        "ap_bangkok": ["name": "曼谷", "endPoint": "cos.ap-bangkok"],
-        "ap_tokyo": ["name": "东京", "endPoint": "cos.ap-tokyo"],
-        "na_siliconvalley": ["name": "硅谷", "endPoint": "cos.na-siliconvalley"],
-        "na_ashburn": ["name": "弗吉尼亚", "endPoint": "cos.na-ashburn"],
-        "na_toronto": ["name": "多伦多", "endPoint": "cos.na-toronto"],
-        "eu_frankfurt": ["name": "法兰克福", "endPoint": "cos.eu-frankfurt"],
-        "eu_moscow": ["name": "莫斯科", "endPoint": "cos.eu-moscow"]
+class TencentRegion {
+    
+    /// https://cloud.tencent.com/document/product/436/6224
+    public static let allRegion = [
+        "ap-beijing-1": ["cname": "北京一区"],
+        "ap-beijing": ["cname": "北京"],
+        "ap-nanjing": ["cname": "南京"],
+        "ap-shanghai": ["cname": "上海（华东）"],
+        "ap-guangzhou": ["cname": "广州（华南）"],
+        "ap-chengdu": ["cname": "成都（西南）"],
+        "ap-chongqing": ["cname": "重庆"],
+        "ap-shenzhen-fsi": ["cname": "深圳金融"],
+        "ap-shanghai-fsi": ["cname": "上海金融"],
+        "ap-beijing-fsi": ["cname": "北京金融"],
+        "ap-hongkong": ["cname": "香港"],
+        "ap-singapore": ["cname": "新加坡"],
+        "ap-mumbai": ["cname": "孟买"],
+        "ap-seoul": ["cname": "首尔"],
+        "ap-bangkok": ["cname": "曼谷"],
+        "ap-tokyo": ["cname": "东京"],
+        "na-siliconvalley": ["cname": "硅谷"],
+        "na-ashburn": ["cname": "弗吉尼亚"],
+        "na-toronto": ["cname": "多伦多"],
+        "eu-frankfurt": ["cname": "法兰克福"],
+        "eu-moscow": ["cname": "莫斯科"]
     ]
-}
-
-public enum TencentRegion: String, CaseIterable {
-    case ap_beijing_1
-    case ap_beijing
-    case ap_shanghai
-    case ap_guangzhou
-    case ap_chengdu
-    case ap_chongqing
-    case ap_shenzhen_fsi
-    case ap_shanghai_fsi
-    case ap_hongkong
-    case ap_singapore
-    case ap_mumbai
-    case ap_seoul
-    case ap_bangkok
-    case ap_tokyo
-    case na_siliconvalley
-    case na_ashburn
-    case na_toronto
-    case eu_frankfurt
-    case eu_moscow
-
-    public var name: String {
-        get {
-            guard let regionDict = TencentRegionDict.allRegion[self.rawValue], let cname = regionDict["name"] else {
-                return self.rawValue
-            }
-            
-            return "【\(cname)】\(self.rawValue)"
+    
+    public static func name(_ key: String) -> String {
+        guard let regionDict = allRegion[key] else {
+            return key
         }
+        return regionDict["cname"] ?? key
     }
     
-    public var endPoint: String {
-        get {
-            guard let regionDict = TencentRegionDict.allRegion[self.rawValue], let endPoint = regionDict["endPoint"] else {
-                return ""
-            }
-            return "\(endPoint).myqcloud.com"
+    public static func endPoint(_ key: String) -> String {
+        if key.isEmpty {
+            return ""
         }
+        return "cos.\(key).myqcloud.com"
     }
     
-    public static func formatRegion(_ region: String?) -> TencentRegion {
+    public static func formatRegion(_ region: String?) -> String {
         if let region = region, !region.isEmpty {
-            return TencentRegion(rawValue: region)!
+            return region
         }
-        return TencentRegion.ap_beijing_1
+        return AliyunRegion.allRegion.keys.first!
+    }
+    
+    /// FIXME： 将旧版区域转为新版格式，几个版本的迭代后需删除
+    public static func upgradeFromOld(_ oldRegion: String) -> String {
+        if oldRegion.isEmpty {
+            return ""
+        }
+        return oldRegion.replacingOccurrences(of: "_", with: "-")
+       
     }
 }

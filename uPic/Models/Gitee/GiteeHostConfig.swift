@@ -14,10 +14,8 @@ class GiteeHostConfig: HostConfig {
     dynamic var owner: String! = ""
     dynamic var repo: String! = ""
     dynamic var branch: String! = "master"
-    dynamic var token: String!
-    dynamic var domain: String?
-    dynamic var folder: String?
-    dynamic var saveKey: String! = HostSaveKey.filename.rawValue
+    dynamic var token: String! = ""
+    dynamic var domain: String! = ""
     dynamic var saveKeyPath: String?
     
     override func displayName(key: String) -> String {
@@ -32,10 +30,6 @@ class GiteeHostConfig: HostConfig {
             return "Token".localized
         case "domain":
             return "Domain".localized
-        case "folder":
-            return "Folder".localized
-        case "saveKey":
-            return "File Name".localized
         case "saveKeyPath":
             return "Save Key".localized
         default:
@@ -50,8 +44,6 @@ class GiteeHostConfig: HostConfig {
         dict["branch"] = self.branch
         dict["token"] = self.token
         dict["domain"] = self.domain
-        dict["folder"] = self.folder
-        dict["saveKey"] = self.saveKey
         dict["saveKeyPath"] = self.saveKeyPath
         
         return JSON(dict).rawString()!
@@ -69,8 +61,6 @@ class GiteeHostConfig: HostConfig {
         config.branch = json["branch"].stringValue
         config.token = json["token"].stringValue
         config.domain = json["domain"].stringValue
-        config.folder = json["folder"].stringValue
-        config.saveKey = json["saveKey"].stringValue
         config.saveKeyPath = json["saveKeyPath"].stringValue
         return config
     }

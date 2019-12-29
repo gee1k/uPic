@@ -13,20 +13,25 @@ public class TencentUtil {
     private static let expiration = 1800
     private static let schema = "https://"
     
-    static func computeUrl(bucket: String, region: TencentRegion) -> String {
-        if region.endPoint.isEmpty {
+    static func computeUrl(bucket: String, region: String) -> String {
+        
+        let endPoint = TencentRegion.endPoint(region)
+        
+        if endPoint.isEmpty {
             return ""
         }
         
-        return "\(schema)\(bucket).\(region.endPoint)"
+        return "\(schema)\(bucket).\(endPoint)"
     }
     
-    static func computeHost(bucket: String, region: TencentRegion) -> String {
-        if region.endPoint.isEmpty {
+    static func computeHost(bucket: String, region: String) -> String {
+        let endPoint = TencentRegion.endPoint(region)
+        
+        if endPoint.isEmpty {
             return ""
         }
         
-        return "\(bucket).\(region.endPoint)"
+        return "\(bucket).\(endPoint)"
     }
     
     static func getKeyTime() -> String {

@@ -9,6 +9,7 @@
 import Foundation
 
 public class AmazonS3Region {
+    /// https://docs.aws.amazon.com/general/latest/gr/rande.html
     public static let allRegion = [
         "us-east-2": ["cname": "美国东部（俄亥俄州）", "name": "US East (Ohio)"],
         "us-east-1": ["cname": "美国东部（弗吉尼亚北部）", "name": "US East (N. Virginia)"],
@@ -24,11 +25,12 @@ public class AmazonS3Region {
         "ca-central-1": ["cname": "加拿大 (中部)", "name": "Canada (Central)"],
         "cn-north-1": ["cname": "中国（北京）", "name": "China (Beijing)"],
         "cn-northwest-1": ["cname": "中国 (宁夏)", "name": "China (Ningxia)"],
-        "eu-central-1": ["cname": "欧洲（法兰克福）", "name": "EU (Frankfurt)"],
-        "eu-west-1": ["cname": "欧洲（爱尔兰）", "name": "EU (Ireland)"],
-        "eu-west-2": ["cname": "欧洲（伦敦）", "name": "EU (London)"],
-        "eu-west-3": ["cname": "欧洲 (巴黎)", "name": "EU (Paris)"],
-        "eu-north-1": ["cname": "欧洲（斯德哥尔摩）", "name": "EU (Stockholm)"],
+        "eu-central-1": ["cname": "欧洲（法兰克福）", "name": "Europe (Frankfurt)"],
+        "eu-west-1": ["cname": "欧洲（爱尔兰）", "name": "Europe (Ireland)"],
+        "eu-west-2": ["cname": "欧洲（伦敦）", "name": "Europe (London)"],
+        "eu-west-3": ["cname": "欧洲 (巴黎)", "name": "Europe (Paris)"],
+        "eu-north-1": ["cname": "欧洲（斯德哥尔摩）", "name": "Europe (Stockholm)"],
+        "me-south-1": ["cname": "中东（巴林）", "name": "Middle East (Bahrain)"],
         "sa-east-1": ["cname": "南美洲（圣保罗）", "name": "South America (São Paulo)"]
     ]
     

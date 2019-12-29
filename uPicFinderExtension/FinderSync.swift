@@ -102,7 +102,14 @@ class FinderSync: FIFinderSync {
                 }
                 path = "\(path)\(filePath)\n"
             }
-            UploadNotifier.postNotification(.uploadFiles, object: path)
+            let encodeUrl = "uPic://files?\(path)".urlEncoded()
+            
+            if let url = URL(string: encodeUrl) {
+                NSWorkspace.shared.open(url)
+            } else {
+                UploadNotifier.postNotification(.uploadFiles, object: path)
+            }
+            
         }
 
     }

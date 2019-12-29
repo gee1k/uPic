@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -107,6 +107,9 @@
                         <outlet property="hostMenuItem" destination="d02-bT-1Lv" id="Ah0-J0-Z4M"/>
                         <outlet property="ouputFormatMenuItem" destination="1BX-LF-q51" id="H54-M9-CBq"/>
                         <outlet property="statusMenu" destination="fqV-BN-CNE" id="XoS-be-xDF"/>
+                        <outlet property="uploadFromPasteboardMenuItem" destination="orX-KL-q11" id="v7z-nL-hxW"/>
+                        <outlet property="uploadFromScreenshotMenuItem" destination="ueU-fm-1nn" id="Fnc-s1-TnL"/>
+                        <outlet property="uploadFromSelectFileMenuItem" destination="p0A-6d-cAU" id="qq8-KZ-WPO"/>
                     </connections>
                 </customObject>
                 <customObject id="Oqi-DG-w38" customClass="SUUpdater"/>

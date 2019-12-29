@@ -18,8 +18,8 @@ class WeiboUploader: BaseUploader {
     let url = "https://picupload.weibo.com/interface/pic_upload.php?ori=1&mime=image%2Fjpeg&data=base64&url=0&markpos=1&logo=&nick=0&marks=1&app=miniblog"
     
 
-    func _upload(_ fileUrl: URL?, fileData: Data?) {
-        guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {
+    func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
+        guard let data = host.data else {
             super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
@@ -51,6 +51,7 @@ class WeiboUploader: BaseUploader {
                 super.faild(errorMsg: "Invalid file")
                 return
             }
+            let retData = configuration["retData"] as? Data
             let fileBase64 = configuration["fileBase64"] as! String
             let fileName = configuration["fileName"] as! String
             
@@ -71,7 +72,7 @@ class WeiboUploader: BaseUploader {
                     switch response.result {
                     case .success(let value):
                         if let pidPid = WeiboUtil.parsePicPid(reponseString: value) {
-                            super.completed(url: "https://ws1.sinaimg.cn/\(quality)/\(pidPid)\(fileExtension)", fileBase64, fileUrl, nil)
+                            super.completed(url: "https://ws1.sinaimg.cn/\(quality)/\(pidPid)\(fileExtension)", retData, fileUrl, nil)
                         } else {
                             super.faild(errorMsg: "Upload failed, please check the configuration!".localized)
                         }
@@ -96,12 +97,12 @@ class WeiboUploader: BaseUploader {
         }
     }
 
-    func upload(_ fileUrl: URL) {
-        self._upload(fileUrl, fileData: nil)
+    func upload(_ fileUrl: URL, host: Host) {
+        self._upload(fileUrl, fileData: nil, host: host)
     }
-
-    func upload(_ fileData: Data) {
-        self._upload(nil, fileData: fileData)
+    
+    func upload(_ fileData: Data, host: Host) {
+        self._upload(nil, fileData: fileData, host: host)
     }
     
     // MARK: 通过用户名密码登录，获取 cookie

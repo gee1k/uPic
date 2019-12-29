@@ -16,8 +16,8 @@ class QiniuUploader: BaseUploader {
 
     static let fileExtensions: [String] = []
 
-    func _upload(_ fileUrl: URL?, fileData: Data?) {
-        guard let host = ConfigManager.shared.getDefaultHost(), let data = host.data else {
+    func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
+        guard let data = host.data else {
             super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
             return
         }
@@ -34,11 +34,18 @@ class QiniuUploader: BaseUploader {
         var region = QiniuRegion.formatRegion(config.region)
         
         let saveKeyPath = config.saveKeyPath
+        
+        
+        guard let url = QiniuRegion.endPoint(region) else {
+            super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
+            return
+        }
 
         guard let configuration = BaseUploaderUtil.getSaveConfiguration(fileUrl, fileData, saveKeyPath) else {
             super.faild(errorMsg: "Invalid file")
             return
         }
+        
         let retData = configuration["retData"] as? Data
         let fileName = configuration["fileName"] as! String
         let mimeType = configuration["mimeType"] as! String
@@ -64,7 +71,7 @@ class QiniuUploader: BaseUploader {
             multipartFormData.append(saveKey.data(using: .utf8)!, withName: "key")
         }
 
-        AF.upload(multipartFormData: multipartFormDataGen, to: region.url, headers: headers).validate().uploadProgress { progress in
+        AF.upload(multipartFormData: multipartFormDataGen, to: url, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
         }.responseJSON(completionHandler: { response -> Void in
             switch response.result {
@@ -74,7 +81,7 @@ class QiniuUploader: BaseUploader {
                 if error != nil && error!.count > 0 {
                     super.faild(errorMsg: error)
                 } else {
-                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix ?? "")", retData?.toBase64(), fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix!)", retData, fileUrl, fileName)
                 }
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)
@@ -82,12 +89,12 @@ class QiniuUploader: BaseUploader {
         })
 
     }
-
-    func upload(_ fileUrl: URL) {
-        self._upload(fileUrl, fileData: nil)
+    
+    func upload(_ fileUrl: URL, host: Host) {
+        self._upload(fileUrl, fileData: nil, host: host)
     }
-
-    func upload(_ fileData: Data) {
-        self._upload(nil, fileData: fileData)
+    
+    func upload(_ fileData: Data, host: Host) {
+        self._upload(nil, fileData: fileData, host: host)
     }
 }

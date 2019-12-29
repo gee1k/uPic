@@ -1,22 +1,26 @@
 <div align="right"><strong>🇨🇳中文</strong>  | <strong><a href="./README.md">🇬🇧English</a></strong></div>
 <div align="center">
   <img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/logo.png" alt="uPic">
+  <br>
+  <br>
+  <p>
+    Picture and file upload tool for macOS. - A native, powerful, beautiful and simple  
+  </p>
+  
+  <p>
+  
+  [![Travis Build Status](https://img.shields.io/travis/gee1k/uPic.svg?style=flat-square&logo=Travis)](https://travis-ci.org/gee1k/uPic) [![GitHub release](https://img.shields.io/github/release/gee1k/uPic?label=version&style=flat-square&logo=GitHub)](https://github.com/gee1k/uPic/releases/latest) [![Downloads](https://img.shields.io/github/downloads/gee1k/uPic/total.svg?style=flat-square)](https://github.com/gee1k/uPic/releases) [![MIT](https://img.shields.io/github/license/gee1k/uPic?style=flat-square)](https://github.com/gee1k/uPic/blob/master/LICENSE)
+  
+[![Donate on PayPal](https://img.shields.io/badge/support-PayPal-blue?style=flat-square&logo=PayPal)](https://paypal.me/geee1k) [![Chat on Telegram](https://img.shields.io/badge/chat-Telegram-blueviolet?style=flat-square&logo=Telegram)](https://t.me/upic_host) [![Follow My Twitter](https://img.shields.io/badge/follow-Tweet-blue?style=flat-square&logo=Twitter)](https://twitter.com/geee1k) [![Follow My Twitter](https://img.shields.io/badge/follow-Weibo-red?style=flat-square&logo=sina-weibo)](https://weibo.com/6436660358)
+
+  </p>
 </div>
 
-# ☁️ 简洁的 Mac 图床客户端 uPic
+-----
 
-<div style="display: flex;justify-content: center;" align="center">
-	<a href="https://github.com/gee1k/uPic/releases/latest">
-    <img src="https://img.shields.io/github/release/gee1k/uPic?label=version&style=flat-square" alt="">
-  </a>
-	<a href="https://github.com/gee1k/uPic/releases" style="margin: 0 5px;">
-    <img src="https://img.shields.io/github/downloads/gee1k/uPic/total.svg?style=flat-square" alt="">
-  </a> 
-  <a href="https://github.com/gee1k/uPic/blob/master/LICENSE">
-		<img alt="GitHub" src="https://img.shields.io/github/license/gee1k/uPic?style=flat-square">
-	</a>
-</div>
+**👬联系： _[Telegram](https://t.me/upic_host), [Twitter](https://twitter.com/geee1k), [微博](https://weibo.com/6436660358), [微信群](https://raw.githubusercontent.com/gee1k/oss/master/personal/geee1k.JPG)_**
 
+**☕️赞助： _[Paypal](https://paypal.me/geee1k), [支付宝](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/alipay.JPG), [微信支付](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat_pay.JPG)_**
 
 ## 📑 简介
 
@@ -49,8 +53,6 @@ brew cask install upic
   <center>
     <img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/finder-extension.png" height="300">
   </center>
-
-
 
 ## 🕹 使用方式
 
@@ -132,29 +134,15 @@ brew cask install upic
 <p><code>sudo xattr -d com.apple.quarantine /Applications/uPic.app</code> </p>
 </details>
 
-
-
-## 💌 联系我
-
-- `Email`: svend.jin@gmail.com
-- `Telegram`: [gee1k](https://t.me/gee1k)
-- `项目地址`: [Github](https://github.com/gee1k/uPic)
-- `uPic 产品交流群(Telegram)`:  [点击加入 TG 群](https://t.me/upic_host)
-- `微信群`:  <small>扫描下方二维码加好友拉你入群 ↓ </small>
-
-	<img src="https://raw.githubusercontent.com/gee1k/oss/master/personal/geee1k.JPG" height="200">
-
-
-## ❤️ 赞助
-
-如果你喜欢 uPic ，欢迎给我打赏
-
-| **Paypal** | **支付宝** | **微信** |
-| :-: | :-: | :-: |
-| [@Geee1k](https://paypal.me/geee1k) | ![](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/alipay-mini.jpeg) | ![](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat-zs.JPG) |
-
-
 ## ✨ Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/gee1k/uPic/graphs/contributors"><img src="https://opencollective.com/uPic/contributors.svg?width=890&button=true" /></a>
+
+
+### Other Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
@@ -167,8 +155,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Jackxun123"><img src="https://avatars2.githubusercontent.com/u/33611532?v=4" width="100px;" alt="Jackxun123"/><br /><sub><b>Jackxun123</b></sub></a><br /><a href="#translation-Jackxun123" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/kkkkkkyrie"><img src="https://avatars2.githubusercontent.com/u/30786071?v=4" width="100px;" alt="eleven"/><br /><sub><b>eleven</b></sub></a><br /><a href="#translation-kkkkkkyrie" title="Translation">🌍</a></td>
     <td align="center"><a href="https://immx.io/"><img src="https://avatars1.githubusercontent.com/u/16921591?v=4" width="100px;" alt="zhucebuliaomax"/><br /><sub><b>zhucebuliaomax</b></sub></a><br /><a href="#design-ihatework" title="Design">🎨</a></td>
-    <td align="center"><a href="https://github.com/nlnlnull"><img src="https://avatars3.githubusercontent.com/u/17818831?v=4" width="100px;" alt="null"/><br /><sub><b>null</b></sub></a><br /><a href="https://github.com/gee1k/uPic/commits?author=nlnlnull" title="Code">💻</a></td>
-    <td align="center"><a href="https://licardo.cn"><img src="https://avatars1.githubusercontent.com/u/33802186?v=4" width="100px;" alt="Licardo"/><br /><sub><b>Licardo</b></sub></a><br /><a href="https://github.com/gee1k/uPic/commits?author=L1cardo" title="Code">💻</a> <a href="#design-L1cardo" title="Design">🎨</a></td>
   </tr>
 </table>
 
@@ -176,3 +162,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
+-----
+
+**uPic** © [Svend](https://github.com/gee1k), Released under the [MIT](./LICENSE) License.<br>
+Authored and maintained by Svend with help from contributors ([list](https://github.com/gee1k/uPic/contributors)).
