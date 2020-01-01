@@ -19,18 +19,35 @@ class SmmsUploader: BaseUploader {
     // limit 5M
     static let limitSize: UInt64 = 5 * 1024 * 1024
     
-    let url = "https://sm.ms/api/upload"
+    let v1_url = "https://sm.ms/api/upload"
+    let v2_url = "https://sm.ms/api/v2/upload"
 
     func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
+        guard let data = host.data, let config = data as? SmmsHostConfig else {
+            super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
+            return
+        }
+        
         super.start()
+        
+        let url = config.version == SmmsVersion.v2.rawValue ? v2_url : v1_url
+        
 
         guard let configuration = BaseUploaderUtil.getSaveConfiguration(fileUrl, fileData, nil) else {
             super.faild(errorMsg: "Invalid file")
             return
         }
+        
         let retData = configuration["retData"] as? Data
         let fileName = configuration["fileName"] as! String
         let mimeType = configuration["mimeType"] as! String
+        
+        var headers: HTTPHeaders?
+        if config.version == SmmsVersion.v2.rawValue {
+            headers = HTTPHeaders()
+            headers?.add(HTTPHeader.authorization(config.token!))
+            headers?.add(HTTPHeader.contentType("multipart/form-data"))
+        }
         
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
             if retData != nil {
@@ -40,7 +57,7 @@ class SmmsUploader: BaseUploader {
             }
         }
 
-        AF.upload(multipartFormData: multipartFormDataGen, to: url, method: HTTPMethod.post).validate().uploadProgress { progress in
+        AF.upload(multipartFormData: multipartFormDataGen, to: url, method: HTTPMethod.post, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
         }.responseJSON(completionHandler: { response -> Void in
             switch response.result {

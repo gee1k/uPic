@@ -5,7 +5,6 @@
 //  Created by Svend Jin on 2019/6/30.
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
-
 import Cocoa
 import Alamofire
 import SwiftyJSON
@@ -72,7 +71,7 @@ class WeiboUploader: BaseUploader {
                     switch response.result {
                     case .success(let value):
                         if let pidPid = WeiboUtil.parsePicPid(reponseString: value) {
-                            super.completed(url: "https://ws1.sinaimg.cn/\(quality)/\(pidPid)\(fileExtension)", retData, fileUrl, nil)
+                            super.completed(url: "\(config.domain!)/\(quality)/\(pidPid)\(fileExtension)", retData, fileUrl, nil)
                         } else {
                             super.faild(errorMsg: "Upload failed, please check the configuration!".localized)
                         }

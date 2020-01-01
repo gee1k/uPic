@@ -102,6 +102,7 @@
 "Client ID" = "Client ID";
 "Save Key" = "保存路径";
 "Use CDN" = "使用默认 CDN 加速访问";
+"Version" = "版本";
 
 /* host field placeholder */
 "Operator name" = "操作员名称";

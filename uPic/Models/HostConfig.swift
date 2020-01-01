@@ -58,7 +58,7 @@ class HostConfig: NSObject, Codable {
     static func create(type: HostType) -> HostConfig? {
         switch type {
         case .smms:
-            return nil
+            return SmmsHostConfig()
         case .custom:
             return CustomHostConfig()
         case .upyun_USS:
@@ -96,7 +96,7 @@ class HostConfig: NSObject, Codable {
         var config: HostConfig?
         switch type {
         case .smms:
-            config = nil
+            config = SmmsHostConfig.deserialize(str: str)
             break
         case .custom:
             config = CustomHostConfig.deserialize(str: str)

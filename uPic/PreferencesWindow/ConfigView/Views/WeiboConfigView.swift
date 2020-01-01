@@ -125,6 +125,23 @@ class WeiboConfigView: ConfigView {
         self.addSubview(qualityButtonPopUp)
         nextKeyViews.append(qualityButtonPopUp)
        
+        // MARK: Domain
+        
+        y = y - gapTop - labelHeight
+        let domainLabel = NSTextField(labelWithString: "\(data.displayName(key: "domain")):")
+        domainLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
+        domainLabel.alignment = .right
+        domainLabel.lineBreakMode = .byClipping
+        
+        let domainField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        domainField.identifier = NSUserInterfaceItemIdentifier(rawValue: "domain")
+        domainField.usesSingleLineMode = true
+        domainField.lineBreakMode = .byTruncatingTail
+        domainField.delegate = data
+        domainField.stringValue = data.domain ?? ""
+        self.addSubview(domainLabel)
+        self.addSubview(domainField)
+        nextKeyViews.append(domainField)
         
         // MARK: help
         y = y - gapTop * 2 - labelHeight

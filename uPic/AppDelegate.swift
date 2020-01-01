@@ -388,6 +388,7 @@ extension AppDelegate {
 // MARK: - Drag and drop file upload
 extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        debugPrint("Entered")
         if sender.isValid {
             if let button = statusItem.button {
                 button.image = NSImage(named: "uploadIcon")
@@ -398,6 +399,8 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
     
     func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        
+        debugPrint("opration")
         if sender.isValid {
             self.setStatusBarIcon(isIndicator: false)
             if sender.draggedFileURLs.count > 0 {

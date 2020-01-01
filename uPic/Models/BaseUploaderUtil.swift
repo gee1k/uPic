@@ -52,11 +52,10 @@ class BaseUploaderUtil {
             return data
         }
         
-        let contentType = data.contentType()
-        switch contentType {
-        case "png":
+        switch Swime.mimeType(data: data)?.type {
+        case .png:
             return compressPng(data, factor: factor)
-        case "jpg":
+        case .jpg:
             return compressJpg(data, factor: factor)
         default:
             return data
@@ -159,7 +158,7 @@ class BaseUploaderUtil {
         } else if let fileData = fileData {
             retData = BaseUploaderUtil.compressImage(fileData)
             // 处理截图之类的图片，生成一个文件名
-            let fileExtension = fileData.contentType() ?? "png"
+            let fileExtension = Swime.mimeType(data: fileData)?.ext ?? "png"
             fileName = BaseUploaderUtil._getRrandomFileName(fileExtension)
             mimeType = Util.getMimeType(pathExtension: fileExtension)
         } else {
@@ -190,7 +189,8 @@ class BaseUploaderUtil {
             fileBase64 = retData?.toBase64()
         } else if let fileData = fileData {
             // 处理截图之类的图片，生成一个文件名
-            let fileExtension = fileData.contentType() ?? "png"
+            
+            let fileExtension = Swime.mimeType(data: fileData)?.ext ?? "png"
             fileName = BaseUploaderUtil._getRrandomFileName(fileExtension)
             mimeType = Util.getMimeType(pathExtension: fileExtension)
             retData = BaseUploaderUtil.compressImage(fileData)
