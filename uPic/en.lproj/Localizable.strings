@@ -145,9 +145,9 @@
 /* cli */
 "Path and URL of the file to upload" = "Path and URL of the file to upload. (At least one, separated by a space)";
 "Output url format" = "Output url format, support url, html, markdown (md), ubb.";
+"Turn off error message output" = "Turn off error message output. And after the file upload fails, the original file path is output.";
 "Prints a help message" = "Prints a help message.";
 
 /* cli error msg */
-"Found illegal paths or URLs" = "Found {count} illegal paths or URLs.";
-"Legal paths or URLs" = "{count} legal paths or URLs";
-"No legal path or URL" = "No legal path or URL.";
+"Invalid file path" = "Invalid file path.";
+"Total paths count" = "Total of {count} file paths.";

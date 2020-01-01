@@ -145,9 +145,9 @@
 /* cli */
 "Path and URL of the file to upload" = "待上传的文件路径和 URL。（最少一个，以空格分隔）";
 "Output url format" = "输出的url格式，支持 url、html、markdown(md)、ubb。";
+"Turn off error message output" = "关闭错误信息输出。并且在文件上传失败后输出原文件路径。";
 "Prints a help message" = "打印帮助信息。";
 
 /* cli error msg */
-"Found illegal paths or URLs" = "找到{count}条不合法的路径或 URL。";
-"Legal paths or URLs" = "{count}条合法的路径或 URL。";
-"No legal path or URL" = "没有合法的路径或 URL。";
+"Invalid file path" = "无效的文件路径。";
+"Total paths count" = "共{count}个文件路径。";

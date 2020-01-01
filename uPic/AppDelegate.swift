@@ -357,6 +357,10 @@ extension AppDelegate {
             } else if firstFile is Data {
                 BaseUploader.upload(data: firstFile as! Data)
             } else {
+                // MARK: - Cli Support
+                if self.uploadSourceType == UploadSourceType.cli {
+                    Cli.shared.uploadError()
+                }
                 tickFileToUpload()
             }
         }
@@ -382,7 +386,13 @@ extension AppDelegate {
     ///
     func uploadFaild(errorMsg: String? = "") {
         self.setStatusBarIcon(isIndicator: false)
-        NotificationExt.shared.postUploadErrorNotice(errorMsg)
+        // MARK: - Cli Support
+        if self.uploadSourceType == UploadSourceType.cli {
+            Cli.shared.uploadError(errorMsg)
+        } else {
+            NotificationExt.shared.postUploadErrorNotice(errorMsg)
+        }
+        
         self.tickFileToUpload()
     }
     
@@ -409,7 +419,7 @@ extension AppDelegate {
         self.uploding = false
         // MARK: - Cli Support
         if uploadSourceType == UploadSourceType.cli {
-            Cli.shared.uploadDone(self.resultUrls)
+            Cli.shared.uploadDone()
         } else {
             if self.resultUrls.count > 0 {
                 let outputStr = self.copyUrls(urls: self.resultUrls)
@@ -421,13 +431,7 @@ extension AppDelegate {
     }
     
     func copyUrls(urls: [String]) -> String {
-        // MARK: - Cli Support
-        var outputType: OutputType? = nil
-        if uploadSourceType == UploadSourceType.cli {
-            outputType = OutputType(value: Cli.shared.output.value)
-        }
-        
-        let outputUrls = BaseUploaderUtil.formatOutputUrls(urls, outputType)
+        let outputUrls = BaseUploaderUtil.formatOutputUrls(urls)
         let outputStr = outputUrls.joined(separator: "\n")
         NSPasteboard.general.clearContents()
         NSPasteboard.general.declareTypes([.string], owner: nil)
