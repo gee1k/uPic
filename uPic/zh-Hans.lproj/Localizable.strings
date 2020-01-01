@@ -50,6 +50,8 @@
 /* 图床配置存在问题，请检查 */
 "There is a problem with the map bed configuration, please check!" = "图床配置存在问题，请检查！";
 
+"App is already running" = "uPic 已经在运行！";
+
 /*匿名上传*/
 "The file will be uploaded anonymously to" = "文件将匿名上传至";
 "Upload via uPic" = "使用 uPic 上传";
@@ -102,8 +104,10 @@
 "Client ID" = "Client ID";
 "Save Key" = "保存路径";
 "Use CDN" = "使用默认 CDN 加速访问";
+"Version" = "版本";
 
 /* host field placeholder */
+"Get API Token" = "获取 API Token";
 "Operator name" = "操作员名称";
 "Operator password" = "操作员密码";
 "Just the repo name, not the repo URL" = "只需要仓库名称，而不是仓库连接";
@@ -138,3 +142,14 @@
 
 /*eroor message*/
 "Upload failed, please check the configuration!" = "上传失败，请检查配置！";
+
+
+/* cli */
+"Path and URL of the file to upload" = "待上传的文件路径和 URL。（最少一个，以空格分隔）";
+"Output url format" = "输出的url格式，支持 url、html、markdown(md)、ubb。";
+"Turn off error message output" = "关闭错误信息输出。并且在文件上传失败后输出原文件路径。";
+"Prints a help message" = "打印帮助信息。";
+
+/* cli error msg */
+"Invalid file path" = "无效的文件路径。";
+"Total paths count" = "共{count}个文件路径。";
