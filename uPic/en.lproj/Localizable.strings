@@ -105,6 +105,7 @@
 "Version" = "Version";
 
 /* host field placeholder */
+"Get API Token" = "Get API Token";
 "Operator name" = "Operator name";
 "Operator password" = "Operator password";
 "Just the repo name, not the repo URL" = "Just the repo name, not the repo URL";

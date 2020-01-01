@@ -105,6 +105,7 @@
 "Version" = "版本";
 
 /* host field placeholder */
+"Get API Token" = "获取 API Token";
 "Operator name" = "操作员名称";
 "Operator password" = "操作员密码";
 "Just the repo name, not the repo URL" = "只需要仓库名称，而不是仓库连接";

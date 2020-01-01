@@ -65,8 +65,12 @@ class SmmsUploader: BaseUploader {
                 let json = JSON(value)
                 let success = json["success"].intValue
                 if 0 == success {
-                    let msg = json["message"].stringValue
-                    super.faild(errorMsg: msg)
+                    if json["code"] == "image_repeated", let repeatedUrl = json["images"].string {
+                        super.completed(url: repeatedUrl, retData, fileUrl, nil)
+                    } else {
+                        let msg = json["message"].stringValue
+                        super.faild(errorMsg: msg)
+                    }
                 } else {
                     let data = json["data"]
                     let url = data["url"].stringValue

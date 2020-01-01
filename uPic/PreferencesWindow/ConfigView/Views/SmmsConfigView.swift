@@ -12,6 +12,7 @@ class SmmsConfigView: ConfigView {
     
     var tokenLabel: NSTextField!
     var tokenField: NSTextField!
+    var tokenBtn: NSButton!
     
     override var paddingTop: Int {
         return 50
@@ -70,12 +71,30 @@ class SmmsConfigView: ConfigView {
         self.addSubview(tokenLabel)
         self.addSubview(tokenField)
         nextKeyViews.append(tokenField)
-       
-        versionChanged(versionButtonPopUp)
+        
+        // Get API Token
+        
+        y = y - gapTop - labelHeight
+        tokenBtn = NSButton(title: "Get API Token".localized, target: self, action: #selector(getApiToken(_:)))
+        let tokenBtnWidth = Int(tokenBtn.frame.width)
+        tokenBtn.frame = NSRect(x: Int(self.frame.width) - tokenBtnWidth, y: y, width: tokenBtnWidth, height: Int(tokenBtn.frame.height))
+        tokenBtn.isHidden = true
+        self.addSubview(tokenBtn)
+        
         
         // MARK: help
         y = y - gapTop * 2 - labelHeight
         super.createHelpBtn("https://blog.svend.cc/upic/tutorials/smms")
+        
+
+        versionChanged(versionButtonPopUp)
+    }
+    
+    @objc func getApiToken(_ sender: NSButton) {
+        guard let url = URL(string: "https://sm.ms/home/apitoken") else {
+            return
+        }
+        NSWorkspace.shared.open(url)
     }
     
     
@@ -89,6 +108,7 @@ class SmmsConfigView: ConfigView {
             let isV2 = identifier == SmmsVersion.v2.rawValue
             tokenLabel.isHidden = !isV2
             tokenField.isHidden = !isV2
+            tokenBtn.isHidden = !isV2
         }
     }
     

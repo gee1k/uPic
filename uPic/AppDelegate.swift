@@ -397,7 +397,7 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
         return .generic
     }
     
-    func performDragOperation(_ sender: NSDraggingInfo) -> Bool {x
+    func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
         if sender.isValid {
             self.setStatusBarIcon(isIndicator: false)
             if sender.draggedFileURLs.count > 0 {
