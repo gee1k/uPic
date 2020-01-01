@@ -21,36 +21,36 @@
 /* 上传成功通知标题 */
 "Uploaded successfully" = "上传成功";
 /* 上传成功通知副标题 */
-"URL has been copied to the clipboard, paste and use it!" = "URL 已复制到剪切板，快去粘贴使用吧！";
+"URL has been copied to the clipboard, paste and use it!" = "URL 已复制到剪切板, 快去粘贴使用吧!";
 /* 当前上传任务还未完成通知副标题 */
-"The current upload task is not complete" = "当前上传任务还未结束！";
+"The current upload task is not complete" = "当前上传任务还未结束!";
 /* 上传失败通知标题 */
 "Upload failed" = "上传失败";
 /* 导入图床配置失败标题 */
 "Import failed" = "导入图床配置失败";
 /* 导入图床配置失败内容 */
-"The configuration file is invalid, please check!" = "配置文件无效，请检查！";
+"The configuration file is invalid, please check!" = "配置文件无效, 请检查!";
 /* 导入图床配置成功内容 */
-"The configuration has been imported, please check and use!" = "图床配置已导入，请检查并使用！";
+"The configuration has been imported, please check and use!" = "图床配置已导入, 请检查并使用!";
 /* 导出图床配置失败标题 */
 "Export failed" = "导出图床配置失败";
 /* 导出图床配置失败内容 */
-"No exportable hosts!" = "没有可导出的图床配置！";
+"No exportable hosts!" = "没有可导出的图床配置!";
 /* 导出图床配置失败内容2 */
-"configuration export error!" = "图床配置导出错误！";
+"configuration export error!" = "图床配置导出错误!";
 /* 导出图床配置成功内容 */
-"The configuration file is exported successfully, Do not modify the file contents!" = "配置文件导出成功，请勿修改文件内容！";
+"The configuration file is exported successfully, Do not modify the file contents!" = "配置文件导出成功, 请勿修改文件内容!";
 
 /* 复制的文件不存在 */
-"The file does not exist or has been deleted!" = "复制的文件不存在或已被删除！";
+"The file does not exist or has been deleted!" = "复制的文件不存在或已被删除!";
 /* 文件格式不支持 */
-"File format not supported!" = "文件格式不支持！";
+"File format not supported!" = "文件格式不支持!";
 /* 文件大小超过限制 */
-"File is over the size limit! Limit:" = "文件大小超过限制！限制:";
-/* 图床配置存在问题，请检查 */
-"There is a problem with the map bed configuration, please check!" = "图床配置存在问题，请检查！";
+"File is over the size limit! Limit:" = "文件大小超过限制!限制:";
+/* 图床配置存在问题, 请检查 */
+"There is a problem with the map bed configuration, please check!" = "图床配置存在问题, 请检查!";
 
-"App is already running" = "uPic 已经在运行！";
+"App is already running" = "uPic 已经在运行!";
 
 /*匿名上传*/
 "The file will be uploaded anonymously to" = "文件将匿名上传至";
@@ -60,7 +60,7 @@
 "Did not get the file URL" = "没有获取到文件URL";
 
 /* 状态栏菜单图床 */
-"Hosts" = "图床";
+"Host" = "图床";
 /* 状态栏菜单输出格式 */
 "Output format" = "输出格式";
 /* 状态栏菜单上传前压缩图片 */
@@ -68,9 +68,9 @@
 
 "Reset User Preferences?" = "重置用户偏好设置?";
 "⚠️ Note that this will reset all user preferences" = "⚠️ 注意这将会重置所有用户偏好设置";
-"Continuing will lose unsaved data. Do you want to continue?" = "继续会丢失未保存数据，是否继续？";
+"Continuing will lose unsaved data. Do you want to continue?" = "继续会丢失未保存数据, 是否继续?";
 "Import host configuration" = "导入图床配置";
-"⚠️ Please choose import method, merge or overwrite?" = "⚠️ 请选择导入方式，合并还是覆盖？";
+"⚠️ Please choose import method, merge or overwrite?" = "⚠️ 请选择导入方式, 合并还是覆盖?";
 "merge" = "合并";
 "⚠️ overwrite" = "⚠️ 覆盖";
 
@@ -103,21 +103,21 @@
 "Body Data" = "Body 数据";
 "Client ID" = "Client ID";
 "Save Key" = "保存路径";
-"Use CDN" = "使用默认 CDN 加速访问";
+"Use CDN" = "使用 jsDeliver CDN 加速访问";
 "Version" = "版本";
 
 /* host field placeholder */
 "Get API Token" = "获取 API Token";
 "Operator name" = "操作员名称";
 "Operator password" = "操作员密码";
-"Just the repo name, not the repo URL" = "只需要仓库名称，而不是仓库连接";
+"Just the repo name, not the repo URL" = "只需要仓库名称, 而不是仓库连接";
 "domain:https://xxx.com" = "访问域名:https://xxx.com";
-"Can be empty, there is a default domain" = "可为空，有默认域名";
+"Can be empty, there is a default domain" = "可为空, 有默认域名";
 "The path to the URL field in Response JSON" = "返回 JSON 中的 URL 字段的路径";
-"(optional),When filled, URL = domain + URL path value" = "(可选)，当填写时，URL = 前缀 + URL 路径值";
+"(optional),When filled, URL = domain + URL path value" = "(可选), 当填写时, URL = 前缀 + URL 路径值";
 
-"Save Key Tips" = "支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} 等变量。比如：上传的图片为 uPic.jpg，设定为 “uPic/{filename}{.suffix}”，则会保存到 “uPic/uPic.jpg”。";
-"Suffix Tips" = "访问时追加的后缀，不影响上传。可用作对象储存的图片处理样式等等...例如：!w 代表获取加水印版的图片。";
+"Save Key Tips" = "支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} 等变量。比如: 上传的图片为 uPic.jpg, 设定为 “uPic/{filename}{.suffix}”, 则会保存到 “uPic/uPic.jpg”。";
+"Suffix Tips" = "访问时追加的后缀, 不影响上传。可用作对象储存的图片处理样式等等...例如: !w 代表获取加水印版的图片。";
 
 /*host type*/
 "host.type.-1" = "自定义";
@@ -141,15 +141,14 @@
 "Validate" = "验证";
 
 /*eroor message*/
-"Upload failed, please check the configuration!" = "上传失败，请检查配置！";
-
+"Upload failed, please check the configuration!" = "上传失败, 请检查配置!";
 
 /* cli */
-"Path and URL of the file to upload" = "待上传的文件路径和 URL。（最少一个，以空格分隔）";
-"Output url format" = "输出的url格式，支持 url、html、markdown(md)、ubb。";
-"Turn off error message output" = "关闭错误信息输出。并且在文件上传失败后输出原文件路径。";
-"Prints a help message" = "打印帮助信息。";
+"Path and URL of the file to upload" = "待上传的文件路径和URL (最少一个, 以空格分隔)";
+"Output url format" = "输出的url格式, 支持 url、html、markdown(md)、ubb";
+"Turn off error message output" = "关闭错误信息输出, 并且在文件上传失败后输出原文件路径";
+"Print this help message" = "打印帮助信息";
 
 /* cli error msg */
-"Invalid file path" = "无效的文件路径。";
-"Total paths count" = "共{count}个文件路径。";
+"Invalid file path" = "无效的文件路径";
+"Total paths count" = "共 {count} 个文件路径";

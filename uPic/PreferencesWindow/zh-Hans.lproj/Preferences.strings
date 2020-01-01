@@ -53,7 +53,7 @@
 /* Class = "NSTextFieldCell"; title = "0.1.0"; ObjectID = "Jnf-AX-bIr"; */
 "Jnf-AX-bIr.title" = "0.1.0";
 
-/* Class = "NSTextFieldCell"; title = "Open file Selection:"; ObjectID = "Mqt-Fp-Ssl"; */
+/* Class = "NSTextFieldCell"; title = "Upload from select file:"; ObjectID = "Mqt-Fp-Ssl"; */
 "Mqt-Fp-Ssl.title" = "选择文件上传:";
 
 /* Class = "NSTextFieldCell"; title = "Columns:"; ObjectID = "N1b-Cf-tno"; */
@@ -86,7 +86,7 @@
 /* Class = "NSTextFieldCell"; title = "✉️ Contact:"; ObjectID = "Vu4-Wz-Agk"; */
 "Vu4-Wz-Agk.title" = "✉️ 联系:";
 
-/* Class = "NSTextFieldCell"; title = "Upload from Screenshot:"; ObjectID = "Xd9-iA-emU"; */
+/* Class = "NSTextFieldCell"; title = "Upload from screenshot:"; ObjectID = "Xd9-iA-emU"; */
 "Xd9-iA-emU.title" = "截图上传:";
 
 /* Class = "NSButtonCell"; title = "Launch uPic at login"; ObjectID = "ZbK-xW-anT"; */
@@ -95,8 +95,8 @@
 /* Class = "NSTextFieldCell"; title = "Padding:"; ObjectID = "bp8-mz-gke"; */
 "bp8-mz-gke.title" = "外边距:";
 
-/* Class = "NSTextFieldCell"; title = "Upload from Pasteboard:"; ObjectID = "bvy-v3-hhf"; */
-"bvy-v3-hhf.title" = "上传剪贴板中的文件:";
+/* Class = "NSTextFieldCell"; title = "Upload from clipboard:"; ObjectID = "bvy-v3-hhf"; */
+"bvy-v3-hhf.title" = "剪贴板上传:";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "chO-9j-Fca"; */
 "chO-9j-Fca.title" = "编辑";

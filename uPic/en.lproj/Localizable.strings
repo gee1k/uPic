@@ -1,10 +1,10 @@
 /* 
-  Localizable.strings
-  uPic
-
-  Created by Svend Jin on 2019/6/8.
-  Copyright © 2019 Svend Jin. All rights reserved.
-*/
+ Localizable.strings
+ uPic
+ 
+ Created by Svend Jin on 2019/6/8.
+ Copyright © 2019 Svend Jin. All rights reserved.
+ */
 
 
 "OK" = "OK";
@@ -47,7 +47,7 @@
 "File format not supported!" = "File format not supported!";
 /* 文件大小超过限制 */
 "File is over the size limit! Limit:" = "File is over the size limit! Limit:";
-/* 图床配置存在问题，请检查 */
+/* 图床配置存在问题, 请检查 */
 "There is a problem with the map bed configuration, please check!" = "There is a problem with the map bed configuration, please check!";
 
 /*匿名上传*/
@@ -60,7 +60,7 @@
 "Did not get the file URL" = "Did not get the file URL";
 
 /* 状态栏菜单图床 */
-"Hosts" = "Hosts";
+"Host" = "Host";
 /* 状态栏菜单输出格式 */
 "Output format" = "Output format";
 /* 状态栏菜单上传前压缩图片 */
@@ -103,7 +103,7 @@
 "Body Data" = "Body Data";
 "Client ID" = "Client ID";
 "Save Key" = "Save Key";
-"Use CDN" = "Use the default CDN to speed access";
+"Use CDN" = "Use jsDeliver CDN to speed up access";
 "Version" = "Version";
 
 /* host field placeholder */
@@ -143,13 +143,12 @@
 /*eroor message*/
 "Upload failed, please check the configuration!" = "Upload failed, please check the configuration!";
 
-
 /* cli */
-"Path and URL of the file to upload" = "Path and URL of the file to upload. (At least one, separated by a space)";
-"Output url format" = "Output url format, support url, html, markdown (md), ubb.";
-"Turn off error message output" = "Turn off error message output. And after the file upload fails, the original file path is output.";
-"Prints a help message" = "Prints a help message.";
+"Path and URL of the file to upload" = "Path and URL of the file to upload (At least one, separated by a space)";
+"Output url format" = "Output url format, support url, html, markdown (md), ubb";
+"Turn off error message output" = "Turn off error message output, and output the original file path after the file upload fails";
+"Print this help message" = "Print this help message";
 
 /* cli error msg */
-"Invalid file path" = "Invalid file path.";
-"Total paths count" = "Total of {count} file paths.";
+"Invalid file path" = "Invalid file path";
+"Total paths count" = "Total of {count} file paths";

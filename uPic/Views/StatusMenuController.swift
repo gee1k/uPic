@@ -295,7 +295,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     // show current host name in hosts menu title
     func setHostMenuTitle(hostName: String?) {
-        let hostMenuTitle = "Hosts".localized
+        let hostMenuTitle = "Host".localized
 
         if let subTitle = hostName {
 

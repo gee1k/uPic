@@ -44,7 +44,7 @@ class Cli {
         upload = MultiStringOption(shortFlag: "u", longFlag: "upload", helpMessage: "Path and URL of the file to upload".localized)
         output = StringOption(shortFlag: "o", longFlag: "output", helpMessage: "Output url format".localized)
         slient = BoolOption(shortFlag: "s", longFlag: "slient", helpMessage: "Turn off error message output".localized)
-        let help = BoolOption(shortFlag: "h", longFlag: "help", helpMessage: "Prints a help message".localized)
+        let help = BoolOption(shortFlag: "h", longFlag: "help", helpMessage: "Print this help message".localized)
         cliKit.addOptions(upload, output, slient, help)
         do {
             try cliKit.parse()
@@ -73,7 +73,7 @@ class Cli {
             dropNextArg = false
             continue
           }
-          if arg.hasPrefix("-NS") {
+          if arg.hasPrefix("-NS") || arg.hasPrefix("-Apple") || arg.hasPrefix("--Apple") {
             dropNextArg = true
           } else {
             cleardArguments.append(arg)
