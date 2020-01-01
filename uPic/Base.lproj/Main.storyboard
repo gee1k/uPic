@@ -122,7 +122,7 @@
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="ggN-TB-JZW"/>
-                        <menuItem title="Select file" id="p0A-6d-cAU">
+                        <menuItem title="Upload from select file" id="p0A-6d-cAU">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="selectFileMenuItemClicked:" target="veO-oa-UPB" id="yXR-uI-dbU"/>

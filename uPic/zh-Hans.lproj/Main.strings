@@ -110,8 +110,8 @@
 /* Class = "NSMenuItem"; title = "Upload from clipboard"; ObjectID = "orX-KL-q11"; */
 "orX-KL-q11.title" = "剪贴板上传";
 
-/* Class = "NSMenuItem"; title = "Select file"; ObjectID = "p0A-6d-cAU"; */
-"p0A-6d-cAU.title" = "选择文件";
+/* Class = "NSMenuItem"; title = "Upload from select file"; ObjectID = "p0A-6d-cAU"; */
+"p0A-6d-cAU.title" = "选择文件上传";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "pa3-QI-u2k"; */
 "pa3-QI-u2k.title" = "删除";

@@ -53,8 +53,8 @@
 /* Class = "NSTextFieldCell"; title = "0.1.0"; ObjectID = "Jnf-AX-bIr"; */
 "Jnf-AX-bIr.title" = "0.1.0";
 
-/* Class = "NSTextFieldCell"; title = "Open file Selection:"; ObjectID = "Mqt-Fp-Ssl"; */
-"Mqt-Fp-Ssl.title" = "Open file Selection:";
+/* Class = "NSTextFieldCell"; title = "Upload from select file:"; ObjectID = "Mqt-Fp-Ssl"; */
+"Mqt-Fp-Ssl.title" = "Upload from select file:";
 
 /* Class = "NSTextFieldCell"; title = "Columns:"; ObjectID = "N1b-Cf-tno"; */
 "N1b-Cf-tno.title" = "Columns:";
@@ -86,8 +86,8 @@
 /* Class = "NSTextFieldCell"; title = "✉️ Contact:"; ObjectID = "Vu4-Wz-Agk"; */
 "Vu4-Wz-Agk.title" = "✉️ Contact:";
 
-/* Class = "NSTextFieldCell"; title = "Upload from Screenshot:"; ObjectID = "Xd9-iA-emU"; */
-"Xd9-iA-emU.title" = "Upload from Screenshot:";
+/* Class = "NSTextFieldCell"; title = "Upload from screenshot:"; ObjectID = "Xd9-iA-emU"; */
+"Xd9-iA-emU.title" = "Upload from screenshot:";
 
 /* Class = "NSButtonCell"; title = "Launch uPic at login"; ObjectID = "ZbK-xW-anT"; */
 "ZbK-xW-anT.title" = "Launch uPic at login";
@@ -95,8 +95,8 @@
 /* Class = "NSTextFieldCell"; title = "Padding:"; ObjectID = "bp8-mz-gke"; */
 "bp8-mz-gke.title" = "Padding:";
 
-/* Class = "NSTextFieldCell"; title = "Upload from Pasteboard:"; ObjectID = "bvy-v3-hhf"; */
-"bvy-v3-hhf.title" = "Upload from Pasteboard:";
+/* Class = "NSTextFieldCell"; title = "Upload from clipboard:"; ObjectID = "bvy-v3-hhf"; */
+"bvy-v3-hhf.title" = "Upload from clipboard:";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "chO-9j-Fca"; */
 "chO-9j-Fca.title" = "Edit";
