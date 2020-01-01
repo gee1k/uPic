@@ -86,6 +86,20 @@ extension ConfigManager {
     }
 }
 
+extension ConfigManager {
+    func getOutputType() -> OutputType {
+        return OutputType(value: Defaults[.ouputFormat])
+    }
+    
+    func setOutputType(_ outputType: OutputType) {
+        Defaults[.ouputFormat] = outputType.rawValue
+    }
+    
+    func setOutputType(_ outputTypeRawValue: Int) {
+        Defaults[.ouputFormat] = outputTypeRawValue
+    }
+}
+
 // MARK: - Upload history
 extension ConfigManager {
     public var historyLimit: Int {

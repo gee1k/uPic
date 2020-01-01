@@ -55,6 +55,8 @@
 "Upload via uPic" = "Upload via uPic";
 "Right click to cancel the current upload task" = "Right click to cancel the current upload task";
 
+"App is already running" = "uPic is already running!";
+
 "Did not get the file URL" = "Did not get the file URL";
 
 /* 状态栏菜单图床 */
@@ -140,3 +142,14 @@
 
 /*eroor message*/
 "Upload failed, please check the configuration!" = "Upload failed, please check the configuration!";
+
+
+/* cli */
+"Path and URL of the file to upload" = "Path and URL of the file to upload. (At least one, separated by a space)";
+"Output url format" = "Output url format, support url, html, markdown (md), ubb.";
+"Turn off error message output" = "Turn off error message output. And after the file upload fails, the original file path is output.";
+"Prints a help message" = "Prints a help message.";
+
+/* cli error msg */
+"Invalid file path" = "Invalid file path.";
+"Total paths count" = "Total of {count} file paths.";
