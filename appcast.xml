@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.16.0</title>
+			<description>
+			<![CDATA[
+			<ul> <li>新增：支持命令行上传。</li> <li>新增：支持 SM.MS V2 版本。</li> <li>新增：微博图床可配置访问域名（还存在少数域名没有防盗链）。 fixes #67</li> <li>改进：优化从浏览器拖拽上传。支持更多格式文件直接拖拽（包括 GIF）。</li> <li>改进：使用 SM.MS 图床上传图片，当图片已存在时会提示成功并返回已存在的图片链接。</li> <li>改进：更新图床图标。</li> </ul> <hr /> <ul> <li>Added: Provide a command line to upload.</li> <li>Added: Support for SM.MS Version 2.</li> <li>Added: Weibo host supports the custom configuration domain. fixes #67</li> <li>Improved: Optimize browser drag and drop upload. More formats supported (including GIF).</li> <li>Improved: When uploading duplicate pictures on the SM.MS hosts, it will automatically return to the existing picture link.</li> <li>Improved: Update host icons</li> </ul>
+			]]>
+			</description>
+			<pubDate>Thu, 02 Jan 2020 02:54:47 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.16.0/uPic.dmg" sparkle:version="20200102" sparkle:shortVersionString="v0.16.0" type="application/octet-stream" sparkle:edSignature="9WJWAdrHutCQ44ZBVd8IuMT8Q4IXDmF75kcrBlDer1c7LDUtiMfvtLdPPBUlit/ZRTsF5OjsMnZozka7wYO3Ag==" length="10598046"/>
+		</item>
+		<item>
 			<title>v0.15.3</title>
 			<description>
 			<![CDATA[
