@@ -11,7 +11,7 @@ import Cocoa
 class SmmsConfigView: ConfigView {
     
     var tokenLabel: NSTextField!
-    var tokenField: NSTextField!
+    var tokenField: NSSecureTextField!
     var tokenBtn: NSButton!
     
     override var paddingTop: Int {
@@ -61,7 +61,7 @@ class SmmsConfigView: ConfigView {
         tokenLabel.lineBreakMode = .byClipping
         tokenLabel.isHidden = true
         
-        tokenField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        tokenField = NSSecureTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         tokenField.identifier = NSUserInterfaceItemIdentifier(rawValue: "token")
         tokenField.usesSingleLineMode = true
         tokenField.lineBreakMode = .byTruncatingTail

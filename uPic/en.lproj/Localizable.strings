@@ -108,6 +108,9 @@
 
 /* host field placeholder */
 "Get API Token" = "Get API Token";
+"Get Client ID" = "Get Client ID";
+"Never created Client ID" = "Not created yet? Go create!";
+"Created Client ID" = "Already created? Go get!";
 "Operator name" = "Operator name";
 "Operator password" = "Operator password";
 "Just the repo name, not the repo URL" = "Just the repo name, not the repo URL";
@@ -150,5 +153,5 @@
 "Print this help message" = "Print this help message";
 
 /* cli error msg */
-"Invalid file path" = "Invalid file path";
-"Total paths count" = "Total of {count} file paths";
+"Invalid file path" = "Invalid file path or url";
+"Total paths count" = "Total of {count} file paths and urls";
