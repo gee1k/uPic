@@ -134,7 +134,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     // change output format
     @IBAction func ouputFormatMenuItemClicked(_ sender: NSMenuItem) {
-        Defaults[.ouputFormat] = sender.tag
+        ConfigManager.shared.setOutputType(sender.tag)
         self.refreshOutputFormat()
     }
 
@@ -240,28 +240,16 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     // refresh output format to select
     func refreshOutputFormat() {
-        let outputFormat = Defaults[.ouputFormat]
+        let outputType = ConfigManager.shared.getOutputType()
         for item in ouputFormatMenuItem.submenu!.items {
-            if item.tag == outputFormat {
+            if item.tag == outputType.rawValue {
                 item.state = .on
             } else {
                 item.state = .off
             }
         }
         
-        var title = ""
-        switch Defaults[.ouputFormat] {
-        case 0:
-            title = "URL"
-        case 1:
-            title = "HTML"
-        case 2:
-            title = "Markdown"
-        case 3:
-            title = "UBB"
-        default:
-            title = ""
-        }
+        let title = outputType.title
         
         self.setOutputFormatMenuTitle(factorTitle: title)
     }
@@ -307,7 +295,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     // show current host name in hosts menu title
     func setHostMenuTitle(hostName: String?) {
-        let hostMenuTitle = "Hosts".localized
+        let hostMenuTitle = "Host".localized
 
         if let subTitle = hostName {
 

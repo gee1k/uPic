@@ -5,7 +5,6 @@
 //  Created by Svend Jin on 2019/6/29.
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
-
 import Cocoa
 
 class ConfigView: NSView {
@@ -53,6 +52,9 @@ class ConfigView: NSView {
     static func createConfigView(parentView: NSView, item: Host) {
         // MARK: 根据当前选择的图床，创建对应的配置界面
         switch item.type {
+        case .smms:
+            parentView.addSubview(SmmsConfigView(frame: parentView.frame, host: item))
+            break
         case .custom:
             parentView.addSubview(CustomConfigView(frame: parentView.frame, host: item))
             break
@@ -86,10 +88,10 @@ class ConfigView: NSView {
         case .baidu_BOS:
             parentView.addSubview(BaiduConfigView(frame: parentView.frame, host: item))
             break
-        default:
-            let label = NSTextField(labelWithString: "The file will be uploaded anonymously to".localized + " \(item.name)")
-            label.frame = NSRect(x: (parentView.frame.width - label.frame.width) / 2, y: parentView.frame.height - 50, width: label.frame.width, height: 20)
-            parentView.addSubview(label)
+//        default:
+//            let label = NSTextField(labelWithString: "The file will be uploaded anonymously to".localized + " \(item.name)")
+//            label.frame = NSRect(x: (parentView.frame.width - label.frame.width) / 2, y: parentView.frame.height - 50, width: label.frame.width, height: 20)
+//            parentView.addSubview(label)
         }
     }
     

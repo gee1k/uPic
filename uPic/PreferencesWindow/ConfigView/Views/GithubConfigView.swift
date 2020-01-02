@@ -106,7 +106,7 @@ class GithubConfigView: ConfigView {
         // MARK: Use CDN
         y = y - gapTop - labelHeight
         
-        let useCdnLabel = NSTextField(labelWithString: "\(data.displayName(key: "useCdn")):")
+        let useCdnLabel = NSTextField(labelWithString: data.displayName(key: "useCdn"))
         useCdnLabel.frame = NSRect(x: viewWidth - 25 - Int(useCdnLabel.frame.width), y: y, width: Int(useCdnLabel.frame.width), height: labelHeight)
         useCdnLabel.alignment = .right
         useCdnLabel.lineBreakMode = .byClipping

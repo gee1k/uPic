@@ -97,12 +97,25 @@
 		16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDDFE22EA96AE0080E467 /* Assets.xcassets */; };
 		16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDE0222EAA2920080E467 /* Assets.xcassets */; };
 		16C176F523A208A80089B933 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C176F423A208A80089B933 /* NSImage+Extension.swift */; };
+		16CD34F323BC87ED005B52F2 /* SmmsHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */; };
+		16CD34F523BC8855005B52F2 /* SmmsVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F423BC8855005B52F2 /* SmmsVersion.swift */; };
+		16CD34F723BC88E2005B52F2 /* SmmsConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F623BC88E2005B52F2 /* SmmsConfigView.swift */; };
+		16CD34FB23BC8966005B52F2 /* Swime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F923BC8966005B52F2 /* Swime.swift */; };
+		16CD34FC23BC8966005B52F2 /* MimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34FA23BC8966005B52F2 /* MimeType.swift */; };
 		16D20B5523838AB1006D8D01 /* BaiduRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B54238388D8006D8D01 /* BaiduRegion.swift */; };
 		16D20B5623838AB5006D8D01 /* BaiduHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B532383889F006D8D01 /* BaiduHostConfig.swift */; };
 		16D20B58238390F2006D8D01 /* BaiduUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B57238390F2006D8D01 /* BaiduUploader.swift */; };
 		16D20B5A238390F4006D8D01 /* BaiduUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B59238390F4006D8D01 /* BaiduUtil.swift */; };
 		16D20B5C238392C9006D8D01 /* BaiduConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */; };
 		16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205B22AF8FB90006FB9C /* ConfigManager.swift */; };
+		16F04EE423BCC45F00CCA2FE /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EDE23BCC45F00CCA2FE /* Console.swift */; };
+		16F04EE523BCC45F00CCA2FE /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE023BCC45F00CCA2FE /* CommandLine.swift */; };
+		16F04EE623BCC45F00CCA2FE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE123BCC45F00CCA2FE /* Option.swift */; };
+		16F04EE723BCC45F00CCA2FE /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE223BCC45F00CCA2FE /* StringExtensions.swift */; };
+		16F04EE823BCC45F00CCA2FE /* Cli.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE323BCC45F00CCA2FE /* Cli.swift */; };
+		16F04EEA23BCC49000CCA2FE /* OutputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE923BCC49000CCA2FE /* OutputType.swift */; };
+		16F04EEC23BCC4B200CCA2FE /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EEB23BCC4B200CCA2FE /* FileManagerExtension.swift */; };
+		16F04EEE23BCC4C500CCA2FE /* URLSchemeExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EED23BCC4C500CCA2FE /* URLSchemeExt.swift */; };
 		16F7467422E994A300480A62 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F7467322E994A300480A62 /* FinderSync.swift */; };
 		16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 16F7467122E994A300480A62 /* uPicFinderExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B09F11423695F8D000208BD /* HistoryThumbnailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09F11323695F8D000208BD /* HistoryThumbnailContentView.swift */; };
@@ -252,6 +265,11 @@
 		16BDDDFE22EA96AE0080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16BDDE0222EAA2920080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16C176F423A208A80089B933 /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
+		16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsHostConfig.swift; sourceTree = "<group>"; };
+		16CD34F423BC8855005B52F2 /* SmmsVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsVersion.swift; sourceTree = "<group>"; };
+		16CD34F623BC88E2005B52F2 /* SmmsConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsConfigView.swift; sourceTree = "<group>"; };
+		16CD34F923BC8966005B52F2 /* Swime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swime.swift; sourceTree = "<group>"; };
+		16CD34FA23BC8966005B52F2 /* MimeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MimeType.swift; sourceTree = "<group>"; };
 		16D20B532383889F006D8D01 /* BaiduHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduHostConfig.swift; sourceTree = "<group>"; };
 		16D20B54238388D8006D8D01 /* BaiduRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduRegion.swift; sourceTree = "<group>"; };
 		16D20B57238390F2006D8D01 /* BaiduUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduUploader.swift; sourceTree = "<group>"; };
@@ -259,6 +277,14 @@
 		16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduConfigView.swift; sourceTree = "<group>"; };
 		16EA205B22AF8FB90006FB9C /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
 		16EC9A0222ABBBB4001B6C89 /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16F04EDE23BCC45F00CCA2FE /* Console.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
+		16F04EE023BCC45F00CCA2FE /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
+		16F04EE123BCC45F00CCA2FE /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		16F04EE223BCC45F00CCA2FE /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		16F04EE323BCC45F00CCA2FE /* Cli.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cli.swift; sourceTree = "<group>"; };
+		16F04EE923BCC49000CCA2FE /* OutputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputType.swift; sourceTree = "<group>"; };
+		16F04EEB23BCC4B200CCA2FE /* FileManagerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
+		16F04EED23BCC4C500CCA2FE /* URLSchemeExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSchemeExt.swift; sourceTree = "<group>"; };
 		16F7467122E994A300480A62 /* uPicFinderExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicFinderExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		16F7467322E994A300480A62 /* FinderSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSync.swift; sourceTree = "<group>"; };
 		16F7467522E994A300480A62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -332,6 +358,7 @@
 		163632ED22B2745A00805E7F /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				16CD34F823BC8966005B52F2 /* Swime */,
 				16B4F0BD23ADCFFF00846BD3 /* String+Crypto.swift */,
 				163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */,
 				163632F022B274B400805E7F /* Date+Extension.swift */,
@@ -399,6 +426,7 @@
 				1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */,
 				1660FCBE22C1211800372950 /* TencentConfigView.swift */,
 				166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */,
+				16CD34F623BC88E2005B52F2 /* SmmsConfigView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -451,6 +479,7 @@
 			children = (
 				1602ED9622ADEFB200AA8638 /* BaseUploader.swift */,
 				1675EC5222FB38240038DA33 /* BaseUploaderUtil.swift */,
+				16F04EE923BCC49000CCA2FE /* OutputType.swift */,
 				1672762222AFF655007299C3 /* Host.swift */,
 				167D7F4822B4D2F500DD0A7A /* HostConfig.swift */,
 				167D7F4A22B4D31300DD0A7A /* HostType.swift */,
@@ -473,6 +502,8 @@
 		1675516522AC165600D3EB6F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				16F04EEB23BCC4B200CCA2FE /* FileManagerExtension.swift */,
+				16F04EED23BCC4C500CCA2FE /* URLSchemeExt.swift */,
 				1675516122ABF80300D3EB6F /* NSDragingInfoExt.swift */,
 				16248E31230673B6002131BB /* NotificationExt.swift */,
 				4B6C62F923613AEF008E3735 /* NSImageExtension.swift */,
@@ -506,6 +537,8 @@
 			isa = PBXGroup;
 			children = (
 				1602ED9822ADF43800AA8638 /* SmmsUploader.swift */,
+				16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */,
+				16CD34F423BC8855005B52F2 /* SmmsVersion.swift */,
 			);
 			path = Smms;
 			sourceTree = "<group>";
@@ -560,6 +593,7 @@
 				16BDDE0222EAA2920080E467 /* Assets.xcassets */,
 				16A6DC5722AA375700813706 /* AppDelegate.swift */,
 				1623612522AB951E00E4025C /* Localizable.strings */,
+				16F04EDD23BCC45F00CCA2FE /* Cli */,
 				163632ED22B2745A00805E7F /* Basic */,
 				1675516522AC165600D3EB6F /* Extensions */,
 				163F241E22B12E6700F81D03 /* General */,
@@ -591,6 +625,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		16CD34F823BC8966005B52F2 /* Swime */ = {
+			isa = PBXGroup;
+			children = (
+				16CD34F923BC8966005B52F2 /* Swime.swift */,
+				16CD34FA23BC8966005B52F2 /* MimeType.swift */,
+			);
+			path = Swime;
+			sourceTree = "<group>";
+		};
 		16D20B522383887E006D8D01 /* Baidu */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +643,26 @@
 				16D20B59238390F4006D8D01 /* BaiduUtil.swift */,
 			);
 			path = Baidu;
+			sourceTree = "<group>";
+		};
+		16F04EDD23BCC45F00CCA2FE /* Cli */ = {
+			isa = PBXGroup;
+			children = (
+				16F04EDE23BCC45F00CCA2FE /* Console.swift */,
+				16F04EDF23BCC45F00CCA2FE /* CommandLineKit */,
+				16F04EE323BCC45F00CCA2FE /* Cli.swift */,
+			);
+			path = Cli;
+			sourceTree = "<group>";
+		};
+		16F04EDF23BCC45F00CCA2FE /* CommandLineKit */ = {
+			isa = PBXGroup;
+			children = (
+				16F04EE023BCC45F00CCA2FE /* CommandLine.swift */,
+				16F04EE123BCC45F00CCA2FE /* Option.swift */,
+				16F04EE223BCC45F00CCA2FE /* StringExtensions.swift */,
+			);
+			path = CommandLineKit;
 			sourceTree = "<group>";
 		};
 		16F7467222E994A300480A62 /* uPicFinderExtension */ = {
@@ -828,6 +891,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16CD34F723BC88E2005B52F2 /* SmmsConfigView.swift in Sources */,
 				4BB6C412236295DC0046FDC0 /* HistoryThumbnailModel.swift in Sources */,
 				165701A322C8AE0A00C57EE9 /* WeiboUtil.swift in Sources */,
 				16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */,
@@ -835,12 +899,14 @@
 				167D08AC22ED8A4B000F3BC0 /* AliyunRegion.swift in Sources */,
 				1685AA3522DEC943008FBF1D /* FlippedView.swift in Sources */,
 				16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */,
+				16CD34F323BC87ED005B52F2 /* SmmsHostConfig.swift in Sources */,
 				16D20B58238390F2006D8D01 /* BaiduUploader.swift in Sources */,
 				1675EC5322FB38240038DA33 /* BaseUploaderUtil.swift in Sources */,
 				161ABBDD23B1F1EB00805C5B /* DBManager.swift in Sources */,
 				16995A3422B6008000B1F923 /* UpYunHostConfig.swift in Sources */,
 				1672762322AFF655007299C3 /* Host.swift in Sources */,
 				167DDBF122C7784900B03357 /* GithubConfigView.swift in Sources */,
+				16F04EE523BCC45F00CCA2FE /* CommandLine.swift in Sources */,
 				1602ED9922ADF43800AA8638 /* SmmsUploader.swift in Sources */,
 				164745F022B65FE900F9575D /* String+Extension.swift in Sources */,
 				4B2B3354236BC5AB00C9F2CA /* NSButtonExtension.swift in Sources */,
@@ -854,6 +920,8 @@
 				165D908622C333740096FF38 /* PasteboardType+Extension.swift in Sources */,
 				16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */,
 				16D20B5623838AB5006D8D01 /* BaiduHostConfig.swift in Sources */,
+				16CD34FB23BC8966005B52F2 /* Swime.swift in Sources */,
+				16CD34F523BC8855005B52F2 /* SmmsVersion.swift in Sources */,
 				1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */,
 				163632F322B2751D00805E7F /* BoolType.swift in Sources */,
 				1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */,
@@ -869,6 +937,7 @@
 				167D08AA22ED8A27000F3BC0 /* AliyunHostConfig.swift in Sources */,
 				1660FCBD22C11C7800372950 /* TencentRegion.swift in Sources */,
 				167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */,
+				16F04EEA23BCC49000CCA2FE /* OutputType.swift in Sources */,
 				164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */,
 				164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */,
 				4BEFD813238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift in Sources */,
@@ -895,6 +964,7 @@
 				16C176F523A208A80089B933 /* NSImage+Extension.swift in Sources */,
 				167620ED230819C0008F8363 /* ImgurHostConfig.swift in Sources */,
 				1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */,
+				16F04EE723BCC45F00CCA2FE /* StringExtensions.swift in Sources */,
 				4BC11BDE238CFD53001641A6 /* HistoryThumbnailTimer.swift in Sources */,
 				1662AC7122C0AC53003AC924 /* AliyunConfigView.swift in Sources */,
 				1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */,
@@ -904,6 +974,7 @@
 				167D08B022ED8A6C000F3BC0 /* AliyunUtil.swift in Sources */,
 				4B112CA723603DBB009E79B4 /* HistoryThumbnailFlowLayout.swift in Sources */,
 				169F073722AF4549008E8525 /* AdvancedPreferencesViewController.swift in Sources */,
+				16F04EE823BCC45F00CCA2FE /* Cli.swift in Sources */,
 				1646B80622C79337009271DF /* GiteeUploader.swift in Sources */,
 				16068C7522AEC1D1004D39B7 /* PreferencesViewController.swift in Sources */,
 				161C3BE122C483380092114F /* CustomUploader.swift in Sources */,
@@ -912,7 +983,10 @@
 				1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */,
 				1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */,
 				1662AC7322C0BBF7003AC924 /* AmazonS3Region.swift in Sources */,
+				16F04EEC23BCC4B200CCA2FE /* FileManagerExtension.swift in Sources */,
 				1683573C22DB0D0800985B10 /* CustomConfigSheetController.swift in Sources */,
+				16CD34FC23BC8966005B52F2 /* MimeType.swift in Sources */,
+				16F04EE623BCC45F00CCA2FE /* Option.swift in Sources */,
 				169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */,
 				167DDBEB22C76F5000B03357 /* GithubUploader.swift in Sources */,
 				169F073922AF4549008E8525 /* GeneralPreferencesViewController.swift in Sources */,
@@ -923,7 +997,9 @@
 				1660FCBC22C11C7500372950 /* TencentUtil.swift in Sources */,
 				1660FCBA22C11C2300372950 /* TencentHostConfig.swift in Sources */,
 				16248E32230673B6002131BB /* NotificationExt.swift in Sources */,
+				16F04EE423BCC45F00CCA2FE /* Console.swift in Sources */,
 				167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */,
+				16F04EEE23BCC4C500CCA2FE /* URLSchemeExt.swift in Sources */,
 				16D20B5C238392C9006D8D01 /* BaiduConfigView.swift in Sources */,
 				167620F023081DC0008F8363 /* ImgurConfigView.swift in Sources */,
 				4BBA45BB235F081C0079F253 /* HistoryThumbnailItem.swift in Sources */,
@@ -1123,7 +1199,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20191225;
+				CURRENT_PROJECT_VERSION = 20200102;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1132,7 +1208,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.15.3;
+				MARKETING_VERSION = 0.16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1153,7 +1229,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20191225;
+				CURRENT_PROJECT_VERSION = 20200102;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1162,7 +1238,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.15.3;
+				MARKETING_VERSION = 0.16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

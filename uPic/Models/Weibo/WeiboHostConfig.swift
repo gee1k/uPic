@@ -5,7 +5,6 @@
 //  Created by Svend Jin on 2019/6/30.
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
-
 import Foundation
 import SwiftyJSON
 
@@ -16,6 +15,8 @@ class WeiboHostConfig: HostConfig {
     dynamic var cookieMode: String! = "0"
     dynamic var cookie: String! = ""
     dynamic var quality: String! = WeiboqQuality.large.rawValue
+    // tva1.sinaimg.cn
+    dynamic var domain: String! = "https://ws1.sinaimg.cn"
 
     override func displayName(key: String) -> String {
         switch key {
@@ -29,6 +30,8 @@ class WeiboHostConfig: HostConfig {
             return "Cookie".localized
         case "quality":
             return "Pic Quality".localized
+        case "domain":
+            return "Domain".localized
         default:
             return ""
         }
@@ -41,6 +44,7 @@ class WeiboHostConfig: HostConfig {
         dict["cookieMode"] = self.cookieMode
         dict["cookie"] = self.cookie
         dict["quality"] = self.quality
+        dict["domain"] = self.domain
 
         return JSON(dict).rawString()!
     }
@@ -57,6 +61,9 @@ class WeiboHostConfig: HostConfig {
         config.cookieMode = json["cookieMode"].stringValue
         config.cookie = json["cookie"].stringValue
         config.quality = json["quality"].stringValue
+        if let domain = json["domain"].string {
+            config.domain = domain
+        }
         return config
     }
 }

@@ -53,44 +53,4 @@ extension Data {
         let data = bitmap?.representation(using: fileType, properties: [:])
         return data
     }
-    
-    func contentType() -> String? {
-        let c = self.bytes.first
-        
-        switch c {
-        case 0xFF:
-            return "jpg"
-        case 0x89:
-            return "png"
-        case 0x47:
-            return "gif"
-        case 0x49:
-            return "tiff"
-        case 0x4D:
-            return "tiff"
-        default:
-            return nil
-        }
-        
-    }
-    
-    func contentBitmapType() -> NSBitmapImageRep.FileType? {
-        let c = self.bytes.first
-        
-        switch c {
-        case 0xFF:
-            return .jpeg
-        case 0x89:
-            return .png
-        case 0x47:
-            return .gif
-        case 0x49:
-            return .jpeg
-        case 0x4D:
-            return .jpeg
-        default:
-            return nil
-        }
-        
-    }
 }
