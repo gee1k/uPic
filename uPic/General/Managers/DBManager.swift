@@ -17,6 +17,15 @@ public class DBManager {
     private var database: Database!
     
     init() {
+        Database.globalTrace(ofError: { (error) in
+           switch error.type {
+           case .sqliteGlobal:break
+           case .warning:
+               print("[WCDB][WARNING] \(error.description)")
+           default:
+               print("[WCDB][ERROR] \(error.description)")
+           }
+        })
         database = Database(withPath: Constants.CachePath.databasePath)
         createHistoryTable()
     }

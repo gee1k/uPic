@@ -16,11 +16,7 @@ class SmmsUploader: BaseUploader {
 
     static let fileExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
     
-    // limit 5M
-    static let limitSize: UInt64 = 5 * 1024 * 1024
-    
-    let v1_url = "https://sm.ms/api/upload"
-    let v2_url = "https://sm.ms/api/v2/upload"
+    let url = "https://sm.ms/api/v2/upload"
 
     func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
         guard let data = host.data, let config = data as? SmmsHostConfig else {
@@ -30,9 +26,6 @@ class SmmsUploader: BaseUploader {
         
         super.start()
         
-        let url = config.version == SmmsVersion.v2.rawValue ? v2_url : v1_url
-        
-
         guard let configuration = BaseUploaderUtil.getSaveConfiguration(fileUrl, fileData, nil) else {
             super.faild(errorMsg: "Invalid file")
             return
@@ -42,11 +35,12 @@ class SmmsUploader: BaseUploader {
         let fileName = configuration["fileName"] as! String
         let mimeType = configuration["mimeType"] as! String
         
-        var headers: HTTPHeaders?
+        var headers: HTTPHeaders = HTTPHeaders()
+        headers.add(HTTPHeader.contentType("multipart/form-data"))
+        headers.add(name: "referer", value: "https://sm.ms/")
+        headers.add(name: "origin", value: "https://sm.ms")
         if config.version == SmmsVersion.v2.rawValue {
-            headers = HTTPHeaders()
-            headers?.add(HTTPHeader.authorization(config.token!))
-            headers?.add(HTTPHeader.contentType("multipart/form-data"))
+            headers.add(HTTPHeader.authorization(config.token!))
         }
         
         func multipartFormDataGen(multipartFormData: MultipartFormData) {

@@ -38,7 +38,7 @@ class SmmsConfigView: ConfigView {
         
         var selectVersion: NSMenuItem?
         for version in SmmsVersion.allCases {
-            let menuItem = NSMenuItem(title: version.rawValue, action: nil, keyEquivalent: "")
+            let menuItem = NSMenuItem(title: version.name, action: nil, keyEquivalent: "")
             menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: version.rawValue)
             versionButtonPopUp.menu?.addItem(menuItem)
             if data.version == version.rawValue {

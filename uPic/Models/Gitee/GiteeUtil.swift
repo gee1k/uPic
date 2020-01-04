@@ -20,7 +20,7 @@ class GiteeUtil {
         parameters["branch"] = branch
         parameters["path"] = filePath.urlEncoded()
         parameters["content"] = b64Content
-        parameters["message"] = "⬆ Upload by uPic \n👉❤️ Powered by https://github.com/gee1k/uPic ❤️👈"
+        parameters["message"] = "⬆ Uploaded by uPic \n👉❤️ Powered by https://github.com/gee1k/uPic ❤️👈"
         return parameters;
     }
 }

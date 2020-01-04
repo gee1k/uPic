@@ -258,8 +258,6 @@ class BaseUploader {
         
         /* 有新的图床在这里进行判断调用 */
         switch host.type {
-        case .smms:
-            return SmmsUploader.limitSize
         case .imgur:
             return ImgurUploader.limitSize
         default:

@@ -6,11 +6,11 @@
   <p>
     Picture and file upload tool for macOS. - A native, powerful, beautiful and simple  
   </p>
-  
+
   <p>
-  
+
   [![Travis Build Status](https://img.shields.io/travis/gee1k/uPic.svg?style=flat-square&logo=Travis)](https://travis-ci.org/gee1k/uPic) [![GitHub release](https://img.shields.io/github/release/gee1k/uPic?label=version&style=flat-square&logo=GitHub)](https://github.com/gee1k/uPic/releases/latest) [![Downloads](https://img.shields.io/github/downloads/gee1k/uPic/total.svg?style=flat-square)](https://github.com/gee1k/uPic/releases) [![MIT](https://img.shields.io/github/license/gee1k/uPic?style=flat-square)](https://github.com/gee1k/uPic/blob/master/LICENSE)
-  
+
 [![Donate on PayPal](https://img.shields.io/badge/support-PayPal-blue?style=flat-square&logo=PayPal)](https://paypal.me/geee1k) [![Chat on Telegram](https://img.shields.io/badge/chat-Telegram-blueviolet?style=flat-square&logo=Telegram)](https://t.me/upic_host) [![Follow My Twitter](https://img.shields.io/badge/follow-Tweet-blue?style=flat-square&logo=Twitter)](https://twitter.com/geee1k) [![Follow My Twitter](https://img.shields.io/badge/follow-Weibo-red?style=flat-square&logo=sina-weibo)](https://weibo.com/6436660358)
 
   </p>
@@ -25,8 +25,6 @@
 ## 📑 简介
 
 > **uPic(upload Picture) 是一款 Mac 端的图床(文件)上传客户端**
-> 可将图片、各种文件上传到配置好的指定提供商的对象存储中。
-> 然后快速获取可供互联网访问的文件 URL
 
 **💡 特点：** 无论是本地文件、或者屏幕截图都可自动上传，菜单栏显示实时上传进度。上传完成后文件链接自动复制到剪切板，让你无论是在写博客、灌水聊天都能快速插入图片。
 连接格式可以是普通 URL、HTML 或者 Markdown，仍由你掌控。
@@ -51,88 +49,55 @@ brew cask install upic
 - 2.打开`系统偏好设置` - `扩展` - `访达扩展` 确保 `uPicFinderExtension`是勾选状态
 
   <center>
-    <img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/finder-extension.png" height="300">
+    <img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/finder-extension.png" height="300">
   </center>
 
 ## 🕹 使用方式
 
-| 功能 | 描述 | 预览 |
-| --- | --- | --- |
-| **🖥 选择文件上传** | 从`Finder`选择文件上传 | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/selectFile.gif) |
-| **⌨️ 复制文件上传** | 上传已拷贝到剪切板的文件 | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/paste.gif) |
-| **🖱 拖拽本地文件上传** | 拖拽文件到状态栏上传 | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/drag-finder.gif) |
-| **🖱 拖拽浏览器图片上传** | 从浏览器拖拽图片到状态栏上传 | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/drag-browser.gif) |
-| **📸 截图上传** | 直接拉框截图上传 | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/screenshot.gif) |
-| **📂 Finder 中右键上传** | 右击文件上传 | ![](https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/finder-contextmenu.gif) |
+<table>
+	<tr>
+		<th style="text-align: center;">功能</th>
+		<th style="text-align: center;">预览</th>
+	</tr>
+	<tr>
+		<td style="text-align: center;">🖥 选择文件上传</td>
+		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/selectFile.gif"></td>
+	</tr>
+  <tr>
+		<td style="text-align: center;">⌨️ 复制文件上传</td>
+		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/pasteboard.gif"></td>
+	</tr>
+  <tr>
+		<td style="text-align: center;">🖱 拖拽本地文件上传</td>
+		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/dragFile.gif"></td>
+	</tr>
+  <tr>
+		<td style="text-align: center;">🖱 拖拽浏览器图片上传</td>
+		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/dragFromBrowser.gif"></td>
+	</tr>
+  <tr>
+		<td style="text-align: center;">📸 截图上传</td>
+		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/screenshot.gif"></td>
+	</tr>
+  <tr>
+		<td style="text-align: center;">📂 Finder 中右键上传</td>
+		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/contextmenu.gif"></td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">⌨️ 命令行上传</td>
+		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/cli.gif"></td>
+	</tr>
+</table>
 
 
 
 ## 🧰 更多功能
 
-**除了以上这些最基本的功能以外，uPic 还提供了一系列小功能让你使用起来更方便更顺心**
+### 1.全局快捷键
+<img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/shortcuts.png" height="300">
 
-<details><summary>1. ⌨︎ 全局快捷键</summary><br>
-<p>
-	<center>
-		<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/shortcuts.png" height="300">
-	</center>
-</p>
-</details>
-<details><summary>2. 🕦 上传历史</summary><br>
-<p>
-	<center>
-		<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/history.png" height="300">
-	</center>
-</p>
-</details>
-<details><summary>3. 📢 更多功能等待你发现</summary><br>
-<p>
-	...
-</p>
-</details>
-
-
-
-## ❓ 常见问题
-
-<details>
-	<summary>1.图床如何配置❓</summary>
-	<ul>
-		<li><a href="https://blog.svend.cc/upic/tutorials/weibo" target="_blank">uPic 图床配置教程 - 微博</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/upyun_uss" target="_blank">uPic 图床配置教程 - 又拍云</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/qiniu_kodo" target="_blank">uPic 图床配置教程 - 七牛云</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/aliyun_oss" target="_blank">uPic 图床配置教程 - 阿里云</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/tencent_cos" target="_blank">uPic 图床配置教程 - 腾讯云</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/baidu_bos" target="_blank">uPic 图床配置教程 - 百度云</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/amazon_s3" target="_blank">uPic 图床配置教程 - Amazon S3</a></li>
-    <li><a href="https://blog.svend.cc/upic/tutorials/imgur" target="_blank">uPic 图床配置教程 - Imgur</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/github" target="_blank">uPic 图床配置教程 - Github</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/gitee" target="_blank">uPic 图床配置教程 - 码云(Gitee)</a></li>
-		<li><a href="https://blog.svend.cc/upic/tutorials/custom" target="_blank">uPic 图床配置教程 - 自定义上传</a></li>
-	</ul>
-</details>
-<details><summary>2. Finder 扩展不工作了❓</summary><br>
-<p>由于 Finder 扩展是只要加上之后会一直都存在，所以当你遇到 Finder 扩展操作无反应的时候，可能是 uPic 主程序没有打开</p>
-</details>
-<details>
-<summary>3.为什么我配置了图床，图片/文件却没有上传到我的图床中</summary>
-	<div>
-		<p>配置好的图床可以在菜单栏`图床`中选择。选中的图床就是您接下来文件会上传到的图床</p>
-		<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/default-host.png" width="450">
-	</div> 
-</details>
-<details>
-<summary>4.上传完成没有通知❓</summary><br>
-<p><strong>如v0.10.4版本时通知方式发生了改变，可能会有用户在上传完成之后没有收到通知。可使用以下方法解决</strong></p>
-<p>1.在<code>系统偏好设置</code> - <code>通知</code>，列表中找到 <code>uPic</code> 选中并删除（按 Delete 键）</p>
-<p>2.退出 uPic 并重新启动</p>
-<img src="https://raw.githubusercontent.com/gee1k/oss/master/screenshot/uPic/delete-notification.png" width="450">
-</details>
-<details>
-<summary>5.macOS 10.15 打不开，提示软件损坏❓</summary><br>
-<p><strong>在终端执行以下命令后即可正常打开 APP</strong></p>
-<p><code>sudo xattr -d com.apple.quarantine /Applications/uPic.app</code> </p>
-</details>
+### 2. 上传历史
+<img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/history.png" height="300">
 
 ## ✨ Contributors
 
