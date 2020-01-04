@@ -39,7 +39,8 @@ brew cask install upic
 ```
 ### 2. Download from github
  Click [release](https://github.com/gee1k/uPic/releases) to download.
- **If accessing Github is difficult to download, you can download it from [Gitee release](https://gitee.com/gee1k/uPic/releases).**
+ 
+ **If you have difficulty accessing Github in mainland China, you can download it from [Gitee release](https://gitee.com/gee1k/uPic/releases).**
 
 ### Check Finder Extensions's authority
 

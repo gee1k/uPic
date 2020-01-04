@@ -40,7 +40,8 @@ brew cask install upic
 ```
 #### 2.手动
 从 [Github release](https://github.com/gee1k/uPic/releases) 下载。
-**如果访问 Github 下载困难的，可以从[Gitee release](https://gitee.com/gee1k/uPic/releases)下载。**
+
+**如果在国内访问 Github 下载困难的，可以从[Gitee release](https://gitee.com/gee1k/uPic/releases)下载。**
 
 ### 检查 Finder 扩展权限
 
