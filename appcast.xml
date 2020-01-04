@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.16.1</title>
+			<description>
+			<![CDATA[
+			<ul> <li>修复: 只能添加一个 SM.MS 图床</li> <li>修复: SM.MS V1 API 停止使用，全面升级到 V2</li> <li>改进: SM.MS 图床配置界面 Token 采用安全输出框</li> <li>改进: Imgur 图床配置界面新增一键获取 Client ID 按钮</li> </ul> <hr /> <ul> <li>Fixed: Only one SM.MS host can be added</li> <li>Fixed: SMMS abandons V1 API and uses V2 API for uploading uniformly</li> <li>Improved: SM.MS Token uses secure input box</li> <li>Improved: Add a button to get client ID in Imgur</li> </ul>
+			]]>
+			</description>
+			<pubDate>Sat, 04 Jan 2020 13:21:31 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.16.1/uPic.dmg" sparkle:version="20200104" sparkle:shortVersionString="v0.16.1" type="application/octet-stream" sparkle:edSignature="4C9EQyqBIzhwRjpifR4eep4E1aa93q2wIYl5Vo/iFJQo7/MQqEUGZC2tk5+DuX7CAdJoCqUlx/ughLoGhnijBA==" length="10637536"/>
+		</item>
+		<item>
 			<title>v0.16.0</title>
 			<description>
 			<![CDATA[
