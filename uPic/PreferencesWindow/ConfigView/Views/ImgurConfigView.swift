@@ -38,9 +38,43 @@ class ImgurConfigView: ConfigView {
         self.addSubview(clientIdField)
         nextKeyViews.append(clientIdField)
         
+        // Get Client ID
+        
+        y = y - gapTop - labelHeight
+        
+        
+        
+        let getClientIdBtn = NSButton(title: "Get Client ID".localized, target: self, action: #selector(openGetClientIdMenu(_:)))
+        let getClientIdBtnWidth = Int(getClientIdBtn.frame.width)
+        getClientIdBtn.frame = NSRect(x: Int(self.frame.width) - getClientIdBtnWidth, y: y, width: getClientIdBtnWidth, height: Int(getClientIdBtn.frame.height))
+        self.addSubview(getClientIdBtn)
+        getClientIdBtn.menu = NSMenu()
+        getClientIdBtn.menu?.addItem(withTitle: "Never created Client ID".localized, action: #selector(createClientId(_:)), keyEquivalent: "")
+        getClientIdBtn.menu?.addItem(withTitle: "Created Client ID".localized, action: #selector(getClientId(_:)), keyEquivalent: "")
+        
+        
         // MARK: help
         y = y - gapTop * 2 - labelHeight
         super.createHelpBtn("https://blog.svend.cc/upic/tutorials/imgur")
     }
     
+    @objc func openGetClientIdMenu(_ sender: NSButton) {
+        if let event = NSApplication.shared.currentEvent {
+            NSMenu.popUpContextMenu(sender.menu!, with: event, for: sender)
+        }
+    }
+    
+    @objc func createClientId(_ sender: NSButton) {
+        guard let url = URL(string: "https://blog.svend.cc/upic/tutorials/imgur") else {
+            return
+        }
+        NSWorkspace.shared.open(url)
+    }
+    
+    @objc func getClientId(_ sender: NSButton) {
+        guard let url = URL(string: "https://imgur.com/account/settings/apps") else {
+            return
+        }
+        NSWorkspace.shared.open(url)
+    }
 }

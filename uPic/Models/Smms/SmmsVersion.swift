@@ -10,4 +10,10 @@ import Foundation
 enum SmmsVersion: String, CaseIterable {
     case v1
     case v2
+    
+    public var name: String {
+        get {
+            return NSLocalizedString("smms.version.\(self.rawValue)", comment: "")
+        }
+    }
 }

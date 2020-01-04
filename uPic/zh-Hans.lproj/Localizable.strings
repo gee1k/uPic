@@ -108,6 +108,9 @@
 
 /* host field placeholder */
 "Get API Token" = "获取 API Token";
+"Get Client ID" = "获取 Client ID";
+"Never created Client ID" = "没有创建过？去创建！";
+"Created Client ID" = "已创建？去获取！";
 "Operator name" = "操作员名称";
 "Operator password" = "操作员密码";
 "Just the repo name, not the repo URL" = "只需要仓库名称, 而不是仓库连接";
@@ -138,6 +141,10 @@
 "weibo.quality.mw690" = "中等大小";
 "weibo.quality.large" = "原图";
 
+/* smms version */
+"smms.version.v1" = "匿名版";
+"smms.version.v2" = "付费版(注册用户)";
+
 "Validate" = "验证";
 
 /*eroor message*/
@@ -150,5 +157,5 @@
 "Print this help message" = "打印帮助信息";
 
 /* cli error msg */
-"Invalid file path" = "无效的文件路径";
-"Total paths count" = "共 {count} 个文件路径";
+"Invalid file path" = "无效的文件路径或链接";
+"Total paths count" = "共 {count} 个文件路径和链接";

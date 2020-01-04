@@ -17,22 +17,4 @@ public enum HostType: Int, CaseIterable, Codable {
             return NSLocalizedString("host.type.\(self.rawValue)", comment: "")
         }
     }
-
-    public var isOnlyOne: Bool {
-        get {
-            switch self {
-            case .smms:
-                return true
-            default:
-                return false
-            }
-        }
-    }
-    
-    public var disabled: Bool {
-        get {
-            return false
-        }
-    }
-
 }

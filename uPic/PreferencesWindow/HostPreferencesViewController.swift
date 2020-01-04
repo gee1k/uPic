@@ -53,8 +53,6 @@ class HostPreferencesViewController: PreferencesViewController {
         self.initAddHostTypes()
         self.initHostItems()
 
-        self.resetAllowOnlyOneHostTypeVisible()
-
         self.selectedRow = 0
     }
     
@@ -205,33 +203,12 @@ class HostPreferencesViewController: PreferencesViewController {
         addHostButton.menu?.addItem(imageItem)
 
         for type in HostType.allCases {
-            if type.disabled {
-                continue
-            }
             let menuItem = NSMenuItem(title: type.name, action: nil, keyEquivalent: "")
             menuItem.image = Host.getIconByType(type: type)
             menuItem.tag = type.rawValue
             addHostButton.menu?.addItem(menuItem)
         }
 
-    }
-
-    // MARK: 设置只允许添加一个实例的图床添加按钮是否可用
-    func resetAllowOnlyOneHostTypeVisible() -> Void {
-        guard let hostItems = hostItems else {
-            return
-        }
-        var onlyOneHosts = [Int]()
-        for host in hostItems {
-            if host.type.isOnlyOne {
-                onlyOneHosts.append(host.type.rawValue)
-            }
-        }
-
-        for item in addHostButton.menu!.items {
-            // 隐藏只能有一个实例的类别。和用来显示 + 号的选项。注：明明在初始化时已经设置了，担不起作用。必须在过后设置才有用
-            item.isHidden = onlyOneHosts.contains(item.tag) || item.identifier?.rawValue == "addImageTemplate"
-        }
     }
 
     // MARK: 设置默认选中的图床配置
@@ -248,10 +225,6 @@ class HostPreferencesViewController: PreferencesViewController {
         let isSelected = self.selectRowIsSafe()
         self.removeHostButton.isEnabled = isSelected
         self.moreActionButton.isEnabled = isSelected
-
-        if let hostItem = self.hostItemBySelectRow() {
-            duplicateMenuItem.isHidden = hostItem.type.isOnlyOne
-        }
     }
 
     // MARK: 添加图床
@@ -261,7 +234,6 @@ class HostPreferencesViewController: PreferencesViewController {
         self.hostItems?.append(Host(type, data: data))
         self.tableView.reloadData()
         self.hostItemsChanged = true
-        self.resetAllowOnlyOneHostTypeVisible()
 
         self.selectedRow = (self.hostItems?.count ?? 0) - 1
         self.setDefaultSelectedHost()
@@ -276,7 +248,6 @@ class HostPreferencesViewController: PreferencesViewController {
 
         self.selectedRow = -1
         self.hostItemsChanged = true
-        self.resetAllowOnlyOneHostTypeVisible()
         self.setDefaultSelectedHost()
     }
 
