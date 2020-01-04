@@ -54,41 +54,16 @@ brew cask install upic
 
 ## 🕹 使用方式
 
-<table>
-	<tr>
-		<th style="text-align: center;">功能</th>
-		<th style="text-align: center;">预览</th>
-	</tr>
-	<tr>
-		<td style="text-align: center;">🖥 选择文件上传</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/selectFile.gif"></td>
-	</tr>
-  <tr>
-		<td style="text-align: center;">⌨️ 复制文件上传</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/pasteboard.gif"></td>
-	</tr>
-  <tr>
-		<td style="text-align: center;">🖱 拖拽本地文件上传</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/dragFile.gif"></td>
-	</tr>
-  <tr>
-		<td style="text-align: center;">🖱 拖拽浏览器图片上传</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/dragFromBrowser.gif"></td>
-	</tr>
-  <tr>
-		<td style="text-align: center;">📸 截图上传</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/screenshot.gif"></td>
-	</tr>
-  <tr>
-		<td style="text-align: center;">📂 Finder 中右键上传</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/contextmenu.gif"></td>
-	</tr>
-	<tr>
-		<td style="text-align: center;">⌨️ 命令行上传</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/cli.gif"></td>
-	</tr>
-</table>
 
+| 功能 | 描述 | 预览 |
+| --- | --- | --- |
+| **🖥 选择文件上传** | 从`Finder`选择文件上传。`可设置全局快捷键` | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/selectFile.gif) |
+| **⌨️ 复制文件上传** | 上传已拷贝到剪切板的文件。`可设置全局快捷键` | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/pasteboard.gif) |
+| **📸 截图上传** | 直接拉框截图上传。`可设置全局快捷键` | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/screenshot.gif) |
+| **🖱 拖拽本地文件上传** | 拖拽文件到状态栏上传 | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/dragFile.gif) |
+| **🖱 拖拽浏览器图片上传** | 从浏览器拖拽图片到状态栏上传 | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/dragFromBrowser.gif) |
+| **📂 Finder 中右键上传** | 右击文件上传 | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/contextmenu.gif) |
+| **⌨️ 命令行上传** | 通过执行命令调用 uPic 上传文件 | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/cli.gif) |
 
 
 ## 🧰 更多功能

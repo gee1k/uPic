@@ -55,44 +55,17 @@ brew cask install upic
 
 ## 🕹 How to use it
 
-<table>
-	<tr>
-		<th style="text-align: center;">功能</th>
-		<th style="text-align: center;">预览</th>
-	</tr>
-	<tr>
-		<td style="text-align: center;">🖥 Select files</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/selectFile.gif"></td>
-	</tr>
-  <tr>
-		<td style="text-align: center;">⌨️ Copy files</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/pasteboard.gif"></td>
-	</tr>
-  <tr>
-		<td style="text-align: center;">🖱 Drag local files</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/dragFile.gif"></td>
-	</tr>
-  <tr>
-		<td style="text-align: center;">🖱 Drag from browser</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/dragFromBrowser.gif"></td>
-	</tr>
-  <tr>
-		<td style="text-align: center;">📸 Screenshot</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/screenshot.gif"></td>
-	</tr>
-  <tr>
-		<td style="text-align: center;">📂 Finder contextmenu</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/contextmenu.gif"></td>
-	</tr>
-	<tr>
-		<td style="text-align: center;">⌨️ Command line</td>
-		<td style="width: 70%;"><img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/cli.gif"></td>
-	</tr>
-</table>
+| Upload method | Description | Preview |
+| ------------- | ----------- | ------- |
+| **🖥 Select files** |  Select the file to upload from `Finder`.  `Can set global shortcuts`  | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/selectFile.gif) |
+| **⌨️ Copy file upload** | Upload a file that has been copied to the clipboard.  `Can set global shortcuts` | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/pasteboard.gif) |
+| **📸 Screenshot upload** | Directly pull frame screenshot upload.  `Can set global shortcuts` | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/screenshot.gif) |
+| **🖱 Drag and drop local file upload** | Drag and drop files to the status bar to upload | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/dragFile.gif) |
+| **🖱 Drag and drop browser image upload** | Drag image from browser to status bar to upload | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/dragFromBrowser.gif) |
+| **📂 Finder contextmenu upload** | Right click on file upload | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/contextmenu.gif) |
+| **⌨️ Command line upload** | Invoke uPic to upload files by executing commands | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/cli.gif) |
 
-
-
-## 🧰 More Functions
+## 🧰 More features
 
 ### 1. Global shortcut key
 <img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/shortcuts.png" height="300">
