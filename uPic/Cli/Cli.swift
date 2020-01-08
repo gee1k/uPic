@@ -53,6 +53,7 @@ class Cli {
         
         if let paths = upload.value {
             startUpload(paths)
+            return true
         } else if output.value != nil {
             cliKit.printUsage()
             exit(EX_USAGE)
@@ -64,10 +65,9 @@ class Cli {
             exit(EX_USAGE)
         }  else {
             cliKit.printUsage()
-            return false
         }
         
-        return true
+        return false
     }
     
     private func clearMacosAppTakeParameters() -> [String] {
