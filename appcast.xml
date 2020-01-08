@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.16.2</title>
+			<description>
+			<![CDATA[
+			<p>注意⚠️：如果更新后打开 APP 无反应（状态栏没有），可先在<code class="language-plaintext highlighter-rouge">活动监视器</code>中查看是否存在进程，并结束进程重新开启。</p> <ul> <li>修复: 某些情况下打开 APP 没有主界面。只存在进程。</li> <li>改进: 当保存路径中的日期、时间不足2位数时自动补0。</li> </ul> <hr /> <p>Note ⚠️: If there is no response when opening the APP after the update (the status bar is not), you can first check whether there is a process in the Activity Monitor and end the process and restart it.</p> <ul> <li>Fixed: In some cases, the app opens without the main interface, only the process exists.</li> <li>Improved: Auto-complete with the date and timeless than two digits in the save path.</li> </ul>
+			]]>
+			</description>
+			<pubDate>Wed, 08 Jan 2020 02:44:52 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.16.2/uPic.dmg" sparkle:version="20200108" sparkle:shortVersionString="v0.16.2" type="application/octet-stream" sparkle:edSignature="fjPVKFpsjIDCu/NKcea1n3VxI8fxpn2k7VUP6YtZSBon6/1CQMoZJWfVLh1nvw49VOGKCx/fVn+pXUG104TVBQ==" length="10644647"/>
+		</item>
+		<item>
 			<title>v0.16.1</title>
 			<description>
 			<![CDATA[
