@@ -48,19 +48,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Register events and status bar menus only in non-command line mode
         
-        // Request notification permission
-        NotificationExt.requestAuthorization()
-        
-        let currentApplication = NSRunningApplication.current
-        
-        let applications = NSWorkspace.shared.runningApplications.filter{ $0.bundleIdentifier == currentApplication.bundleIdentifier }
-        if applications.count > 1 {
-            NotificationExt.shared.postAppIsAlreadyRunningNotice()
-            currentApplication.terminate()
-        }
-        
         // Set status bar icon and progress icon
         setupStatusBar()
+        
+        // Request notification permission
+        NotificationExt.requestAuthorization()
         
         bindShortcuts()
         

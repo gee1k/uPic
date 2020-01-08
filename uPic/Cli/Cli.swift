@@ -21,6 +21,7 @@ class Cli {
     private var upload: MultiStringOption!
     private var output: StringOption!
     private var slient: BoolOption!
+    private var help: BoolOption!
     
     private var allPathList: [String] = []
     private var allDataList: [Any] = []
@@ -29,10 +30,7 @@ class Cli {
     private var resultUrls: [String] = []
     
     func handleCommandLine() -> Bool {
-        // handle arguments
         let arguments = clearMacosAppTakeParameters()
-        // let arguments = ["uPic", "-u", "/Users/svend/Desktop/uPicv0.15.3.png", "/Users/svend/Desktop/1111.png", "/Users/svend/Desktop", "http://qiniu.svend.cc/uPic/2019%2012%2026g8WCtu.png", "-s"]
-//        let arguments = ["uPic", "-h"]
         guard arguments.count > 1 else { return false }
         
         cliKit = CommandLineKit(arguments: arguments)
@@ -44,7 +42,7 @@ class Cli {
         upload = MultiStringOption(shortFlag: "u", longFlag: "upload", helpMessage: "Path and URL of the file to upload".localized)
         output = StringOption(shortFlag: "o", longFlag: "output", helpMessage: "Output url format".localized)
         slient = BoolOption(shortFlag: "s", longFlag: "slient", helpMessage: "Turn off error message output".localized)
-        let help = BoolOption(shortFlag: "h", longFlag: "help", helpMessage: "Print this help message".localized)
+        help = BoolOption(shortFlag: "h", longFlag: "help", helpMessage: "Print this help message".localized)
         cliKit.addOptions(upload, output, slient, help)
         do {
             try cliKit.parse()
@@ -55,9 +53,18 @@ class Cli {
         
         if let paths = upload.value {
             startUpload(paths)
+        } else if output.value != nil {
+            cliKit.printUsage()
+            exit(EX_USAGE)
+        }  else if slient.value {
+            cliKit.printUsage()
+            exit(EX_USAGE)
         } else if help.value {
             cliKit.printUsage()
             exit(EX_USAGE)
+        }  else {
+            cliKit.printUsage()
+            return false
         }
         
         return true
@@ -82,7 +89,6 @@ class Cli {
         
         return cleardArguments
     }
-    
 }
 
 // MARK: - Upload
