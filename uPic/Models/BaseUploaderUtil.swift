@@ -121,11 +121,11 @@ class BaseUploaderUtil {
         let sinceMillisecond = now.milliStamp
         
         var result = str.replacingOccurrences(of: "{year}", with: "\(year)")
-                        .replacingOccurrences(of: "{month}", with: "\(month)")
-                        .replacingOccurrences(of: "{day}", with: "\(day)")
-                        .replacingOccurrences(of: "{hour}", with: "\(hour)")
-                        .replacingOccurrences(of: "{minute}", with: "\(minute)")
-                        .replacingOccurrences(of: "{second}", with: "\(second)")
+                        .replacingOccurrences(of: "{month}", with: _padZero(month))
+                        .replacingOccurrences(of: "{day}", with: _padZero(day))
+                        .replacingOccurrences(of: "{hour}", with: _padZero(hour))
+                        .replacingOccurrences(of: "{minute}", with: _padZero(minute))
+                        .replacingOccurrences(of: "{second}", with: _padZero(second))
                         .replacingOccurrences(of: "{since_second}", with: "\(sinceSecond)")
                         .replacingOccurrences(of: "{since_millisecond}", with: "\(sinceMillisecond)")
                         .replacingOccurrences(of: "{filename}", with: filename)
@@ -137,8 +137,11 @@ class BaseUploaderUtil {
                 result = result.replacingOccurrences(of: "{\(key)}", with: value)
             }
         }
-        
         return result
+    }
+    
+    private static func _padZero(_ num: Int) -> String {
+        return num < 10 ? "0\(num)" : "\(num)"
     }
     
     
