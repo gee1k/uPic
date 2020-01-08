@@ -30,7 +30,7 @@ class Cli {
     private var resultUrls: [String] = []
     
     func handleCommandLine() -> Bool {
-        let arguments = clearMacosAppTakeParameters()
+        let arguments = CommandLine.arguments
         guard arguments.count > 1 else { return false }
         
         cliKit = CommandLineKit(arguments: arguments)
@@ -39,7 +39,7 @@ class Cli {
         allDataList = []
         resultUrls = []
         
-        upload = MultiStringOption(shortFlag: "u", longFlag: "upload", helpMessage: "Path and URL of the file to upload".localized)
+        upload = MultiStringOption(shortFlag: "u", longFlag: "upload", required: true, helpMessage: "Path and URL of the file to upload".localized)
         output = StringOption(shortFlag: "o", longFlag: "output", helpMessage: "Output url format".localized)
         slient = BoolOption(shortFlag: "s", longFlag: "slient", helpMessage: "Turn off error message output".localized)
         help = BoolOption(shortFlag: "h", longFlag: "help", helpMessage: "Print this help message".localized)
@@ -48,46 +48,17 @@ class Cli {
             try cliKit.parse()
         } catch {
             cliKit.printUsage(error)
-            exit(EX_USAGE)
+            return false
         }
         
         if let paths = upload.value {
             startUpload(paths)
             return true
-        } else if output.value != nil {
-            cliKit.printUsage()
-            exit(EX_USAGE)
-        }  else if slient.value {
-            cliKit.printUsage()
-            exit(EX_USAGE)
-        } else if help.value {
-            cliKit.printUsage()
-            exit(EX_USAGE)
-        }  else {
+        } else {
             cliKit.printUsage()
         }
         
         return false
-    }
-    
-    private func clearMacosAppTakeParameters() -> [String] {
-        let arguments = ProcessInfo.processInfo.arguments
-        var cleardArguments: [String]  = []
-        
-        var dropNextArg = false
-        for arg in arguments {
-          if dropNextArg {
-            dropNextArg = false
-            continue
-          }
-          if arg.hasPrefix("-NS") || arg.hasPrefix("-Apple") || arg.hasPrefix("--Apple") {
-            dropNextArg = true
-          } else {
-            cleardArguments.append(arg)
-          }
-        }
-        
-        return cleardArguments
     }
 }
 
