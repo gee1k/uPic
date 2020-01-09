@@ -42,25 +42,21 @@ extension NSDraggingInfo {
     }
     
     var draggedFromBrowserUrl: URL? {
-        var retUrl: URL?
-        if let urlData = draggingPasteboard.data(forType: .backwardsCompatibleURL) {
-            if let urlStr = String(data: urlData, encoding: .utf8), let url = URL(string: urlStr.urlEncoded()) {
-               retUrl = url
-           }
-        } else if let urlStr = draggingPasteboard.string(forType: .string) {
-            if let url = URL(string: urlStr.urlEncoded()) {
-                retUrl = url
-            }
+        guard let objects = draggingPasteboard.readObjects(forClasses: [NSURL.self]), objects.count > 0 else {
+            return nil
         }
         
-        debugPrint(retUrl)
+        guard let url = objects[0] as? URL else {
+            return nil
+        }
         
         if fileExtensions.count == 0 {
-            return retUrl
+            return url
         }
         
-        if let fileExtension = retUrl?.pathExtension.lowercased(), fileExtensions.contains(fileExtension) {
-            return retUrl
+        let fileExtension = url.pathExtension.lowercased()
+        if fileExtensions.contains(fileExtension) {
+            return url
         }
         
         return nil
