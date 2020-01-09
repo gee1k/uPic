@@ -28,7 +28,7 @@ class ImgurConfigView: ConfigView {
         clientIdLabel.alignment = .right
         clientIdLabel.lineBreakMode = .byClipping
         
-        let clientIdField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        let clientIdField = NSSecureTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         clientIdField.identifier = NSUserInterfaceItemIdentifier(rawValue: "clientId")
         clientIdField.usesSingleLineMode = true
         clientIdField.lineBreakMode = .byTruncatingTail
@@ -41,8 +41,6 @@ class ImgurConfigView: ConfigView {
         // Get Client ID
         
         y = y - gapTop - labelHeight
-        
-        
         
         let getClientIdBtn = NSButton(title: "Get Client ID".localized, target: self, action: #selector(openGetClientIdMenu(_:)))
         let getClientIdBtnWidth = Int(getClientIdBtn.frame.width)

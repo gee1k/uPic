@@ -18,14 +18,14 @@ extension NSDraggingInfo {
     }
 
     // 本地文件管理器中拖拽的文件，可多个
-    var draggedFileURLs: [NSURL] {
-        var urls = [NSURL]()
+    var draggedFileUrls: [URL] {
+        var urls: [URL] = []
         guard let filenames = draggingPasteboard.propertyList(forType: NSPasteboard.PasteboardType("NSFilenamesPboardType")) as? [String] else {
             return urls
         }
         
         for path in filenames {
-            urls.append(NSURL(fileURLWithPath: path))
+            urls.append(URL(fileURLWithPath: path))
         }
         
         if fileExtensions.count == 0 {
@@ -34,59 +34,69 @@ extension NSDraggingInfo {
         
         // 过滤不支持的文件
         urls = urls.filter({url -> Bool in
-            guard let fileExtension = url.pathExtension?.lowercased() else {
-                return false
-            }
-            
+            let fileExtension = url.pathExtension.lowercased()
             return fileExtensions.contains(fileExtension)
         })
         
         return urls
     }
     
-    // 从浏览器里拖拽出来的的文件
-    var draggedFromBrowserIsValid: Bool {
-        guard let objects = draggingPasteboard.readObjects(forClasses: [NSURL.self]), objects.count > 0 else {
-            return false
+    var draggedFromBrowserUrl: URL? {
+        var retUrl: URL?
+        if let urlData = draggingPasteboard.data(forType: .backwardsCompatibleURL) {
+            if let urlStr = String(data: urlData, encoding: .utf8), let url = URL(string: urlStr.urlEncoded()) {
+               retUrl = url
+           }
+        } else if let urlStr = draggingPasteboard.string(forType: .string) {
+            if let url = URL(string: urlStr.urlEncoded()) {
+                retUrl = url
+            }
         }
         
-        guard let url = objects[0] as? URL else {
-            return false
+        debugPrint(retUrl)
+        
+        if fileExtensions.count == 0 {
+            return retUrl
         }
         
-        let ext = url.pathExtension.lowercased()
-        if ext.isEmpty {
-            return false
+        if let fileExtension = retUrl?.pathExtension.lowercased(), fileExtensions.contains(fileExtension) {
+            return retUrl
         }
         
-        if fileExtensions.count > 0 && !fileExtensions.contains(ext) {
-            return false
-        }
-        
-        return true
+        return nil
     }
     
     var draggedFromBrowserData: Data? {
-        guard let objects = draggingPasteboard.readObjects(forClasses: [NSURL.self]), objects.count > 0 else {
+        var retData: Data? = nil
+        if let png = draggingPasteboard.data(forType: .png) {
+            retData = png
+        } else if let gif = draggingPasteboard.data(forType: .gif){
+            retData = gif
+        } else if let jpeg = draggingPasteboard.data(forType: .jpeg){
+            retData = jpeg
+        } else if let bmp = draggingPasteboard.data(forType: .bmp){
+            retData = bmp
+        } else if let ico = draggingPasteboard.data(forType: .ico){
+            retData = ico
+        } else if let pdf = draggingPasteboard.data(forType: .pdf){
+           retData = pdf
+        } else if let tiff = draggingPasteboard.data(forType: .tiff) {
+            retData = tiff
+        }
+        
+        guard let data = retData else {
             return nil
         }
         
-        guard let url = objects[0] as? URL else {
-            return nil
+        if fileExtensions.count == 0 {
+            return data
         }
         
-        guard let data = try? Data(contentsOf: url), let ext = Swime.mimeType(data: data)?.ext else {
-            return nil
+        
+        if let ext = Swime.mimeType(data: data)?.ext, fileExtensions.contains(ext) {
+            return data
         }
         
-        if fileExtensions.count > 0 && !fileExtensions.contains(ext) {
-            return nil
-        }
-        
-        return data
-    }
-
-    var isValid: Bool {
-        return self.draggedFileURLs.count > 0 || self.draggedFromBrowserIsValid
+        return nil
     }
 }
