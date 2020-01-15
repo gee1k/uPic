@@ -74,6 +74,12 @@ brew cask install upic
 ### 2. Upload history
 <img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/history.png" height="300">
 
+## ❤️ Support
+Think uPic will help you? You can buy me a cup of coffee
+
+| PayPal | Alipay | WechatPay |
+| --- | --- | --- |
+| [paypal.me/geee1k](https://paypal.me/geee1k) | ![AliPay](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/Donate_Alipay.jpg) | ![WeChatPay](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/Donate_WeChatPay.jpg) |
 
 ## ✨ Contributors
 
