@@ -33,7 +33,7 @@ class ImgurConfigView: ConfigView {
         clientIdField.usesSingleLineMode = true
         clientIdField.lineBreakMode = .byTruncatingTail
         clientIdField.delegate = data
-        clientIdField.stringValue = data.clientId ?? ""
+        clientIdField.stringValue = data.clientId 
         self.addSubview(clientIdLabel)
         self.addSubview(clientIdField)
         nextKeyViews.append(clientIdField)

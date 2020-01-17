@@ -13,7 +13,7 @@ import SwiftyJSON
 
 @objcMembers
 class SmmsHostConfig: HostConfig {
-    dynamic var version: String! = SmmsVersion.v1.rawValue
+    dynamic var version: String = SmmsVersion.v1.rawValue
     dynamic var token: String?
 
     override func displayName(key: String) -> String {

@@ -27,10 +27,10 @@ class QiniuUploader: BaseUploader {
         let config = data as! QiniuHostConfig
 
 
-        let bucket = config.bucket!
-        let accessKey = config.accessKey!
-        let secretKey = config.secretKey!
-        let domain = config.domain!
+        let bucket = config.bucket
+        let accessKey = config.accessKey
+        let secretKey = config.secretKey
+        let domain = config.domain
         var region = QiniuRegion.formatRegion(config.region)
         
         let saveKeyPath = config.saveKeyPath
@@ -81,7 +81,7 @@ class QiniuUploader: BaseUploader {
                 if error != nil && error!.count > 0 {
                     super.faild(errorMsg: error)
                 } else {
-                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix!)", retData, fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix)", retData, fileUrl, fileName)
                 }
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)

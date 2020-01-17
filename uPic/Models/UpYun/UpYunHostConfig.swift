@@ -11,12 +11,12 @@ import SwiftyJSON
 
 @objcMembers
 class UpYunHostConfig: HostConfig {
-    dynamic var bucket: String! = ""
-    dynamic var operatorName: String! = ""
-    dynamic var password: String! = ""
-    dynamic var domain: String! = ""
+    dynamic var bucket: String = ""
+    dynamic var operatorName: String = ""
+    dynamic var password: String = ""
+    dynamic var domain: String = ""
     dynamic var saveKeyPath: String?
-    dynamic var suffix: String! = ""
+    dynamic var suffix: String = ""
 
     override func displayName(key: String) -> String {
         switch key {

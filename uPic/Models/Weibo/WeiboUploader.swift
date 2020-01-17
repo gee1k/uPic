@@ -28,11 +28,11 @@ class WeiboUploader: BaseUploader {
         let config = data as! WeiboHostConfig
 
 
-        let username = config.username!
-        let password = config.password!
-        let cookieMode = config.cookieMode == "1" ? true : false
-        let cookie = config.cookie!
-        let quality = config.quality!
+        let username = config.username
+        let password = config.password
+        let cookieMode = config.cookieMode
+        let cookie = config.cookie
+        let quality = config.quality
         
         if cookieMode && cookie.isEmpty {
             super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
@@ -71,7 +71,7 @@ class WeiboUploader: BaseUploader {
                     switch response.result {
                     case .success(let value):
                         if let pidPid = WeiboUtil.parsePicPid(reponseString: value) {
-                            super.completed(url: "\(config.domain!)/\(quality)/\(pidPid)\(fileExtension)", retData, fileUrl, nil)
+                            super.completed(url: "\(config.domain)/\(quality)/\(pidPid)\(fileExtension)", retData, fileUrl, nil)
                         } else {
                             super.faild(errorMsg: "Upload failed, please check the configuration!".localized)
                         }

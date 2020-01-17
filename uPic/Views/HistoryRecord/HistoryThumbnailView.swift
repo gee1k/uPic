@@ -165,7 +165,7 @@ extension HistoryThumbnailView: NSCollectionViewDataSource {
             item.previewImageView.image = NSImage(named: "fileImage")
         }
         item.copyUrl = { [weak self] in
-            self?.copyUrl(urlString.urlEncoded())
+            self?.copyUrl(urlString)
             self?.superMenu.cancelTracking()
         }
         item.mouseStatusHandler = { [weak self] status, point, mouseView in

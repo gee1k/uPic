@@ -47,7 +47,7 @@ extension DefaultsKeys {
     // value example: BoolType._true.rawValue
     static let firstUsage = DefaultsKey<String>(Keys.firstUsage)
     static let hostItems = DefaultsKey<[Host]>(Keys.hostItems)
-    static let defaultHostId = DefaultsKey<Int>(Keys.defaultHostId)
+    static let defaultHostId = DefaultsKey<String>(Keys.defaultHostId)
     static let ouputFormat = DefaultsKey<Int>(Keys.ouputFormat)
     static let historyList = DefaultsKey<[[String: Any]]>(Keys.historyList)
     static let historyLimit = DefaultsKey<Int>(Keys.historyLimit)

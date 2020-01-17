@@ -24,10 +24,10 @@ class GiteeUploader: BaseUploader {
         
         let config = data as! GiteeHostConfig
         
-        let owner = config.owner!
-        let repo = config.repo!
-        let branch = config.branch!
-        let token = config.token!
+        let owner = config.owner
+        let repo = config.repo
+        let branch = config.branch
+        let token = config.token
         let domain = config.domain
         
         let saveKeyPath = config.saveKeyPath
@@ -59,10 +59,10 @@ class GiteeUploader: BaseUploader {
                         super.faild(errorMsg: errorMessage)
                         return
                     }
-                    if domain == nil || domain!.isEmpty {
+                    if domain.isEmpty {
                         super.completed(url: json["content"]["download_url"].stringValue.urlDecoded(), retData, fileUrl, fileName)
                     } else {
-                        super.completed(url: "\(domain!)/\(saveKey)", retData, fileUrl, fileName)
+                        super.completed(url: "\(domain)/\(saveKey)", retData, fileUrl, fileName)
                     }
                 case .failure(let error):
                     var errorMsg = error.localizedDescription

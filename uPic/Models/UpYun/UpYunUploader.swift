@@ -29,10 +29,10 @@ class UpYunUploader: BaseUploader {
         let config = data as! UpYunHostConfig
 
 
-        let bucket = config.bucket!
-        let operatorName = config.operatorName!
-        let password = config.password!
-        let domain = config.domain!
+        let bucket = config.bucket
+        let operatorName = config.operatorName
+        let password = config.password
+        let domain = config.domain
         
         let saveKeyPath = config.saveKeyPath
 
@@ -84,7 +84,7 @@ class UpYunUploader: BaseUploader {
                 let json = JSON(value)
                 let code = json["code"]
                 if 200 == code {
-                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix!)", retData, fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix)", retData, fileUrl, fileName)
                 } else {
                     super.faild(errorMsg: json["message"].string)
                 }

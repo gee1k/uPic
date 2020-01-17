@@ -4,7 +4,7 @@ PODS:
   - Kingfisher (5.12.0):
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
-  - libminipng (0.0.5)
+  - libminipng (0.5.6)
   - LoginServiceKit (2.1.0)
   - MASShortcut (2.4.0)
   - SnapKit (5.0.1)
@@ -68,7 +68,7 @@ SPEC CHECKSUMS:
   Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
   CryptoSwift: 1283821600233bdbeb96d7b389c3288c3bf77211
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
-  libminipng: c5f4492bf378d3de8dfa3afd4c4372480f52fa9f
+  libminipng: a44c35d06b9d54d6640acdf97f4500c034748abb
   LoginServiceKit: 9a8b258c3111fa0d9585615052f778b08be92302
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb

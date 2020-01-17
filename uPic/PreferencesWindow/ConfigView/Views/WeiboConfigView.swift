@@ -36,7 +36,7 @@ class WeiboConfigView: ConfigView {
         cookieModeBtn.identifier = NSUserInterfaceItemIdentifier(rawValue: "cookieMode")
         cookieModeBtn.setButtonType(.switch)
         cookieModeBtn.allowsMixedState = false
-        cookieModeBtn.state = NSControl.StateValue(rawValue: Int(data.cookieMode) ?? 0)
+        cookieModeBtn.state = data.cookieMode ? .on : .off
         self.addSubview(cookieModeLabel)
         self.addSubview(cookieModeBtn)
         nextKeyViews.append(cookieModeBtn)
@@ -54,7 +54,7 @@ class WeiboConfigView: ConfigView {
         usernameField.usesSingleLineMode = true
         usernameField.lineBreakMode = .byTruncatingTail
         usernameField.delegate = data
-        usernameField.stringValue = data.username ?? ""
+        usernameField.stringValue = data.username 
         self.addSubview(usernameLabel)
         self.addSubview(usernameField)
         nextKeyViews.append(usernameField)
@@ -72,7 +72,7 @@ class WeiboConfigView: ConfigView {
         passwordField.usesSingleLineMode = true
         passwordField.lineBreakMode = .byTruncatingTail
         passwordField.delegate = data
-        passwordField.stringValue = data.password ?? ""
+        passwordField.stringValue = data.password 
         self.addSubview(passwordLabel)
         self.addSubview(passwordField)
         nextKeyViews.append(passwordField)
@@ -90,7 +90,7 @@ class WeiboConfigView: ConfigView {
         cookieField.usesSingleLineMode = true
         cookieField.lineBreakMode = .byTruncatingTail
         cookieField.delegate = data
-        cookieField.stringValue = data.cookie ?? ""
+        cookieField.stringValue = data.cookie
         self.addSubview(cookieLabel)
         self.addSubview(cookieField)
         nextKeyViews.append(cookieField)
@@ -138,7 +138,7 @@ class WeiboConfigView: ConfigView {
         domainField.usesSingleLineMode = true
         domainField.lineBreakMode = .byTruncatingTail
         domainField.delegate = data
-        domainField.stringValue = data.domain ?? ""
+        domainField.stringValue = data.domain
         self.addSubview(domainLabel)
         self.addSubview(domainField)
         nextKeyViews.append(domainField)
@@ -149,7 +149,7 @@ class WeiboConfigView: ConfigView {
     }
     
     @objc func cookieModeChanged(_ sender: NSButton) {
-        self.data?.setValue(String(sender.state.rawValue), forKey: "cookieMode")
+        self.data?.setValue(sender.state == .on, forKey: "cookieMode")
     }
     
     

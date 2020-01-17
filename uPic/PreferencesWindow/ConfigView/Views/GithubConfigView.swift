@@ -37,7 +37,7 @@ class GithubConfigView: ConfigView {
         ownerField.usesSingleLineMode = true
         ownerField.lineBreakMode = .byTruncatingTail
         ownerField.delegate = data
-        ownerField.stringValue = data.owner ?? ""
+        ownerField.stringValue = data.owner 
         self.addSubview(ownerLabel)
         self.addSubview(ownerField)
         nextKeyViews.append(ownerField)
@@ -55,7 +55,7 @@ class GithubConfigView: ConfigView {
         repoField.usesSingleLineMode = true
         repoField.lineBreakMode = .byTruncatingTail
         repoField.delegate = data
-        repoField.stringValue = data.repo ?? ""
+        repoField.stringValue = data.repo
         repoField.placeholderString = "Just the repo name, not the repo URL".localized
         self.addSubview(repoLabel)
         self.addSubview(repoField)
@@ -74,7 +74,7 @@ class GithubConfigView: ConfigView {
         branchField.usesSingleLineMode = true
         branchField.lineBreakMode = .byTruncatingTail
         branchField.delegate = data
-        branchField.stringValue = data.branch ?? ""
+        branchField.stringValue = data.branch 
         self.addSubview(branchLabel)
         self.addSubview(branchField)
         nextKeyViews.append(branchField)
@@ -92,7 +92,7 @@ class GithubConfigView: ConfigView {
         tokenField.usesSingleLineMode = true
         tokenField.lineBreakMode = .byTruncatingTail
         tokenField.delegate = data
-        tokenField.stringValue = data.token ?? ""
+        tokenField.stringValue = data.token
         self.addSubview(tokenLabel)
         self.addSubview(tokenField)
         nextKeyViews.append(tokenField)
@@ -119,7 +119,7 @@ class GithubConfigView: ConfigView {
         useCdnBtn.identifier = NSUserInterfaceItemIdentifier(rawValue: "useCdn")
         useCdnBtn.setButtonType(.switch)
         useCdnBtn.allowsMixedState = false
-        useCdnBtn.state = NSControl.StateValue(rawValue: Int(data.useCdn) ?? 0)
+        useCdnBtn.state = data.useCdn ? .on : .off
         self.addSubview(useCdnLabel)
         self.addSubview(useCdnBtn)
         self.useCdnChanged(useCdnBtn)
@@ -135,18 +135,17 @@ class GithubConfigView: ConfigView {
     
     
     @objc func useCdnChanged(_ sender: NSButton) {
-        let value = sender.state.rawValue
-        if value == 0 {
+        if sender.state == .off {
             self.domainField?.isEnabled = true
         } else {
             self.domainField?.isEnabled = false
             self.autoCompleteCDN()
         }
         
-        let strValue = String(value)
+        let boolValue = sender.state == .on
         
-        if self.data?.value(forKey: "useCdn") as? String != strValue {
-            self.data?.setValue(strValue, forKey: "useCdn")
+        if self.data?.value(forKey: "useCdn") as! Bool != boolValue {
+            self.data?.setValue(boolValue, forKey: "useCdn")
         }
         
     }

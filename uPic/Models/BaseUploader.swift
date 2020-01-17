@@ -120,16 +120,16 @@ class BaseUploader {
         case .custom:
             CustomUploader.shared.upload(url, host: host)
             break
-        case .upyun_USS:
+        case .upyun_uss:
             UpYunUploader.shared.upload(url, host: host)
             break
-        case .qiniu_KODO:
+        case .qiniu_kodo:
             QiniuUploader.shared.upload(url, host: host)
             break
-        case .aliyun_OSS:
+        case .aliyun_oss:
             AliyunUploader.shared.upload(url, host: host)
             break
-        case .tencent_COS:
+        case .tencent_cos:
             TencentUploader.shared.upload(url, host: host)
             break
         case .github:
@@ -141,13 +141,13 @@ class BaseUploader {
         case .weibo:
             WeiboUploader.shared.upload(url, host: host)
             break
-        case .amazon_S3:
+        case .amazon_s3:
             AmazonS3Uploader.shared.upload(url, host: host)
             break
         case .imgur:
             ImgurUploader.shared.upload(url, host: host)
             break
-        case .baidu_BOS:
+        case .baidu_bos:
             BaiduUploader.shared.upload(url, host: host)
             break
         }
@@ -178,16 +178,16 @@ class BaseUploader {
         case .custom:
             CustomUploader.shared.upload(data, host: host)
             break
-        case .upyun_USS:
+        case .upyun_uss:
             UpYunUploader.shared.upload(data, host: host)
             break
-        case .qiniu_KODO:
+        case .qiniu_kodo:
             QiniuUploader.shared.upload(data, host: host)
             break
-        case .aliyun_OSS:
+        case .aliyun_oss:
             AliyunUploader.shared.upload(data, host: host)
             break
-        case .tencent_COS:
+        case .tencent_cos:
             TencentUploader.shared.upload(data, host: host)
             break
         case .github:
@@ -199,13 +199,13 @@ class BaseUploader {
         case .weibo:
             WeiboUploader.shared.upload(data, host: host)
             break
-        case .amazon_S3:
+        case .amazon_s3:
             AmazonS3Uploader.shared.upload(data, host: host)
             break
         case .imgur:
             ImgurUploader.shared.upload(data, host: host)
             break
-        case .baidu_BOS:
+        case .baidu_bos:
             BaiduUploader.shared.upload(data, host: host)
             break
         }
@@ -225,13 +225,13 @@ class BaseUploader {
             return SmmsUploader.fileExtensions
         case .custom:
             return CustomUploader.fileExtensions
-        case .upyun_USS:
+        case .upyun_uss:
             return UpYunUploader.fileExtensions
-        case .qiniu_KODO:
+        case .qiniu_kodo:
             return QiniuUploader.fileExtensions
-        case .aliyun_OSS:
+        case .aliyun_oss:
             return AliyunUploader.fileExtensions
-        case .tencent_COS:
+        case .tencent_cos:
             return TencentUploader.fileExtensions
         case .github:
             return GithubUploader.fileExtensions
@@ -239,11 +239,11 @@ class BaseUploader {
             return GiteeUploader.fileExtensions
         case .weibo:
             return WeiboUploader.fileExtensions
-        case .amazon_S3:
+        case .amazon_s3:
             return AmazonS3Uploader.fileExtensions
         case .imgur:
             return ImgurUploader.fileExtensions
-        case .baidu_BOS:
+        case .baidu_bos:
             return BaiduUploader.fileExtensions
         }
     }

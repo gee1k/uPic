@@ -51,7 +51,7 @@ class TencentConfigView: ConfigView {
         if selectRegion != nil {
             regionButtonPopUp.select(selectRegion)
             // 初次设置，手动处罚一下事件，将数据写入data
-            if (data.region == nil || data.region!.isEmpty) {
+            if data.region.isEmpty {
                 self.regionChange(regionButtonPopUp)
             }
         }
@@ -73,7 +73,7 @@ class TencentConfigView: ConfigView {
         bucketField.usesSingleLineMode = true
         bucketField.lineBreakMode = .byTruncatingTail
         bucketField.delegate = data
-        bucketField.stringValue = data.bucket ?? ""
+        bucketField.stringValue = data.bucket 
         self.addSubview(bucketLabel)
         self.addSubview(bucketField)
         nextKeyViews.append(bucketField)
@@ -91,7 +91,7 @@ class TencentConfigView: ConfigView {
         secretIdField.usesSingleLineMode = true
         secretIdField.lineBreakMode = .byTruncatingTail
         secretIdField.delegate = data
-        secretIdField.stringValue = data.secretId ?? ""
+        secretIdField.stringValue = data.secretId 
         self.addSubview(secretIdLabel)
         self.addSubview(secretIdField)
         nextKeyViews.append(secretIdField)
@@ -110,7 +110,7 @@ class TencentConfigView: ConfigView {
         secretKeyField.usesSingleLineMode = true
         secretKeyField.lineBreakMode = .byTruncatingTail
         secretKeyField.delegate = data
-        secretKeyField.stringValue = data.secretKey ?? ""
+        secretKeyField.stringValue = data.secretKey 
         self.addSubview(secretKeyLabel)
         self.addSubview(secretKeyField)
         nextKeyViews.append(secretKeyField)

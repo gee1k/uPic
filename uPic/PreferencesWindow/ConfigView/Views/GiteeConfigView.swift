@@ -28,7 +28,7 @@ class GiteeConfigView: ConfigView {
         ownerField.usesSingleLineMode = true
         ownerField.lineBreakMode = .byTruncatingTail
         ownerField.delegate = data
-        ownerField.stringValue = data.owner ?? ""
+        ownerField.stringValue = data.owner 
         self.addSubview(ownerLabel)
         self.addSubview(ownerField)
         nextKeyViews.append(ownerField)
@@ -46,7 +46,7 @@ class GiteeConfigView: ConfigView {
         repoField.usesSingleLineMode = true
         repoField.lineBreakMode = .byTruncatingTail
         repoField.delegate = data
-        repoField.stringValue = data.repo ?? ""
+        repoField.stringValue = data.repo 
         repoField.placeholderString = "Just the repo name, not the repo URL".localized
         self.addSubview(repoLabel)
         self.addSubview(repoField)
@@ -65,7 +65,7 @@ class GiteeConfigView: ConfigView {
         branchField.usesSingleLineMode = true
         branchField.lineBreakMode = .byTruncatingTail
         branchField.delegate = data
-        branchField.stringValue = data.branch ?? ""
+        branchField.stringValue = data.branch 
         self.addSubview(branchLabel)
         self.addSubview(branchField)
         nextKeyViews.append(branchField)
@@ -83,7 +83,7 @@ class GiteeConfigView: ConfigView {
         tokenField.usesSingleLineMode = true
         tokenField.lineBreakMode = .byTruncatingTail
         tokenField.delegate = data
-        tokenField.stringValue = data.token ?? ""
+        tokenField.stringValue = data.token 
         self.addSubview(tokenLabel)
         self.addSubview(tokenField)
         nextKeyViews.append(tokenField)

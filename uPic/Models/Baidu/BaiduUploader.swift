@@ -26,10 +26,10 @@ class BaiduUploader: BaseUploader {
         let config = data as! BaiduHostConfig
         
         
-        let bucket = config.bucket!
-        let accessKey = config.accessKey!
-        let secretKey = config.secretKey!
-        let domain = config.domain!
+        let bucket = config.bucket
+        let accessKey = config.accessKey
+        let secretKey = config.secretKey
+        let domain = config.domain
         let region = BaiduRegion.formatRegion(config.region)
         
         let saveKeyPath = config.saveKeyPath
@@ -83,9 +83,9 @@ class BaiduUploader: BaseUploader {
                 switch response.result {
                 case .success(_):
                     if domain.isEmpty {
-                        super.completed(url: "\(url)/\(saveKey)\(config.suffix!)", retData, fileUrl, fileName)
+                        super.completed(url: "\(url)/\(saveKey)\(config.suffix)", retData, fileUrl, fileName)
                     } else {
-                        super.completed(url: "\(domain)/\(saveKey)\(config.suffix!)", retData, fileUrl, fileName)
+                        super.completed(url: "\(domain)/\(saveKey)\(config.suffix)", retData, fileUrl, fileName)
                     }
                 case .failure(let error):
                     var errorMessage = error.localizedDescription

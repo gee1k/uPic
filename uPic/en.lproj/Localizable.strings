@@ -123,18 +123,18 @@
 "Suffix Tips" = "The suffix added during the visit does not affect the upload. Can be used as object storage for image processing styles, etc ... For example: !w means get a watermarked image.";
 
 /*host type*/
-"host.type.-1" = "Custom";
-"host.type.1" = "SMMS";
-"host.type.2" = "Qiniu KODO";
-"host.type.3" = "Upyun USS";
-"host.type.4" = "Aliyun OSS";
-"host.type.5" = "Tencent Cloud COS";
-"host.type.6" = "GitHub";
-"host.type.7" = "Gitee";
-"host.type.8" = "Weibo";
-"host.type.9" = "Amazon S3";
-"host.type.10" = "Imgur";
-"host.type.11" = "Baidu Cloud BOS";
+"host.type.custom" = "Custom";
+"host.type.smms" = "SMMS";
+"host.type.qiniu_kodo" = "Qiniu KODO";
+"host.type.upyun_uss" = "Upyun USS";
+"host.type.aliyun_oss" = "Aliyun OSS";
+"host.type.tencent_cos" = "Tencent Cloud COS";
+"host.type.github" = "GitHub";
+"host.type.gitee" = "Gitee";
+"host.type.weibo" = "Weibo";
+"host.type.amazon_s3" = "Amazon S3";
+"host.type.imgur" = "Imgur";
+"host.type.baidu_bos" = "Baidu Cloud BOS";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "thumbnail";
