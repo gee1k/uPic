@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.16.5</title>
+			<description>
+			<![CDATA[
+			<ul> <li>新增: 添加偏好设置快捷键。感谢 @tinyRatP</li> <li>修复: 图床配置时，重置后配置面板内容未更新。</li> <li>改进: 优化输出路径。</li> <li>改进: 优化从浏览器拖拽上传。</li> <li>改进: Imgur ClientID 输入框改为安全输入框。</li> </ul> <hr /> <ul> <li>Added: Add preference shortcuts. Thanks @tinyRatP</li> <li>Fixed: After resetting the configuration of the host, the content of the interface is not updated.</li> <li>Improved: Optimize the output URL format.</li> <li>Improved: Optimize browser drag and drop upload.</li> <li>Improved: Modify the Client ID input box on the Imgur image bed to be a secure input box.</li> </ul>
+			]]>
+			</description>
+			<pubDate>Sun, 19 Jan 2020 02:49:22 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.16.5/uPic.dmg" sparkle:version="20200119" sparkle:shortVersionString="v0.16.5" type="application/octet-stream" sparkle:edSignature="kiN7/+ymeDz9qGmOUu9fcKVW8qL1eN+Dgow1GKzgPDmcb7wClLSe7O5PHVVr8XRpvHUrjukAA+rNBXyfxpPgAg==" length="10643533"/>
+		</item>
+		<item>
 			<title>v0.16.4</title>
 			<description>
 			<![CDATA[
