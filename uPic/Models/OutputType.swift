@@ -47,23 +47,25 @@ enum OutputType: Int {
     }
     
     func formatUrl(_ url: String) -> String {
+        let url = url.urlDecoded()
         var filename = url.lastPathComponent.deletingPathExtension.trim()
         let tempArr = filename.components(separatedBy: .whitespaces).map{ $0.trim() }.filter{ !$0.isEmpty }
         filename = tempArr.joined(separator: "")
         
+        let encodedUrl = url.urlOutputEncoded()
         var outputUrl = ""
         switch self {
         case .html:
-            outputUrl = "<img src='\(url)' alt='\(filename)'/>"
+            outputUrl = "<img src='\(encodedUrl)' alt='\(filename)'/>"
             break
         case .markdown:
-            outputUrl = "![\(filename)](\(url))"
+            outputUrl = "![\(filename)](\(encodedUrl))"
             break
         case .ubb:
-            outputUrl = "[img]\(url)[/img]"
+            outputUrl = "[img]\(encodedUrl)[/img]"
             break
         default:
-            outputUrl = url
+            outputUrl = encodedUrl
             
         }
         

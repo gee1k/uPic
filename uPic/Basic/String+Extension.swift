@@ -27,6 +27,14 @@ extension String {
         return encodeUrlString ?? ""
     }
     
+    func urlOutputEncoded() -> String {
+        return self.replacingOccurrences(of: " ", with: "%20")
+                    .replacingOccurrences(of: "(", with: "%28")
+                    .replacingOccurrences(of: ")", with: "%29")
+                    .replacingOccurrences(of: "<", with: "%3C")
+                    .replacingOccurrences(of: ">", with: "%3E")
+    }
+    
     //将编码后的url转换回原始的url
     func urlDecoded() -> String {
         return self.removingPercentEncoding ?? ""

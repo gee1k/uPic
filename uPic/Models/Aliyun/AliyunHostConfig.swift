@@ -11,13 +11,13 @@ import SwiftyJSON
 
 @objcMembers
 class AliyunHostConfig: HostConfig {
-    dynamic var region: String! = ""
-    dynamic var bucket: String! = ""
-    dynamic var accessKey: String! = ""
-    dynamic var secretKey: String! = "" 
-    dynamic var domain: String! = ""
+    dynamic var region: String = ""
+    dynamic var bucket: String = ""
+    dynamic var accessKey: String = ""
+    dynamic var secretKey: String = ""
+    dynamic var domain: String = ""
     dynamic var saveKeyPath: String?
-    dynamic var suffix: String! = ""
+    dynamic var suffix: String = ""
     
     override func displayName(key: String) -> String {
         switch key {
@@ -67,7 +67,7 @@ class AliyunHostConfig: HostConfig {
         config.accessKey = json["accessKey"].stringValue
         config.secretKey = json["secretKey"].stringValue
         config.domain = json["domain"].stringValue
-        config.saveKeyPath = json["saveKeyPath"].stringValue
+        config.saveKeyPath = json["saveKeyPath"].string
         config.suffix = json["suffix"].stringValue
         return config
     }

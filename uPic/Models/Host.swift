@@ -32,13 +32,13 @@ class Host: Equatable, CustomDebugStringConvertible, Codable {
         return image
     }
 
-    var id: Int
+    var id: String
     var name: String
     var type: HostType
     var data: HostConfig?
 
     init(_ type: HostType, data: HostConfig?) {
-        self.id = Date().timeStamp
+        self.id = "\(Date().timeStamp)"
         self.name = type.name
         self.type = type
         self.data = data
@@ -61,18 +61,22 @@ class Host: Equatable, CustomDebugStringConvertible, Codable {
     
     func copy() -> Host {
         let newHost = Host.deserialize(str: self.serialize())!
-        newHost.id = Date().timeStamp
+        newHost.id = "\(Date().timeStamp)"
         return newHost
     }
 
     static func deserialize(str: String) -> Host? {
-        guard let data = str.data(using: String.Encoding.utf8), let json = try? JSON(data: data),let type = HostType(rawValue: json["type"].intValue) else {
+        // FIXME: - Workaround
+        guard let data = str.data(using: String.Encoding.utf8), let json = try? JSON(data: data),
+        let type = json["type"].int != nil ? HostType(intValue: json["type"].intValue) : HostType(rawValue: json["type"].stringValue)else {
             return nil
         }
+        
+        
         let hostData = HostConfig.deserialize(type: type, str: json["data"].string)
 
         let host = Host(type, data: hostData)
-        host.id = json["id"].intValue
+        host.id = json["id"].stringValue
         host.name = json["name"].stringValue
         host.type = type
         host.data = hostData

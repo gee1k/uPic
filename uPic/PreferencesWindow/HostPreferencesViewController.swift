@@ -83,7 +83,8 @@ class HostPreferencesViewController: PreferencesViewController {
             return
         }
 
-        guard let type: HostType = HostType(rawValue: selectedItem.tag) else {
+        guard let identifier = selectedItem.identifier?.rawValue,
+              let type: HostType = HostType(rawValue: identifier) else {
             return
         }
 
@@ -137,6 +138,7 @@ class HostPreferencesViewController: PreferencesViewController {
         // TODO: 从用户配置文件读取图床信息覆盖掉现有修改
         self.initHostItems()
         self.hostItemsChanged = false
+        setDefaultSelectedHost()
     }
 
     @objc func tableViewClick(_ sender: Any) {
@@ -187,7 +189,6 @@ class HostPreferencesViewController: PreferencesViewController {
             self.saveButtonClicked(nil)
         }
         self.tableView.reloadData()
-
     }
 
     // MARK: 初始化图床添加按钮的子菜单
@@ -205,7 +206,7 @@ class HostPreferencesViewController: PreferencesViewController {
         for type in HostType.allCases {
             let menuItem = NSMenuItem(title: type.name, action: nil, keyEquivalent: "")
             menuItem.image = Host.getIconByType(type: type)
-            menuItem.tag = type.rawValue
+            menuItem.identifier = NSUserInterfaceItemIdentifier(type.rawValue)
             addHostButton.menu?.addItem(menuItem)
         }
 

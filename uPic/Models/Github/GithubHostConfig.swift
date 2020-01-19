@@ -11,13 +11,13 @@ import SwiftyJSON
 
 @objcMembers
 class GithubHostConfig: HostConfig {
-    dynamic var owner: String! = ""
-    dynamic var repo: String! = ""
-    dynamic var branch: String! = "master"
-    dynamic var token: String! = ""
-    dynamic var domain: String! = ""
+    dynamic var owner: String = ""
+    dynamic var repo: String = ""
+    dynamic var branch: String = "master"
+    dynamic var token: String = ""
+    dynamic var domain: String = ""
     dynamic var saveKeyPath: String?
-    dynamic var useCdn: String! = "0"
+    dynamic var useCdn: Bool = false
     
     override func displayName(key: String) -> String {
         switch key {
@@ -66,13 +66,19 @@ class GithubHostConfig: HostConfig {
         config.token = json["token"].stringValue
         config.domain = json["domain"].stringValue
         config.saveKeyPath = json["saveKeyPath"].stringValue
-        config.useCdn = json["useCdn"].stringValue
+        
+        // FIXME: - Workaround
+        if let str =  json["useCdn"].string {
+            config.useCdn = str == "1"
+        } else {
+            config.useCdn = json["useCdn"].boolValue
+        }
         return config
     }
     
     override func controlTextDidChange(_ obj: Notification) {
         super.controlTextDidChange(obj)
-        if self.useCdn != "1" {
+        if !self.useCdn {
             return
         }
         let keys = ["owner", "repo", "branch"]

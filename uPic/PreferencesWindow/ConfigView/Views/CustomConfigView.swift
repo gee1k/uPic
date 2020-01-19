@@ -43,7 +43,7 @@ class CustomConfigView: ConfigView {
         urlField.usesSingleLineMode = true
         urlField.lineBreakMode = .byTruncatingTail
         urlField.delegate = data
-        urlField.stringValue = data.url ?? ""
+        urlField.stringValue = data.url 
         self.addSubview(urlLabel)
         self.addSubview(urlField)
         nextKeyViews.append(urlField)
@@ -93,7 +93,7 @@ class CustomConfigView: ConfigView {
         fieldField.usesSingleLineMode = true
         fieldField.lineBreakMode = .byTruncatingTail
         fieldField.delegate = data
-        fieldField.stringValue = data.field ?? ""
+        fieldField.stringValue = data.field 
         
         
         let otherFieldsBtn = NSButton(title: "Other fields".localized, target: self, action: #selector(openCustomConfigSheet(_:)))

@@ -140,7 +140,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     // change current host
     @objc func changeDefaultHost(_ sender: NSMenuItem) {
-        self.setDefaultHost(id: sender.tag)
+        guard let hostId = sender.identifier?.rawValue else {
+            return
+        }
+        self.setDefaultHost(id: hostId)
     }
 
     // change compress factor
@@ -155,7 +158,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         hostMenuItem.submenu?.removeAllItems()
         for item in hostItems {
             let menuItem = NSMenuItem(title: item.name, action: #selector(changeDefaultHost(_:)), keyEquivalent: "")
-            menuItem.tag = item.id
+            menuItem.identifier = NSUserInterfaceItemIdentifier(item.id)
             menuItem.image = Host.getIconByType(type: item.type)
             menuItem.isEnabled = true
             menuItem.target = self
@@ -221,16 +224,16 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         var hasDefault = false
         let items = hostMenuItem.submenu!.items
         for item in items {
-            if item.tag == defaultHostId {
+            if item.identifier?.rawValue == defaultHostId {
                 item.state = .on
                 hasDefault = true
             } else {
                 item.state = .off
             }
         }
-
-        if (!hasDefault && items.first != nil) {
-            self.setDefaultHost(id: items.first!.tag)
+        
+        if let id = items.first?.identifier?.rawValue, !hasDefault {
+            self.setDefaultHost(id: id)
         }
 
         if let host = ConfigManager.shared.getDefaultHost() {
@@ -288,7 +291,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     // write current host to ConfigManager. refresh current host select
-    func setDefaultHost(id: Int) {
+    func setDefaultHost(id: String) {
         Defaults[.defaultHostId] = id
         self.refreshDefaultHost()
     }

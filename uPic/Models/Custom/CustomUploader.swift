@@ -25,10 +25,10 @@ class CustomUploader: BaseUploader {
 
         let config = data as! CustomHostConfig
 
-        let url = config.url!
-        let method = config.method!
-        let field = config.field!
-        let domain = config.domain!
+        let url = config.url
+        let method = config.method
+        let field = config.field
+        let domain = config.domain
         
         let httpMethod = HTTPMethod(rawValue: method) 
         
@@ -103,7 +103,7 @@ class CustomUploader: BaseUploader {
                 if !domain.isEmpty {
                     retUrl = "\(domain)/\(retUrl)"
                 }
-                super.completed(url: "\(retUrl)\(config.suffix!)", retData, fileUrl, nil)
+                super.completed(url: "\(retUrl)\(config.suffix)", retData, fileUrl, nil)
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)
             }

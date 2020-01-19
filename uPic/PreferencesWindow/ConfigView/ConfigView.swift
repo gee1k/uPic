@@ -58,16 +58,16 @@ class ConfigView: NSView {
         case .custom:
             parentView.addSubview(CustomConfigView(frame: parentView.frame, host: item))
             break
-        case .upyun_USS:
+        case .upyun_uss:
             parentView.addSubview(UpYunConfigView(frame: parentView.frame, host: item))
             break
-        case .qiniu_KODO:
+        case .qiniu_kodo:
             parentView.addSubview(QiniuConfigView(frame: parentView.frame, host: item))
             break
-        case .aliyun_OSS:
+        case .aliyun_oss:
             parentView.addSubview(AliyunConfigView(frame: parentView.frame, host: item))
             break
-        case .tencent_COS:
+        case .tencent_cos:
             parentView.addSubview(TencentConfigView(frame: parentView.frame, host: item))
             break
         case .github:
@@ -79,13 +79,13 @@ class ConfigView: NSView {
         case .weibo:
             parentView.addSubview(WeiboConfigView(frame: parentView.frame, host: item))
             break
-        case .amazon_S3:
+        case .amazon_s3:
             parentView.addSubview(AmazonS3ConfigView(frame: parentView.frame, host: item))
             break
         case .imgur:
             parentView.addSubview(ImgurConfigView(frame: parentView.frame, host: item))
             break
-        case .baidu_BOS:
+        case .baidu_bos:
             parentView.addSubview(BaiduConfigView(frame: parentView.frame, host: item))
             break
 //        default:

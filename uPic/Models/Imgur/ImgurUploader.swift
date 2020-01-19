@@ -31,9 +31,6 @@ class ImgurUploader: BaseUploader {
 
         let config = data as! ImgurHostConfig
 
-
-        let clientId = config.clientId!
-
         guard let configuration = BaseUploaderUtil.getSaveConfigurationWithB64(fileUrl, fileData, nil) else {
             super.faild(errorMsg: "Invalid file")
             return
@@ -43,7 +40,7 @@ class ImgurUploader: BaseUploader {
         let fileName = configuration["fileName"] as! String
 
         var headers = HTTPHeaders()
-        headers.add(HTTPHeader.authorization("Client-ID \(clientId)"))
+        headers.add(HTTPHeader.authorization("Client-ID \(config.clientId)"))
         headers.add(HTTPHeader.contentType("multipart/form-data"))
         headers.add(name: "User-Agent", value: "Macos/uPic")
         

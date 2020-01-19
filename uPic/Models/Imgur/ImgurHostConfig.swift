@@ -11,7 +11,7 @@ import SwiftyJSON
 
 @objcMembers
 class ImgurHostConfig: HostConfig {
-    dynamic var clientId: String! = ""
+    dynamic var clientId: String = ""
 
     override func displayName(key: String) -> String {
         switch key {

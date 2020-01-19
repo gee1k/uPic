@@ -10,13 +10,13 @@ import SwiftyJSON
 
 @objcMembers
 class WeiboHostConfig: HostConfig {
-    dynamic var username: String! = ""
-    dynamic var password: String! = ""
-    dynamic var cookieMode: String! = "0"
-    dynamic var cookie: String! = ""
-    dynamic var quality: String! = WeiboqQuality.large.rawValue
+    dynamic var username: String = ""
+    dynamic var password: String = ""
+    dynamic var cookieMode: Bool = false
+    dynamic var cookie: String = ""
+    dynamic var quality: String = WeiboqQuality.large.rawValue
     // tva1.sinaimg.cn
-    dynamic var domain: String! = "https://ws1.sinaimg.cn"
+    dynamic var domain: String = "https://ws1.sinaimg.cn"
 
     override func displayName(key: String) -> String {
         switch key {
@@ -58,7 +58,13 @@ class WeiboHostConfig: HostConfig {
         let json = try! JSON(data: data!)
         config.username = json["username"].stringValue
         config.password = json["password"].stringValue
-        config.cookieMode = json["cookieMode"].stringValue
+        // FIXME: - Workaround
+//        if let str =  json["cookieMode"].string {
+//            config.cookieMode = str == "1"
+//        } else {
+//            config.cookieMode = json["cookieMode"].boolValue
+//        }
+        config.cookieMode = json["cookieMode"].boolValue
         config.cookie = json["cookie"].stringValue
         config.quality = json["quality"].stringValue
         if let domain = json["domain"].string {

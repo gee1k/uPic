@@ -36,7 +36,7 @@ class UpYunConfigView: ConfigView {
         bucketField.usesSingleLineMode = true
         bucketField.lineBreakMode = .byTruncatingTail
         bucketField.delegate = data
-        bucketField.stringValue = data.bucket ?? ""
+        bucketField.stringValue = data.bucket 
         self.addSubview(bucketLabel)
         self.addSubview(bucketField)
         nextKeyViews.append(bucketField)
@@ -54,7 +54,7 @@ class UpYunConfigView: ConfigView {
         operatorField.usesSingleLineMode = true
         operatorField.lineBreakMode = .byTruncatingTail
         operatorField.delegate = data
-        operatorField.stringValue = data.operatorName ?? ""
+        operatorField.stringValue = data.operatorName 
         operatorField.placeholderString = "Operator name".localized
         self.addSubview(operatorLabel)
         self.addSubview(operatorField)
@@ -74,7 +74,7 @@ class UpYunConfigView: ConfigView {
         passwordField.usesSingleLineMode = true
         passwordField.lineBreakMode = .byTruncatingTail
         passwordField.delegate = data
-        passwordField.stringValue = data.password ?? ""
+        passwordField.stringValue = data.password 
         passwordField.placeholderString = "Operator password".localized
         self.addSubview(passwordLabel)
         self.addSubview(passwordField)

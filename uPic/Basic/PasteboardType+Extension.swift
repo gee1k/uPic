@@ -22,4 +22,26 @@ extension NSPasteboard.PasteboardType {
         
     } ()
     
+    static let backwardsCompatibleURL: NSPasteboard.PasteboardType = {
+        
+        if #available(OSX 10.13, *) {
+            return NSPasteboard.PasteboardType.URL
+        } else {
+            return NSPasteboard.PasteboardType(kUTTypeURL as String)
+        }
+        
+    } ()
+    
+    static let gif: NSPasteboard.PasteboardType = kUTType(kUTTypeGIF)
+    
+    static let jpeg: NSPasteboard.PasteboardType = kUTType(kUTTypeJPEG)
+    
+    static let bmp: NSPasteboard.PasteboardType = kUTType(kUTTypeBMP)
+    
+    static let ico: NSPasteboard.PasteboardType = kUTType(kUTTypeICO)
+    
+    static func kUTType(_ cf: CFString) -> NSPasteboard.PasteboardType {
+        return NSPasteboard.PasteboardType(cf as String)
+    }
+    
 }

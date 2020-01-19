@@ -61,13 +61,13 @@ class HostConfig: NSObject, Codable {
             return SmmsHostConfig()
         case .custom:
             return CustomHostConfig()
-        case .upyun_USS:
+        case .upyun_uss:
             return UpYunHostConfig()
-        case .qiniu_KODO:
+        case .qiniu_kodo:
             return QiniuHostConfig()
-        case .aliyun_OSS:
+        case .aliyun_oss:
             return AliyunHostConfig()
-        case .tencent_COS:
+        case .tencent_cos:
             return TencentHostConfig()
         case .github:
             return GithubHostConfig()
@@ -75,11 +75,11 @@ class HostConfig: NSObject, Codable {
             return GiteeHostConfig()
         case .weibo:
             return WeiboHostConfig()
-        case .amazon_S3:
+        case .amazon_s3:
             return AmazonS3HostConfig()
         case .imgur:
             return ImgurHostConfig()
-        case .baidu_BOS:
+        case .baidu_bos:
             return BaiduHostConfig()
         }
     }
@@ -101,16 +101,16 @@ class HostConfig: NSObject, Codable {
         case .custom:
             config = CustomHostConfig.deserialize(str: str)
             break
-        case .upyun_USS:
+        case .upyun_uss:
             config = UpYunHostConfig.deserialize(str: str)
             break
-        case .qiniu_KODO:
+        case .qiniu_kodo:
             config = QiniuHostConfig.deserialize(str: str)
             break
-        case .aliyun_OSS:
+        case .aliyun_oss:
             config = AliyunHostConfig.deserialize(str: str)
             break
-        case .tencent_COS:
+        case .tencent_cos:
             config = TencentHostConfig.deserialize(str: str)
             break
         case .github:
@@ -122,13 +122,13 @@ class HostConfig: NSObject, Codable {
         case .weibo:
             config = WeiboHostConfig.deserialize(str: str)
             break
-        case .amazon_S3:
+        case .amazon_s3:
             config = AmazonS3HostConfig.deserialize(str: str)
             break
         case .imgur:
             config = ImgurHostConfig.deserialize(str: str)
             break
-        case .baidu_BOS:
+        case .baidu_bos:
             config = BaiduHostConfig.deserialize(str: str)
             break
         }
@@ -148,8 +148,7 @@ class HostConfig: NSObject, Codable {
     // 修复用户有时候会不注意在 domain 后面多写一个 /
     func fixPrefixAndSuffix() {
         if self.containsKey(key: "saveKeyPath") {
-            var saveKeyPath = self.value(forKey: "saveKeyPath") as! String
-            if saveKeyPath.hasPrefix("/") {
+            if var saveKeyPath = self.value(forKey: "saveKeyPath") as? String, saveKeyPath.hasPrefix("/") {
                 saveKeyPath.removeFirst()
                 self.setValue(saveKeyPath, forKey: "saveKeyPath")
             }

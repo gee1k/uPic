@@ -8,9 +8,51 @@
 
 import Foundation
 
-public enum HostType: Int, CaseIterable, Codable {
-    // MARK: 写了固定的数值原因是为了这里的顺序改变不会影响用户已经保存的配置
-    case custom = -1, smms = 1, upyun_USS = 3, qiniu_KODO = 2, aliyun_OSS = 4, tencent_COS = 5, github = 6, gitee = 7, weibo = 8, amazon_S3 = 9, imgur = 10, baidu_BOS = 11
+public enum HostType: String, CaseIterable, Codable {
+    case custom
+    case smms
+    case qiniu_kodo
+    case upyun_uss
+    case aliyun_oss
+    case tencent_cos
+    case github
+    case gitee
+    case weibo
+    case amazon_s3
+    case imgur
+    case baidu_bos
+    
+    public init(intValue: Int) {
+        switch intValue {
+        case -1:
+            self = .custom
+        case 1:
+            self = .smms
+        case 2:
+            self = .qiniu_kodo
+        case 3:
+            self = .upyun_uss
+        case 4:
+            self = .aliyun_oss
+        case 5:
+            self = .tencent_cos
+        case 6:
+            self = .github
+        case 7:
+            self = .gitee
+        case 8:
+            self = .weibo
+        case 9:
+            self = .amazon_s3
+        case 10:
+            self = .imgur
+        case 11:
+            self = .baidu_bos
+        default:
+            self = .smms
+        }
+    }
+    
 
     public var name: String {
         get {

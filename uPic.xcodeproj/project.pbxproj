@@ -22,7 +22,6 @@
 		161C3BE122C483380092114F /* CustomUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE022C4831B0092114F /* CustomUploader.swift */; };
 		161C3BE322C483560092114F /* CustomHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE222C483560092114F /* CustomHostConfig.swift */; };
 		161C3BE522C4870C0092114F /* CustomConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE422C4870B0092114F /* CustomConfigView.swift */; };
-		161C3BE722C49BE90092114F /* RequestMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE622C49BE90092114F /* RequestMethods.swift */; };
 		1623611B22AB935300E4025C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623611D22AB935300E4025C /* InfoPlist.strings */; };
 		1623612322AB951E00E4025C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
 		16248E32230673B6002131BB /* NotificationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16248E31230673B6002131BB /* NotificationExt.swift */; };
@@ -78,6 +77,7 @@
 		1683573C22DB0D0800985B10 /* CustomConfigSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1683573B22DB0D0800985B10 /* CustomConfigSheetController.swift */; };
 		1685AA3522DEC943008FBF1D /* FlippedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685AA3422DEC943008FBF1D /* FlippedView.swift */; };
 		1685AA3722DEEE6C008FBF1D /* CustomHostUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685AA3622DEEE6C008FBF1D /* CustomHostUtil.swift */; };
+		168A3D1523D1AACA001BF1D9 /* RequestMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A3D1423D1AACA001BF1D9 /* RequestMethods.swift */; };
 		168A831122B606C000344E77 /* UpYunUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A2022B5FC7B00B1F923 /* UpYunUploader.swift */; };
 		1690E7E422BF111500FC81F8 /* QiniuConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */; };
 		1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7E622BF12D200FC81F8 /* QiniuHostConfig.swift */; };
@@ -184,7 +184,6 @@
 		161C3BE022C4831B0092114F /* CustomUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUploader.swift; sourceTree = "<group>"; };
 		161C3BE222C483560092114F /* CustomHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHostConfig.swift; sourceTree = "<group>"; };
 		161C3BE422C4870B0092114F /* CustomConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfigView.swift; sourceTree = "<group>"; };
-		161C3BE622C49BE90092114F /* RequestMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethods.swift; sourceTree = "<group>"; };
 		1623611C22AB935300E4025C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1623611E22AB935F00E4025C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1623612422AB951E00E4025C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -245,6 +244,7 @@
 		1683573B22DB0D0800985B10 /* CustomConfigSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfigSheetController.swift; sourceTree = "<group>"; };
 		1685AA3422DEC943008FBF1D /* FlippedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlippedView.swift; sourceTree = "<group>"; };
 		1685AA3622DEEE6C008FBF1D /* CustomHostUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHostUtil.swift; sourceTree = "<group>"; };
+		168A3D1423D1AACA001BF1D9 /* RequestMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMethods.swift; sourceTree = "<group>"; };
 		1690E7E322BF111500FC81F8 /* QiniuConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiniuConfigView.swift; sourceTree = "<group>"; };
 		1690E7E622BF12D200FC81F8 /* QiniuHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiniuHostConfig.swift; sourceTree = "<group>"; };
 		1690E7E822BF1A6D00FC81F8 /* QiniuRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiniuRegion.swift; sourceTree = "<group>"; };
@@ -347,9 +347,9 @@
 		161C3BDF22C4830A0092114F /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				168A3D1423D1AACA001BF1D9 /* RequestMethods.swift */,
 				161C3BE022C4831B0092114F /* CustomUploader.swift */,
 				161C3BE222C483560092114F /* CustomHostConfig.swift */,
-				161C3BE622C49BE90092114F /* RequestMethods.swift */,
 				1685AA3622DEEE6C008FBF1D /* CustomHostUtil.swift */,
 			);
 			path = Custom;
@@ -928,7 +928,6 @@
 				4BC11BDC238CD8CD001641A6 /* HistoryThumbnailLabel.swift in Sources */,
 				1618D1A822E99E2100831601 /* UploadNotifier.swift in Sources */,
 				4B09F11423695F8D000208BD /* HistoryThumbnailContentView.swift in Sources */,
-				161C3BE722C49BE90092114F /* RequestMethods.swift in Sources */,
 				163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */,
 				167D08A822ED88E7000F3BC0 /* AmazonS3ConfigView.swift in Sources */,
 				4B2B3356236C3B6400C9F2CA /* NSViewExtension.swift in Sources */,
@@ -956,6 +955,7 @@
 				16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */,
 				167DDBED22C76F6600B03357 /* GithubHostConfig.swift in Sources */,
 				1646B80822C79349009271DF /* GiteeUtil.swift in Sources */,
+				168A3D1523D1AACA001BF1D9 /* RequestMethods.swift in Sources */,
 				1660FCBF22C1211900372950 /* TencentConfigView.swift in Sources */,
 				1646B80A22C79483009271DF /* GiteeConfigView.swift in Sources */,
 				1660FCBB22C11C7200372950 /* TencentUploader.swift in Sources */,
@@ -1199,7 +1199,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20200110;
+				CURRENT_PROJECT_VERSION = 20200119;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1208,7 +1208,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.16.4;
+				MARKETING_VERSION = 0.16.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1229,7 +1229,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20200110;
+				CURRENT_PROJECT_VERSION = 20200119;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1238,7 +1238,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.16.4;
+				MARKETING_VERSION = 0.16.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

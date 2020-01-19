@@ -29,6 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var needUploadFiles = [Any]()
     // 上传成功的url
     var resultUrls = [String]()
+    var draggingData: Data?
     
     // MARK: - Cli Support
     // 上传来源
@@ -436,7 +437,9 @@ extension AppDelegate {
 // MARK: - Drag and drop file upload
 extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        if sender.isValid {
+        self.draggingData = sender.draggedFromBrowserData
+        
+        if sender.draggedFileUrls.count > 0 || draggingData != nil || sender.draggedFromBrowserUrl != nil {
             if let statusItem = statusItem, let button = statusItem.button {
                 button.image = NSImage(named: "uploadIcon")
             }
@@ -446,18 +449,19 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
     
     func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        if sender.isValid {
+        if sender.draggedFileUrls.count > 0 || self.draggingData != nil || sender.draggedFromBrowserUrl != nil {
             self.setStatusBarIcon(isIndicator: false)
-            if sender.draggedFileURLs.count > 0 {
-                var urls = [URL]()
-                for url in sender.draggedFileURLs {
-                    urls.append(url.absoluteURL!)
-                }
-                self.uploadFiles(urls)
-            } else if let imageData = sender.draggedFromBrowserData {
+            if sender.draggedFileUrls.count > 0 {
+                self.uploadFiles(sender.draggedFileUrls)
+                return true
+            } else if let imageData = self.draggingData {
                 self.uploadFiles([imageData])
+                self.draggingData = nil
+                return true
+            } else if let url = sender.draggedFromBrowserUrl {
+                self.uploadFiles([url])
+                return true
             }
-            return true
         }
         return false
     }

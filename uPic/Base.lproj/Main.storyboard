@@ -185,8 +185,7 @@
                             <menu key="submenu" title="History record" id="MjM-mX-Ci5"/>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="9go-zg-sPT"/>
-                        <menuItem title="Preferences..." id="VW7-Z2-hXR">
-                            <modifierMask key="keyEquivalentModifierMask"/>
+                        <menuItem title="Preferences" keyEquivalent="," id="VW7-Z2-hXR">
                             <connections>
                                 <action selector="preferenceMenuItemClicked:" target="veO-oa-UPB" id="dVz-M2-Nxa"/>
                             </connections>
