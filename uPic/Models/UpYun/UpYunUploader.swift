@@ -44,6 +44,8 @@ class UpYunUploader: BaseUploader {
         let fileName = configuration["fileName"] as! String
         let mimeType = configuration["mimeType"] as! String
         let saveKey = configuration["saveKey"] as! String
+        
+        let suffix = BaseUploaderUtil._parseVariables(config.suffix, fileName, otherVariables: nil)
 
         // MARK: 加密 policy
         var policyDict = Dictionary<String, Any>()
@@ -84,7 +86,7 @@ class UpYunUploader: BaseUploader {
                 let json = JSON(value)
                 let code = json["code"]
                 if 200 == code {
-                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix)", retData, fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(suffix)", retData, fileUrl, fileName)
                 } else {
                     super.faild(errorMsg: json["message"].string)
                 }

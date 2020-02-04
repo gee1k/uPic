@@ -50,6 +50,8 @@ class QiniuUploader: BaseUploader {
         let fileName = configuration["fileName"] as! String
         let mimeType = configuration["mimeType"] as! String
         let saveKey = configuration["saveKey"] as! String
+        
+        let suffix = BaseUploaderUtil._parseVariables(config.suffix, fileName, otherVariables: nil)
 
         let scope = "\(bucket):\(saveKey)"
 
@@ -81,7 +83,7 @@ class QiniuUploader: BaseUploader {
                 if error != nil && error!.count > 0 {
                     super.faild(errorMsg: error)
                 } else {
-                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix)", retData, fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(suffix)", retData, fileUrl, fileName)
                 }
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)
