@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.17.0</title>
+			<description>
+			<![CDATA[
+			<ul> <li>Added: Support <a href="https://www.lsky.pro/">Lsky Pro</a> host. fixes #77</li> <li>Added: Added variable {suffix} to get file extension without<code class="language-plaintext highlighter-rouge">.</code>.</li> <li>Added: Style handling suffix supports variable syntax.</li> </ul> <hr /> <ul> <li>支持 <a href="https://www.lsky.pro/">Lsky Pro</a> 图床。fixes #77</li> <li>新增变量 {suffix} 以获取不带 <code class="language-plaintext highlighter-rouge">.</code> 的文件扩展名。</li> <li>样式处理后缀支持变量语法。</li> </ul>
+			]]>
+			</description>
+			<pubDate>Sun, 01 Mar 2020 09:26:21 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.17.0/uPic.dmg" sparkle:version="20200301" sparkle:shortVersionString="v0.17.0" type="application/octet-stream" sparkle:edSignature="T8eOGqM285K7Jp8QDFAMxve11MRdN5Wih30k4I7DseXu5r86gcW9H12VSRIqB1VvzxmE9GOeApqd+QcRXvfiDA==" length="10678738"/>
+		</item>
+		<item>
 			<title>v0.16.5</title>
 			<description>
 			<![CDATA[
