@@ -50,6 +50,8 @@ class TencentUploader: BaseUploader {
         let fileName = configuration["fileName"] as! String
         let mimeType = configuration["mimeType"] as! String
         let saveKey = configuration["saveKey"] as! String
+        
+        let suffix = BaseUploaderUtil._parseVariables(config.suffix, fileName, otherVariables: nil)
 
         // MARK: 签名部分
         let qSignAlgorithm = "sha1"
@@ -93,9 +95,9 @@ class TencentUploader: BaseUploader {
             switch response.result {
             case .success(_):
                 if domain.isEmpty {
-                    super.completed(url: "\(url)/\(saveKey)\(config.suffix)", retData, fileUrl, fileName)
+                    super.completed(url: "\(url)/\(saveKey)\(suffix)", retData, fileUrl, fileName)
                 } else {
-                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix)", retData, fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(suffix)", retData, fileUrl, fileName)
                 }
             case .failure(let error):
                 var errorMessage = error.localizedDescription

@@ -50,6 +50,8 @@ class AmazonS3Uploader: BaseUploader {
         let mimeType = configuration["mimeType"] as! String
         let saveKey = configuration["saveKey"] as! String
         
+        let suffix = BaseUploaderUtil._parseVariables(config.suffix, fileName, otherVariables: nil)
+        
 
         // MARK: 加密 policy
         let iso_date = Date().format(dateFormat: "yyyyMMdd'T'HHmmss'Z'", timeZone: TimeZone(secondsFromGMT: 0))
@@ -98,9 +100,9 @@ class AmazonS3Uploader: BaseUploader {
             switch response.result {
             case .success(_):
                 if domain.isEmpty {
-                    super.completed(url: "\(url)/\(saveKey)\(config.suffix)", retData, fileUrl, fileName)
+                    super.completed(url: "\(url)/\(saveKey)\(suffix)", retData, fileUrl, fileName)
                 } else {
-                    super.completed(url: "\(domain)/\(saveKey)\(config.suffix)", retData, fileUrl, fileName)
+                    super.completed(url: "\(domain)/\(saveKey)\(suffix)", retData, fileUrl, fileName)
                 }
             case .failure(let error):
                 var errorMessage = error.localizedDescription

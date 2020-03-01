@@ -218,7 +218,6 @@ extension AppDelegate {
             return
         }
         
-        NSApp.activate(ignoringOtherApps: true)
         let fileExtensions = BaseUploader.getFileExtensions()
         
         let openPanel = NSOpenPanel()
@@ -237,6 +236,7 @@ extension AppDelegate {
                 self.uploadFiles(openPanel.urls)
             }
         }
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     @objc func uploadByPasteboard() {

@@ -47,6 +47,8 @@ class CustomUploader: BaseUploader {
         let fileName = configuration["fileName"] as! String
         let mimeType = configuration["mimeType"] as! String
         let saveKey = configuration["saveKey"] as! String
+        
+        let suffix = BaseUploaderUtil._parseVariables(config.suffix, fileName, otherVariables: nil)
 
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
@@ -103,7 +105,7 @@ class CustomUploader: BaseUploader {
                 if !domain.isEmpty {
                     retUrl = "\(domain)/\(retUrl)"
                 }
-                super.completed(url: "\(retUrl)\(config.suffix)", retData, fileUrl, nil)
+                super.completed(url: "\(retUrl)\(suffix)", retData, fileUrl, nil)
             case .failure(let error):
                 super.faild(errorMsg: error.localizedDescription)
             }

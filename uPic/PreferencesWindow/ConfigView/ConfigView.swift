@@ -88,6 +88,9 @@ class ConfigView: NSView {
         case .baidu_bos:
             parentView.addSubview(BaiduConfigView(frame: parentView.frame, host: item))
             break
+        case .lsky_pro:
+            parentView.addSubview(LskyProConfigView(frame: parentView.frame, host: item))
+            break
 //        default:
 //            let label = NSTextField(labelWithString: "The file will be uploaded anonymously to".localized + " \(item.name)")
 //            label.frame = NSRect(x: (parentView.frame.width - label.frame.width) / 2, y: parentView.frame.height - 50, width: label.frame.width, height: 20)

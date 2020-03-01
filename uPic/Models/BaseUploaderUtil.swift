@@ -130,6 +130,7 @@ class BaseUploaderUtil {
                         .replacingOccurrences(of: "{since_millisecond}", with: "\(sinceMillisecond)")
                         .replacingOccurrences(of: "{filename}", with: filename)
                         .replacingOccurrences(of: "{random}", with: _getRrandomFileName(nil))
+                        .replacingOccurrences(of: "{suffix}", with: fileExtension)
                         .replacingOccurrences(of: "{.suffix}", with: ".\(fileExtension)")
         
         if let varables = otherVariables, varables.count > 0 {
