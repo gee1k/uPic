@@ -13,6 +13,9 @@
 		16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */; };
 		16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7B22AECD9F004D39B7 /* Constants.swift */; };
 		160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */; };
+		161539122408EC7B00CC662F /* LskyProUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161539102408E7F200CC662F /* LskyProUploader.swift */; };
+		161539132408EC7D00CC662F /* LskyProHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161539112408E7F200CC662F /* LskyProHostConfig.swift */; };
+		161539152408F0E200CC662F /* LskyProConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161539142408F0E200CC662F /* LskyProConfigView.swift */; };
 		1618D1A522E99BAA00831601 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
 		1618D1A622E99BB800831601 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169F073D22AF53DE008E8525 /* Preferences.storyboard */; };
 		1618D1A822E99E2100831601 /* UploadNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618D1A722E99E2100831601 /* UploadNotifier.swift */; };
@@ -177,6 +180,9 @@
 		16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		16068C7B22AECD9F004D39B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
+		161539102408E7F200CC662F /* LskyProUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LskyProUploader.swift; sourceTree = "<group>"; };
+		161539112408E7F200CC662F /* LskyProHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LskyProHostConfig.swift; sourceTree = "<group>"; };
+		161539142408F0E200CC662F /* LskyProConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LskyProConfigView.swift; sourceTree = "<group>"; };
 		1618D1A722E99E2100831601 /* UploadNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadNotifier.swift; sourceTree = "<group>"; };
 		161ABBDC23B1F1EB00805C5B /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		161ABBE123B212C600805C5B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
@@ -344,6 +350,15 @@
 			path = PreferencesWindow;
 			sourceTree = "<group>";
 		};
+		1615390E2408E7DE00CC662F /* LskyPro */ = {
+			isa = PBXGroup;
+			children = (
+				161539102408E7F200CC662F /* LskyProUploader.swift */,
+				161539112408E7F200CC662F /* LskyProHostConfig.swift */,
+			);
+			path = LskyPro;
+			sourceTree = "<group>";
+		};
 		161C3BDF22C4830A0092114F /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +430,7 @@
 		1646B80F22C7C485009271DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				161539142408F0E200CC662F /* LskyProConfigView.swift */,
 				16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */,
 				167620EF23081DC0008F8363 /* ImgurConfigView.swift */,
 				167D08A622ED88C2000F3BC0 /* AmazonS3ConfigView.swift */,
@@ -479,10 +495,10 @@
 			children = (
 				1602ED9622ADEFB200AA8638 /* BaseUploader.swift */,
 				1675EC5222FB38240038DA33 /* BaseUploaderUtil.swift */,
-				16F04EE923BCC49000CCA2FE /* OutputType.swift */,
 				1672762222AFF655007299C3 /* Host.swift */,
 				167D7F4822B4D2F500DD0A7A /* HostConfig.swift */,
 				167D7F4A22B4D31300DD0A7A /* HostType.swift */,
+				16F04EE923BCC49000CCA2FE /* OutputType.swift */,
 				68BBB87F2C3AEBDF2C914131 /* Aliyun */,
 				167D08A522ED8132000F3BC0 /* Amazon_S3 */,
 				16D20B522383887E006D8D01 /* Baidu */,
@@ -490,6 +506,7 @@
 				1646B80222C7931E009271DF /* Gitee */,
 				167DDBE922C76F3B00B03357 /* Github */,
 				167620EA2308191A008F8363 /* Imgur */,
+				1615390E2408E7DE00CC662F /* LskyPro */,
 				1690E7E522BF113700FC81F8 /* Qiniu */,
 				167D7F4E22B4DB2500DD0A7A /* Smms */,
 				1660FCB522C11A9F00372950 /* Tencent */,
@@ -915,6 +932,7 @@
 				16D20B5523838AB1006D8D01 /* BaiduRegion.swift in Sources */,
 				1646B80E22C7C082009271DF /* ConfigView.swift in Sources */,
 				16D20B5A238390F4006D8D01 /* BaiduUtil.swift in Sources */,
+				161539122408EC7B00CC662F /* LskyProUploader.swift in Sources */,
 				1690E7EB22BF2D9400FC81F8 /* QiniuUploader.swift in Sources */,
 				1657019B22C8934000C57EE9 /* WeiboqQuality.swift in Sources */,
 				165D908622C333740096FF38 /* PasteboardType+Extension.swift in Sources */,
@@ -937,6 +955,7 @@
 				1660FCBD22C11C7800372950 /* TencentRegion.swift in Sources */,
 				167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */,
 				16F04EEA23BCC49000CCA2FE /* OutputType.swift in Sources */,
+				161539152408F0E200CC662F /* LskyProConfigView.swift in Sources */,
 				164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */,
 				164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */,
 				4BEFD813238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift in Sources */,
@@ -964,6 +983,7 @@
 				16C176F523A208A80089B933 /* NSImage+Extension.swift in Sources */,
 				167620ED230819C0008F8363 /* ImgurHostConfig.swift in Sources */,
 				1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */,
+				161539132408EC7D00CC662F /* LskyProHostConfig.swift in Sources */,
 				16F04EE723BCC45F00CCA2FE /* StringExtensions.swift in Sources */,
 				4BC11BDE238CFD53001641A6 /* HistoryThumbnailTimer.swift in Sources */,
 				1662AC7122C0AC53003AC924 /* AliyunConfigView.swift in Sources */,

@@ -105,6 +105,8 @@
 "Save Key" = "保存路径";
 "Use CDN" = "使用 jsDeliver CDN 加速访问";
 "Version" = "版本";
+"Email" = "邮箱";
+"Anonymous" = "匿名";
 
 /* host field placeholder */
 "Get API Token" = "获取 API Token";
@@ -135,6 +137,7 @@
 "host.type.amazon_s3" = "Amazon S3";
 "host.type.imgur" = "Imgur";
 "host.type.baidu_bos" = "百度云 BOS";
+"host.type.lsky_pro" = "Lsky Pro";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "缩略图";

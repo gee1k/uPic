@@ -105,6 +105,8 @@
 "Save Key" = "Save Key";
 "Use CDN" = "Use jsDeliver CDN to speed up access";
 "Version" = "Version";
+"Email" = "Email";
+"Anonymous" = "Anonymous";
 
 /* host field placeholder */
 "Get API Token" = "Get API Token";
@@ -135,6 +137,7 @@
 "host.type.amazon_s3" = "Amazon S3";
 "host.type.imgur" = "Imgur";
 "host.type.baidu_bos" = "Baidu Cloud BOS";
+"host.type.lsky_pro" = "Lsky Pro";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "thumbnail";
