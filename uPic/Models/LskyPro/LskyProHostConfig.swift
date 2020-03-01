@@ -13,7 +13,7 @@ class LskyProHostConfig: HostConfig {
     dynamic var email: String = ""
     dynamic var password: String = ""
     dynamic var isAnonymous: Bool = true
-    dynamic var domain: String = "https://pic.iqy.ink"
+    dynamic var domain: String = ""
 
     override func displayName(key: String) -> String {
         switch key {
