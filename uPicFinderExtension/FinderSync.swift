@@ -42,7 +42,7 @@ class FinderSync: FIFinderSync {
         case 2:
             return NSImage(named: "color")!
         default:
-            return NSImage(named: "upicSingle")!
+            return NSImage(named: "single")!
         }
     }
 
