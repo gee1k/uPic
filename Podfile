@@ -18,7 +18,6 @@ use_frameworks!
     pod 'LoginServiceKit', :git => 'https://github.com/Clipy/LoginServiceKit.git'
     pod "libminipng"
     pod 'WCDB.swift'
-    pod 'Defaults'
 
 end
 

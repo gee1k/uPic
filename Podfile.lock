@@ -1,7 +1,6 @@
 PODS:
   - Alamofire (5.0.2)
   - CryptoSwift (1.3.0)
-  - Defaults (3.1.1)
   - Kingfisher (5.13.2):
     - Kingfisher/Core (= 5.13.2)
   - Kingfisher/Core (5.13.2)
@@ -22,7 +21,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
   - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
-  - Defaults
   - Kingfisher
   - libminipng
   - LoginServiceKit (from `https://github.com/Clipy/LoginServiceKit.git`)
@@ -36,7 +34,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - Defaults
     - Kingfisher
     - libminipng
     - MASShortcut
@@ -70,7 +67,6 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
   CryptoSwift: 1283821600233bdbeb96d7b389c3288c3bf77211
-  Defaults: bcfbdb87d0b63fb302d70791b72f62f0f29d26aa
   Kingfisher: d342c8354c10c3d85a27d6d4c42c41285924b898
   libminipng: a44c35d06b9d54d6640acdf97f4500c034748abb
   LoginServiceKit: 9a8b258c3111fa0d9585615052f778b08be92302
@@ -83,6 +79,6 @@ SPEC CHECKSUMS:
   WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
   WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
 
-PODFILE CHECKSUM: 082173e07dec8a17e82ed6415a1959be78d0d8ba
+PODFILE CHECKSUM: 7b3c84ded68f3bee6b328b5b59c8b5f15071fa3d
 
 COCOAPODS: 1.8.4
