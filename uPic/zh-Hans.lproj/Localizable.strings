@@ -55,6 +55,7 @@
 /*匿名上传*/
 "The file will be uploaded anonymously to" = "文件将匿名上传至";
 "Upload via uPic" = "使用 uPic 上传";
+"Upload selected files via uPic" = "用 uPic 上传所选文件";
 "Right click to cancel the current upload task" = "右击取消当前上传任务";
 
 "Did not get the file URL" = "没有获取到文件URL";

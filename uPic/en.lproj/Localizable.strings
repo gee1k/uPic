@@ -53,6 +53,7 @@
 /*匿名上传*/
 "The file will be uploaded anonymously to" = "The file will be uploaded anonymously to";
 "Upload via uPic" = "Upload via uPic";
+"Upload selected files via uPic" = "Upload selected files via uPic";
 "Right click to cancel the current upload task" = "Right click to cancel the current upload task";
 
 "App is already running" = "uPic is already running!";

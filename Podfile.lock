@@ -1,14 +1,15 @@
 PODS:
-  - Alamofire (5.0.0-rc.3)
+  - Alamofire (5.0.2)
   - CryptoSwift (1.3.0)
-  - Kingfisher (5.12.0):
-    - Kingfisher/Core (= 5.12.0)
-  - Kingfisher/Core (5.12.0)
+  - Defaults (3.1.1)
+  - Kingfisher (5.13.2):
+    - Kingfisher/Core (= 5.13.2)
+  - Kingfisher/Core (5.13.2)
   - libminipng (0.5.6)
   - LoginServiceKit (2.1.0)
   - MASShortcut (2.4.0)
   - SnapKit (5.0.1)
-  - Sparkle (1.22.0)
+  - Sparkle (1.23.0)
   - SQLiteRepairKit (1.2.2):
     - WCDBOptimizedSQLCipher (~> 1.2.0)
   - SwiftyJSON (5.0.0)
@@ -21,6 +22,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
   - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
+  - Defaults
   - Kingfisher
   - libminipng
   - LoginServiceKit (from `https://github.com/Clipy/LoginServiceKit.git`)
@@ -34,6 +36,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Defaults
     - Kingfisher
     - libminipng
     - MASShortcut
@@ -55,7 +58,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CryptoSwift:
-    :commit: a44caef0550c346e0ab9172f7c9a3852c1833599
+    :commit: a842251aee9047b2b335afe0ae0b5b44daf95219
     :git: https://github.com/krzyzanowskim/CryptoSwift
   LoginServiceKit:
     :commit: 0b25f256e07ca110c2883f4f5072a7fe525b5805
@@ -65,20 +68,21 @@ CHECKOUT OPTIONS:
     :git: https://github.com/yahoojapan/SwiftyXMLParser.git
 
 SPEC CHECKSUMS:
-  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
   CryptoSwift: 1283821600233bdbeb96d7b389c3288c3bf77211
-  Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
+  Defaults: bcfbdb87d0b63fb302d70791b72f62f0f29d26aa
+  Kingfisher: d342c8354c10c3d85a27d6d4c42c41285924b898
   libminipng: a44c35d06b9d54d6640acdf97f4500c034748abb
   LoginServiceKit: 9a8b258c3111fa0d9585615052f778b08be92302
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  Sparkle: 593ac2e677c07bcb6c3b22d621240e7cbedaab57
+  Sparkle: 55b1a87ba69d56913375a281546b7c82dec95bb0
   SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwiftyXMLParser: 8271497e0a37b5c04b0b167c77b4896e36175a21
   WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
   WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
 
-PODFILE CHECKSUM: 5d4929949fea5a9aff12eeae4ddf2cd5adcff85d
+PODFILE CHECKSUM: 082173e07dec8a17e82ed6415a1959be78d0d8ba
 
 COCOAPODS: 1.8.4

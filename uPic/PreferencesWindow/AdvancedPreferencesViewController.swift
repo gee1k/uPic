@@ -20,6 +20,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     @IBOutlet weak var historyRecordPadding: NSTextField!
     @IBOutlet weak var historyRecordFileNameScrollSpeed: NSTextField!
     @IBOutlet weak var historyRecordFileNameScrollWaitTime: NSTextField!
+    @IBOutlet weak var finderExtensionIcon: NSPopUpButton!
     @IBOutlet weak var resetPreferencesButton: NSButton!
 
     // MARK: Lifecycle
@@ -36,6 +37,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         screenshotShortcut.associatedUserDefaultsKey = Constants.Key.screenshotShortcut
         
         setHistoryRecordTextFieldDefaultText()
+        setFinderExtensionIconDefaultValue()
     }
     
     func setHistoryRecordTextFieldDefaultText() {
@@ -45,6 +47,17 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         historyRecordPadding.stringValue = "\(HistoryRecordPaddingGlobal)"
         historyRecordFileNameScrollSpeed.stringValue = "\(HistoryRecordFileNameScrollSpeedGlobal)"
         historyRecordFileNameScrollWaitTime.stringValue = "\(HistoryRecordFileNameScrollWaitTimeGlobal)"
+    }
+    
+    func setFinderExtensionIconDefaultValue() {
+        switch UserDefaults.init(suiteName: "2U23P5CPX2.com.svend.uPic")?.value(forKey: "uPic_FinderExtensionIcon") as? Int {
+        case 0:
+            finderExtensionIcon.selectItem(withTag: 0)
+        case 2:
+            finderExtensionIcon.selectItem(withTag: 2)
+        default:
+            finderExtensionIcon.selectItem(withTag: 1)
+        }
     }
 
     @IBAction func didClickHistoryRecordConfigurationResetButton(_ sender: NSButton) {
@@ -73,9 +86,24 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         
         ConfigNotifier.postNotification(.changeHistoryList)
     }
-    
-    // MARK: Button Actions
 
+    @IBAction func didChangeFinderExtensionIcon(_ sender: NSPopUpButton) {
+        switch sender.indexOfSelectedItem {
+        case 0:
+            UserDefaults.init(suiteName: "2U23P5CPX2.com.svend.uPic")?.set(0, forKey: "uPic_FinderExtensionIcon")
+        case 2:
+            UserDefaults.init(suiteName: "2U23P5CPX2.com.svend.uPic")?.set(2, forKey: "uPic_FinderExtensionIcon")
+        default:
+            UserDefaults.init(suiteName: "2U23P5CPX2.com.svend.uPic")?.set(1, forKey: "uPic_FinderExtensionIcon")
+        }
+    }
+    
+    @IBAction func didClickRestartFinder(_ sender: NSButton) {
+        let darkLightScript = #"do shell script "killall Finder""#
+        let script = NSAppleScript(source: darkLightScript)
+        script!.executeAndReturnError(nil)
+    }
+    
     @IBAction func resetPreferencesButtonClicked(_ sender: NSButton) {
         let alert = NSAlert()
 
