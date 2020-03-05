@@ -20,3 +20,4 @@ use_frameworks!
     pod 'WCDB.swift'
 
 end
+

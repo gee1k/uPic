@@ -8,8 +8,8 @@
 /* Class = "NSMenuItem"; title = "uPic"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "uPic";
 
-/* Class = "NSMenuItem"; title = "Help"; ObjectID = "2Jw-ET-3eH"; */
-"2Jw-ET-3eH.title" = "Help";
+/* Class = "NSMenuItem"; title = "More"; ObjectID = "2Jw-ET-3eH"; */
+"2Jw-ET-3eH.title" = "More";
 
 /* Class = "NSMenuItem"; title = "Quit uPic"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Quit uPic";
@@ -68,8 +68,8 @@
 /* Class = "NSMenuItem"; title = "URL"; ObjectID = "U1c-9i-q5b"; */
 "U1c-9i-q5b.title" = "URL";
 
-/* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "VW7-Z2-hXR"; */
-"VW7-Z2-hXR.title" = "Preferences...";
+/* Class = "NSMenuItem"; title = "Preferences"; ObjectID = "VW7-Z2-hXR"; */
+"VW7-Z2-hXR.title" = "Preferences";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "W48-6f-4Dl"; */
 "W48-6f-4Dl.title" = "Edit";
@@ -80,8 +80,8 @@
 /* Class = "NSMenuItem"; title = "Export host configuration"; ObjectID = "Yuc-Vp-9Pd"; */
 "Yuc-Vp-9Pd.title" = "Export host configuration";
 
-/* Class = "NSMenu"; title = "Help"; ObjectID = "Z6H-TN-83r"; */
-"Z6H-TN-83r.title" = "Help";
+/* Class = "NSMenu"; title = "More"; ObjectID = "Z6H-TN-83r"; */
+"Z6H-TN-83r.title" = "More";
 
 /* Class = "NSMenuItem"; title = "Alipay"; ObjectID = "aHw-Zc-eD7"; */
 "aHw-Zc-eD7.title" = "Alipay";

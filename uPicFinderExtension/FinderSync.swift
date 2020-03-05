@@ -11,7 +11,6 @@ import FinderSync
 
 class FinderSync: FIFinderSync {
 
-
     override init() {
         super.init()
         // Set up the directory we are syncing.
@@ -35,11 +34,16 @@ class FinderSync: FIFinderSync {
     }
 
     override var toolbarItemToolTip: String {
-        return "Upload selected files via uPic"
+        return "Upload selected files via uPic".localized
     }
 
     override var toolbarItemImage: NSImage {
-        return NSImage(named: "icon")!
+        switch UserDefaults.init(suiteName: "2U23P5CPX2.com.svend.uPic")?.value(forKey: "uPic_FinderExtensionIcon") as? Int {
+        case 2:
+            return NSImage(named: "color")!
+        default:
+            return NSImage(named: "single")!
+        }
     }
 
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
@@ -64,8 +68,16 @@ class FinderSync: FIFinderSync {
                 
                 // 否则说明选中项中包含文件，则创建上传菜单
                 let menu = NSMenu(title: "")
-                let uploadMenuItem = NSMenuItem(title: NSLocalizedString("Upload via uPic", comment: "Upload via uPic"), action: #selector(uploadFile(_:)), keyEquivalent: "")
-                uploadMenuItem.image = NSImage(named: "upload")
+                let uploadMenuItem = NSMenuItem(title: "Upload via uPic".localized, action: #selector(uploadFile(_:)), keyEquivalent: "")
+                switch UserDefaults.init(suiteName: "2U23P5CPX2.com.svend.uPic")?.value(forKey: "uPic_FinderExtensionIcon") as? Int {
+                case 0:
+                    uploadMenuItem.image = nil
+                case 2:
+                    uploadMenuItem.image = NSImage(named: "color")
+                default:
+                    uploadMenuItem.image = NSImage(named: "single")
+                }
+                
                 menu.addItem(uploadMenuItem)
 
                 // 当文件数量为0，也就说明选择的都是文件夹，则不创建菜单
@@ -111,7 +123,6 @@ class FinderSync: FIFinderSync {
             }
             
         }
-
     }
 
 }

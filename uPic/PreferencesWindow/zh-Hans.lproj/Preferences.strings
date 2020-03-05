@@ -2,8 +2,8 @@
 /* Class = "NSButtonCell"; title = "svend.cc"; ObjectID = "0dV-As-mmQ"; */
 "0dV-As-mmQ.title" = "svend.cc";
 
-/* Class = "NSTextFieldCell"; title = "⚠️ Note that this will reset all user preferences"; ObjectID = "2Rg-te-FPU"; */
-"2Rg-te-FPU.title" = "⚠️ 注意这将会重置所有用户偏好设置";
+/* Class = "NSTextFieldCell"; title = "may require a"; ObjectID = "2Rg-te-FPU"; */
+"2Rg-te-FPU.title" = "可能需要";
 
 /* Class = "NSButtonCell"; title = "Paypal"; ObjectID = "59m-hG-lVw"; */
 "59m-hG-lVw.title" = "Paypal";
@@ -41,6 +41,9 @@
 /* Class = "NSViewController"; title = "General"; ObjectID = "Gn1-zC-bzB"; */
 "Gn1-zC-bzB.title" = "通用";
 
+/* Class = "NSMenuItem"; title = "Non"; ObjectID = "GwK-5k-ATM"; */
+"GwK-5k-ATM.title" = "无图标";
+
 /* Class = "NSViewController"; title = "Advanced"; ObjectID = "H3q-JS-Bu4"; */
 "H3q-JS-Bu4.title" = "高级";
 
@@ -71,6 +74,9 @@
 /* Class = "NSTextFieldCell"; title = "💡 HomePage:"; ObjectID = "OjL-Zl-YKD"; */
 "OjL-Zl-YKD.title" = "💡 主页:";
 
+/* Class = "NSTextFieldCell"; title = "⚠️ Note that this will reset all user preferences"; ObjectID = "PmD-JC-2Hq"; */
+"PmD-JC-2Hq.title" = "⚠️ 注意这将会重置所有用户偏好设置";
+
 /* Class = "NSTextFieldCell"; title = "Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {saveKey} and etc."; ObjectID = "R0i-0c-6TZ"; */
 "R0i-0c-6TZ.title" = "支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {saveKey} 等变量。";
 
@@ -89,6 +95,9 @@
 /* Class = "NSTextFieldCell"; title = "Upload from screenshot:"; ObjectID = "Xd9-iA-emU"; */
 "Xd9-iA-emU.title" = "截图上传:";
 
+/* Class = "NSTextFieldCell"; title = "Finder extension"; ObjectID = "XtR-28-Jft"; */
+"XtR-28-Jft.title" = "访达扩展";
+
 /* Class = "NSButtonCell"; title = "Launch uPic at login"; ObjectID = "ZbK-xW-anT"; */
 "ZbK-xW-anT.title" = "登录时启动 uPic";
 
@@ -103,6 +112,9 @@
 
 /* Class = "NSBox"; title = "HostSettings"; ObjectID = "dEW-XT-ogl"; */
 "dEW-XT-ogl.title" = "HostSettings";
+
+/* Class = "NSMenuItem"; title = "Single"; ObjectID = "dGv-rY-F7Z"; */
+"dGv-rY-F7Z.title" = "单色";
 
 /* Class = "NSMenuItem"; title = "More"; ObjectID = "dZy-kW-0lH"; */
 "dZy-kW-0lH.title" = "更多";
@@ -121,6 +133,9 @@
 
 /* Class = "NSTextFieldCell"; title = "Width:"; ObjectID = "iRI-j6-BHQ"; */
 "iRI-j6-BHQ.title" = "宽度:";
+
+/* Class = "NSButtonCell"; title = "Finder Restart"; ObjectID = "jA2-Zt-kWu"; */
+"jA2-Zt-kWu.title" = "重启访达";
 
 /* Class = "NSTextFieldCell"; title = "Reset"; ObjectID = "jcs-Ou-OZ2"; */
 "jcs-Ou-OZ2.title" = "重置";
@@ -148,3 +163,10 @@
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "q1H-P0-jix"; */
 "q1H-P0-jix.title" = "取消";
+
+/* Class = "NSMenuItem"; title = "Color"; ObjectID = "q6h-oC-nNb"; */
+"q6h-oC-nNb.title" = "彩色";
+
+/* Class = "NSTextFieldCell"; title = "Icon:"; ObjectID = "ugx-B2-gPe"; */
+"ugx-B2-gPe.title" = "图标:";
+
