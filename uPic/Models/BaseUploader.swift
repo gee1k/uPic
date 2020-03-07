@@ -273,7 +273,7 @@ class BaseUploader {
         }
     }
     
-    private static func checkFileExtensions(fileExtensions: [String], fileExtension: String) -> Bool {
+    static func checkFileExtensions(fileExtensions: [String], fileExtension: String) -> Bool {
         if fileExtensions.count == 0 {
             return true
         }
@@ -291,5 +291,30 @@ class BaseUploader {
         }
         
         return size <= limitSize
+    }
+}
+
+var _uploadFolderPathKey: Void?
+extension URL {
+    var _uploadFolderPath: String? {
+        get {
+            return objc_getAssociatedObject(self, &_uploadFolderPathKey) as? String
+        }
+        
+        set {
+            objc_setAssociatedObject(self, &_uploadFolderPathKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+}
+
+extension Data {
+    var _uploadFolderPath: String? {
+        get {
+            return objc_getAssociatedObject(self, &_uploadFolderPathKey) as? String
+        }
+        
+        set {
+            objc_setAssociatedObject(self, &_uploadFolderPathKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
     }
 }

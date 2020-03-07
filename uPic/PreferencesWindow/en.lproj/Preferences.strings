@@ -78,7 +78,7 @@
 "PmD-JC-2Hq.title" = "⚠️ Note that this will reset all user preferences";
 
 /* Class = "NSTextFieldCell"; title = "Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {saveKey} and etc."; ObjectID = "R0i-0c-6TZ"; */
-"R0i-0c-6TZ.title" = "Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {saveKey} and etc.";
+"R0i-0c-6TZ.title" = "Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} {saveKey} and etc.";
 
 /* Class = "NSButtonCell"; title = "⚠️ Reset"; ObjectID = "TD4-LI-X9U"; */
 "TD4-LI-X9U.title" = "⚠️ Reset";

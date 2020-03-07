@@ -222,7 +222,7 @@ extension AppDelegate {
         
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = true
-        openPanel.canChooseDirectories = false
+        openPanel.canChooseDirectories = true
         openPanel.canCreateDirectories = false
         openPanel.canChooseFiles = true
         
@@ -323,9 +323,41 @@ extension AppDelegate {
     // 上传多个文件
     // MARK: - Cli Support
     func uploadFiles(_ files: [Any], _ uploadSourceType: UploadSourceType? = .normal) {
+        
+        var uploadFiles = files
+        
+        if let urls = files as? [URL] {
+            // 如果是文件路径，处理文件夹
+            var uploadUrls: [URL] = []
+            for url in urls {
+                let path = url.path
+                if FileManager.directoryIsExists(path: path) {
+                    let directoryName = path.lastPathComponent
+                    let enumerator = FileManager.default.enumerator(atPath: path)
+                    while let filename = enumerator?.nextObject() as? String {
+                        let subPath = path.appendingPathComponent(path: filename)
+                        if FileManager.directoryIsExists(path: subPath) {
+                            continue
+                        }
+                        if !BaseUploader.checkFileExtensions(fileExtensions: BaseUploader.getFileExtensions(), fileExtension: filename.pathExtension) {
+                            continue
+                        }
+                        let subDirectoryPath = filename.deletingLastPathComponent
+                        let directoryPath = directoryName.appendingPathComponent(path: subDirectoryPath)
+                        var subUrl = URL(fileURLWithPath: subPath)
+                        subUrl._uploadFolderPath = directoryPath
+                        uploadUrls.append(subUrl)
+                    }
+                } else {
+                    uploadUrls.append(url)
+                }
+            }
+            uploadFiles = uploadUrls
+        }
+        
         self.uploadSourceType = uploadSourceType
         
-        self.needUploadFiles = files
+        self.needUploadFiles = uploadFiles
         self.resultUrls.removeAll()
         
         if self.needUploadFiles.count == 0 {

@@ -78,7 +78,7 @@
 "PmD-JC-2Hq.title" = "⚠️ 注意这将会重置所有用户偏好设置";
 
 /* Class = "NSTextFieldCell"; title = "Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {saveKey} and etc."; ObjectID = "R0i-0c-6TZ"; */
-"R0i-0c-6TZ.title" = "支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {saveKey} 等变量。";
+"R0i-0c-6TZ.title" = "支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} {saveKey} 等变量。";
 
 /* Class = "NSButtonCell"; title = "⚠️ Reset"; ObjectID = "TD4-LI-X9U"; */
 "TD4-LI-X9U.title" = "⚠️ 撤销";

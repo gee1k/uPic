@@ -26,7 +26,6 @@ class QiniuUploader: BaseUploader {
 
         let config = data as! QiniuHostConfig
 
-
         let bucket = config.bucket
         let accessKey = config.accessKey
         let secretKey = config.secretKey
