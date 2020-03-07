@@ -110,6 +110,9 @@
 		16D20B5A238390F4006D8D01 /* BaiduUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B59238390F4006D8D01 /* BaiduUtil.swift */; };
 		16D20B5C238392C9006D8D01 /* BaiduConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */; };
 		16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205B22AF8FB90006FB9C /* ConfigManager.swift */; };
+		16ECAA742413AE6000F9236B /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16ECAA732413AE6000F9236B /* info.plist */; };
+		16ECAA962413B6C200F9236B /* FinderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECAA952413B6C200F9236B /* FinderUtil.swift */; };
+		16ECAA972413B77800F9236B /* FinderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECAA952413B6C200F9236B /* FinderUtil.swift */; };
 		16F04EE423BCC45F00CCA2FE /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EDE23BCC45F00CCA2FE /* Console.swift */; };
 		16F04EE523BCC45F00CCA2FE /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE023BCC45F00CCA2FE /* CommandLine.swift */; };
 		16F04EE623BCC45F00CCA2FE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE123BCC45F00CCA2FE /* Option.swift */; };
@@ -138,7 +141,6 @@
 		68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */; };
 		8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; };
 		968ECC07240DFCF900B2D78C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 968ECC09240DFCF900B2D78C /* InfoPlist.strings */; };
-		968ECC2E240E000E00B2D78C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 968ECC2D240E000E00B2D78C /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -280,6 +282,8 @@
 		16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduConfigView.swift; sourceTree = "<group>"; };
 		16EA205B22AF8FB90006FB9C /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
 		16EC9A0222ABBBB4001B6C89 /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16ECAA732413AE6000F9236B /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		16ECAA952413B6C200F9236B /* FinderUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderUtil.swift; sourceTree = "<group>"; };
 		16F04EDE23BCC45F00CCA2FE /* Console.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		16F04EE023BCC45F00CCA2FE /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		16F04EE123BCC45F00CCA2FE /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
@@ -310,7 +314,6 @@
 		9667517C240D2BA6007C7012 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		968ECC08240DFCF900B2D78C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		968ECC0A240DFCFA00B2D78C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		968ECC2D240E000E00B2D78C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../Downloads/Info.plist; sourceTree = "<group>"; };
 		969018A3240D998400B545B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uPic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B31C410193F6C634ECBC8F5F /* Pods-uPic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.debug.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -527,6 +530,7 @@
 				4B6C62F923613AEF008E3735 /* NSImageExtension.swift */,
 				4B2B3355236C3B6400C9F2CA /* NSViewExtension.swift */,
 				4B2B3353236BC5AB00C9F2CA /* NSButtonExtension.swift */,
+				16ECAA952413B6C200F9236B /* FinderUtil.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -686,10 +690,10 @@
 			isa = PBXGroup;
 			children = (
 				16F7467322E994A300480A62 /* FinderSync.swift */,
-				968ECC2D240E000E00B2D78C /* Info.plist */,
 				16F7467622E994A300480A62 /* uPicFinderExtension.entitlements */,
 				16BDDDFE22EA96AE0080E467 /* Assets.xcassets */,
 				968ECC09240DFCF900B2D78C /* InfoPlist.strings */,
+				16ECAA732413AE6000F9236B /* info.plist */,
 			);
 			path = uPicFinderExtension;
 			sourceTree = "<group>";
@@ -853,8 +857,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16ECAA742413AE6000F9236B /* info.plist in Resources */,
 				1618D1A622E99BB800831601 /* Preferences.storyboard in Resources */,
-				968ECC2E240E000E00B2D78C /* Info.plist in Resources */,
 				16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */,
 				1618D1A522E99BAA00831601 /* Localizable.strings in Resources */,
 				968ECC07240DFCF900B2D78C /* InfoPlist.strings in Resources */,
@@ -1013,6 +1017,7 @@
 				167DDBEB22C76F5000B03357 /* GithubUploader.swift in Sources */,
 				169F073922AF4549008E8525 /* GeneralPreferencesViewController.swift in Sources */,
 				16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */,
+				16ECAA962413B6C200F9236B /* FinderUtil.swift in Sources */,
 				161C3BE522C4870C0092114F /* CustomConfigView.swift in Sources */,
 				68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */,
 				68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */,
@@ -1036,6 +1041,7 @@
 			files = (
 				16B4F0BC23ADCFAC00846BD3 /* String+Extension.swift in Sources */,
 				1618D1AA22E99EA400831601 /* UploadNotifier.swift in Sources */,
+				16ECAA972413B77800F9236B /* FinderUtil.swift in Sources */,
 				1618D1A922E99E9B00831601 /* Notifier.swift in Sources */,
 				16F7467422E994A300480A62 /* FinderSync.swift in Sources */,
 			);
@@ -1219,10 +1225,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 20200301;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1249,10 +1255,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 20200301;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1275,9 +1281,9 @@
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1300,9 +1306,9 @@
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

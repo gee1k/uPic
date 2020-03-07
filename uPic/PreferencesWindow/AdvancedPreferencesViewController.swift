@@ -50,14 +50,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     }
     
     func setFinderExtensionIconDefaultValue() {
-        switch UserDefaults.init(suiteName: "2U23P5CPX2.com.svend.uPic")?.value(forKey: "uPic_FinderExtensionIcon") as? Int {
-        case 0:
-            finderExtensionIcon.selectItem(withTag: 0)
-        case 2:
-            finderExtensionIcon.selectItem(withTag: 2)
-        default:
-            finderExtensionIcon.selectItem(withTag: 1)
-        }
+        finderExtensionIcon.selectItem(at: FinderUtil.getIcon())
     }
 
     @IBAction func didClickHistoryRecordConfigurationResetButton(_ sender: NSButton) {
@@ -88,19 +81,12 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     }
 
     @IBAction func didChangeFinderExtensionIcon(_ sender: NSPopUpButton) {
-        switch sender.indexOfSelectedItem {
-        case 0:
-            UserDefaults.init(suiteName: "2U23P5CPX2.com.svend.uPic")?.set(0, forKey: "uPic_FinderExtensionIcon")
-        case 2:
-            UserDefaults.init(suiteName: "2U23P5CPX2.com.svend.uPic")?.set(2, forKey: "uPic_FinderExtensionIcon")
-        default:
-            UserDefaults.init(suiteName: "2U23P5CPX2.com.svend.uPic")?.set(1, forKey: "uPic_FinderExtensionIcon")
-        }
+        FinderUtil.setIcon(sender.indexOfSelectedItem)
     }
     
     @IBAction func didClickRestartFinder(_ sender: NSButton) {
-        let darkLightScript = #"do shell script "killall Finder""#
-        let script = NSAppleScript(source: darkLightScript)
+        let killFinderScript = #"do shell script "killall Finder""#
+        let script = NSAppleScript(source: killFinderScript)
         script!.executeAndReturnError(nil)
     }
     
@@ -125,8 +111,10 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         case .alertSecondButtonReturn:
             ConfigManager.shared.removeAllUserDefaults()
             ConfigManager.shared.firstSetup()
+            FinderUtil.removeIcon()
             
             DispatchQueue.main.async {
+                self.setFinderExtensionIconDefaultValue()
                 ConfigNotifier.postNotification(.changeHistoryList)
                 self.resetAllValues()
             }
