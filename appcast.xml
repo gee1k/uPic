@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.18.0</title>
+			<description>
+			<![CDATA[
+			<ul> <li>新增：上传文件夹（选择文件夹、拖拽文件夹、文件夹右键菜单），自动按照文件夹结构上传到服务器。fixes #81</li> <li>新增：自定义图床URL支持变量。</li> <li>新增：自定义图床支持 Base64 格式上传。fixes #80</li> <li>新增：变量 {mimetype}。fixes #80</li> <li>新增: 访达扩展图标选项。thx @L1cardo</li> </ul> <hr /> <ul> <li>Added: Upload folder (select folder, drag folder, folder context menu), automatically according to the folder structure upload to the server. fixes #81</li> <li>Added: Custom host URL support variables.</li> <li>Added: Custom host support Base64 format uploader. fixes #80</li> <li>Added: Variable {mimetype}. fixes #80</li> <li>Added: Finder extension icon option. thx @L1cardo</li> </ul>
+			]]>
+			</description>
+			<pubDate>Mon, 09 Mar 2020 10:23:34 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.18.0/uPic.dmg" sparkle:version="20200309" sparkle:shortVersionString="v0.18.0" type="application/octet-stream" sparkle:edSignature="8u1ksM29n61yJH0UIg5zlTYO3IrtOwu6adi9NcjYbuzXkKrgqMFtGG3WrqLhKQXM8hm33vPtYcVKlSgppX12AQ==" length="10792690"/>
+		</item>
+		<item>
 			<title>v0.17.0</title>
 			<description>
 			<![CDATA[
