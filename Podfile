@@ -8,7 +8,7 @@ target 'uPic' do
 use_frameworks!
 
     pod 'SwiftyJSON'
-    pod 'Alamofire', '~> 5.0.0-rc.3'
+    pod 'Alamofire', '~> 5.0.2'
     pod 'MASShortcut'
     pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "master"
     pod "SwiftyXMLParser", :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
@@ -20,3 +20,4 @@ use_frameworks!
     pod 'WCDB.swift'
 
 end
+

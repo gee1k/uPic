@@ -55,6 +55,7 @@
 /*匿名上传*/
 "The file will be uploaded anonymously to" = "文件将匿名上传至";
 "Upload via uPic" = "使用 uPic 上传";
+"Upload selected files via uPic" = "用 uPic 上传所选文件";
 "Right click to cancel the current upload task" = "右击取消当前上传任务";
 
 "Did not get the file URL" = "没有获取到文件URL";
@@ -107,6 +108,7 @@
 "Version" = "版本";
 "Email" = "邮箱";
 "Anonymous" = "匿名";
+"Use Base64" = "使用 Base64";
 
 /* host field placeholder */
 "Get API Token" = "获取 API Token";
@@ -121,7 +123,7 @@
 "The path to the URL field in Response JSON" = "返回 JSON 中的 URL 字段的路径";
 "(optional),When filled, URL = domain + URL path value" = "(可选), 当填写时, URL = 前缀 + URL 路径值";
 
-"Save Key Tips" = "支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} 等变量。比如: 上传的图片为 uPic.jpg, 设定为 “uPic/{filename}{.suffix}”, 则会保存到 “uPic/uPic.jpg”。";
+"Save Key Tips" = "支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} 等变量。比如: 上传的图片为 uPic.jpg, 设定为 “uPic/{filename}{.suffix}”, 则会保存到 “uPic/uPic.jpg”。";
 "Suffix Tips" = "访问时追加的后缀, 不影响上传(同样支持变量)。可用作对象储存的图片处理样式等等...例如: !w 代表获取加水印版的图片。";
 
 /*host type*/

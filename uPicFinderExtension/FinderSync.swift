@@ -11,7 +11,6 @@ import FinderSync
 
 class FinderSync: FIFinderSync {
 
-
     override init() {
         super.init()
         // Set up the directory we are syncing.
@@ -35,11 +34,16 @@ class FinderSync: FIFinderSync {
     }
 
     override var toolbarItemToolTip: String {
-        return "Upload selected files via uPic"
+        return "Upload selected files via uPic".localized
     }
 
     override var toolbarItemImage: NSImage {
-        return NSImage(named: "icon")!
+        switch FinderUtil.getIcon() {
+        case 2:
+            return NSImage(named: "color")!
+        default:
+            return NSImage(named: "single")!
+        }
     }
 
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
@@ -47,39 +51,21 @@ class FinderSync: FIFinderSync {
 
         switch menuKind {
         case .contextualMenuForItems, .toolbarItemMenu:
-            // 获取当前选中的文件、文件夹
-            if let items = FIFinderSyncController.default().selectedItemURLs() {
-                // 统计选中项中，文件的数量
-                var fileNumber = 0
-
-                for item in items {
-                    var isDirectory: ObjCBool = false
-                    let fileExists = FileManager.default.fileExists(atPath: item.path, isDirectory: &isDirectory)
-                    if fileExists && isDirectory.boolValue {
-                        continue
-                    }
-
-                    fileNumber = fileNumber + 1
-                }
-                
-                // 否则说明选中项中包含文件，则创建上传菜单
-                let menu = NSMenu(title: "")
-                let uploadMenuItem = NSMenuItem(title: NSLocalizedString("Upload via uPic", comment: "Upload via uPic"), action: #selector(uploadFile(_:)), keyEquivalent: "")
-                uploadMenuItem.image = NSImage(named: "upload")
-                menu.addItem(uploadMenuItem)
-
-                // 当文件数量为0，也就说明选择的都是文件夹，则不创建菜单
-                if fileNumber == 0 {
-                    if menuKind == .contextualMenuForItems {
-                        return nil
-                    } else if menuKind == .toolbarItemMenu {
-                        uploadMenuItem.isEnabled = false
-                    }
-                }
-
-                return menu
+            let menu = NSMenu(title: "")
+            let uploadMenuItem = NSMenuItem(title: "Upload via uPic".localized, action: #selector(uploadFile(_:)), keyEquivalent: "")
+            
+            switch FinderUtil.getIcon() {
+            case 0:
+                uploadMenuItem.image = nil
+            case 2:
+                uploadMenuItem.image = NSImage(named: "color")
+            default:
+                uploadMenuItem.image = NSImage(named: "single")
             }
+            
+            menu.addItem(uploadMenuItem)
 
+            return menu
         default:
             break
         }
@@ -93,13 +79,6 @@ class FinderSync: FIFinderSync {
             var path = ""
             for item in items {
                 let filePath = item.path
-
-                // 从选中项中过滤掉文件夹项
-                var isDirectory: ObjCBool = false
-                let fileExists = FileManager.default.fileExists(atPath: filePath, isDirectory: &isDirectory)
-                if fileExists && isDirectory.boolValue {
-                    continue
-                }
                 path = "\(path)\(filePath)\n"
             }
             let encodeUrl = "uPic://files?\(path)".urlEncoded()
@@ -111,7 +90,6 @@ class FinderSync: FIFinderSync {
             }
             
         }
-
     }
 
 }

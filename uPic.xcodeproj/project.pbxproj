@@ -25,7 +25,6 @@
 		161C3BE122C483380092114F /* CustomUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE022C4831B0092114F /* CustomUploader.swift */; };
 		161C3BE322C483560092114F /* CustomHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE222C483560092114F /* CustomHostConfig.swift */; };
 		161C3BE522C4870C0092114F /* CustomConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161C3BE422C4870B0092114F /* CustomConfigView.swift */; };
-		1623611B22AB935300E4025C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623611D22AB935300E4025C /* InfoPlist.strings */; };
 		1623612322AB951E00E4025C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
 		16248E32230673B6002131BB /* NotificationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16248E31230673B6002131BB /* NotificationExt.swift */; };
 		163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163632EE22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift */; };
@@ -111,6 +110,9 @@
 		16D20B5A238390F4006D8D01 /* BaiduUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B59238390F4006D8D01 /* BaiduUtil.swift */; };
 		16D20B5C238392C9006D8D01 /* BaiduConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */; };
 		16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205B22AF8FB90006FB9C /* ConfigManager.swift */; };
+		16ECAA742413AE6000F9236B /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16ECAA732413AE6000F9236B /* info.plist */; };
+		16ECAA962413B6C200F9236B /* FinderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECAA952413B6C200F9236B /* FinderUtil.swift */; };
+		16ECAA972413B77800F9236B /* FinderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECAA952413B6C200F9236B /* FinderUtil.swift */; };
 		16F04EE423BCC45F00CCA2FE /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EDE23BCC45F00CCA2FE /* Console.swift */; };
 		16F04EE523BCC45F00CCA2FE /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE023BCC45F00CCA2FE /* CommandLine.swift */; };
 		16F04EE623BCC45F00CCA2FE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE123BCC45F00CCA2FE /* Option.swift */; };
@@ -138,6 +140,7 @@
 		68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */; };
 		68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */; };
 		8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; };
+		968ECC07240DFCF900B2D78C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 968ECC09240DFCF900B2D78C /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,13 +188,10 @@
 		161539142408F0E200CC662F /* LskyProConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LskyProConfigView.swift; sourceTree = "<group>"; };
 		1618D1A722E99E2100831601 /* UploadNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadNotifier.swift; sourceTree = "<group>"; };
 		161ABBDC23B1F1EB00805C5B /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
-		161ABBE123B212C600805C5B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		161ABBE323B212C800805C5B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		161C3BE022C4831B0092114F /* CustomUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUploader.swift; sourceTree = "<group>"; };
 		161C3BE222C483560092114F /* CustomHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHostConfig.swift; sourceTree = "<group>"; };
 		161C3BE422C4870B0092114F /* CustomConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfigView.swift; sourceTree = "<group>"; };
-		1623611C22AB935300E4025C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1623611E22AB935F00E4025C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1623612422AB951E00E4025C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1623612622AB951F00E4025C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		16248E31230673B6002131BB /* NotificationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExt.swift; sourceTree = "<group>"; };
@@ -209,7 +209,6 @@
 		1647474222B66ACE00F9575D /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		1647474422B66E3400F9575D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1648A215238E742600B99B9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1648A217238E742F00B99B9D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		1648A218238E743200B99B9D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		164C39FF22B2AA6C003ADE39 /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigNotifier.swift; sourceTree = "<group>"; };
@@ -283,6 +282,8 @@
 		16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduConfigView.swift; sourceTree = "<group>"; };
 		16EA205B22AF8FB90006FB9C /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
 		16EC9A0222ABBBB4001B6C89 /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16ECAA732413AE6000F9236B /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		16ECAA952413B6C200F9236B /* FinderUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderUtil.swift; sourceTree = "<group>"; };
 		16F04EDE23BCC45F00CCA2FE /* Console.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		16F04EE023BCC45F00CCA2FE /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		16F04EE123BCC45F00CCA2FE /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
@@ -293,7 +294,6 @@
 		16F04EED23BCC4C500CCA2FE /* URLSchemeExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSchemeExt.swift; sourceTree = "<group>"; };
 		16F7467122E994A300480A62 /* uPicFinderExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicFinderExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		16F7467322E994A300480A62 /* FinderSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderSync.swift; sourceTree = "<group>"; };
-		16F7467522E994A300480A62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16F7467622E994A300480A62 /* uPicFinderExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPicFinderExtension.entitlements; sourceTree = "<group>"; };
 		4B09F11323695F8D000208BD /* HistoryThumbnailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailContentView.swift; sourceTree = "<group>"; };
 		4B112CA623603DBB009E79B4 /* HistoryThumbnailFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailFlowLayout.swift; sourceTree = "<group>"; };
@@ -311,6 +311,10 @@
 		68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Util.swift; sourceTree = "<group>"; };
 		68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Uploader.swift; sourceTree = "<group>"; };
 		68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3HostConfig.swift; sourceTree = "<group>"; };
+		9667517C240D2BA6007C7012 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		968ECC08240DFCF900B2D78C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		968ECC0A240DFCFA00B2D78C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		969018A3240D998400B545B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uPic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B31C410193F6C634ECBC8F5F /* Pods-uPic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.debug.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.debug.xcconfig"; sourceTree = "<group>"; };
 		FA1B39CC17103449CC5099AD /* Pods-uPic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.release.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.release.xcconfig"; sourceTree = "<group>"; };
@@ -526,6 +530,7 @@
 				4B6C62F923613AEF008E3735 /* NSImageExtension.swift */,
 				4B2B3355236C3B6400C9F2CA /* NSViewExtension.swift */,
 				4B2B3353236BC5AB00C9F2CA /* NSButtonExtension.swift */,
+				16ECAA952413B6C200F9236B /* FinderUtil.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -627,7 +632,6 @@
 			isa = PBXGroup;
 			children = (
 				16A6DC6022AA375800813706 /* Info.plist */,
-				1623611D22AB935300E4025C /* InfoPlist.strings */,
 				16A6DC6122AA375800813706 /* uPic.entitlements */,
 			);
 			path = "Supporting Files";
@@ -686,9 +690,10 @@
 			isa = PBXGroup;
 			children = (
 				16F7467322E994A300480A62 /* FinderSync.swift */,
-				16F7467522E994A300480A62 /* Info.plist */,
 				16F7467622E994A300480A62 /* uPicFinderExtension.entitlements */,
 				16BDDDFE22EA96AE0080E467 /* Assets.xcassets */,
+				968ECC09240DFCF900B2D78C /* InfoPlist.strings */,
+				16ECAA732413AE6000F9236B /* info.plist */,
 			);
 			path = uPicFinderExtension;
 			sourceTree = "<group>";
@@ -843,7 +848,6 @@
 			files = (
 				1623612322AB951E00E4025C /* Localizable.strings in Resources */,
 				1648A216238E742600B99B9D /* Main.storyboard in Resources */,
-				1623611B22AB935300E4025C /* InfoPlist.strings in Resources */,
 				169F073B22AF53DE008E8525 /* Preferences.storyboard in Resources */,
 				16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */,
 			);
@@ -853,9 +857,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16ECAA742413AE6000F9236B /* info.plist in Resources */,
 				1618D1A622E99BB800831601 /* Preferences.storyboard in Resources */,
 				16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */,
 				1618D1A522E99BAA00831601 /* Localizable.strings in Resources */,
+				968ECC07240DFCF900B2D78C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1011,6 +1017,7 @@
 				167DDBEB22C76F5000B03357 /* GithubUploader.swift in Sources */,
 				169F073922AF4549008E8525 /* GeneralPreferencesViewController.swift in Sources */,
 				16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */,
+				16ECAA962413B6C200F9236B /* FinderUtil.swift in Sources */,
 				161C3BE522C4870C0092114F /* CustomConfigView.swift in Sources */,
 				68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */,
 				68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */,
@@ -1034,6 +1041,7 @@
 			files = (
 				16B4F0BC23ADCFAC00846BD3 /* String+Extension.swift in Sources */,
 				1618D1AA22E99EA400831601 /* UploadNotifier.swift in Sources */,
+				16ECAA972413B77800F9236B /* FinderUtil.swift in Sources */,
 				1618D1A922E99E9B00831601 /* Notifier.swift in Sources */,
 				16F7467422E994A300480A62 /* FinderSync.swift in Sources */,
 			);
@@ -1050,15 +1058,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1623611D22AB935300E4025C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1623611C22AB935300E4025C /* en */,
-				1623611E22AB935F00E4025C /* zh-Hans */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		1623612522AB951E00E4025C /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1072,8 +1071,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				1648A215238E742600B99B9D /* Base */,
-				1648A217238E742F00B99B9D /* en */,
 				1648A218238E743200B99B9D /* zh-Hans */,
+				9667517C240D2BA6007C7012 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1082,10 +1081,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				169F073C22AF53DE008E8525 /* Base */,
-				161ABBE123B212C600805C5B /* en */,
 				161ABBE323B212C800805C5B /* zh-Hans */,
+				969018A3240D998400B545B2 /* en */,
 			);
 			name = Preferences.storyboard;
+			sourceTree = "<group>";
+		};
+		968ECC09240DFCF900B2D78C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				968ECC08240DFCF900B2D78C /* en */,
+				968ECC0A240DFCFA00B2D78C /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1219,7 +1227,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20200301;
+				CURRENT_PROJECT_VERSION = 20200309;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1228,7 +1236,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.17.0;
+				MARKETING_VERSION = 0.18.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1249,7 +1257,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20200301;
+				CURRENT_PROJECT_VERSION = 20200309;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1258,7 +1266,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.17.0;
+				MARKETING_VERSION = 0.18.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

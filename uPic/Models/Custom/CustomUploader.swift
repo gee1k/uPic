@@ -25,7 +25,6 @@ class CustomUploader: BaseUploader {
 
         let config = data as! CustomHostConfig
 
-        let url = config.url
         let method = config.method
         let field = config.field
         let domain = config.domain
@@ -34,25 +33,25 @@ class CustomUploader: BaseUploader {
         
         let saveKeyPath = config.saveKeyPath
 
-        if url.isEmpty {
-            super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
-            return
-        }
-
-        guard let configuration = BaseUploaderUtil.getSaveConfiguration(fileUrl, fileData, saveKeyPath) else {
+        guard let configuration = BaseUploaderUtil.getSaveConfigurationWithB64(fileUrl, fileData, saveKeyPath) else {
             super.faild(errorMsg: "Invalid file")
             return
         }
         let retData = configuration["retData"] as? Data
+        let fileBase64 = configuration["fileBase64"] as! String
         let fileName = configuration["fileName"] as! String
         let mimeType = configuration["mimeType"] as! String
         let saveKey = configuration["saveKey"] as! String
         
+        let url = BaseUploaderUtil._parseVariables(config.url, fileName, otherVariables: nil)
+        if url.isEmpty {
+            super.faild(errorMsg: "There is a problem with the map bed configuration, please check!".localized)
+            return
+        }
+        
         let suffix = BaseUploaderUtil._parseVariables(config.suffix, fileName, otherVariables: nil)
 
         var headers = HTTPHeaders()
-        headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
-        
         
         let otherVariables = ["saveKey": saveKey]
 
@@ -67,50 +66,103 @@ class CustomUploader: BaseUploader {
                 }
             }
         }
-
-
-        func multipartFormDataGen(multipartFormData: MultipartFormData) {
+        
+        func _byRequest() {
+            var parameters = Parameters()
             if let bodysStr = config.bodys {
                 let bodysArr = CustomHostUtil.parseHeadersOrBodys(bodysStr)
                 for body in bodysArr {
                     if let key = body["key"] {
                         var value = body["value"] ?? ""
                         value = BaseUploaderUtil._parseVariables(value, fileName, otherVariables: otherVariables)
-
-                        multipartFormData.append(String(value).data(using: .utf8)!, withName: key)
+                        parameters[key] = value
                     }
                 }
             }
-            multipartFormData.append(saveKey.data(using: .utf8)!, withName: "key")
-            if retData != nil {
-                multipartFormData.append(retData!, withName: field, fileName: fileName, mimeType: mimeType)
-            } else if fileUrl != nil {
-                multipartFormData.append(fileUrl!, withName: field, fileName: fileName, mimeType: mimeType)
+            parameters[field] = fileBase64
+            
+            if !headers.contains(where: {header -> Bool in
+                return header.name.lowercased() == "content-type"
+            }) {
+                headers.add(HTTPHeader.contentType("application/json"))
             }
-        }
-
-
-        AF.upload(multipartFormData: multipartFormDataGen, to: url, method: httpMethod, headers: headers).validate().uploadProgress { progress in
+            
+            AF.request(url, method: httpMethod, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
             }.responseJSON(completionHandler: { response -> Void in
-                debugPrint(response)
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                var retUrl = CustomHostUtil.parseResultUrl(json, config.resultPath ?? "")
-                if retUrl.isEmpty {
-                    super.faild(errorMsg: "Did not get the file URL".localized)
-                    return
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    var retUrl = CustomHostUtil.parseResultUrl(json, config.resultPath ?? "")
+                    if retUrl.isEmpty {
+                        super.faild(errorMsg: "Did not get the file URL".localized)
+                        return
+                    }
+                    if !domain.isEmpty {
+                        retUrl = "\(domain)/\(retUrl)"
+                    }
+                    super.completed(url: "\(retUrl)\(suffix)", retData, fileUrl, nil)
+                case .failure(let error):
+                    super.faild(errorMsg: error.localizedDescription)
                 }
-                if !domain.isEmpty {
-                    retUrl = "\(domain)/\(retUrl)"
-                }
-                super.completed(url: "\(retUrl)\(suffix)", retData, fileUrl, nil)
-            case .failure(let error):
-                super.faild(errorMsg: error.localizedDescription)
-            }
-        })
+            })
+        }
 
+        
+        func _byUpload() {
+            func multipartFormDataGen(multipartFormData: MultipartFormData) {
+                if let bodysStr = config.bodys {
+                    let bodysArr = CustomHostUtil.parseHeadersOrBodys(bodysStr)
+                    for body in bodysArr {
+                        if let key = body["key"] {
+                            var value = body["value"] ?? ""
+                            value = BaseUploaderUtil._parseVariables(value, fileName, otherVariables: otherVariables)
+
+                            multipartFormData.append(String(value).data(using: .utf8)!, withName: key)
+                        }
+                    }
+                }
+                multipartFormData.append(saveKey.data(using: .utf8)!, withName: "key")
+                if retData != nil {
+                    multipartFormData.append(retData!, withName: field, fileName: fileName, mimeType: mimeType)
+                } else if fileUrl != nil {
+                    multipartFormData.append(fileUrl!, withName: field, fileName: fileName, mimeType: mimeType)
+                }
+            }
+
+            if !headers.contains(where: {header -> Bool in
+                return header.name.lowercased() == "content-type"
+            }) {
+                headers.add(HTTPHeader.contentType("application/x-www-form-urlencoded;charset=utf-8"))
+            }
+            
+            AF.upload(multipartFormData: multipartFormDataGen, to: url, method: httpMethod, headers: headers).validate().uploadProgress { progress in
+                super.progress(percent: progress.fractionCompleted)
+                }.responseJSON(completionHandler: { response -> Void in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    var retUrl = CustomHostUtil.parseResultUrl(json, config.resultPath ?? "")
+                    if retUrl.isEmpty {
+                        super.faild(errorMsg: "Did not get the file URL".localized)
+                        return
+                    }
+                    if !domain.isEmpty {
+                        retUrl = "\(domain)/\(retUrl)"
+                    }
+                    super.completed(url: "\(retUrl)\(suffix)", retData, fileUrl, nil)
+                case .failure(let error):
+                    super.faild(errorMsg: error.localizedDescription)
+                }
+            })
+        }
+        
+        
+        if config.useBase64 {
+            _byRequest()
+        } else {
+            _byUpload()
+        }
     }
     
     func upload(_ fileUrl: URL, host: Host) {

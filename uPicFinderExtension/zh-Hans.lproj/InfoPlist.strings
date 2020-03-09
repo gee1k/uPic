@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  uPic
+
+  Created by Licardo on 2020/3/3.
+  Copyright © 2020 Svend Jin. All rights reserved.
+*/
+
+CFBundleDisplayName = "uPic 访达扩展";

@@ -20,6 +20,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     @IBOutlet weak var historyRecordPadding: NSTextField!
     @IBOutlet weak var historyRecordFileNameScrollSpeed: NSTextField!
     @IBOutlet weak var historyRecordFileNameScrollWaitTime: NSTextField!
+    @IBOutlet weak var finderExtensionIcon: NSPopUpButton!
     @IBOutlet weak var resetPreferencesButton: NSButton!
 
     // MARK: Lifecycle
@@ -36,6 +37,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         screenshotShortcut.associatedUserDefaultsKey = Constants.Key.screenshotShortcut
         
         setHistoryRecordTextFieldDefaultText()
+        setFinderExtensionIconDefaultValue()
     }
     
     func setHistoryRecordTextFieldDefaultText() {
@@ -45,6 +47,10 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         historyRecordPadding.stringValue = "\(HistoryRecordPaddingGlobal)"
         historyRecordFileNameScrollSpeed.stringValue = "\(HistoryRecordFileNameScrollSpeedGlobal)"
         historyRecordFileNameScrollWaitTime.stringValue = "\(HistoryRecordFileNameScrollWaitTimeGlobal)"
+    }
+    
+    func setFinderExtensionIconDefaultValue() {
+        finderExtensionIcon.selectItem(at: FinderUtil.getIcon())
     }
 
     @IBAction func didClickHistoryRecordConfigurationResetButton(_ sender: NSButton) {
@@ -73,9 +79,17 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         
         ConfigNotifier.postNotification(.changeHistoryList)
     }
-    
-    // MARK: Button Actions
 
+    @IBAction func didChangeFinderExtensionIcon(_ sender: NSPopUpButton) {
+        FinderUtil.setIcon(sender.indexOfSelectedItem)
+    }
+    
+    @IBAction func didClickRestartFinder(_ sender: NSButton) {
+        let killFinderScript = #"do shell script "killall Finder""#
+        let script = NSAppleScript(source: killFinderScript)
+        script!.executeAndReturnError(nil)
+    }
+    
     @IBAction func resetPreferencesButtonClicked(_ sender: NSButton) {
         let alert = NSAlert()
 
@@ -97,8 +111,10 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         case .alertSecondButtonReturn:
             ConfigManager.shared.removeAllUserDefaults()
             ConfigManager.shared.firstSetup()
+            FinderUtil.removeIcon()
             
             DispatchQueue.main.async {
+                self.setFinderExtensionIconDefaultValue()
                 ConfigNotifier.postNotification(.changeHistoryList)
                 self.resetAllValues()
             }
