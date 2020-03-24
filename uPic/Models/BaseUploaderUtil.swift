@@ -159,13 +159,16 @@ class BaseUploaderUtil {
         var folderPath: String?
         if let fileUrl = fileUrl {
             fileName = fileUrl.lastPathComponent
-            mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
+            if fileName.pathExtension.isEmpty {
+                fileName = fileName.appendingPathExtension(ext: "jpg")!
+            }
+            mimeType = Util.getMimeType(pathExtension: fileName.pathExtension)
             retData = BaseUploaderUtil.compressImage(fileUrl)
             folderPath = fileUrl._uploadFolderPath
         } else if let fileData = fileData {
             retData = BaseUploaderUtil.compressImage(fileData)
             // 处理截图之类的图片，生成一个文件名
-            let fileExtension = Swime.mimeType(data: fileData)?.ext ?? "png"
+            let fileExtension = Swime.mimeType(data: fileData)?.ext ?? "jpg"
             fileName = BaseUploaderUtil._getRrandomFileName(fileExtension)
             mimeType = Util.getMimeType(pathExtension: fileExtension)
             folderPath = fileData._uploadFolderPath
@@ -199,14 +202,17 @@ class BaseUploaderUtil {
         var folderPath: String?
         if let fileUrl = fileUrl {
             fileName = fileUrl.lastPathComponent
-            mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
+            if fileName.pathExtension.isEmpty {
+                fileName = fileName.appendingPathExtension(ext: "jpg")!
+            }
+            mimeType = Util.getMimeType(pathExtension: fileName.pathExtension)
             retData = BaseUploaderUtil.compressImage(fileUrl)
             fileBase64 = retData?.toBase64()
             folderPath = fileUrl._uploadFolderPath
         } else if let fileData = fileData {
             // 处理截图之类的图片，生成一个文件名
             
-            let fileExtension = Swime.mimeType(data: fileData)?.ext ?? "png"
+            let fileExtension = Swime.mimeType(data: fileData)?.ext ?? "jpg"
             fileName = BaseUploaderUtil._getRrandomFileName(fileExtension)
             mimeType = Util.getMimeType(pathExtension: fileExtension)
             retData = BaseUploaderUtil.compressImage(fileData)
