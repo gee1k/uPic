@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.18.1</title>
+			<description>
+			<![CDATA[
+			<ul> <li>Fixed: in some cases uploading online images will miss the file suffix.</li> <li>Fixed: uPic voice permissions could not be controlled in system notification Settings.</li> </ul> <hr /> <ul> <li>修复: 在某些情况下上传在线图片会缺失文件后缀名。</li> <li>修复: 在系统通知设置中无法控制 uPic 的声音权限。</li> </ul>
+			]]>
+			</description>
+			<pubDate>Sat, 28 Mar 2020 08:26:32 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.18.1/uPic.dmg" sparkle:version="20200328" sparkle:shortVersionString="v0.18.1" type="application/octet-stream" sparkle:edSignature="ddpsDoMSPYVm/ik9Li7DyNOV+A0amLCV62SkGSQnQxo+0PUubXNn5lluBz3P2/XeCLQ+A00UDZbm6Qh6nSy6Ag==" length="10626131"/>
+		</item>
+		<item>
 			<title>v0.18.0</title>
 			<description>
 			<![CDATA[
