@@ -54,7 +54,7 @@ class WeiboUploader: BaseUploader {
             let fileBase64 = configuration["fileBase64"] as! String
             let fileName = configuration["fileName"] as! String
             
-            var fileExtension = fileName.pathExtension == "gif" ? ".gif" : ".jpg"
+            let fileExtension = fileName.pathExtension == "gif" ? ".gif" : ".jpg"
             
             var headers = HTTPHeaders()
             if let loginCookie = loginCookie {
