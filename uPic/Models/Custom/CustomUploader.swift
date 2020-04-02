@@ -122,7 +122,6 @@ class CustomUploader: BaseUploader {
                         }
                     }
                 }
-                multipartFormData.append(saveKey.data(using: .utf8)!, withName: "key")
                 if retData != nil {
                     multipartFormData.append(retData!, withName: field, fileName: fileName, mimeType: mimeType)
                 } else if fileUrl != nil {
@@ -141,6 +140,7 @@ class CustomUploader: BaseUploader {
                 }.responseJSON(completionHandler: { response -> Void in
                 switch response.result {
                 case .success(let value):
+                    debugPrint(value)
                     let json = JSON(value)
                     var retUrl = CustomHostUtil.parseResultUrl(json, config.resultPath ?? "")
                     if retUrl.isEmpty {
@@ -157,8 +157,18 @@ class CustomUploader: BaseUploader {
             })
         }
         
+        var isApplicationJson = false
+        for (_, header) in headers.enumerated() {
+            if header.name.lowercased() != "content-type" {
+                continue
+            }
+            if header.value.lowercased().contains("application/json") {
+                isApplicationJson = true
+                break
+            }
+        }
         
-        if config.useBase64 {
+        if isApplicationJson {
             _byRequest()
         } else {
             _byUpload()
