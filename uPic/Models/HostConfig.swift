@@ -158,19 +158,6 @@ class HostConfig: NSObject, Codable {
                 self.setValue(saveKeyPath, forKey: "saveKeyPath")
             }
         }
-        
-        if self.containsKey(key: "domain") {
-            var domain = self.value(forKey: "domain") as! String
-            if domain.hasSuffix("/") {
-                domain.removeLast()
-                self.setValue(domain, forKey: "domain")
-            }
-            
-            if (!domain.isEmpty && !domain.hasPrefix("http://") && !domain.hasPrefix("https://")) {
-                domain = "http://\(domain)"
-                self.setValue(domain, forKey: "domain")
-            }
-        }
     }
 
 }
