@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.18.2</title>
+			<description>
+			<![CDATA[
+			<ul> <li>Fixed: Custom host failed to upload in some cases. <ul> <li>Support Chevereto!，<a href="https://blog.svend.cc/upic/tutorials/chevereto/en/">tutorial addresses</a></li> </ul> </li> <li>Fixed: Custom host can cause problems when the URL returned does not have a complete schema. fixes 90</li> </ul> <hr /> <ul> <li>修复：自定义图床在某些情况下会上传失败。 <ul> <li> <ul> <li>支持 Chevereto 啦，<a href="https://blog.svend.cc/upic/tutorials/chevereto/">教程地址</a></li> </ul> </li> </ul> </li> <li>修复：自定义图床在返回的 URL 没有完整 schema 时会出现问题。fixes 90</li> </ul>
+			]]>
+			</description>
+			<pubDate>Fri, 03 Apr 2020 01:46:27 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.18.2/uPic.dmg" sparkle:version="20200403" sparkle:shortVersionString="v0.18.2" type="application/octet-stream"/>
+		</item>
+		<item>
 			<title>v0.18.1</title>
 			<description>
 			<![CDATA[
