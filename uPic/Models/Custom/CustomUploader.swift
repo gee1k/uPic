@@ -140,17 +140,20 @@ class CustomUploader: BaseUploader {
                 }.responseJSON(completionHandler: { response -> Void in
                 switch response.result {
                 case .success(let value):
-                    debugPrint(value)
                     let json = JSON(value)
-                    var retUrl = CustomHostUtil.parseResultUrl(json, config.resultPath ?? "")
-                    if retUrl.isEmpty {
+                    var retUrlPath = CustomHostUtil.parseResultUrl(json, config.resultPath ?? "")
+                    if retUrlPath.isEmpty {
                         super.faild(errorMsg: "Did not get the file URL".localized)
                         return
                     }
                     if !domain.isEmpty {
-                        retUrl = "\(domain)/\(retUrl)"
+                        if retUrlPath.hasPrefix("/") {
+                            retUrlPath = "\(domain)\(retUrlPath)"
+                        } else {
+                            retUrlPath = "\(domain)/\(retUrlPath)"
+                        }
                     }
-                    super.completed(url: "\(retUrl)\(suffix)", retData, fileUrl, nil)
+                    super.completed(url: "\(retUrlPath)\(suffix)", retData, fileUrl, nil)
                 case .failure(let error):
                     super.faild(errorMsg: error.localizedDescription)
                 }
