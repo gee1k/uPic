@@ -515,7 +515,7 @@ extension AppDelegate {
     // sponsor
     
     func sponsorByPaypal() {
-        guard let url = URL(string: "https://paypal.me/geee1k") else { return }
+        guard let url = URL(string: "https://paypal.me/geeek") else { return }
         NSWorkspace.shared.open(url)
     }
     
