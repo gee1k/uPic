@@ -99,6 +99,10 @@
 		16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDDFE22EA96AE0080E467 /* Assets.xcassets */; };
 		16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDE0222EAA2920080E467 /* Assets.xcassets */; };
 		16C176F523A208A80089B933 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C176F423A208A80089B933 /* NSImage+Extension.swift */; };
+		16C31AF5244315790079EB4A /* MinioUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C31AF4244315790079EB4A /* MinioUtil.swift */; };
+		16C31AF7244315BD0079EB4A /* MinioHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C31AF6244315BD0079EB4A /* MinioHostConfig.swift */; };
+		16C31AF8244316280079EB4A /* MinioUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C31AF3244315270079EB4A /* MinioUploader.swift */; };
+		16C31AFA244317140079EB4A /* MinioConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C31AF9244317140079EB4A /* MinioConfigView.swift */; };
 		16CD34F323BC87ED005B52F2 /* SmmsHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */; };
 		16CD34F523BC8855005B52F2 /* SmmsVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F423BC8855005B52F2 /* SmmsVersion.swift */; };
 		16CD34F723BC88E2005B52F2 /* SmmsConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F623BC88E2005B52F2 /* SmmsConfigView.swift */; };
@@ -270,6 +274,10 @@
 		16BDDDFE22EA96AE0080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16BDDE0222EAA2920080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16C176F423A208A80089B933 /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
+		16C31AF3244315270079EB4A /* MinioUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinioUploader.swift; sourceTree = "<group>"; };
+		16C31AF4244315790079EB4A /* MinioUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinioUtil.swift; sourceTree = "<group>"; };
+		16C31AF6244315BD0079EB4A /* MinioHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinioHostConfig.swift; sourceTree = "<group>"; };
+		16C31AF9244317140079EB4A /* MinioConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinioConfigView.swift; sourceTree = "<group>"; };
 		16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsHostConfig.swift; sourceTree = "<group>"; };
 		16CD34F423BC8855005B52F2 /* SmmsVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsVersion.swift; sourceTree = "<group>"; };
 		16CD34F623BC88E2005B52F2 /* SmmsConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsConfigView.swift; sourceTree = "<group>"; };
@@ -434,6 +442,7 @@
 		1646B80F22C7C485009271DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				16C31AF9244317140079EB4A /* MinioConfigView.swift */,
 				161539142408F0E200CC662F /* LskyProConfigView.swift */,
 				16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */,
 				167620EF23081DC0008F8363 /* ImgurConfigView.swift */,
@@ -511,6 +520,7 @@
 				167DDBE922C76F3B00B03357 /* Github */,
 				167620EA2308191A008F8363 /* Imgur */,
 				1615390E2408E7DE00CC662F /* LskyPro */,
+				16C31AF22443150D0079EB4A /* Minio */,
 				1690E7E522BF113700FC81F8 /* Qiniu */,
 				167D7F4E22B4DB2500DD0A7A /* Smms */,
 				1660FCB522C11A9F00372950 /* Tencent */,
@@ -644,6 +654,16 @@
 				169F074322AF7A3D008E8525 /* StatusMenuController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		16C31AF22443150D0079EB4A /* Minio */ = {
+			isa = PBXGroup;
+			children = (
+				16C31AF3244315270079EB4A /* MinioUploader.swift */,
+				16C31AF4244315790079EB4A /* MinioUtil.swift */,
+				16C31AF6244315BD0079EB4A /* MinioHostConfig.swift */,
+			);
+			path = Minio;
 			sourceTree = "<group>";
 		};
 		16CD34F823BC8966005B52F2 /* Swime */ = {
@@ -980,6 +1000,7 @@
 				16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */,
 				167DDBED22C76F6600B03357 /* GithubHostConfig.swift in Sources */,
 				1646B80822C79349009271DF /* GiteeUtil.swift in Sources */,
+				16C31AF5244315790079EB4A /* MinioUtil.swift in Sources */,
 				168A3D1523D1AACA001BF1D9 /* RequestMethods.swift in Sources */,
 				1660FCBF22C1211900372950 /* TencentConfigView.swift in Sources */,
 				1646B80A22C79483009271DF /* GiteeConfigView.swift in Sources */,
@@ -1005,11 +1026,13 @@
 				16068C7522AEC1D1004D39B7 /* PreferencesViewController.swift in Sources */,
 				161C3BE122C483380092114F /* CustomUploader.swift in Sources */,
 				169F073A22AF4549008E8525 /* AboutPreferencesViewController.swift in Sources */,
+				16C31AF8244316280079EB4A /* MinioUploader.swift in Sources */,
 				4BEFD811238B738E00BBE64D /* HistoryThumbnailConstant.swift in Sources */,
 				1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */,
 				1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */,
 				1662AC7322C0BBF7003AC924 /* AmazonS3Region.swift in Sources */,
 				16F04EEC23BCC4B200CCA2FE /* FileManagerExtension.swift in Sources */,
+				16C31AFA244317140079EB4A /* MinioConfigView.swift in Sources */,
 				1683573C22DB0D0800985B10 /* CustomConfigSheetController.swift in Sources */,
 				16CD34FC23BC8966005B52F2 /* MimeType.swift in Sources */,
 				16F04EE623BCC45F00CCA2FE /* Option.swift in Sources */,
@@ -1025,6 +1048,7 @@
 				1660FCBA22C11C2300372950 /* TencentHostConfig.swift in Sources */,
 				16248E32230673B6002131BB /* NotificationExt.swift in Sources */,
 				16F04EE423BCC45F00CCA2FE /* Console.swift in Sources */,
+				16C31AF7244315BD0079EB4A /* MinioHostConfig.swift in Sources */,
 				167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */,
 				16F04EEE23BCC4C500CCA2FE /* URLSchemeExt.swift in Sources */,
 				16D20B5C238392C9006D8D01 /* BaiduConfigView.swift in Sources */,
