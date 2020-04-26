@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.19.0</title>
+			<description>
+			<![CDATA[
+			<ul> <li>Added: MinIo support.</li> <li>Fix: History was not saved successfully when uploading by command line.</li> <li>Update: PayPal link.</li> </ul> <hr /> <ul> <li>新增：支持 MinIo。</li> <li>修复：命令行方式上传时历史记录没有成功保存。</li> <li>更新：PayPal 链接。</li> </ul>
+			]]>
+			</description>
+			<pubDate>Sun, 26 Apr 2020 03:09:05 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.19.0/uPic.dmg" sparkle:version="20200426" sparkle:shortVersionString="v0.19.0" type="application/octet-stream"/ sparkle:edSignature="voi80/eMcHyrmSJ3qdvF6Anl7pSvvBZ6T104GrqcB8v3uUU8WF/xRDKuM4q8iS7AHznKZN4JmijC74iTu8svCA==" length="10663501">
+		</item>
+		<item>
 			<title>v0.18.2</title>
 			<description>
 			<![CDATA[
