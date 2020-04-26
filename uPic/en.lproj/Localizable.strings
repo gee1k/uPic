@@ -140,6 +140,7 @@
 "host.type.imgur" = "Imgur";
 "host.type.baidu_bos" = "Baidu Cloud BOS";
 "host.type.lsky_pro" = "Lsky Pro";
+"host.type.minio" = "MinIO";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "thumbnail";

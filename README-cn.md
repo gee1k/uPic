@@ -11,7 +11,7 @@
 
   [![Travis Build Status](https://img.shields.io/travis/gee1k/uPic.svg?style=flat-square&logo=Travis)](https://travis-ci.org/gee1k/uPic) [![GitHub release](https://img.shields.io/github/release/gee1k/uPic?label=version&style=flat-square&logo=GitHub)](https://github.com/gee1k/uPic/releases/latest) [![Downloads](https://img.shields.io/github/downloads/gee1k/uPic/total.svg?style=flat-square)](https://github.com/gee1k/uPic/releases) [![MIT](https://img.shields.io/github/license/gee1k/uPic?style=flat-square)](https://github.com/gee1k/uPic/blob/master/LICENSE)
 
-[![Donate on PayPal](https://img.shields.io/badge/support-PayPal-blue?style=flat-square&logo=PayPal)](https://paypal.me/geee1k) [![Chat on Telegram](https://img.shields.io/badge/chat-Telegram-blueviolet?style=flat-square&logo=Telegram)](https://t.me/upic_host) [![Follow My Twitter](https://img.shields.io/badge/follow-Tweet-blue?style=flat-square&logo=Twitter)](https://twitter.com/geee1k) [![Follow My Twitter](https://img.shields.io/badge/follow-Weibo-red?style=flat-square&logo=sina-weibo)](https://weibo.com/6436660358)
+[![Donate on PayPal](https://img.shields.io/badge/support-PayPal-blue?style=flat-square&logo=PayPal)](https://paypal.me/geeek) [![Chat on Telegram](https://img.shields.io/badge/chat-Telegram-blueviolet?style=flat-square&logo=Telegram)](https://t.me/upic_host) [![Follow My Twitter](https://img.shields.io/badge/follow-Tweet-blue?style=flat-square&logo=Twitter)](https://twitter.com/geee1k) [![Follow My Twitter](https://img.shields.io/badge/follow-Weibo-red?style=flat-square&logo=sina-weibo)](https://weibo.com/6436660358)
 
   </p>
 </div>
@@ -20,7 +20,7 @@
 
 **👬联系： _[Telegram](https://t.me/upic_host), [Twitter](https://twitter.com/geee1k), [微博](https://weibo.com/6436660358), [微信群](https://raw.githubusercontent.com/gee1k/oss/master/personal/geee1k.JPG)_**
 
-**☕️赞助： _[Paypal](https://paypal.me/geee1k), [支付宝](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/alipay.JPG), [微信支付](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat_pay.JPG)_**
+**☕️赞助： _[Paypal](https://paypal.me/geeek), [支付宝](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/alipay.JPG), [微信支付](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat_pay.JPG)_**
 
 ## 📑 简介
 
@@ -80,7 +80,7 @@ brew cask install upic
 
 | PayPal | 支付宝 | 微信 |
 | --- | --- | --- |
-| [paypal.me/geee1k](https://paypal.me/geee1k) | ![AliPay](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/Donate_Alipay.jpg) | ![WeChatPay](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/Donate_WeChatPay.jpg) |
+| [paypal.me/geeek](https://paypal.me/geeek) | ![AliPay](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/Donate_Alipay.jpg) | ![WeChatPay](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/Donate_WeChatPay.jpg) |
 
 ## ✨ Contributors
 

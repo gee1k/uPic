@@ -144,13 +144,13 @@ extension ConfigManager {
             // Because the results of the query are already sorted backwards, the first is the last
             historyList.removeLast(offset)
         }
-        DispatchQueue.global().async {
+        DispatchQueue.main.async {
             if offset > 0 {
                 DBManager.shared.deleteHositoryFirst(offset)
             }
             DBManager.shared.insertHistory(previewModel)
+            ConfigNotifier.postNotification(.updateHistoryList)
         }
-        ConfigNotifier.postNotification(.updateHistoryList)
     }
     
     func clearHistoryList() -> Void {

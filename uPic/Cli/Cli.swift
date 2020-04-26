@@ -117,7 +117,9 @@ extension Cli {
         Console.write("Output URL:")
         
         Console.write(resultUrls.joined(separator: "\n"))
-
-        exit(EX_OK)
+        DBManager.shared.close()
+        DispatchQueue.main.async {
+            exit(EX_OK)
+        }
     }
 }
