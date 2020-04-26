@@ -13,7 +13,7 @@
 			]]>
 			</description>
 			<pubDate>Sun, 26 Apr 2020 03:09:05 +0000</pubDate>
-			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.19.0/uPic.dmg" sparkle:version="20200426" sparkle:shortVersionString="v0.19.0" type="application/octet-stream"/ sparkle:edSignature="voi80/eMcHyrmSJ3qdvF6Anl7pSvvBZ6T104GrqcB8v3uUU8WF/xRDKuM4q8iS7AHznKZN4JmijC74iTu8svCA==" length="10663501">
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.19.0/uPic.dmg" sparkle:version="20200426" sparkle:shortVersionString="v0.19.0" type="application/octet-stream" sparkle:edSignature="voi80/eMcHyrmSJ3qdvF6Anl7pSvvBZ6T104GrqcB8v3uUU8WF/xRDKuM4q8iS7AHznKZN4JmijC74iTu8svCA==" length="10663501"/>
 		</item>
 		<item>
 			<title>v0.18.2</title>
