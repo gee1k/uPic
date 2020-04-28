@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.19.1</title>
+			<description>
+			<![CDATA[
+			<p>🥺Dear users, sorry! The App cannot be opened due to the invalidation of the App certificate due to misuse. Now fixed, trouble manually updating it to the latest version.<a href="https://github.com/gee1k/uPic/releases/tag/v0.19.0">v0.19.1</a></p> <hr /> <p>🥺各位用户，抱歉！ 由于误操作导致 App 证书失效，App 无法打开。现已修复，麻烦手动更新到最新版。 <a href="https://github.com/gee1k/uPic/releases/tag/v0.19.0">v0.19.1</a></p>
+			]]>
+			</description>
+			<pubDate>Tue, 28 Apr 2020 10:47:59 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.19.1/uPic.dmg" sparkle:version="20200428" sparkle:shortVersionString="v0.19.1" type="application/octet-stream" sparkle:edSignature="vXoEUrnvJ5CjQ/nspOX5xyiqN6nwW68nPd4HJ+NEpf7sRURJSILCay4A/G9FrY450F/CjmrfZEaFg/MZlFTpBg==" length="10753948"/>
+		</item>
+		<item>
 			<title>v0.19.0</title>
 			<description>
 			<![CDATA[
