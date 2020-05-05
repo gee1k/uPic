@@ -6,6 +6,16 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.19.2</title>
+			<description>
+			<![CDATA[
+			<p>🥺I have purchased an Apple Developer account and hope to solve the certificate verification issue perfectly.</p> <p>Other updates:</p> <ul> <li>fix typo</li> </ul> <hr /> <p>🥺已购买苹果开发者账号，希望能完美解决证书验证问题。</p> <p>其他更新</p> <ul> <li>修复错字</li> </ul>
+			]]>
+			</description>
+			<pubDate>Tue, 05 May 2020 02:38:45 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.19.2/uPic.zip" sparkle:version="20200505" sparkle:shortVersionString="v0.19.2" type="application/octet-stream"/>
+		</item>
+		<item>
 			<title>v0.19.1</title>
 			<description>
 			<![CDATA[
