@@ -104,7 +104,7 @@
 "Body Data" = "Body 数据";
 "Client ID" = "Client ID";
 "Save Key" = "保存路径";
-"Use CDN" = "使用 jsDeliver CDN 加速访问";
+"Use CDN" = "使用 jsDelivr CDN 加速访问";
 "Version" = "版本";
 "Email" = "邮箱";
 "Anonymous" = "匿名";
