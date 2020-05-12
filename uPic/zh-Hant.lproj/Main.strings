@@ -1,0 +1,138 @@
+
+/* Class = "NSMenuItem"; title = "Quit"; ObjectID = "0JF-m2-1iq"; */
+"0JF-m2-1iq.title" = "結束";
+
+/* Class = "NSMenuItem"; title = "Output format"; ObjectID = "1BX-LF-q51"; */
+"1BX-LF-q51.title" = "輸出格式";
+
+/* Class = "NSMenuItem"; title = "uPic"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "uPic";
+
+/* Class = "NSMenuItem"; title = "More"; ObjectID = "2Jw-ET-3eH"; */
+"2Jw-ET-3eH.title" = "更多";
+
+/* Class = "NSMenuItem"; title = "Quit uPic"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "結束 uPic";
+
+/* Class = "NSMenu"; title = "Compress images before uploading"; ObjectID = "4yH-6k-LD0"; */
+"4yH-6k-LD0.title" = "上傳前壓縮圖片";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
+"5QF-Oa-p0T.title" = "編輯";
+
+/* Class = "NSMenuItem"; title = "About uPic"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "關於 uPic";
+
+/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "6dh-zS-Vam"; */
+"6dh-zS-Vam.title" = "復原";
+
+/* Class = "NSMenuItem"; title = "Paypal"; ObjectID = "70g-zL-O4p"; */
+"70g-zL-O4p.title" = "Paypal";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "關閉";
+
+/* Class = "NSMenuItem"; title = "History record"; ObjectID = "EhO-Zw-XXj"; */
+"EhO-Zw-XXj.title" = "歷史紀錄";
+
+/* Class = "NSMenuItem"; title = "Cancel upload"; ObjectID = "Gxh-8r-tsq"; */
+"Gxh-8r-tsq.title" = "取消上傳";
+
+/* Class = "NSMenuItem"; title = "Import host configuration"; ObjectID = "HNM-7K-zzn"; */
+"HNM-7K-zzn.title" = "導入圖床配置";
+
+/* Class = "NSMenuItem"; title = "UBB"; ObjectID = "Hz2-gj-luo"; */
+"Hz2-gj-luo.title" = "UBB";
+
+/* Class = "NSMenu"; title = "Host"; ObjectID = "J3c-l3-LmQ"; */
+"J3c-l3-LmQ.title" = "圖床";
+
+/* Class = "NSMenu"; title = "History record"; ObjectID = "MjM-mX-Ci5"; */
+"MjM-mX-Ci5.title" = "歷史紀錄";
+
+/* Class = "NSMenuItem"; title = "Tutorial"; ObjectID = "O8o-6e-fZn"; */
+"O8o-6e-fZn.title" = "使用教學";
+
+/* Class = "NSMenuItem"; title = "Markdown"; ObjectID = "Opc-aA-hUg"; */
+"Opc-aA-hUg.title" = "Markdown";
+
+/* Class = "NSMenuItem"; title = "WeChat"; ObjectID = "Qky-3r-Bgs"; */
+"Qky-3r-Bgs.title" = "Wechat";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Ruw-6m-B2m"; */
+"Ruw-6m-B2m.title" = "全選";
+
+/* Class = "NSMenuItem"; title = "URL"; ObjectID = "U1c-9i-q5b"; */
+"U1c-9i-q5b.title" = "URL";
+
+/* Class = "NSMenuItem"; title = "Preferences"; ObjectID = "VW7-Z2-hXR"; */
+"VW7-Z2-hXR.title" = "偏好设置";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "W48-6f-4Dl"; */
+"W48-6f-4Dl.title" = "編輯";
+
+/* Class = "NSMenu"; title = "Output format"; ObjectID = "XmF-iN-Y0V"; */
+"XmF-iN-Y0V.title" = "輸出格式";
+
+/* Class = "NSMenuItem"; title = "Export host configuration"; ObjectID = "Yuc-Vp-9Pd"; */
+"Yuc-Vp-9Pd.title" = "導出圖床配置";
+
+/* Class = "NSMenu"; title = "More"; ObjectID = "Z6H-TN-83r"; */
+"Z6H-TN-83r.title" = "更多";
+
+/* Class = "NSMenuItem"; title = "Alipay"; ObjectID = "aHw-Zc-eD7"; */
+"aHw-Zc-eD7.title" = "支付寶";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "文件";
+
+/* Class = "NSMenuItem"; title = "Host"; ObjectID = "d02-bT-1Lv"; */
+"d02-bT-1Lv.title" = "圖床";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "文件";
+
+/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "dRJ-4n-Yzg"; */
+"dRJ-4n-Yzg.title" = "撤回";
+
+/* Class = "NSMenuItem"; title = "Compress images before uploading"; ObjectID = "eIU-EA-uQZ"; */
+"eIU-EA-uQZ.title" = "上傳前壓縮圖片";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "gVA-U4-sdL"; */
+"gVA-U4-sdL.title" = "貼上";
+
+/* Class = "NSMenu"; title = "Donate"; ObjectID = "iGe-NR-YFa"; */
+"iGe-NR-YFa.title" = "贊助";
+
+/* Class = "NSMenuItem"; title = "Upload from clipboard"; ObjectID = "orX-KL-q11"; */
+"orX-KL-q11.title" = "剪貼板上傳";
+
+/* Class = "NSMenuItem"; title = "Upload from select file"; ObjectID = "p0A-6d-cAU"; */
+"p0A-6d-cAU.title" = "選擇文件上傳";
+
+/* Class = "NSMenuItem"; title = "Delete"; ObjectID = "pa3-QI-u2k"; */
+"pa3-QI-u2k.title" = "刪除";
+
+/* Class = "NSMenu"; title = "uPic"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "uPic";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "uRl-iY-unG"; */
+"uRl-iY-unG.title" = "裁切";
+
+/* Class = "NSMenuItem"; title = "Upload from screenshot"; ObjectID = "ueU-fm-1nn"; */
+"ueU-fm-1nn.title" = "截圖並上傳";
+
+/* Class = "NSMenuItem"; title = "HTML"; ObjectID = "wCN-Y7-fdU"; */
+"wCN-Y7-fdU.title" = "HTML";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "x3v-GG-iWU"; */
+"x3v-GG-iWU.title" = "複製";
+
+/* Class = "NSMenuItem"; title = "Donate"; ObjectID = "yCF-Ec-Lgz"; */
+"yCF-Ec-Lgz.title" = "贊助";
+
+/* Class = "NSMenuItem"; title = "Check for updates..."; ObjectID = "yai-4F-Btp"; */
+"yai-4F-Btp.title" = "檢查更新...";

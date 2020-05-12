@@ -1,0 +1,168 @@
+/* 
+  Localizable.strings
+  uPic
+
+  Created by Svend Jin on 2019/6/8.
+  Translation by SteveYi on 2020/05/13.
+  Copyright © 2019 Svend Jin. All rights reserved.
+*/
+
+
+"OK" = "好";
+"Cancel" = "取消";
+"Yes" = "是的";
+"Warning" = "提醒";
+"Continue" = "繼續";
+"Example:" = "範例:";
+"Off" = "關閉";
+"APP Name" = "APP 名稱";
+
+/* 成功通知標題 */
+"Successfully" = "成功";
+/* 上傳成功通知標題 */
+"Uploaded successfully" = "上傳成功";
+/* 上傳成功通知副標題 */
+"URL has been copied to the clipboard, paste and use it!" = "URL 已複製到剪貼板, 快去貼上使用吧!";
+/* 當前上傳任務還未完成通知副標題 */
+"The current upload task is not complete" = "當前上傳列隊尚未結束!";
+/* 上傳失敗通知標題 */
+"Upload failed" = "上傳失敗";
+/* 導入圖床配置失敗標題 */
+"Import failed" = "導入圖床配置失敗";
+/* 導入圖床配置失敗內容 */
+"The configuration file is invalid, please check!" = "配置文件無效, 請檢查!";
+/* 導入圖床配置成功內容 */
+"The configuration has been imported, please check and use!" = "圖床配置已導入, 請檢查並使用!";
+/* 導出圖床配置失敗標題 */
+"Export failed" = "導出圖床配置失敗";
+/* 導出圖床配置失敗內容 */
+"No exportable hosts!" = "沒有可導出的圖床配置!";
+/* 導出圖床配置失敗內容2 */
+"configuration export error!" = "圖床導出錯誤!";
+/* 導出圖床配置成功內容 */
+"The configuration file is exported successfully, Do not modify the file contents!" = "配置文件導出成功, 請勿修改文件內容!";
+
+/* 複製的文件不存在 */
+"The file does not exist or has been deleted!" = "複製的文件不存在或已被刪除!";
+/* 文件格式不支持 */
+"File format not supported!" = "文件格式不支持!";
+/* 文件大小超過限制 */
+"File is over the size limit! Limit:" = "文件大小超過限制!限制:";
+/* 圖床配置存在問題, 請檢查 */
+"There is a problem with the map bed configuration, please check!" = "圖床配置存在問題, 請檢查!";
+/* 程式已經啟動 */
+"App is already running" = "uPic 已經啟動!";
+
+/*匿名上傳*/
+"The file will be uploaded anonymously to" = "文件將匿名上傳至";
+"Upload via uPic" = "使用 uPic 上傳";
+"Upload selected files via uPic" = "用 uPic 上傳所選文件";
+"Right click to cancel the current upload task" = "右擊取消當前上傳任務";
+
+"Did not get the file URL" = "沒有獲取到文件URL";
+
+/* 狀態欄菜單圖床 */
+"Host" = "圖床";
+/* 狀態欄菜單輸出格式 */
+"Output format" = "輸出格式";
+/* 狀態欄菜單上傳前壓縮圖片 */
+"Compress images before uploading" = "上傳前壓縮圖片";
+
+"Reset User Preferences?" = "重置用戶偏好設置?";
+"⚠️ Note that this will reset all user preferences" = "⚠️ 注意 這將會重置所有用戶偏好設置";
+"Continuing will lose unsaved data. Do you want to continue?" = "繼續將會丟失未存檔的數據, 是否繼續?";
+"Import host configuration" = "導入圖床配置";
+"⚠️ Please choose import method, merge or overwrite?" = "⚠️ 請選擇導入方式, 合併還是覆蓋?";
+"merge" = "合併";
+"⚠️ overwrite" = "⚠️ 覆蓋";
+
+/* host -- start */
+"Region" = "區域";
+"Bucket" = "存儲桶名稱";
+"Operator" = "操作員";
+"Password" = "密碼";
+"Access Key" = "Access Key";
+"Secret Id" = "Secret Id";
+"Secret Key" = "Secret Key";
+"Domain" = "網域名稱";
+"URL suffix" = "網址後綴";
+"API URL" = "API 地址";
+"Method" = "請求方式";
+"File Field" = "文件字段名";
+"URL Path" = "URL 路徑";
+"Bodys" = "Bodys";
+"Headers" = "請求標頭";
+"Owner" = "用戶名";
+"Repo" = "倉庫名";
+"Branch" = "分支";
+"Token" = "Token";
+"Username" = "用戶名";
+"Cookie Mode" = "Cookie 模式";
+"Cookie" = "Cookie";
+"Pic Quality" = "圖片質量";
+"Other fields" = "其他字段";
+"Header Data" = "Headers 數據";
+"Body Data" = "Body 數據";
+"Client ID" = "Client ID";
+"Save Key" = "保存路徑";
+"Use CDN" = "使用 jsDelivr CDN 加速訪問";
+"Version" = "版本";
+"Email" = "電子郵件";
+"Anonymous" = "匿名";
+"Use Base64" = "使用 Base64";
+
+/* host field placeholder */
+"Get API Token" = "獲取 API Token";
+"Get Client ID" = "獲取 Client ID";
+"Never created Client ID" = "沒有創建過？去創建！";
+"Created Client ID" = "已創建？去獲取！";
+"Operator name" = "操作員名稱";
+"Operator password" = "操作員密碼";
+"Just the repo name, not the repo URL" = "只需要倉庫名稱, 而不是倉庫連接";
+"domain:https://xxx.com" = "訪問域名:https://xxx.com";
+"Can be empty, there is a default domain" = "可為空, 有默認域名";
+"The path to the URL field in Response JSON" = "返回 JSON 中的 URL 字段的路徑";
+"(optional),When filled, URL = domain + URL path value" = "(可選), 當填寫時, URL = 前綴 + URL 路徑值";
+
+"Save Key Tips" = "支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} 等變量。比如: 上傳的圖片為 uPic.jpg, 設定為 “uPic/{filename}{.suffix}”, 則會保存到 “uPic/uPic.jpg”。";
+"Suffix Tips" = "訪問時追加的後綴, 不影響上傳(同樣支持變量)。可用作對象儲存的圖片處理樣式等等...例如: !w 代表獲取加水印版的圖片。";
+
+/*host type*/
+"host.type.custom" = "自定義";
+"host.type.smms" = "SMMS";
+"host.type.qiniu_kodo" = "七牛雲 KODO";
+"host.type.upyun_uss" = "又拍雲 USS";
+"host.type.aliyun_oss" = "阿里雲 OSS";
+"host.type.tencent_cos" = "騰訊雲 COS";
+"host.type.github" = "GitHub";
+"host.type.gitee" = "碼雲 Gitee";
+"host.type.weibo" = "微博";
+"host.type.amazon_s3" = "Amazon S3";
+"host.type.imgur" = "Imgur";
+"host.type.baidu_bos" = "百度雲 BOS";
+"host.type.lsky_pro" = "Lsky Pro";
+"host.type.minio" = "MinIO";
+
+/* weibo quality*/
+"weibo.quality.thumbnail" = "縮圖";
+"weibo.quality.mw690" = "中等大小";
+"weibo.quality.large" = "原始圖片";
+
+/* smms version */
+"smms.version.v1" = "匿名版";
+"smms.version.v2" = "付費版(註冊用戶)";
+
+"Validate" = "驗證";
+
+/*eroor message*/
+"Upload failed, please check the configuration!" = "上傳失敗, 請檢查配置!";
+
+/* cli */
+"Path and URL of the file to upload" = "待上傳的文件路徑和URL (最少一個, 以空格分隔)";
+"Output url format" = "輸出的url格式, 支持 url、html、markdown(md)、ubb";
+"Turn off error message output" = "關閉錯誤信息輸出, 並且在文件上傳失敗後輸出原文件路徑";
+"Print this help message" = "打印幫助信息";
+
+/* cli error msg */
+"Invalid file path" = "無效的文件路徑或鏈接";
+"Total paths count" = "共 {count} 個文件路徑和鏈接";
