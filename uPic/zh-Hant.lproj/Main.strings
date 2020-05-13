@@ -1,4 +1,3 @@
-
 /* Class = "NSMenuItem"; title = "Quit"; ObjectID = "0JF-m2-1iq"; */
 "0JF-m2-1iq.title" = "結束";
 
@@ -69,7 +68,7 @@
 "U1c-9i-q5b.title" = "URL";
 
 /* Class = "NSMenuItem"; title = "Preferences"; ObjectID = "VW7-Z2-hXR"; */
-"VW7-Z2-hXR.title" = "偏好设置";
+"VW7-Z2-hXR.title" = "偏好設置";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "W48-6f-4Dl"; */
 "W48-6f-4Dl.title" = "編輯";
