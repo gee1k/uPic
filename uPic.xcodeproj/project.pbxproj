@@ -183,6 +183,10 @@
 /* Begin PBXFileReference section */
 		1602ED9622ADEFB200AA8638 /* BaseUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUploader.swift; sourceTree = "<group>"; };
 		1602ED9822ADF43800AA8638 /* SmmsUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsUploader.swift; sourceTree = "<group>"; };
+		1605DDD8246D993C00262C89 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		1605DDD9246D993C00262C89 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Preferences.strings"; sourceTree = "<group>"; };
+		1605DDDA246D993D00262C89 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		1605DDDB246D996700262C89 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		16068C7422AEC1D1004D39B7 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		16068C7B22AECD9F004D39B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -849,6 +853,7 @@
 				en,
 				Base,
 				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 16A6DC4B22AA375700813706;
 			productRefGroup = 16A6DC4B22AA375700813706;
@@ -1087,6 +1092,7 @@
 			children = (
 				1623612422AB951E00E4025C /* en */,
 				1623612622AB951F00E4025C /* zh-Hans */,
+				1605DDDB246D996700262C89 /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1097,6 +1103,7 @@
 				1648A215238E742600B99B9D /* Base */,
 				1648A218238E743200B99B9D /* zh-Hans */,
 				9667517C240D2BA6007C7012 /* en */,
+				1605DDD8246D993C00262C89 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1107,6 +1114,7 @@
 				169F073C22AF53DE008E8525 /* Base */,
 				161ABBE323B212C800805C5B /* zh-Hans */,
 				969018A3240D998400B545B2 /* en */,
+				1605DDD9246D993C00262C89 /* zh-Hant */,
 			);
 			name = Preferences.storyboard;
 			sourceTree = "<group>";
@@ -1116,6 +1124,7 @@
 			children = (
 				968ECC08240DFCF900B2D78C /* en */,
 				968ECC0A240DFCFA00B2D78C /* zh-Hans */,
+				1605DDDA246D993D00262C89 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
