@@ -51,6 +51,10 @@ public class AmazonS3Region {
         if key.isEmpty {
             return ""
         }
+        if key == "cn-north-1" || key == "cn-northwest-1" {
+            // s3-control.cn-north-1.amazonaws.com.cn
+            return "s3.\(key).amazonaws.com.cn"
+        }
         return "s3.\(key).amazonaws.com"
     }
     
