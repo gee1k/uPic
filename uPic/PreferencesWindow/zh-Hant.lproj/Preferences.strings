@@ -6,46 +6,46 @@
 "2Rg-te-FPU.title" = "可能需要";
 
 /* Class = "NSButtonCell"; title = "Paypal"; ObjectID = "59m-hG-lVw"; */
-"59m-hG-lVw.title" = "Paypal";
+"59m-hG-lVw.title" = "PayPal";
 
 /* Class = "NSViewController"; title = "Host"; ObjectID = "5Ln-jV-uxk"; */
-"5Ln-jV-uxk.title" = "图床";
+"5Ln-jV-uxk.title" = "圖床";
 
 /* Class = "NSWindow"; title = "Preferences"; ObjectID = "5f3-UK-Rft"; */
-"5f3-UK-Rft.title" = "偏好设置";
+"5f3-UK-Rft.title" = "偏好設定";
 
 /* Class = "NSButtonCell"; title = "Reset"; ObjectID = "8gb-uy-oRd"; */
-"8gb-uy-oRd.title" = "重置";
+"8gb-uy-oRd.title" = "重設";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "8lH-1K-GR0"; */
-"8lH-1K-GR0.title" = "复制";
+"8lH-1K-GR0.title" = "複製";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "8px-ng-UpC"; */
 "8px-ng-UpC.title" = "Text Cell";
 
 /* Class = "NSTextFieldCell"; title = "Spacing:"; ObjectID = "AYG-Uz-MYq"; */
-"AYG-Uz-MYq.title" = "内边距:";
+"AYG-Uz-MYq.title" = "內邊距:";
 
 /* Class = "NSTextFieldCell"; title = "File name scroll speed:"; ObjectID = "BBZ-i9-B2g"; */
-"BBZ-i9-B2g.title" = "文件名滚动速度(ms):";
+"BBZ-i9-B2g.title" = "文件名滾動速度(ms):";
 
 /* Class = "NSButtonCell"; title = "Add Header Field"; ObjectID = "Ckh-A7-mxC"; */
 "Ckh-A7-mxC.title" = "增加 Header 字段";
 
 /* Class = "NSButtonCell"; title = "OK"; ObjectID = "Cp0-zp-Dpm"; */
-"Cp0-zp-Dpm.title" = "确定";
+"Cp0-zp-Dpm.title" = "確定";
 
 /* Class = "NSTextFieldCell"; title = "Shortcuts"; ObjectID = "FpP-Q9-flS"; */
-"FpP-Q9-flS.title" = "快捷键";
+"FpP-Q9-flS.title" = "快捷鍵";
 
 /* Class = "NSViewController"; title = "General"; ObjectID = "Gn1-zC-bzB"; */
 "Gn1-zC-bzB.title" = "通用";
 
 /* Class = "NSMenuItem"; title = "Non"; ObjectID = "GwK-5k-ATM"; */
-"GwK-5k-ATM.title" = "无图标";
+"GwK-5k-ATM.title" = "無圖標";
 
 /* Class = "NSViewController"; title = "Advanced"; ObjectID = "H3q-JS-Bu4"; */
-"H3q-JS-Bu4.title" = "高级";
+"H3q-JS-Bu4.title" = "進階";
 
 /* Class = "NSTextFieldCell"; title = "💻 GitHub:"; ObjectID = "How-dP-tcX"; */
 "How-dP-tcX.title" = "💻 GitHub:";
@@ -57,109 +57,109 @@
 "Jnf-AX-bIr.title" = "0.1.0";
 
 /* Class = "NSTextFieldCell"; title = "Upload from select file:"; ObjectID = "Mqt-Fp-Ssl"; */
-"Mqt-Fp-Ssl.title" = "选择文件上传:";
+"Mqt-Fp-Ssl.title" = "選擇文件上傳:";
 
 /* Class = "NSTextFieldCell"; title = "Columns:"; ObjectID = "N1b-Cf-tno"; */
-"N1b-Cf-tno.title" = "列数:";
+"N1b-Cf-tno.title" = "列數:";
 
 /* Class = "NSTextFieldCell"; title = "🐦 Twitter:"; ObjectID = "OKr-1C-5jV"; */
 "OKr-1C-5jV.title" = "🐦 Twitter:";
 
 /* Class = "NSTextFieldCell"; title = "File name scroll wait time:"; ObjectID = "ON0-aF-BNd"; */
-"ON0-aF-BNd.title" = "文件名滚动等待时间(s):";
+"ON0-aF-BNd.title" = "文件名滾動等待時間(s):";
 
 /* Class = "NSBox"; title = "Header and Body Data"; ObjectID = "OaN-c4-l0X"; */
-"OaN-c4-l0X.title" = "Header 和 Body 数据";
+"OaN-c4-l0X.title" = "Header 和 Body 資料";
 
 /* Class = "NSTextFieldCell"; title = "💡 HomePage:"; ObjectID = "OjL-Zl-YKD"; */
-"OjL-Zl-YKD.title" = "💡 主页:";
+"OjL-Zl-YKD.title" = "💡 主頁:";
 
 /* Class = "NSTextFieldCell"; title = "⚠️ Note that this will reset all user preferences"; ObjectID = "PmD-JC-2Hq"; */
-"PmD-JC-2Hq.title" = "⚠️ 注意这将会重置所有用户偏好设置";
+"PmD-JC-2Hq.title" = "⚠️ 注意這將會重置所有用戶偏好設定";
 
 /* Class = "NSTextFieldCell"; title = "Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {saveKey} and etc."; ObjectID = "R0i-0c-6TZ"; */
-"R0i-0c-6TZ.title" = "支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} {saveKey} 等变量。";
+"R0i-0c-6TZ.title" = "支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} {saveKey} 等變數。";
 
 /* Class = "NSButtonCell"; title = "⚠️ Reset"; ObjectID = "TD4-LI-X9U"; */
-"TD4-LI-X9U.title" = "⚠️ 撤销";
+"TD4-LI-X9U.title" = "⚠️ 撤回";
 
 /* Class = "NSTextFieldCell"; title = "History record"; ObjectID = "UN0-Iq-Cop"; */
-"UN0-Iq-Cop.title" = "历史记录";
+"UN0-Iq-Cop.title" = "歷史記錄";
 
 /* Class = "NSTextFieldCell"; title = "💸 Donate:"; ObjectID = "Vjv-pA-ffP"; */
-"Vjv-pA-ffP.title" = "💸 赞助:";
+"Vjv-pA-ffP.title" = "💸 贊助:";
 
 /* Class = "NSTextFieldCell"; title = "✉️ Contact:"; ObjectID = "Vu4-Wz-Agk"; */
-"Vu4-Wz-Agk.title" = "✉️ 联系:";
+"Vu4-Wz-Agk.title" = "✉️ 聯繫:";
 
 /* Class = "NSTextFieldCell"; title = "Upload from screenshot:"; ObjectID = "Xd9-iA-emU"; */
-"Xd9-iA-emU.title" = "截图上传:";
+"Xd9-iA-emU.title" = "截圖並上傳:";
 
 /* Class = "NSTextFieldCell"; title = "Finder extension"; ObjectID = "XtR-28-Jft"; */
-"XtR-28-Jft.title" = "访达扩展";
+"XtR-28-Jft.title" = "查看擴展";
 
 /* Class = "NSButtonCell"; title = "Launch uPic at login"; ObjectID = "ZbK-xW-anT"; */
-"ZbK-xW-anT.title" = "登录时启动 uPic";
+"ZbK-xW-anT.title" = "開機自動啟動 uPic";
 
 /* Class = "NSTextFieldCell"; title = "Padding:"; ObjectID = "bp8-mz-gke"; */
-"bp8-mz-gke.title" = "外边距:";
+"bp8-mz-gke.title" = "外邊距:";
 
 /* Class = "NSTextFieldCell"; title = "Upload from clipboard:"; ObjectID = "bvy-v3-hhf"; */
-"bvy-v3-hhf.title" = "剪贴板上传:";
+"bvy-v3-hhf.title" = "剪貼板上傳:";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "chO-9j-Fca"; */
-"chO-9j-Fca.title" = "编辑";
+"chO-9j-Fca.title" = "編輯";
 
 /* Class = "NSBox"; title = "HostSettings"; ObjectID = "dEW-XT-ogl"; */
-"dEW-XT-ogl.title" = "HostSettings";
+"dEW-XT-ogl.title" = "設定雲存處";
 
 /* Class = "NSMenuItem"; title = "Single"; ObjectID = "dGv-rY-F7Z"; */
-"dGv-rY-F7Z.title" = "单色";
+"dGv-rY-F7Z.title" = "單色";
 
 /* Class = "NSMenuItem"; title = "More"; ObjectID = "dZy-kW-0lH"; */
 "dZy-kW-0lH.title" = "更多";
 
 /* Class = "NSButtonCell"; title = "Alipay"; ObjectID = "eWy-BH-pJy"; */
-"eWy-BH-pJy.title" = "支付宝";
+"eWy-BH-pJy.title" = "支付寶";
 
 /* Class = "NSButtonCell"; title = "https://github.com/gee1k/uPic"; ObjectID = "f2V-P5-pQI"; */
 "f2V-P5-pQI.title" = "https://github.com/gee1k/uPic";
 
 /* Class = "NSButtonCell"; title = "WeChat"; ObjectID = "fJL-Ts-QPI"; */
-"fJL-Ts-QPI.title" = "微信";
+"fJL-Ts-QPI.title" = "WeChat";
 
 /* Class = "NSButtonCell"; title = "@geee1k"; ObjectID = "i90-se-6z8"; */
 "i90-se-6z8.title" = "@geee1k";
 
 /* Class = "NSTextFieldCell"; title = "Width:"; ObjectID = "iRI-j6-BHQ"; */
-"iRI-j6-BHQ.title" = "宽度:";
+"iRI-j6-BHQ.title" = "寬度:";
 
 /* Class = "NSButtonCell"; title = "Finder Restart"; ObjectID = "jA2-Zt-kWu"; */
-"jA2-Zt-kWu.title" = "重启访达";
+"jA2-Zt-kWu.title" = "重啟訪達";
 
 /* Class = "NSTextFieldCell"; title = "Reset"; ObjectID = "jcs-Ou-OZ2"; */
 "jcs-Ou-OZ2.title" = "重置";
 
 /* Class = "NSButtonCell"; title = "Reset preferences"; ObjectID = "jyI-H7-qN3"; */
-"jyI-H7-qN3.title" = "重置偏好设置";
+"jyI-H7-qN3.title" = "重置偏好設置";
 
 /* Class = "NSButtonCell"; title = "Save"; ObjectID = "k4M-cg-63L"; */
-"k4M-cg-63L.title" = "保存";
+"k4M-cg-63L.title" = "存檔";
 
 /* Class = "NSViewController"; title = "About"; ObjectID = "k6X-N1-mVu"; */
-"k6X-N1-mVu.title" = "关于";
+"k6X-N1-mVu.title" = "關於";
 
 /* Class = "NSTextFieldCell"; title = "uPic"; ObjectID = "mOB-su-ZM1"; */
 "mOB-su-ZM1.title" = "uPic";
 
 /* Class = "NSTextFieldCell"; title = "uPic will automatically launch at login."; ObjectID = "ngT-lX-vFA"; */
-"ngT-lX-vFA.title" = "uPic 将在系统登录时自动启动。";
+"ngT-lX-vFA.title" = "uPic 將在系統啟動時時自動啟動。";
 
 /* Class = "NSButtonCell"; title = "Save"; ObjectID = "nvN-EI-scz"; */
-"nvN-EI-scz.title" = "保存";
+"nvN-EI-scz.title" = "存檔";
 
 /* Class = "NSButtonCell"; title = "Add Body Field"; ObjectID = "osM-Ga-s0H"; */
-"osM-Ga-s0H.title" = "增加 Body 字段";
+"osM-Ga-s0H.title" = "新增 Body 字段";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "q1H-P0-jix"; */
 "q1H-P0-jix.title" = "取消";
@@ -168,5 +168,4 @@
 "q6h-oC-nNb.title" = "彩色";
 
 /* Class = "NSTextFieldCell"; title = "Icon:"; ObjectID = "ugx-B2-gPe"; */
-"ugx-B2-gPe.title" = "图标:";
-
+"ugx-B2-gPe.title" = "圖標:";
