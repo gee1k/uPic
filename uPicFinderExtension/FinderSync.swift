@@ -49,6 +49,11 @@ class FinderSync: FIFinderSync {
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
         // Produce a menu for the extension.
 
+        // 如果是关闭状态下，则不把 uPic 注入到系统菜单栏上
+        if (FinderUtil.getFinderStatus() == 0) {
+            return nil
+        }
+        
         switch menuKind {
         case .contextualMenuForItems, .toolbarItemMenu:
             let menu = NSMenu(title: "")

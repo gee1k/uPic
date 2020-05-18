@@ -124,4 +124,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         }
     }
 
+    @IBAction func toggleFinderMenu(_ sender: NSButton) {
+        FinderUtil.setFinderStatus(sender.state.rawValue)
+    }
 }

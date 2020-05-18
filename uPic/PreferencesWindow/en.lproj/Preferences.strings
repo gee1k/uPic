@@ -169,3 +169,9 @@
 
 /* Class = "NSTextFieldCell"; title = "Icon:"; ObjectID = "ugx-B2-gPe"; */
 "ugx-B2-gPe.title" = "Icon:";
+
+/* Class = "NSTextFieldCell"; title = "Status:"; ObjectID = "0Y0-x3-Vi2"; */
+"0Y0-x3-Vi2.title" = "Status:";
+
+/* Class = "NsButtonCell"; title = "Open"; ObjectID = "5vm-ZW-dnW"; */
+"5vm-ZW-dnW.title" = "Open";

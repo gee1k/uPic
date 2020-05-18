@@ -32,4 +32,18 @@ class FinderUtil {
         defaults?.set(value, forKey: "uPic_FinderExtensionIcon")
         defaults?.synchronize()
     }
+
+    static func getFinderStatus() -> Int {
+        let defaults = UserDefaults.init(suiteName: groupName)
+        guard let status = defaults?.value(forKey: "uPic_FinderStatus") else {
+            return 1
+        }
+        return status as! Int
+    }
+
+    static func setFinderStatus(_ value: Int) {
+        let defaults = UserDefaults.init(suiteName: groupName)
+        defaults?.set(value, forKey: "uPic_FinderStatus")
+        defaults?.synchronize()
+    }
 }
