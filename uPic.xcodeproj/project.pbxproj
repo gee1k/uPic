@@ -1260,7 +1260,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20200505;
+				CURRENT_PROJECT_VERSION = 20200612;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1269,10 +1269,10 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.19.2;
+				MARKETING_VERSION = 0.19.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Developer_uPic_osx;
+				PROVISIONING_PROFILE_SPECIFIER = "uPic for macOS Developer";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1290,7 +1290,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20200505;
+				CURRENT_PROJECT_VERSION = 20200612;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1299,10 +1299,10 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.19.2;
+				MARKETING_VERSION = 0.19.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Developer_uPic_osx;
+				PROVISIONING_PROFILE_SPECIFIER = "uPic for macOS Developer";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1316,7 +1316,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20200505;
+				CURRENT_PROJECT_VERSION = 20200612;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
@@ -1326,10 +1326,10 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.19.2;
+				MARKETING_VERSION = 0.19.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Developer_uPic_osx_finder;
+				PROVISIONING_PROFILE_SPECIFIER = "uPic for macOS_ FinderExtension Developer";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1343,7 +1343,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20200505;
+				CURRENT_PROJECT_VERSION = 20200612;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
@@ -1353,10 +1353,10 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.19.2;
+				MARKETING_VERSION = 0.19.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Developer_uPic_osx_finder;
+				PROVISIONING_PROFILE_SPECIFIER = "uPic for macOS_ FinderExtension Developer";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
