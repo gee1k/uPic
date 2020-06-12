@@ -6,6 +6,14 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.19.3</title>
+			<description>
+			<![CDATA[ <p>自我的开发者账号被苹果删除后，经过半个多月的申诉、等待。现在苹果已经恢复我的账号。</p> <p>所以这个版本主要是签发新的证书打包了一下 APP，以解决大家打不开 APP 的问题。感谢大家的支持，给大家的使用带来了不便也很抱歉！</p> <p>其他更新：</p> <ul> <li>更新： 更新微博域名</li> </ul> <hr /> <p>After more than half a month of appeals and waiting after my developer account was deleted by Apple. Now Apple has restored my account.</p> <p>So this version is mainly a new certificate issued to package the app to solve the problem of people not being able to open the app. Thanks for your support, and sorry for the inconvenience!</p> <p>Other updates.</p> <ul> <li>Update: Update Weibo domain name</li> </ul> ]]>
+			</description>
+			<pubDate>Fri, 12 Jun 2020 08:00:42 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.19.3/uPic.zip" sparkle:version="20200612" sparkle:shortVersionString="v0.19.3" type="application/octet-stream" sparkle:edSignature="n/okYxuDbZG3ek07bNJNxJzmAOP2+Bf52sMlDt4Y/pfrkeIe+VQMGhhkOuRaQVXsazHATeAJ+/lVkYhm4nI/BA==" length="11261219"/>
+		</item>
+		<item>
 			<title>v0.19.2</title>
 			<description>
 			<![CDATA[
