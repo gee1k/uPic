@@ -16,7 +16,7 @@ class WeiboHostConfig: HostConfig {
     dynamic var cookie: String = ""
     dynamic var quality: String = WeiboqQuality.large.rawValue
     // tva1.sinaimg.cn
-    dynamic var domain: String = "https://ws1.sinaimg.cn"
+    dynamic var domain: String = "https://ww1.sinaimg.cn"
 
     override func displayName(key: String) -> String {
         switch key {
