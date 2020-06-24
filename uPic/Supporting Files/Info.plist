@@ -56,5 +56,7 @@
 	<string>https://gee1k.github.io/uPic/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>qrLszQ8rubF8+xZpLbXuoyDWME4L8d49Z/l+N12yIgg=</string>
+	<key>TeamIdentifierPrefix</key>
+	<string>$(TeamIdentifierPrefix)</string>
 </dict>
 </plist>

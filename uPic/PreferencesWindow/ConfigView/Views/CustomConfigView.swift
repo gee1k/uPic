@@ -50,12 +50,13 @@ class CustomConfigView: ConfigView {
         
         // MARK: Method
         y = y - gapTop - labelHeight
+        let methodBottomPopUpWidth = (textFieldWidth - 110)
         let methodLabel = NSTextField(labelWithString: "\(data.displayName(key: "method")):")
         methodLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
         methodLabel.alignment = .right
         methodLabel.lineBreakMode = .byClipping
         
-        let methodButtonPopUp = NSPopUpButton(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        let methodButtonPopUp = NSPopUpButton(frame: NSRect(x: textFieldX, y: y, width: methodBottomPopUpWidth, height: labelHeight))
         methodButtonPopUp.target = self
         methodButtonPopUp.action = #selector(methodChange(_:))
         methodButtonPopUp.identifier = NSUserInterfaceItemIdentifier(rawValue: "method")
@@ -77,6 +78,23 @@ class CustomConfigView: ConfigView {
         self.addSubview(methodLabel)
         self.addSubview(methodButtonPopUp)
         nextKeyViews.append(methodButtonPopUp)
+        
+        let useBase64Label = NSTextField(labelWithString: "\(data.displayName(key: "useBase64")):")
+        useBase64Label.frame = NSRect(x: textFieldX + methodBottomPopUpWidth, y: y, width: 90, height: labelHeight)
+        useBase64Label.alignment = .right
+        useBase64Label.lineBreakMode = .byClipping
+        
+        let useBase64Btn = NSButton(frame: NSRect(x: textFieldX + methodBottomPopUpWidth + 90, y: y, width: 50, height: labelHeight))
+        useBase64Btn.title = ""
+        useBase64Btn.target = self
+        useBase64Btn.action = #selector(useBase64Changed(_:))
+        useBase64Btn.identifier = NSUserInterfaceItemIdentifier(rawValue: "isAnonymous")
+        useBase64Btn.setButtonType(.switch)
+        useBase64Btn.allowsMixedState = false
+        useBase64Btn.state = data.useBase64 ? .on : .off
+        self.addSubview(useBase64Label)
+        self.addSubview(useBase64Btn)
+        nextKeyViews.append(useBase64Btn)
         
         
         // MARK: field
@@ -105,7 +123,6 @@ class CustomConfigView: ConfigView {
         self.addSubview(otherFieldsBtn)
         nextKeyViews.append(fieldField)
         nextKeyViews.append(otherFieldsBtn)
-        
         
         // MARK: resultPath
         y = y - gapTop - labelHeight
@@ -169,6 +186,12 @@ class CustomConfigView: ConfigView {
     
     func removeCustomConfigObserver() {
         PreferencesNotifier.removeObserver(observer: self, notification: .saveCustomExtensionSettings)
+    }
+    
+    @objc func useBase64Changed(_ sender: NSButton) {
+        let useBase64 = sender.state == .on
+        
+        self.data?.setValue(useBase64, forKey: "useBase64")
     }
     
     @objc func saveExtensionsSettings(notification: Notification) {

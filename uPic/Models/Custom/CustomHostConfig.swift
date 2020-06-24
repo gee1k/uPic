@@ -20,6 +20,7 @@ class CustomHostConfig: HostConfig {
     dynamic var domain: String = ""
     dynamic var saveKeyPath: String?
     dynamic var suffix: String = ""
+    dynamic var useBase64: Bool = false
 
     override func displayName(key: String) -> String {
         switch key {
@@ -41,6 +42,8 @@ class CustomHostConfig: HostConfig {
             return "Save Key".localized
         case "suffix":
             return "URL suffix".localized
+        case "useBase64":
+            return "Use Base64".localized
         default:
             return ""
         }
@@ -57,6 +60,7 @@ class CustomHostConfig: HostConfig {
         dict["domain"] = self.domain
         dict["saveKeyPath"] = self.saveKeyPath
         dict["suffix"] = self.suffix
+        dict["useBase64"] = self.useBase64
 
         return JSON(dict).rawString()!
     }
@@ -77,6 +81,7 @@ class CustomHostConfig: HostConfig {
         config.domain = json["domain"].stringValue
         config.saveKeyPath = json["saveKeyPath"].stringValue
         config.suffix = json["suffix"].stringValue
+        config.useBase64 = json["useBase64"].boolValue
         return config
     }
 }

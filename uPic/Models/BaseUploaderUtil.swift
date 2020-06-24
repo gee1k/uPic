@@ -129,6 +129,7 @@ class BaseUploaderUtil {
                         .replacingOccurrences(of: "{since_second}", with: "\(sinceSecond)")
                         .replacingOccurrences(of: "{since_millisecond}", with: "\(sinceMillisecond)")
                         .replacingOccurrences(of: "{filename}", with: filename)
+                        .replacingOccurrences(of: "{mimetype}", with: Util.getMimeType(pathExtension: fileExtension))
                         .replacingOccurrences(of: "{random}", with: _getRrandomFileName(nil))
                         .replacingOccurrences(of: "{suffix}", with: fileExtension)
                         .replacingOccurrences(of: "{.suffix}", with: ".\(fileExtension)")
@@ -155,22 +156,35 @@ class BaseUploaderUtil {
         var retData = fileData
         var fileName = ""
         var mimeType = ""
+        var folderPath: String?
         if let fileUrl = fileUrl {
             fileName = fileUrl.lastPathComponent
-            mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
+            if fileName.pathExtension.isEmpty {
+                fileName = fileName.appendingPathExtension(ext: "jpg")!
+            }
+            mimeType = Util.getMimeType(pathExtension: fileName.pathExtension)
             retData = BaseUploaderUtil.compressImage(fileUrl)
+            folderPath = fileUrl._uploadFolderPath
         } else if let fileData = fileData {
             retData = BaseUploaderUtil.compressImage(fileData)
             // 处理截图之类的图片，生成一个文件名
-            let fileExtension = Swime.mimeType(data: fileData)?.ext ?? "png"
+            let fileExtension = Swime.mimeType(data: fileData)?.ext ?? "jpg"
             fileName = BaseUploaderUtil._getRrandomFileName(fileExtension)
             mimeType = Util.getMimeType(pathExtension: fileExtension)
+            folderPath = fileData._uploadFolderPath
         } else {
             return nil
         }
         
+        let _saveKey = BaseUploaderUtil.parseSaveKeyPath(saveKeyPath, fileName)
         
-        let saveKey = BaseUploaderUtil.parseSaveKeyPath(saveKeyPath, fileName)
+        var saveKey = _saveKey
+        if let folderPath = folderPath {
+            let deletingLastPathComponent = _saveKey.deletingLastPathComponent
+            let lastPathComponent = _saveKey.lastPathComponent
+            
+            saveKey = deletingLastPathComponent.appendingPathComponent(path: folderPath).appendingPathComponent(path: lastPathComponent)
+        }
         
         return ["retData": retData as Any, "fileName": fileName, "mimeType": mimeType, "saveKey": saveKey]
     }
@@ -185,20 +199,25 @@ class BaseUploaderUtil {
         var fileName = ""
         var fileBase64: String? = ""
         var mimeType = ""
-        
+        var folderPath: String?
         if let fileUrl = fileUrl {
             fileName = fileUrl.lastPathComponent
-            mimeType = Util.getMimeType(pathExtension: fileUrl.pathExtension)
+            if fileName.pathExtension.isEmpty {
+                fileName = fileName.appendingPathExtension(ext: "jpg")!
+            }
+            mimeType = Util.getMimeType(pathExtension: fileName.pathExtension)
             retData = BaseUploaderUtil.compressImage(fileUrl)
             fileBase64 = retData?.toBase64()
+            folderPath = fileUrl._uploadFolderPath
         } else if let fileData = fileData {
             // 处理截图之类的图片，生成一个文件名
             
-            let fileExtension = Swime.mimeType(data: fileData)?.ext ?? "png"
+            let fileExtension = Swime.mimeType(data: fileData)?.ext ?? "jpg"
             fileName = BaseUploaderUtil._getRrandomFileName(fileExtension)
             mimeType = Util.getMimeType(pathExtension: fileExtension)
             retData = BaseUploaderUtil.compressImage(fileData)
             fileBase64 = retData?.toBase64()
+            folderPath = fileData._uploadFolderPath
         } else {
             return nil
         }
@@ -207,7 +226,15 @@ class BaseUploaderUtil {
             return nil
         }
         
-        let saveKey = BaseUploaderUtil.parseSaveKeyPath(saveKeyPath, fileName)
+        let _saveKey = BaseUploaderUtil.parseSaveKeyPath(saveKeyPath, fileName)
+        
+        var saveKey = _saveKey
+        if let folderPath = folderPath {
+            let deletingLastPathComponent = _saveKey.deletingLastPathComponent
+            let lastPathComponent = _saveKey.lastPathComponent
+            
+            saveKey = deletingLastPathComponent.appendingPathComponent(path: folderPath).appendingPathComponent(path: lastPathComponent)
+        }
         
         return ["retData": retData as Any, "fileBase64": fileBase64 as Any, "fileName": fileName, "mimeType": mimeType, "saveKey": saveKey]
     }

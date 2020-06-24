@@ -19,7 +19,7 @@ PODS:
   - WCDBOptimizedSQLCipher (1.2.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.0.0-rc.3)
+  - Alamofire (~> 5.0.2)
   - CryptoSwift (from `https://github.com/krzyzanowskim/CryptoSwift`, branch `master`)
   - Kingfisher
   - libminipng
@@ -58,7 +58,7 @@ CHECKOUT OPTIONS:
     :commit: a842251aee9047b2b335afe0ae0b5b44daf95219
     :git: https://github.com/krzyzanowskim/CryptoSwift
   LoginServiceKit:
-    :commit: 0b25f256e07ca110c2883f4f5072a7fe525b5805
+    :commit: be0b910d825f826d3c64d6ff1207209ec7dea0fa
     :git: https://github.com/Clipy/LoginServiceKit.git
   SwiftyXMLParser:
     :commit: bc85162ecee60d6eb94b778648bc4c51e1c4d34f
@@ -79,6 +79,6 @@ SPEC CHECKSUMS:
   WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
   WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
 
-PODFILE CHECKSUM: 7b3c84ded68f3bee6b328b5b59c8b5f15071fa3d
+PODFILE CHECKSUM: edb09d911eed83ee53778d9ac21bb5347040f534
 
 COCOAPODS: 1.8.4

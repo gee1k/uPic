@@ -83,6 +83,8 @@ class HostConfig: NSObject, Codable {
             return BaiduHostConfig()
         case .lsky_pro:
             return LskyProHostConfig()
+        case .minio:
+            return MinioHostConfig()
         }
     }
 
@@ -136,6 +138,9 @@ class HostConfig: NSObject, Codable {
         case .lsky_pro:
             config = LskyProHostConfig.deserialize(str: str)
             break
+        case .minio:
+            config = MinioHostConfig.deserialize(str: str)
+            break
         }
         
         config?.fixPrefixAndSuffix()
@@ -156,19 +161,6 @@ class HostConfig: NSObject, Codable {
             if var saveKeyPath = self.value(forKey: "saveKeyPath") as? String, saveKeyPath.hasPrefix("/") {
                 saveKeyPath.removeFirst()
                 self.setValue(saveKeyPath, forKey: "saveKeyPath")
-            }
-        }
-        
-        if self.containsKey(key: "domain") {
-            var domain = self.value(forKey: "domain") as! String
-            if domain.hasSuffix("/") {
-                domain.removeLast()
-                self.setValue(domain, forKey: "domain")
-            }
-            
-            if (!domain.isEmpty && !domain.hasPrefix("http://") && !domain.hasPrefix("https://")) {
-                domain = "http://\(domain)"
-                self.setValue(domain, forKey: "domain")
             }
         }
     }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="oOf-8k-ODW">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="oOf-8k-ODW">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -492,7 +492,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hpV-OT-Zx9">
-                                        <rect key="frame" x="20" y="102" width="138" height="21"/>
+                                        <rect key="frame" x="20" y="102" width="129" height="21"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zSd-NZ-L7B">
                                                 <rect key="frame" x="-2" y="3" width="34" height="16"/>
@@ -503,7 +503,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pHb-90-42w">
-                                                <rect key="frame" x="36" y="-3" width="105" height="25"/>
+                                                <rect key="frame" x="36" y="-3" width="96" height="25"/>
                                                 <popUpButtonCell key="cell" type="push" title="Single" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="dGv-rY-F7Z" id="ETf-eR-mih">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -569,7 +569,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qri-L6-ZRL">
-                                        <rect key="frame" x="19.5" y="21" width="125" height="23"/>
+                                        <rect key="frame" x="20" y="21" width="125" height="23"/>
                                         <buttonCell key="cell" type="roundTextured" title="Reset preferences" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jyI-H7-qN3">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -669,7 +669,7 @@
                 </viewController>
                 <customObject id="aPm-8i-YIB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-296" y="1125.5"/>
+            <point key="canvasLocation" x="-206" y="1127"/>
         </scene>
         <!--About-->
         <scene sceneID="pky-u0-lts">
@@ -936,11 +936,11 @@
             <objects>
                 <viewController storyboardIdentifier="CustomConfigSheetController" id="Ozx-L1-Bxg" customClass="CustomConfigSheetController" customModule="uPic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="CbM-da-dkU">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="420"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <box title="Header and Body Data" translatesAutoresizingMaskIntoConstraints="NO" id="OaN-c4-l0X">
-                                <rect key="frame" x="7" y="106" width="436" height="284"/>
+                                <rect key="frame" x="7" y="126" width="436" height="284"/>
                                 <view key="contentView" id="xaD-ZQ-LNf">
                                     <rect key="frame" x="3" y="3" width="430" height="264"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -977,10 +977,10 @@
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="FXz-X6-6Pl">
-                                <rect key="frame" x="10" y="10" width="430" height="100"/>
+                                <rect key="frame" x="10" y="10" width="430" height="120"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M3i-Qr-Okm">
-                                        <rect key="frame" x="4" y="66" width="145" height="32"/>
+                                        <rect key="frame" x="4" y="86" width="145" height="32"/>
                                         <buttonCell key="cell" type="push" title="Add Header Field" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ckh-A7-mxC">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -990,7 +990,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kZA-s6-5MO">
-                                        <rect key="frame" x="159" y="66" width="132" height="32"/>
+                                        <rect key="frame" x="159" y="86" width="132" height="32"/>
                                         <buttonCell key="cell" type="push" title="Add Body Field" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="osM-Ga-s0H">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -1026,10 +1026,10 @@ Gw
                                         </connections>
                                     </button>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8u9-Jh-uDe">
-                                        <rect key="frame" x="8" y="31" width="404" height="34"/>
+                                        <rect key="frame" x="8" y="31" width="404" height="54"/>
                                         <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" id="R0i-0c-6TZ">
-                                            <font key="font" metaFont="label" size="12"/>
-                                            <string key="title">Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {saveKey} and etc.</string>
+                                            <font key="font" metaFont="controlContent"/>
+                                            <string key="title">Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} {saveKey} and etc.</string>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1041,7 +1041,7 @@ Gw
                                     <constraint firstItem="YWU-oU-UGk" firstAttribute="baseline" secondItem="Yw2-YH-Daz" secondAttribute="baseline" id="7ns-O2-Caz"/>
                                     <constraint firstItem="YWU-oU-UGk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FXz-X6-6Pl" secondAttribute="leading" constant="20" symbolic="YES" id="A4C-hd-kEA"/>
                                     <constraint firstItem="M3i-Qr-Okm" firstAttribute="leading" secondItem="FXz-X6-6Pl" secondAttribute="leading" constant="10" id="GZZ-cj-xt7"/>
-                                    <constraint firstItem="YWU-oU-UGk" firstAttribute="top" secondItem="kZA-s6-5MO" secondAttribute="bottom" constant="50" id="Gpq-7V-hXe"/>
+                                    <constraint firstItem="YWU-oU-UGk" firstAttribute="top" secondItem="kZA-s6-5MO" secondAttribute="bottom" constant="70" id="Gpq-7V-hXe"/>
                                     <constraint firstItem="8u9-Jh-uDe" firstAttribute="top" secondItem="M3i-Qr-Okm" secondAttribute="bottom" constant="8" symbolic="YES" id="GrU-Ww-LgD"/>
                                     <constraint firstAttribute="trailing" secondItem="YWU-oU-UGk" secondAttribute="trailing" constant="82" id="GzT-Zw-8WP"/>
                                     <constraint firstItem="Yw2-YH-Daz" firstAttribute="leading" secondItem="YWU-oU-UGk" secondAttribute="trailing" constant="12" symbolic="YES" id="IL8-dq-fN9"/>
@@ -1063,7 +1063,7 @@ Gw
                             <constraint firstItem="OaN-c4-l0X" firstAttribute="leading" secondItem="CbM-da-dkU" secondAttribute="leading" constant="10" id="eo7-ci-WKC"/>
                             <constraint firstItem="OaN-c4-l0X" firstAttribute="top" secondItem="CbM-da-dkU" secondAttribute="top" constant="10" id="i2e-jG-UDd"/>
                             <constraint firstItem="FXz-X6-6Pl" firstAttribute="leading" secondItem="CbM-da-dkU" secondAttribute="leading" constant="10" id="lCR-xU-C0M"/>
-                            <constraint firstAttribute="bottom" secondItem="OaN-c4-l0X" secondAttribute="bottom" constant="110" id="qe8-5e-nW9"/>
+                            <constraint firstAttribute="bottom" secondItem="OaN-c4-l0X" secondAttribute="bottom" constant="130" id="qe8-5e-nW9"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1392,6 +1392,6 @@ Gw
         <image name="about" width="512" height="513"/>
         <image name="color" width="16" height="16"/>
         <image name="host" width="64" height="64"/>
-        <image name="single" width="32" height="32"/>
+        <image name="single" width="16" height="16"/>
     </resources>
 </document>

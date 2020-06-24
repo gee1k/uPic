@@ -31,21 +31,37 @@ public class DBManager {
     }
     
     deinit {
+        close()
+    }
+    
+    func close() {
         database.close()
     }
 }
 
 extension DBManager {
     private func createHistoryTable() {
-        try? database.create(table: Constants.CachePath.historyTableName, of: HistoryThumbnailModel.self)
+        do {
+            try database.create(table: Constants.CachePath.historyTableName, of: HistoryThumbnailModel.self)
+        } catch let error as NSError {
+            print ("Error: \(error.domain)")
+        }
     }
     
     func insertHistory(_ model: HistoryThumbnailModel) {
-        try? database.insert(objects: model, intoTable: Constants.CachePath.historyTableName)
+        do {
+            try database.insert(objects: model, intoTable: Constants.CachePath.historyTableName)
+        } catch let error as NSError {
+            print ("Error: \(error.domain)")
+        }
     }
     
     func insertHistorys(_ models: [HistoryThumbnailModel]) {
-        try? database.insert(objects: models, intoTable: Constants.CachePath.historyTableName)
+        do {
+            try database.insert(objects: models, intoTable: Constants.CachePath.historyTableName)
+        } catch let error as NSError {
+            print ("Error: \(error.domain)")
+        }
     }
     
     func getHistoryList() -> [HistoryThumbnailModel] {

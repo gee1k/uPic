@@ -26,12 +26,11 @@ class QiniuUploader: BaseUploader {
 
         let config = data as! QiniuHostConfig
 
-
         let bucket = config.bucket
         let accessKey = config.accessKey
         let secretKey = config.secretKey
         let domain = config.domain
-        var region = QiniuRegion.formatRegion(config.region)
+        let region = QiniuRegion.formatRegion(config.region)
         
         let saveKeyPath = config.saveKeyPath
         

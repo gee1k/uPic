@@ -104,10 +104,11 @@
 "Body Data" = "Body Data";
 "Client ID" = "Client ID";
 "Save Key" = "Save Key";
-"Use CDN" = "Use jsDeliver CDN to speed up access";
+"Use CDN" = "Use jsDelivr CDN to speed up access";
 "Version" = "Version";
 "Email" = "Email";
 "Anonymous" = "Anonymous";
+"Use Base64" = "Use Base64";
 
 /* host field placeholder */
 "Get API Token" = "Get API Token";
@@ -122,7 +123,7 @@
 "The path to the URL field in Response JSON" = "The path to the URL field in Response JSON";
 "(optional),When filled, URL = domain + URL path value" = "(optional),When filled, URL = domain + URL path value";
 
-"Save Key Tips" = "Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} and etc. For example, the uploaded file is uPic.jpg, set to \"uPic/{filename}{.suffix}\", it will be saved as: uPic/uPic.jpg.";
+"Save Key Tips" = "Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} and etc. For example, the uploaded file is uPic.jpg, set to \"uPic/{filename}{.suffix}\", it will be saved as: uPic/uPic.jpg.";
 "Suffix Tips" = "The suffix added during the visit does not affect the upload(also supports variables). Can be used as object storage for image processing styles, etc ... For example: !w means get a watermarked image.";
 
 /*host type*/
@@ -139,6 +140,7 @@
 "host.type.imgur" = "Imgur";
 "host.type.baidu_bos" = "Baidu Cloud BOS";
 "host.type.lsky_pro" = "Lsky Pro";
+"host.type.minio" = "MinIO";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "thumbnail";

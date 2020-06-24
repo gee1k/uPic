@@ -153,6 +153,9 @@ class BaseUploader {
         case .lsky_pro:
             LskyProUploader.shared.upload(url, host: host)
             break
+        case .minio:
+            MinioUploader.shared.upload(url, host: host)
+            break
         }
     }
     
@@ -214,6 +217,9 @@ class BaseUploader {
         case .lsky_pro:
             LskyProUploader.shared.upload(data, host: host)
             break
+        case .minio:
+            MinioUploader.shared.upload(data, host: host)
+            break
         }
     }
     
@@ -253,6 +259,8 @@ class BaseUploader {
             return BaiduUploader.fileExtensions
         case .lsky_pro:
             return LskyProUploader.fileExtensions
+        case .minio:
+            return MinioUploader.fileExtensions
         }
     }
     
@@ -273,7 +281,7 @@ class BaseUploader {
         }
     }
     
-    private static func checkFileExtensions(fileExtensions: [String], fileExtension: String) -> Bool {
+    static func checkFileExtensions(fileExtensions: [String], fileExtension: String) -> Bool {
         if fileExtensions.count == 0 {
             return true
         }
@@ -291,5 +299,30 @@ class BaseUploader {
         }
         
         return size <= limitSize
+    }
+}
+
+var _uploadFolderPathKey: Void?
+extension URL {
+    var _uploadFolderPath: String? {
+        get {
+            return objc_getAssociatedObject(self, &_uploadFolderPathKey) as? String
+        }
+        
+        set {
+            objc_setAssociatedObject(self, &_uploadFolderPathKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+}
+
+extension Data {
+    var _uploadFolderPath: String? {
+        get {
+            return objc_getAssociatedObject(self, &_uploadFolderPathKey) as? String
+        }
+        
+        set {
+            objc_setAssociatedObject(self, &_uploadFolderPathKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
     }
 }

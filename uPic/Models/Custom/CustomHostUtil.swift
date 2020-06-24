@@ -37,6 +37,8 @@ class CustomHostUtil {
      获取json结果中的url
      */
     public static func parseResultUrl(_ json: JSON, _ resultPath: String) -> String {
+        let resultPath = resultPath.replacingOccurrences(of: "'", with: "\"").replacingOccurrences(of: "，", with: ",")
+        
         var retUrl = ""
         let retJson = json
 

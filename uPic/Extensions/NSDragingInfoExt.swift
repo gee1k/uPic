@@ -34,6 +34,9 @@ extension NSDraggingInfo {
         
         // 过滤不支持的文件
         urls = urls.filter({url -> Bool in
+            if FileManager.directoryIsExists(path: url.path) {
+                return true
+            }
             let fileExtension = url.pathExtension.lowercased()
             return fileExtensions.contains(fileExtension)
         })
