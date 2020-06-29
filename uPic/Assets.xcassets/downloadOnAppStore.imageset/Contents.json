@@ -1,0 +1,80 @@
+{
+  "images" : [
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917-1.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917@2x-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917@3x-1.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.png",
+      "idiom" : "universal",
+      "locale" : "en",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917@2x.png",
+      "idiom" : "universal",
+      "locale" : "en",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917@3x.png",
+      "idiom" : "universal",
+      "locale" : "en",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNSC_RGB_blk_092917.png",
+      "idiom" : "universal",
+      "locale" : "zh-Hans",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNSC_RGB_blk_092917@2x.png",
+      "idiom" : "universal",
+      "locale" : "zh-Hans",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNSC_RGB_blk_092917@3x.png",
+      "idiom" : "universal",
+      "locale" : "zh-Hans",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNSC_RGB_blk_092917-1.png",
+      "idiom" : "universal",
+      "locale" : "zh-Hant",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNSC_RGB_blk_092917@2x-1.png",
+      "idiom" : "universal",
+      "locale" : "zh-Hant",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Download_on_the_App_Store_Badge_CNSC_RGB_blk_092917@3x-1.png",
+      "idiom" : "universal",
+      "locale" : "zh-Hant",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}
