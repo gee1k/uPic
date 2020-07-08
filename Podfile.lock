@@ -1,11 +1,11 @@
 PODS:
-  - Alamofire (5.0.5)
-  - CryptoSwift (1.3.1)
-  - Kingfisher (5.14.0):
-    - Kingfisher/Core (= 5.14.0)
-  - Kingfisher/Core (5.14.0)
+  - Alamofire (5.0.2)
+  - CryptoSwift (1.3.0)
+  - Kingfisher (5.13.2):
+    - Kingfisher/Core (= 5.13.2)
+  - Kingfisher/Core (5.13.2)
   - libminipng (0.5.6)
-  - LoginServiceKit (2.2.0)
+  - LoginServiceKit (2.1.0)
   - MASShortcut (2.4.0)
   - SnapKit (5.0.1)
   - Sparkle (1.23.0)
@@ -55,21 +55,21 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CryptoSwift:
-    :commit: e793a595747c8f9b97b8de4ebde7b2a440f2d594
+    :commit: a842251aee9047b2b335afe0ae0b5b44daf95219
     :git: https://github.com/krzyzanowskim/CryptoSwift
   LoginServiceKit:
-    :commit: 17a916dc09f1aab0f13e6edd1f77cdecee4d0ae8
+    :commit: be0b910d825f826d3c64d6ff1207209ec7dea0fa
     :git: https://github.com/Clipy/LoginServiceKit.git
   SwiftyXMLParser:
-    :commit: 9d82653e535a13a518b411934c0a5c0c84406c22
+    :commit: bc85162ecee60d6eb94b778648bc4c51e1c4d34f
     :git: https://github.com/yahoojapan/SwiftyXMLParser.git
 
 SPEC CHECKSUMS:
-  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
-  CryptoSwift: 27c1f79acf3410c697981c2443076ad0880a62b4
-  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
+  Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
+  CryptoSwift: 1283821600233bdbeb96d7b389c3288c3bf77211
+  Kingfisher: d342c8354c10c3d85a27d6d4c42c41285924b898
   libminipng: a44c35d06b9d54d6640acdf97f4500c034748abb
-  LoginServiceKit: 3c86ce2f2bcd1e373326839d6d863d8a6a5915b4
+  LoginServiceKit: 9a8b258c3111fa0d9585615052f778b08be92302
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Sparkle: 55b1a87ba69d56913375a281546b7c82dec95bb0
@@ -79,6 +79,6 @@ SPEC CHECKSUMS:
   WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
   WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
 
-PODFILE CHECKSUM: edb09d911eed83ee53778d9ac21bb5347040f534
+PODFILE CHECKSUM: 4101e450e6b2d21bac70b5245d209294f573f3bb
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.9.1
