@@ -38,6 +38,11 @@ class GeneralPreferencesViewController: PreferencesViewController {
         }
     }
 
+    @IBAction func didClickDownloadOnAppStoreButton(_ sender: NSButton) {
+        if let url = URL(string: "itms-apps://apps.apple.com/app/id1510718678") {
+            NSWorkspace.shared.open(url)
+        }
+    }
     func refreshButtonState() {
         launchButton.state = LoginServiceKit.isExistLoginItems() ? .on : .off
     }
