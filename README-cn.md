@@ -22,6 +22,8 @@
 
 **☕️赞助： _[Paypal](https://paypal.me/geeee1k), [支付宝](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/alipay.JPG), [微信支付](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat_pay.JPG)_**
 
+**📱uPic for iOS: [![uPic for iOS](https://cdn.jsdelivr.net/gh/gee1k/oss@master/uPic/app-store-black.svg)](https://apps.apple.com/us/app/id1510718678)**
+
 ## 📑 简介
 
 > **uPic(upload Picture) 是一款 Mac 端的图床(文件)上传客户端**
