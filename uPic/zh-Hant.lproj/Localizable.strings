@@ -68,8 +68,8 @@
 /* 狀態欄菜單上傳前壓縮圖片 */
 "Compress images before uploading" = "上傳前壓縮圖片";
 
-"Reset User Preferences?" = "重置用戶偏好設置?";
-"⚠️ Note that this will reset all user preferences" = "⚠️ 注意 這將會重置所有用戶偏好設置";
+"Reset User Preferences?" = "重置用戶偏好設定?";
+"⚠️ Note that this will reset all user preferences" = "⚠️ 注意 這將會重置所有用戶偏好設定";
 "Continuing will lose unsaved data. Do you want to continue?" = "繼續將會丟失未存檔的數據, 是否繼續?";
 "Import host configuration" = "導入圖床配置";
 "⚠️ Please choose import method, merge or overwrite?" = "⚠️ 請選擇導入方式, 合併還是覆蓋?";

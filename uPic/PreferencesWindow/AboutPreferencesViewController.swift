@@ -27,7 +27,7 @@ class AboutPreferencesViewController: PreferencesViewController {
     }
     
     @IBAction func twitterButtonClicked(_ sender: NSButton) {
-        guard let url = URL(string: "https://twitter.com/geee1k") else {
+        guard let url = URL(string: "https://twitter.com/realSvend") else {
             return
         }
         NSWorkspace.shared.open(url)
