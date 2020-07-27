@@ -88,15 +88,15 @@ extension ConfigManager {
 
 extension ConfigManager {
     func getOutputType() -> OutputType {
-        return OutputType(value: Defaults[.ouputFormat])
+        OutputType(value: Defaults[.outputFormat])
     }
     
     func setOutputType(_ outputType: OutputType) {
-        Defaults[.ouputFormat] = outputType.rawValue
+        Defaults[.outputFormat] = outputType.rawValue
     }
     
     func setOutputType(_ outputTypeRawValue: Int) {
-        Defaults[.ouputFormat] = outputTypeRawValue
+        Defaults[.outputFormat] = outputTypeRawValue
     }
 }
 

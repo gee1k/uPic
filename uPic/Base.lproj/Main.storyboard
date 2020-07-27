@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -105,7 +105,8 @@
                         <outlet property="compressFactorMenuItem" destination="eIU-EA-uQZ" id="uMq-Nm-vXy"/>
                         <outlet property="historyMenu" destination="MjM-mX-Ci5" id="b7E-HG-zZU"/>
                         <outlet property="hostMenuItem" destination="d02-bT-1Lv" id="Ah0-J0-Z4M"/>
-                        <outlet property="ouputFormatMenuItem" destination="1BX-LF-q51" id="H54-M9-CBq"/>
+                        <outlet property="outputFormatEncodedMenuItem" destination="NcU-Ek-lED" id="yc4-kN-ufV"/>
+                        <outlet property="outputFormatMenuItem" destination="1BX-LF-q51" id="H54-M9-CBq"/>
                         <outlet property="statusMenu" destination="fqV-BN-CNE" id="XoS-be-xDF"/>
                         <outlet property="uploadFromPasteboardMenuItem" destination="orX-KL-q11" id="v7z-nL-hxW"/>
                         <outlet property="uploadFromScreenshotMenuItem" destination="ueU-fm-1nn" id="Fnc-s1-TnL"/>
@@ -151,25 +152,44 @@
                                     <menuItem title="URL" id="U1c-9i-q5b">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <action selector="ouputFormatMenuItemClicked:" target="veO-oa-UPB" id="rRb-CM-Htv"/>
+                                            <action selector="outputFormatMenuItemClicked:" target="veO-oa-UPB" id="rRb-CM-Htv"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="HTML" tag="1" id="wCN-Y7-fdU">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <action selector="ouputFormatMenuItemClicked:" target="veO-oa-UPB" id="v5l-L7-7KA"/>
+                                            <action selector="outputFormatMenuItemClicked:" target="veO-oa-UPB" id="v5l-L7-7KA"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Markdown" tag="2" id="Opc-aA-hUg">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <action selector="ouputFormatMenuItemClicked:" target="veO-oa-UPB" id="Xxd-x1-2BP"/>
+                                            <action selector="outputFormatMenuItemClicked:" target="veO-oa-UPB" id="Xxd-x1-2BP"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="UBB" tag="3" id="Hz2-gj-luo">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <action selector="ouputFormatMenuItemClicked:" target="veO-oa-UPB" id="BYo-1k-amH"/>
+                                            <action selector="outputFormatMenuItemClicked:" target="veO-oa-UPB" id="BYo-1k-amH"/>
+                                        </connections>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </menuItem>
+                        <menuItem title="Output format encode" id="NcU-Ek-lED">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="Output format encode" id="jbA-xM-vl3">
+                                <items>
+                                    <menuItem title="On" id="ynd-0y-yEv">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="outputFormatEncodeMenuItemClicked:" target="veO-oa-UPB" id="Ihl-ST-fGa"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="Off" tag="1" id="yW4-Cl-nF5">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="outputFormatEncodeMenuItemClicked:" target="veO-oa-UPB" id="lQv-LX-iqu"/>
                                         </connections>
                                     </menuItem>
                                 </items>
