@@ -22,7 +22,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBOutlet weak var cancelUploadMenuItem: NSMenuItem!
     @IBOutlet weak var cancelUploadMenuSeparator: NSMenuItem!
     @IBOutlet weak var hostMenuItem: NSMenuItem!
-    @IBOutlet weak var ouputFormatMenuItem: NSMenuItem!
+    @IBOutlet weak var outputFormatMenuItem: NSMenuItem!
+    @IBOutlet weak var outputFormatEncodedMenuItem: NSMenuItem!
     @IBOutlet weak var compressFactorMenuItem: NSMenuItem!
 
     override func awakeFromNib() {
@@ -32,6 +33,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         resetHostMenu()
         resetUploadHistory()
         refreshOutputFormat()
+        refreshOutputFormatEncoded()
         resetCompressFactor()
         addObserver()
     }
@@ -45,6 +47,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         (NSApplication.shared.delegate as? AppDelegate)?.unbindShortcuts()
         
         refreshOutputFormat()
+        refreshOutputFormatEncoded()
         resetCompressFactor()
         
         // 正在上传
@@ -111,7 +114,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         ConfigManager.shared.exportHosts()
     }
     
-    
     // support -- paypal
     @IBAction func paypalMenuItemClicked(_ sender: Any) {
         (NSApplication.shared.delegate as? AppDelegate)?.sponsorByPaypal()
@@ -133,11 +135,16 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
 
     // change output format
-    @IBAction func ouputFormatMenuItemClicked(_ sender: NSMenuItem) {
+    @IBAction func outputFormatMenuItemClicked(_ sender: NSMenuItem) {
         ConfigManager.shared.setOutputType(sender.tag)
         self.refreshOutputFormat()
     }
-
+    
+    @IBAction func outputFormatEncodeMenuItemClicked(_ sender: NSMenuItem) {
+        Defaults[.outputFormatEncoded] = sender.tag == 0
+        self.refreshOutputFormatEncoded()
+    }
+    
     // change current host
     @objc func changeDefaultHost(_ sender: NSMenuItem) {
         guard let hostId = sender.identifier?.rawValue else {
@@ -244,7 +251,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     // refresh output format to select
     func refreshOutputFormat() {
         let outputType = ConfigManager.shared.getOutputType()
-        for item in ouputFormatMenuItem.submenu!.items {
+        for item in outputFormatMenuItem.submenu!.items {
             if item.tag == outputType.rawValue {
                 item.state = .on
             } else {
@@ -266,9 +273,35 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             let attributed = NSMutableAttributedString(string: str)
             let subTitleAttr = [NSAttributedString.Key.font: NSFont.menuFont(ofSize: 12), NSAttributedString.Key.foregroundColor: NSColor.gray]
             attributed.setAttributes(subTitleAttr, range: NSRange(outputFormatTitle.utf16.count + 1 ..< str.utf16.count))
-            ouputFormatMenuItem.attributedTitle = attributed
+            outputFormatMenuItem.attributedTitle = attributed
         } else {
-            ouputFormatMenuItem.title = outputFormatTitle
+            outputFormatMenuItem.title = outputFormatTitle
+        }
+    }
+    
+    func refreshOutputFormatEncoded() {
+        for item in outputFormatEncodedMenuItem.submenu!.items {
+            if (item.tag == 0 && Defaults[.outputFormatEncoded] == true) || (item.tag == 1 && Defaults[.outputFormatEncoded] == false) {
+                item.state = .on
+            } else {
+                item.state = .off
+            }
+        }
+        
+        let title = Defaults[.outputFormatEncoded]! ? "On".localized : "Off".localized
+        self.setOutputFormatEncodedMenuTitle(factorTitle: title)
+    }
+    
+    func setOutputFormatEncodedMenuTitle(factorTitle: String?) {
+        let outputFormatTitle = "Output format encode".localized
+        if let subTitle = factorTitle {
+            let str = "\(outputFormatTitle)   \(subTitle)"
+            let attributed = NSMutableAttributedString(string: str)
+            let subTitleAttr = [NSAttributedString.Key.font: NSFont.menuFont(ofSize: 12), NSAttributedString.Key.foregroundColor: NSColor.gray]
+            attributed.setAttributes(subTitleAttr, range: NSRange(outputFormatTitle.utf16.count + 1 ..< str.utf16.count))
+            outputFormatEncodedMenuItem.attributedTitle = attributed
+        } else {
+            outputFormatEncodedMenuItem.title = outputFormatTitle
         }
     }
 
