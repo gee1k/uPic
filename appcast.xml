@@ -6,6 +6,14 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.19.6</title>
+			<description>
+			<![CDATA[ <h2 id="新增">新增</h2> <ul> <li>新增是否转义URL开关</li> </ul> <hr /> <h2 id="added">Added</h2> <ul> <li>Add URL escape switch</li> </ul> ]]>
+			</description>
+			<pubDate>Tue, 28 Jul 2020 06:54:40 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.19.6/uPic.zip" sparkle:version="20200728" sparkle:shortVersionString="v0.19.6" type="application/octet-stream" sparkle:edSignature="N4wL5k2qMHOtVR/xXQU0EErKLMf5rjj7gcGASU4z/UJ92OoTy2UzCFFbVoEeEgOYSPd0wSYm4hgRu1L1qH0eAA==" length="11020061"/>
+		</item>
+		<item>
 			<title>v0.19.5</title>
 			<description>
 			<![CDATA[ <p>优化代码 优化翻译</p> <hr /> <p>Optimized code Optimized translation</p> ]]>
