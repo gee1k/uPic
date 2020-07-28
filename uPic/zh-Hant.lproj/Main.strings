@@ -1,3 +1,4 @@
+
 /* Class = "NSMenuItem"; title = "Quit"; ObjectID = "0JF-m2-1iq"; */
 "0JF-m2-1iq.title" = "結束";
 
@@ -51,6 +52,9 @@
 
 /* Class = "NSMenu"; title = "History record"; ObjectID = "MjM-mX-Ci5"; */
 "MjM-mX-Ci5.title" = "歷史紀錄";
+
+/* Class = "NSMenuItem"; title = "Output format encode"; ObjectID = "NcU-Ek-lED"; */
+"NcU-Ek-lED.title" = "輸出格式編碼";
 
 /* Class = "NSMenuItem"; title = "Tutorial"; ObjectID = "O8o-6e-fZn"; */
 "O8o-6e-fZn.title" = "使用教學";
@@ -106,6 +110,9 @@
 /* Class = "NSMenu"; title = "Donate"; ObjectID = "iGe-NR-YFa"; */
 "iGe-NR-YFa.title" = "贊助";
 
+/* Class = "NSMenu"; title = "Output format encode"; ObjectID = "jbA-xM-vl3"; */
+"jbA-xM-vl3.title" = "輸出格式編碼";
+
 /* Class = "NSMenuItem"; title = "Upload from clipboard"; ObjectID = "orX-KL-q11"; */
 "orX-KL-q11.title" = "剪貼板上傳";
 
@@ -133,5 +140,11 @@
 /* Class = "NSMenuItem"; title = "Donate"; ObjectID = "yCF-Ec-Lgz"; */
 "yCF-Ec-Lgz.title" = "贊助";
 
+/* Class = "NSMenuItem"; title = "Off"; ObjectID = "yW4-Cl-nF5"; */
+"yW4-Cl-nF5.title" = "關閉";
+
 /* Class = "NSMenuItem"; title = "Check for updates..."; ObjectID = "yai-4F-Btp"; */
 "yai-4F-Btp.title" = "檢查更新...";
+
+/* Class = "NSMenuItem"; title = "On"; ObjectID = "ynd-0y-yEv"; */
+"ynd-0y-yEv.title" = "開啟";

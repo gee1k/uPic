@@ -12,7 +12,8 @@ struct Keys {
     static let firstUsage = "uPic_FirstUsage"
     static let hostItems = "uPic_hostItems"
     static let defaultHostId = "uPic_DefaultHostId"
-    static let ouputFormat = "uPic_OutputFormat"
+    static let outputFormat = "uPic_OutputFormat"
+    static let outputFormatEncoded = "uPic_OutputFormatEncoded"
     static let historyList = "uPic_HistoryList_New"
     static let historyLimit = "uPic_HistoryLimit_New"
     static let compressFactor = "uPic_CompressFactor"
@@ -48,7 +49,8 @@ extension DefaultsKeys {
     static let firstUsage = DefaultsKey<String>(Keys.firstUsage)
     static let hostItems = DefaultsKey<[Host]>(Keys.hostItems)
     static let defaultHostId = DefaultsKey<String>(Keys.defaultHostId)
-    static let ouputFormat = DefaultsKey<Int>(Keys.ouputFormat)
+    static let outputFormat = DefaultsKey<Int>(Keys.outputFormat)
+    static let outputFormatEncoded = DefaultsKey<Bool>(Keys.outputFormatEncoded)
     static let historyList = DefaultsKey<[[String: Any]]>(Keys.historyList)
     static let historyLimit = DefaultsKey<Int>(Keys.historyLimit)
     static let compressFactor = DefaultsKey<Int>(Keys.compressFactor)
@@ -64,6 +66,15 @@ extension DefaultsKeys {
 let Defaults = UserDefaults.standard
 
 extension UserDefaults {
+    subscript(key: DefaultsKey<Bool>) -> Bool? {
+        get {
+            bool(forKey: key._key)
+        }
+        set {
+            set(newValue, forKey: key._key)
+        }
+    }
+    
     subscript(key: DefaultsKey<String>) -> String? {
         get {
             return string(forKey: key._key)

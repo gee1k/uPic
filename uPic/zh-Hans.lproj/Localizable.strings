@@ -13,6 +13,7 @@
 "Warning" = "提醒";
 "Continue" = "继续";
 "Example:" = "示例:";
+"On" = "开启";
 "Off" = "关闭";
 "APP Name" = "APP 名称";
 
@@ -64,6 +65,8 @@
 "Host" = "图床";
 /* 状态栏菜单输出格式 */
 "Output format" = "输出格式";
+/* 状态栏菜单输出格式编码 */
+"Output format encode" = "输出格式编码";
 /* 状态栏菜单上传前压缩图片 */
 "Compress images before uploading" = "上传前压缩图片";
 

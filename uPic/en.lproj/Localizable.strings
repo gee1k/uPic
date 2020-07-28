@@ -13,6 +13,7 @@
 "Warning" = "Warning";
 "Continue" = "Continue";
 "Example:" = "Example:";
+"On" = "On";
 "Off" = "Off";
 "APP Name" = "APP Name";
 
@@ -64,6 +65,8 @@
 "Host" = "Host";
 /* 状态栏菜单输出格式 */
 "Output format" = "Output format";
+/* 状态栏菜单输出格式编码 */
+"Output format encode" = "Output format encode";
 /* 状态栏菜单上传前压缩图片 */
 "Compress images before uploading" = "Compress images before uploading";
 

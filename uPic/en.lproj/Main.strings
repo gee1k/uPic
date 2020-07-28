@@ -53,6 +53,9 @@
 /* Class = "NSMenu"; title = "History record"; ObjectID = "MjM-mX-Ci5"; */
 "MjM-mX-Ci5.title" = "History record";
 
+/* Class = "NSMenuItem"; title = "Output format encode"; ObjectID = "NcU-Ek-lED"; */
+"NcU-Ek-lED.title" = "Output format encode";
+
 /* Class = "NSMenuItem"; title = "Tutorial"; ObjectID = "O8o-6e-fZn"; */
 "O8o-6e-fZn.title" = "Tutorial";
 
@@ -107,6 +110,9 @@
 /* Class = "NSMenu"; title = "Donate"; ObjectID = "iGe-NR-YFa"; */
 "iGe-NR-YFa.title" = "Donate";
 
+/* Class = "NSMenu"; title = "Output format encode"; ObjectID = "jbA-xM-vl3"; */
+"jbA-xM-vl3.title" = "Output format encode";
+
 /* Class = "NSMenuItem"; title = "Upload from clipboard"; ObjectID = "orX-KL-q11"; */
 "orX-KL-q11.title" = "Upload from clipboard";
 
@@ -134,5 +140,11 @@
 /* Class = "NSMenuItem"; title = "Donate"; ObjectID = "yCF-Ec-Lgz"; */
 "yCF-Ec-Lgz.title" = "Donate";
 
+/* Class = "NSMenuItem"; title = "Off"; ObjectID = "yW4-Cl-nF5"; */
+"yW4-Cl-nF5.title" = "Off";
+
 /* Class = "NSMenuItem"; title = "Check for updates..."; ObjectID = "yai-4F-Btp"; */
 "yai-4F-Btp.title" = "Check for updates...";
+
+/* Class = "NSMenuItem"; title = "On"; ObjectID = "ynd-0y-yEv"; */
+"ynd-0y-yEv.title" = "On";

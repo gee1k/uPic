@@ -18,7 +18,7 @@
 
 -----
 
-**👬联系： _[Telegram](https://t.me/upic_host), [Twitter](https://twitter.com/geee1k), [微博](https://weibo.com/6436660358), [微信群](https://raw.githubusercontent.com/gee1k/oss/master/personal/geee1k.JPG)_**
+**👬联系： _[Telegram](https://t.me/upic_host), [Twitter](https://twitter.com/realSvend), [微博](https://weibo.com/6436660358), [微信群](https://raw.githubusercontent.com/gee1k/oss/master/personal/geee1k.JPG)_**
 
 **☕️赞助： _[Paypal](https://paypal.me/geeee1k), [支付宝](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/alipay.JPG), [微信支付](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat_pay.JPG)_**
 
