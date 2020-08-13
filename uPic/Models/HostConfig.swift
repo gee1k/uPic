@@ -75,16 +75,14 @@ class HostConfig: NSObject, Codable {
             return GiteeHostConfig()
         case .weibo:
             return WeiboHostConfig()
-        case .amazon_s3:
-            return AmazonS3HostConfig()
+        case .s3:
+            return S3HostConfig()
         case .imgur:
             return ImgurHostConfig()
         case .baidu_bos:
             return BaiduHostConfig()
         case .lsky_pro:
             return LskyProHostConfig()
-        case .minio:
-            return MinioHostConfig()
         }
     }
 
@@ -126,8 +124,8 @@ class HostConfig: NSObject, Codable {
         case .weibo:
             config = WeiboHostConfig.deserialize(str: str)
             break
-        case .amazon_s3:
-            config = AmazonS3HostConfig.deserialize(str: str)
+        case .s3:
+            config = S3HostConfig.deserialize(str: str)
             break
         case .imgur:
             config = ImgurHostConfig.deserialize(str: str)
@@ -137,9 +135,6 @@ class HostConfig: NSObject, Codable {
             break
         case .lsky_pro:
             config = LskyProHostConfig.deserialize(str: str)
-            break
-        case .minio:
-            config = MinioHostConfig.deserialize(str: str)
             break
         }
         
