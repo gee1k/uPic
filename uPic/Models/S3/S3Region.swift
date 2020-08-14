@@ -24,6 +24,7 @@ public class S3Region {
         "ap-southeast-1": ["cname": "亚太区域（新加坡）", "name": "Asia Pacific (Singapore)"],
         "ap-southeast-2": ["cname": "亚太区域（悉尼）", "name": "Asia Pacific (Sydney)"],
         "ap-northeast-1": ["cname": "亚太区域（东京）", "name": "Asia Pacific (Tokyo)"],
+        "ap-northeast-3": ["cname": "亚太区域 (大阪当地)", "name": "Asia Pacific (Osaka-Local)"],
         "ap-east-1": ["cname": "亚太地区（香港）", "name": "Asia Pacific (Hong Kong)"],
         "ca-central-1": ["cname": "加拿大 (中部)", "name": "Canada (Central)"],
         "eu-west-1": ["cname": "欧洲（爱尔兰）", "name": "Europe (Ireland)"],
@@ -34,7 +35,10 @@ public class S3Region {
         "eu-south-1": ["cname": "欧洲（米兰）", "name": "Europe (Milan)"],
         "sa-east-1": ["cname": "南美洲（圣保罗）", "name": "South America (São Paulo)"],
         "me-south-1": ["cname": "中东（巴林）", "name": "Middle East (Bahrain)"],
-        "af-south-1": ["cname": "非洲（开普敦）", "name": "Africa (Cape Town)"]
+        "af-south-1": ["cname": "非洲（开普敦）", "name": "Africa (Cape Town)"],
+        // 中国
+        "cn-north-1": ["cname": "中国（北京）", "name": "China (Beijing)"],
+        "cn-northwest-1": ["cname": "中国 (宁夏)", "name": "China (Ningxia)"]
     ]
     
     public static func name(_ key: String) -> String {
@@ -53,6 +57,9 @@ public class S3Region {
     public static func endPoint(_ key: String) -> String {
         if key.isEmpty {
             return ""
+        }
+        if key == "cn-north-1" || key == "cn-northwest-1" {
+            return "s3.\(key).amazonaws.com.cn"
         }
         return "s3.\(key).amazonaws.com"
     }
