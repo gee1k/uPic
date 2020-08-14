@@ -80,6 +80,8 @@
 
 /* host -- start */
 "Region" = "区域";
+"Endpoint" = "服务端 URL";
+"Customize" = "自定义";
 "Bucket" = "空间名称";
 "Operator" = "操作员";
 "Password" = "密码";
@@ -144,6 +146,7 @@
 "host.type.baidu_bos" = "百度云 BOS";
 "host.type.lsky_pro" = "Lsky Pro";
 "host.type.minio" = "MinIO";
+"host.type.s3" = "Amazon S3(支持第三方S3协议)";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "缩略图";

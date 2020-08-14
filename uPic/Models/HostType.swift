@@ -18,11 +18,10 @@ public enum HostType: String, CaseIterable, Codable {
     case github
     case gitee
     case weibo
-    case amazon_s3
+    case s3
     case imgur
     case baidu_bos
     case lsky_pro
-    case minio
     
     public init(intValue: Int) {
         switch intValue {
@@ -45,15 +44,13 @@ public enum HostType: String, CaseIterable, Codable {
         case 8:
             self = .weibo
         case 9:
-            self = .amazon_s3
+            self = .s3
         case 10:
             self = .imgur
         case 11:
             self = .baidu_bos
         case 12:
             self = .lsky_pro
-        case 13:
-            self = .minio
         default:
             self = .smms
         }

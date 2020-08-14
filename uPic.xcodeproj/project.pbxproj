@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -55,7 +55,6 @@
 		1660FCBD22C11C7800372950 /* TencentRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660FCB622C11BA000372950 /* TencentRegion.swift */; };
 		1660FCBF22C1211900372950 /* TencentConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660FCBE22C1211800372950 /* TencentConfigView.swift */; };
 		1662AC7122C0AC53003AC924 /* AliyunConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662AC7022C0AC52003AC924 /* AliyunConfigView.swift */; };
-		1662AC7322C0BBF7003AC924 /* AmazonS3Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662AC7222C0BBF7003AC924 /* AmazonS3Region.swift */; };
 		166B4A5322B9CB4D001288ED /* UpYunConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */; };
 		166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4A5622B9D118001288ED /* PreferencesNotifier.swift */; };
 		1672762322AFF655007299C3 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672762222AFF655007299C3 /* Host.swift */; };
@@ -65,7 +64,6 @@
 		167620ED230819C0008F8363 /* ImgurHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167620EC230819A9008F8363 /* ImgurHostConfig.swift */; };
 		167620EE23081B0C008F8363 /* ImgurUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167620EB2308199E008F8363 /* ImgurUploader.swift */; };
 		167620F023081DC0008F8363 /* ImgurConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167620EF23081DC0008F8363 /* ImgurConfigView.swift */; };
-		167D08A822ED88E7000F3BC0 /* AmazonS3ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D08A622ED88C2000F3BC0 /* AmazonS3ConfigView.swift */; };
 		167D08AA22ED8A27000F3BC0 /* AliyunHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D08A922ED8A27000F3BC0 /* AliyunHostConfig.swift */; };
 		167D08AC22ED8A4B000F3BC0 /* AliyunRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D08AB22ED8A4B000F3BC0 /* AliyunRegion.swift */; };
 		167D08AE22ED8A58000F3BC0 /* AliyunUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167D08AD22ED8A58000F3BC0 /* AliyunUploader.swift */; };
@@ -93,16 +91,19 @@
 		169F073A22AF4549008E8525 /* AboutPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F073622AF4549008E8525 /* AboutPreferencesViewController.swift */; };
 		169F073B22AF53DE008E8525 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169F073D22AF53DE008E8525 /* Preferences.storyboard */; };
 		169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F074322AF7A3D008E8525 /* StatusMenuController.swift */; };
+		16A1C17124E3E7B40097018A /* S3 in Frameworks */ = {isa = PBXBuildFile; productRef = 16A1C17024E3E7B40097018A /* S3 */; };
+		16A1C17324E3E7B40097018A /* S3Control in Frameworks */ = {isa = PBXBuildFile; productRef = 16A1C17224E3E7B40097018A /* S3Control */; };
 		16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A6DC5722AA375700813706 /* AppDelegate.swift */; };
+		16AFDB3024E3EA670008E5A7 /* S3Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFDB2F24E3EA670008E5A7 /* S3Uploader.swift */; };
+		16AFDB3224E5094A0008E5A7 /* S3HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFDB3124E5094A0008E5A7 /* S3HostConfig.swift */; };
+		16AFDB3424E50DD30008E5A7 /* S3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFDB3324E50DD30008E5A7 /* S3Util.swift */; };
+		16AFDB3624E50F0A0008E5A7 /* S3ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFDB3524E50F0A0008E5A7 /* S3ConfigView.swift */; };
+		16AFDB3824E50F450008E5A7 /* S3Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFDB3724E50F450008E5A7 /* S3Region.swift */; };
 		16B4F0BC23ADCFAC00846BD3 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164745EF22B65FE900F9575D /* String+Extension.swift */; };
 		16B4F0BE23ADD09300846BD3 /* String+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B4F0BD23ADCFFF00846BD3 /* String+Crypto.swift */; };
 		16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDDFE22EA96AE0080E467 /* Assets.xcassets */; };
 		16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDE0222EAA2920080E467 /* Assets.xcassets */; };
 		16C176F523A208A80089B933 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C176F423A208A80089B933 /* NSImage+Extension.swift */; };
-		16C31AF5244315790079EB4A /* MinioUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C31AF4244315790079EB4A /* MinioUtil.swift */; };
-		16C31AF7244315BD0079EB4A /* MinioHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C31AF6244315BD0079EB4A /* MinioHostConfig.swift */; };
-		16C31AF8244316280079EB4A /* MinioUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C31AF3244315270079EB4A /* MinioUploader.swift */; };
-		16C31AFA244317140079EB4A /* MinioConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C31AF9244317140079EB4A /* MinioConfigView.swift */; };
 		16CD34F323BC87ED005B52F2 /* SmmsHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */; };
 		16CD34F523BC8855005B52F2 /* SmmsVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F423BC8855005B52F2 /* SmmsVersion.swift */; };
 		16CD34F723BC88E2005B52F2 /* SmmsConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F623BC88E2005B52F2 /* SmmsConfigView.swift */; };
@@ -140,9 +141,6 @@
 		4BC11BDE238CFD53001641A6 /* HistoryThumbnailTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC11BDD238CFD53001641A6 /* HistoryThumbnailTimer.swift */; };
 		4BEFD811238B738E00BBE64D /* HistoryThumbnailConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */; };
 		4BEFD813238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */; };
-		68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */; };
-		68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */; };
-		68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */; };
 		8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; };
 		968ECC07240DFCF900B2D78C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 968ECC09240DFCF900B2D78C /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
@@ -233,7 +231,6 @@
 		1660FCB922C11BA000372950 /* TencentHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TencentHostConfig.swift; sourceTree = "<group>"; };
 		1660FCBE22C1211800372950 /* TencentConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TencentConfigView.swift; sourceTree = "<group>"; };
 		1662AC7022C0AC52003AC924 /* AliyunConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliyunConfigView.swift; sourceTree = "<group>"; };
-		1662AC7222C0BBF7003AC924 /* AmazonS3Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonS3Region.swift; sourceTree = "<group>"; };
 		166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpYunConfigView.swift; sourceTree = "<group>"; };
 		166B4A5622B9D118001288ED /* PreferencesNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesNotifier.swift; sourceTree = "<group>"; };
 		1672762222AFF655007299C3 /* Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
@@ -243,7 +240,6 @@
 		167620EB2308199E008F8363 /* ImgurUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurUploader.swift; sourceTree = "<group>"; };
 		167620EC230819A9008F8363 /* ImgurHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurHostConfig.swift; sourceTree = "<group>"; };
 		167620EF23081DC0008F8363 /* ImgurConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurConfigView.swift; sourceTree = "<group>"; };
-		167D08A622ED88C2000F3BC0 /* AmazonS3ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonS3ConfigView.swift; sourceTree = "<group>"; };
 		167D08A922ED8A27000F3BC0 /* AliyunHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliyunHostConfig.swift; sourceTree = "<group>"; };
 		167D08AB22ED8A4B000F3BC0 /* AliyunRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliyunRegion.swift; sourceTree = "<group>"; };
 		167D08AD22ED8A58000F3BC0 /* AliyunUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliyunUploader.swift; sourceTree = "<group>"; };
@@ -274,14 +270,15 @@
 		16A6DC5722AA375700813706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16A6DC6022AA375800813706 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16A6DC6122AA375800813706 /* uPic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPic.entitlements; sourceTree = "<group>"; };
+		16AFDB2F24E3EA670008E5A7 /* S3Uploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Uploader.swift; sourceTree = "<group>"; };
+		16AFDB3124E5094A0008E5A7 /* S3HostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3HostConfig.swift; sourceTree = "<group>"; };
+		16AFDB3324E50DD30008E5A7 /* S3Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Util.swift; sourceTree = "<group>"; };
+		16AFDB3524E50F0A0008E5A7 /* S3ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3ConfigView.swift; sourceTree = "<group>"; };
+		16AFDB3724E50F450008E5A7 /* S3Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3Region.swift; sourceTree = "<group>"; };
 		16B4F0BD23ADCFFF00846BD3 /* String+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Crypto.swift"; sourceTree = "<group>"; };
 		16BDDDFE22EA96AE0080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16BDDE0222EAA2920080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16C176F423A208A80089B933 /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
-		16C31AF3244315270079EB4A /* MinioUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinioUploader.swift; sourceTree = "<group>"; };
-		16C31AF4244315790079EB4A /* MinioUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinioUtil.swift; sourceTree = "<group>"; };
-		16C31AF6244315BD0079EB4A /* MinioHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinioHostConfig.swift; sourceTree = "<group>"; };
-		16C31AF9244317140079EB4A /* MinioConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinioConfigView.swift; sourceTree = "<group>"; };
 		16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsHostConfig.swift; sourceTree = "<group>"; };
 		16CD34F423BC8855005B52F2 /* SmmsVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsVersion.swift; sourceTree = "<group>"; };
 		16CD34F623BC88E2005B52F2 /* SmmsConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsConfigView.swift; sourceTree = "<group>"; };
@@ -320,9 +317,6 @@
 		4BC11BDD238CFD53001641A6 /* HistoryThumbnailTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailTimer.swift; sourceTree = "<group>"; };
 		4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailConstant.swift; sourceTree = "<group>"; };
 		4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPreviewCustomScrollView.swift; sourceTree = "<group>"; };
-		68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Util.swift; sourceTree = "<group>"; };
-		68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Uploader.swift; sourceTree = "<group>"; };
-		68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3HostConfig.swift; sourceTree = "<group>"; };
 		96319C6E24CE7CEB004A6E62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		968ECC08240DFCF900B2D78C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		968ECC0A240DFCFA00B2D78C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -337,6 +331,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16A1C17124E3E7B40097018A /* S3 in Frameworks */,
+				16A1C17324E3E7B40097018A /* S3Control in Frameworks */,
 				8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,11 +442,10 @@
 		1646B80F22C7C485009271DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				16C31AF9244317140079EB4A /* MinioConfigView.swift */,
+				16AFDB3524E50F0A0008E5A7 /* S3ConfigView.swift */,
 				161539142408F0E200CC662F /* LskyProConfigView.swift */,
 				16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */,
 				167620EF23081DC0008F8363 /* ImgurConfigView.swift */,
-				167D08A622ED88C2000F3BC0 /* AmazonS3ConfigView.swift */,
 				1657019E22C897A400C57EE9 /* WeiboConfigView.swift */,
 				1662AC7022C0AC52003AC924 /* AliyunConfigView.swift */,
 				161C3BE422C4870B0092114F /* CustomConfigView.swift */,
@@ -517,15 +512,14 @@
 				167D7F4A22B4D31300DD0A7A /* HostType.swift */,
 				16F04EE923BCC49000CCA2FE /* OutputType.swift */,
 				68BBB87F2C3AEBDF2C914131 /* Aliyun */,
-				167D08A522ED8132000F3BC0 /* Amazon_S3 */,
 				16D20B522383887E006D8D01 /* Baidu */,
 				161C3BDF22C4830A0092114F /* Custom */,
 				1646B80222C7931E009271DF /* Gitee */,
 				167DDBE922C76F3B00B03357 /* Github */,
 				167620EA2308191A008F8363 /* Imgur */,
 				1615390E2408E7DE00CC662F /* LskyPro */,
-				16C31AF22443150D0079EB4A /* Minio */,
 				1690E7E522BF113700FC81F8 /* Qiniu */,
+				16AFDB2E24E3EA340008E5A7 /* S3 */,
 				167D7F4E22B4DB2500DD0A7A /* Smms */,
 				1660FCB522C11A9F00372950 /* Tencent */,
 				16995A1F22B5FC6800B1F923 /* UpYun */,
@@ -556,17 +550,6 @@
 				167620EB2308199E008F8363 /* ImgurUploader.swift */,
 			);
 			path = Imgur;
-			sourceTree = "<group>";
-		};
-		167D08A522ED8132000F3BC0 /* Amazon_S3 */ = {
-			isa = PBXGroup;
-			children = (
-				68BBB8CF2838A67CA1AD438F /* AmazonS3HostConfig.swift */,
-				68BBB5C4550545707614BE4D /* AmazonS3Uploader.swift */,
-				68BBB2F5FAEEFFF55935F022 /* AmazonS3Util.swift */,
-				1662AC7222C0BBF7003AC924 /* AmazonS3Region.swift */,
-			);
-			path = Amazon_S3;
 			sourceTree = "<group>";
 		};
 		167D7F4E22B4DB2500DD0A7A /* Smms */ = {
@@ -660,14 +643,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		16C31AF22443150D0079EB4A /* Minio */ = {
+		16AFDB2E24E3EA340008E5A7 /* S3 */ = {
 			isa = PBXGroup;
 			children = (
-				16C31AF3244315270079EB4A /* MinioUploader.swift */,
-				16C31AF4244315790079EB4A /* MinioUtil.swift */,
-				16C31AF6244315BD0079EB4A /* MinioHostConfig.swift */,
+				16AFDB3124E5094A0008E5A7 /* S3HostConfig.swift */,
+				16AFDB2F24E3EA670008E5A7 /* S3Uploader.swift */,
+				16AFDB3324E50DD30008E5A7 /* S3Util.swift */,
+				16AFDB3724E50F450008E5A7 /* S3Region.swift */,
 			);
-			path = Minio;
+			path = S3;
 			sourceTree = "<group>";
 		};
 		16CD34F823BC8966005B52F2 /* Swime */ = {
@@ -789,6 +773,10 @@
 				16F7467822E994A300480A62 /* PBXTargetDependency */,
 			);
 			name = uPic;
+			packageProductDependencies = (
+				16A1C17024E3E7B40097018A /* S3 */,
+				16A1C17224E3E7B40097018A /* S3Control */,
+			);
 			productName = uPic;
 			productReference = 16EC9A0222ABBBB4001B6C89 /* uPic.app */;
 			productType = "com.apple.product-type.application";
@@ -856,6 +844,9 @@
 				"zh-Hant",
 			);
 			mainGroup = 16A6DC4B22AA375700813706;
+			packageReferences = (
+				16A1C16F24E3E7B40097018A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */,
+			);
 			productRefGroup = 16A6DC4B22AA375700813706;
 			projectDirPath = "";
 			projectRoot = "";
@@ -947,6 +938,7 @@
 				167D08AC22ED8A4B000F3BC0 /* AliyunRegion.swift in Sources */,
 				1685AA3522DEC943008FBF1D /* FlippedView.swift in Sources */,
 				16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */,
+				16AFDB3024E3EA670008E5A7 /* S3Uploader.swift in Sources */,
 				16CD34F323BC87ED005B52F2 /* SmmsHostConfig.swift in Sources */,
 				16D20B58238390F2006D8D01 /* BaiduUploader.swift in Sources */,
 				1675EC5322FB38240038DA33 /* BaseUploaderUtil.swift in Sources */,
@@ -957,6 +949,7 @@
 				16F04EE523BCC45F00CCA2FE /* CommandLine.swift in Sources */,
 				1602ED9922ADF43800AA8638 /* SmmsUploader.swift in Sources */,
 				164745F022B65FE900F9575D /* String+Extension.swift in Sources */,
+				16AFDB3224E5094A0008E5A7 /* S3HostConfig.swift in Sources */,
 				4B2B3354236BC5AB00C9F2CA /* NSButtonExtension.swift in Sources */,
 				166B4A5322B9CB4D001288ED /* UpYunConfigView.swift in Sources */,
 				166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */,
@@ -978,7 +971,6 @@
 				1618D1A822E99E2100831601 /* UploadNotifier.swift in Sources */,
 				4B09F11423695F8D000208BD /* HistoryThumbnailContentView.swift in Sources */,
 				163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */,
-				167D08A822ED88E7000F3BC0 /* AmazonS3ConfigView.swift in Sources */,
 				4B2B3356236C3B6400C9F2CA /* NSViewExtension.swift in Sources */,
 				164745EB22B618D700F9575D /* HostPreferencesViewController.swift in Sources */,
 				161C3BE322C483560092114F /* CustomHostConfig.swift in Sources */,
@@ -1005,7 +997,6 @@
 				16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */,
 				167DDBED22C76F6600B03357 /* GithubHostConfig.swift in Sources */,
 				1646B80822C79349009271DF /* GiteeUtil.swift in Sources */,
-				16C31AF5244315790079EB4A /* MinioUtil.swift in Sources */,
 				168A3D1523D1AACA001BF1D9 /* RequestMethods.swift in Sources */,
 				1660FCBF22C1211900372950 /* TencentConfigView.swift in Sources */,
 				1646B80A22C79483009271DF /* GiteeConfigView.swift in Sources */,
@@ -1017,6 +1008,7 @@
 				1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */,
 				161539132408EC7D00CC662F /* LskyProHostConfig.swift in Sources */,
 				16F04EE723BCC45F00CCA2FE /* StringExtensions.swift in Sources */,
+				16AFDB3624E50F0A0008E5A7 /* S3ConfigView.swift in Sources */,
 				4BC11BDE238CFD53001641A6 /* HistoryThumbnailTimer.swift in Sources */,
 				1662AC7122C0AC53003AC924 /* AliyunConfigView.swift in Sources */,
 				1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */,
@@ -1031,14 +1023,12 @@
 				16068C7522AEC1D1004D39B7 /* PreferencesViewController.swift in Sources */,
 				161C3BE122C483380092114F /* CustomUploader.swift in Sources */,
 				169F073A22AF4549008E8525 /* AboutPreferencesViewController.swift in Sources */,
-				16C31AF8244316280079EB4A /* MinioUploader.swift in Sources */,
 				4BEFD811238B738E00BBE64D /* HistoryThumbnailConstant.swift in Sources */,
 				1690E7E722BF174300FC81F8 /* QiniuHostConfig.swift in Sources */,
 				1675516222ABF80300D3EB6F /* NSDragingInfoExt.swift in Sources */,
-				1662AC7322C0BBF7003AC924 /* AmazonS3Region.swift in Sources */,
 				16F04EEC23BCC4B200CCA2FE /* FileManagerExtension.swift in Sources */,
-				16C31AFA244317140079EB4A /* MinioConfigView.swift in Sources */,
 				1683573C22DB0D0800985B10 /* CustomConfigSheetController.swift in Sources */,
+				16AFDB3824E50F450008E5A7 /* S3Region.swift in Sources */,
 				16CD34FC23BC8966005B52F2 /* MimeType.swift in Sources */,
 				16F04EE623BCC45F00CCA2FE /* Option.swift in Sources */,
 				169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */,
@@ -1047,20 +1037,17 @@
 				16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */,
 				16ECAA962413B6C200F9236B /* FinderUtil.swift in Sources */,
 				161C3BE522C4870C0092114F /* CustomConfigView.swift in Sources */,
-				68BBB6E5FFBB050D05107413 /* AmazonS3HostConfig.swift in Sources */,
-				68BBB3EF25C92DCAE216A4DF /* AmazonS3Uploader.swift in Sources */,
+				16AFDB3424E50DD30008E5A7 /* S3Util.swift in Sources */,
 				1660FCBC22C11C7500372950 /* TencentUtil.swift in Sources */,
 				1660FCBA22C11C2300372950 /* TencentHostConfig.swift in Sources */,
 				16248E32230673B6002131BB /* NotificationExt.swift in Sources */,
 				16F04EE423BCC45F00CCA2FE /* Console.swift in Sources */,
-				16C31AF7244315BD0079EB4A /* MinioHostConfig.swift in Sources */,
 				167DDBEF22C7722200B03357 /* GithubUtil.swift in Sources */,
 				16F04EEE23BCC4C500CCA2FE /* URLSchemeExt.swift in Sources */,
 				16D20B5C238392C9006D8D01 /* BaiduConfigView.swift in Sources */,
 				167620F023081DC0008F8363 /* ImgurConfigView.swift in Sources */,
 				4BBA45BB235F081C0079F253 /* HistoryThumbnailItem.swift in Sources */,
 				1685AA3722DEEE6C008FBF1D /* CustomHostUtil.swift in Sources */,
-				68BBB99780D7F4586458D4F5 /* AmazonS3Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1393,6 +1380,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		16A1C16F24E3E7B40097018A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swift-aws/aws-sdk-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		16A1C17024E3E7B40097018A /* S3 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16A1C16F24E3E7B40097018A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = S3;
+		};
+		16A1C17224E3E7B40097018A /* S3Control */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16A1C16F24E3E7B40097018A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
+			productName = S3Control;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 16A6DC4C22AA375700813706 /* Project object */;
 }

@@ -12,6 +12,7 @@ class ConfigView: NSView {
     var paddingTop: Int {
         return 30
     }
+    
     var paddingLeft: Int {
         return 6
     }
@@ -79,8 +80,8 @@ class ConfigView: NSView {
         case .weibo:
             parentView.addSubview(WeiboConfigView(frame: parentView.frame, host: item))
             break
-        case .amazon_s3:
-            parentView.addSubview(AmazonS3ConfigView(frame: parentView.frame, host: item))
+        case .s3:
+            parentView.addSubview(S3ConfigView(frame: parentView.frame, host: item))
             break
         case .imgur:
             parentView.addSubview(ImgurConfigView(frame: parentView.frame, host: item))
@@ -90,9 +91,6 @@ class ConfigView: NSView {
             break
         case .lsky_pro:
             parentView.addSubview(LskyProConfigView(frame: parentView.frame, host: item))
-            break
-        case .minio:
-            parentView.addSubview(MinioConfigView(frame: parentView.frame, host: item))
             break
 //        default:
 //            let label = NSTextField(labelWithString: "The file will be uploaded anonymously to".localized + " \(item.name)")
