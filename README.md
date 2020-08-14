@@ -37,7 +37,7 @@
 
 ### 1. Homebrew(Recommend):
 ```
-brew cask install upic
+brew cask bigwig-club/brew/upic
 ```
 ### 2. Download from github
  Click [release](https://github.com/gee1k/uPic/releases) to download.
