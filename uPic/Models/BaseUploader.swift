@@ -141,8 +141,8 @@ class BaseUploader {
         case .weibo:
             WeiboUploader.shared.upload(url, host: host)
             break
-        case .amazon_s3:
-            AmazonS3Uploader.shared.upload(url, host: host)
+        case .s3:
+            S3Uploader.shared.upload(url, host: host)
             break
         case .imgur:
             ImgurUploader.shared.upload(url, host: host)
@@ -152,9 +152,6 @@ class BaseUploader {
             break
         case .lsky_pro:
             LskyProUploader.shared.upload(url, host: host)
-            break
-        case .minio:
-            MinioUploader.shared.upload(url, host: host)
             break
         }
     }
@@ -205,8 +202,8 @@ class BaseUploader {
         case .weibo:
             WeiboUploader.shared.upload(data, host: host)
             break
-        case .amazon_s3:
-            AmazonS3Uploader.shared.upload(data, host: host)
+        case .s3:
+            S3Uploader.shared.upload(data, host: host)
             break
         case .imgur:
             ImgurUploader.shared.upload(data, host: host)
@@ -216,9 +213,6 @@ class BaseUploader {
             break
         case .lsky_pro:
             LskyProUploader.shared.upload(data, host: host)
-            break
-        case .minio:
-            MinioUploader.shared.upload(data, host: host)
             break
         }
     }
@@ -251,16 +245,14 @@ class BaseUploader {
             return GiteeUploader.fileExtensions
         case .weibo:
             return WeiboUploader.fileExtensions
-        case .amazon_s3:
-            return AmazonS3Uploader.fileExtensions
+        case .s3:
+            return S3Uploader.fileExtensions
         case .imgur:
             return ImgurUploader.fileExtensions
         case .baidu_bos:
             return BaiduUploader.fileExtensions
         case .lsky_pro:
             return LskyProUploader.fileExtensions
-        case .minio:
-            return MinioUploader.fileExtensions
         }
     }
     

@@ -81,6 +81,8 @@
 
 /* host -- start */
 "Region" = "區域";
+"Endpoint" = "服務端 URL";
+"Customize" = "自定義";
 "Bucket" = "存儲桶名稱";
 "Operator" = "操作員";
 "Password" = "密碼";
@@ -145,6 +147,7 @@
 "host.type.baidu_bos" = "百度雲 BOS";
 "host.type.lsky_pro" = "Lsky Pro";
 "host.type.minio" = "MinIO";
+"host.type.s3" = "Amazon S3(支持第三方S3協議)";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "縮圖";
