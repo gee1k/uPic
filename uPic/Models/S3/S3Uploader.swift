@@ -9,8 +9,6 @@
 import Foundation
 import AWSSDKSwiftCore
 import S3
-import NIO
-import NIOHTTP1
 
 
 class S3Uploader: BaseUploader {
@@ -67,7 +65,9 @@ class S3Uploader: BaseUploader {
         
         let suffix = BaseUploaderUtil._parseVariables(config.suffix, fileName, otherVariables: nil)
         
-        let s3 = S3(accessKeyId: accessKey, secretAccessKey: secretKey, region: region, endpoint: S3Util.computedS3Endpoint(endpoint))
+        let s3Endpoint = S3Util.computedS3Endpoint(endpoint)
+        
+        let s3 = S3(accessKeyId: accessKey, secretAccessKey: secretKey, region: region, endpoint: s3Endpoint)
         
         let putObjectRequest = S3.PutObjectRequest(acl: .publicRead, body: bodyData, bucket: bucket, contentLength: Int64(bodyData.count), contentType: mimeType, key: saveKey)
         let put = s3.putObject(putObjectRequest)
