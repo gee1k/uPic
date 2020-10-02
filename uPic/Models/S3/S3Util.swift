@@ -20,7 +20,7 @@ public class S3Util {
             }
             return "\(endpoint)/\(bucket)"
         } else {
-            let cEndpoint = "s3.\(region).amazonaws.com"
+            let cEndpoint = S3Region.endPoint(region)
             return "\(schema)\(bucket).\(cEndpoint)"
         }
     }
