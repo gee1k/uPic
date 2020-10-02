@@ -12,11 +12,15 @@ import Alamofire
 class BaseUploader {
 
     func start() {
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadStart()
+        DispatchQueue.main.async {
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadStart()
+        }
     }
 
     func progress(percent: Double) {
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadProgress(percent: percent)
+        DispatchQueue.main.async {
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadProgress(percent: percent)
+        }
     }
 
     func completed(url: String, _ fileData: Data?, _ fileUrl: URL?, _ fileName: String?) {
@@ -72,11 +76,16 @@ class BaseUploader {
             
             ConfigManager.shared.addHistory(previewModel)
         }
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadCompleted(url: url)
+        
+        DispatchQueue.main.async {
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadCompleted(url: url)
+        }
     }
 
     func faild(errorMsg: String? = "") {
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
+        DispatchQueue.main.async {
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
+        }
     }
     
     /*********************************************************** static *******************************************************************/
@@ -169,7 +178,9 @@ class BaseUploader {
         if (!BaseUploader.checkFileSize(fileSize: UInt64(data.count), limitSize: limitSize)) {
             
             let errorMsg = "\("File is over the size limit! Limit:".localized)\(ByteCountFormatter.string(fromByteCount: Int64(limitSize), countStyle: .binary))"
-            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
+            DispatchQueue.main.async {
+                (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
+            }
             return
         }
         
