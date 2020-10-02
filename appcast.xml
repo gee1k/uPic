@@ -6,6 +6,14 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.20.1</title>
+			<description>
+			<![CDATA[ <p>Fixed bugs</p> ]]>
+			</description>
+			<pubDate>Fri, 02 Oct 2020 13:17:12 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.20.1/uPic.zip" sparkle:version="20201002" sparkle:shortVersionString="v0.20.1" type="application/octet-stream" sparkle:edSignature="y11KMvkpNRVg7pW7b9IZquYFKXKn9V014dSw1tg701HOnQegxKYgqKf00tdmCgoSy8St24FGChLI7dBU3ufEDw==" length="13762231"/>
+		</item>
+		<item>
 			<title>v0.20.0</title>
 			<description>
 			<![CDATA[ <h2 id="优化">优化</h2> <ul> <li>重构 Amazon S3 图床，使其支持第三方 S3 协议服务。</li> <li>移除单独 MinIO 图床，可采用 S3 自定义实现。</li> <li>自定义图床优化 Content-Type。</li> </ul> <hr /> <h2 id="optimization">Optimization</h2> <ul> <li>Restructure Amazon S3 graphs to support third-party S3 protocol services.</li> <li>Removed individual MinIO graphs for S3 custom implementations.</li> <li>Custom graph bed optimization Content-Type.</li> </ul> ]]>
