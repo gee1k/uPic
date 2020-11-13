@@ -160,21 +160,21 @@ class CustomUploader: BaseUploader {
             })
         }
         
-        var isApplicationJson = false
+        var isForm = false
         for (_, header) in headers.enumerated() {
             if header.name.lowercased() != "content-type" {
                 continue
             }
-            if header.value.lowercased().contains("application/json") {
-                isApplicationJson = true
+            if header.value.lowercased().contains("x-www-form-urlencoded") || header.value.lowercased().contains("form-data") {
+                isForm = true
                 break
             }
         }
         
-        if isApplicationJson {
-            _byRequest()
-        } else {
+        if isForm {
             _byUpload()
+        } else {
+            _byRequest()
         }
     }
     

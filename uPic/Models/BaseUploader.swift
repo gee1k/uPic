@@ -12,11 +12,15 @@ import Alamofire
 class BaseUploader {
 
     func start() {
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadStart()
+        DispatchQueue.main.async {
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadStart()
+        }
     }
 
     func progress(percent: Double) {
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadProgress(percent: percent)
+        DispatchQueue.main.async {
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadProgress(percent: percent)
+        }
     }
 
     func completed(url: String, _ fileData: Data?, _ fileUrl: URL?, _ fileName: String?) {
@@ -72,11 +76,16 @@ class BaseUploader {
             
             ConfigManager.shared.addHistory(previewModel)
         }
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadCompleted(url: url)
+        
+        DispatchQueue.main.async {
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadCompleted(url: url)
+        }
     }
 
     func faild(errorMsg: String? = "") {
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
+        DispatchQueue.main.async {
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
+        }
     }
     
     /*********************************************************** static *******************************************************************/
@@ -141,8 +150,8 @@ class BaseUploader {
         case .weibo:
             WeiboUploader.shared.upload(url, host: host)
             break
-        case .amazon_s3:
-            AmazonS3Uploader.shared.upload(url, host: host)
+        case .s3:
+            S3Uploader.shared.upload(url, host: host)
             break
         case .imgur:
             ImgurUploader.shared.upload(url, host: host)
@@ -152,9 +161,6 @@ class BaseUploader {
             break
         case .lsky_pro:
             LskyProUploader.shared.upload(url, host: host)
-            break
-        case .minio:
-            MinioUploader.shared.upload(url, host: host)
             break
         }
     }
@@ -172,7 +178,9 @@ class BaseUploader {
         if (!BaseUploader.checkFileSize(fileSize: UInt64(data.count), limitSize: limitSize)) {
             
             let errorMsg = "\("File is over the size limit! Limit:".localized)\(ByteCountFormatter.string(fromByteCount: Int64(limitSize), countStyle: .binary))"
-            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
+            DispatchQueue.main.async {
+                (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
+            }
             return
         }
         
@@ -205,8 +213,8 @@ class BaseUploader {
         case .weibo:
             WeiboUploader.shared.upload(data, host: host)
             break
-        case .amazon_s3:
-            AmazonS3Uploader.shared.upload(data, host: host)
+        case .s3:
+            S3Uploader.shared.upload(data, host: host)
             break
         case .imgur:
             ImgurUploader.shared.upload(data, host: host)
@@ -216,9 +224,6 @@ class BaseUploader {
             break
         case .lsky_pro:
             LskyProUploader.shared.upload(data, host: host)
-            break
-        case .minio:
-            MinioUploader.shared.upload(data, host: host)
             break
         }
     }
@@ -251,16 +256,14 @@ class BaseUploader {
             return GiteeUploader.fileExtensions
         case .weibo:
             return WeiboUploader.fileExtensions
-        case .amazon_s3:
-            return AmazonS3Uploader.fileExtensions
+        case .s3:
+            return S3Uploader.fileExtensions
         case .imgur:
             return ImgurUploader.fileExtensions
         case .baidu_bos:
             return BaiduUploader.fileExtensions
         case .lsky_pro:
             return LskyProUploader.fileExtensions
-        case .minio:
-            return MinioUploader.fileExtensions
         }
     }
     

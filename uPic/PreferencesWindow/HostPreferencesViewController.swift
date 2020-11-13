@@ -71,6 +71,10 @@ class HostPreferencesViewController: PreferencesViewController {
         self.refreshButtonStatus()
         self.initHostItems()
         self.addObserver()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.setDefaultSelectedHost()
+        }
     }
 
     override func viewDidDisappear() {

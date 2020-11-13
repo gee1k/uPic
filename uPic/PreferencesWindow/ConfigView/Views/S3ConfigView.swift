@@ -1,40 +1,73 @@
 //
-//  AmazonS3ConfigView.swift
+//  S3ConfigView.swift
 //  uPic
 //
-//  Created by Svend Jin on 2019/7/28.
-//  Copyright © 2019 Svend Jin. All rights reserved.
+//  Created by Svend Jin on 2020/8/13.
+//  Copyright © 2020 Svend Jin. All rights reserved.
 //
 
 import Cocoa
 
-class AmazonS3ConfigView: ConfigView {
+class S3ConfigView: ConfigView {
+    
+    override var paddingTop: Int {
+        return 25
+    }
+    
+    override var gapTop: Int {
+        return 6
+    }
+    
+    private var regionLabel: NSTextField!
+    private var regionButtonPopUp: NSPopUpButton!
+    private var endpointLabel: NSTextField!
+    private var endpointField: NSTextField!
 
     override func createView() {
         super.createView()
         
-        guard let data = self.data as? AmazonS3HostConfig else {
+        guard let data = self.data as? S3HostConfig else {
             return
         }
         
+        //Customize
+        let customizeLabel = NSTextField(labelWithString: "\(data.displayName(key: "customize")):")
+        customizeLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
+        customizeLabel.alignment = .right
+        customizeLabel.lineBreakMode = .byClipping
+        
+        
+        let customizeBtn = NSButton(frame: NSRect(x: textFieldX, y: y, width: 50, height: labelHeight))
+        customizeBtn.title = ""
+        customizeBtn.target = self
+        customizeBtn.action = #selector(customizeChanged(_:))
+        customizeBtn.identifier = NSUserInterfaceItemIdentifier(rawValue: "customize")
+        customizeBtn.setButtonType(.switch)
+        customizeBtn.allowsMixedState = false
+        customizeBtn.state = data.customize ? .on : .off
+        self.addSubview(customizeLabel)
+        self.addSubview(customizeBtn)
+        nextKeyViews.append(customizeBtn)
+        
         // MARK: Region
-        let regionLabel = NSTextField(labelWithString: "\(data.displayName(key: "region")):")
+        y = y - gapTop - labelHeight
+        regionLabel = NSTextField(labelWithString: "\(data.displayName(key: "region")):")
         regionLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
         regionLabel.alignment = .right
         regionLabel.lineBreakMode = .byClipping
         
-        let regionButtonPopUp = NSPopUpButton(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        regionButtonPopUp = NSPopUpButton(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
         regionButtonPopUp.target = self
         regionButtonPopUp.action = #selector(regionChange(_:))
         regionButtonPopUp.identifier = NSUserInterfaceItemIdentifier(rawValue: "region")
         
         var selectRegion: NSMenuItem?
         
-        let sortedKeys = Array(AmazonS3Region.allRegion.keys).sorted()
+        let sortedKeys = Array(S3Region.allRegion.keys).sorted()
         
         for key in sortedKeys {
-            let title = AmazonS3Region.name(key)
-            let endPoint = AmazonS3Region.endPoint(key)
+            let title = S3Region.name(key)
+            let endPoint = S3Region.endPoint(key)
             let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
             menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: key)
             regionButtonPopUp.menu?.addItem(menuItem)
@@ -59,6 +92,25 @@ class AmazonS3ConfigView: ConfigView {
         self.addSubview(regionLabel)
         self.addSubview(regionButtonPopUp)
         nextKeyViews.append(regionButtonPopUp)
+        
+        
+        // MARK: Endpoint
+//        y = y - gapTop - labelHeight
+        endpointLabel = NSTextField(labelWithString: "\(data.displayName(key: "endpoint")):")
+        endpointLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight)
+        endpointLabel.alignment = .right
+        endpointLabel.lineBreakMode = .byClipping
+
+        endpointField = NSTextField(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight))
+        endpointField.identifier = NSUserInterfaceItemIdentifier(rawValue: "endpoint")
+        endpointField.usesSingleLineMode = true
+        endpointField.lineBreakMode = .byTruncatingTail
+        endpointField.delegate = data
+        endpointField.stringValue = data.endpoint ?? ""
+        
+        self.addSubview(endpointLabel)
+        self.addSubview(endpointField)
+        nextKeyViews.append(endpointField)
         
         
         // MARK: Bucket
@@ -127,12 +179,34 @@ class AmazonS3ConfigView: ConfigView {
         // MARK: help
         y = y - gapTop * 2 - labelHeight
         super.createHelpBtn("https://blog.svend.cc/upic/tutorials/amazon_s3")
+        
+        changeCustomizeModel(data.customize)
     }
 
     
     @objc func regionChange(_ sender: NSPopUpButton) {
         if let menuItem = sender.selectedItem, let identifier = menuItem.identifier?.rawValue {
             self.data?.setValue(identifier, forKey: "region")
+        }
+    }
+    
+    @objc func customizeChanged(_ sender: NSButton) {
+        let customize = sender.state == .on
+        self.data?.setValue(customize, forKey: "customize")
+        
+        changeCustomizeModel(customize)
+    }
+    
+    func changeCustomizeModel(_ customize: Bool) {
+        regionLabel.isHidden = customize
+        regionButtonPopUp.isHidden = customize
+        
+        endpointLabel.isHidden = !customize
+        endpointField.isHidden = !customize
+        
+        if (!customize && !endpointField.stringValue.isEmpty) {
+            endpointField.stringValue = ""
+            self.data?.setValue(nil, forKey: "endpoint")
         }
     }
 }

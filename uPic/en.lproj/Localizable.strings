@@ -80,6 +80,8 @@
 
 /* host -- start */
 "Region" = "Region";
+"Endpoint" = "Endpoint";
+"Customize" = "Customize";
 "Bucket" = "Bucket";
 "Operator" = "Operator";
 "Password" = "Password";
@@ -144,6 +146,7 @@
 "host.type.baidu_bos" = "Baidu Cloud BOS";
 "host.type.lsky_pro" = "Lsky Pro";
 "host.type.minio" = "MinIO";
+"host.type.s3" = "Amazon S3(Support for third-party S3 protocols)";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "thumbnail";
