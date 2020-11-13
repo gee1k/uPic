@@ -10,7 +10,7 @@ import Cocoa
 import FinderSync
 
 class FinderSync: FIFinderSync {
-
+    
     override init() {
         super.init()
         // Set up the directory we are syncing.
@@ -26,29 +26,33 @@ class FinderSync: FIFinderSync {
             }
         }
     }
-
+    
     // MARK: - Menu and toolbar item support
-
+    
     override var toolbarItemName: String {
         return "uPic"
     }
-
+    
     override var toolbarItemToolTip: String {
         return "Upload selected files via uPic".localized
     }
-
+    
     override var toolbarItemImage: NSImage {
         switch FinderUtil.getIcon() {
         case 2:
             return NSImage(named: "color")!
         default:
-            return NSImage(named: "single")!
+            if #available(macOS 11, *) {
+                return NSImage(named: "single_new")!
+            } else {
+                return NSImage(named: "single")!
+            }
         }
     }
-
+    
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
         // Produce a menu for the extension.
-
+        
         switch menuKind {
         case .contextualMenuForItems, .toolbarItemMenu:
             let menu = NSMenu(title: "")
@@ -60,20 +64,23 @@ class FinderSync: FIFinderSync {
             case 2:
                 uploadMenuItem.image = NSImage(named: "color")
             default:
-                uploadMenuItem.image = NSImage(named: "single")
+                if #available(macOS 11, *) {
+                    uploadMenuItem.image = NSImage(named: "single_new")
+                } else {
+                    uploadMenuItem.image = NSImage(named: "single")
+                }
             }
             
             menu.addItem(uploadMenuItem)
-
+            
             return menu
         default:
             break
         }
-
+        
         return nil
-
     }
-
+    
     @IBAction func uploadFile(_ sender: AnyObject?) {
         if let items = FIFinderSyncController.default().selectedItemURLs() {
             var path = ""
@@ -88,9 +95,6 @@ class FinderSync: FIFinderSync {
             } else {
                 UploadNotifier.postNotification(.uploadFiles, object: path)
             }
-            
         }
     }
-
 }
-

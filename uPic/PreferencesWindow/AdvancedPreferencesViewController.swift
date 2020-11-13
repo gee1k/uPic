@@ -10,7 +10,7 @@ import Cocoa
 import MASShortcut
 
 class AdvancedPreferencesViewController: PreferencesViewController {
-
+    
     @IBOutlet weak var selectFileShortcut: MASShortcutView!
     @IBOutlet weak var pasteboardShortcut: MASShortcutView!
     @IBOutlet weak var screenshotShortcut: MASShortcutView!
@@ -22,9 +22,9 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     @IBOutlet weak var historyRecordFileNameScrollWaitTime: NSTextField!
     @IBOutlet weak var finderExtensionIcon: NSPopUpButton!
     @IBOutlet weak var resetPreferencesButton: NSButton!
-
+    
     // MARK: Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,8 +51,12 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     
     func setFinderExtensionIconDefaultValue() {
         finderExtensionIcon.selectItem(at: FinderUtil.getIcon())
+        
+        if #available(macOS 11, *) {
+            finderExtensionIcon.item(at: 1)!.image = NSImage(named: "single_new")
+        }
     }
-
+    
     @IBAction func didClickHistoryRecordConfigurationResetButton(_ sender: NSButton) {
         
         Defaults.removeObject(forKey: Keys.historyRecordWidth)
@@ -79,7 +83,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         
         ConfigNotifier.postNotification(.changeHistoryList)
     }
-
+    
     @IBAction func didChangeFinderExtensionIcon(_ sender: NSPopUpButton) {
         FinderUtil.setIcon(sender.indexOfSelectedItem)
     }
@@ -92,19 +96,19 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     
     @IBAction func resetPreferencesButtonClicked(_ sender: NSButton) {
         let alert = NSAlert()
-
+        
         alert.messageText = "Reset User Preferences?".localized
         alert.informativeText = "⚠️ Note that this will reset all user preferences".localized
-
+        
         // Add button and avoid the focus ring
         let cancelString = "Cancel".localized
         alert.addButton(withTitle: cancelString).refusesFirstResponder = true
-
+        
         let yesString = "Yes".localized
         alert.addButton(withTitle: yesString).refusesFirstResponder = true
-
+        
         let modalResult = alert.runModal()
-
+        
         switch modalResult {
         case .alertFirstButtonReturn:
             print("Cancel Resetting User Preferences")
@@ -123,5 +127,4 @@ class AdvancedPreferencesViewController: PreferencesViewController {
             print("Cancel Resetting User Preferences")
         }
     }
-
 }
