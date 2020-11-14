@@ -38,16 +38,20 @@ class FinderSync: FIFinderSync {
     }
     
     override var toolbarItemImage: NSImage {
+        var image:NSImage? = nil
         switch FinderUtil.getIcon() {
         case 2:
-            return NSImage(named: "color")!
+            image = NSImage(named: "color")
         default:
             if #available(macOS 11, *) {
-                return NSImage(named: "single_new")!
+                image = NSImage(named: "single_new")
             } else {
-                return NSImage(named: "single")!
+                image = NSImage(named: "single")
             }
         }
+        
+        image?.isTemplate = true
+        return image!
     }
     
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
@@ -71,6 +75,7 @@ class FinderSync: FIFinderSync {
                 }
             }
             
+            uploadMenuItem.image?.isTemplate = true
             menu.addItem(uploadMenuItem)
             
             return menu
