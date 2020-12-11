@@ -117,6 +117,7 @@ extension AppDelegate {
                                      width: 16,
                                      height: 16)
             button.addSubview(indicator)
+            indicator.controlTint = .blueControlTint
         }
         // 初始化任务栏进度图标
         indicator.minValue = 0.0
