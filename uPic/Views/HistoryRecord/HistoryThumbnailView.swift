@@ -85,10 +85,10 @@ class HistoryThumbnailView: NSView {
         center.addObserver(self, selector: #selector(boundsDidChangeNotification(notification:)), name: NSView.boundsDidChangeNotification, object: mainScrollView.contentView)
         
         clearHistoryButton = NSButton(image: NSImage(named: "cleanButton")!, target: self, action: #selector(clearHistory))
-        clearHistoryButton.appearance = NSAppearance(named: NSAppearance.Name.aqua)
+        
         clearHistoryButton.bezelStyle = .smallSquare
+        clearHistoryButton.isBordered = false
         clearHistoryButton.toolTip = "\("Clear history record".localized) \(historyList.count)"
-        clearHistoryButton.isTransparent = true
         addSubview(clearHistoryButton)
         
         preImageViewController = HistoryPreviewViewController()
