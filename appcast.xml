@@ -6,6 +6,14 @@
 		<description>Most recent changes with links to updates.</description>
 		<language>cn</language>
 		<item>
+			<title>v0.21.1</title>
+			<description>
+			<![CDATA[ <p>Fix some bugs</p> ]]>
+			</description>
+			<pubDate>Fri, 11 Dec 2020 09:31:29 +0000</pubDate>
+			<enclosure url="https://github.com/gee1k/uPic/releases/download/v0.21.1/uPic.zip" sparkle:version="20201211" sparkle:shortVersionString="v0.21.1" type="application/octet-stream" sparkle:edSignature="93DWO35ZlG3sGLDHLWFXhbkTP8yZq+p7EZaDt+7X09nw4g1hZncWc71pwuvBoKTyNfumYtPjKuVlSvds5jlLBw==" length="18758055"/>
+		</item>
+		<item>
 			<title>v0.21.0</title>
 			<description>
 			<![CDATA[ <ul> <li>修复 uPic 扩展图标在改变系统主题时不会自动变换。</li> <li>适配 macOS11 big sur</li> <li>适配 MacBook apple silicon 机型</li> </ul> <hr /> <ul> <li>Fixed uPic extension icon not changing themes in real-time when switching system themes</li> <li>Adapted macOS11 big sur</li> <li>Adapted for MacBook apple silicon models</li> </ul> ]]>
