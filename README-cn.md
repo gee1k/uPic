@@ -38,7 +38,7 @@
 ### 下载安装
 #### 1.Homebrew(推荐):
 ```
-brew cask install upic
+brew install --cask upic
 ```
 #### 2.手动
 从 [Github release](https://github.com/gee1k/uPic/releases) 下载。
