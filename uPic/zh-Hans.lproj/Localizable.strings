@@ -6,11 +6,11 @@
   Copyright © 2019 Svend Jin. All rights reserved.
 */
 
-
 "OK" = "好";
 "Cancel" = "取消";
 "Yes" = "是的";
 "Warning" = "提醒";
+"Success" = "成功";
 "Continue" = "继续";
 "Example:" = "示例:";
 "On" = "开启";
@@ -171,3 +171,7 @@
 /* cli error msg */
 "Invalid file path" = "无效的文件路径或链接";
 "Total paths count" = "共 {count} 个文件路径和链接";
+
+// share extension
+"Unsupported file type" = "不支持的文件类型";
+"closing in %@ seconds..." = "%@ 秒后关闭...";

@@ -38,7 +38,7 @@ class FinderSync: FIFinderSync {
     }
     
     override var toolbarItemImage: NSImage {
-        var image:NSImage? = nil
+        var image: NSImage? = nil
         switch FinderUtil.getIcon() {
         case 2:
             image = NSImage(named: "color")
@@ -88,17 +88,17 @@ class FinderSync: FIFinderSync {
     
     @IBAction func uploadFile(_ sender: AnyObject?) {
         if let items = FIFinderSyncController.default().selectedItemURLs() {
-            var path = ""
+            var paths = ""
             for item in items {
                 let filePath = item.path
-                path = "\(path)\(filePath)\n"
+                paths = "\(paths)\(filePath)\n"
             }
-            let encodeUrl = "uPic://files?\(path)".urlEncoded()
+            let encodeUrl = "uPic://files?\(paths)".urlEncoded()
             
             if let url = URL(string: encodeUrl) {
                 NSWorkspace.shared.open(url)
             } else {
-                UploadNotifier.postNotification(.uploadFiles, object: path)
+                UploadNotifier.postNotification(.uploadFiles, object: paths)
             }
         }
     }

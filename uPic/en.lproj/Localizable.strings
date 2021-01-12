@@ -6,10 +6,10 @@
  Copyright © 2019 Svend Jin. All rights reserved.
  */
 
-
 "OK" = "OK";
 "Cancel" = "Cancel";
 "Yes" = "Yes";
+"Success" = "Success";
 "Warning" = "Warning";
 "Continue" = "Continue";
 "Example:" = "Example:";
@@ -171,3 +171,7 @@
 /* cli error msg */
 "Invalid file path" = "Invalid file path or url";
 "Total paths count" = "Total of {count} file paths and urls";
+
+// share extension
+"Unsupported file type" = "Unsupported file type";
+"closing in %@ seconds..." = "closing in %@ seconds...";
