@@ -175,3 +175,7 @@
 // share extension
 "Unsupported file type" = "Unsupported file type";
 "closing in %@ seconds..." = "closing in %@ seconds...";
+
+//database
+"items" = "items";
+"⚠️ Note that this will clear your uPic database" = "⚠️ Note that this will clear your uPic database";

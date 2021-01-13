@@ -40,6 +40,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return storyboard.instantiateInitialController() as? PreferencesWindowController ?? PreferencesWindowController()
     }()
     
+    lazy var databaseWindowController: DatabaseWindowController = {
+        let storyboard = NSStoryboard(name: "Database", bundle: nil)
+        return storyboard.instantiateInitialController() as? DatabaseWindowController ?? DatabaseWindowController()
+    }()
+    
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         let isCommandLineState = Cli.shared.handleCommandLine()

@@ -1,0 +1,60 @@
+
+/* Class = "NSToolbarItem"; label = "Delete All"; ObjectID = "1Wp-tE-KGb"; */
+"1Wp-tE-KGb.label" = "全部清除";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Delete All"; ObjectID = "1Wp-tE-KGb"; */
+"1Wp-tE-KGb.paletteLabel" = "全部清除";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "A25-IL-lsb"; */
+"A25-IL-lsb.title" = "Table View Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "URL"; ObjectID = "CeV-29-0Xb"; */
+"CeV-29-0Xb.headerCell.title" = "URL";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "Mwg-rj-Qgg"; */
+"Mwg-rj-Qgg.title" = "Table View Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "Review"; ObjectID = "PuM-Cu-8cO"; */
+"PuM-Cu-8cO.headerCell.title" = "预览";
+
+/* Class = "NSToolbarItem"; label = "Copy"; ObjectID = "Zhb-aV-Ibc"; */
+"Zhb-aV-Ibc.label" = "复制";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Copy"; ObjectID = "Zhb-aV-Ibc"; */
+"Zhb-aV-Ibc.paletteLabel" = "复制";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "bie-am-oZu"; */
+"bie-am-oZu.title" = "Text Cell";
+
+/* Class = "NSToolbarItem"; label = "Refresh"; ObjectID = "cIr-0p-1ah"; */
+"cIr-0p-1ah.label" = "刷新";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Refresh"; ObjectID = "cIr-0p-1ah"; */
+"cIr-0p-1ah.paletteLabel" = "刷新";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "e0t-kU-Jo8"; */
+"e0t-kU-Jo8.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "gre-PU-B4n"; */
+"gre-PU-B4n.title" = "Table View Cell";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "nOC-jD-wpP"; */
+"nOC-jD-wpP.title" = "Table View Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "Name"; ObjectID = "nzt-ZE-Al0"; */
+"nzt-ZE-Al0.headerCell.title" = "名称";
+
+/* Class = "NSTableColumn"; headerCell.title = "ID"; ObjectID = "tIy-g5-5yU"; */
+"tIy-g5-5yU.headerCell.title" = "ID";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "v7g-KE-k2n"; */
+"v7g-KE-k2n.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "x8P-wG-KE1"; */
+"x8P-wG-KE1.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "xZb-4G-2d6"; */
+"xZb-4G-2d6.title" = "Text Cell";
+
+/* Class = "NSWindow"; title = "uPic Database"; ObjectID = "zqs-gy-XY6"; */
+"zqs-gy-XY6.title" = "uPic 数据库";
