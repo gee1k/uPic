@@ -17,7 +17,6 @@ class PreferencesViewController: NSViewController {
         // Do view setup here.
 
         self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height)
-
     }
 
     override func viewDidAppear() {
@@ -60,7 +59,6 @@ class PreferencesViewController: NSViewController {
                 window.animator().setFrame(frame, display: false)
 
             }, completionHandler: nil)
-
         }
     }
 

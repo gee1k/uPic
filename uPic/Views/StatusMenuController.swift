@@ -14,13 +14,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     let previewTypes = ["jpeg", "jpg", "png", "gif", "bmp", "tiff"]
 
     @IBOutlet weak var statusMenu: NSMenu!
+    @IBOutlet weak var cancelUploadMenuItem: NSMenuItem!
+    @IBOutlet weak var cancelUploadMenuSeparator: NSMenuItem!
     @IBOutlet weak var uploadFromSelectFileMenuItem: NSMenuItem!
-    
     @IBOutlet weak var uploadFromPasteboardMenuItem: NSMenuItem!
     @IBOutlet weak var uploadFromScreenshotMenuItem: NSMenuItem!
     @IBOutlet weak var historyMenu: NSMenu!
-    @IBOutlet weak var cancelUploadMenuItem: NSMenuItem!
-    @IBOutlet weak var cancelUploadMenuSeparator: NSMenuItem!
     @IBOutlet weak var hostMenuItem: NSMenuItem!
     @IBOutlet weak var outputFormatMenuItem: NSMenuItem!
     @IBOutlet weak var outputFormatEncodedMenuItem: NSMenuItem!
@@ -81,11 +80,21 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         (NSApplication.shared.delegate as? AppDelegate)?.uploadByPasteboard()
     }
 
-    // upload bu screenshot
+    // upload by screenshot
     @IBAction func screenshotMenuItemClicked(_ sender: NSMenuItem) {
         (NSApplication.shared.delegate as? AppDelegate)?.screenshotAndUpload()
     }
 
+    // open database window
+    @IBAction func databaseMenuItemClicked(_ sender: NSMenuItem) {
+        let databaseWindowController = (NSApplication.shared.delegate as? AppDelegate)?.databaseWindowController
+        databaseWindowController?.showWindow(sender)
+
+        // 将应用界面浮到最上层
+        NSApp.activate(ignoringOtherApps: true)
+        databaseWindowController?.window?.makeKeyAndOrderFront(databaseWindowController)
+    }
+    
     // open preference window
     @IBAction func preferenceMenuItemClicked(_ sender: NSMenuItem) {
         let preferencesWindowController = (NSApplication.shared.delegate as? AppDelegate)?.preferencesWindowController

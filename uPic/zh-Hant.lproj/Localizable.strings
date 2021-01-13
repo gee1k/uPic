@@ -176,3 +176,7 @@
 // share extension
 "Unsupported file type" = "不支持的文件類型";
 "closing in %@ seconds..." = "%@ 秒後關閉...";
+
+//database
+"items" = "個項目";
+"⚠️ Note that this will clear your uPic database" = "⚠️ 這將清除您的 uPic 數據庫";

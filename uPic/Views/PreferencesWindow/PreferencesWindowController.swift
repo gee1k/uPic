@@ -16,6 +16,7 @@ class PreferencesWindowController: NSWindowController {
     }
     
 }
+
 extension PreferencesWindowController: NSWindowDelegate {
     
     func windowWillBeginSheet(_ notification: Notification) {
