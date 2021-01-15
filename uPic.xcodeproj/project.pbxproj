@@ -285,6 +285,9 @@
 		169F073622AF4549008E8525 /* AboutPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutPreferencesViewController.swift; sourceTree = "<group>"; };
 		169F073C22AF53DE008E8525 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Preferences.storyboard; sourceTree = "<group>"; };
 		169F074322AF7A3D008E8525 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		16A0480325B18300000F1323 /* uPicDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPicDebug.entitlements; sourceTree = "<group>"; };
+		16A0480425B18308000F1323 /* uPicFinderExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPicFinderExtensionDebug.entitlements; sourceTree = "<group>"; };
+		16A0480525B18317000F1323 /* uPicShareExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPicShareExtensionDebug.entitlements; sourceTree = "<group>"; };
 		16A6DC5722AA375700813706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16A6DC6022AA375800813706 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16A6DC6122AA375800813706 /* uPic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPic.entitlements; sourceTree = "<group>"; };
@@ -650,6 +653,7 @@
 		16A6DC5622AA375700813706 /* uPic */ = {
 			isa = PBXGroup;
 			children = (
+				16A0480325B18300000F1323 /* uPicDebug.entitlements */,
 				1648A214238E742600B99B9D /* Main.storyboard */,
 				16BDDE0222EAA2920080E467 /* Assets.xcassets */,
 				16A6DC5722AA375700813706 /* AppDelegate.swift */,
@@ -740,6 +744,7 @@
 		16F7467222E994A300480A62 /* uPicFinderExtension */ = {
 			isa = PBXGroup;
 			children = (
+				16A0480425B18308000F1323 /* uPicFinderExtensionDebug.entitlements */,
 				16F7467322E994A300480A62 /* FinderSync.swift */,
 				16F7467622E994A300480A62 /* uPicFinderExtension.entitlements */,
 				16BDDDFE22EA96AE0080E467 /* Assets.xcassets */,
@@ -780,6 +785,7 @@
 		96B6C3EF25AD89F200B1A584 /* uPicShareExtension */ = {
 			isa = PBXGroup;
 			children = (
+				16A0480525B18317000F1323 /* uPicShareExtensionDebug.entitlements */,
 				96B6C3F025AD89F200B1A584 /* icon.icns */,
 				96B6C3F225AD89F200B1A584 /* ShareViewController.swift */,
 				96B6C3F425AD89F200B1A584 /* ShareViewController.xib */,
@@ -1390,11 +1396,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
+				CODE_SIGN_ENTITLEMENTS = uPic/uPicDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20201211;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1403,8 +1409,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.21.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -1424,7 +1430,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20201211;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1433,8 +1439,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.21.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -1446,11 +1452,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
-				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtensionDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20201211;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
@@ -1460,8 +1466,8 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.21.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.uPicFinderExtension;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1477,7 +1483,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20201211;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
@@ -1487,8 +1493,8 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.21.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.uPicFinderExtension;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1499,11 +1505,11 @@
 		96B6C3FD25AD89F200B1A584 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtensionDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20201211;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
@@ -1513,9 +1519,10 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.21.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.uPicShareExtension;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1528,7 +1535,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20201211;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
@@ -1538,8 +1545,8 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.21.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.uPicShareExtension;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

@@ -122,21 +122,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBAction func exportHostsMenuItemClicked(_ sender: NSMenuItem) {
         ConfigManager.shared.exportHosts()
     }
-    
-    // support -- paypal
-    @IBAction func paypalMenuItemClicked(_ sender: Any) {
-        (NSApplication.shared.delegate as? AppDelegate)?.sponsorByPaypal()
-    }
-
-    // support -- alipay
-    @IBAction func alipayMenuItemClicked(_ sender: Any) {
-        (NSApplication.shared.delegate as? AppDelegate)?.sponsorByAlipay()
-    }
-
-    // support -- wechat pay
-    @IBAction func wechatPayMenuItemClicked(_ sender: Any) {
-        (NSApplication.shared.delegate as? AppDelegate)?.sponsorByWechatPay()
-    }
 
     // quit app
     @IBAction func quitMenuItemClicked(_ sender: NSMenuItem) {
