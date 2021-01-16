@@ -54,18 +54,6 @@ class AboutPreferencesViewController: PreferencesViewController {
         NSWorkspace.shared.open(url)
     }
     
-    @IBAction func paypalButtonClicked(_ sender: NSButton) {
-        (NSApplication.shared.delegate as? AppDelegate)?.sponsorByPaypal()
-    }
-    
-    @IBAction func alipayButtonClicked(_ sender: NSButton) {
-        (NSApplication.shared.delegate as? AppDelegate)?.sponsorByAlipay()
-    }
-    
-    @IBAction func weChatPayButtonClicked(_ sender: NSButton) {
-        (NSApplication.shared.delegate as? AppDelegate)?.sponsorByWechatPay()
-    }
-    
 }
 
 class LinkButton: NSButton {

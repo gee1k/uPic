@@ -517,25 +517,6 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     
 }
 
-extension AppDelegate {
-    // sponsor
-    
-    func sponsorByPaypal() {
-        guard let url = URL(string: "https://paypal.me/geeee1k") else { return }
-        NSWorkspace.shared.open(url)
-    }
-    
-    func sponsorByAlipay() {
-        guard let url = URL(string: "https://raw.githubusercontent.com/gee1k/oss/master/qrcode/alipay.JPG") else { return }
-        NSWorkspace.shared.open(url)
-    }
-    
-    func sponsorByWechatPay() {
-        guard let url = URL(string: "https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat_pay.JPG") else { return }
-        NSWorkspace.shared.open(url)
-    }
-}
-
 // MARK: - Global shortcut
 extension AppDelegate {
     
