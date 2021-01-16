@@ -88,12 +88,6 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         FinderUtil.setIcon(sender.indexOfSelectedItem)
     }
     
-    @IBAction func didClickRestartFinder(_ sender: NSButton) {
-        let killFinderScript = #"do shell script "killall Finder""#
-        let script = NSAppleScript(source: killFinderScript)
-        script!.executeAndReturnError(nil)
-    }
-    
     @IBAction func resetPreferencesButtonClicked(_ sender: NSButton) {
         let alert = NSAlert()
         
