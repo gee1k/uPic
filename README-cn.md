@@ -22,7 +22,9 @@
 
 **☕️赞助： _[Paypal](https://paypal.me/geeee1k), [支付宝](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/alipay.JPG), [微信支付](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat_pay.JPG)_**
 
-**📱uPic for iOS: [![uPic for iOS](https://cdn.jsdelivr.net/gh/gee1k/oss@master/uPic/app-store-black.svg)](https://apps.apple.com/us/app/id1510718678)**
+**📱uPic for macOS: [![uPic for iOS](https://cdn.jsdelivr.net/gh/gee1k/oss@master/uPic/app-store-black.svg)](https://apps.apple.com/cn/app/upic-hosting-tool/id1549159979)**
+
+**📱uPic for iOS: [![uPic for iOS](https://cdn.jsdelivr.net/gh/gee1k/oss@master/uPic/app-store-black.svg)](https://apps.apple.com/cn/app/id1510718678)**
 
 ## 📑 简介
 
