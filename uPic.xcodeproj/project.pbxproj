@@ -149,6 +149,7 @@
 		96B6C3FB25AD89F200B1A584 /* uPicShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 96B6C3EE25AD89F200B1A584 /* uPicShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96B6C41125AD8AFB00B1A584 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B6C41325AD8AFB00B1A584 /* InfoPlist.strings */; };
 		96B6C42025AD934B00B1A584 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164745EF22B65FE900F9575D /* String+Extension.swift */; };
+		96CA5B8A25B41B1F00855629 /* OutputFormatCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA5B8925B41B1F00855629 /* OutputFormatCustomization.swift */; };
 		96F633EE25AEBE5E005514EB /* DatabaseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F633ED25AEBE5E005514EB /* DatabaseWindowController.swift */; };
 		96F633F625AEC3C7005514EB /* DatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F633F525AEC3C6005514EB /* DatabaseViewController.swift */; };
 		96F633FF25AF008F005514EB /* Database.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F6340125AF008F005514EB /* Database.storyboard */; };
@@ -339,7 +340,6 @@
 		4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPreviewCustomScrollView.swift; sourceTree = "<group>"; };
 		968ECC08240DFCF900B2D78C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		968ECC0A240DFCFA00B2D78C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		969018A3240D998400B545B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		96B6C3EE25AD89F200B1A584 /* uPicShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		96B6C3F025AD89F200B1A584 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		96B6C3F225AD89F200B1A584 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -349,6 +349,8 @@
 		96B6C41225AD8AFB00B1A584 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		96B6C41425AD8AFF00B1A584 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		96B6C41825AD8B0000B1A584 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		96CA5B8925B41B1F00855629 /* OutputFormatCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFormatCustomization.swift; sourceTree = "<group>"; };
+		96CA5B9325B4446E00855629 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		96F633ED25AEBE5E005514EB /* DatabaseWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseWindowController.swift; sourceTree = "<group>"; };
 		96F633F525AEC3C6005514EB /* DatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseViewController.swift; sourceTree = "<group>"; };
 		96F633FE25AF0066005514EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				16068C7422AEC1D1004D39B7 /* PreferencesViewController.swift */,
 				16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */,
 				164745EA22B618D700F9575D /* HostPreferencesViewController.swift */,
+				96CA5B8925B41B1F00855629 /* OutputFormatCustomization.swift */,
 			);
 			path = PreferencesWindow;
 			sourceTree = "<group>";
@@ -1111,6 +1114,7 @@
 				167620ED230819C0008F8363 /* ImgurHostConfig.swift in Sources */,
 				1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */,
 				161539132408EC7D00CC662F /* LskyProHostConfig.swift in Sources */,
+				96CA5B8A25B41B1F00855629 /* OutputFormatCustomization.swift in Sources */,
 				16F04EE723BCC45F00CCA2FE /* StringExtensions.swift in Sources */,
 				16AFDB3624E50F0A0008E5A7 /* S3ConfigView.swift in Sources */,
 				4BC11BDE238CFD53001641A6 /* HistoryThumbnailTimer.swift in Sources */,
@@ -1220,8 +1224,8 @@
 			children = (
 				169F073C22AF53DE008E8525 /* Base */,
 				161ABBE323B212C800805C5B /* zh-Hans */,
-				969018A3240D998400B545B2 /* en */,
 				1605DDD9246D993C00262C89 /* zh-Hant */,
+				96CA5B9325B4446E00855629 /* en */,
 			);
 			name = Preferences.storyboard;
 			sourceTree = "<group>";
@@ -1398,7 +1402,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1428,7 +1432,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1454,7 +1458,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
@@ -1481,7 +1485,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
@@ -1507,7 +1511,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
@@ -1533,7 +1537,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
