@@ -88,6 +88,12 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         FinderUtil.setIcon(sender.indexOfSelectedItem)
     }
     
+    @IBAction func didClickOpenOutputFormatCustomizationPanelButton(_ sender: NSButton) {
+        let outputFormatCustomizationViewController = storyboard!.instantiateController(withIdentifier: "OutputFormatCustomization") as! OutputFormatCustomization
+    
+        presentAsSheet(outputFormatCustomizationViewController)
+    }
+    
     @IBAction func resetPreferencesButtonClicked(_ sender: NSButton) {
         let alert = NSAlert()
         

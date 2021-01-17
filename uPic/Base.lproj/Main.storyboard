@@ -172,6 +172,12 @@
                                             <action selector="outputFormatMenuItemClicked:" target="veO-oa-UPB" id="BYo-1k-amH"/>
                                         </connections>
                                     </menuItem>
+                                    <menuItem title="Custom" tag="4" id="F4P-SL-bu2">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="outputFormatMenuItemClicked:" target="veO-oa-UPB" id="dfw-0J-AUl"/>
+                                        </connections>
+                                    </menuItem>
                                 </items>
                             </menu>
                         </menuItem>

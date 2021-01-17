@@ -10,34 +10,32 @@ import Cocoa
 import SwiftyJSON
 
 class CustomConfigSheetController: NSViewController {
-
-    @IBOutlet weak var cancelButton: NSButton!
-    @IBOutlet weak var okButton: NSButton!
+    @IBOutlet var cancelButton: NSButton!
+    @IBOutlet var okButton: NSButton!
     
-    @IBOutlet weak var addHeaderButton: NSButton!
-    @IBOutlet weak var addBodyButton: NSButton!
-    @IBOutlet weak var scrollView: NSScrollView!
+    @IBOutlet var addHeaderButton: NSButton!
+    @IBOutlet var addBodyButton: NSButton!
+    @IBOutlet var scrollView: NSScrollView!
     
-    var headers:Array<Dictionary<String, String>> = [];
-    var bodys:Array<Dictionary<String, String>> = [];
+    var headers: [[String: String]] = []
+    var bodys: [[String: String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-
-        okButton.highlight(true)
-        scrollView.hasVerticalScroller = true
-        scrollView.hasHorizontalScroller = true
+        
+        self.okButton.highlight(true)
+        self.scrollView.hasVerticalScroller = true
+        self.scrollView.hasHorizontalScroller = true
     }
-
-
+    
     @IBAction func addHeaderBtnClicked(_ sender: Any) {
-        headers.append(["key": "", "value": ""])
+        self.headers.append(["key": "", "value": ""])
         self.refreshScroolView()
     }
-
+    
     @IBAction func addBodyBtnClicked(_ sender: Any) {
-        bodys.append(["key": "", "value": ""])
+        self.bodys.append(["key": "", "value": ""])
         self.refreshScroolView()
     }
     
@@ -82,13 +80,13 @@ class CustomConfigSheetController: NSViewController {
                 contentView.addSubview(valueField)
                 nextKeyViews.append(valueField)
                 
-                let removeBtn = NSButton(frame: NSRect(x:  gapLeft * 2 + paddingLeft + keyWidth + valueWidth, y: y, width: height, height: height))
+                let removeBtn = NSButton(frame: NSRect(x: gapLeft * 2 + paddingLeft + keyWidth + valueWidth, y: y, width: height, height: height))
                 removeBtn.bezelStyle = .texturedRounded
                 removeBtn.identifier = NSUserInterfaceItemIdentifier(rawValue: "header-\(index)-remove_btn")
                 removeBtn.image = NSImage(named: NSImage.removeTemplateName)
                 removeBtn.imagePosition = .imageOnly
                 removeBtn.target = self
-                removeBtn.action = #selector(onRemoveItem(_:))
+                removeBtn.action = #selector(self.onRemoveItem(_:))
                 contentView.addSubview(removeBtn)
             }
             
@@ -122,21 +120,21 @@ class CustomConfigSheetController: NSViewController {
                 contentView.addSubview(valueField)
                 nextKeyViews.append(valueField)
                 
-                let removeBtn = NSButton(frame: NSRect(x:  gapLeft * 2 + paddingLeft + keyWidth + valueWidth, y: y, width: height, height: height))
+                let removeBtn = NSButton(frame: NSRect(x: gapLeft * 2 + paddingLeft + keyWidth + valueWidth, y: y, width: height, height: height))
                 removeBtn.bezelStyle = .texturedRounded
                 removeBtn.identifier = NSUserInterfaceItemIdentifier(rawValue: "body-\(index)-remove_btn")
                 removeBtn.image = NSImage(named: NSImage.removeTemplateName)
                 removeBtn.imagePosition = .imageOnly
                 removeBtn.target = self
-                removeBtn.action = #selector(onRemoveItem(_:))
+                removeBtn.action = #selector(self.onRemoveItem(_:))
                 contentView.addSubview(removeBtn)
             }
         }
         
         self.setNextKeyViews(nextKeyViews)
         
-        contentView.frame = NSRect(x: 0, y: 0, width: Int(scrollView.frame.width), height: y + height + paddingTop)
-        scrollView.documentView = contentView
+        contentView.frame = NSRect(x: 0, y: 0, width: Int(self.scrollView.frame.width), height: y + height + paddingTop)
+        self.scrollView.documentView = contentView
         if let documentView = scrollView.documentView {
             if documentView.isFlipped {
                 documentView.scroll(.zero)
@@ -157,7 +155,6 @@ class CustomConfigSheetController: NSViewController {
                 
                 let nextView = nextKeyViews[index + 1]
                 currentView.nextKeyView = nextView
-                
             }
         }
     }
@@ -172,18 +169,17 @@ class CustomConfigSheetController: NSViewController {
                 return
             }
             
-            if (type == "header") {
-                if (index >= 0 || index < self.headers.count) {
+            if type == "header" {
+                if index >= 0 || index < self.headers.count {
                     self.headers.remove(at: index)
                     self.refreshScroolView()
                 }
-            } else if (type == "body") {
-                if (index >= 0 || index < self.headers.count) {
+            } else if type == "body" {
+                if index >= 0 || index < self.headers.count {
                     self.bodys.remove(at: index)
                     self.refreshScroolView()
                 }
             }
-            
         }
     }
     
@@ -206,22 +202,20 @@ extension CustomConfigSheetController: NSTextFieldDelegate {
             let index = Int(args[1])!
             let field = String(args[2])
             
-            if (index < 0) {
+            if index < 0 {
                 return
             }
-            
             
             let value = textField.stringValue
             let trimValue = value.trim()
             
-            if (type == "header" && index < self.headers.count) {
+            if type == "header", index < self.headers.count {
                 self.headers[index][field] = trimValue
-            } else if (type == "body" && index < self.bodys.count) {
+            } else if type == "body", index < self.bodys.count {
                 self.bodys[index][field] = trimValue
             }
         }
     }
-    
     
     func controlTextDidEndEditing(_ obj: Notification) {
         if let textField = obj.object as? NSTextField, let identifier = textField.identifier?.rawValue {
@@ -230,14 +224,13 @@ extension CustomConfigSheetController: NSTextFieldDelegate {
             let index = Int(args[1])!
             let field = String(args[2])
             
-            if (index < 0) {
+            if index < 0 {
                 return
             }
             
-            
-            if (type == "header" && index < self.headers.count) {
+            if type == "header", index < self.headers.count {
                 textField.stringValue = self.headers[index][field] ?? textField.stringValue
-            } else if (type == "body" && index < self.bodys.count) {
+            } else if type == "body", index < self.bodys.count {
                 textField.stringValue = self.bodys[index][field] ?? textField.stringValue
             }
         }
