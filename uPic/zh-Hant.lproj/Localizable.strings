@@ -18,6 +18,11 @@
 "Off" = "關閉";
 "APP Name" = "APP 名稱";
 
+// 全盘权限授权
+"Authorize" = "授权";
+"Not Authorized" = "未授权";
+"Authorized" = "已授权";
+
 /* 成功通知標題 */
 "Successfully" = "成功";
 /* 上傳成功通知標題 */

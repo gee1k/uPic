@@ -41,10 +41,13 @@
 /* Class = "NSViewController"; title = "General"; ObjectID = "Gn1-zC-bzB"; */
 "Gn1-zC-bzB.title" = "通用";
 
+/* Class = "NSTextFieldCell"; title = "Full Disk Access"; ObjectID = "Gu0-HV-q4H"; */
+"Gu0-HV-q4H.title" = "磁盘权限授权";
+
 /* Class = "NSMenuItem"; title = "Non"; ObjectID = "GwK-5k-ATM"; */
 "GwK-5k-ATM.title" = "無圖標";
 
-/* Class = "NSTextFieldCell"; title = "Note: Please use {url} as placeholder for your url"; ObjectID = "Gws-yz-JWw"; */
+/* Class = "NSTextFieldCell"; title = "Note: Please use {url} {filename} as placeholder for your url"; ObjectID = "Gws-yz-JWw"; */
 "Gws-yz-JWw.title" = "注意: 请使用 {url} {filename} 作为您 URL 的占位符";
 
 /* Class = "NSTextFieldCell"; title = "Output Format Customization"; ObjectID = "GzP-4S-ioU"; */
@@ -161,6 +164,9 @@
 
 /* Class = "NSViewController"; title = "About"; ObjectID = "k6X-N1-mVu"; */
 "k6X-N1-mVu.title" = "關於";
+
+/* Class = "NSButtonCell"; title = "Not Authorized"; ObjectID = "l8U-fu-WXc"; */
+"l8U-fu-WXc.title" = "未授权";
 
 /* Class = "NSTextFieldCell"; title = "uPic"; ObjectID = "mOB-su-ZM1"; */
 "mOB-su-ZM1.title" = "uPic";

@@ -1,9 +1,9 @@
 PODS:
-  - Alamofire (5.0.5)
-  - CryptoSwift (1.3.3)
-  - Kingfisher (5.15.4):
-    - Kingfisher/Core (= 5.15.4)
-  - Kingfisher/Core (5.15.4)
+  - Alamofire (5.4.0)
+  - CryptoSwift (1.3.8)
+  - Kingfisher (5.15.7):
+    - Kingfisher/Core (= 5.15.7)
+  - Kingfisher/Core (5.15.7)
   - libminipng (0.5.6)
   - LoginServiceKit (2.2.0)
   - MASShortcut (2.4.0)
@@ -52,7 +52,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CryptoSwift:
-    :commit: e2bc81be54d71d566a52ca17c3983d141c30aa70
+    :commit: e7459377e0f48779c69a9b20da21fb9224d94ac8
     :git: https://github.com/krzyzanowskim/CryptoSwift
   LoginServiceKit:
     :commit: cf58b91b0ac247bd8bf5dccb5434ca60a930c1e1
@@ -62,9 +62,9 @@ CHECKOUT OPTIONS:
     :git: https://github.com/yahoojapan/SwiftyXMLParser.git
 
 SPEC CHECKSUMS:
-  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
-  CryptoSwift: fedfc9f8362163ca381a78897ad810982e18d464
-  Kingfisher: 657dc1077e5bbbfff864194c79f29e35b722d062
+  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
+  CryptoSwift: 01b0f0cba1d5c212e5a335ff6c054fb75a204f00
+  Kingfisher: 6e1a13523fcb1c86924ce53affe4ac957e544d59
   libminipng: a44c35d06b9d54d6640acdf97f4500c034748abb
   LoginServiceKit: 3c86ce2f2bcd1e373326839d6d863d8a6a5915b4
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
@@ -77,4 +77,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 5805b359b360efbaba02725567dda3b519766521
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

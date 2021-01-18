@@ -17,6 +17,11 @@
 "Off" = "Off";
 "APP Name" = "APP Name";
 
+// 全盘权限授权
+"Authorize" = "Authorize";
+"Not Authorized" = "Not Authorized";
+"Authorized" = "Authorized";
+
 /* 成功通知标题 */
 "Successfully" = "Successfully";
 /* 上传成功通知标题 */
