@@ -313,8 +313,9 @@ extension AppDelegate {
         
         for path in paths {
             let sPath = String(path)
-            if (fileExtensions.count == 0 || fileExtensions.contains(sPath.pathExtension.lowercased())) {
-                let url = URL(fileURLWithPath: sPath)
+            let url = URL(fileURLWithPath: sPath)
+            
+            if (fileExtensions.count == 0 || fileExtensions.contains(url.pathExtension.lowercased())) {
                 urls.append(url)
             }
         }
@@ -338,6 +339,7 @@ extension AppDelegate {
             var uploadUrls: [URL] = []
             for url in urls {
                 let path = url.path
+                debugPrint(path)
                 
                 if !FileManager.default.isReadableFile(atPath: path) {
                     NotificationExt.shared.postFileNoAccessNotice()
