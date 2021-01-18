@@ -93,8 +93,7 @@ extension Cli {
     /// Upload progress
     /// - Parameter url: current url
     func uploadProgress(_ url: String) {
-        let outputType = OutputType(value: output?.value)
-        resultUrls.append(outputType.formatUrl(url.urlEncoded()))
+        resultUrls.append(OutputFormatModel.formatUrl(url, outputFormat: nil))
         progress += 1
         Console.write("Uploading \(progress)/\(allDataList.count)")
     }

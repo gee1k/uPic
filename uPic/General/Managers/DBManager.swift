@@ -26,8 +26,10 @@ public class DBManager {
                print("[WCDB][ERROR] \(error.description)")
            }
         })
+        // debugPrint("数据库地址：\(Constants.CachePath.databasePath)")
         database = Database(withPath: Constants.CachePath.databasePath)
         createHistoryTable()
+        createOutputFormatTable()
     }
     
     deinit {
@@ -80,5 +82,60 @@ extension DBManager {
     
     func deleteHositoryFirst(_ k: Int = 1) {
         try? database.delete(fromTable: Constants.CachePath.historyTableName, where: nil, orderBy: [HistoryThumbnailModel.Properties.identifier.asOrder(by: .ascending)], limit: k)
+    }
+}
+
+// MARK: OutputFormat
+extension DBManager {
+    private func createOutputFormatTable() {
+        do {
+            try database.create(table: Constants.CachePath.outputFormatTableTableName, of: OutputFormatModel.self)
+        } catch let error as NSError {
+            print ("Error: \(error.domain)")
+        }
+    }
+    
+    func insertOutputFormat(_ model: OutputFormatModel) {
+        do {
+            try database.insert(objects: model, intoTable: Constants.CachePath.outputFormatTableTableName)
+        } catch let error as NSError {
+            print ("Error: \(error.domain)")
+        }
+    }
+    
+    func saveOutputFormats(_ models: [OutputFormatModel]) {
+        do {
+            try database.delete(fromTable: Constants.CachePath.outputFormatTableTableName)
+            try database.insert(objects: models, intoTable: Constants.CachePath.outputFormatTableTableName)
+        } catch let error as NSError {
+            print ("Error: \(error.domain)")
+        }
+    }
+    
+    func getOutputFormatList() -> [OutputFormatModel] {
+        var list: [OutputFormatModel] = []
+        do {
+            list = try database.getObjects(on: OutputFormatModel.Properties.all, fromTable: Constants.CachePath.outputFormatTableTableName, orderBy: [OutputFormatModel.Properties.identifier.asOrder(by: .ascending)])
+            
+            // 检查是否存在输出格式数据
+            if (list.count == 0) {
+                list = OutputFormatModel.getDefaultOutputFormats()
+                saveOutputFormats(list)
+            }
+        } catch let error as NSError {
+            print ("Error: \(error.domain)")
+        }
+        return list
+    }
+    
+    func getOutputFormat(_ identifier: Int) -> OutputFormatModel? {
+        return try? database.getObject(on: OutputFormatModel.Properties.all, fromTable: Constants.CachePath.outputFormatTableTableName, where: OutputFormatModel.Properties.identifier == identifier)
+    }
+    
+    func deleteOutputFormat(_ identifier: Int) {
+        try? database.delete(fromTable: Constants.CachePath.outputFormatTableTableName,
+                             where: OutputFormatModel.Properties.identifier == identifier,
+                             orderBy: [OutputFormatModel.Properties.identifier.asOrder(by: .ascending)]
+        )
     }
 }

@@ -41,6 +41,11 @@ class NotificationExt:NSObject {
                   info: "The file does not exist or has been deleted!".localized)
     }
     
+    func postFileNoAccessNotice() {
+        self.post(title: "Upload failed".localized,
+                  info: "No access to file!".localized)
+    }
+    
     func postUplodingNotice(_ body: String? = "") {
         self.post(title: "The current upload task is not complete".localized,
                   info: body!)

@@ -97,6 +97,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
         if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue{
+            debugPrint(urlString)
             URLSchemeExt.shared.handleURL(urlString)
         }
     }
@@ -337,6 +338,12 @@ extension AppDelegate {
             var uploadUrls: [URL] = []
             for url in urls {
                 let path = url.path
+                
+                if !FileManager.default.isReadableFile(atPath: path) {
+                    NotificationExt.shared.postFileNoAccessNotice()
+                    continue
+                }
+                
                 if FileManager.directoryIsExists(path: path) {
                     let directoryName = path.lastPathComponent
                     let enumerator = FileManager.default.enumerator(atPath: path)
@@ -367,6 +374,12 @@ extension AppDelegate {
         self.resultUrls.removeAll()
         
         if self.needUploadFiles.count == 0 {
+            // MARK: - Cli Support
+            if self.uploadSourceType == UploadSourceType.cli {
+                DispatchQueue.main.async {
+                    exit(EX_OK)
+                }
+            }
             return
         }
         

@@ -8,12 +8,12 @@ target 'uPic' do
 use_frameworks!
 
     pod 'SwiftyJSON'
-    pod 'Alamofire', '~> 5.0.2'
+    pod 'Alamofire'
     pod 'MASShortcut'
     pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "master"
     pod "SwiftyXMLParser", :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
     pod 'Kingfisher'
-    pod 'SnapKit', '~> 5.0.0'
+    pod 'SnapKit'
     pod 'LoginServiceKit', :git => 'https://github.com/Clipy/LoginServiceKit.git'
     pod "libminipng"
     pod 'WCDB.swift'

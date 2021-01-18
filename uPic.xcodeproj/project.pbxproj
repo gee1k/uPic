@@ -114,6 +114,7 @@
 		16D20B58238390F2006D8D01 /* BaiduUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B57238390F2006D8D01 /* BaiduUploader.swift */; };
 		16D20B5A238390F4006D8D01 /* BaiduUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B59238390F4006D8D01 /* BaiduUtil.swift */; };
 		16D20B5C238392C9006D8D01 /* BaiduConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */; };
+		16E3B57925B5342000D4234F /* OutputFormatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E3B57825B5341F00D4234F /* OutputFormatModel.swift */; };
 		16EA205C22AF8FB90006FB9C /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EA205B22AF8FB90006FB9C /* ConfigManager.swift */; };
 		16ECAA962413B6C200F9236B /* FinderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECAA952413B6C200F9236B /* FinderUtil.swift */; };
 		16ECAA972413B77800F9236B /* FinderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECAA952413B6C200F9236B /* FinderUtil.swift */; };
@@ -122,7 +123,6 @@
 		16F04EE623BCC45F00CCA2FE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE123BCC45F00CCA2FE /* Option.swift */; };
 		16F04EE723BCC45F00CCA2FE /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE223BCC45F00CCA2FE /* StringExtensions.swift */; };
 		16F04EE823BCC45F00CCA2FE /* Cli.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE323BCC45F00CCA2FE /* Cli.swift */; };
-		16F04EEA23BCC49000CCA2FE /* OutputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE923BCC49000CCA2FE /* OutputType.swift */; };
 		16F04EEC23BCC4B200CCA2FE /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EEB23BCC4B200CCA2FE /* FileManagerExtension.swift */; };
 		16F04EEE23BCC4C500CCA2FE /* URLSchemeExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EED23BCC4C500CCA2FE /* URLSchemeExt.swift */; };
 		16F7467422E994A300480A62 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F7467322E994A300480A62 /* FinderSync.swift */; };
@@ -310,6 +310,7 @@
 		16D20B57238390F2006D8D01 /* BaiduUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduUploader.swift; sourceTree = "<group>"; };
 		16D20B59238390F4006D8D01 /* BaiduUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduUtil.swift; sourceTree = "<group>"; };
 		16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaiduConfigView.swift; sourceTree = "<group>"; };
+		16E3B57825B5341F00D4234F /* OutputFormatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFormatModel.swift; sourceTree = "<group>"; };
 		16EA205B22AF8FB90006FB9C /* ConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
 		16EC9A0222ABBBB4001B6C89 /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16ECAA732413AE6000F9236B /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
@@ -319,7 +320,6 @@
 		16F04EE123BCC45F00CCA2FE /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		16F04EE223BCC45F00CCA2FE /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		16F04EE323BCC45F00CCA2FE /* Cli.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cli.swift; sourceTree = "<group>"; };
-		16F04EE923BCC49000CCA2FE /* OutputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputType.swift; sourceTree = "<group>"; };
 		16F04EEB23BCC4B200CCA2FE /* FileManagerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
 		16F04EED23BCC4C500CCA2FE /* URLSchemeExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSchemeExt.swift; sourceTree = "<group>"; };
 		16F7467122E994A300480A62 /* uPicFinderExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicFinderExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -550,12 +550,12 @@
 		1672762122AFF63A007299C3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				16E3B57825B5341F00D4234F /* OutputFormatModel.swift */,
 				1602ED9622ADEFB200AA8638 /* BaseUploader.swift */,
 				1675EC5222FB38240038DA33 /* BaseUploaderUtil.swift */,
 				1672762222AFF655007299C3 /* Host.swift */,
 				167D7F4822B4D2F500DD0A7A /* HostConfig.swift */,
 				167D7F4A22B4D31300DD0A7A /* HostType.swift */,
-				16F04EE923BCC49000CCA2FE /* OutputType.swift */,
 				68BBB87F2C3AEBDF2C914131 /* Aliyun */,
 				16D20B522383887E006D8D01 /* Baidu */,
 				161C3BDF22C4830A0092114F /* Custom */,
@@ -1075,6 +1075,7 @@
 				163632F322B2751D00805E7F /* BoolType.swift in Sources */,
 				1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */,
 				4BC11BDC238CD8CD001641A6 /* HistoryThumbnailLabel.swift in Sources */,
+				16E3B57925B5342000D4234F /* OutputFormatModel.swift in Sources */,
 				1618D1A822E99E2100831601 /* UploadNotifier.swift in Sources */,
 				4B09F11423695F8D000208BD /* HistoryThumbnailContentView.swift in Sources */,
 				163632EF22B2749000805E7F /* NSTextFieldCell+VerticallyCentered.swift in Sources */,
@@ -1084,7 +1085,6 @@
 				167D08AA22ED8A27000F3BC0 /* AliyunHostConfig.swift in Sources */,
 				1660FCBD22C11C7800372950 /* TencentRegion.swift in Sources */,
 				167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */,
-				16F04EEA23BCC49000CCA2FE /* OutputType.swift in Sources */,
 				161539152408F0E200CC662F /* LskyProConfigView.swift in Sources */,
 				164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */,
 				164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */,

@@ -87,19 +87,27 @@ class FinderSync: FIFinderSync {
     }
     
     @IBAction func uploadFile(_ sender: AnyObject?) {
-        if let items = FIFinderSyncController.default().selectedItemURLs() {
-            var paths = ""
-            for item in items {
-                let filePath = item.path
-                paths = "\(paths)\(filePath)\n"
-            }
-            let encodeUrl = "uPic://files?\(paths)".urlEncoded()
-            
-            if let url = URL(string: encodeUrl) {
-                NSWorkspace.shared.open(url)
-            } else {
-                UploadNotifier.postNotification(.uploadFiles, object: paths)
-            }
+        let paths = getSelectedPathsFromFinder()
+        let pathString = paths.joined(separator: "\n")
+        
+        let encodeUrl = "uPic://files?\(pathString)".urlEncoded()
+        
+        if let url = URL(string: encodeUrl) {
+            NSWorkspace.shared.open(url)
+        } else {
+            UploadNotifier.postNotification(.uploadFiles, object: pathString)
         }
+    }
+    
+    func getSelectedPathsFromFinder() -> [String] {
+        var paths = [String]()
+        if let items = FIFinderSyncController.default().selectedItemURLs(), items.count > 0 {
+            items.forEach { (url) in
+                paths.append(url.path)
+            }
+        } else if let url = FIFinderSyncController.default().targetedURL() {
+            paths.append(url.path)
+        }
+        return paths
     }
 }

@@ -87,12 +87,17 @@ extension ConfigManager {
 }
 
 extension ConfigManager {
-    func getOutputType() -> OutputType {
-        OutputType(value: Defaults[.outputFormat])
+    func getOutputType() -> OutputFormatModel? {
+        let id = Defaults[.outputFormat]
+        let outputFormatList = DBManager.shared.getOutputFormatList()
+        guard let idx = outputFormatList.firstIndex(where: {$0.identifier == id}) else {
+            return outputFormatList.first
+        }
+        return outputFormatList[idx]
     }
     
-    func setOutputType(_ outputType: OutputType) {
-        Defaults[.outputFormat] = outputType.rawValue
+    func setOutputType(_ outputFormat: OutputFormatModel) {
+        Defaults[.outputFormat] = outputFormat.identifier
     }
     
     func setOutputType(_ outputTypeRawValue: Int) {
@@ -121,16 +126,6 @@ extension ConfigManager {
     func getHistoryList() -> [HistoryThumbnailModel] {
         if historyList != nil {
             return historyList
-        }
-        
-        // FIXME: - workaround 转移旧版历史记录到 db
-        if let historyList = Defaults[.historyList] {
-            let oldHistoryListModel: [HistoryThumbnailModel] = historyList.map({ (item) -> HistoryThumbnailModel in
-               return HistoryThumbnailModel.keyValue(keyValue: item)
-            })
-
-            DBManager.shared.insertHistorys(oldHistoryListModel)
-            Defaults.removeObject(forKey: Keys.historyList)
         }
 
         historyList = DBManager.shared.getHistoryList()

@@ -15,6 +15,7 @@ struct Constants {
     
     struct CachePath {
         static let historyTableName: String = "historyTable"
+        static let outputFormatTableTableName: String = "outputFormatTableTable"
         static var databasePath: String {
             let cachePaths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory,
                                                                  FileManager.SearchPathDomainMask.userDomainMask, true)

@@ -45,6 +45,8 @@
 
 /* 複製的文件不存在 */
 "The file does not exist or has been deleted!" = "複製的文件不存在或已被刪除!";
+/* 无权访问该文件 */
+"No access to file!" = "無權訪問該檔案!";
 /* 文件格式不支持 */
 "File format not supported!" = "文件格式不支持!";
 /* 文件大小超過限制 */

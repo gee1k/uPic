@@ -11,6 +11,7 @@ import Cocoa
 class DatabaseViewController: NSViewController {
     @IBOutlet weak var databaseTableView: NSTableView!
     
+    var hostItems: [Host] = []
     var items: [HistoryThumbnailModel] = []
     var sortOrder: SortOrder = SortOrder.ID
     var selectedRow: Set<Int> = []
@@ -27,10 +28,20 @@ class DatabaseViewController: NSViewController {
         databaseTableView.dataSource = self
         databaseTableView.delegate = self
         
+        
+        // 获取图床信息
+        hostItems = ConfigManager.shared.getHostItems()
+        
         items = DBManager.shared.getHistoryList()
         sortConfig()
         databaseTableView.reloadData()
     }
+    
+    // 根据 ID 获取图床
+    func getHostById(_ id: String)->Host? {
+        return hostItems.first(where: {$0.id == id})
+    }
+    
     @IBAction func didClickRefreshButton(_ sender: NSToolbarItem) {
         items = DBManager.shared.getHistoryList()
         databaseTableView.reloadData()

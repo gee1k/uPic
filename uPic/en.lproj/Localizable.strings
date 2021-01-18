@@ -44,6 +44,8 @@
 
 /* 文件不存在或已被删除 */
 "The file does not exist or has been deleted!" = "The file does not exist or has been deleted!";
+/* 无权访问该文件 */
+"No access to file!" = "No access to file!";
 /* 文件格式不支持 */
 "File format not supported!" = "File format not supported!";
 /* 文件大小超过限制 */

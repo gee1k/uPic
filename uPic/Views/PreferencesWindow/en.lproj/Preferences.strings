@@ -45,7 +45,7 @@
 "GwK-5k-ATM.title" = "Non";
 
 /* Class = "NSTextFieldCell"; title = "Note: Please use {url} as placeholder for your url"; ObjectID = "Gws-yz-JWw"; */
-"Gws-yz-JWw.title" = "Note: Please use {url} as placeholder for your url";
+"Gws-yz-JWw.title" = "Note: Please use {url} {filename} as placeholder for your url";
 
 /* Class = "NSTextFieldCell"; title = "Output Format Customization"; ObjectID = "GzP-4S-ioU"; */
 "GzP-4S-ioU.title" = "Output Format Customization";

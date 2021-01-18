@@ -146,6 +146,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         self.setDefaultHost(id: hostId)
     }
+    
+    // change current output
+    @objc func changeDefaultOutputFormat(_ sender: NSMenuItem) {
+        self.setDefaultOutput(id: sender.tag)
+    }
 
     // change compress factor
     @objc func changeCompressFactor(_ sender: NSMenuItem) {
@@ -244,18 +249,51 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     // refresh output format to select
     func refreshOutputFormat() {
-        let outputType = ConfigManager.shared.getOutputType()
-        for item in outputFormatMenuItem.submenu!.items {
-            if item.tag == outputType.rawValue {
+        let outputFormatList = DBManager.shared.getOutputFormatList()
+        
+        outputFormatMenuItem.submenu?.removeAllItems()
+        for item in outputFormatList {
+            let menuItem = NSMenuItem(title: item.name, action: #selector(changeDefaultOutputFormat(_:)), keyEquivalent: "")
+            menuItem.identifier = NSUserInterfaceItemIdentifier("\(item.identifier ?? 0)")
+            menuItem.tag = item.identifier ?? 0
+            menuItem.isEnabled = true
+            menuItem.target = self
+            outputFormatMenuItem.submenu?.addItem(menuItem)
+        }
+        outputFormatMenuItem.submenu?.delegate = self
+        
+        refreshDefaultOutputFormat()
+    }
+    
+    // refresh current format to select
+    func refreshDefaultOutputFormat() {
+        let defaultOutput = Defaults[.outputFormat]
+
+        var hasDefault = false
+        let items = outputFormatMenuItem.submenu!.items
+        for item in items {
+            if item.tag == defaultOutput {
                 item.state = .on
+                hasDefault = true
+                
+                
             } else {
                 item.state = .off
             }
         }
         
-        let title = outputType.title
-        
-        self.setOutputFormatMenuTitle(factorTitle: title)
+        if let id = items.first?.tag, !hasDefault {
+            self.setDefaultOutput(id: id)
+        }
+
+        if let output = ConfigManager.shared.getOutputType() {
+            self.setOutputFormatMenuTitle(factorTitle: output.name)
+        }
+    }
+    
+    func setDefaultOutput(id: Int) {
+        Defaults[.outputFormat] = id
+        self.refreshDefaultOutputFormat()
     }
     
     func setOutputFormatMenuTitle(factorTitle: String?) {
