@@ -21,6 +21,8 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     @IBOutlet weak var historyRecordFileNameScrollSpeed: NSTextField!
     @IBOutlet weak var historyRecordFileNameScrollWaitTime: NSTextField!
     @IBOutlet weak var finderExtensionIcon: NSPopUpButton!
+    @IBOutlet weak var fullDiskAuthorizationImage: NSImageView!
+    @IBOutlet weak var fullDiskAuthorizationButton: NSButton!
     @IBOutlet weak var resetPreferencesButton: NSButton!
     
     // MARK: Lifecycle
@@ -29,6 +31,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         super.viewDidLoad()
         
         resetAllValues()
+        checkFullDiskAuthorizationStatus()
     }
     
     func resetAllValues() {
@@ -54,6 +57,19 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         
         if #available(macOS 11, *) {
             finderExtensionIcon.item(at: 1)!.image = NSImage(named: "single_new")
+        }
+    }
+    
+    func checkFullDiskAuthorizationStatus() {
+        let url = loadBookmark(data: Defaults[.workingDirectoryBookmark])!.absoluteString
+        print(url)
+        
+        if url == "file:///" {
+            fullDiskAuthorizationImage.image = NSImage(named: NSImage.statusAvailableName)
+            fullDiskAuthorizationButton.title = "Authorized".localized
+        } else {
+            fullDiskAuthorizationImage.image = NSImage(named: NSImage.statusPartiallyAvailableName)
+            fullDiskAuthorizationButton.title = "Not Authorized".localized
         }
     }
     
@@ -92,6 +108,11 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         let outputFormatCustomizationViewController = storyboard!.instantiateController(withIdentifier: "OutputFormatCustomization") as! OutputFormatCustomization
     
         presentAsSheet(outputFormatCustomizationViewController)
+    }
+    
+    @IBAction func didClickfullDiskAuthorizationButton(_ sender: NSButton) {
+        saveBookmark(url: promptForWorkingDirectoryPermission())
+        checkFullDiskAuthorizationStatus()
     }
     
     @IBAction func resetPreferencesButtonClicked(_ sender: NSButton) {

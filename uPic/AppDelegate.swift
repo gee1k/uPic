@@ -74,6 +74,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         ConfigManager.shared.firstSetup()
+        
+        if Defaults[.firstUsage] == BoolType._true.rawValue {
+            saveBookmark(url: promptForWorkingDirectoryPermission())
+        }
+        
+        let url = loadBookmark(data: Defaults[.workingDirectoryBookmark])!
+        print(url)
+        _ = url.startAccessingSecurityScopedResource()
+        //url.stopAccessingSecurityScopedResource()
     }
     
     func applicationWillTerminate(_ notification: Notification) {

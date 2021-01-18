@@ -41,10 +41,13 @@
 /* Class = "NSViewController"; title = "General"; ObjectID = "Gn1-zC-bzB"; */
 "Gn1-zC-bzB.title" = "General";
 
+/* Class = "NSTextFieldCell"; title = "Full Disk Access"; ObjectID = "Gu0-HV-q4H"; */
+"Gu0-HV-q4H.title" = "Full Disk Access";
+
 /* Class = "NSMenuItem"; title = "Non"; ObjectID = "GwK-5k-ATM"; */
 "GwK-5k-ATM.title" = "Non";
 
-/* Class = "NSTextFieldCell"; title = "Note: Please use {url} as placeholder for your url"; ObjectID = "Gws-yz-JWw"; */
+/* Class = "NSTextFieldCell"; title = "Note: Please use {url} {filename} as placeholder for your url"; ObjectID = "Gws-yz-JWw"; */
 "Gws-yz-JWw.title" = "Note: Please use {url} {filename} as placeholder for your url";
 
 /* Class = "NSTextFieldCell"; title = "Output Format Customization"; ObjectID = "GzP-4S-ioU"; */
@@ -160,6 +163,9 @@
 
 /* Class = "NSViewController"; title = "About"; ObjectID = "k6X-N1-mVu"; */
 "k6X-N1-mVu.title" = "About";
+
+/* Class = "NSButtonCell"; title = "Not Authorized"; ObjectID = "l8U-fu-WXc"; */
+"l8U-fu-WXc.title" = "Not Authorized";
 
 /* Class = "NSTextFieldCell"; title = "uPic"; ObjectID = "mOB-su-ZM1"; */
 "mOB-su-ZM1.title" = "uPic";
