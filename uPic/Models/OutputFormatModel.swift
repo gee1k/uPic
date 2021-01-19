@@ -55,7 +55,7 @@ class OutputFormatModel: TableCodable {
     
     static func formatUrl(_ url: String, outputFormat: OutputFormatModel?) -> String {
         var formatUrl = url
-        if Defaults[.outputFormatEncoded]! {
+        if Defaults[.outputFormatEncoded] {
             formatUrl = url.urlEncoded()
         }
         var filename = url.lastPathComponent.deletingPathExtension.trim()

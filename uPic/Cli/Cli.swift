@@ -29,9 +29,9 @@ class Cli {
     
     private var resultUrls: [String] = []
     
-    func handleCommandLine() -> Bool {
+    func getFilePaths() -> [String]? {
         let arguments = CommandLine.arguments
-        guard arguments.count > 1 else { return false }
+        guard arguments.count > 1 else { return nil }
         
         cliKit = CommandLineKit(arguments: arguments)
         
@@ -48,17 +48,14 @@ class Cli {
             try cliKit.parse()
         } catch {
             cliKit.printUsage(error)
-            return false
+            return nil
         }
         
-        if let paths = upload.value {
-            startUpload(paths)
-            return true
-        } else {
+        guard let paths = upload.value else {
             cliKit.printUsage()
+            return nil
         }
-        
-        return false
+        return paths
     }
 }
 
@@ -66,7 +63,7 @@ class Cli {
 extension Cli {
     /// start upload
     /// - Parameter paths: file paths or URLs
-    private func startUpload(_ paths: [String]) {
+    func startUpload(_ paths: [String]) {
         allPathList = paths
         
         for path in paths {
@@ -118,6 +115,7 @@ extension Cli {
         Console.write(resultUrls.joined(separator: "\n"))
         DBManager.shared.close()
         DispatchQueue.main.async {
+            DiskPermissionManager.shared.stopFullDiskAccessing()
             exit(EX_OK)
         }
     }

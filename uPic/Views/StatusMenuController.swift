@@ -320,7 +320,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             }
         }
         
-        let title = Defaults[.outputFormatEncoded]! ? "On".localized : "Off".localized
+        let title = Defaults[.outputFormatEncoded] ? "On".localized : "Off".localized
         self.setOutputFormatEncodedMenuTitle(factorTitle: title)
     }
     

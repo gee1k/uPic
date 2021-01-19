@@ -42,7 +42,7 @@
 "Gn1-zC-bzB.title" = "通用";
 
 /* Class = "NSTextFieldCell"; title = "Full Disk Access"; ObjectID = "Gu0-HV-q4H"; */
-"Gu0-HV-q4H.title" = "磁盘权限授权";
+"Gu0-HV-q4H.title" = "完全磁盘访问";
 
 /* Class = "NSMenuItem"; title = "Non"; ObjectID = "GwK-5k-ATM"; */
 "GwK-5k-ATM.title" = "无图标";

@@ -25,6 +25,7 @@ struct Keys {
     static let historyRecordFileNameScrollSpeed = "uPic_HistoryRecordFileNameScrollSpeed"
     static let historyRecordFileNameScrollWaitTime = "uPic_HistoryRecordFileNameScrollWaitTime"
     
+    static let requestedAuthorization = "uPic_RequestedAuthorization"
     static let workingDirectoryBookmark = "uPic_WorkingDirectoryBookmark"
 }
 
@@ -61,6 +62,9 @@ extension DefaultsKeys {
     static let historyRecordPadding = DefaultsKey<Float>(Keys.historyRecordPadding)
     static let historyRecordFileNameScrollSpeed = DefaultsKey<Double>(Keys.historyRecordFileNameScrollSpeed)
     static let historyRecordFileNameScrollWaitTime = DefaultsKey<Float>(Keys.historyRecordFileNameScrollWaitTime)
+    
+    
+    static let requestedAuthorization = DefaultsKey<Bool>(Keys.firstUsage)
     static let workingDirectoryBookmark = DefaultsKey<Data>(Keys.workingDirectoryBookmark)
 
 }
@@ -68,9 +72,9 @@ extension DefaultsKeys {
 let Defaults = UserDefaults.standard
 
 extension UserDefaults {
-    subscript(key: DefaultsKey<Bool>) -> Bool? {
+    subscript(key: DefaultsKey<Bool>) -> Bool {
         get {
-            bool(forKey: key._key)
+            bool(forKey: key._key) 
         }
         set {
             set(newValue, forKey: key._key)

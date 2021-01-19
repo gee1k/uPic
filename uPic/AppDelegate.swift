@@ -47,8 +47,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     func applicationWillFinishLaunching(_ notification: Notification) {
-        let isCommandLineState = Cli.shared.handleCommandLine()
-        if isCommandLineState {
+        
+        if let paths = Cli.shared.getFilePaths() {
+            DiskPermissionManager.shared.initializeRequestDiskPermissions()
+            Cli.shared.startUpload(paths)
             return
         }
         
@@ -75,17 +77,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         ConfigManager.shared.firstSetup()
         
-        if Defaults[.firstUsage] == BoolType._true.rawValue {
-            saveBookmark(url: promptForWorkingDirectoryPermission())
+        DispatchQueue.main.async {
+            // 状态栏不为空，代表是正常启动程序。即需要请求权限
+            if self.statusItem != nil {
+                DiskPermissionManager.shared.initializeRequestDiskPermissions()
+            }
         }
-        
-        let url = loadBookmark(data: Defaults[.workingDirectoryBookmark])!
-        print(url)
-        _ = url.startAccessingSecurityScopedResource()
-        //url.stopAccessingSecurityScopedResource()
     }
     
     func applicationWillTerminate(_ notification: Notification) {
+        
+        DiskPermissionManager.shared.stopFullDiskAccessing()
+        
         if let statusItem = statusItem {
             NSStatusBar.system.removeStatusItem(statusItem)
         }
@@ -106,7 +109,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
         if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue{
-            debugPrint(urlString)
             URLSchemeExt.shared.handleURL(urlString)
         }
     }
@@ -348,7 +350,6 @@ extension AppDelegate {
             var uploadUrls: [URL] = []
             for url in urls {
                 let path = url.path
-                debugPrint(path)
                 
                 if !FileManager.default.isReadableFile(atPath: path) {
                     NotificationExt.shared.postFileNoAccessNotice()

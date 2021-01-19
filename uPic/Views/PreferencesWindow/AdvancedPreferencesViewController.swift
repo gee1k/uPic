@@ -61,10 +61,8 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     }
     
     func checkFullDiskAuthorizationStatus() {
-        let url = loadBookmark(data: Defaults[.workingDirectoryBookmark])!.absoluteString
-        print(url)
-        
-        if url == "file:///" {
+        let isAuthorized = DiskPermissionManager.shared.checkFullDiskAuthorizationStatus()
+        if isAuthorized {
             fullDiskAuthorizationImage.image = NSImage(named: NSImage.statusAvailableName)
             fullDiskAuthorizationButton.title = "Authorized".localized
         } else {
@@ -111,7 +109,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     }
     
     @IBAction func didClickfullDiskAuthorizationButton(_ sender: NSButton) {
-        saveBookmark(url: promptForWorkingDirectoryPermission())
+        DiskPermissionManager.shared.requestFullDiskPermissions()
         checkFullDiskAuthorizationStatus()
     }
     

@@ -15,12 +15,18 @@
 "Example:" = "示例:";
 "On" = "开启";
 "Off" = "关闭";
+"Later" = "稍后";
 "APP Name" = "APP 名称";
 
 // 全盘权限授权
 "Authorize" = "授权";
 "Not Authorized" = "未授权";
 "Authorized" = "已授权";
+
+// 全盘权限授权 Alert 提示
+"Full Disk Access" = "完全磁盘访问";
+"Full Disk Access Message" = "由于系统的安全限制，App Store 下载的软件无权直接读取应用外的文件。所以我们需要您的授权，但我们不会收集你的任何信息！
+\n注：若不授权，将无法使用右键上传、分享上传、命令行上传等功能";
 
 /* 成功通知标题 */
 "Successfully" = "成功";
@@ -50,7 +56,7 @@
 /* 复制的文件不存在 */
 "The file does not exist or has been deleted!" = "复制的文件不存在或已被删除!";
 /* 无权访问该文件 */
-"No access to file!" = "无权访问该文件!";
+"No access to file!" = "无权访问该文件，请前往偏好设置授权磁盘访问!";
 /* 文件格式不支持 */
 "File format not supported!" = "文件格式不支持!";
 /* 文件大小超过限制 */
