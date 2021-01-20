@@ -83,6 +83,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 DiskPermissionManager.shared.initializeRequestDiskPermissions()
             }
         }
+        
+        WindowManager.shared.showWindow(storyboard: "Welcome", withIdentifier: "welcomeWindowController")
     }
     
     func applicationWillTerminate(_ notification: Notification) {

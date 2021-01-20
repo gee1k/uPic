@@ -1,0 +1,57 @@
+
+/* Class = "NSTextFieldCell"; title = "Share Extension"; ObjectID = "5PO-nX-1ts"; */
+"5PO-nX-1ts.title" = "Share Extension";
+
+/* Class = "NSTextFieldCell"; title = "Next"; ObjectID = "EN9-1Z-Sqq"; */
+"EN9-1Z-Sqq.title" = "Next";
+
+/* Class = "NSTextFieldCell"; title = "A powerful and simple file uploader tool.\nUpload any files to any services you like."; ObjectID = "J8p-JL-LaG"; */
+"J8p-JL-LaG.title" = "A powerful and simple file uploader tool.\nUpload any files to any services you like.";
+
+/* Class = "NSTextFieldCell"; title = "Limited by macOS, uPic can not access files outside of sandbox.\nIf not granted permission, uPic may not be able to upload some files.\nPlease be aware that uPic DO NOT collect any of your informations."; ObjectID = "KKR-Bg-AzW"; */
+"KKR-Bg-AzW.title" = "Limited by macOS, uPic can not access files outside of sandbox.\nIf not granted permission, uPic may not be able to upload some files.\nPlease be aware that uPic DO NOT collect any of your informations.";
+
+/* Class = "NSTextFieldCell"; title = "Authorization"; ObjectID = "RwC-HL-AhF"; */
+"RwC-HL-AhF.title" = "Authorization";
+
+/* Class = "NSTextFieldCell"; title = "Just drag the file to uPic icon on the status menu bar and then release your mouse.\nIt is just this simple. "; ObjectID = "U8F-dC-vKZ"; */
+"U8F-dC-vKZ.title" = "Just drag the file to uPic icon on the status menu bar and then release your mouse.\nIt is just this simple. ";
+
+/* Class = "NSTextFieldCell"; title = "Multiple Services"; ObjectID = "X47-xi-iV3"; */
+"X47-xi-iV3.title" = "Multiple Services";
+
+/* Class = "NSTextFieldCell"; title = "We need"; ObjectID = "a6A-gm-fbk"; */
+"a6A-gm-fbk.title" = "We need";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "aw5-Tv-dJb"; */
+"aw5-Tv-dJb.title" = "Window";
+
+/* Class = "NSTextFieldCell"; title = "Drag to Upload"; ObjectID = "dfW-Tj-Gog"; */
+"dfW-Tj-Gog.title" = "Drag to Upload";
+
+/* Class = "NSTextFieldCell"; title = "You can take a screenshot and upload.\nPlease enable Setting -> Security & Privacy -> Privacy -> Screen Recording -> uPic"; ObjectID = "isq-Ch-gao"; */
+"isq-Ch-gao.title" = "You can take a screenshot and upload.\nPlease enable Setting -> Security & Privacy -> Privacy -> Screen Recording -> uPic";
+
+/* Class = "NSTextFieldCell"; title = "Previous"; ObjectID = "lZV-cL-KsE"; */
+"lZV-cL-KsE.title" = "Previous";
+
+/* Class = "NSTextFieldCell"; title = "uPic"; ObjectID = "mld-Ub-NIp"; */
+"mld-Ub-NIp.title" = "uPic";
+
+/* Class = "NSTextFieldCell"; title = "Upload Screenshot"; ObjectID = "n2q-3P-rmS"; */
+"n2q-3P-rmS.title" = "Upload Screenshot";
+
+/* Class = "NSTextFieldCell"; title = "Welcome to"; ObjectID = "pk7-xU-bny"; */
+"pk7-xU-bny.title" = "Welcome to";
+
+/* Class = "NSTextFieldCell"; title = "Finder Extension"; ObjectID = "vGP-mK-Tjk"; */
+"vGP-mK-Tjk.title" = "Finder Extension";
+
+/* Class = "NSTextFieldCell"; title = "GitHub, Imgur, SM.MS, Qiniu KODO, Upyun USS, Aliyun OSS, Tencent Cloud COS, Gitee, Amazon S3, Baidu Cloud BOS, Lsky Pro"; ObjectID = "ve2-Sd-1j7"; */
+"ve2-Sd-1j7.title" = "GitHub, Imgur, SM.MS, Qiniu KODO, Upyun USS, Aliyun OSS, Tencent Cloud COS, Gitee, Amazon S3, Baidu Cloud BOS, Lsky Pro";
+
+/* Class = "NSTextFieldCell"; title = "Click share button and select \"Upload via uPic\"."; ObjectID = "xlO-Fz-Nxq"; */
+"xlO-Fz-Nxq.title" = "Click share button and select \"Upload via uPic\".";
+
+/* Class = "NSTextFieldCell"; title = "Right click on the file and select \"Upload via uPic\"."; ObjectID = "xz2-3l-Jef"; */
+"xz2-3l-Jef.title" = "Right click on the file and select \"Upload via uPic\".";
