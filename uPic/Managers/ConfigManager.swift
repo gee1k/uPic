@@ -34,6 +34,7 @@ public class ConfigManager {
         guard firstUsage == ._true else {
             return
         }
+        
         Defaults[.compressFactor] = 100
         Defaults.synchronize()
         

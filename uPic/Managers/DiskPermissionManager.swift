@@ -14,6 +14,9 @@ public class DiskPermissionManager {
     // static
     public static var shared = DiskPermissionManager()
     
+    // 储存当前开始授权访问的 URL 对象
+    private var workingDirectoryBookmarkUrl: URL?
+    
     
     private func promptForWorkingDirectoryPermission() -> URL? {
         let openPanel = NSOpenPanel()
@@ -62,20 +65,20 @@ public class DiskPermissionManager {
 // Utils
 extension DiskPermissionManager {
     
-    func initializeRequestDiskPermissions() {
-        if !Defaults[.requestedAuthorization] {
-            Defaults[.requestedAuthorization] = true
-            alertInfo(withText: "Full Disk Access".localized, withMessage: "Full Disk Access Message".localized, oKButtonTitle: "Authorize".localized, cancelButtonTitle: "Later".localized){ [self] in
-                requestFullDiskPermissions()
-            }
-        } else {
-            guard let data = Defaults[.workingDirectoryBookmark], let url = restoreFileAccess(with: data) else {
-                return
-            }
-            _ = url.startAccessingSecurityScopedResource()
-        }
-        
-    }
+//    func initializeRequestDiskPermissions() {
+//        if !Defaults[.requestedAuthorization] {
+//            Defaults[.requestedAuthorization] = true
+//            alertInfo(withText: "Full Disk Access".localized, withMessage: "Full Disk Access Message".localized, oKButtonTitle: "Authorize".localized, cancelButtonTitle: "Later".localized){ [self] in
+//                requestFullDiskPermissions()
+//            }
+//        } else {
+//            guard let data = Defaults[.workingDirectoryBookmark], let url = restoreFileAccess(with: data) else {
+//                return
+//            }
+//            _ = url.startAccessingSecurityScopedResource()
+//        }
+//
+//    }
     
     func checkFullDiskAuthorizationStatus() -> Bool {
         guard let data = Defaults[.workingDirectoryBookmark] else {
@@ -97,17 +100,35 @@ extension DiskPermissionManager {
     }
     
     func requestFullDiskPermissions() {
+        debugPrint("开始授权")
         guard let url = self.promptForWorkingDirectoryPermission() else {
+            debugPrint("取消授权")
             return
         }
         self.saveBookmarkData(for: url)
-        _ = url.startAccessingSecurityScopedResource()
+        debugPrint("授权成功")
+    }
+    
+    func startFullDiskAccessing() -> Bool {
+        debugPrint("开始获取安全授权")
+        guard let data = Defaults[.workingDirectoryBookmark], let url = restoreFileAccess(with: data) else {
+            return false
+        }
+        stopFullDiskAccessing()
+        
+        workingDirectoryBookmarkUrl = url
+        let flag = url.startAccessingSecurityScopedResource()
+        debugPrint("开始获取安全授权完成")
+        return flag
     }
     
     func stopFullDiskAccessing() {
-        guard let data = Defaults[.workingDirectoryBookmark], let url = restoreFileAccess(with: data) else {
+        debugPrint("开始停止获取安全授权")
+        guard let url = workingDirectoryBookmarkUrl else {
             return
         }
         url.stopAccessingSecurityScopedResource()
+        workingDirectoryBookmarkUrl = nil
+        debugPrint("停止获取安全授权完成")
     }
 }

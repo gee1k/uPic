@@ -115,7 +115,6 @@ extension Cli {
         Console.write(resultUrls.joined(separator: "\n"))
         DBManager.shared.close()
         DispatchQueue.main.async {
-            DiskPermissionManager.shared.stopFullDiskAccessing()
             exit(EX_OK)
         }
     }

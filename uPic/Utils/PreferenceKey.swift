@@ -64,7 +64,7 @@ extension DefaultsKeys {
     static let historyRecordFileNameScrollWaitTime = DefaultsKey<Float>(Keys.historyRecordFileNameScrollWaitTime)
     
     
-    static let requestedAuthorization = DefaultsKey<Bool>(Keys.firstUsage)
+    static let requestedAuthorization = DefaultsKey<Bool>(Keys.requestedAuthorization)
     static let workingDirectoryBookmark = DefaultsKey<Data>(Keys.workingDirectoryBookmark)
 
 }

@@ -32,6 +32,10 @@ class WelcomViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        // 打开偏好设置时在 Dock 栏显示应用图标，方便用户再次返回设置界面
+        if NSApp.activationPolicy() == .accessory {
+            NSApp.setActivationPolicy(.regular)
+        }
         
         closeButton.alphaValue = 0.5
         
@@ -42,7 +46,7 @@ class WelcomViewController: NSViewController {
     }
     
     @IBAction func didClickCloseButton(_ sender: NSButton) {
-        view.window?.close()
+        closeWindow(sender)
     }
     @IBAction func didClickPreviousButton(_ sender: NSButton) {
         switchToPage(to: currentViewIndex - 1)
@@ -51,9 +55,17 @@ class WelcomViewController: NSViewController {
     @IBAction func didClickNextButton(_ sender: NSButton) {
         if currentViewIndex == viewList.count - 1 { // 最后一个页面
             print("开始授权")
+            DiskPermissionManager.shared.requestFullDiskPermissions()
+            closeWindow(sender)
         } else {
             switchToPage(to: currentViewIndex + 1)
         }
+    }
+    
+    func closeWindow(_ sender: Any) {
+        view.window?.close()
+        // 关闭偏好设置时在去掉 Dock 栏显示应用图标
+        NSApp.setActivationPolicy(.accessory)
     }
     
 }
@@ -99,4 +111,3 @@ extension WelcomViewController {
         }
     }
 }
-
