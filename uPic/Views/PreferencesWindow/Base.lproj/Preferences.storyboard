@@ -829,10 +829,10 @@
             </objects>
             <point key="canvasLocation" x="-214.5" y="993.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Restart Finder prompt-->
         <scene sceneID="p2I-9i-ma1">
             <objects>
-                <viewController id="gNK-aF-Cmm" sceneMemberID="viewController">
+                <viewController title="Restart Finder prompt" id="gNK-aF-Cmm" sceneMemberID="viewController">
                     <view key="view" id="0rS-7V-3eG">
                         <rect key="frame" x="0.0" y="0.0" width="210" height="351"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1783,10 +1783,10 @@ Gw
         <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="NSRemoveTemplate" width="14" height="4"/>
         <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
-        <image name="color" width="22" height="22"/>
+        <image name="color" width="16" height="16"/>
         <image name="downloadOnAppStore" width="120" height="40"/>
         <image name="finderRestart" width="150" height="255"/>
         <image name="host" width="64" height="64"/>
-        <image name="single" width="22" height="22"/>
+        <image name="single" width="16" height="16"/>
     </resources>
 </document>
