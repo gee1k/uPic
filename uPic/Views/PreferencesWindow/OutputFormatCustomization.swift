@@ -54,7 +54,6 @@ class OutputFormatCustomization: NSViewController {
                         subTextField.endEditing(editor)
                     }
                 }
-                
             }
         }
     }

@@ -18,7 +18,8 @@
 "Later" = "Later";
 "APP Name" = "APP Name";
 
-// 全盘权限授权
+// 欢迎界面
+"Next" = "Next";
 "Authorize" = "Authorize";
 "Not Authorized" = "Not Authorized";
 "Authorized" = "Authorized";

@@ -13,7 +13,7 @@ class DatabaseViewController: NSViewController {
     
     var hostItems: [Host] = []
     var items: [HistoryThumbnailModel] = []
-    var sortOrder: SortOrder = SortOrder.ID
+    var sortOrder: SortOrder = SortOrder.Name
     var selectedRow: Set<Int> = []
     var selectionDidChange = false
     var sortAscending = false
@@ -38,7 +38,10 @@ class DatabaseViewController: NSViewController {
     }
     
     // 根据 ID 获取图床
-    func getHostById(_ id: String)->Host? {
+    func getHostById(_ id: String?) -> Host? {
+        guard let id = id else {
+            return nil
+        }
         return hostItems.first(where: {$0.id == id})
     }
     
@@ -67,7 +70,7 @@ class DatabaseViewController: NSViewController {
         alert.addButton(withTitle: "Cancel".localized)
         alert.window.titlebarAppearsTransparent = true
         let response = alert.runModal()
-
+        
         if response == .alertFirstButtonReturn {
             ConfigManager.shared.clearHistoryList()
             items = ConfigManager.shared.getHistoryList()
@@ -79,13 +82,17 @@ class DatabaseViewController: NSViewController {
     
     
     func sortConfig() {
-        let descriptorName = NSSortDescriptor(key: SortOrder.Name.rawValue, ascending: true)
-        let descriptorID = NSSortDescriptor(key: SortOrder.ID.rawValue, ascending: false)
-        let descriptorURL = NSSortDescriptor(key: SortOrder.URL.rawValue, ascending: true)
+        let descriptorName = NSSortDescriptor(key: SortOrder.Name.rawValue, ascending: false)
+        let descriptorHost = NSSortDescriptor(key: SortOrder.Host.rawValue, ascending: false)
+        let descriptorSize = NSSortDescriptor(key: SortOrder.Size.rawValue, ascending: false)
+        let descriptorTime = NSSortDescriptor(key: SortOrder.Time.rawValue, ascending: false)
+        let descriptorURL = NSSortDescriptor(key: SortOrder.URL.rawValue, ascending: false)
         
         databaseTableView.tableColumns[1].sortDescriptorPrototype = descriptorName
-        databaseTableView.tableColumns[2].sortDescriptorPrototype = descriptorID
-        databaseTableView.tableColumns[3].sortDescriptorPrototype = descriptorURL
+        databaseTableView.tableColumns[2].sortDescriptorPrototype = descriptorHost
+        databaseTableView.tableColumns[3].sortDescriptorPrototype = descriptorSize
+        databaseTableView.tableColumns[4].sortDescriptorPrototype = descriptorTime
+        databaseTableView.tableColumns[5].sortDescriptorPrototype = descriptorURL
     }
     
     func sortTableView() {
@@ -93,8 +100,15 @@ class DatabaseViewController: NSViewController {
             switch sortOrder {
             case .Name:
                 return sortAscending ? $0.fileName < $1.fileName : $0.fileName > $1.fileName
-            case .ID:
-                return sortAscending ? $0.identifier! < $1.identifier! : $0.identifier! > $1.identifier!
+            case .Host:
+                if let host0 = $0.host, let host1 = $1.host {
+                    return sortAscending ? host0 < host1 : host0 > host1
+                }
+                return false
+            case .Size:
+                return sortAscending ? $0.size < $1.size : $0.size > $1.size
+            case .Time:
+                return sortAscending ? $0.createdDate < $1.createdDate : $0.createdDate > $1.createdDate
             case .URL:
                 return sortAscending ? $0.url < $1.url : $0.url > $1.url
             }
@@ -125,10 +139,12 @@ extension DatabaseViewController: NSTableViewDelegate {
             cell?.textField?.stringValue = String(row + 1)
         case NSUserInterfaceItemIdentifier(rawValue: "name"):
             cell?.textField?.stringValue = item.fileName
-        case NSUserInterfaceItemIdentifier(rawValue: "id"):
-            cell?.textField?.stringValue = String(item.identifier ?? 0)
-        case NSUserInterfaceItemIdentifier(rawValue: "isImage"):
-            cell?.textField?.stringValue = item.isImage ? "Yes".localized : "No".localized
+        case NSUserInterfaceItemIdentifier(rawValue: "host"):
+            cell?.imageView?.image = Host.getIconByType(type: getHostById(item.host)?.type ?? .smms)
+        case NSUserInterfaceItemIdentifier(rawValue: "size"):
+            cell?.textField?.stringValue = "\(ByteCountFormatter.string(fromByteCount: Int64(item.size), countStyle: .decimal))"
+        case NSUserInterfaceItemIdentifier(rawValue: "time"):
+            cell?.textField?.stringValue = item.createdDate.format()
         case NSUserInterfaceItemIdentifier(rawValue: "url"):
             cell?.textField?.stringValue = item.url
         case NSUserInterfaceItemIdentifier(rawValue: "review"):
@@ -172,6 +188,8 @@ extension DatabaseViewController: NSTableViewDelegate {
 // MARK: - sort order
 enum SortOrder: String {
     case Name
-    case ID
+    case Host
+    case Size
+    case Time
     case URL
 }

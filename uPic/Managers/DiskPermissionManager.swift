@@ -94,8 +94,6 @@ extension DiskPermissionManager {
             print("Error resolving bookmark:", error)
             return false
         }
-        
-        
     }
     
     func requestFullDiskPermissions() {

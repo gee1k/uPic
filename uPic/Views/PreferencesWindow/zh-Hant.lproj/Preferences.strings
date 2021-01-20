@@ -2,8 +2,8 @@
 /* Class = "NSButtonCell"; title = "svend.cc"; ObjectID = "0dV-As-mmQ"; */
 "0dV-As-mmQ.title" = "svend.cc";
 
-/* Class = "NSTextFieldCell"; title = "may require a"; ObjectID = "2Rg-te-FPU"; */
-"2Rg-te-FPU.title" = "可能需要重启访达";
+/* Class = "NSTextFieldCell"; title = "need a Finder Restart"; ObjectID = "2Rg-te-FPU"; */
+"2Rg-te-FPU.title" = "需要重启访达";
 
 /* Class = "NSViewController"; title = "Host"; ObjectID = "5Ln-jV-uxk"; */
 "5Ln-jV-uxk.title" = "圖床";
