@@ -15,8 +15,9 @@ class AboutPreferencesViewController: PreferencesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let versionObject = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
-        versionLabel.stringValue = versionObject as? String ?? ""
+        let versionNum = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+        let buildNum = Bundle.main.infoDictionary?["CFBundleVersion"] as! String
+        versionLabel.stringValue = "v\(versionNum) (\(buildNum))"
     }
     
     @IBAction func githubButtonClicked(_ sender: NSButton) {
@@ -54,6 +55,9 @@ class AboutPreferencesViewController: PreferencesViewController {
         NSWorkspace.shared.open(url)
     }
     
+    @IBAction func didClickShowWelcomePageButton(_ sender: NSButton) {
+        WindowManager.shared.showWindow(storyboard: "Welcome", withIdentifier: "welcomeWindowController")
+    }
 }
 
 class LinkButton: NSButton {

@@ -3,13 +3,16 @@
 "0dV-As-mmQ.title" = "svend.cc";
 
 /* Class = "NSTextFieldCell"; title = "need a Finder Restart"; ObjectID = "2Rg-te-FPU"; */
-"2Rg-te-FPU.title" = "require a Finder Restart";
+"2Rg-te-FPU.title" = "need a Finder Restart";
 
 /* Class = "NSViewController"; title = "Host"; ObjectID = "5Ln-jV-uxk"; */
 "5Ln-jV-uxk.title" = "Host";
 
 /* Class = "NSWindow"; title = "Preferences"; ObjectID = "5f3-UK-Rft"; */
 "5f3-UK-Rft.title" = "Preferences";
+
+/* Class = "NSButtonCell"; title = "Show"; ObjectID = "7Gg-u8-8Yt"; */
+"7Gg-u8-8Yt.title" = "Show";
 
 /* Class = "NSButtonCell"; title = "Reset"; ObjectID = "8gb-uy-oRd"; */
 "8gb-uy-oRd.title" = "Reset";
@@ -167,6 +170,9 @@
 /* Class = "NSButtonCell"; title = "Not Authorized"; ObjectID = "l8U-fu-WXc"; */
 "l8U-fu-WXc.title" = "Not Authorized";
 
+/* Class = "NSTextFieldCell"; title = "Hold option and right click on finder, then select Relaunch."; ObjectID = "mDT-aa-auv"; */
+"mDT-aa-auv.title" = "Hold option and right click on finder, then select Relaunch.";
+
 /* Class = "NSTextFieldCell"; title = "uPic"; ObjectID = "mOB-su-ZM1"; */
 "mOB-su-ZM1.title" = "uPic";
 
@@ -190,6 +196,9 @@
 
 /* Class = "NSTextFieldCell"; title = "Icon:"; ObjectID = "ugx-B2-gPe"; */
 "ugx-B2-gPe.title" = "Icon:";
+
+/* Class = "NSTextFieldCell"; title = "✋Welcome Page:"; ObjectID = "ul8-3a-sB4"; */
+"ul8-3a-sB4.title" = "✋Welcome Page:";
 
 /* Class = "NSTextFieldCell"; title = "Output Format Customization"; ObjectID = "w0T-ah-0NT"; */
 "w0T-ah-0NT.title" = "Output Format Customization";
