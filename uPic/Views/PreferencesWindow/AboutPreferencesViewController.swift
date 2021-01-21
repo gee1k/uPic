@@ -56,7 +56,7 @@ class AboutPreferencesViewController: PreferencesViewController {
     }
     
     @IBAction func didClickShowWelcomePageButton(_ sender: NSButton) {
-        WindowManager.shared.showWindow(storyboard: "Welcome", withIdentifier: "welcomeWindowController")
+        _ = WindowManager.shared.showWindow(storyboard: "Welcome", withIdentifier: "welcomeWindowController")
     }
 }
 

@@ -26,7 +26,7 @@ public class DBManager {
                print("[WCDB][ERROR] \(error.description)")
            }
         })
-        // debugPrint("数据库地址：\(Constants.CachePath.databasePath)")
+        debugPrintOnly("数据库地址：\(Constants.CachePath.databasePath)")
         database = Database(withPath: Constants.CachePath.databasePath)
         createHistoryTable()
         createOutputFormatTable()

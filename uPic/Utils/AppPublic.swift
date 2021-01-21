@@ -39,3 +39,8 @@ func alertInfo(withText messageText: String, withMessage message: String, oKButt
 }
 
 
+func debugPrintOnly(_ items: Any..., separator: String = " ", terminator: String = "\n") {
+    #if DEBUG
+    debugPrint(items, separator: separator, terminator: terminator)
+    #endif
+}

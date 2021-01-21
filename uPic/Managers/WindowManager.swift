@@ -25,7 +25,7 @@ extension WindowManager {
     }
 
     // 显示对应 Identifier 的窗口
-    func showWindow(storyboard name: String, withIdentifier identifier: String, withTitle title: String? = nil) {
+    func showWindow(storyboard name: String, withIdentifier identifier: String, withTitle title: String? = nil) -> NSWindowController {
         let windowController = instantiateControllerFromStoryboard(storyboard: name, withIdentifier: identifier) as NSWindowController
         if let windowTitle = title {
             windowController.window?.title = windowTitle
@@ -34,5 +34,6 @@ extension WindowManager {
         windowController.showWindow(self)
         windowController.window?.makeKeyAndOrderFront(self)
         NSApp.activate(ignoringOtherApps: true)
+        return windowController
     }
 }

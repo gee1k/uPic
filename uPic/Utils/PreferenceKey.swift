@@ -26,7 +26,8 @@ struct Keys {
     static let historyRecordFileNameScrollWaitTime = "uPic_HistoryRecordFileNameScrollWaitTime"
     
     static let requestedAuthorization = "uPic_RequestedAuthorization"
-    static let workingDirectoryBookmark = "uPic_WorkingDirectoryBookmark"
+    static let rootDirectoryBookmark = "uPic_RootDirectoryBookmark"
+    static let homeDirectoryBookmark = "uPic_HomeDirectoryBookmark"
 }
 
 class DefaultsKeys {
@@ -64,8 +65,12 @@ extension DefaultsKeys {
     static let historyRecordFileNameScrollWaitTime = DefaultsKey<Float>(Keys.historyRecordFileNameScrollWaitTime)
     
     
+    // 是否是请求授权过
     static let requestedAuthorization = DefaultsKey<Bool>(Keys.requestedAuthorization)
-    static let workingDirectoryBookmark = DefaultsKey<Data>(Keys.workingDirectoryBookmark)
+    // 根目录授权书签
+    static let rootDirectoryBookmark = DefaultsKey<Data>(Keys.rootDirectoryBookmark)
+    // 主目录授权书签
+    static let homeDirectoryBookmark = DefaultsKey<Data>(Keys.homeDirectoryBookmark)
 
 }
 

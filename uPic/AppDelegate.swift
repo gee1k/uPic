@@ -79,7 +79,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if !Defaults[.requestedAuthorization] {
             Defaults[.requestedAuthorization] = true
             // 打开欢迎页面以及获取授权页
-            WindowManager.shared.showWindow(storyboard: "Welcome", withIdentifier: "welcomeWindowController")
+            _ = WindowManager.shared.showWindow(storyboard: "Welcome", withIdentifier: "welcomeWindowController")
         }
     }
     
@@ -301,6 +301,17 @@ extension AppDelegate {
             return
         }
         
+        // 截图权限检测
+        let hasPermission = ScreenUtil.screeningRecordPermissionCheck()
+        if !hasPermission {
+            // 无截图权限，申请截图权限并弹出帮助界面、跳转到设置界面
+            ScreenUtil.requestRecordScreenPermissions()
+            ScreenUtil.openPrivacyScreenCapture()
+            
+            _ = WindowManager.shared.showWindow(storyboard: "ScreenshotAuthorizationHelp", withIdentifier: "screenshotAuthorizationHelpWindowController")
+            return
+        }
+        
         let task = Process()
         task.launchPath = "/usr/sbin/screencapture"
         task.arguments = ["-i", "-c"]
@@ -396,11 +407,6 @@ extension AppDelegate {
             for url in urls {
                 let path = url.path
                 
-                if !FileManager.default.isReadableFile(atPath: path) {
-                    NotificationExt.shared.postFileNoAccessNotice()
-                    continue
-                }
-                
                 if FileManager.directoryIsExists(path: path) {
                     let directoryName = path.lastPathComponent
                     let enumerator = FileManager.default.enumerator(atPath: path)
@@ -441,7 +447,7 @@ extension AppDelegate {
         }
         
         // 开始磁盘授权访问
-        _ = DiskPermissionManager.shared.startFullDiskAccessing()
+        _ = DiskPermissionManager.shared.startDirectoryAccessing()
         
         self.uploding = true
         self.tickFileToUpload()
@@ -457,6 +463,11 @@ extension AppDelegate {
             let firstFile = self.needUploadFiles.first
             self.needUploadFiles.removeFirst()
             if firstFile is URL {
+                if !FileManager.default.isReadableFile(atPath: (firstFile as! URL).path) {
+                    NotificationExt.shared.postFileNoAccessNotice()
+                    tickFileToUpload()
+                    return
+                }
                 BaseUploader.upload(url: firstFile as! URL)
             } else if firstFile is Data {
                 BaseUploader.upload(data: firstFile as! Data)
@@ -522,7 +533,7 @@ extension AppDelegate {
     
     func uploadDone() {
         // 停止磁盘授权访问
-        DiskPermissionManager.shared.stopFullDiskAccessing()
+        DiskPermissionManager.shared.stopDirectoryAccessing()
         
         self.uploding = false
         // MARK: - Cli Support

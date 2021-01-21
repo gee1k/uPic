@@ -109,7 +109,14 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     }
     
     @IBAction func didClickfullDiskAuthorizationButton(_ sender: NSButton) {
-        DiskPermissionManager.shared.requestFullDiskPermissions()
+        let isAuthorized = DiskPermissionManager.shared.checkFullDiskAuthorizationStatus()
+        if isAuthorized {
+            // 取消
+            DiskPermissionManager.shared.cancelFullDiskPermissions()
+        } else {
+            // 设置页授权根目录
+            DiskPermissionManager.shared.requestFullDiskPermissions()
+        }
         checkFullDiskAuthorizationStatus()
     }
     
