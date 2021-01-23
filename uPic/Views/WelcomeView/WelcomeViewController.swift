@@ -32,10 +32,6 @@ class WelcomViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        // 打开偏好设置时在 Dock 栏显示应用图标，方便用户再次返回设置界面
-        if NSApp.activationPolicy() == .accessory {
-            NSApp.setActivationPolicy(.regular)
-        }
         
         closeButton.alphaValue = 0.5
         
@@ -65,8 +61,6 @@ class WelcomViewController: NSViewController {
     
     func closeWindow(_ sender: Any) {
         view.window?.close()
-        // 关闭偏好设置时在去掉 Dock 栏显示应用图标
-        NSApp.setActivationPolicy(.accessory)
     }
     
 }

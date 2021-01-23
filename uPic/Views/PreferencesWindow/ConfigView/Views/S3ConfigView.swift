@@ -84,7 +84,7 @@ class S3ConfigView: ConfigView {
         if selectRegion != nil {
             regionButtonPopUp.select(selectRegion)
             // 初次设置，手动处罚一下事件，将数据写入data
-            if data.region.isEmpty {
+            if data.region == nil || data.region!.isEmpty {
                 self.regionChange(regionButtonPopUp)
             }
         }
@@ -203,6 +203,10 @@ class S3ConfigView: ConfigView {
         
         endpointLabel.isHidden = !customize
         endpointField.isHidden = !customize
+        
+        if (customize) {
+            self.data?.setValue(nil, forKey: "region")
+        }
         
         if (!customize && !endpointField.stringValue.isEmpty) {
             endpointField.stringValue = ""

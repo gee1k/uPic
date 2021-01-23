@@ -8,8 +8,8 @@
 /* Class = "NSTextFieldCell"; title = "A powerful and simple file uploader tool.\nUpload any files to any services you like."; ObjectID = "J8p-JL-LaG"; */
 "J8p-JL-LaG.title" = "A powerful and simple file uploader tool.\nUpload any files to any services you like.";
 
-/* Class = "NSTextFieldCell"; title = "Limited by macOS, uPic can not access files outside of sandbox.\nIf not granted permission, uPic may not be able to upload some files.\nPlease be aware that uPic DO NOT collect any of your informations."; ObjectID = "KKR-Bg-AzW"; */
-"KKR-Bg-AzW.title" = "Limited by macOS, uPic can not access files outside of sandbox.\nIf not granted permission, uPic may not be able to upload some files.\nPlease be aware that uPic DO NOT collect any of your informations.";
+/* Class = "NSTextFieldCell"; title = "Due to system security restrictions, uPic cannot access files outside the sandbox. \nYou will not be able to use right click upload, share upload, command line upload, etc. without authorization. \nNote: uPic does not collect any information from you."; ObjectID = "KKR-Bg-AzW"; */
+"KKR-Bg-AzW.title" = "Due to system security restrictions, uPic cannot access files outside the sandbox. \nYou will not be able to use right click upload, share upload, command line upload, etc. without authorization. \nNote: uPic does not collect any information from you.";
 
 /* Class = "NSTextFieldCell"; title = "Authorization"; ObjectID = "RwC-HL-AhF"; */
 "RwC-HL-AhF.title" = "Authorization";

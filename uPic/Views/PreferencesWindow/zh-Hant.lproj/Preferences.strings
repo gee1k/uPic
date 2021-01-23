@@ -198,10 +198,10 @@
 "ugx-B2-gPe.title" = "圖標:";
 
 /* Class = "NSTextFieldCell"; title = "✋Welcome Page:"; ObjectID = "ul8-3a-sB4"; */
-"ul8-3a-sB4.title" = "✋欢迎页:";
+"ul8-3a-sB4.title" = "✋歡迎頁:";
 
 /* Class = "NSTextFieldCell"; title = "Output Format Customization"; ObjectID = "w0T-ah-0NT"; */
-"w0T-ah-0NT.title" = "输出格式自定义";
+"w0T-ah-0NT.title" = "輸出格式自定義";
 
 /* Class = "NSTextFieldCell"; title = "💬 Telegram:"; ObjectID = "yO0-9g-BJK"; */
 "yO0-9g-BJK.title" = "💬 Telegram:";

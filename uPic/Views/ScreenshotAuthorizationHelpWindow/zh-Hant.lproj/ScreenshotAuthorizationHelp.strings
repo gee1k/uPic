@@ -6,3 +6,6 @@
 
 /* Class = "NSTextFieldCell"; title = "授予 uPic “屏幕录制”权限"; ObjectID = "qqL-jK-k4X"; */
 "qqL-jK-k4X.title" = "授予 uPic “荧幕錄製”許可權";
+
+/* Class = "NSButton"; title = "Open Security & Privacy"; ObjectID = "MZV-nV-okO"; */
+"MZV-nV-okO.title" = "打開安全性與隱私";

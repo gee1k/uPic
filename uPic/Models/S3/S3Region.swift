@@ -54,8 +54,8 @@ public class S3Region {
         return regionDict["name"] ?? key
     }
     
-    public static func endPoint(_ key: String) -> String {
-        if key.isEmpty {
+    public static func endPoint(_ key: String?) -> String {
+        guard let key = key, !key.isEmpty else {
             return ""
         }
         if key == "cn-north-1" || key == "cn-northwest-1" {

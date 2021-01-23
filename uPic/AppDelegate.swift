@@ -306,7 +306,6 @@ extension AppDelegate {
         if !hasPermission {
             // 无截图权限，申请截图权限并弹出帮助界面、跳转到设置界面
             ScreenUtil.requestRecordScreenPermissions()
-            ScreenUtil.openPrivacyScreenCapture()
             
             _ = WindowManager.shared.showWindow(storyboard: "ScreenshotAuthorizationHelp", withIdentifier: "screenshotAuthorizationHelpWindowController")
             return

@@ -11,7 +11,7 @@ import SwiftyJSON
 
 @objcMembers
 class S3HostConfig: HostConfig {
-    dynamic var region: String = ""
+    dynamic var region: String?
     dynamic var endpoint: String?
     dynamic var bucket: String = ""
     dynamic var accessKey: String = ""
