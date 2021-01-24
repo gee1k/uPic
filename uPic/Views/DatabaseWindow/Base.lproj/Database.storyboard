@@ -12,8 +12,8 @@
                 <windowController id="BoV-iM-DLl" customClass="DatabaseWindowController" customModule="uPic" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="uPic Database" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="zqs-gy-XY6">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="547" y="339" width="480" height="270"/>
+                        <windowPositionMask key="initialPositionMask" topStrut="YES"/>
+                        <rect key="contentRect" x="547" y="550" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
                         <value key="minSize" type="size" width="480" height="270"/>
                         <view key="contentView" id="RAf-C9-efY">
