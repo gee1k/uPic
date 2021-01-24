@@ -9,7 +9,7 @@
 import Cocoa
 
 class DatabaseViewController: NSViewController {
-    @IBOutlet weak var databaseTableView: NSTableView!
+    @IBOutlet weak var tableView: NSTableView!
     
     var hostItems: [Host] = []
     var items: [HistoryThumbnailModel] = []
@@ -25,16 +25,41 @@ class DatabaseViewController: NSViewController {
             NSApp.setActivationPolicy(.regular)
         }
         
-        databaseTableView.dataSource = self
-        databaseTableView.delegate = self
+        //enableCopyMenu()
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.doubleAction = #selector(copyURL)
         
         // 获取图床信息
         hostItems = ConfigManager.shared.getHostItems()
         
         items = DBManager.shared.getHistoryList()
         sortConfig()
-        databaseTableView.reloadData()
+        tableView.reloadData()
+    }
+    
+    override func rightMouseDown(with event: NSEvent) {
+        let menu = NSMenu()
+        
+        let copyMenuItem = NSMenuItem()
+        copyMenuItem.title = "Copy".localized + " (" + "\(selectedRow.count)" + "items".localized + ")"
+        copyMenuItem.isEnabled = false
+        copyMenuItem.action = #selector(copyURL)
+        
+        menu.addItem(copyMenuItem)
+        
+        NSMenu.popUpContextMenu(menu, with: event, for: tableView)
+    }
+    
+    func enableCopyMenu() {
+        if let mainMenu = NSApp.mainMenu, let editMenu = mainMenu.item(at: 2)?.submenu {
+            for item in editMenu.items {
+                if item.identifier?.rawValue == "copy" {
+                    item.action = #selector(didClickCopyButton(_:))
+                }
+            }
+        }
     }
     
     // 根据 ID 获取图床
@@ -47,18 +72,11 @@ class DatabaseViewController: NSViewController {
     
     @IBAction func didClickRefreshButton(_ sender: NSToolbarItem) {
         items = DBManager.shared.getHistoryList()
-        databaseTableView.reloadData()
+        tableView.reloadData()
     }
     
     @IBAction func didClickCopyButton(_ sender: NSToolbarItem) {
-        var urls: [String] = []
-        
-        for row in selectedRow.sorted() {
-            urls.append(items[row].url)
-        }
-        
-        let outputUrl = (NSApplication.shared.delegate as? AppDelegate)?.copyUrls(urls: urls)
-        NotificationExt.shared.postCopySuccessfulNotice(outputUrl)
+        copyURL()
     }
     
     @IBAction func didClickDeleteButton(_ sender: NSToolbarItem) {
@@ -74,12 +92,25 @@ class DatabaseViewController: NSViewController {
         if response == .alertFirstButtonReturn {
             ConfigManager.shared.clearHistoryList()
             items = ConfigManager.shared.getHistoryList()
-            databaseTableView.reloadData()
+            tableView.reloadData()
         } else if response == .alertSecondButtonReturn {
             NSLog("Cancel")
         }
     }
     
+    @objc func copyURL() {
+        guard selectedRow.count > 0 else {
+            return
+        }
+        var urls: [String] = []
+        
+        for row in selectedRow.sorted() {
+            urls.append(items[row].url)
+        }
+        
+        let outputUrl = (NSApplication.shared.delegate as? AppDelegate)?.copyUrls(urls: urls)
+        NotificationExt.shared.postCopySuccessfulNotice(outputUrl)
+    }
     
     func sortConfig() {
         let descriptorName = NSSortDescriptor(key: SortOrder.Name.rawValue, ascending: false)
@@ -88,11 +119,11 @@ class DatabaseViewController: NSViewController {
         let descriptorTime = NSSortDescriptor(key: SortOrder.Time.rawValue, ascending: false)
         let descriptorURL = NSSortDescriptor(key: SortOrder.URL.rawValue, ascending: false)
         
-        databaseTableView.tableColumns[1].sortDescriptorPrototype = descriptorName
-        databaseTableView.tableColumns[2].sortDescriptorPrototype = descriptorHost
-        databaseTableView.tableColumns[3].sortDescriptorPrototype = descriptorSize
-        databaseTableView.tableColumns[4].sortDescriptorPrototype = descriptorTime
-        databaseTableView.tableColumns[5].sortDescriptorPrototype = descriptorURL
+        tableView.tableColumns[1].sortDescriptorPrototype = descriptorName
+        tableView.tableColumns[2].sortDescriptorPrototype = descriptorHost
+        tableView.tableColumns[3].sortDescriptorPrototype = descriptorSize
+        tableView.tableColumns[4].sortDescriptorPrototype = descriptorTime
+        tableView.tableColumns[5].sortDescriptorPrototype = descriptorURL
     }
     
     func sortTableView() {
@@ -114,7 +145,7 @@ class DatabaseViewController: NSViewController {
             }
         }
         
-        databaseTableView.reloadData()
+        tableView.reloadData()
     }
     
 }
@@ -168,6 +199,9 @@ extension DatabaseViewController: NSTableViewDelegate {
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         selectionDidChange = true
+        if tableView.selectedRow < 0 {
+            selectedRow.removeAll()
+        }
     }
     
     func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {

@@ -351,7 +351,7 @@
                         </tableHeaderView>
                     </scrollView>
                     <connections>
-                        <outlet property="databaseTableView" destination="4Uo-6F-X0B" id="mQa-wt-PAh"/>
+                        <outlet property="tableView" destination="4Uo-6F-X0B" id="mQa-wt-PAh"/>
                     </connections>
                 </viewController>
             </objects>
