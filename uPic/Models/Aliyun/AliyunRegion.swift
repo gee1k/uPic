@@ -18,9 +18,12 @@ class AliyunRegion {
         "oss-cn-beijing": ["cname": "华北 2（北京）"],
         "oss-cn-zhangjiakou": ["cname": "华北 3（张家口）"],
         "oss-cn-huhehaote": ["cname": "华北 5（呼和浩特）"],
+        "oss-cn-wulanchabu": ["cname": "华北 6（乌兰察布）"],
         "oss-cn-shenzhen": ["cname": "华南 1（深圳）"],
+        "oss-cn-heyuan": ["cname": "华南 2（河源）"],
+        "oss-cn-guangzhou": ["cname": "华南 3（广州）"],
         "oss-cn-chengdu": ["cname": "西南 1（成都）"],
-        "oss-cn-hongkong": ["cname": "香港"],
+        "oss-cn-hongkong": ["cname": "中国（香港）"],
         "oss-us-west-1": ["cname": "美国西部 1（硅谷）"],
         "oss-us-east-1": ["cname": "美国东部 1（弗吉尼亚）"],
         "oss-ap-southeast-1": ["cname": "亚太东南 1（新加坡）"],
@@ -53,18 +56,5 @@ class AliyunRegion {
             return region
         }
         return AliyunRegion.allRegion.keys.first!
-    }
-    
-    /// FIXME： 将旧版区域转为新版格式，几个版本的迭代后需删除
-    public static func upgradeFromOld(_ oldRegion: String) -> String {
-        if (oldRegion.starts(with: "oss-")) {
-            return oldRegion
-        }
-        
-        if oldRegion.isEmpty {
-            return ""
-        }
-        return "oss-\(oldRegion.replacingOccurrences(of: "_", with: "-"))"
-       
     }
 }

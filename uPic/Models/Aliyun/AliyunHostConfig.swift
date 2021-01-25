@@ -60,9 +60,7 @@ class AliyunHostConfig: HostConfig {
         }
         let data = str.data(using: String.Encoding.utf8)
         let json = try! JSON(data: data!)
-        /// FIXME： 将旧版区域转为新版格式，几个版本的迭代后需删除
-        config.region = AliyunRegion.upgradeFromOld(json["region"].stringValue)
-        // config.region = json["region"].stringValue
+        config.region = json["region"].stringValue
         config.bucket = json["bucket"].stringValue
         config.accessKey = json["accessKey"].stringValue
         config.secretKey = json["secretKey"].stringValue

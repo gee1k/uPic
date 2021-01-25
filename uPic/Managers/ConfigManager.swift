@@ -110,7 +110,7 @@ extension ConfigManager {
 extension ConfigManager {
     public var historyLimit: Int {
         get {
-            let defaultLimit = 100
+            let defaultLimit = 10000
             let limit = Defaults[.historyLimit]
             if (limit == nil || limit == 0) {
                 return defaultLimit

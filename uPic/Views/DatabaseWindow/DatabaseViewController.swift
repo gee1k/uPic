@@ -14,8 +14,6 @@ class DatabaseViewController: NSViewController {
     var hostItems: [Host] = []
     var items: [HistoryThumbnailModel] = []
     var sortOrder: SortOrder = SortOrder.Name
-    var selectedRow: Set<Int> = []
-    var selectionDidChange = false
     var sortAscending = false
     
     override func viewDidLoad() {
@@ -25,25 +23,35 @@ class DatabaseViewController: NSViewController {
             NSApp.setActivationPolicy(.regular)
         }
         
-        //enableCopyMenu()
-        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.doubleAction = #selector(copyURL)
         
-        // 获取图床信息
-        hostItems = ConfigManager.shared.getHostItems()
-        
-        items = DBManager.shared.getHistoryList()
         sortConfig()
-        tableView.reloadData()
+        
+        updateHostList()
+        updateHistoryList()
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        
+        ConfigNotifier.addObserver(observer: self, selector: #selector(updateHostList), notification: .changeHostItems)
+        ConfigNotifier.addObserver(observer: self, selector: #selector(updateHistoryList), notification: .updateHistoryList)
+    }
+    
+    override func viewDidDisappear() {
+        super.viewDidDisappear()
+        
+        ConfigNotifier.removeObserver(observer: self, notification: .changeHostItems)
+        ConfigNotifier.removeObserver(observer: self, notification: .updateHistoryList)
     }
     
     override func rightMouseDown(with event: NSEvent) {
         let menu = NSMenu()
         
         let copyMenuItem = NSMenuItem()
-        copyMenuItem.title = "Copy".localized + " (" + "\(selectedRow.count)" + "items".localized + ")"
+        copyMenuItem.title = "Copy".localized + " (" + "\(tableView.selectedRowIndexes.count)" + "items".localized + ")"
         copyMenuItem.isEnabled = false
         copyMenuItem.action = #selector(copyURL)
         
@@ -70,9 +78,26 @@ class DatabaseViewController: NSViewController {
         return hostItems.first(where: {$0.id == id})
     }
     
-    @IBAction func didClickRefreshButton(_ sender: NSToolbarItem) {
+    // 更新上传历史
+    @objc func updateHistoryList() {
         items = DBManager.shared.getHistoryList()
         tableView.reloadData()
+        
+        // 更新窗口 Title 中的数量
+        if #available(OSX 11.0, *) {
+            view.window?.subtitle = "\(items.count) " + "items".localized
+        } else {
+            view.window?.title += "  \(items.count) " + "items".localized
+        }
+    }
+    
+    // 更新图床列表
+    @objc func updateHostList() {
+        hostItems = ConfigManager.shared.getHostItems()
+    }
+    
+    @IBAction func didClickRefreshButton(_ sender: NSToolbarItem) {
+        updateHistoryList()
     }
     
     @IBAction func didClickCopyButton(_ sender: NSToolbarItem) {
@@ -91,20 +116,19 @@ class DatabaseViewController: NSViewController {
         
         if response == .alertFirstButtonReturn {
             ConfigManager.shared.clearHistoryList()
-            items = ConfigManager.shared.getHistoryList()
-            tableView.reloadData()
+            updateHistoryList()
         } else if response == .alertSecondButtonReturn {
             NSLog("Cancel")
         }
     }
     
     @objc func copyURL() {
-        guard selectedRow.count > 0 else {
+        guard tableView.selectedRowIndexes.count > 0 else {
             return
         }
         var urls: [String] = []
         
-        for row in selectedRow.sorted() {
+        for row in tableView.selectedRowIndexes.sorted() {
             urls.append(items[row].url)
         }
         
@@ -185,23 +209,6 @@ extension DatabaseViewController: NSTableViewDelegate {
         }
         
         return cell
-    }
-    
-    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        if selectionDidChange {
-            selectedRow.removeAll()
-        }
-        
-        selectedRow.insert(row)
-        selectionDidChange = false
-        return true
-    }
-    
-    func tableViewSelectionDidChange(_ notification: Notification) {
-        selectionDidChange = true
-        if tableView.selectedRow < 0 {
-            selectedRow.removeAll()
-        }
     }
     
     func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {

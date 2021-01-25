@@ -19,6 +19,7 @@ class DatabaseWindowController: NSWindowController {
             window?.title += "  \(DBManager.shared.getHistoryList().count) " + "items".localized
         }
     }
+    
 }
 
 extension DatabaseWindowController: NSWindowDelegate {
