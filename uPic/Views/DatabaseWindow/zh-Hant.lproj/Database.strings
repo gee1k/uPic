@@ -36,7 +36,7 @@
 "e0t-kU-Jo8.title" = "Text Cell";
 
 /* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "gre-PU-B4n"; */
-"gre-PU-B4n.title" = "Table View Cell";
+//"gre-PU-B4n.title" = "Table View Cell";
 
 /* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "nOC-jD-wpP"; */
 "nOC-jD-wpP.title" = "Table View Cell";
@@ -45,10 +45,10 @@
 "nzt-ZE-Al0.headerCell.title" = "Name";
 
 /* Class = "NSTableColumn"; headerCell.title = "ID"; ObjectID = "tIy-g5-5yU"; */
-"tIy-g5-5yU.headerCell.title" = "ID";
+//"tIy-g5-5yU.headerCell.title" = "ID";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "v7g-KE-k2n"; */
-"v7g-KE-k2n.title" = "Text Cell";
+//"v7g-KE-k2n.title" = "Text Cell";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "x8P-wG-KE1"; */
 "x8P-wG-KE1.title" = "Text Cell";
@@ -58,3 +58,31 @@
 
 /* Class = "NSWindow"; title = "uPic Database"; ObjectID = "zqs-gy-XY6"; */
 "zqs-gy-XY6.title" = "uPic Database";
+
+//##################################################################################
+//#           AutoGenStrings            2021-02-02 20:52:14
+//##################################################################################
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Bmb-UQ-bf6"; */
+"Bmb-UQ-bf6.title" = "Text Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "Size"; ObjectID = "DKQ-Ar-A7t"; */
+"DKQ-Ar-A7t.headerCell.title" = "Size";
+
+/* Class = "NSTableColumn"; headerCell.title = "Host"; ObjectID = "Wbb-7n-akY"; */
+"Wbb-7n-akY.headerCell.title" = "Host";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Aux-L1-4gC"; */
+"Aux-L1-4gC.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Size"; ObjectID = "xFO-bI-gPs"; */
+"xFO-bI-gPs.title" = "Size";
+
+/* Class = "NSTableColumn"; headerCell.title = "Time"; ObjectID = "uKn-q2-bBe"; */
+"uKn-q2-bBe.headerCell.title" = "Time";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "gff-B2-sFV"; */
+"gff-B2-sFV.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Time"; ObjectID = "Oop-Sb-42w"; */
+"Oop-Sb-42w.title" = "Time";

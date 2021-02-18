@@ -13,6 +13,7 @@
 		16068C7822AECB34004D39B7 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */; };
 		16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7B22AECD9F004D39B7 /* Constants.swift */; };
 		160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */; };
+		1613D88725C9826B009E348A /* AutoGenStrings.py in Resources */ = {isa = PBXBuildFile; fileRef = 1613D88625C9826B009E348A /* AutoGenStrings.py */; };
 		161539122408EC7B00CC662F /* LskyProUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161539102408E7F200CC662F /* LskyProUploader.swift */; };
 		161539132408EC7D00CC662F /* LskyProHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161539112408E7F200CC662F /* LskyProHostConfig.swift */; };
 		161539152408F0E200CC662F /* LskyProConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161539142408F0E200CC662F /* LskyProConfigView.swift */; };
@@ -215,6 +216,7 @@
 		16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		16068C7B22AECD9F004D39B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
+		1613D88625C9826B009E348A /* AutoGenStrings.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = AutoGenStrings.py; sourceTree = "<group>"; };
 		161539102408E7F200CC662F /* LskyProUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LskyProUploader.swift; sourceTree = "<group>"; };
 		161539112408E7F200CC662F /* LskyProHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LskyProHostConfig.swift; sourceTree = "<group>"; };
 		161539142408F0E200CC662F /* LskyProConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LskyProConfigView.swift; sourceTree = "<group>"; };
@@ -427,6 +429,14 @@
 				96CA5B8925B41B1F00855629 /* OutputFormatCustomization.swift */,
 			);
 			path = PreferencesWindow;
+			sourceTree = "<group>";
+		};
+		1613D88525C98256009E348A /* Script */ = {
+			isa = PBXGroup;
+			children = (
+				1613D88625C9826B009E348A /* AutoGenStrings.py */,
+			);
+			path = Script;
 			sourceTree = "<group>";
 		};
 		1615390E2408E7DE00CC662F /* LskyPro */ = {
@@ -671,6 +681,7 @@
 		16A6DC5622AA375700813706 /* uPic */ = {
 			isa = PBXGroup;
 			children = (
+				1613D88525C98256009E348A /* Script */,
 				1648A214238E742600B99B9D /* Main.storyboard */,
 				16BDDE0222EAA2920080E467 /* Assets.xcassets */,
 				16A6DC5722AA375700813706 /* AppDelegate.swift */,
@@ -878,6 +889,7 @@
 				8B11FF3895E709812B771F7E /* [CP] Embed Pods Frameworks */,
 				16EA205922AF8C680006FB9C /* CopyFiles */,
 				16F7467D22E994A300480A62 /* Embed App Extensions */,
+				1613D88B25C98273009E348A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1001,6 +1013,7 @@
 				1648A216238E742600B99B9D /* Main.storyboard in Resources */,
 				96F633FF25AF008F005514EB /* Database.storyboard in Resources */,
 				165C86D325B91F8000C538AD /* ScreenshotAuthorizationHelp.storyboard in Resources */,
+				1613D88725C9826B009E348A /* AutoGenStrings.py in Resources */,
 				169F073B22AF53DE008E8525 /* Preferences.storyboard in Resources */,
 				16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */,
 			);
@@ -1031,6 +1044,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1613D88B25C98273009E348A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\npython ${SRCROOT}/${TARGET_NAME}/Script/AutoGenStrings.py ${SRCROOT}/${TARGET_NAME}\n";
+		};
 		8B11FF3895E709812B771F7E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

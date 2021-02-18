@@ -27,7 +27,7 @@
 "6dh-zS-Vam.title" = "Redo";
 
 /* Class = "NSMenuItem"; title = "Paypal"; ObjectID = "70g-zL-O4p"; */
-"70g-zL-O4p.title" = "Paypal";
+//"70g-zL-O4p.title" = "Paypal";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Main Menu";
@@ -63,7 +63,7 @@
 "Opc-aA-hUg.title" = "Markdown";
 
 /* Class = "NSMenuItem"; title = "WeChat"; ObjectID = "Qky-3r-Bgs"; */
-"Qky-3r-Bgs.title" = "WeChat";
+//"Qky-3r-Bgs.title" = "WeChat";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Ruw-6m-B2m"; */
 "Ruw-6m-B2m.title" = "Select All";
@@ -90,7 +90,7 @@
 "Z6H-TN-83r.title" = "More";
 
 /* Class = "NSMenuItem"; title = "Alipay"; ObjectID = "aHw-Zc-eD7"; */
-"aHw-Zc-eD7.title" = "Alipay";
+//"aHw-Zc-eD7.title" = "Alipay";
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "File";
@@ -111,7 +111,7 @@
 "gVA-U4-sdL.title" = "Paste";
 
 /* Class = "NSMenu"; title = "Donate"; ObjectID = "iGe-NR-YFa"; */
-"iGe-NR-YFa.title" = "Donate";
+//"iGe-NR-YFa.title" = "Donate";
 
 /* Class = "NSMenu"; title = "Output format encode"; ObjectID = "jbA-xM-vl3"; */
 "jbA-xM-vl3.title" = "Output format encode";
@@ -141,13 +141,20 @@
 "x3v-GG-iWU.title" = "Copy";
 
 /* Class = "NSMenuItem"; title = "Donate"; ObjectID = "yCF-Ec-Lgz"; */
-"yCF-Ec-Lgz.title" = "Donate";
+//"yCF-Ec-Lgz.title" = "Donate";
 
 /* Class = "NSMenuItem"; title = "Off"; ObjectID = "yW4-Cl-nF5"; */
 "yW4-Cl-nF5.title" = "Off";
 
 /* Class = "NSMenuItem"; title = "Check for updates..."; ObjectID = "yai-4F-Btp"; */
-"yai-4F-Btp.title" = "Check for updates...";
+//"yai-4F-Btp.title" = "Check for updates...";
 
 /* Class = "NSMenuItem"; title = "On"; ObjectID = "ynd-0y-yEv"; */
 "ynd-0y-yEv.title" = "On";
+
+//##################################################################################
+//#           AutoGenStrings            2021-02-02 20:52:14
+//##################################################################################
+
+/* Class = "NSMenuItem"; title = "Custom"; ObjectID = "F4P-SL-bu2"; */
+"F4P-SL-bu2.title" = "Custom";

@@ -190,6 +190,13 @@ class StatusMenuController: NSObject, NSMenuDelegate {
             menuItem.target = self
             compressFactorMenuItem.submenu?.addItem(menuItem)
         }
+        
+        // TinyPNG
+        let menuItem = NSMenuItem(title: "TinyPNG", action: #selector(changeCompressFactor(_:)), keyEquivalent: "")
+        menuItem.tag = -1
+        menuItem.isEnabled = true
+        menuItem.target = self
+        compressFactorMenuItem.submenu?.addItem(menuItem)
 
         compressFactorMenuItem.submenu?.delegate = self
         self.refreshCompressFactor()

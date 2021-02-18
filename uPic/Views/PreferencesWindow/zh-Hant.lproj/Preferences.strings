@@ -205,3 +205,10 @@
 
 /* Class = "NSTextFieldCell"; title = "💬 Telegram:"; ObjectID = "yO0-9g-BJK"; */
 "yO0-9g-BJK.title" = "💬 Telegram:";
+
+//##################################################################################
+//#           AutoGenStrings            2021-02-02 20:52:14
+//##################################################################################
+
+/* Class = "NSViewController"; title = "Restart Finder prompt"; ObjectID = "gNK-aF-Cmm"; */
+"gNK-aF-Cmm.title" = "Restart Finder prompt";
