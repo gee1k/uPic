@@ -26,7 +26,7 @@ public class QiniuUtil {
 
         let hmac = base64String.calculateHMACByKey(key: secretKey)
         let encodeString = hmac.toBase64()
-        let encodedSignString = encodeString!.urlSafeBase64()
+        let encodedSignString = encodeString.urlSafeBase64()
         return "\(accessKey):\(encodedSignString):\(base64String)"
     }
 }

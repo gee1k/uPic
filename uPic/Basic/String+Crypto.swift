@@ -21,7 +21,7 @@ extension String {
     }
 
     func toBase64() -> String {
-        return self.bytes.toBase64()!
+        return self.bytes.toBase64()
     }
 
     func toSha1() -> String {

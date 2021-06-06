@@ -1,15 +1,15 @@
 PODS:
-  - Alamofire (5.4.1)
-  - CryptoSwift (1.3.8)
-  - Kingfisher (6.0.1)
+  - Alamofire (5.4.3)
+  - CryptoSwift (1.4.0)
+  - Kingfisher (6.3.0)
   - libminipng (0.5.6)
   - LoginServiceKit (2.2.0)
   - MASShortcut (2.4.0)
   - SnapKit (5.0.1)
   - SQLiteRepairKit (1.2.2):
     - WCDBOptimizedSQLCipher (~> 1.2.0)
-  - SwiftyJSON (5.0.0)
-  - SwiftyXMLParser (5.1.0)
+  - SwiftyJSON (5.0.1)
+  - SwiftyXMLParser (5.3.0)
   - WCDB.swift (1.0.8.2):
     - SQLiteRepairKit (~> 1.2.0)
     - WCDBOptimizedSQLCipher (~> 1.2.0)
@@ -50,26 +50,26 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CryptoSwift:
-    :commit: e7459377e0f48779c69a9b20da21fb9224d94ac8
+    :commit: 54b2acbb619953e641486e535389b0d6e5e76dce
     :git: https://github.com/krzyzanowskim/CryptoSwift
   LoginServiceKit:
-    :commit: cf58b91b0ac247bd8bf5dccb5434ca60a930c1e1
+    :commit: 51da47408cdffcd3c82c3ad1f3d2e58b13583ea1
     :git: https://github.com/Clipy/LoginServiceKit.git
   SwiftyXMLParser:
-    :commit: ec7f183642adf429babd867d1a38c5c6912408ba
+    :commit: b7beef45ecba2df71ac831245f71141ec0efb1fb
     :git: https://github.com/yahoojapan/SwiftyXMLParser.git
 
 SPEC CHECKSUMS:
-  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
-  CryptoSwift: 01b0f0cba1d5c212e5a335ff6c054fb75a204f00
-  Kingfisher: adde87a4f74f6a3845395769354efff593581740
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  CryptoSwift: 7cc902df1784de3b389a387756c7d710f197730c
+  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   libminipng: a44c35d06b9d54d6640acdf97f4500c034748abb
   LoginServiceKit: 3c86ce2f2bcd1e373326839d6d863d8a6a5915b4
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
-  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
-  SwiftyXMLParser: 23b5a9321a8adf72aae29046ea58c3d097b4ac17
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  SwiftyXMLParser: 0985085180f1ee01916cd9b5c1a4f0a8f493c084
   WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
   WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
 
