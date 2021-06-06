@@ -3,7 +3,7 @@ PODS:
   - CryptoSwift (1.4.0)
   - Kingfisher (6.3.0)
   - libminipng (0.5.6)
-  - LoginServiceKit (2.2.0)
+  - LoginServiceKit (2.2.1)
   - MASShortcut (2.4.0)
   - SnapKit (5.0.1)
   - SQLiteRepairKit (1.2.2):
@@ -53,7 +53,7 @@ CHECKOUT OPTIONS:
     :commit: 54b2acbb619953e641486e535389b0d6e5e76dce
     :git: https://github.com/krzyzanowskim/CryptoSwift
   LoginServiceKit:
-    :commit: 51da47408cdffcd3c82c3ad1f3d2e58b13583ea1
+    :commit: e35be754ca2409ceada3825ac80461ecbad3c11f
     :git: https://github.com/Clipy/LoginServiceKit.git
   SwiftyXMLParser:
     :commit: b7beef45ecba2df71ac831245f71141ec0efb1fb
@@ -64,7 +64,7 @@ SPEC CHECKSUMS:
   CryptoSwift: 7cc902df1784de3b389a387756c7d710f197730c
   Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   libminipng: a44c35d06b9d54d6640acdf97f4500c034748abb
-  LoginServiceKit: 3c86ce2f2bcd1e373326839d6d863d8a6a5915b4
+  LoginServiceKit: e39022a6ea6169b3716fc3c43e89b2e7fd12f222
   MASShortcut: d9e4909e878661cc42877cc9d6efbe638273ab57
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
