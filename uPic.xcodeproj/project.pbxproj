@@ -17,7 +17,6 @@
 		039BE369267887F400CE0549 /* BaseCodec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BE35D267887F400CE0549 /* BaseCodec.swift */; };
 		039BE36A267887F400CE0549 /* WebPEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BE35E267887F400CE0549 /* WebPEncoder.swift */; };
 		039BE36B267887F400CE0549 /* CommonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039BE360267887F400CE0549 /* CommonImage.swift */; };
-		039BE36C267887F400CE0549 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 039BE361267887F400CE0549 /* Info.plist */; };
 		1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1602ED9622ADEFB200AA8638 /* BaseUploader.swift */; };
 		1602ED9922ADF43800AA8638 /* SmmsUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1602ED9822ADF43800AA8638 /* SmmsUploader.swift */; };
 		16068C7522AEC1D1004D39B7 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7422AEC1D1004D39B7 /* PreferencesViewController.swift */; };
@@ -219,7 +218,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		039BE353267887F400CE0549 /* ImageCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCodec.h; sourceTree = "<group>"; };
 		039BE355267887F400CE0549 /* CGImage+Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Drawing.swift"; sourceTree = "<group>"; };
 		039BE356267887F400CE0549 /* FileTypeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTypeUtil.swift; sourceTree = "<group>"; };
 		039BE358267887F400CE0549 /* ImageIOEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageIOEncoder.swift; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 		039BE35D267887F400CE0549 /* BaseCodec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCodec.swift; sourceTree = "<group>"; };
 		039BE35E267887F400CE0549 /* WebPEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPEncoder.swift; sourceTree = "<group>"; };
 		039BE360267887F400CE0549 /* CommonImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonImage.swift; sourceTree = "<group>"; };
-		039BE361267887F400CE0549 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1602ED9622ADEFB200AA8638 /* BaseUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUploader.swift; sourceTree = "<group>"; };
 		1602ED9822ADF43800AA8638 /* SmmsUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsUploader.swift; sourceTree = "<group>"; };
 		1605DDD8246D993C00262C89 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -445,11 +442,9 @@
 		039BE352267887F400CE0549 /* ImageCodec */ = {
 			isa = PBXGroup;
 			children = (
-				039BE353267887F400CE0549 /* ImageCodec.h */,
 				039BE354267887F400CE0549 /* Extension */,
 				039BE357267887F400CE0549 /* Codec */,
 				039BE35F267887F400CE0549 /* Model */,
-				039BE361267887F400CE0549 /* Info.plist */,
 			);
 			path = ImageCodec;
 			sourceTree = "<group>";
@@ -1097,7 +1092,6 @@
 				1613D88725C9826B009E348A /* AutoGenStrings.py in Resources */,
 				96767C02266C8AEB00867727 /* UPic.sdef in Resources */,
 				169F073B22AF53DE008E8525 /* Preferences.storyboard in Resources */,
-				039BE36C267887F400CE0549 /* Info.plist in Resources */,
 				16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
