@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="TZk-Q2-ku8">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="TZk-Q2-ku8">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -290,7 +290,7 @@ It is just this simple. </string>
         <!--View Controller-->
         <scene sceneID="oBB-fa-cqA">
             <objects>
-                <viewController storyboardIdentifier="welcomeViewController2" id="rHM-ys-TEz" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeViewController4" id="rHM-ys-TEz" sceneMemberID="viewController">
                     <view key="view" id="rdR-Tn-SQi">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -307,7 +307,7 @@ It is just this simple. </string>
                                     <constraint firstAttribute="width" constant="150" id="5VT-sV-3VW"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="T5N-PO-AnV"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="finderExtensionUpload" id="dN0-pp-rqY"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="scriptUpload" id="dN0-pp-rqY"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rVP-9K-Du9">
                                 <rect key="frame" x="196" y="139" width="8" height="16"/>
@@ -318,17 +318,19 @@ It is just this simple. </string>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qc4-ry-JH1">
-                                <rect key="frame" x="42" y="92" width="317" height="47"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Finder Extension" id="vGP-mK-Tjk">
+                                <rect key="frame" x="39" y="92" width="323" height="47"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Upload via Script" id="vGP-mK-Tjk">
                                     <font key="font" metaFont="systemBold" size="40"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="IdQ-hd-89Z">
-                                <rect key="frame" x="64" y="20" width="273" height="62"/>
-                                <textFieldCell key="cell" controlSize="small" alignment="center" title="Right click on the file and select &quot;Upload via uPic&quot;." id="xz2-3l-Jef">
+                                <rect key="frame" x="35" y="20" width="330" height="62"/>
+                                <textFieldCell key="cell" controlSize="small" alignment="center" id="xz2-3l-Jef">
                                     <font key="font" metaFont="message" size="11"/>
+                                    <string key="title">You can upload any files using terminal srcipt or Apple Script.
+Check tutorial for more info.</string>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -354,7 +356,7 @@ It is just this simple. </string>
                 </viewController>
                 <customObject id="8sk-Mp-SPZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-557" y="2542"/>
+            <point key="canvasLocation" x="-976" y="2970"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="JA2-Si-K1l">
@@ -376,7 +378,7 @@ It is just this simple. </string>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="GSF-Ef-Vy3"/>
                                     <constraint firstAttribute="width" constant="150" id="fJS-24-1bB"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="shareExtensionUpload" id="uHF-yb-xzn"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="extensionUpload" id="uHF-yb-xzn"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lrQ-78-pnQ">
                                 <rect key="frame" x="196" y="139" width="8" height="16"/>
@@ -387,17 +389,20 @@ It is just this simple. </string>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Af-Kz-KFh">
-                                <rect key="frame" x="46" y="92" width="308" height="47"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Share Extension" id="5PO-nX-1ts">
+                                <rect key="frame" x="3" y="92" width="394" height="47"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Upload via Extension" id="5PO-nX-1ts">
                                     <font key="font" metaFont="systemBold" size="40"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="2lT-U1-QYS">
-                                <rect key="frame" x="71" y="20" width="259" height="62"/>
-                                <textFieldCell key="cell" controlSize="small" alignment="center" title="Click share button and select &quot;Upload via uPic&quot;." id="xlO-Fz-Nxq">
+                                <rect key="frame" x="64" y="20" width="273" height="62"/>
+                                <textFieldCell key="cell" controlSize="small" alignment="center" id="xlO-Fz-Nxq">
                                     <font key="font" metaFont="message" size="11"/>
+                                    <string key="title">Click share button and select "Upload via uPic".
+or
+Right click on the file and select "Upload via uPic".</string>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -428,7 +433,7 @@ It is just this simple. </string>
         <!--View Controller-->
         <scene sceneID="yud-WR-MOP">
             <objects>
-                <viewController storyboardIdentifier="welcomeViewController4" id="2eg-rI-RSV" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeViewController2" id="2eg-rI-RSV" sceneMemberID="viewController">
                     <view key="view" id="oD2-Y9-7n9">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -456,7 +461,7 @@ It is just this simple. </string>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="VBu-59-WOf">
-                                <rect key="frame" x="19" y="92" width="363" height="47"/>
+                                <rect key="frame" x="19" y="92" width="362" height="47"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Upload Screenshot" id="n2q-3P-rmS">
                                     <font key="font" metaFont="systemBold" size="40"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -494,7 +499,7 @@ Please enable Setting -&gt; Security &amp; Privacy -&gt; Privacy -&gt; Screen Re
                 </viewController>
                 <customObject id="3oj-nm-deD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-976" y="2970"/>
+            <point key="canvasLocation" x="-557" y="2542"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="LN0-ms-nfs">
@@ -642,12 +647,12 @@ Please be aware that uPic DO NOT collect any of your informations.</string>
         <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="NSStopProgressFreestandingTemplate" width="15" height="15"/>
         <image name="dragToUpload" width="150" height="150"/>
-        <image name="finderExtensionUpload" width="150" height="150"/>
+        <image name="extensionUpload" width="150" height="150"/>
         <image name="grantPermission" width="150" height="150"/>
         <image name="leftButton" width="75" height="30"/>
         <image name="multipleServices" width="150" height="150"/>
         <image name="rightButton" width="75" height="30"/>
         <image name="screenshotUpload" width="150" height="150"/>
-        <image name="shareExtensionUpload" width="150" height="150"/>
+        <image name="scriptUpload" width="150" height="150"/>
     </resources>
 </document>

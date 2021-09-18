@@ -1,6 +1,6 @@
 
-/* Class = "NSTextFieldCell"; title = "Share Extension"; ObjectID = "5PO-nX-1ts"; */
-"5PO-nX-1ts.title" = "共享菜单";
+/* Class = "NSTextFieldCell"; title = "Upload via Extension"; ObjectID = "5PO-nX-1ts"; */
+"5PO-nX-1ts.title" = "通过扩展上传";
 
 /* Class = "NSTextFieldCell"; title = "Next"; ObjectID = "EN9-1Z-Sqq"; */
 "EN9-1Z-Sqq.title" = "下一步";
@@ -8,7 +8,7 @@
 /* Class = "NSTextFieldCell"; title = "A powerful and simple file uploader tool.\nUpload any files to any services you like."; ObjectID = "J8p-JL-LaG"; */
 "J8p-JL-LaG.title" = "一个强大且简单的上传工具\n将任何文件上传至任何服务";
 
-/* Class = "NSTextFieldCell"; title = "Due to system security restrictions, uPic cannot access files outside the sandbox. \nYou will not be able to use right click upload, share upload, command line upload, etc. without authorization. \nNote: uPic does not collect any information from you."; ObjectID = "KKR-Bg-AzW"; */
+/* Class = "NSTextFieldCell"; title = "Limited by macOS, uPic can not access files outside of sandbox.\nIf not granted permission, uPic may not be able to upload some files.\nPlease be aware that uPic DO NOT collect any of your informations."; ObjectID = "KKR-Bg-AzW"; */
 "KKR-Bg-AzW.title" = "由于系统的安全限制，uPic 无法访问沙盒之外的文件。\n若不授权将无法使用右键上传、分享上传、命令行上传等功能。\n注：uPic 不会收集您的任何信息。";
 
 /* Class = "NSTextFieldCell"; title = "Authorization"; ObjectID = "RwC-HL-AhF"; */
@@ -44,14 +44,14 @@
 /* Class = "NSTextFieldCell"; title = "Welcome to"; ObjectID = "pk7-xU-bny"; */
 "pk7-xU-bny.title" = "欢迎使用";
 
-/* Class = "NSTextFieldCell"; title = "Finder Extension"; ObjectID = "vGP-mK-Tjk"; */
-"vGP-mK-Tjk.title" = "访达扩展";
+/* Class = "NSTextFieldCell"; title = "Upload via Script"; ObjectID = "vGP-mK-Tjk"; */
+"vGP-mK-Tjk.title" = "通过命令上传";
 
 /* Class = "NSTextFieldCell"; title = "GitHub, Imgur, SM.MS, Qiniu KODO, Upyun USS, Aliyun OSS, Tencent Cloud COS, Gitee, Amazon S3, Baidu Cloud BOS, Lsky Pro"; ObjectID = "ve2-Sd-1j7"; */
 "ve2-Sd-1j7.title" = "GitHub, Imgur, SM.MS, 七牛 KODO, 又拍云 USS, 阿里云 OSS, 腾讯云 COS, Gitee, Amazon S3, 百度云 BOS, Lsky Pro";
 
-/* Class = "NSTextFieldCell"; title = "Click share button and select \"Upload via uPic\"."; ObjectID = "xlO-Fz-Nxq"; */
-"xlO-Fz-Nxq.title" = "点击分享按钮并选择 \"使用 uPic 上传\"";
+/* Class = "NSTextFieldCell"; title = "Click share button and select \"Upload via uPic\".\nor\nRight click on the file and select \"Upload via uPic\"."; ObjectID = "xlO-Fz-Nxq"; */
+"xlO-Fz-Nxq.title" = "点击分享按钮并选择 \"使用 uPic 上传\"\n或\n在文件上右键并选择 \"使用 uPic 上传\"";
 
-/* Class = "NSTextFieldCell"; title = "Right click on the file and select \"Upload via uPic\"."; ObjectID = "xz2-3l-Jef"; */
-"xz2-3l-Jef.title" = "在文件上右键并选择 \"使用 uPic 上传\"";
+/* Class = "NSTextFieldCell"; title = "You can upload any files using terminal srcipt or Apple Script.\nCheck tutorial for more info."; ObjectID = "xz2-3l-Jef"; */
+"xz2-3l-Jef.title" = "您可以使用命令行或者Apple Script上传任何文件\n查看教程以获取更多信息";

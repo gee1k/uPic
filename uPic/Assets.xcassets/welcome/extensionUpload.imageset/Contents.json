@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "finderExtensionUpload.png",
+      "filename" : "extensionUpload.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "finderExtensionUpload@2x.png",
+      "filename" : "extensionUpload@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "finderExtensionUpload@3x.png",
+      "filename" : "extensionUpload@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "shareExtensionUpload.png",
+      "filename" : "scriptUpload.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "shareExtensionUpload@2x.png",
+      "filename" : "scriptUpload@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "shareExtensionUpload@3x.png",
+      "filename" : "scriptUpload@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
