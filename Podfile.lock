@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.4.3)
+  - Alamofire (5.4.4)
   - CryptoSwift (1.4.1)
   - Kingfisher (6.3.1)
   - libminipng (0.5.6)
@@ -9,7 +9,7 @@ PODS:
   - SQLiteRepairKit (1.2.2):
     - WCDBOptimizedSQLCipher (~> 1.2.0)
   - SwiftyJSON (5.0.1)
-  - SwiftyXMLParser (5.4.0)
+  - SwiftyXMLParser (5.5.0)
   - WCDB.swift (1.0.8.2):
     - SQLiteRepairKit (~> 1.2.0)
     - WCDBOptimizedSQLCipher (~> 1.2.0)
@@ -56,11 +56,11 @@ CHECKOUT OPTIONS:
     :commit: f93f5eb8f9270f160318184a7ffc6a8890606d61
     :git: https://github.com/Clipy/LoginServiceKit.git
   SwiftyXMLParser:
-    :commit: a188a1cac88248538d21a1d48c8bfa4bcff02f38
+    :commit: 41900bb1882e704a25d4946f2dbad71b4bb02b8f
     :git: https://github.com/yahoojapan/SwiftyXMLParser.git
 
 SPEC CHECKSUMS:
-  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   CryptoSwift: 0bc800a7e6a24c4fc9ebeab97d44b0d5f73a78bd
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   libminipng: a44c35d06b9d54d6640acdf97f4500c034748abb
@@ -69,7 +69,7 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
-  SwiftyXMLParser: b0593d3bccd0029fe853ca63ab2f7bd6d7752ec4
+  SwiftyXMLParser: 027d9e6fb54a38d95dccec025bcea9693f699c47
   WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
   WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
 

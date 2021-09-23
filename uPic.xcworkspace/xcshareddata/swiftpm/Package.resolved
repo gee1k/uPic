@@ -2,39 +2,57 @@
   "object": {
     "pins": [
       {
-        "package": "AWSSDKSwift",
-        "repositoryURL": "https://github.com/swift-aws/aws-sdk-swift.git",
+        "package": "async-http-client",
+        "repositoryURL": "https://github.com/swift-server/async-http-client.git",
         "state": {
           "branch": null,
-          "revision": "b402b8a434ca39f24d189289ab93fbee96664502",
-          "version": "4.9.0"
+          "revision": "8fa7f082b155ea325bcf7b2dbffaf81d4eea1ae4",
+          "version": "1.5.1"
         }
       },
       {
-        "package": "HypertextApplicationLanguage",
-        "repositoryURL": "https://github.com/swift-aws/HypertextApplicationLanguage.git",
+        "package": "jmespath.swift",
+        "repositoryURL": "https://github.com/adam-fowler/jmespath.swift.git",
         "state": {
           "branch": null,
-          "revision": "aa2c9141d491682f17b2310aed17b9adfc006256",
-          "version": "1.1.1"
+          "revision": "4a166ea71f0d9e9cc3523fc3dee516080a4c36a0",
+          "version": "1.0.0"
         }
       },
       {
-        "package": "INIParser",
-        "repositoryURL": "https://github.com/swift-aws/Perfect-INIParser.git",
+        "package": "soto",
+        "repositoryURL": "https://github.com/soto-project/soto.git",
         "state": {
           "branch": null,
-          "revision": "42de0efc7a01105e19b80d533d3d282a98277f6c",
-          "version": "3.0.3"
+          "revision": "3a8e82ac86a75e548504b6f5aeeeda209a4e7c27",
+          "version": "5.8.1"
         }
       },
       {
-        "package": "AWSSDKSwiftCore",
+        "package": "soto-core",
         "repositoryURL": "https://github.com/soto-project/soto-core.git",
         "state": {
           "branch": null,
-          "revision": "856a7df0c15763de4f9f3e3d7baea4a8aa009d22",
-          "version": "4.7.2"
+          "revision": "283f0de557995848c1fea5893124956084b433f8",
+          "version": "5.6.0"
+        }
+      },
+      {
+        "package": "swift-log",
+        "repositoryURL": "https://github.com/apple/swift-log.git",
+        "state": {
+          "branch": null,
+          "revision": "5d66f7ba25daf4f94100e7022febf3c75e37a6c7",
+          "version": "1.4.2"
+        }
+      },
+      {
+        "package": "swift-metrics",
+        "repositoryURL": "https://github.com/apple/swift-metrics.git",
+        "state": {
+          "branch": null,
+          "revision": "3edd2f57afc4e68e23c3e4956bc8b65ca6b5b2ff",
+          "version": "2.2.0"
         }
       },
       {
@@ -42,8 +60,17 @@
         "repositoryURL": "https://github.com/apple/swift-nio.git",
         "state": {
           "branch": null,
-          "revision": "43931b7a7daf8120a487601530c8bc03ce711992",
-          "version": "2.25.1"
+          "revision": "fb48bdd8279799f655da5f8b4e0a21430eca6012",
+          "version": "2.32.3"
+        }
+      },
+      {
+        "package": "swift-nio-extras",
+        "repositoryURL": "https://github.com/apple/swift-nio-extras.git",
+        "state": {
+          "branch": null,
+          "revision": "f73ca5ee9c6806800243f1ac415fcf82de9a4c91",
+          "version": "1.10.2"
         }
       },
       {
@@ -51,8 +78,8 @@
         "repositoryURL": "https://github.com/apple/swift-nio-ssl.git",
         "state": {
           "branch": null,
-          "revision": "62bf5083df970e67c886210fa5b857eacf044b7c",
-          "version": "2.10.2"
+          "revision": "044f90dfa0a7015446b40f5e578b06343ae1affe",
+          "version": "2.16.0"
         }
       },
       {
@@ -60,8 +87,8 @@
         "repositoryURL": "https://github.com/apple/swift-nio-transport-services.git",
         "state": {
           "branch": null,
-          "revision": "5a352330c09a323e59ebd99afdf4ca3964c217bc",
-          "version": "1.9.1"
+          "revision": "e7f5278a26442dc46783ba7e063643d524e414a0",
+          "version": "1.11.3"
         }
       }
     ]

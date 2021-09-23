@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import S3
+import SotoS3
 
 public class S3Region {
     /// https://docs.aws.amazon.com/general/latest/gr/rande.html
@@ -72,7 +72,7 @@ public class S3Region {
         return S3Region.allRegion.keys.first!
     }
     
-    public static func toS3Region(_ key: String) -> AWSSDKSwiftCore.Region? {
-            return AWSSDKSwiftCore.Region(rawValue: key)
+    public static func toS3Region(_ key: String) -> SotoS3.Region? {
+            return SotoS3.Region(rawValue: key)
     }
 }

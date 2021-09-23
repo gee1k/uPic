@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import AWSSDKSwiftCore
-import S3
+import SotoS3
 
 
 class S3Uploader: BaseUploader {
@@ -32,7 +31,8 @@ class S3Uploader: BaseUploader {
         let accessKey = config.accessKey
         let secretKey = config.secretKey
         let domain = config.domain
-        var region = config.region == nil ? .useast1 : AWSSDKSwiftCore.Region(rawValue: config.region!)
+        
+        var region = config.region == nil ? .useast1 : SotoS3.Region(rawValue: config.region!)
         
         var endpoint = config.endpoint
         
@@ -69,9 +69,37 @@ class S3Uploader: BaseUploader {
         
         let s3Endpoint = S3Util.computedS3Endpoint(endpoint)
         
-        let s3 = S3(accessKeyId: accessKey, secretAccessKey: secretKey, region: region, endpoint: s3Endpoint)
-        
-        let putObjectRequest = S3.PutObjectRequest(acl: .publicRead, body: bodyData, bucket: bucket, contentLength: Int64(bodyData.count), contentType: mimeType, key: saveKey)
+        let client = AWSClient(
+            credentialProvider: .static(accessKeyId: accessKey, secretAccessKey: secretKey),
+            httpClientProvider: .createNew
+        )
+        let s3 = S3(client: client, region: region, endpoint: s3Endpoint, timeout: .minutes(1))
+            
+        var bb = ByteBuffer(data: bodyData)
+        let bufferSize = bb.readableBytes
+        let blockSize = 32*1024
+        var sendedSize = 0
+        let payload = AWSPayload.stream(size: bufferSize) { eventLoop in
+            let size = min(blockSize, bb.readableBytes)
+            // don't ask for 0 bytes
+            if size == 0 {
+                return eventLoop.makeSucceededFuture(.end)
+            }
+            let slice = bb.readSlice(length: size)!
+            // Update your UI here
+            sendedSize += size
+            let precent = Double(sendedSize) / Double(bufferSize)
+            super.progress(percent: precent)
+            return eventLoop.makeSucceededFuture(.byteBuffer(slice))
+        }
+
+        let putObjectRequest = S3.PutObjectRequest(
+            acl: .publicRead,
+            body: payload,
+            bucket: bucket,
+            contentType: mimeType,
+            key: saveKey
+        )
         let put = s3.putObject(putObjectRequest)
         
         put.whenComplete { (result: Result) in
@@ -83,7 +111,7 @@ class S3Uploader: BaseUploader {
                     super.completed(url: "\(domain)/\(saveKey)\(suffix)", retData, fileUrl, fileName)
                 }
                 break
-                
+
             case .failure(let e):
                 if let s3Error = e as? S3ErrorType {
                     super.faild(errorMsg: s3Error.description)
@@ -93,11 +121,12 @@ class S3Uploader: BaseUploader {
                     super.faild(errorMsg: e.localizedDescription)
                 }
                 break
-                
-            }
-        }
 
+            }
+            try? client.syncShutdown()
+        }
     }
+    
     
     func upload(_ fileUrl: URL, host: Host) {
         self._upload(fileUrl, fileData: nil, host: host)

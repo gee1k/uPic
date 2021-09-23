@@ -17,6 +17,7 @@ class BaseUploader {
         }
     }
 
+    // 0 - 1
     func progress(percent: Double) {
         DispatchQueue.main.async {
             (NSApplication.shared.delegate as? AppDelegate)?.uploadProgress(percent: percent)

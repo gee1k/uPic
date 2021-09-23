@@ -90,13 +90,12 @@
 		1690E7ED22BF2E4F00FC81F8 /* QiniuUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1690E7EC22BF2E4F00FC81F8 /* QiniuUtil.swift */; };
 		16995A3422B6008000B1F923 /* UpYunHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A3322B6008000B1F923 /* UpYunHostConfig.swift */; };
 		16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16995A3522B6026500B1F923 /* UpYunUtil.swift */; };
+		169C5C1726FB924F0045CBEF /* SotoS3 in Frameworks */ = {isa = PBXBuildFile; productRef = 169C5C1626FB924F0045CBEF /* SotoS3 */; };
 		169F073722AF4549008E8525 /* AdvancedPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F073322AF4549008E8525 /* AdvancedPreferencesViewController.swift */; };
 		169F073922AF4549008E8525 /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F073522AF4549008E8525 /* GeneralPreferencesViewController.swift */; };
 		169F073A22AF4549008E8525 /* AboutPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F073622AF4549008E8525 /* AboutPreferencesViewController.swift */; };
 		169F073B22AF53DE008E8525 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169F073D22AF53DE008E8525 /* Preferences.storyboard */; };
 		169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F074322AF7A3D008E8525 /* StatusMenuController.swift */; };
-		16A1C17124E3E7B40097018A /* S3 in Frameworks */ = {isa = PBXBuildFile; productRef = 16A1C17024E3E7B40097018A /* S3 */; };
-		16A1C17324E3E7B40097018A /* S3Control in Frameworks */ = {isa = PBXBuildFile; productRef = 16A1C17224E3E7B40097018A /* S3Control */; };
 		16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A6DC5722AA375700813706 /* AppDelegate.swift */; };
 		16AFDB3024E3EA670008E5A7 /* S3Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFDB2F24E3EA670008E5A7 /* S3Uploader.swift */; };
 		16AFDB3224E5094A0008E5A7 /* S3HostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFDB3124E5094A0008E5A7 /* S3HostConfig.swift */; };
@@ -394,9 +393,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16A1C17124E3E7B40097018A /* S3 in Frameworks */,
-				16A1C17324E3E7B40097018A /* S3Control in Frameworks */,
 				8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */,
+				169C5C1726FB924F0045CBEF /* SotoS3 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -910,8 +908,7 @@
 			);
 			name = uPic;
 			packageProductDependencies = (
-				16A1C17024E3E7B40097018A /* S3 */,
-				16A1C17224E3E7B40097018A /* S3Control */,
+				169C5C1626FB924F0045CBEF /* SotoS3 */,
 			);
 			productName = uPic;
 			productReference = 16EC9A0222ABBBB4001B6C89 /* uPic.app */;
@@ -1001,7 +998,7 @@
 			);
 			mainGroup = 16A6DC4B22AA375700813706;
 			packageReferences = (
-				16A1C16F24E3E7B40097018A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */,
+				169C5C1526FB924F0045CBEF /* XCRemoteSwiftPackageReference "soto" */,
 			);
 			productRefGroup = 16A6DC4B22AA375700813706;
 			projectDirPath = "";
@@ -1513,7 +1510,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1522,7 +1519,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1544,7 +1541,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1553,7 +1550,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1570,7 +1567,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
@@ -1580,7 +1577,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1597,7 +1594,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
@@ -1607,7 +1604,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1623,7 +1620,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
@@ -1633,7 +1630,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1649,7 +1646,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
@@ -1659,7 +1656,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1709,26 +1706,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		16A1C16F24E3E7B40097018A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */ = {
+		169C5C1526FB924F0045CBEF /* XCRemoteSwiftPackageReference "soto" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/swift-aws/aws-sdk-swift.git";
+			repositoryURL = "https://github.com/soto-project/soto.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.7.0;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		16A1C17024E3E7B40097018A /* S3 */ = {
+		169C5C1626FB924F0045CBEF /* SotoS3 */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 16A1C16F24E3E7B40097018A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
-			productName = S3;
-		};
-		16A1C17224E3E7B40097018A /* S3Control */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 16A1C16F24E3E7B40097018A /* XCRemoteSwiftPackageReference "aws-sdk-swift" */;
-			productName = S3Control;
+			package = 169C5C1526FB924F0045CBEF /* XCRemoteSwiftPackageReference "soto" */;
+			productName = SotoS3;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
