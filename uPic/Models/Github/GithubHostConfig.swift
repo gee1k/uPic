@@ -6,7 +6,7 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import AppKit
+import Cocoa
 import SwiftyJSON
 
 @objcMembers
