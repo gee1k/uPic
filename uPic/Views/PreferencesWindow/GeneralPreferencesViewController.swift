@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import LoginServiceKit
+import LaunchAtLogin
 
 class GeneralPreferencesViewController: PreferencesViewController {
 
@@ -31,11 +31,7 @@ class GeneralPreferencesViewController: PreferencesViewController {
     }
 
     @IBAction func launchButtonClicked(_ sender: NSButton) {
-        if sender.state == .on {
-            LoginServiceKit.addLoginItems()
-        } else if sender.state == .off {
-            LoginServiceKit.removeLoginItems()
-        }
+        LaunchAtLogin.isEnabled = sender.state == .on ? true : false
     }
 
     @IBAction func didClickDownloadOnAppStoreButton(_ sender: NSButton) {
@@ -44,6 +40,6 @@ class GeneralPreferencesViewController: PreferencesViewController {
         }
     }
     func refreshButtonState() {
-        launchButton.state = LoginServiceKit.isExistLoginItems() ? .on : .off
+        launchButton.state = LaunchAtLogin.isEnabled == true ? .on : .off
     }
 }

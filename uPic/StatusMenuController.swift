@@ -428,7 +428,7 @@ extension StatusMenuController {
             return
         }
         
-        item.keyEquivalent = shortcut.keyCodeStringForKeyEquivalent
+        item.keyEquivalent = shortcut.keyCodeStringForKeyEquivalent ?? ""
         item.keyEquivalentModifierMask = shortcut.modifierFlags
     }
 }
