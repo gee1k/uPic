@@ -8,7 +8,7 @@
 
 import Foundation
 import Cocoa
-import LoginServiceKit
+import LaunchAtLogin
 
 public class ConfigManager {
     
@@ -40,7 +40,7 @@ public class ConfigManager {
         
         self.setHostItems(items: [Host.getDefaultHost()])
         
-        LoginServiceKit.removeLoginItems()
+        LaunchAtLogin.isEnabled = false
     }
     
     
