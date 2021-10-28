@@ -190,15 +190,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		16EA205922AF8C680006FB9C /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LoginItems;
-			dstSubfolderSpec = 1;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		16F7467D22E994A300480A62 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -911,8 +902,8 @@
 				16A6DC5022AA375700813706 /* Sources */,
 				16A6DC5122AA375700813706 /* Frameworks */,
 				16A6DC5222AA375700813706 /* Resources */,
+				964DA808272AF5630003304C /* Copy “Launch at Login Helper” */,
 				8B11FF3895E709812B771F7E /* [CP] Embed Pods Frameworks */,
-				16EA205922AF8C680006FB9C /* CopyFiles */,
 				16F7467D22E994A300480A62 /* Embed App Extensions */,
 				1613D88B25C98273009E348A /* ShellScript */,
 			);
@@ -1118,6 +1109,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-uPic/Pods-uPic-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		964DA808272AF5630003304C /* Copy “Launch at Login Helper” */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy “Launch at Login Helper”";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
 		};
 		AF16EB1F68345467E01767BE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
