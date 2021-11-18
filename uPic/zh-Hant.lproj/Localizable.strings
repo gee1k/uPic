@@ -7,12 +7,12 @@
   Copyright © 2019 Svend Jin. All rights reserved.
 */
 
-
 "OK" = "好";
 "Cancel" = "取消";
 "Yes" = "是的";
 "Warning" = "提醒";
 "Continue" = "繼續";
+"Success" = "成功";
 "Example:" = "範例:";
 "On" = "開啟";
 "Off" = "關閉";
@@ -172,3 +172,11 @@
 /* cli error msg */
 "Invalid file path" = "無效的文件路徑或鏈接";
 "Total paths count" = "共 {count} 個文件路徑和鏈接";
+
+// share extension
+"Unsupported file type" = "不支持的文件類型";
+"closing in %@ seconds..." = "%@ 秒後關閉...";
+
+//database
+"items" = "個項目";
+"⚠️ Note that this will clear your uPic database" = "⚠️ 這將清除您的 uPic 數據庫";

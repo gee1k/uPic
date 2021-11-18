@@ -80,6 +80,9 @@
 /* Class = "NSMenu"; title = "Output format"; ObjectID = "XmF-iN-Y0V"; */
 "XmF-iN-Y0V.title" = "Output format";
 
+/* Class = "NSMenuItem"; title = "uPic Database"; ObjectID = "Xs3-BB-xC7"; */
+"Xs3-BB-xC7.title" = "uPic Database";
+
 /* Class = "NSMenuItem"; title = "Export host configuration"; ObjectID = "Yuc-Vp-9Pd"; */
 "Yuc-Vp-9Pd.title" = "Export host configuration";
 

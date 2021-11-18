@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -203,6 +203,11 @@
                         <menuItem title="History record" id="EhO-Zw-XXj">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="History record" id="MjM-mX-Ci5"/>
+                        </menuItem>
+                        <menuItem title="uPic Database" keyEquivalent="d" id="Xs3-BB-xC7">
+                            <connections>
+                                <action selector="databaseMenuItemClicked:" target="veO-oa-UPB" id="f6M-EC-HlZ"/>
+                            </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="9go-zg-sPT"/>
                         <menuItem title="Preferences" keyEquivalent="," id="VW7-Z2-hXR">

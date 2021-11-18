@@ -142,7 +142,17 @@
 		4BEFD811238B738E00BBE64D /* HistoryThumbnailConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */; };
 		4BEFD813238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */; };
 		8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; };
+		965A5E5225ADBD8F00AB88FF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
 		968ECC07240DFCF900B2D78C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 968ECC09240DFCF900B2D78C /* InfoPlist.strings */; };
+		96B6C3F125AD89F200B1A584 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 96B6C3F025AD89F200B1A584 /* icon.icns */; };
+		96B6C3F325AD89F200B1A584 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6C3F225AD89F200B1A584 /* ShareViewController.swift */; };
+		96B6C3F625AD89F200B1A584 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B6C3F425AD89F200B1A584 /* ShareViewController.xib */; };
+		96B6C3FB25AD89F200B1A584 /* uPicShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 96B6C3EE25AD89F200B1A584 /* uPicShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		96B6C41125AD8AFB00B1A584 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B6C41325AD8AFB00B1A584 /* InfoPlist.strings */; };
+		96B6C42025AD934B00B1A584 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164745EF22B65FE900F9575D /* String+Extension.swift */; };
+		96F633EE25AEBE5E005514EB /* DatabaseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F633ED25AEBE5E005514EB /* DatabaseWindowController.swift */; };
+		96F633F625AEC3C7005514EB /* DatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F633F525AEC3C6005514EB /* DatabaseViewController.swift */; };
+		96F633FF25AF008F005514EB /* Database.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F6340125AF008F005514EB /* Database.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +162,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 16F7467022E994A300480A62;
 			remoteInfo = uPicFinderExtension;
+		};
+		96B6C3F925AD89F200B1A584 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16A6DC4C22AA375700813706 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 96B6C3ED25AD89F200B1A584;
+			remoteInfo = uPicShareExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -172,6 +189,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed App Extensions */,
+				96B6C3FB25AD89F200B1A584 /* uPicShareExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,10 +335,25 @@
 		4BC11BDD238CFD53001641A6 /* HistoryThumbnailTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailTimer.swift; sourceTree = "<group>"; };
 		4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryThumbnailConstant.swift; sourceTree = "<group>"; };
 		4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPreviewCustomScrollView.swift; sourceTree = "<group>"; };
-		96319C6E24CE7CEB004A6E62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		968ECC08240DFCF900B2D78C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		968ECC0A240DFCFA00B2D78C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		969018A3240D998400B545B2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
+		96B6C3EE25AD89F200B1A584 /* uPicShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		96B6C3F025AD89F200B1A584 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		96B6C3F225AD89F200B1A584 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		96B6C3F525AD89F200B1A584 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ShareViewController.xib; sourceTree = "<group>"; };
+		96B6C3F725AD89F200B1A584 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96B6C3F825AD89F200B1A584 /* uPicShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = uPicShareExtension.entitlements; sourceTree = "<group>"; };
+		96B6C41225AD8AFB00B1A584 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		96B6C41425AD8AFF00B1A584 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		96B6C41825AD8B0000B1A584 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		96F633ED25AEBE5E005514EB /* DatabaseWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseWindowController.swift; sourceTree = "<group>"; };
+		96F633F525AEC3C6005514EB /* DatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseViewController.swift; sourceTree = "<group>"; };
+		96F633FE25AF0066005514EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		96F6340025AF008F005514EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Database.storyboard; sourceTree = "<group>"; };
+		96F6340625AF0093005514EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Database.strings; sourceTree = "<group>"; };
+		96F6340825AF0093005514EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Database.strings"; sourceTree = "<group>"; };
+		96F6340A25AF0094005514EB /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Database.strings"; sourceTree = "<group>"; };
 		A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uPic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B31C410193F6C634ECBC8F5F /* Pods-uPic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.debug.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.debug.xcconfig"; sourceTree = "<group>"; };
 		FA1B39CC17103449CC5099AD /* Pods-uPic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uPic.release.xcconfig"; path = "Target Support Files/Pods-uPic/Pods-uPic.release.xcconfig"; sourceTree = "<group>"; };
@@ -344,6 +377,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96B6C3EB25AD89F200B1A584 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -351,12 +391,12 @@
 			isa = PBXGroup;
 			children = (
 				166B4A5122B9CB17001288ED /* ConfigView */,
+				169F073D22AF53DE008E8525 /* Preferences.storyboard */,
 				169F073622AF4549008E8525 /* AboutPreferencesViewController.swift */,
 				169F073322AF4549008E8525 /* AdvancedPreferencesViewController.swift */,
 				169F073522AF4549008E8525 /* GeneralPreferencesViewController.swift */,
 				16068C7422AEC1D1004D39B7 /* PreferencesViewController.swift */,
 				16068C7722AECB34004D39B7 /* PreferencesWindowController.swift */,
-				169F073D22AF53DE008E8525 /* Preferences.storyboard */,
 				164745EA22B618D700F9575D /* HostPreferencesViewController.swift */,
 			);
 			path = PreferencesWindow;
@@ -598,9 +638,11 @@
 			children = (
 				16A6DC5622AA375700813706 /* uPic */,
 				16F7467222E994A300480A62 /* uPicFinderExtension */,
+				96B6C3EF25AD89F200B1A584 /* uPicShareExtension */,
 				F517F004DFA2ACE018535745 /* Frameworks */,
 				16EC9A0222ABBBB4001B6C89 /* uPic.app */,
 				16F7467122E994A300480A62 /* uPicFinderExtension.appex */,
+				96B6C3EE25AD89F200B1A584 /* uPicShareExtension.appex */,
 				FFE257116AEC8F0F743663E3 /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -618,7 +660,6 @@
 				163F241E22B12E6700F81D03 /* General */,
 				1672762122AFF63A007299C3 /* Models */,
 				164C39FE22B2AA5E003ADE39 /* Notifier */,
-				16068C7622AECB26004D39B7 /* PreferencesWindow */,
 				16A6DC6822AA3AD900813706 /* Supporting Files */,
 				16ADBE5E22D1D74D00E6C605 /* Views */,
 			);
@@ -637,8 +678,10 @@
 		16ADBE5E22D1D74D00E6C605 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4B66A851235F02A000DED242 /* HistoryRecord */,
 				169F074322AF7A3D008E8525 /* StatusMenuController.swift */,
+				16068C7622AECB26004D39B7 /* PreferencesWindow */,
+				4B66A851235F02A000DED242 /* HistoryRecord */,
+				96F633EC25AEBE10005514EB /* DatabaseWindow */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -734,6 +777,29 @@
 			path = Aliyun;
 			sourceTree = "<group>";
 		};
+		96B6C3EF25AD89F200B1A584 /* uPicShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				96B6C3F025AD89F200B1A584 /* icon.icns */,
+				96B6C3F225AD89F200B1A584 /* ShareViewController.swift */,
+				96B6C3F425AD89F200B1A584 /* ShareViewController.xib */,
+				96B6C3F725AD89F200B1A584 /* Info.plist */,
+				96B6C3F825AD89F200B1A584 /* uPicShareExtension.entitlements */,
+				96B6C41325AD8AFB00B1A584 /* InfoPlist.strings */,
+			);
+			path = uPicShareExtension;
+			sourceTree = "<group>";
+		};
+		96F633EC25AEBE10005514EB /* DatabaseWindow */ = {
+			isa = PBXGroup;
+			children = (
+				96F6340125AF008F005514EB /* Database.storyboard */,
+				96F633ED25AEBE5E005514EB /* DatabaseWindowController.swift */,
+				96F633F525AEC3C6005514EB /* DatabaseViewController.swift */,
+			);
+			path = DatabaseWindow;
+			sourceTree = "<group>";
+		};
 		F517F004DFA2ACE018535745 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,6 +837,7 @@
 			);
 			dependencies = (
 				16F7467822E994A300480A62 /* PBXTargetDependency */,
+				96B6C3FA25AD89F200B1A584 /* PBXTargetDependency */,
 			);
 			name = uPic;
 			packageProductDependencies = (
@@ -798,13 +865,30 @@
 			productReference = 16F7467122E994A300480A62 /* uPicFinderExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		96B6C3ED25AD89F200B1A584 /* uPicShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96B6C3FC25AD89F200B1A584 /* Build configuration list for PBXNativeTarget "uPicShareExtension" */;
+			buildPhases = (
+				96B6C3EA25AD89F200B1A584 /* Sources */,
+				96B6C3EB25AD89F200B1A584 /* Frameworks */,
+				96B6C3EC25AD89F200B1A584 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = uPicShareExtension;
+			productName = uPicShareExtension;
+			productReference = 96B6C3EE25AD89F200B1A584 /* uPicShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		16A6DC4C22AA375700813706 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1030;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Svend Jin";
 				TargetAttributes = {
@@ -831,6 +915,9 @@
 							};
 						};
 					};
+					96B6C3ED25AD89F200B1A584 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 				};
 			};
 			buildConfigurationList = 16A6DC4F22AA375700813706 /* Build configuration list for PBXProject "uPic" */;
@@ -853,6 +940,7 @@
 			targets = (
 				16A6DC5322AA375700813706 /* uPic */,
 				16F7467022E994A300480A62 /* uPicFinderExtension */,
+				96B6C3ED25AD89F200B1A584 /* uPicShareExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -864,6 +952,7 @@
 			files = (
 				1623612322AB951E00E4025C /* Localizable.strings in Resources */,
 				1648A216238E742600B99B9D /* Main.storyboard in Resources */,
+				96F633FF25AF008F005514EB /* Database.storyboard in Resources */,
 				169F073B22AF53DE008E8525 /* Preferences.storyboard in Resources */,
 				16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */,
 			);
@@ -878,6 +967,17 @@
 				16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */,
 				1618D1A522E99BAA00831601 /* Localizable.strings in Resources */,
 				968ECC07240DFCF900B2D78C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96B6C3EC25AD89F200B1A584 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96B6C3F625AD89F200B1A584 /* ShareViewController.xib in Resources */,
+				965A5E5225ADBD8F00AB88FF /* Localizable.strings in Resources */,
+				96B6C41125AD8AFB00B1A584 /* InfoPlist.strings in Resources */,
+				96B6C3F125AD89F200B1A584 /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,6 +1129,7 @@
 				16F04EEC23BCC4B200CCA2FE /* FileManagerExtension.swift in Sources */,
 				1683573C22DB0D0800985B10 /* CustomConfigSheetController.swift in Sources */,
 				16AFDB3824E50F450008E5A7 /* S3Region.swift in Sources */,
+				96F633F625AEC3C7005514EB /* DatabaseViewController.swift in Sources */,
 				16CD34FC23BC8966005B52F2 /* MimeType.swift in Sources */,
 				16F04EE623BCC45F00CCA2FE /* Option.swift in Sources */,
 				169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */,
@@ -1047,6 +1148,7 @@
 				16D20B5C238392C9006D8D01 /* BaiduConfigView.swift in Sources */,
 				167620F023081DC0008F8363 /* ImgurConfigView.swift in Sources */,
 				4BBA45BB235F081C0079F253 /* HistoryThumbnailItem.swift in Sources */,
+				96F633EE25AEBE5E005514EB /* DatabaseWindowController.swift in Sources */,
 				1685AA3722DEEE6C008FBF1D /* CustomHostUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1063,6 +1165,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96B6C3EA25AD89F200B1A584 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96B6C42025AD934B00B1A584 /* String+Extension.swift in Sources */,
+				96B6C3F325AD89F200B1A584 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1070,6 +1181,11 @@
 			isa = PBXTargetDependency;
 			target = 16F7467022E994A300480A62 /* uPicFinderExtension */;
 			targetProxy = 16F7467722E994A300480A62 /* PBXContainerItemProxy */;
+		};
+		96B6C3FA25AD89F200B1A584 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 96B6C3ED25AD89F200B1A584 /* uPicShareExtension */;
+			targetProxy = 96B6C3F925AD89F200B1A584 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1090,7 +1206,7 @@
 				1648A215238E742600B99B9D /* Base */,
 				1648A218238E743200B99B9D /* zh-Hans */,
 				1605DDD8246D993C00262C89 /* zh-Hant */,
-				96319C6E24CE7CEB004A6E62 /* en */,
+				96F633FE25AF0066005514EB /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1114,6 +1230,35 @@
 				1605DDDA246D993D00262C89 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		96B6C3F425AD89F200B1A584 /* ShareViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96B6C3F525AD89F200B1A584 /* Base */,
+			);
+			name = ShareViewController.xib;
+			sourceTree = "<group>";
+		};
+		96B6C41325AD8AFB00B1A584 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96B6C41225AD8AFB00B1A584 /* en */,
+				96B6C41425AD8AFF00B1A584 /* zh-Hans */,
+				96B6C41825AD8B0000B1A584 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		96F6340125AF008F005514EB /* Database.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96F6340025AF008F005514EB /* Base */,
+				96F6340625AF0093005514EB /* en */,
+				96F6340825AF0093005514EB /* zh-Hans */,
+				96F6340A25AF0094005514EB /* zh-Hant */,
+			);
+			name = Database.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1351,6 +1496,56 @@
 			};
 			name = Release;
 		};
+		96B6C3FD25AD89F200B1A584 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 20201211;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = uPicShareExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 0.21.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.uPicShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		96B6C3FE25AD89F200B1A584 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 20201211;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = uPicShareExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 0.21.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.uPicShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1377,6 +1572,15 @@
 			buildConfigurations = (
 				16F7467B22E994A300480A62 /* Debug */,
 				16F7467C22E994A300480A62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96B6C3FC25AD89F200B1A584 /* Build configuration list for PBXNativeTarget "uPicShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96B6C3FD25AD89F200B1A584 /* Debug */,
+				96B6C3FE25AD89F200B1A584 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

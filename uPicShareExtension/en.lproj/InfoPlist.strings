@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  uPic
+
+  Created by Licardo on 2021/1/12.
+  Copyright © 2021 Svend Jin. All rights reserved.
+*/
+
+CFBundleDisplayName = "Upload via uPic";
