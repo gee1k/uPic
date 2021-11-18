@@ -32,11 +32,13 @@ class S3Uploader: BaseUploader {
         let accessKey = config.accessKey
         let secretKey = config.secretKey
         let domain = config.domain
-        let region = AWSSDKSwiftCore.Region(rawValue: config.region)
+        var region = config.region == nil ? .useast1 : AWSSDKSwiftCore.Region(rawValue: config.region!)
         
         var endpoint = config.endpoint
         
-        if !customize {
+        if customize {
+            region = .useast1
+        } else {
             endpoint = S3Region.endPoint(config.region)
         }
         
@@ -85,6 +87,8 @@ class S3Uploader: BaseUploader {
             case .failure(let e):
                 if let s3Error = e as? S3ErrorType {
                     super.faild(errorMsg: s3Error.description)
+                } else if let s3Error = e as? AWSResponseError {
+                    super.faild(errorMsg: s3Error.message)
                 } else {
                     super.faild(errorMsg: e.localizedDescription)
                 }

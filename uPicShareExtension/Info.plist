@@ -29,7 +29,18 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>NSExtensionActivationRule</key>
-			<string>TRUEPREDICATE</string>
+			<dict>
+				<key>NSExtensionActivationSupportsAttachmentsWithMaxCount</key>
+				<integer>9</integer>
+				<key>NSExtensionActivationSupportsFileWithMaxCount</key>
+				<integer>9</integer>
+				<key>NSExtensionActivationSupportsImageWithMaxCount</key>
+				<integer>9</integer>
+				<key>NSExtensionActivationSupportsMovieWithMaxCount</key>
+				<integer>9</integer>
+				<key>NSExtensionActivationSupportsText</key>
+				<true/>
+			</dict>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.share-services</string>

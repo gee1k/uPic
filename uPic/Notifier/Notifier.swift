@@ -36,8 +36,7 @@ public extension Notifier where Notification.RawValue == String {
     static func postNotification(_ notification: Notification, object: String? = nil, userInfo: [AnyHashable: Any]? = nil) {
         let name = nameFor(notification: notification)
 
-        DistributedNotificationCenter.default()
-                .postNotificationName(NSNotification.Name(rawValue: name), object: object, userInfo: userInfo, deliverImmediately: true)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: userInfo)
     }
 
     // addObserver
@@ -45,8 +44,7 @@ public extension Notifier where Notification.RawValue == String {
     static func addObserver(observer: AnyObject, selector: Selector, notification: Notification, object: String? = nil) {
         let name = nameFor(notification: notification)
 
-        DistributedNotificationCenter.default()
-                .addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
+        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
     }
 
     // removeObserver
@@ -54,7 +52,6 @@ public extension Notifier where Notification.RawValue == String {
     static func removeObserver(observer: AnyObject, notification: Notification, object: String? = nil) {
         let name = nameFor(notification: notification)
 
-        DistributedNotificationCenter.default()
-                .removeObserver(observer, name: NSNotification.Name(rawValue: name), object: object)
+        NotificationCenter.default.removeObserver(observer, name: NSNotification.Name(rawValue: name), object: object)
     }
 }

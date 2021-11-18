@@ -37,7 +37,8 @@ class BaseUploader {
             if thumbnailFileData == nil {
                 return
             }
-
+            
+            let size = thumbnailFileData.count
             var thumbnailData: Data?
             var previewWidth: CGFloat = 0
             var previewHeight: CGFloat = 0
@@ -72,6 +73,8 @@ class BaseUploader {
             previewModel.previewWidth = Double(previewWidth)
             previewModel.previewHeight = Double(previewHeight)
             previewModel.thumbnailData = thumbnailData
+            previewModel.size = size
+            previewModel.host = Defaults[.defaultHostId]
             previewModel.isImage = isImage
             
             ConfigManager.shared.addHistory(previewModel)

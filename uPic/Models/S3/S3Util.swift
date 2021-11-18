@@ -12,7 +12,7 @@ import SwiftyJSON
 public class S3Util {
     private static let schema = "https://"
     
-    static func computeUrl(bucket: String, region: String, customize: Bool, endpoint: String?) -> String {
+    static func computeUrl(bucket: String, region: String?, customize: Bool, endpoint: String?) -> String {
         
         if customize, let endpoint = endpoint {
             if (endpoint.last == "/") {

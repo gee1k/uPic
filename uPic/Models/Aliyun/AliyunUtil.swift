@@ -29,7 +29,7 @@ public class AliyunUtil {
     
     
     static func computeSignature(accessKeySecret: String, encodePolicy: String) -> String {
-        return encodePolicy.calculateHMACByKey(key: accessKeySecret).toBase64() ?? ""
+        return encodePolicy.calculateHMACByKey(key: accessKeySecret).toBase64() 
     }
     
     static func computeUrl(bucket: String, region: String) -> String {

@@ -44,18 +44,16 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSAppleScriptEnabled</key>
+	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2020 Svend Jin. All rights reserved.</string>
+	<string>Copyright © 2021 Svend Jin. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SUEnableAutomaticChecks</key>
-	<true/>
-	<key>SUFeedURL</key>
-	<string>https://gee1k.github.io/uPic/appcast.xml</string>
-	<key>SUPublicEDKey</key>
-	<string>vUMkY2STUDaVpL98q1m9zE3VugD/sdejNO4MPo1hu5Y=</string>
+	<key>OSAScriptingDefinition</key>
+	<string>UPic.sdef</string>
 	<key>TeamIdentifierPrefix</key>
 	<string>$(TeamIdentifierPrefix)</string>
 </dict>

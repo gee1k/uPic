@@ -10,7 +10,7 @@ import Cocoa
 
 class CustomConfigView: ConfigView {
     
-    var postConfigSheetController: CustomConfigSheetController?;
+    var postConfigSheetController: CustomConfigSheetController?
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

@@ -47,8 +47,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     func applicationWillFinishLaunching(_ notification: Notification) {
-        let isCommandLineState = Cli.shared.handleCommandLine()
-        if isCommandLineState {
+        
+        if let paths = Cli.shared.getFilePaths() {
+            Cli.shared.startUpload(paths)
             return
         }
         
@@ -74,6 +75,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         ConfigManager.shared.firstSetup()
+        
+        if !Defaults[.requestedAuthorization] {
+            Defaults[.requestedAuthorization] = true
+            // 打开欢迎页面以及获取授权页
+            _ = WindowManager.shared.showWindow(storyboard: "Welcome", withIdentifier: "welcomeWindowController")
+        }
     }
     
     func applicationWillTerminate(_ notification: Notification) {
@@ -213,10 +220,10 @@ extension AppDelegate {
     
 }
 
-// MARK: - Upload file
+// MARK: - 上传方式选择
 extension AppDelegate {
     
-    /* 选择文件 */
+    // 选择文件上传
     @objc func selectFile() {
         
         if self.uploding {
@@ -245,6 +252,7 @@ extension AppDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
     
+    // 从剪切板上传
     @objc func uploadByPasteboard() {
         if self.uploding {
             NotificationExt.shared.postUplodingNotice()
@@ -284,10 +292,22 @@ extension AppDelegate {
         
     }
     
+    
+    // 截图上传
     @objc func screenshotAndUpload() {
         
         if self.uploding {
             NotificationExt.shared.postUplodingNotice()
+            return
+        }
+        
+        // 截图权限检测
+        let hasPermission = ScreenUtil.screeningRecordPermissionCheck()
+        if !hasPermission {
+            // 无截图权限，申请截图权限并弹出帮助界面、跳转到设置界面
+            ScreenUtil.requestRecordScreenPermissions()
+            
+            _ = WindowManager.shared.showWindow(storyboard: "ScreenshotAuthorizationHelp", withIdentifier: "screenshotAuthorizationHelpWindowController")
             return
         }
         
@@ -302,8 +322,56 @@ extension AppDelegate {
             self.uploadFiles([imgData!])
         }
     }
+}
+
+// MARK: - Drag and drop file upload
+extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
+    func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        self.draggingData = sender.draggedFromBrowserData
+        
+        if sender.draggedFileUrls.count > 0 || draggingData != nil || sender.draggedFromBrowserUrl != nil {
+            if let statusItem = statusItem, let button = statusItem.button {
+                button.image = NSImage(named: "uploadIcon")
+            }
+            return .copy
+        }
+        return .generic
+    }
     
-    /// Upload multiple file paths separated by  \n
+    func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        if sender.draggedFileUrls.count > 0 || self.draggingData != nil || sender.draggedFromBrowserUrl != nil {
+            self.setStatusBarIcon(isIndicator: false)
+            if sender.draggedFileUrls.count > 0 {
+                self.uploadFiles(sender.draggedFileUrls)
+                return true
+            } else if let imageData = self.draggingData {
+                self.uploadFiles([imageData])
+                self.draggingData = nil
+                return true
+            } else if let url = sender.draggedFromBrowserUrl {
+                self.uploadFiles([url])
+                return true
+            }
+        }
+        return false
+    }
+    
+    func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        return true
+    }
+    
+    func draggingExited(_ sender: NSDraggingInfo?) {
+        self.setStatusBarIcon(isIndicator: false)
+    }
+    
+    func draggingEnded(_ sender: NSDraggingInfo) {
+    }
+    
+}
+
+// 上传方法
+extension AppDelegate {
+    // 解析以 \n 分割的多个文件路径并上传
     func uploadFilesFromPaths(_ pathStr: String) {
         let paths = pathStr.split(separator: Character("\n"))
         
@@ -312,8 +380,9 @@ extension AppDelegate {
         
         for path in paths {
             let sPath = String(path)
-            if (fileExtensions.count == 0 || fileExtensions.contains(sPath.pathExtension.lowercased())) {
-                let url = URL(fileURLWithPath: sPath)
+            let url = URL(fileURLWithPath: sPath)
+            
+            if (fileExtensions.count == 0 || fileExtensions.contains(url.pathExtension.lowercased())) {
                 urls.append(url)
             }
         }
@@ -326,8 +395,7 @@ extension AppDelegate {
         self.uploadFiles(urls)
     }
     
-    // 上传多个文件
-    // MARK: - Cli Support
+    // 上传多个文件，所有上传方式的入口
     func uploadFiles(_ files: [Any], _ uploadSourceType: UploadSourceType? = .normal) {
         
         var uploadFiles = files
@@ -337,6 +405,7 @@ extension AppDelegate {
             var uploadUrls: [URL] = []
             for url in urls {
                 let path = url.path
+                
                 if FileManager.directoryIsExists(path: path) {
                     let directoryName = path.lastPathComponent
                     let enumerator = FileManager.default.enumerator(atPath: path)
@@ -367,8 +436,17 @@ extension AppDelegate {
         self.resultUrls.removeAll()
         
         if self.needUploadFiles.count == 0 {
+            // MARK: - Cli Support
+            if self.uploadSourceType == UploadSourceType.cli {
+                DispatchQueue.main.async {
+                    exit(EX_OK)
+                }
+            }
             return
         }
+        
+        // 开始磁盘授权访问
+        _ = DiskPermissionManager.shared.startDirectoryAccessing()
         
         self.uploding = true
         self.tickFileToUpload()
@@ -384,6 +462,11 @@ extension AppDelegate {
             let firstFile = self.needUploadFiles.first
             self.needUploadFiles.removeFirst()
             if firstFile is URL {
+                if !FileManager.default.isReadableFile(atPath: (firstFile as! URL).path) {
+                    NotificationExt.shared.postFileNoAccessNotice()
+                    tickFileToUpload()
+                    return
+                }
                 BaseUploader.upload(url: firstFile as! URL)
             } else if firstFile is Data {
                 BaseUploader.upload(data: firstFile as! Data)
@@ -440,6 +523,7 @@ extension AppDelegate {
     }
     
     func uploadCancel() {
+        self.setStatusBarIcon(isIndicator: false)
         BaseUploader.cancelUpload()
         self.needUploadFiles.removeAll()
         self.resultUrls.removeAll()
@@ -447,6 +531,9 @@ extension AppDelegate {
     }
     
     func uploadDone() {
+        // 停止磁盘授权访问
+        DiskPermissionManager.shared.stopDirectoryAccessing()
+        
         self.uploding = false
         // MARK: - Cli Support
         if uploadSourceType == UploadSourceType.cli {
@@ -472,69 +559,6 @@ extension AppDelegate {
     }
 }
 
-// MARK: - Drag and drop file upload
-extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
-    func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        self.draggingData = sender.draggedFromBrowserData
-        
-        if sender.draggedFileUrls.count > 0 || draggingData != nil || sender.draggedFromBrowserUrl != nil {
-            if let statusItem = statusItem, let button = statusItem.button {
-                button.image = NSImage(named: "uploadIcon")
-            }
-            return .copy
-        }
-        return .generic
-    }
-    
-    func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        if sender.draggedFileUrls.count > 0 || self.draggingData != nil || sender.draggedFromBrowserUrl != nil {
-            self.setStatusBarIcon(isIndicator: false)
-            if sender.draggedFileUrls.count > 0 {
-                self.uploadFiles(sender.draggedFileUrls)
-                return true
-            } else if let imageData = self.draggingData {
-                self.uploadFiles([imageData])
-                self.draggingData = nil
-                return true
-            } else if let url = sender.draggedFromBrowserUrl {
-                self.uploadFiles([url])
-                return true
-            }
-        }
-        return false
-    }
-    
-    func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        return true
-    }
-    
-    func draggingExited(_ sender: NSDraggingInfo?) {
-        self.setStatusBarIcon(isIndicator: false)
-    }
-    
-    func draggingEnded(_ sender: NSDraggingInfo) {
-    }
-    
-}
-
-extension AppDelegate {
-    // sponsor
-    
-    func sponsorByPaypal() {
-        guard let url = URL(string: "https://paypal.me/geeee1k") else { return }
-        NSWorkspace.shared.open(url)
-    }
-    
-    func sponsorByAlipay() {
-        guard let url = URL(string: "https://raw.githubusercontent.com/gee1k/oss/master/qrcode/alipay.JPG") else { return }
-        NSWorkspace.shared.open(url)
-    }
-    
-    func sponsorByWechatPay() {
-        guard let url = URL(string: "https://raw.githubusercontent.com/gee1k/oss/master/qrcode/wechat_pay.JPG") else { return }
-        NSWorkspace.shared.open(url)
-    }
-}
 
 // MARK: - Global shortcut
 extension AppDelegate {

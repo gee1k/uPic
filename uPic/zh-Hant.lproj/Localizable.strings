@@ -16,7 +16,20 @@
 "Example:" = "範例:";
 "On" = "開啟";
 "Off" = "關閉";
+"Later" = "稍後";
 "APP Name" = "APP 名稱";
+"Copy" = "复制";
+
+// 欢迎界面
+"Next" = "下一步";
+"Authorize" = "授权";
+"Not Authorized" = "未授权";
+"Authorized" = "已授权";
+
+// 全盘权限授权 Alert 提示
+"Full Disk Access" = "完全磁片訪問";
+"Full Disk Access Message" = "由於系統的安全限制，App Store下載的軟件無權直接讀取應用外的檔案。所以我們需要您的授權，但我們不會收集你的任何資訊！
+\n注：若不授權，將無法使用右鍵上傳、分享上傳、命令列上傳等功能";
 
 /* 成功通知標題 */
 "Successfully" = "成功";
@@ -45,8 +58,10 @@
 
 /* 複製的文件不存在 */
 "The file does not exist or has been deleted!" = "複製的文件不存在或已被刪除!";
+/* 无权访问该文件 */
+"No access to file!" = "無權訪問該檔案，請前往偏好設定授權磁片訪問！";
 /* 文件格式不支持 */
-"File format not supported!" = "文件格式不支持!";
+"File format not supported!" = "檔案格式不支持！";
 /* 文件大小超過限制 */
 "File is over the size limit! Limit:" = "文件大小超過限制!限制:";
 /* 圖床配置存在問題, 請檢查 */

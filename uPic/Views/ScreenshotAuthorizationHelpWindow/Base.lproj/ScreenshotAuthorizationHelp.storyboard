@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="TLR-kc-i7z">
+            <objects>
+                <windowController storyboardIdentifier="screenshotAuthorizationHelpWindowController" id="Lk5-9y-uMj" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="IIp-aX-hKg">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="436" height="262"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+                        <view key="contentView" id="9hW-M0-pS6">
+                            <rect key="frame" x="0.0" y="0.0" width="436" height="262"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="Lk5-9y-uMj" id="e6c-0s-T3P"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="XVs-vl-zI8" kind="relationship" relationship="window.shadowedContentViewController" id="5if-Ct-FkY"/>
+                    </connections>
+                </windowController>
+                <customObject id="Xkp-3y-9Jz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-298" y="-36"/>
+        </scene>
+        <!--Screenshot Authorization Help View Controller-->
+        <scene sceneID="Byu-fP-b39">
+            <objects>
+                <viewController id="XVs-vl-zI8" customClass="ScreenshotAuthorizationHelpViewController" customModule="uPic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="fuL-gK-zxy">
+                        <rect key="frame" x="0.0" y="0.0" width="485" height="634"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fwf-eo-bfM">
+                                <rect key="frame" x="20" y="20" width="445" height="594"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qYb-47-zwP">
+                                        <rect key="frame" x="0.0" y="327" width="445" height="267"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="heY-B4-ZcQ">
+                                                <rect key="frame" x="62" y="248" width="322" height="19"/>
+                                                <textFieldCell key="cell" lineBreakMode="charWrapping" alignment="center" title="请打开系统偏好设置，“点击安全性与隐私”" usesSingleLineMode="YES" id="8OE-MZ-BV3">
+                                                    <font key="font" metaFont="systemBold" size="16"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <attributedString key="userComments">
+                                                    <fragment content="step1"/>
+                                                </attributedString>
+                                            </textField>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9aW-9Y-NsF">
+                                                <rect key="frame" x="0.0" y="0.0" width="445" height="240"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="240" id="0bY-GI-qv9"/>
+                                                    <constraint firstAttribute="width" constant="445" id="R4v-Fq-RQl"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="screenshotHelp1" id="hVl-WQ-1oY"/>
+                                            </imageView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZu-Dl-Zwi">
+                                        <rect key="frame" x="0.0" y="40" width="445" height="267"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cun-fB-NG4">
+                                                <rect key="frame" x="123" y="248" width="200" height="19"/>
+                                                <textFieldCell key="cell" lineBreakMode="charWrapping" alignment="center" title="授予 uPic “屏幕录制”权限" usesSingleLineMode="YES" id="qqL-jK-k4X">
+                                                    <font key="font" metaFont="systemBold" size="16"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="37G-Wk-jLG">
+                                                <rect key="frame" x="0.0" y="0.0" width="445" height="240"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="240" id="Zyc-Sh-bhc"/>
+                                                    <constraint firstAttribute="width" constant="445" id="ok2-7u-YFf"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="screenshotHelp2" id="6tu-Xr-Ja0"/>
+                                            </imageView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CTh-1S-N6J">
+                                        <rect key="frame" x="132" y="-7" width="181" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Open Security &amp; Privacy" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" inset="2" id="MZV-nV-okO">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="didClickopenPreferencesButton:" target="XVs-vl-zI8" id="nbu-Rg-mfb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Fwf-eo-bfM" firstAttribute="centerX" secondItem="fuL-gK-zxy" secondAttribute="centerX" id="18U-Xm-Xv4"/>
+                            <constraint firstAttribute="trailing" secondItem="Fwf-eo-bfM" secondAttribute="trailing" constant="20" symbolic="YES" id="h4X-aZ-TN9"/>
+                            <constraint firstItem="Fwf-eo-bfM" firstAttribute="centerY" secondItem="fuL-gK-zxy" secondAttribute="centerY" id="mPv-e5-UV3"/>
+                            <constraint firstItem="Fwf-eo-bfM" firstAttribute="leading" secondItem="fuL-gK-zxy" secondAttribute="leading" constant="20" symbolic="YES" id="tD8-hx-t7m"/>
+                            <constraint firstAttribute="bottom" secondItem="Fwf-eo-bfM" secondAttribute="bottom" constant="20" symbolic="YES" id="xEu-uA-ScW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="openPreferencesButton" destination="CTh-1S-N6J" id="1Hv-rd-hUX"/>
+                    </connections>
+                </viewController>
+                <customObject id="nE2-7X-yIo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-297.5" y="554"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="screenshotHelp1" width="1336" height="720"/>
+        <image name="screenshotHelp2" width="1336" height="720"/>
+    </resources>
+</document>

@@ -29,9 +29,9 @@ class Cli {
     
     private var resultUrls: [String] = []
     
-    func handleCommandLine() -> Bool {
+    func getFilePaths() -> [String]? {
         let arguments = CommandLine.arguments
-        guard arguments.count > 1 else { return false }
+        guard arguments.count > 1 else { return nil }
         
         cliKit = CommandLineKit(arguments: arguments)
         
@@ -48,17 +48,14 @@ class Cli {
             try cliKit.parse()
         } catch {
             cliKit.printUsage(error)
-            return false
+            return nil
         }
         
-        if let paths = upload.value {
-            startUpload(paths)
-            return true
-        } else {
+        guard let paths = upload.value else {
             cliKit.printUsage()
+            return nil
         }
-        
-        return false
+        return paths
     }
 }
 
@@ -66,7 +63,7 @@ class Cli {
 extension Cli {
     /// start upload
     /// - Parameter paths: file paths or URLs
-    private func startUpload(_ paths: [String]) {
+    func startUpload(_ paths: [String]) {
         allPathList = paths
         
         for path in paths {
@@ -93,8 +90,39 @@ extension Cli {
     /// Upload progress
     /// - Parameter url: current url
     func uploadProgress(_ url: String) {
-        let outputType = OutputType(value: output?.value)
-        resultUrls.append(outputType.formatUrl(url.urlEncoded()))
+        var outputUrl = ""
+        if let output = output?.value?.lowercased() {
+            var formatUrl = url
+            if Defaults[.outputFormatEncoded] {
+                formatUrl = url.urlEncoded()
+            }
+            var filename = url.lastPathComponent.deletingPathExtension.trim()
+            let tempArr = filename.components(separatedBy: .whitespaces).map{ $0.trim() }.filter{ !$0.isEmpty }
+            filename = tempArr.joined(separator: "")
+            switch output {
+            case "url":
+                outputUrl = formatUrl
+                break
+            case "html":
+                outputUrl = "<img src='\(formatUrl)' alt='\(filename)'/>"
+                break
+            case "md":
+                outputUrl = "![\(filename)](\(formatUrl))"
+                break
+            case "markdown":
+                outputUrl = "![\(filename)](\(formatUrl))"
+                break
+            case "ubb":
+                outputUrl = "[img]\(formatUrl)[/img]"
+                break
+            default:
+                outputUrl = OutputFormatModel.formatUrl(url, outputFormat: nil)
+            }
+        } else {
+            outputUrl = OutputFormatModel.formatUrl(url, outputFormat: nil)
+        }
+        
+        resultUrls.append(outputUrl)
         progress += 1
         Console.write("Uploading \(progress)/\(allDataList.count)")
     }

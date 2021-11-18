@@ -1,0 +1,11 @@
+/* Class = "NSWindow"; title = "Window"; ObjectID = "IIp-aX-hKg"; */
+"IIp-aX-hKg.title" = "Get Screenshot Permission Tutorial";
+
+/* Class = "NSTextFieldCell"; title = "请打开系统偏好设置，“点击安全性与隐私”"; ObjectID = "8OE-MZ-BV3"; Note = "step1"; */
+"8OE-MZ-BV3.title" = "Please open System Preferences and click `Security and Privacy`";
+
+/* Class = "NSTextFieldCell"; title = "授予 uPic “屏幕录制”权限"; ObjectID = "qqL-jK-k4X"; */
+"qqL-jK-k4X.title" = "Grant uPic `screen recording` permission";
+
+/* Class = "NSButton"; title = "Open Security & Privacy"; ObjectID = "MZV-nV-okO"; */
+"MZV-nV-okO.title" = "Open Security & Privacy";

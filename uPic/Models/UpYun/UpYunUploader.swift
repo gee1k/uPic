@@ -58,7 +58,7 @@ class UpYunUploader: BaseUploader {
         let signatureParams = ["POST", "/\(bucket)", policy]
         let signatureStr = signatureParams.joined(separator: "&")
         let hmac = signatureStr.calculateHMACByKey(key: password.toMd5())
-        let signature = hmac.toBase64()!
+        let signature = hmac.toBase64()
 
         // MARK: 生成 authorization
         let authorization = "UPYUN \(operatorName):\(signature)"

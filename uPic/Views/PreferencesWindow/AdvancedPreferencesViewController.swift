@@ -21,6 +21,8 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     @IBOutlet weak var historyRecordFileNameScrollSpeed: NSTextField!
     @IBOutlet weak var historyRecordFileNameScrollWaitTime: NSTextField!
     @IBOutlet weak var finderExtensionIcon: NSPopUpButton!
+    @IBOutlet weak var fullDiskAuthorizationImage: NSImageView!
+    @IBOutlet weak var fullDiskAuthorizationButton: NSButton!
     @IBOutlet weak var resetPreferencesButton: NSButton!
     
     // MARK: Lifecycle
@@ -29,6 +31,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         super.viewDidLoad()
         
         resetAllValues()
+        checkFullDiskAuthorizationStatus()
     }
     
     func resetAllValues() {
@@ -54,6 +57,17 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         
         if #available(macOS 11, *) {
             finderExtensionIcon.item(at: 1)!.image = NSImage(named: "single_new")
+        }
+    }
+    
+    func checkFullDiskAuthorizationStatus() {
+        let isAuthorized = DiskPermissionManager.shared.checkFullDiskAuthorizationStatus()
+        if isAuthorized {
+            fullDiskAuthorizationImage.image = NSImage(named: NSImage.statusAvailableName)
+            fullDiskAuthorizationButton.title = "Authorized".localized
+        } else {
+            fullDiskAuthorizationImage.image = NSImage(named: NSImage.statusPartiallyAvailableName)
+            fullDiskAuthorizationButton.title = "Not Authorized".localized
         }
     }
     
@@ -88,10 +102,22 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         FinderUtil.setIcon(sender.indexOfSelectedItem)
     }
     
-    @IBAction func didClickRestartFinder(_ sender: NSButton) {
-        let killFinderScript = #"do shell script "killall Finder""#
-        let script = NSAppleScript(source: killFinderScript)
-        script!.executeAndReturnError(nil)
+    @IBAction func didClickOpenOutputFormatCustomizationPanelButton(_ sender: NSButton) {
+        let outputFormatCustomizationViewController = storyboard!.instantiateController(withIdentifier: "OutputFormatCustomization") as! OutputFormatCustomization
+    
+        presentAsSheet(outputFormatCustomizationViewController)
+    }
+    
+    @IBAction func didClickfullDiskAuthorizationButton(_ sender: NSButton) {
+        let isAuthorized = DiskPermissionManager.shared.checkFullDiskAuthorizationStatus()
+        if isAuthorized {
+            // 取消
+            DiskPermissionManager.shared.cancelFullDiskPermissions()
+        } else {
+            // 设置页授权根目录
+            DiskPermissionManager.shared.requestFullDiskPermissions()
+        }
+        checkFullDiskAuthorizationStatus()
     }
     
     @IBAction func resetPreferencesButtonClicked(_ sender: NSButton) {

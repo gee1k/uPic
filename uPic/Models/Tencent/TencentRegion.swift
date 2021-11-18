@@ -15,14 +15,14 @@ class TencentRegion {
         "ap-beijing-1": ["cname": "北京一区"],
         "ap-beijing": ["cname": "北京"],
         "ap-nanjing": ["cname": "南京"],
-        "ap-shanghai": ["cname": "上海（华东）"],
-        "ap-guangzhou": ["cname": "广州（华南）"],
-        "ap-chengdu": ["cname": "成都（西南）"],
+        "ap-shanghai": ["cname": "上海"],
+        "ap-guangzhou": ["cname": "广州"],
+        "ap-chengdu": ["cname": "成都"],
         "ap-chongqing": ["cname": "重庆"],
         "ap-shenzhen-fsi": ["cname": "深圳金融"],
         "ap-shanghai-fsi": ["cname": "上海金融"],
         "ap-beijing-fsi": ["cname": "北京金融"],
-        "ap-hongkong": ["cname": "香港"],
+        "ap-hongkong": ["cname": "中国香港"],
         "ap-singapore": ["cname": "新加坡"],
         "ap-mumbai": ["cname": "孟买"],
         "ap-seoul": ["cname": "首尔"],
@@ -54,14 +54,5 @@ class TencentRegion {
             return region
         }
         return AliyunRegion.allRegion.keys.first!
-    }
-    
-    /// FIXME： 将旧版区域转为新版格式，几个版本的迭代后需删除
-    public static func upgradeFromOld(_ oldRegion: String) -> String {
-        if oldRegion.isEmpty {
-            return ""
-        }
-        return oldRegion.replacingOccurrences(of: "_", with: "-")
-       
     }
 }

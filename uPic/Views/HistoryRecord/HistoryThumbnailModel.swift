@@ -16,6 +16,9 @@ class HistoryThumbnailModel: TableCodable {
     var previewWidth: Double = 0
     var previewHeight: Double = 0
     var thumbnailData: Data?
+    var createdDate: Date = Date()
+    var size: Int = 0
+    var host: String?
     var isImage: Bool = false
     
     var isAutoIncrement: Bool { return true }
@@ -23,6 +26,10 @@ class HistoryThumbnailModel: TableCodable {
     // dynamic
     var fileName: String {
         return url.lastPathComponent
+    }
+    
+    var ext: String? {
+        return url.lastPathComponent.pathExtension
     }
     
     var thumbnailSize: NSSize {
@@ -49,6 +56,9 @@ class HistoryThumbnailModel: TableCodable {
         case previewWidth
         case previewHeight
         case thumbnailData
+        case createdDate
+        case size
+        case host
         case isImage
         
         static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
@@ -64,6 +74,13 @@ class HistoryThumbnailModel: TableCodable {
         model.previewWidth = keyValue["previewWidth"] as! Double
         model.previewHeight = keyValue["previewHeight"] as! Double
         model.thumbnailData = keyValue["thumbnailData"] as? Data
+        if let createDateStr = keyValue["createdDate"] as? String, !createDateStr.isEmpty {
+            model.createdDate = Date.dateFromISOString(string: createDateStr)!
+        } else {
+            model.createdDate = Date()
+        }
+        model.size = keyValue["size"] as? Int ?? 0
+        model.host = keyValue["host"] as? String
         model.isImage = keyValue["isImage"] as! Bool
         return model
     }
@@ -76,6 +93,10 @@ class HistoryThumbnailModel: TableCodable {
         if let thumbnailData = thumbnailData {
             historyKeyValue["thumbnailData"] = thumbnailData
         }
+        
+        historyKeyValue["createdDate"] = createdDate.toISOString()
+        historyKeyValue["size"] = size
+        historyKeyValue["host"] = host
         historyKeyValue["isImage"] = isImage
         return historyKeyValue
     }

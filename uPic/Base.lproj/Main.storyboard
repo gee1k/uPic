@@ -62,7 +62,7 @@
                                                 <action selector="cut:" target="Ady-hI-5gd" id="YJe-68-I9s"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Copy" keyEquivalent="c" id="x3v-GG-iWU">
+                                        <menuItem title="Copy" keyEquivalent="c" identifier="copy" id="x3v-GG-iWU">
                                             <connections>
                                                 <action selector="copy:" target="Ady-hI-5gd" id="G1f-GL-Joy"/>
                                             </connections>
@@ -113,7 +113,6 @@
                         <outlet property="uploadFromSelectFileMenuItem" destination="p0A-6d-cAU" id="qq8-KZ-WPO"/>
                     </connections>
                 </customObject>
-                <customObject id="Oqi-DG-w38" customClass="SUUpdater"/>
                 <menu id="fqV-BN-CNE">
                     <items>
                         <menuItem title="Cancel upload" id="Gxh-8r-tsq">
@@ -173,6 +172,12 @@
                                             <action selector="outputFormatMenuItemClicked:" target="veO-oa-UPB" id="BYo-1k-amH"/>
                                         </connections>
                                     </menuItem>
+                                    <menuItem title="Custom" tag="4" id="F4P-SL-bu2">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="outputFormatMenuItemClicked:" target="veO-oa-UPB" id="dfw-0J-AUl"/>
+                                        </connections>
+                                    </menuItem>
                                 </items>
                             </menu>
                         </menuItem>
@@ -219,12 +224,6 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="More" id="Z6H-TN-83r">
                                 <items>
-                                    <menuItem title="Check for updates..." id="yai-4F-Btp">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <action selector="checkForUpdates:" target="Oqi-DG-w38" id="D85-2L-1Ob"/>
-                                        </connections>
-                                    </menuItem>
                                     <menuItem title="Tutorial" id="O8o-6e-fZn">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
@@ -241,31 +240,6 @@
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="exportHostsMenuItemClicked:" target="veO-oa-UPB" id="ZAp-pp-wFi"/>
-                                        </connections>
-                                    </menuItem>
-                                </items>
-                            </menu>
-                        </menuItem>
-                        <menuItem title="Donate" id="yCF-Ec-Lgz">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="Donate" id="iGe-NR-YFa">
-                                <items>
-                                    <menuItem title="Paypal" id="70g-zL-O4p">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <action selector="paypalMenuItemClicked:" target="veO-oa-UPB" id="G5h-aO-WVm"/>
-                                        </connections>
-                                    </menuItem>
-                                    <menuItem title="Alipay" id="aHw-Zc-eD7">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <action selector="alipayMenuItemClicked:" target="veO-oa-UPB" id="SQA-fB-WmZ"/>
-                                        </connections>
-                                    </menuItem>
-                                    <menuItem title="WeChat" id="Qky-3r-Bgs">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <action selector="wechatPayMenuItemClicked:" target="veO-oa-UPB" id="vzQ-HN-NXw"/>
                                         </connections>
                                     </menuItem>
                                 </items>

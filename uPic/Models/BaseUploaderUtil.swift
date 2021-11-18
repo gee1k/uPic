@@ -243,22 +243,17 @@ class BaseUploaderUtil {
     /// Format output URL
     /// - Parameter url: Original url
     /// - Parameter outputType: output type
-    static func formatOutputURL(_ url: String, _ outputType: OutputType? = nil) -> String {
-        var outputType: OutputType? = outputType
-        if outputType == nil {
-            outputType = ConfigManager.shared.getOutputType()
-        }
-        
-        return outputType!.formatUrl(url)
+    static func formatOutputURL(_ url: String, _ outputType: OutputFormatModel? = nil) -> String {
+        return OutputFormatModel.formatUrl(url, outputFormat: outputType)
     }
     
     /// Format output URL
     /// - Parameter urls: Original urls
     /// - Parameter outputType: output type
-    static func formatOutputUrls(_ urls: [String], _ outputType: OutputType? = nil) -> [String] {
+    static func formatOutputUrls(_ urls: [String], _ outputType: OutputFormatModel? = nil) -> [String] {
         
         let outputUrls = urls.map{ (item) in
-            return BaseUploaderUtil.formatOutputURL(item, outputType)
+            return OutputFormatModel.formatUrl(item, outputFormat: outputType)
         }
         return outputUrls
     }

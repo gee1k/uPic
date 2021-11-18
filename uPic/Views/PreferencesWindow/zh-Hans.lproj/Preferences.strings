@@ -2,17 +2,17 @@
 /* Class = "NSButtonCell"; title = "svend.cc"; ObjectID = "0dV-As-mmQ"; */
 "0dV-As-mmQ.title" = "svend.cc";
 
-/* Class = "NSTextFieldCell"; title = "may require a"; ObjectID = "2Rg-te-FPU"; */
-"2Rg-te-FPU.title" = "可能需要";
-
-/* Class = "NSButtonCell"; title = "Paypal"; ObjectID = "59m-hG-lVw"; */
-"59m-hG-lVw.title" = "Paypal";
+/* Class = "NSTextFieldCell"; title = "need a Finder Restart"; ObjectID = "2Rg-te-FPU"; */
+"2Rg-te-FPU.title" = "需要重启访达";
 
 /* Class = "NSViewController"; title = "Host"; ObjectID = "5Ln-jV-uxk"; */
 "5Ln-jV-uxk.title" = "图床";
 
 /* Class = "NSWindow"; title = "Preferences"; ObjectID = "5f3-UK-Rft"; */
 "5f3-UK-Rft.title" = "偏好设置";
+
+/* Class = "NSButtonCell"; title = "Show"; ObjectID = "7Gg-u8-8Yt"; */
+"7Gg-u8-8Yt.title" = "显示";
 
 /* Class = "NSButtonCell"; title = "Reset"; ObjectID = "8gb-uy-oRd"; */
 "8gb-uy-oRd.title" = "重置";
@@ -29,6 +29,9 @@
 /* Class = "NSTextFieldCell"; title = "File name scroll speed:"; ObjectID = "BBZ-i9-B2g"; */
 "BBZ-i9-B2g.title" = "文件名滚动速度(ms):";
 
+/* Class = "NSButtonCell"; title = "iSvend"; ObjectID = "BoF-vP-aWK"; */
+"BoF-vP-aWK.title" = "iSvend";
+
 /* Class = "NSButtonCell"; title = "Add Header Field"; ObjectID = "Ckh-A7-mxC"; */
 "Ckh-A7-mxC.title" = "增加 Header 字段";
 
@@ -41,8 +44,17 @@
 /* Class = "NSViewController"; title = "General"; ObjectID = "Gn1-zC-bzB"; */
 "Gn1-zC-bzB.title" = "通用";
 
+/* Class = "NSTextFieldCell"; title = "Full Disk Access"; ObjectID = "Gu0-HV-q4H"; */
+"Gu0-HV-q4H.title" = "完全磁盘访问";
+
 /* Class = "NSMenuItem"; title = "Non"; ObjectID = "GwK-5k-ATM"; */
 "GwK-5k-ATM.title" = "无图标";
+
+/* Class = "NSTextFieldCell"; title = "Note: Please use {url} {filename} as placeholder for your url"; ObjectID = "Gws-yz-JWw"; */
+"Gws-yz-JWw.title" = "注意: 请使用 {url} {filename} 作为您 URL 的占位符";
+
+/* Class = "NSTextFieldCell"; title = "Output Format Customization"; ObjectID = "GzP-4S-ioU"; */
+"GzP-4S-ioU.title" = "输出格式自定义";
 
 /* Class = "NSViewController"; title = "Advanced"; ObjectID = "H3q-JS-Bu4"; */
 "H3q-JS-Bu4.title" = "高级";
@@ -53,6 +65,9 @@
 /* Class = "NSButtonCell"; title = "svend.jin@gmail.com"; ObjectID = "IPL-yO-Vkp"; */
 "IPL-yO-Vkp.title" = "svend.jin@gmail.com";
 
+/* Class = "NSButtonCell"; title = "Config"; ObjectID = "Jbz-2F-L08"; */
+"Jbz-2F-L08.title" = "配置";
+
 /* Class = "NSTextFieldCell"; title = "0.1.0"; ObjectID = "Jnf-AX-bIr"; */
 "Jnf-AX-bIr.title" = "0.1.0";
 
@@ -61,6 +76,9 @@
 
 /* Class = "NSTextFieldCell"; title = "Columns:"; ObjectID = "N1b-Cf-tno"; */
 "N1b-Cf-tno.title" = "列数:";
+
+/* Class = "NSTableColumn"; headerCell.title = "Name"; ObjectID = "NLj-vQ-ghD"; */
+"NLj-vQ-ghD.headerCell.title" = "名称";
 
 /* Class = "NSTextFieldCell"; title = "🐦 Twitter:"; ObjectID = "OKr-1C-5jV"; */
 "OKr-1C-5jV.title" = "🐦 Twitter:";
@@ -80,14 +98,17 @@
 /* Class = "NSTextFieldCell"; title = "Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} {saveKey} and etc."; ObjectID = "R0i-0c-6TZ"; */
 "R0i-0c-6TZ.title" = "支持 {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} {saveKey} 等变量。";
 
+/* Class = "NSTableColumn"; headerCell.title = "Custom Style"; ObjectID = "RAq-Oy-he8"; */
+"RAq-Oy-he8.headerCell.title" = "自定义格式";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "SfQ-Lo-Xpr"; */
+"SfQ-Lo-Xpr.title" = "取消";
+
 /* Class = "NSButtonCell"; title = "⚠️ Reset"; ObjectID = "TD4-LI-X9U"; */
 "TD4-LI-X9U.title" = "⚠️ 撤销";
 
 /* Class = "NSTextFieldCell"; title = "History record"; ObjectID = "UN0-Iq-Cop"; */
 "UN0-Iq-Cop.title" = "历史记录";
-
-/* Class = "NSTextFieldCell"; title = "💸 Donate:"; ObjectID = "Vjv-pA-ffP"; */
-"Vjv-pA-ffP.title" = "💸 赞助:";
 
 /* Class = "NSTextFieldCell"; title = "✉️ Contact:"; ObjectID = "Vu4-Wz-Agk"; */
 "Vu4-Wz-Agk.title" = "✉️ 联系:";
@@ -119,26 +140,20 @@
 /* Class = "NSMenuItem"; title = "More"; ObjectID = "dZy-kW-0lH"; */
 "dZy-kW-0lH.title" = "更多";
 
-/* Class = "NSButtonCell"; title = "Alipay"; ObjectID = "eWy-BH-pJy"; */
-"eWy-BH-pJy.title" = "支付宝";
-
 /* Class = "NSTextFieldCell"; title = "uPic for iOS is now available on App Store!"; ObjectID = "f1C-OB-3jS"; */
 "f1C-OB-3jS.title" = "uPic for iOS 现可在 App Store 上下载!";
 
 /* Class = "NSButtonCell"; title = "https://github.com/gee1k/uPic"; ObjectID = "f2V-P5-pQI"; */
 "f2V-P5-pQI.title" = "https://github.com/gee1k/uPic";
 
-/* Class = "NSButtonCell"; title = "WeChat"; ObjectID = "fJL-Ts-QPI"; */
-"fJL-Ts-QPI.title" = "微信";
+/* Class = "NSButtonCell"; title = "Save"; ObjectID = "gUg-yZ-cS0"; */
+"gUg-yZ-cS0.title" = "保存";
 
 /* Class = "NSButtonCell"; title = "@realSvend"; ObjectID = "i90-se-6z8"; */
 "i90-se-6z8.title" = "@realSvend";
 
 /* Class = "NSTextFieldCell"; title = "Width:"; ObjectID = "iRI-j6-BHQ"; */
 "iRI-j6-BHQ.title" = "宽度:";
-
-/* Class = "NSButtonCell"; title = "Finder Restart"; ObjectID = "jA2-Zt-kWu"; */
-"jA2-Zt-kWu.title" = "重启访达";
 
 /* Class = "NSTextFieldCell"; title = "Reset"; ObjectID = "jcs-Ou-OZ2"; */
 "jcs-Ou-OZ2.title" = "重置";
@@ -152,8 +167,17 @@
 /* Class = "NSViewController"; title = "About"; ObjectID = "k6X-N1-mVu"; */
 "k6X-N1-mVu.title" = "关于";
 
+/* Class = "NSButtonCell"; title = "Not Authorized"; ObjectID = "l8U-fu-WXc"; */
+"l8U-fu-WXc.title" = "未授权";
+
+/* Class = "NSTextFieldCell"; title = "Hold option and right click on finder, then select Relaunch."; ObjectID = "mDT-aa-auv"; */
+"mDT-aa-auv.title" = "按住 option 并在访达上右击, 然后选择重新开启.";
+
 /* Class = "NSTextFieldCell"; title = "uPic"; ObjectID = "mOB-su-ZM1"; */
 "mOB-su-ZM1.title" = "uPic";
+
+/* Class = "NSTableColumn"; headerCell.title = "Delete"; ObjectID = "nB3-hC-RSM"; */
+"nB3-hC-RSM.headerCell.title" = "删除";
 
 /* Class = "NSTextFieldCell"; title = "uPic will automatically launch at login."; ObjectID = "ngT-lX-vFA"; */
 "ngT-lX-vFA.title" = "uPic 将在系统登录时自动启动。";
@@ -173,3 +197,18 @@
 /* Class = "NSTextFieldCell"; title = "Icon:"; ObjectID = "ugx-B2-gPe"; */
 "ugx-B2-gPe.title" = "图标:";
 
+/* Class = "NSTextFieldCell"; title = "✋Welcome Page:"; ObjectID = "ul8-3a-sB4"; */
+"ul8-3a-sB4.title" = "✋欢迎页:";
+
+/* Class = "NSTextFieldCell"; title = "Output Format Customization"; ObjectID = "w0T-ah-0NT"; */
+"w0T-ah-0NT.title" = "输出格式自定义";
+
+/* Class = "NSTextFieldCell"; title = "💬 Telegram:"; ObjectID = "yO0-9g-BJK"; */
+"yO0-9g-BJK.title" = "💬 Telegram:";
+
+//##################################################################################
+//#           AutoGenStrings            2021-02-02 20:52:14
+//##################################################################################
+
+/* Class = "NSViewController"; title = "Restart Finder prompt"; ObjectID = "gNK-aF-Cmm"; */
+"gNK-aF-Cmm.title" = "Restart Finder prompt";

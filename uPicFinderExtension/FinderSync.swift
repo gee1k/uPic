@@ -13,6 +13,8 @@ class FinderSync: FIFinderSync {
     
     override init() {
         super.init()
+        NSLog("FinderSync() launched from %@", Bundle.main.bundlePath as NSString)
+                
         // Set up the directory we are syncing.
         let finderSync = FIFinderSyncController.default()
         if let mountedVolumes = FileManager.default.mountedVolumeURLs(includingResourceValuesForKeys: nil, options: [.skipHiddenVolumes]) {
@@ -27,79 +29,53 @@ class FinderSync: FIFinderSync {
         }
     }
     
-    // MARK: - Menu and toolbar item support
-    
-    override var toolbarItemName: String {
-        return "uPic"
-    }
-    
-    override var toolbarItemToolTip: String {
-        return "Upload selected files via uPic".localized
-    }
-    
-    override var toolbarItemImage: NSImage {
-        var image: NSImage? = nil
-        switch FinderUtil.getIcon() {
-        case 2:
-            image = NSImage(named: "color")
-        default:
-            if #available(macOS 11, *) {
-                image = NSImage(named: "single_new")
-            } else {
-                image = NSImage(named: "single")
-            }
-        }
-        
-        image?.isTemplate = true
-        return image!
-    }
-    
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
         // Produce a menu for the extension.
         
-        switch menuKind {
-        case .contextualMenuForItems, .toolbarItemMenu:
-            let menu = NSMenu(title: "")
-            let uploadMenuItem = NSMenuItem(title: "Upload via uPic".localized, action: #selector(uploadFile(_:)), keyEquivalent: "")
-            
-            switch FinderUtil.getIcon() {
-            case 0:
-                uploadMenuItem.image = nil
-            case 2:
-                uploadMenuItem.image = NSImage(named: "color")
-            default:
-                if #available(macOS 11, *) {
-                    uploadMenuItem.image = NSImage(named: "single_new")
-                } else {
-                    uploadMenuItem.image = NSImage(named: "single")
-                }
-            }
-            
-            uploadMenuItem.image?.isTemplate = true
-            menu.addItem(uploadMenuItem)
-            
-            return menu
+        let menu = NSMenu(title: "")
+        let uploadMenuItem = NSMenuItem(title: "Upload via uPic".localized, action: #selector(uploadFile(_:)), keyEquivalent: "")
+        
+        switch FinderUtil.getIcon() {
+        case 0:
+            uploadMenuItem.image = nil
+        case 2:
+            uploadMenuItem.image = NSImage(named: "color")
         default:
-            break
+            if #available(macOS 11, *) {
+                uploadMenuItem.image = NSImage(named: "single_new")
+            } else {
+                uploadMenuItem.image = NSImage(named: "single")
+            }
         }
         
-        return nil
+        uploadMenuItem.image?.isTemplate = true
+        menu.addItem(uploadMenuItem)
+        
+        return menu
     }
     
     @IBAction func uploadFile(_ sender: AnyObject?) {
-        if let items = FIFinderSyncController.default().selectedItemURLs() {
-            var paths = ""
-            for item in items {
-                let filePath = item.path
-                paths = "\(paths)\(filePath)\n"
-            }
-            let encodeUrl = "uPic://files?\(paths)".urlEncoded()
-            
-            if let url = URL(string: encodeUrl) {
-                NSWorkspace.shared.open(url)
-            } else {
-                UploadNotifier.postNotification(.uploadFiles, object: paths)
-            }
+        let paths = getSelectedPathsFromFinder()
+        let pathString = paths.joined(separator: "\n")
+        
+        let encodeUrl = "uPic://files?\(pathString)".urlEncoded()
+        
+        if let url = URL(string: encodeUrl) {
+            NSWorkspace.shared.open(url)
+        } else {
+            UploadNotifier.postNotification(.uploadFiles, object: pathString)
         }
+    }
+    
+    func getSelectedPathsFromFinder() -> [String] {
+        var paths = [String]()
+        if let items = FIFinderSyncController.default().selectedItemURLs(), items.count > 0 {
+            items.forEach { (url) in
+                paths.append(url.path)
+            }
+        } else if let url = FIFinderSyncController.default().targetedURL() {
+            paths.append(url.path)
+        }
+        return paths
     }
 }

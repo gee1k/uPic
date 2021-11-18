@@ -15,7 +15,19 @@
 "Example:" = "Example:";
 "On" = "On";
 "Off" = "Off";
+"Later" = "Later";
 "APP Name" = "APP Name";
+"Copy" = "Copy";
+
+// 欢迎界面
+"Next" = "Next";
+"Authorize" = "Authorize";
+"Not Authorized" = "Not Authorized";
+"Authorized" = "Authorized";
+
+// 全盘权限授权 Alert 提示
+"Full Disk Access" = "Full Disk Access";
+"Full Disk Access Message" = "Due to system security restrictions, App Store downloads do not have the right to read files outside of the app directly. So we need your authorization, but we won't collect any information from you!\nNote: Without authorization, you will not be able to use right click upload, share upload, command line upload and other functions";
 
 /* 成功通知标题 */
 "Successfully" = "Successfully";
@@ -44,6 +56,8 @@
 
 /* 文件不存在或已被删除 */
 "The file does not exist or has been deleted!" = "The file does not exist or has been deleted!";
+/* 无权访问该文件 */
+"No access to file!" = "Do not have permission to access this file, please go to preferences to authorize disk access!";
 /* 文件格式不支持 */
 "File format not supported!" = "File format not supported!";
 /* 文件大小超过限制 */

@@ -27,7 +27,7 @@
 "6dh-zS-Vam.title" = "重做";
 
 /* Class = "NSMenuItem"; title = "Paypal"; ObjectID = "70g-zL-O4p"; */
-"70g-zL-O4p.title" = "Paypal";
+//"70g-zL-O4p.title" = "Paypal";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Main Menu";
@@ -63,7 +63,7 @@
 "Opc-aA-hUg.title" = "Markdown";
 
 /* Class = "NSMenuItem"; title = "WeChat"; ObjectID = "Qky-3r-Bgs"; */
-"Qky-3r-Bgs.title" = "微信";
+//"Qky-3r-Bgs.title" = "微信";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "Ruw-6m-B2m"; */
 "Ruw-6m-B2m.title" = "全选";
@@ -90,7 +90,7 @@
 "Z6H-TN-83r.title" = "更多";
 
 /* Class = "NSMenuItem"; title = "Alipay"; ObjectID = "aHw-Zc-eD7"; */
-"aHw-Zc-eD7.title" = "支付宝";
+//"aHw-Zc-eD7.title" = "支付宝";
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "文件";
@@ -111,7 +111,7 @@
 "gVA-U4-sdL.title" = "粘贴";
 
 /* Class = "NSMenu"; title = "Donate"; ObjectID = "iGe-NR-YFa"; */
-"iGe-NR-YFa.title" = "捐赠";
+//"iGe-NR-YFa.title" = "捐赠";
 
 /* Class = "NSMenu"; title = "Output format encode"; ObjectID = "jbA-xM-vl3"; */
 "jbA-xM-vl3.title" = "输出格式编码";
@@ -141,13 +141,20 @@
 "x3v-GG-iWU.title" = "拷贝";
 
 /* Class = "NSMenuItem"; title = "Donate"; ObjectID = "yCF-Ec-Lgz"; */
-"yCF-Ec-Lgz.title" = "捐赠";
+//"yCF-Ec-Lgz.title" = "捐赠";
 
 /* Class = "NSMenuItem"; title = "Off"; ObjectID = "yW4-Cl-nF5"; */
 "yW4-Cl-nF5.title" = "关闭";
 
 /* Class = "NSMenuItem"; title = "Check for updates..."; ObjectID = "yai-4F-Btp"; */
-"yai-4F-Btp.title" = "检查更新...";
+//"yai-4F-Btp.title" = "检查更新...";
 
 /* Class = "NSMenuItem"; title = "On"; ObjectID = "ynd-0y-yEv"; */
 "ynd-0y-yEv.title" = "开启";
+
+//##################################################################################
+//#           AutoGenStrings            2021-02-02 20:52:14
+//##################################################################################
+
+/* Class = "NSMenuItem"; title = "Custom"; ObjectID = "F4P-SL-bu2"; */
+"F4P-SL-bu2.title" = "Custom";
