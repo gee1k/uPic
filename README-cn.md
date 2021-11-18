@@ -36,11 +36,17 @@
 ## 🚀 如何安装
 
 ### 下载安装
-#### 1.Homebrew(推荐):
+#### 1.AppStore(推荐):
+ [![uPic for macOS](https://cdn.jsdelivr.net/gh/gee1k/oss@master/uPic/app-store-black.svg)](https://apps.apple.com/cn/app/id1549159979)
+
+
+#### 2.Homebrew
+```bash
+brew install bigwig-club/brew/upic --cask
 ```
-brew install --cask upic
-```
-#### 2.手动
+
+
+#### 3.手动
 从 [Github release](https://github.com/gee1k/uPic/releases) 下载。
 
 **如果在国内访问 Github 下载困难的，可以从[Gitee release](https://gitee.com/gee1k/uPic/releases)下载。**
