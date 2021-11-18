@@ -37,6 +37,9 @@
 
 ### 下载安装
 #### 1.AppStore(推荐):
+
+> 只有 AppStore 才是最新的版本。其他方式安装的停留在 `v0.21.1`，可以自行拉取代码编译打包。
+
  [![uPic for macOS](https://cdn.jsdelivr.net/gh/gee1k/oss@master/uPic/app-store-black.svg)](https://apps.apple.com/cn/app/id1549159979)
 
 

@@ -36,6 +36,9 @@
 
 
 ### 1. AppStore(Recommend):
+
+> Only AppStore is the latest version. Other installations stay at `v0.21.1'.and you can pull the code to compile and package by yourself.
+
  [![uPic for macOS](https://cdn.jsdelivr.net/gh/gee1k/oss@master/uPic/app-store-black.svg)](https://apps.apple.com/cn/app/id1549159979)
 
 
