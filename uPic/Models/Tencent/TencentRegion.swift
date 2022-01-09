@@ -25,12 +25,14 @@ class TencentRegion {
         "ap-hongkong": ["cname": "中国香港"],
         "ap-singapore": ["cname": "新加坡"],
         "ap-mumbai": ["cname": "孟买"],
+        "ap-jakarta": ["cname": "雅加达"],
         "ap-seoul": ["cname": "首尔"],
         "ap-bangkok": ["cname": "曼谷"],
         "ap-tokyo": ["cname": "东京"],
-        "na-siliconvalley": ["cname": "硅谷"],
-        "na-ashburn": ["cname": "弗吉尼亚"],
+        "na-siliconvalley": ["cname": "硅谷（美西）"],
+        "na-ashburn": ["cname": "弗吉尼亚（美东）"],
         "na-toronto": ["cname": "多伦多"],
+        "sa-saopaulo": ["cname": "圣保罗"],
         "eu-frankfurt": ["cname": "法兰克福"],
         "eu-moscow": ["cname": "莫斯科"]
     ]

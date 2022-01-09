@@ -50,12 +50,12 @@ extension String {
     }
     
     func calculateHMAC256ByKey(key: Array<UInt8>) -> Array<UInt8> {
-        let hmac = try! HMAC(key: key, variant: .sha256).authenticate(self.toBytes())
+        let hmac = try! HMAC(key: key, variant: .sha2(.sha256)).authenticate(self.toBytes())
         return hmac
     }
     
     func calculateHMAC256ByKey(key: String) -> Array<UInt8> {
-        let hmac = try! HMAC(key: key.toBytes(), variant: .sha256).authenticate(self.toBytes())
+        let hmac = try! HMAC(key: key.toBytes(), variant: .sha2(.sha256)).authenticate(self.toBytes())
         return hmac
     }
 
