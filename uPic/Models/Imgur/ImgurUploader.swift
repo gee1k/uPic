@@ -42,7 +42,7 @@ class ImgurUploader: BaseUploader {
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.authorization("Client-ID \(config.clientId)"))
         headers.add(HTTPHeader.contentType("multipart/form-data"))
-        headers.add(name: "User-Agent", value: "Macos/uPic")
+        headers.add(HTTPHeader.defaultUserAgent)
         
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
             multipartFormData.append("base64".data(using: .utf8)!, withName: "type")

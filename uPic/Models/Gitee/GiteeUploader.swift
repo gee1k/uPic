@@ -47,7 +47,7 @@ class GiteeUploader: BaseUploader {
         
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/json"))
-        headers.add(name: "User-Agent", value: "Macos/uPic")
+        headers.add(HTTPHeader.defaultUserAgent)
         
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)

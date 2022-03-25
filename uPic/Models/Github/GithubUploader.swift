@@ -49,7 +49,7 @@ class GithubUploader: BaseUploader {
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.authorization("token \(token)"))
         headers.add(HTTPHeader.contentType("application/json"))
-        headers.add(name: "User-Agent", value: "Macos/uPic")
+        headers.add(HTTPHeader.defaultUserAgent)
         
         AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
