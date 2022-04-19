@@ -22,6 +22,7 @@ public enum HostType: String, CaseIterable, Codable {
     case imgur
     case baidu_bos
     case lsky_pro
+    case coding
     
     public init(intValue: Int) {
         switch intValue {
@@ -51,6 +52,8 @@ public enum HostType: String, CaseIterable, Codable {
             self = .baidu_bos
         case 12:
             self = .lsky_pro
+        case 13:
+            self = .coding
         default:
             self = .smms
         }

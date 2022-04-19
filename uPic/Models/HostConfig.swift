@@ -83,6 +83,8 @@ class HostConfig: NSObject, Codable {
             return BaiduHostConfig()
         case .lsky_pro:
             return LskyProHostConfig()
+        case .coding:
+            return CodingHostConfig()
         }
     }
 
@@ -135,6 +137,9 @@ class HostConfig: NSObject, Codable {
             break
         case .lsky_pro:
             config = LskyProHostConfig.deserialize(str: str)
+            break
+        case .coding:
+            config = CodingHostConfig.deserialize(str: str)
             break
         }
         

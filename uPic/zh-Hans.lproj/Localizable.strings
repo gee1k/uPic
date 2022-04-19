@@ -129,6 +129,15 @@
 "Email" = "邮箱";
 "Anonymous" = "匿名";
 "Use Base64" = "使用 Base64";
+/**
+ Add by CODING
+ */
+"CodingTeam" = "团队GK";
+"CodingProject" = "项目名称";
+"CODING team golbal key(<xxx>.coding.net)" = "CODING 团队名称(<xxx>.coding.net)";
+"CodingUserId" = "用户 ID";
+"CodingRepoId" = "仓库 ID";
+"PersonalAccessToken" = "个人访问令牌";
 
 /* host field placeholder */
 "Get API Token" = "获取 API Token";
@@ -162,6 +171,7 @@
 "host.type.lsky_pro" = "Lsky Pro";
 "host.type.minio" = "MinIO";
 "host.type.s3" = "Amazon S3(支持第三方S3协议)";
+"host.type.coding" = "扣钉 CODING";
 
 /* weibo quality*/
 "weibo.quality.thumbnail" = "缩略图";

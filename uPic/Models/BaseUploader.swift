@@ -166,6 +166,9 @@ class BaseUploader {
         case .lsky_pro:
             LskyProUploader.shared.upload(url, host: host)
             break
+        case .coding:
+            CodingUploader.shared.upload(url, host: host)
+            break
         }
     }
     
@@ -229,6 +232,9 @@ class BaseUploader {
         case .lsky_pro:
             LskyProUploader.shared.upload(data, host: host)
             break
+        case .coding:
+            CodingUploader.shared.upload(data, host: host)
+            break
         }
     }
     
@@ -268,6 +274,8 @@ class BaseUploader {
             return BaiduUploader.fileExtensions
         case .lsky_pro:
             return LskyProUploader.fileExtensions
+        case .coding:
+            return CodingUploader.fileExtensions
         }
     }
     
