@@ -86,12 +86,11 @@ brew install bigwig-club/brew/upic --cask
 ### 2. 上传历史
 <img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-cn/history.png" height="300">
 
-## ❤️ 支持
-觉得 uPic 对你有帮助？可以请我喝杯咖啡～
+## 优秀软件推荐
 
-| PayPal | 支付宝 | 微信 |
-| --- | --- | --- |
-| [paypal.me/geeee1k](https://paypal.me/geeee1k) | ![AliPay](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/Donate_Alipay.jpg) | ![WeChatPay](https://raw.githubusercontent.com/gee1k/oss/master/qrcode/Donate_WeChatPay.jpg) |
+- [Bob:macOS 平台上最强的翻译和 OCR 软件](https://github.com/ripperhe/Bob)
+
+
 
 ## ✨ Contributors
 
