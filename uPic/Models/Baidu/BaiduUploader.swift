@@ -96,7 +96,7 @@ class BaiduUploader: BaseUploader {
                         let message = json["message"].string
                         errorMessage = message ?? errorMessage
                     }
-                    super.faild(errorMsg: errorMessage)
+                    super.faild(responseData: response.data, errorMsg: errorMessage)
                 }
             })
         

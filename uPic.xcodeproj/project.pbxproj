@@ -43,6 +43,9 @@
 		1647474322B66ACE00F9575D /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474222B66ACE00F9575D /* Data+Extension.swift */; };
 		1647474522B66E3400F9575D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474422B66E3400F9575D /* Util.swift */; };
 		1648A216238E742600B99B9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1648A214238E742600B99B9D /* Main.storyboard */; };
+		1649393D285E2620007278DA /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 1649393C285E2620007278DA /* CocoaLumberjack */; };
+		1649393F285E2620007278DA /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1649393E285E2620007278DA /* CocoaLumberjackSwift */; };
+		16493942285EC6CE007278DA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16493941285EC6CE007278DA /* Logger.swift */; };
 		164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C39FF22B2AA6C003ADE39 /* Notifier.swift */; };
 		164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */; };
 		16539DCF278AD8700035B9DF /* SotoS3 in Frameworks */ = {isa = PBXBuildFile; productRef = 16539DCE278AD8700035B9DF /* SotoS3 */; };
@@ -245,6 +248,7 @@
 		1647474422B66E3400F9575D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1648A215238E742600B99B9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1648A218238E743200B99B9D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		16493941285EC6CE007278DA /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		164C39FF22B2AA6C003ADE39 /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigNotifier.swift; sourceTree = "<group>"; };
 		1657019822C8920400C57EE9 /* WeiboHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboHostConfig.swift; sourceTree = "<group>"; };
@@ -393,6 +397,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				964198BC2729A75B0001AB97 /* MASShortcut in Frameworks */,
+				1649393D285E2620007278DA /* CocoaLumberjack in Frameworks */,
+				1649393F285E2620007278DA /* CocoaLumberjackSwift in Frameworks */,
 				964198B62729A6BA0001AB97 /* SwiftyJSON in Frameworks */,
 				964198C62729A7F00001AB97 /* Kingfisher in Frameworks */,
 				964198C42729A7EC0001AB97 /* SwiftyXMLParser in Frameworks */,
@@ -532,6 +538,14 @@
 				16CD34F623BC88E2005B52F2 /* SmmsConfigView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		16493940285EC6AF007278DA /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				16493941285EC6CE007278DA /* Logger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 		164C39FE22B2AA5E003ADE39 /* Notifier */ = {
@@ -687,6 +701,7 @@
 		16A6DC5622AA375700813706 /* uPic */ = {
 			isa = PBXGroup;
 			children = (
+				16493940285EC6AF007278DA /* Logger */,
 				96767C3A266CBC2000867727 /* AppleScript */,
 				1613D88525C98256009E348A /* Script */,
 				1648A214238E742600B99B9D /* Main.storyboard */,
@@ -924,6 +939,8 @@
 				964198C72729A7F60001AB97 /* SnapKit */,
 				964198D12729AB170001AB97 /* LaunchAtLogin */,
 				16539DCE278AD8700035B9DF /* SotoS3 */,
+				1649393C285E2620007278DA /* CocoaLumberjack */,
+				1649393E285E2620007278DA /* CocoaLumberjackSwift */,
 			);
 			productName = uPic;
 			productReference = 16EC9A0222ABBBB4001B6C89 /* uPic.app */;
@@ -1022,6 +1039,7 @@
 				964198BA2729A75A0001AB97 /* XCRemoteSwiftPackageReference "MASShortcut" */,
 				964198D02729AB170001AB97 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */,
+				1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
 			);
 			productRefGroup = 16A6DC4B22AA375700813706;
 			projectDirPath = "";
@@ -1228,6 +1246,7 @@
 				4B66A850235ED44600DED242 /* HistoryThumbnailView.swift in Sources */,
 				16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */,
 				167DDBED22C76F6600B03357 /* GithubHostConfig.swift in Sources */,
+				16493942285EC6CE007278DA /* Logger.swift in Sources */,
 				1646B80822C79349009271DF /* GiteeUtil.swift in Sources */,
 				168A3D1523D1AACA001BF1D9 /* RequestMethods.swift in Sources */,
 				1660FCBF22C1211900372950 /* TencentConfigView.swift in Sources */,
@@ -1747,6 +1766,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.7.0;
+			};
+		};
 		16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soto-project/soto.git";
@@ -1822,6 +1849,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1649393C285E2620007278DA /* CocoaLumberjack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjack;
+		};
+		1649393E285E2620007278DA /* CocoaLumberjackSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjackSwift;
+		};
 		16539DCE278AD8700035B9DF /* SotoS3 */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */;

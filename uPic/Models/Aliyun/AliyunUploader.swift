@@ -101,7 +101,7 @@ class AliyunUploader: BaseUploader {
                             errorMessage = errorMsg
                         }
                     }
-                    super.faild(errorMsg: errorMessage)
+                    super.faild(responseData: response.data, errorMsg: errorMessage)
                 }
             })
         

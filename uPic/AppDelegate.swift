@@ -47,8 +47,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     func applicationWillFinishLaunching(_ notification: Notification) {
+        Logger.shared.verbose("Application will finish launching...")
         
         if let paths = Cli.shared.getFilePaths() {
+            Logger.shared.verbose("The application runs as a cli")
             Cli.shared.startUpload(paths)
             return
         }
@@ -56,23 +58,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Register events and status bar menus only in non-command line mode
         
         // Set status bar icon and progress icon
+        Logger.shared.verbose("Setup status bar")
         setupStatusBar()
         
         // Request notification permission
+        Logger.shared.verbose("Request notication authorization")
         NotificationExt.requestAuthorization()
         
+        
+        Logger.shared.verbose("Bind shortcuts")
         bindShortcuts()
         
+        
+        Logger.shared.verbose("Listening Finder contextmenu upload")
         // Add Finder context menu file upload listener
         UploadNotifier.addObserver(observer: self, selector: #selector(uploadFilesFromFinderMenu), notification: .uploadFiles)
         
+        
+        Logger.shared.verbose("Listening scheme")
         // Add URL scheme listening
         NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(handleGetURLEvent(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
-        
         
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        Logger.shared.verbose("Application did finish launching...")
+        
         // Insert code here to initialize your application
         ConfigManager.shared.firstSetup()
         
@@ -498,13 +509,23 @@ extension AppDelegate {
     ///
     /// 上传失败时被调用
     ///
-    func uploadFaild(errorMsg: String? = "") {
+    func uploadFaild(errorMsg: String?, detailMsg: String? = nil,
+                     file: StaticString = #file,
+                     function: StaticString = #function,
+                     line: UInt = #line) {
+        
+        var logMsg = "上传失败：\(errorMsg ?? "")"
+        if let detailMsg = detailMsg {
+            logMsg = "\(logMsg): \(detailMsg))"
+        }
+        Logger.shared.error(logMsg, file: file, function: function, line: line)
+        
         self.setStatusBarIcon(isIndicator: false)
         // MARK: - Cli Support
         if self.uploadSourceType == UploadSourceType.cli {
-            Cli.shared.uploadError(errorMsg)
+            Cli.shared.uploadError(errorMsg ?? detailMsg ?? "")
         } else {
-            NotificationExt.shared.postUploadErrorNotice(errorMsg)
+            NotificationExt.shared.postUploadErrorNotice(errorMsg ?? detailMsg ?? "")
         }
         
         self.tickFileToUpload()
@@ -523,6 +544,7 @@ extension AppDelegate {
     }
     
     func uploadCancel() {
+        Logger.shared.warn("取消上传")
         self.setStatusBarIcon(isIndicator: false)
         BaseUploader.cancelUpload()
         self.needUploadFiles.removeAll()
@@ -531,6 +553,8 @@ extension AppDelegate {
     }
     
     func uploadDone() {
+        Logger.shared.info("上传任务结束：\(self.resultUrls.joined(separator: " | "))")
+        
         // 停止磁盘授权访问
         DiskPermissionManager.shared.stopDirectoryAccessing()
         

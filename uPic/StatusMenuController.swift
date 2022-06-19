@@ -422,7 +422,7 @@ extension StatusMenuController {
     ///   - key: MASShortcut key
     func setupItemShortcut(_ item: NSMenuItem, _ key: String) {
         
-        guard let data = Defaults.data(forKey: key), let shortcut = NSKeyedUnarchiver.unarchiveObject(with: data) as? MASShortcut else {
+        guard let shortcut = MASShortcutBinder.shared().value(forKey: key) as? MASShortcut else {
             item.keyEquivalent = ""
             item.keyEquivalentModifierMask = []
             return

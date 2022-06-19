@@ -118,7 +118,7 @@ class WeiboUploader: BaseUploader {
         }
         
         
-        AF.upload(multipartFormData: multipartFormDataGen, to: loginUrl, headers: headers).validate().responseJSON(completionHandler: { response in
+        AF.upload(multipartFormData: multipartFormDataGen, to: loginUrl, headers: headers).validate().responseData(completionHandler: { response in
                 switch response.result {
                 case .success(let value):
                     let loginCookie = response.response?.headers.value(for: "Set-Cookie")
