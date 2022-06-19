@@ -47,8 +47,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     func applicationWillFinishLaunching(_ notification: Notification) {
+        Logger.shared.verbose("Application will finish launching...")
         
         if let paths = Cli.shared.getFilePaths() {
+            Logger.shared.verbose("The application runs as a cli")
             Cli.shared.startUpload(paths)
             return
         }
@@ -56,23 +58,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Register events and status bar menus only in non-command line mode
         
         // Set status bar icon and progress icon
+        Logger.shared.verbose("Setup status bar")
         setupStatusBar()
         
         // Request notification permission
+        Logger.shared.verbose("Request notication authorization")
         NotificationExt.requestAuthorization()
         
+        
+        Logger.shared.verbose("Bind shortcuts")
         bindShortcuts()
         
+        
+        Logger.shared.verbose("Listening Finder contextmenu upload")
         // Add Finder context menu file upload listener
         UploadNotifier.addObserver(observer: self, selector: #selector(uploadFilesFromFinderMenu), notification: .uploadFiles)
         
+        
+        Logger.shared.verbose("Listening scheme")
         // Add URL scheme listening
         NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(handleGetURLEvent(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
-        
         
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        Logger.shared.verbose("Application did finish launching...")
+        
         // Insert code here to initialize your application
         ConfigManager.shared.firstSetup()
         
@@ -225,8 +236,10 @@ extension AppDelegate {
     
     // 选择文件上传
     @objc func selectFile() {
+        Logger.shared.info("选择文件上传")
         
         if self.uploding {
+            Logger.shared.warn("当前上传任务未结束")
             NotificationExt.shared.postUplodingNotice()
             return
         }
@@ -246,6 +259,7 @@ extension AppDelegate {
         openPanel.begin { (result) -> Void in
             openPanel.close()
             if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
+                Logger.shared.info("选择文件文件数：\(openPanel.urls.count)")
                 self.uploadFiles(openPanel.urls)
             }
         }
@@ -254,10 +268,15 @@ extension AppDelegate {
     
     // 从剪切板上传
     @objc func uploadByPasteboard() {
+        Logger.shared.info("从剪切板上传")
+        
         if self.uploding {
+            Logger.shared.warn("当前上传任务未结束")
             NotificationExt.shared.postUplodingNotice()
             return
         }
+        
+        Logger.shared.info("剪切板上传格式:\(NSPasteboard.general.types?.first?.rawValue ?? "")")
         
         if let filenames = NSPasteboard.general.propertyList(forType: NSPasteboard.PasteboardType("NSFilenamesPboardType")) as? [String] {
             let fileExtensions = BaseUploader.getFileExtensions()
@@ -268,23 +287,37 @@ extension AppDelegate {
                     urls.append(URL(fileURLWithPath: path))
                 }
             }
+            
+            
+            Logger.shared.info("剪切板上传文件，获取到文件数：\(urls.count)")
+            
             if urls.count > 0 {
+                Logger.shared.info("剪切板上传文件数：\(urls.count)")
                 self.uploadFiles(urls)
             } else {
+                Logger.shared.warn("剪切板文件格式不支持")
                 NotificationExt.shared.postUploadErrorNotice("File format not supported!".localized)
             }
             
         } else if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.png) {
+            Logger.shared.info("剪切板上传 PNG")
             let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
             self.uploadFiles([imgData!])
+        } else if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.jpeg) {
+            Logger.shared.info("剪切板上传 JPEG")
+            let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.jpeg)
+            self.uploadFiles([imgData!])
         } else if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.tiff) {
+            Logger.shared.info("剪切板上传 TIFF")
             let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.tiff)
             if let jpg = imgData?.convertImageData(.jpeg) {
                 self.uploadFiles([jpg])
             }
         } else {
+            Logger.shared.info("剪切板上传其他格式")
             if let urlStr = NSPasteboard.general.string(forType: NSPasteboard.PasteboardType.string) {
                 if let url = URL(string: urlStr.urlEncoded()), let data = try? Data(contentsOf: url)  {
+                    Logger.shared.info("剪切板上传其他格式，获取到 Data")
                     self.uploadFiles([data])
                 }
             }
@@ -295,8 +328,10 @@ extension AppDelegate {
     
     // 截图上传
     @objc func screenshotAndUpload() {
+        Logger.shared.info("截图上传")
         
         if self.uploding {
+            Logger.shared.warn("当前上传任务未结束")
             NotificationExt.shared.postUplodingNotice()
             return
         }
@@ -304,6 +339,7 @@ extension AppDelegate {
         // 截图权限检测
         let hasPermission = ScreenUtil.screeningRecordPermissionCheck()
         if !hasPermission {
+            Logger.shared.warn("无截图权限，申请截图权限并弹出帮助界面、跳转到设置界面")
             // 无截图权限，申请截图权限并弹出帮助界面、跳转到设置界面
             ScreenUtil.requestRecordScreenPermissions()
             
@@ -317,8 +353,14 @@ extension AppDelegate {
         task.launch()
         task.waitUntilExit()
         
+        Logger.shared.info("截图上传格式:\(NSPasteboard.general.types?.first?.rawValue ?? "")")
         if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.png) {
+            Logger.shared.info("截图上传 PNG")
             let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
+            self.uploadFiles([imgData!])
+        } else if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.jpeg) {
+            Logger.shared.info("截图上传 JPEG")
+            let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.jpeg)
             self.uploadFiles([imgData!])
         }
     }
@@ -339,6 +381,8 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
     }
     
     func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        Logger.shared.info("拖拽到图标上传: \(sender.draggedFileUrls.count)")
+        
         if sender.draggedFileUrls.count > 0 || self.draggingData != nil || sender.draggedFromBrowserUrl != nil {
             self.setStatusBarIcon(isIndicator: false)
             if sender.draggedFileUrls.count > 0 {
@@ -396,7 +440,12 @@ extension AppDelegate {
     }
     
     // 上传多个文件，所有上传方式的入口
-    func uploadFiles(_ files: [Any], _ uploadSourceType: UploadSourceType? = .normal) {
+    func uploadFiles(_ files: [Any], _ uploadSourceType: UploadSourceType? = .normal,
+                     file: StaticString = #file,
+                     function: StaticString = #function,
+                     line: UInt = #line) {
+        
+        Logger.shared.info("执行上传操作", file: file, function: function, line: line)
         
         var uploadFiles = files
         
@@ -498,13 +547,23 @@ extension AppDelegate {
     ///
     /// 上传失败时被调用
     ///
-    func uploadFaild(errorMsg: String? = "") {
+    func uploadFaild(errorMsg: String?, detailMsg: String? = nil,
+                     file: StaticString = #file,
+                     function: StaticString = #function,
+                     line: UInt = #line) {
+        
+        var logMsg = "上传失败：\(errorMsg ?? "")"
+        if let detailMsg = detailMsg {
+            logMsg = "\(logMsg): \(detailMsg))"
+        }
+        Logger.shared.error(logMsg, file: file, function: function, line: line)
+        
         self.setStatusBarIcon(isIndicator: false)
         // MARK: - Cli Support
         if self.uploadSourceType == UploadSourceType.cli {
-            Cli.shared.uploadError(errorMsg)
+            Cli.shared.uploadError(errorMsg ?? detailMsg ?? "")
         } else {
-            NotificationExt.shared.postUploadErrorNotice(errorMsg)
+            NotificationExt.shared.postUploadErrorNotice(errorMsg ?? detailMsg ?? "")
         }
         
         self.tickFileToUpload()
@@ -523,6 +582,7 @@ extension AppDelegate {
     }
     
     func uploadCancel() {
+        Logger.shared.warn("取消上传")
         self.setStatusBarIcon(isIndicator: false)
         BaseUploader.cancelUpload()
         self.needUploadFiles.removeAll()
@@ -531,6 +591,8 @@ extension AppDelegate {
     }
     
     func uploadDone() {
+        Logger.shared.info("上传任务结束：\(self.resultUrls.joined(separator: " | "))")
+        
         // 停止磁盘授权访问
         DiskPermissionManager.shared.stopDirectoryAccessing()
         

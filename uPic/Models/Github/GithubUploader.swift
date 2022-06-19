@@ -53,12 +53,12 @@ class GithubUploader: BaseUploader {
         
         AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
-            }.responseJSON(completionHandler: { response -> Void in
+            }.responseData(completionHandler: { response -> Void in
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
                     if let errorMessage = json["message"].string {
-                        super.faild(errorMsg: errorMessage)
+                        super.faild(responseData: response.data, errorMsg: errorMessage)
                         return
                     }
                     if domain.isEmpty {
@@ -72,7 +72,7 @@ class GithubUploader: BaseUploader {
                         let json = JSON(data)
                         errorMsg = json["message"].stringValue
                     }
-                    super.faild(errorMsg: errorMsg)
+                    super.faild(responseData: response.data, errorMsg: errorMsg)
                 }
             })
         

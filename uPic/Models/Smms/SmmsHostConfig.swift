@@ -13,13 +13,10 @@ import SwiftyJSON
 
 @objcMembers
 class SmmsHostConfig: HostConfig {
-    dynamic var version: String = SmmsVersion.v1.rawValue
     dynamic var token: String?
 
     override func displayName(key: String) -> String {
         switch key {
-        case "version":
-            return "Version".localized
         case "token":
             return "Token".localized
         default:
@@ -29,7 +26,6 @@ class SmmsHostConfig: HostConfig {
 
     override func serialize() -> String {
         var dict = Dictionary<String, Any>()
-        dict["version"] = self.version
         dict["token"] = self.token
 
         return JSON(dict).rawString()!
@@ -43,7 +39,6 @@ class SmmsHostConfig: HostConfig {
         
         let data = str.data(using: String.Encoding.utf8)
         if let json = try? JSON(data: data!) {
-            config.version = json["version"].stringValue
             config.token = json["token"].stringValue
         }
         

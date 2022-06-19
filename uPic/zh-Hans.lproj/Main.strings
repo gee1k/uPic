@@ -86,6 +86,9 @@
 /* Class = "NSMenuItem"; title = "Export host configuration"; ObjectID = "Yuc-Vp-9Pd"; */
 "Yuc-Vp-9Pd.title" = "导出图床配置";
 
+/* Class = "NSMenuItem"; title = "Export log"; ObjectID = "1YO-Ob-Om4"; */
+"1YO-Ob-Om4.title" = "导出日志";
+
 /* Class = "NSMenu"; title = "More"; ObjectID = "Z6H-TN-83r"; */
 "Z6H-TN-83r.title" = "更多";
 

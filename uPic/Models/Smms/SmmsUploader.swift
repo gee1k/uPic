@@ -31,6 +31,11 @@ class SmmsUploader: BaseUploader {
             return
         }
         
+        guard let token = config.token, !token.isEmpty else {
+            super.faild(errorMsg: "Invalid token")
+            return
+        }
+        
         let retData = configuration["retData"] as? Data
         let fileName = configuration["fileName"] as! String
         let mimeType = configuration["mimeType"] as! String
@@ -39,9 +44,7 @@ class SmmsUploader: BaseUploader {
         headers.add(HTTPHeader.contentType("multipart/form-data"))
         headers.add(name: "referer", value: "https://sm.ms/")
         headers.add(name: "origin", value: "https://sm.ms")
-        if config.version == SmmsVersion.v2.rawValue {
-            headers.add(HTTPHeader.authorization(config.token!))
-        }
+        headers.add(HTTPHeader.authorization(token))
         
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
             if retData != nil {
@@ -53,7 +56,7 @@ class SmmsUploader: BaseUploader {
 
         AF.upload(multipartFormData: multipartFormDataGen, to: url, method: HTTPMethod.post, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
-        }.responseJSON(completionHandler: { response -> Void in
+        }.responseData(completionHandler: { response -> Void in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -63,15 +66,15 @@ class SmmsUploader: BaseUploader {
                         super.completed(url: repeatedUrl, retData, fileUrl, nil)
                     } else {
                         let msg = json["message"].stringValue
-                        super.faild(errorMsg: msg)
+                        super.faild(responseData: response.data, errorMsg: msg)
                     }
                 } else {
                     let data = json["data"]
                     let url = data["url"].stringValue
                     super.completed(url: url, retData, fileUrl, nil)
                 }
-            case .failure(let error):
-                super.faild(errorMsg: error.localizedDescription)
+            case .failure(_):
+                super.faild(responseData: response.data)
             }
         })
 

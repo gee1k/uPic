@@ -43,6 +43,10 @@
 		1647474322B66ACE00F9575D /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474222B66ACE00F9575D /* Data+Extension.swift */; };
 		1647474522B66E3400F9575D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647474422B66E3400F9575D /* Util.swift */; };
 		1648A216238E742600B99B9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1648A214238E742600B99B9D /* Main.storyboard */; };
+		1649393D285E2620007278DA /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 1649393C285E2620007278DA /* CocoaLumberjack */; };
+		1649393F285E2620007278DA /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1649393E285E2620007278DA /* CocoaLumberjackSwift */; };
+		16493942285EC6CE007278DA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16493941285EC6CE007278DA /* Logger.swift */; };
+		1649394D285F1C45007278DA /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 1649394C285F1C45007278DA /* Zip */; };
 		164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C39FF22B2AA6C003ADE39 /* Notifier.swift */; };
 		164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */; };
 		16539DCF278AD8700035B9DF /* SotoS3 in Frameworks */ = {isa = PBXBuildFile; productRef = 16539DCE278AD8700035B9DF /* SotoS3 */; };
@@ -108,7 +112,6 @@
 		16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDDFE22EA96AE0080E467 /* Assets.xcassets */; };
 		16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDE0222EAA2920080E467 /* Assets.xcassets */; };
 		16CD34F323BC87ED005B52F2 /* SmmsHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */; };
-		16CD34F523BC8855005B52F2 /* SmmsVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F423BC8855005B52F2 /* SmmsVersion.swift */; };
 		16CD34F723BC88E2005B52F2 /* SmmsConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F623BC88E2005B52F2 /* SmmsConfigView.swift */; };
 		16CD34FB23BC8966005B52F2 /* Swime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F923BC8966005B52F2 /* Swime.swift */; };
 		16CD34FC23BC8966005B52F2 /* MimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34FA23BC8966005B52F2 /* MimeType.swift */; };
@@ -245,6 +248,7 @@
 		1647474422B66E3400F9575D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1648A215238E742600B99B9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1648A218238E743200B99B9D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		16493941285EC6CE007278DA /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		164C39FF22B2AA6C003ADE39 /* Notifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigNotifier.swift; sourceTree = "<group>"; };
 		1657019822C8920400C57EE9 /* WeiboHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboHostConfig.swift; sourceTree = "<group>"; };
@@ -316,7 +320,6 @@
 		16BDDDFE22EA96AE0080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16BDDE0222EAA2920080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsHostConfig.swift; sourceTree = "<group>"; };
-		16CD34F423BC8855005B52F2 /* SmmsVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsVersion.swift; sourceTree = "<group>"; };
 		16CD34F623BC88E2005B52F2 /* SmmsConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsConfigView.swift; sourceTree = "<group>"; };
 		16CD34F923BC8966005B52F2 /* Swime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swime.swift; sourceTree = "<group>"; };
 		16CD34FA23BC8966005B52F2 /* MimeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MimeType.swift; sourceTree = "<group>"; };
@@ -393,6 +396,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				964198BC2729A75B0001AB97 /* MASShortcut in Frameworks */,
+				1649393D285E2620007278DA /* CocoaLumberjack in Frameworks */,
+				1649394D285F1C45007278DA /* Zip in Frameworks */,
+				1649393F285E2620007278DA /* CocoaLumberjackSwift in Frameworks */,
 				964198B62729A6BA0001AB97 /* SwiftyJSON in Frameworks */,
 				964198C62729A7F00001AB97 /* Kingfisher in Frameworks */,
 				964198C42729A7EC0001AB97 /* SwiftyXMLParser in Frameworks */,
@@ -534,6 +540,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		16493940285EC6AF007278DA /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				16493941285EC6CE007278DA /* Logger.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
 		164C39FE22B2AA5E003ADE39 /* Notifier */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,7 +648,6 @@
 			children = (
 				1602ED9822ADF43800AA8638 /* SmmsUploader.swift */,
 				16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */,
-				16CD34F423BC8855005B52F2 /* SmmsVersion.swift */,
 			);
 			path = Smms;
 			sourceTree = "<group>";
@@ -687,6 +700,7 @@
 		16A6DC5622AA375700813706 /* uPic */ = {
 			isa = PBXGroup;
 			children = (
+				16493940285EC6AF007278DA /* Logger */,
 				96767C3A266CBC2000867727 /* AppleScript */,
 				1613D88525C98256009E348A /* Script */,
 				1648A214238E742600B99B9D /* Main.storyboard */,
@@ -924,6 +938,9 @@
 				964198C72729A7F60001AB97 /* SnapKit */,
 				964198D12729AB170001AB97 /* LaunchAtLogin */,
 				16539DCE278AD8700035B9DF /* SotoS3 */,
+				1649393C285E2620007278DA /* CocoaLumberjack */,
+				1649393E285E2620007278DA /* CocoaLumberjackSwift */,
+				1649394C285F1C45007278DA /* Zip */,
 			);
 			productName = uPic;
 			productReference = 16EC9A0222ABBBB4001B6C89 /* uPic.app */;
@@ -1022,6 +1039,8 @@
 				964198BA2729A75A0001AB97 /* XCRemoteSwiftPackageReference "MASShortcut" */,
 				964198D02729AB170001AB97 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */,
+				1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
+				1649394B285F1C44007278DA /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = 16A6DC4B22AA375700813706;
 			projectDirPath = "";
@@ -1192,7 +1211,6 @@
 				16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */,
 				16D20B5623838AB5006D8D01 /* BaiduHostConfig.swift in Sources */,
 				16CD34FB23BC8966005B52F2 /* Swime.swift in Sources */,
-				16CD34F523BC8855005B52F2 /* SmmsVersion.swift in Sources */,
 				1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */,
 				163632F322B2751D00805E7F /* BoolType.swift in Sources */,
 				1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */,
@@ -1228,6 +1246,7 @@
 				4B66A850235ED44600DED242 /* HistoryThumbnailView.swift in Sources */,
 				16995A3622B6026500B1F923 /* UpYunUtil.swift in Sources */,
 				167DDBED22C76F6600B03357 /* GithubHostConfig.swift in Sources */,
+				16493942285EC6CE007278DA /* Logger.swift in Sources */,
 				1646B80822C79349009271DF /* GiteeUtil.swift in Sources */,
 				168A3D1523D1AACA001BF1D9 /* RequestMethods.swift in Sources */,
 				1660FCBF22C1211900372950 /* TencentConfigView.swift in Sources */,
@@ -1551,7 +1570,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1560,7 +1579,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1582,7 +1601,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1591,7 +1610,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1608,7 +1627,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
@@ -1618,7 +1637,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1635,7 +1654,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
@@ -1645,7 +1664,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1661,7 +1680,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
@@ -1671,7 +1690,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1687,7 +1706,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
@@ -1697,7 +1716,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1747,6 +1766,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.7.0;
+			};
+		};
+		1649394B285F1C44007278DA /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 		16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soto-project/soto.git";
@@ -1822,6 +1857,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1649393C285E2620007278DA /* CocoaLumberjack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjack;
+		};
+		1649393E285E2620007278DA /* CocoaLumberjackSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjackSwift;
+		};
+		1649394C285F1C45007278DA /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1649394B285F1C44007278DA /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
+		};
 		16539DCE278AD8700035B9DF /* SotoS3 */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */;

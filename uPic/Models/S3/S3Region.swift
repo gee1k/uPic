@@ -22,7 +22,7 @@ public class S3Region {
         "af-south-1": ["cname": "非洲（开普敦）", "name": "Africa (Cape Town)"],
         "ap-east-1": ["cname": "亚太地区（香港）", "name": "Asia Pacific (Hong Kong)"],
         "ap-south-1": ["cname": "亚太地区（孟买）", "name": "Asia Pacific (Mumbai)"],
-        "ap-northeast-3": ["cname": "亚太地区 (大阪当地)", "name": "Asia Pacific (Osaka-Local)"],
+        "ap-northeast-3": ["cname": "亚太地区 (大阪)", "name": "Asia Pacific (Osaka)"],
         "ap-northeast-2": ["cname": "亚太地区（首尔）", "name": "Asia Pacific (Seoul)"],
         "ap-northeast-1": ["cname": "亚太地区（东京）", "name": "Asia Pacific (Tokyo)"],
         "ap-southeast-1": ["cname": "亚太地区（新加坡）", "name": "Asia Pacific (Singapore)"],

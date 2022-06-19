@@ -89,21 +89,21 @@ class CustomUploader: BaseUploader {
             
             AF.request(url, method: httpMethod, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
-            }.responseJSON(completionHandler: { response -> Void in
+            }.responseData(completionHandler: { response -> Void in
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
                     var retUrl = CustomHostUtil.parseResultUrl(json, config.resultPath ?? "")
                     if retUrl.isEmpty {
-                        super.faild(errorMsg: "Did not get the file URL".localized)
+                        super.faild(responseData: response.data, errorMsg: "Did not get the file URL".localized)
                         return
                     }
                     if !domain.isEmpty {
                         retUrl = "\(domain)/\(retUrl)"
                     }
                     super.completed(url: "\(retUrl)\(suffix)", retData, fileUrl, nil)
-                case .failure(let error):
-                    super.faild(errorMsg: error.localizedDescription)
+                case .failure(_):
+                    super.faild(responseData: response.data)
                 }
             })
         }
@@ -137,7 +137,7 @@ class CustomUploader: BaseUploader {
             
             AF.upload(multipartFormData: multipartFormDataGen, to: url, method: httpMethod, headers: headers).validate().uploadProgress { progress in
                 super.progress(percent: progress.fractionCompleted)
-                }.responseJSON(completionHandler: { response -> Void in
+                }.responseData(completionHandler: { response -> Void in
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)

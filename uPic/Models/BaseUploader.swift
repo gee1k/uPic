@@ -85,10 +85,22 @@ class BaseUploader {
             (NSApplication.shared.delegate as? AppDelegate)?.uploadCompleted(url: url)
         }
     }
-
-    func faild(errorMsg: String? = "") {
+    
+    func faild(errorMsg: String? = "",
+               file: StaticString = #file,
+               function: StaticString = #function,
+               line: UInt = #line) {
+        self.faild(responseData: nil, errorMsg: errorMsg)
+    }
+    
+    func faild(responseData: Data?, errorMsg: String? = nil,
+               file: StaticString = #file,
+               function: StaticString = #function,
+               line: UInt = #line) {
+        let responseStr = responseData != nil ? String(data: responseData!, encoding: .utf8) : nil
+        
         DispatchQueue.main.async {
-            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg, detailMsg: responseStr)
         }
     }
     
@@ -105,7 +117,9 @@ class BaseUploader {
     /// As a unified entry point for uploads
     ///
     static func upload(url: URL, _ defaultHost: Host? = nil) {
+        Logger.shared.info("开始上传")
         guard let host = defaultHost ?? ConfigManager.shared.getDefaultHost() else {
+            Logger.shared.warn("未获取到图床")
             return
         }
         
@@ -124,6 +138,8 @@ class BaseUploader {
                 return
             }
         }
+        
+        Logger.shared.info("匹配上传图床：\(host.type.rawValue)")
         
         /* 有新的图床在这里进行判断调用 */
         switch host.type {

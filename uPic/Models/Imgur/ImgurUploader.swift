@@ -53,7 +53,7 @@ class ImgurUploader: BaseUploader {
         
         AF.upload(multipartFormData: multipartFormDataGen, to: url, headers: headers).uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
-            }.responseJSON(completionHandler: { response -> Void in
+            }.responseData(completionHandler: { response -> Void in
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
@@ -62,10 +62,10 @@ class ImgurUploader: BaseUploader {
                     } else {
                         let error = json["data"]["error"]
                         let errorMsg = error.string ?? error["message"].stringValue
-                        super.faild(errorMsg: errorMsg)
+                        super.faild(responseData: response.data, errorMsg: errorMsg)
                     }
-                case .failure(let error):
-                    super.faild(errorMsg: error.localizedDescription)
+                case .failure(_):
+                    super.faild(responseData: response.data)
                 }
             })
     }

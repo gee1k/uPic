@@ -74,18 +74,18 @@ class QiniuUploader: BaseUploader {
 
         AF.upload(multipartFormData: multipartFormDataGen, to: url, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
-        }.responseJSON(completionHandler: { response -> Void in
+        }.responseData(completionHandler: { response -> Void in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
                 let error = json["error"].string
                 if error != nil && error!.count > 0 {
-                    super.faild(errorMsg: error)
+                    super.faild(responseData: response.data, errorMsg: error)
                 } else {
                     super.completed(url: "\(domain)/\(saveKey)\(suffix)", retData, fileUrl, fileName)
                 }
-            case .failure(let error):
-                super.faild(errorMsg: error.localizedDescription)
+            case .failure(_):
+                super.faild(responseData: response.data)
             }
         })
 

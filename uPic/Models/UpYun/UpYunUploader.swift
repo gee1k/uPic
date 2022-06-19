@@ -80,7 +80,7 @@ class UpYunUploader: BaseUploader {
 
         AF.upload(multipartFormData: multipartFormDataGen, to: "\(url)\(bucket)", headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
-        }.responseJSON(completionHandler: { response -> Void in
+        }.responseData(completionHandler: { response -> Void in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -88,10 +88,10 @@ class UpYunUploader: BaseUploader {
                 if 200 == code {
                     super.completed(url: "\(domain)/\(saveKey)\(suffix)", retData, fileUrl, fileName)
                 } else {
-                    super.faild(errorMsg: json["message"].string)
+                    super.faild(responseData: response.data, errorMsg: json["message"].string)
                 }
-            case .failure(let error):
-                super.faild(errorMsg: error.localizedDescription)
+            case .failure(_):
+                super.faild(responseData: response.data)
             }
         })
 

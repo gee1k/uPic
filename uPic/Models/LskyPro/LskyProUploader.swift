@@ -67,7 +67,7 @@ class LskyProUploader: BaseUploader {
             let url = "\(domain)/api/upload"
             AF.upload(multipartFormData: multipartFormDataGen, to: url, headers: headers).validate().uploadProgress { progress in
                 super.progress(percent: progress.fractionCompleted)
-                }.responseJSON(completionHandler: { response -> Void in
+                }.responseData(completionHandler: { response -> Void in
                     switch response.result {
                     case .success(let value):
                         let json = JSON(value)
@@ -76,10 +76,10 @@ class LskyProUploader: BaseUploader {
                         if json["code"].intValue == 200 {
                             super.completed(url: retUrl, retData, fileUrl, retName)
                         } else {
-                            super.faild(errorMsg: json["msg"].string ?? "unknown error")
+                            super.faild(responseData: response.data, errorMsg: json["msg"].string ?? "unknown error")
                         }
-                    case .failure(let error):
-                        super.faild(errorMsg: error.localizedDescription)
+                    case .failure(_):
+                        super.faild(responseData: response.data)
                     }
                 })
         }
@@ -123,7 +123,7 @@ class LskyProUploader: BaseUploader {
         }
         
         
-        AF.upload(multipartFormData: multipartFormDataGen, to: loginUrl, headers: headers).validate().responseJSON(completionHandler: { response in
+        AF.upload(multipartFormData: multipartFormDataGen, to: loginUrl, headers: headers).validate().responseData(completionHandler: { response in
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)

@@ -55,6 +55,12 @@
 /* 导出图床配置成功内容 */
 "The configuration file is exported successfully, Do not modify the file contents!" = "配置文件导出成功, 请勿修改文件内容!";
 
+
+/* 没有日志 */
+"No logs!" = "暂无日志！";
+/* 导出日志成功内容 */
+"The export was successful, plaese do not send the log to others!" = "导出完成，请勿将日志发送给其他人！";
+
 /* 复制的文件不存在 */
 "The file does not exist or has been deleted!" = "复制的文件不存在或已被删除!";
 /* 无权访问该文件 */
@@ -167,10 +173,6 @@
 "weibo.quality.thumbnail" = "缩略图";
 "weibo.quality.mw690" = "中等大小";
 "weibo.quality.large" = "原图";
-
-/* smms version */
-"smms.version.v1" = "匿名版";
-"smms.version.v2" = "付费版(注册用户)";
 
 "Validate" = "验证";
 
