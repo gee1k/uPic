@@ -167,10 +167,6 @@
 "weibo.quality.mw690" = "medium size";
 "weibo.quality.large" = "original";
 
-/* smms version */
-"smms.version.v1" = "Anonymous";
-"smms.version.v2" = "Paid version (registered user)";
-
 "Validate" = "Validate";
 
 /*eroor message*/

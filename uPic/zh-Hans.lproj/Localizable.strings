@@ -168,10 +168,6 @@
 "weibo.quality.mw690" = "中等大小";
 "weibo.quality.large" = "原图";
 
-/* smms version */
-"smms.version.v1" = "匿名版";
-"smms.version.v2" = "付费版(注册用户)";
-
 "Validate" = "验证";
 
 /*eroor message*/

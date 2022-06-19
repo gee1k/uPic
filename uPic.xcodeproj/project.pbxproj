@@ -111,7 +111,6 @@
 		16BDDDFF22EA96AE0080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDDFE22EA96AE0080E467 /* Assets.xcassets */; };
 		16BDDE0322EAA2920080E467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BDDE0222EAA2920080E467 /* Assets.xcassets */; };
 		16CD34F323BC87ED005B52F2 /* SmmsHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */; };
-		16CD34F523BC8855005B52F2 /* SmmsVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F423BC8855005B52F2 /* SmmsVersion.swift */; };
 		16CD34F723BC88E2005B52F2 /* SmmsConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F623BC88E2005B52F2 /* SmmsConfigView.swift */; };
 		16CD34FB23BC8966005B52F2 /* Swime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34F923BC8966005B52F2 /* Swime.swift */; };
 		16CD34FC23BC8966005B52F2 /* MimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CD34FA23BC8966005B52F2 /* MimeType.swift */; };
@@ -320,7 +319,6 @@
 		16BDDDFE22EA96AE0080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16BDDE0222EAA2920080E467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsHostConfig.swift; sourceTree = "<group>"; };
-		16CD34F423BC8855005B52F2 /* SmmsVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsVersion.swift; sourceTree = "<group>"; };
 		16CD34F623BC88E2005B52F2 /* SmmsConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsConfigView.swift; sourceTree = "<group>"; };
 		16CD34F923BC8966005B52F2 /* Swime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swime.swift; sourceTree = "<group>"; };
 		16CD34FA23BC8966005B52F2 /* MimeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MimeType.swift; sourceTree = "<group>"; };
@@ -648,7 +646,6 @@
 			children = (
 				1602ED9822ADF43800AA8638 /* SmmsUploader.swift */,
 				16CD34F223BC87ED005B52F2 /* SmmsHostConfig.swift */,
-				16CD34F423BC8855005B52F2 /* SmmsVersion.swift */,
 			);
 			path = Smms;
 			sourceTree = "<group>";
@@ -1210,7 +1207,6 @@
 				16A6DC5822AA375700813706 /* AppDelegate.swift in Sources */,
 				16D20B5623838AB5006D8D01 /* BaiduHostConfig.swift in Sources */,
 				16CD34FB23BC8966005B52F2 /* Swime.swift in Sources */,
-				16CD34F523BC8855005B52F2 /* SmmsVersion.swift in Sources */,
 				1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */,
 				163632F322B2751D00805E7F /* BoolType.swift in Sources */,
 				1646B80722C79346009271DF /* GiteeHostConfig.swift in Sources */,
