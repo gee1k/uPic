@@ -54,6 +54,11 @@
 /* 导出图床配置成功内容 */
 "The configuration file is exported successfully, Do not modify the file contents!" = "The configuration file is exported successfully, Do not modify the file contents!";
 
+/* 没有日志 */
+"No logs!" = "No logs!";
+/* 导出日志成功内容 */
+"The export was successful, plaese do not send the log to others!" = "The export was successful, plaese do not send the log to others!";
+
 /* 文件不存在或已被删除 */
 "The file does not exist or has been deleted!" = "The file does not exist or has been deleted!";
 /* 无权访问该文件 */

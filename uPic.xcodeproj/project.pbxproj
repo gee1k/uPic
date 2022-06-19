@@ -46,6 +46,7 @@
 		1649393D285E2620007278DA /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = 1649393C285E2620007278DA /* CocoaLumberjack */; };
 		1649393F285E2620007278DA /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1649393E285E2620007278DA /* CocoaLumberjackSwift */; };
 		16493942285EC6CE007278DA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16493941285EC6CE007278DA /* Logger.swift */; };
+		1649394D285F1C45007278DA /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 1649394C285F1C45007278DA /* Zip */; };
 		164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C39FF22B2AA6C003ADE39 /* Notifier.swift */; };
 		164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C3A0122B2AB22003ADE39 /* ConfigNotifier.swift */; };
 		16539DCF278AD8700035B9DF /* SotoS3 in Frameworks */ = {isa = PBXBuildFile; productRef = 16539DCE278AD8700035B9DF /* SotoS3 */; };
@@ -396,6 +397,7 @@
 			files = (
 				964198BC2729A75B0001AB97 /* MASShortcut in Frameworks */,
 				1649393D285E2620007278DA /* CocoaLumberjack in Frameworks */,
+				1649394D285F1C45007278DA /* Zip in Frameworks */,
 				1649393F285E2620007278DA /* CocoaLumberjackSwift in Frameworks */,
 				964198B62729A6BA0001AB97 /* SwiftyJSON in Frameworks */,
 				964198C62729A7F00001AB97 /* Kingfisher in Frameworks */,
@@ -938,6 +940,7 @@
 				16539DCE278AD8700035B9DF /* SotoS3 */,
 				1649393C285E2620007278DA /* CocoaLumberjack */,
 				1649393E285E2620007278DA /* CocoaLumberjackSwift */,
+				1649394C285F1C45007278DA /* Zip */,
 			);
 			productName = uPic;
 			productReference = 16EC9A0222ABBBB4001B6C89 /* uPic.app */;
@@ -1037,6 +1040,7 @@
 				964198D02729AB170001AB97 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */,
 				1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
+				1649394B285F1C44007278DA /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = 16A6DC4B22AA375700813706;
 			projectDirPath = "";
@@ -1770,6 +1774,14 @@
 				minimumVersion = 3.7.0;
 			};
 		};
+		1649394B285F1C44007278DA /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 		16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soto-project/soto.git";
@@ -1854,6 +1866,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
 			productName = CocoaLumberjackSwift;
+		};
+		1649394C285F1C45007278DA /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1649394B285F1C44007278DA /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
 		};
 		16539DCE278AD8700035B9DF /* SotoS3 */ = {
 			isa = XCSwiftPackageProductDependency;

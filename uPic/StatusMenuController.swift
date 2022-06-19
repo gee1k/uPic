@@ -122,6 +122,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     @IBAction func exportHostsMenuItemClicked(_ sender: NSMenuItem) {
         ConfigManager.shared.exportHosts()
     }
+    
+    // export logs
+    @IBAction func exportLogsMenuItemClicked(_ sender: NSMenuItem) {
+        Logger.shared.export()
+    }
 
     // quit app
     @IBAction func quitMenuItemClicked(_ sender: NSMenuItem) {

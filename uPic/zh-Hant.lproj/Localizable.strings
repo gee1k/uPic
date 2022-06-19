@@ -56,6 +56,11 @@
 /* 導出圖床配置成功內容 */
 "The configuration file is exported successfully, Do not modify the file contents!" = "配置文件導出成功, 請勿修改文件內容!";
 
+/* 没有日志 */
+"No logs!" = "暫無日誌！";
+/* 导出日志成功内容 */
+"The export was successful, plaese do not send the log to others!" = "導出完成，請勿將日誌發送給其他人！";
+
 /* 複製的文件不存在 */
 "The file does not exist or has been deleted!" = "複製的文件不存在或已被刪除!";
 /* 无权访问该文件 */

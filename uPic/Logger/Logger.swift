@@ -8,12 +8,44 @@
 
 import Foundation
 import CocoaLumberjackSwift
-
+import Zip
 
 public class Logger {
     public static var shared = Logger()
     
     private var fileLogger: DDFileLogger?
+    
+    public var logFileURLArray: [URL] {
+        get {
+            guard let ddFileLogger = self.fileLogger else {
+                return []
+            }
+            let logFilePaths = ddFileLogger.logFileManager.sortedLogFilePaths
+            
+            return logFilePaths.map { (filePath: String) in
+                return URL(fileURLWithPath: filePath)
+            }
+        }
+    }
+    
+    public var logFileDataArray: [Data] {
+        get {
+            guard let ddFileLogger = self.fileLogger else {
+                return []
+            }
+            let logFilePaths = ddFileLogger.logFileManager.sortedLogFilePaths
+            var logFileDataArray = [Data]()
+            for logFilePath in logFilePaths {
+                
+                let fileURL = URL(fileURLWithPath: logFilePath)
+                if let logFileData = try? Data(contentsOf: fileURL, options: .mappedIfSafe) {
+                    // Insert at front to reverse the order, so that oldest logs appear first.
+                    logFileDataArray.insert(logFileData, at: 0)
+                }
+            }
+            return logFileDataArray
+        }
+    }
     
     init() {
         
@@ -70,22 +102,42 @@ public class Logger {
         DDLogError(message, file: file, function: function, line: line)
     }
     
-    public var logFileDataArray: [Data] {
-        get {
-            guard let ddFileLogger = self.fileLogger else {
-                return []
-            }
-            let logFilePaths = ddFileLogger.logFileManager.sortedLogFilePaths 
-            var logFileDataArray = [Data]()
-            for logFilePath in logFilePaths {
-                
-                let fileURL = URL(fileURLWithPath: logFilePath)
-                if let logFileData = try? Data(contentsOf: fileURL, options: .mappedIfSafe) {
-                    // Insert at front to reverse the order, so that oldest logs appear first.
-                    logFileDataArray.insert(logFileData, at: 0)
+    public func export() {
+        
+        if self.logFileURLArray.count == 0 {
+            NotificationExt.shared.post(title: "Export failed".localized, info: "No logs!".localized)
+            return
+        }
+        
+        NSApp.activate(ignoringOtherApps: true)
+        
+        let savePanel = NSSavePanel()
+        savePanel.directoryURL = URL(fileURLWithPath: NSHomeDirectory().appendingPathComponent(path: "Downloads"))
+        savePanel.nameFieldStringValue = "uPic_Logs.zip"
+        savePanel.allowsOtherFileTypes = false
+        savePanel.isExtensionHidden = false
+        savePanel.canCreateDirectories = true
+        savePanel.allowedFileTypes = ["zip"]
+
+        savePanel.begin { (result) -> Void in
+            do {
+                if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
+                    guard let url = savePanel.url else {
+                        NotificationExt.shared.post(title: "Export failed".localized, info: "")
+                        return
+                    }
+                    
+                    let zipFilePath = try Zip.quickZipFiles(self.logFileURLArray, fileName: "uPic_Logs") // Zip
+                    try? Data(contentsOf: zipFilePath, options: .mappedIfSafe).write(to: url)
+                    
+                    NotificationExt.shared.post(title: "Successfully".localized,
+                         info: "The export was successful, plaese do not send the log to others!".localized)
                 }
             }
-            return logFileDataArray
+            catch {
+                NotificationExt.shared.post(title: "Export failed".localized, info: "")
+            }
+            
         }
     }
 }
