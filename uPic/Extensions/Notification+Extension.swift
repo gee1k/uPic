@@ -163,6 +163,7 @@ extension NotificationExt: NSUserNotificationCenterDelegate {
 extension NotificationExt {
     // MARK: 请求通知权限
     static func requestAuthorization () {
+        Logger.shared.verbose("Request notification authorization")
         if #available(OSX 10.14, *) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (success, error) in
                 if success {

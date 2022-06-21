@@ -135,17 +135,20 @@ class StatusMenuController: NSObject, NSMenuDelegate {
 
     // change output format
     @IBAction func outputFormatMenuItemClicked(_ sender: NSMenuItem) {
+        Logger.shared.verbose("切换输出格式: \(sender.title)")
         ConfigManager.shared.setOutputType(sender.tag)
         self.refreshOutputFormat()
     }
     
     @IBAction func outputFormatEncodeMenuItemClicked(_ sender: NSMenuItem) {
+        Logger.shared.verbose("切换输出格式编码: \(sender.title)")
         Defaults[.outputFormatEncoded] = sender.tag == 0
         self.refreshOutputFormatEncoded()
     }
     
     // change current host
     @objc func changeDefaultHost(_ sender: NSMenuItem) {
+        Logger.shared.verbose("切换图床: \(sender.title)")
         guard let hostId = sender.identifier?.rawValue else {
             return
         }
@@ -166,6 +169,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     // reset host menu list
     @objc func resetHostMenu() {
         let hostItems = ConfigManager.shared.getHostItems()
+
+        let hostNames = hostItems.map({ $0.name }).joined(separator: ",")
+        Logger.shared.verbose("更新图床菜单: \(hostNames)")
+
         hostMenuItem.submenu?.removeAllItems()
         for item in hostItems {
             let menuItem = NSMenuItem(title: item.name, action: #selector(changeDefaultHost(_:)), keyEquivalent: "")
@@ -262,6 +269,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     // refresh output format to select
     func refreshOutputFormat() {
         let outputFormatList = DBManager.shared.getOutputFormatList()
+
+        let formatNames = outputFormatList.map({ $0.name }).joined(separator: ",")
+        Logger.shared.verbose("更新输出格式菜单: \(formatNames)")
         
         outputFormatMenuItem.submenu?.removeAllItems()
         for item in outputFormatList {

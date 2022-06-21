@@ -81,7 +81,9 @@ extension DiskPermissionManager {
 //    }
     
     func checkFullDiskAuthorizationStatus() -> Bool {
+        Logger.shared.verbose("开始检查是否有全盘访问权限")
         guard let data = Defaults[.rootDirectoryBookmark] else {
+            Logger.shared.verbose("没有全盘访问权限-未找到书签")
             return false
         }
         do {
@@ -90,42 +92,52 @@ extension DiskPermissionManager {
             if isStale {
                 // bookmarks could become stale as the OS changes
                 print("Bookmark is stale, need to save a new one... ")
+                Logger.shared.verbose("没有全盘访问权限-书签已过期，需要保存一个新的...")
                 return false
             }
-            return url.path == "/"
+            if (url.path == "/") {
+                Logger.shared.verbose("有全盘访问权限")
+                return true
+            } else {
+                Logger.shared.verbose("没有全盘访问权限-书签路径为\(url.path)")
+                return false
+            }
         } catch {
             print("Error resolving bookmark:", error)
+            Logger.shared.error("没有全盘访问权限-书签错误\(error)")
             return false
         }
     }
     
     func requestFullDiskPermissions() {
-        debugPrintOnly("开始授权根目录权限")
+        Logger.shared.verbose("开始授权根目录权限")
         guard let url = self.promptForWorkingDirectoryPermission() else {
+            Logger.shared.verbose("授权根目录权限失败")
             return
         }
         self.saveBookmarkData(for: url, defaultKey: .rootDirectoryBookmark)
-        debugPrintOnly("授权根目录权限成功")
+        Logger.shared.verbose("授权根目录权限成功-\(url.path)")
     }
     
     func cancelFullDiskPermissions() {
-        debugPrintOnly("取消授权根目录权限")
+        Logger.shared.verbose("取消授权根目录权限")
         Defaults[.rootDirectoryBookmark] = nil
-        debugPrintOnly("取消根目录权限成功")
+        Logger.shared.verbose("取消根目录权限成功")
     }
     
     func requestHomeDirectoryPermissions() {
-        debugPrintOnly("开始授权主目录权限")
+        Logger.shared.verbose("开始授权主目录权限")
         guard let url = self.promptForWorkingDirectoryPermission(for: URL(fileURLWithPath: "~/", isDirectory: true)) else {
+            Logger.shared.verbose("授权主目录权限失败")
             return
         }
         self.saveBookmarkData(for: url, defaultKey: .homeDirectoryBookmark)
-        debugPrintOnly("授权主目录权限成功")
+        Logger.shared.verbose("授权主目录权限成功-\(url.path)")
     }
     
     // 获取安全授权，根目录授权优先获取，无根目录书签时获取主目录书签
     func startDirectoryAccessing() -> Bool {
-        debugPrintOnly("开始获取安全授权")
+        Logger.shared.verbose("开始获取安全授权")
         
         stopDirectoryAccessing()
         
@@ -134,27 +146,29 @@ extension DiskPermissionManager {
             
             workingDirectoryBookmarkUrl = url
             let flag = url.startAccessingSecurityScopedResource()
-            debugPrintOnly("开始获取安全授权完成--根目录")
+            Logger.shared.verbose("获取安全授权完成--根目录-\(url.path)")
             return flag
         } else if let data = Defaults[.homeDirectoryBookmark], let url = restoreFileAccess(with: data, defaultKey: .homeDirectoryBookmark) {
             // 获取主目录授权书签
             
             workingDirectoryBookmarkUrl = url
             let flag = url.startAccessingSecurityScopedResource()
-            debugPrintOnly("开始获取安全授权完成--用户主目录")
+            Logger.shared.verbose("获取安全授权完成--用户主目录-\(url.path)")
             return flag
         }
+        Logger.shared.verbose("未获取安全授权")
         
         return false
     }
     
     func stopDirectoryAccessing() {
-        debugPrintOnly("开始停止获取安全授权")
+        Logger.shared.verbose("开始停止获取安全授权")
         guard let url = workingDirectoryBookmarkUrl else {
+            Logger.shared.verbose("停止获取安全授权失败，未获取到书签")
             return
         }
         url.stopAccessingSecurityScopedResource()
         workingDirectoryBookmarkUrl = nil
-        debugPrintOnly("停止获取安全授权完成")
+        Logger.shared.verbose("停止获取安全授权完成")
     }
 }

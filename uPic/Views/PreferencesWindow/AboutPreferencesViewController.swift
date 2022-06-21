@@ -14,10 +14,8 @@ class AboutPreferencesViewController: PreferencesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let versionNum = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-        let buildNum = Bundle.main.infoDictionary?["CFBundleVersion"] as! String
-        versionLabel.stringValue = "v\(versionNum) (\(buildNum))"
+
+        versionLabel.stringValue = getAppVersionString()
     }
     
     @IBAction func githubButtonClicked(_ sender: NSButton) {

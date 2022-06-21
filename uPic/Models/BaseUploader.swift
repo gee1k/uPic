@@ -26,19 +26,22 @@ class BaseUploader {
 
     func completed(url: String, _ fileData: Data?, _ fileUrl: URL?, _ fileName: String?) {
         if !url.isEmpty {
-            
+
             var thumbnailFileData: Data!
-            
+
             if let fileData = fileData {
                 thumbnailFileData = fileData
             } else if let fileUrl = fileUrl {
-                do { thumbnailFileData = try Data(contentsOf: fileUrl) } catch { }
+                do {
+                    thumbnailFileData = try Data(contentsOf: fileUrl)
+                } catch {
+                }
             }
-            
+
             if thumbnailFileData == nil {
                 return
             }
-            
+
             let size = thumbnailFileData.count
             var thumbnailData: Data?
             var previewWidth: CGFloat = 0
@@ -53,22 +56,22 @@ class BaseUploader {
                     previewWidth = bigSize.width
                     previewHeight = previewWidth / originalScale
                 }
-                
+
                 if previewHeight > bigSize.height {
                     previewHeight = bigSize.height
                     previewWidth = bigSize.height * originalScale
                 }
-                
+
                 let imageSize = NSSize(width: PreviewDefaulWidthGlobal, height: PreviewDefaulWidthGlobal / originalScale)
-                if let imgData = image.resizeImage(size: imageSize).tiffRepresentation,let imgRep = NSBitmapImageRep(data: imgData), let pingy = imgRep.representation(using: .png, properties:  [:]) {
-                    
+                if let imgData = image.resizeImage(size: imageSize).tiffRepresentation, let imgRep = NSBitmapImageRep(data: imgData), let pingy = imgRep.representation(using: .png, properties: [:]) {
+
                     thumbnailData = BaseUploaderUtil.compressPng(pingy, factor: 5)
                 } else {
                     thumbnailData = image.resizeImage(size: imageSize).tiffRepresentation
                 }
                 isImage = true
             }
-            
+
             let previewModel = HistoryThumbnailModel()
             previewModel.url = url
             previewModel.previewWidth = Double(previewWidth)
@@ -77,70 +80,72 @@ class BaseUploader {
             previewModel.size = size
             previewModel.host = Defaults[.defaultHostId]
             previewModel.isImage = isImage
-            
+
             ConfigManager.shared.addHistory(previewModel)
         }
-        
+
         DispatchQueue.main.async {
             (NSApplication.shared.delegate as? AppDelegate)?.uploadCompleted(url: url)
         }
     }
-    
+
     func faild(errorMsg: String? = "",
                file: StaticString = #file,
                function: StaticString = #function,
                line: UInt = #line) {
-        self.faild(responseData: nil, errorMsg: errorMsg)
+        self.faild(responseData: nil, errorMsg: errorMsg, file: file, function: function, line: line)
     }
-    
+
     func faild(responseData: Data?, errorMsg: String? = nil,
                file: StaticString = #file,
                function: StaticString = #function,
                line: UInt = #line) {
         let responseStr = responseData != nil ? String(data: responseData!, encoding: .utf8) : nil
-        
+
         DispatchQueue.main.async {
-            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg, detailMsg: responseStr)
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg, detailMsg: responseStr, file: file, function: function, line: line)
         }
     }
-    
+
     /*********************************************************** static *******************************************************************/
-    
+
     static func cancelUpload() {
         Session.default.session.getTasksWithCompletionHandler({ dataTasks, uploadTasks, downloadTasks in
-            uploadTasks.forEach { $0.cancel() }
+            uploadTasks.forEach {
+                $0.cancel()
+            }
         })
     }
-    
+
     ///
     /// 作为上传的统一入口
     /// As a unified entry point for uploads
     ///
     static func upload(url: URL, _ defaultHost: Host? = nil) {
-        Logger.shared.info("开始上传")
+        Logger.shared.info("开始上传-fileURL方式-\(url.path)")
         guard let host = defaultHost ?? ConfigManager.shared.getDefaultHost() else {
             Logger.shared.warn("未获取到图床")
             return
         }
-        
+
         let fileExtensions = BaseUploader.getFileExtensions()
         if (!BaseUploader.checkFileExtensions(fileExtensions: fileExtensions, fileExtension: url.pathExtension)) {
-            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: "File format not supported!".localized)
+            let errorMsg = "\("File format not supported!".localized)\(url.pathExtension)"
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
             return
         }
-        
+
         if let attr = try? FileManager.default.attributesOfItem(atPath: url.path), let fileSize = attr[FileAttributeKey.size] as? UInt64 {
             let limitSize = BaseUploader.getFileSizeLimit()
             if (!BaseUploader.checkFileSize(fileSize: fileSize, limitSize: limitSize)) {
-                
                 let errorMsg = "\("File is over the size limit! Limit:".localized)\(ByteCountFormatter.string(fromByteCount: Int64(limitSize), countStyle: .binary))"
                 (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
                 return
             }
         }
-        
-        Logger.shared.info("匹配上传图床：\(host.type.rawValue)")
-        
+
+        Logger.shared.info("匹配上传图床：\(host.name)(\(host.type.rawValue))-\(host.data?.serialize() ?? "")")
+
         /* 有新的图床在这里进行判断调用 */
         switch host.type {
         case .smms:
@@ -184,26 +189,29 @@ class BaseUploader {
             break
         }
     }
-    
+
     ///
     /// 作为上传的统一入口
     /// As a unified entry point for uploads
     ///
     static func upload(data: Data, _ defaultHost: Host? = nil) {
+        Logger.shared.info("开始上传-data方式")
         guard let host = defaultHost ?? ConfigManager.shared.getDefaultHost() else {
+            Logger.shared.warn("未获取到图床")
             return
         }
-        
+
         let limitSize = BaseUploader.getFileSizeLimit()
         if (!BaseUploader.checkFileSize(fileSize: UInt64(data.count), limitSize: limitSize)) {
-            
+
             let errorMsg = "\("File is over the size limit! Limit:".localized)\(ByteCountFormatter.string(fromByteCount: Int64(limitSize), countStyle: .binary))"
             DispatchQueue.main.async {
                 (NSApplication.shared.delegate as? AppDelegate)?.uploadFaild(errorMsg: errorMsg)
             }
             return
         }
-        
+        Logger.shared.info("匹配上传图床：\(host.name)(\(host.type.rawValue))-\(host.data?.serialize() ?? "")")
+
         /* 有新的图床在这里进行判断调用 */
         switch host.type {
         case .smms:
@@ -247,7 +255,7 @@ class BaseUploader {
             break
         }
     }
-    
+
     ///
     /// 获取当前图床对应的支持文件格式
     ///
@@ -255,7 +263,7 @@ class BaseUploader {
         guard let host = ConfigManager.shared.getDefaultHost() else {
             return [String]()
         }
-        
+
         /* 有新的图床在这里进行判断调用 */
         switch host.type {
         case .smms:
@@ -286,7 +294,7 @@ class BaseUploader {
             return LskyProUploader.fileExtensions
         }
     }
-    
+
     ///
     /// 获取当前图床对应的文件大小限制
     ///
@@ -294,7 +302,7 @@ class BaseUploader {
         guard let host = ConfigManager.shared.getDefaultHost() else {
             return 0
         }
-        
+
         /* 有新的图床在这里进行判断调用 */
         switch host.type {
         case .imgur:
@@ -303,7 +311,7 @@ class BaseUploader {
             return 0
         }
     }
-    
+
     static func checkFileExtensions(fileExtensions: [String], fileExtension: String) -> Bool {
         if fileExtensions.count == 0 {
             return true
@@ -311,27 +319,28 @@ class BaseUploader {
         let valid = fileExtensions.contains(fileExtension.lowercased())
         return valid
     }
-    
+
     private static func checkFileSize(fileSize: UInt64?, limitSize: UInt64) -> Bool {
         guard let size = fileSize else {
             return true
         }
-        
+
         if (limitSize <= 0) {
             return true
         }
-        
+
         return size <= limitSize
     }
 }
 
 var _uploadFolderPathKey: Void?
+
 extension URL {
     var _uploadFolderPath: String? {
         get {
             return objc_getAssociatedObject(self, &_uploadFolderPathKey) as? String
         }
-        
+
         set {
             objc_setAssociatedObject(self, &_uploadFolderPathKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
@@ -343,7 +352,7 @@ extension Data {
         get {
             return objc_getAssociatedObject(self, &_uploadFolderPathKey) as? String
         }
-        
+
         set {
             objc_setAssociatedObject(self, &_uploadFolderPathKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }

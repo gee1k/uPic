@@ -28,6 +28,8 @@ public class ConfigManager {
     }
     
     public func firstSetup() {
+        Logger.shared.verbose("First Setup Config")
+
         // Cahce history list
         let _ = getHistoryList()
         
@@ -174,6 +176,8 @@ extension ConfigManager {
 // MARK: - Import, Export host configuretion
 extension ConfigManager {
     func importHosts() {
+        Logger.shared.verbose("导入图床配置")
+
         NSApp.activate(ignoringOtherApps: true)
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
@@ -187,6 +191,7 @@ extension ConfigManager {
                     let data = NSData(contentsOfFile: url.path),
                     let array = try? JSONSerialization.jsonObject(with: data as Data) as? [String]
                     else {
+                        Logger.shared.error("导入图床配置失败")
                         NotificationExt.shared.postImportErrorNotice()
                         return
                 }
@@ -194,6 +199,7 @@ extension ConfigManager {
                     return Host.deserialize(str: str)
                 }.filter { $0 != nil }
                 if hostItems.count == 0 {
+                    Logger.shared.error("导入图床配置失败")
                     NotificationExt.shared.postImportErrorNotice()
                     return
                 }
@@ -224,11 +230,16 @@ extension ConfigManager {
                         }
                     }
                     ConfigManager.shared.setHostItems(items: currentHostItems)
+
+                    Logger.shared.verbose("导入图床配置成功: \(currentHostItems.count)")
                     NotificationExt.shared.postImportSuccessfulNotice()
                 case .alertSecondButtonReturn:
                     ConfigManager.shared.setHostItems(items: hostItems as! [Host])
+
+                    Logger.shared.verbose("导入图床配置成功: \(hostItems.count)")
                     NotificationExt.shared.postImportSuccessfulNotice()
                 default:
+                    Logger.shared.verbose("取消导入图床配置")
                     print("Cancel Import")
                 }
             }
@@ -236,8 +247,10 @@ extension ConfigManager {
     }
     
     func exportHosts() {
+        Logger.shared.verbose("导出图床配置")
         let hostItems = ConfigManager.shared.getHostItems()
         if hostItems.count == 0 {
+            Logger.shared.warn("没有可导出的图床配置")
             NotificationExt.shared.postExportErrorNotice("No exportable hosts!".localized)
             return
         }
@@ -255,6 +268,7 @@ extension ConfigManager {
             if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
                 
                 guard let url = savePanel.url else {
+                    Logger.shared.error("导出图床配置失败")
                     NotificationExt.shared.postImportErrorNotice()
                     return
                 }
@@ -263,6 +277,7 @@ extension ConfigManager {
                     return hostItem.serialize()
                 }
                 if (!JSONSerialization.isValidJSONObject(hostStrArr)) {
+                    Logger.shared.error("导出图床配置失败")
                     NotificationExt.shared.postImportErrorNotice()
                     return
                 }
@@ -271,6 +286,7 @@ extension ConfigManager {
                 JSONSerialization.writeJSONObject(hostStrArr, to: os!, options: .prettyPrinted, error: .none)
                 os?.close()
                 NotificationExt.shared.postExportSuccessfulNotice()
+                Logger.shared.verbose("导出图床配置成功")
             }
         }
     }

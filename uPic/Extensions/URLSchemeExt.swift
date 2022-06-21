@@ -12,8 +12,10 @@ class URLSchemeExt {
     public static var shared = URLSchemeExt()
     
     func handleURL(_ urlStr: String) {
-        
+        Logger.shared.verbose("开始解析 URLScheme 参数-\(urlStr)")
+
         guard let url = NSURL(string: urlStr) else {
+            Logger.shared.error("URLScheme 参数解析失败")
             return
         }
         
@@ -21,7 +23,9 @@ class URLSchemeExt {
         var param = urlStr
         let i = "\(url.scheme!)://".count
         param.removeFirst(i)
-        
+
+        Logger.shared.verbose("URLScheme 参数解析成功-\(param)")
+
         /// 解析参数类型
         let keyValue = param.split(separator: "?")
         switch keyValue.first {

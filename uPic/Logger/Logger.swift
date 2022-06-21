@@ -171,8 +171,7 @@ class CustomDDLogFormatter: NSObject, DDLogFormatter {
         let lineNumber = logMessage.line
         let file = logMessage.fileName
         let functionName = logMessage.function
-        let threadId = logMessage.threadID
 
-        return "\(dt) [\(threadId)] [\(logLevel)] [\(file):\(lineNumber)]\(functionName ?? "") - \(logMsg)"
+        return "\(dt) [\(logLevel)] [\(file):\(lineNumber)]\(functionName ?? "") - \(logMsg)"
     }
 }

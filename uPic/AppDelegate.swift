@@ -58,15 +58,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Register events and status bar menus only in non-command line mode
         
         // Set status bar icon and progress icon
-        Logger.shared.verbose("Setup status bar")
         setupStatusBar()
         
         // Request notification permission
-        Logger.shared.verbose("Request notication authorization")
         NotificationExt.requestAuthorization()
         
-        
-        Logger.shared.verbose("Bind shortcuts")
+
         bindShortcuts()
         
         
@@ -83,18 +80,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         Logger.shared.verbose("Application did finish launching...")
+
+        Logger.shared.info("System Version: \(getModelIdentifier())(\(getSystemVersionString())) - App Version:\(getAppVersionString())")
         
         // Insert code here to initialize your application
         ConfigManager.shared.firstSetup()
         
         if !Defaults[.requestedAuthorization] {
             Defaults[.requestedAuthorization] = true
+            Logger.shared.verbose("打开欢迎页面以及获取授权页")
             // 打开欢迎页面以及获取授权页
             _ = WindowManager.shared.showWindow(storyboard: "Welcome", withIdentifier: "welcomeWindowController")
         }
     }
     
     func applicationWillTerminate(_ notification: Notification) {
+        Logger.shared.verbose("Application will terminate...")
         if let statusItem = statusItem {
             NSStatusBar.system.removeStatusItem(statusItem)
         }
@@ -108,14 +109,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // Finder context menu file upload listener
     @objc func uploadFilesFromFinderMenu(notification: Notification) {
-        
         let pathStr = notification.object as? String ?? ""
+        Logger.shared.verbose("收到来自 Finder Menu 的上传请求-\(pathStr)")
         uploadFilesFromPaths(pathStr)
     }
     
     @objc func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
         if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue{
+            Logger.shared.verbose("收到来自 URLScheme 的上传请求-\(urlString)")
             URLSchemeExt.shared.handleURL(urlString)
+        } else {
+            Logger.shared.warn("收到来自 URLScheme 的上传请求-无效参数")
         }
     }
 }
@@ -123,6 +127,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 extension AppDelegate {
     
     func setupStatusBar() {
+        Logger.shared.verbose("Setup status bar")
+
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         setStatusBarIcon()
         setupStatusBarIndicator()
@@ -337,6 +343,7 @@ extension AppDelegate {
         }
         
         // 截图权限检测
+        Logger.shared.verbose("检查屏幕录制权限")
         let hasPermission = ScreenUtil.screeningRecordPermissionCheck()
         if !hasPermission {
             Logger.shared.warn("无截图权限，申请截图权限并弹出帮助界面、跳转到设置界面")
@@ -346,6 +353,7 @@ extension AppDelegate {
             _ = WindowManager.shared.showWindow(storyboard: "ScreenshotAuthorizationHelp", withIdentifier: "screenshotAuthorizationHelpWindowController")
             return
         }
+        Logger.shared.verbose("屏幕录制权限已获取， 开始截图")
         
         let task = Process()
         task.launchPath = "/usr/sbin/screencapture"
@@ -418,6 +426,8 @@ extension AppDelegate {
     // 解析以 \n 分割的多个文件路径并上传
     func uploadFilesFromPaths(_ pathStr: String) {
         let paths = pathStr.split(separator: Character("\n"))
+
+        Logger.shared.verbose("解析到 \(paths.count) 个文件路径")
         
         let fileExtensions = BaseUploader.getFileExtensions()
         var urls = [URL]()
@@ -432,6 +442,7 @@ extension AppDelegate {
         }
         
         if (urls.count == 0) {
+            Logger.shared.error("文件格式不支持-\(pathStr)")
             NotificationExt.shared.postUploadErrorNotice("File format not supported!".localized)
             return
         }
@@ -493,7 +504,7 @@ extension AppDelegate {
             }
             return
         }
-        
+
         // 开始磁盘授权访问
         _ = DiskPermissionManager.shared.startDirectoryAccessing()
         
@@ -611,11 +622,15 @@ extension AppDelegate {
     }
     
     func copyUrls(urls: [String]) -> String {
+        Logger.shared.verbose("准备复制上传结果到剪切板->\(urls.joined(separator: ","))")
+
         let outputUrls = BaseUploaderUtil.formatOutputUrls(urls)
         let outputStr = outputUrls.joined(separator: "\n")
         NSPasteboard.general.clearContents()
         NSPasteboard.general.declareTypes([.string], owner: nil)
         NSPasteboard.general.setString(outputStr, forType: .string)
+
+        Logger.shared.verbose("复制上传结果到剪切板->\(outputStr)")
         
         return outputStr
     }
@@ -626,6 +641,7 @@ extension AppDelegate {
 extension AppDelegate {
     
     func bindShortcuts() {
+        Logger.shared.verbose("Bind shortcuts")
         MASShortcutBinder.shared()?.bindShortcut(withDefaultsKey: Constants.Key.selectFileShortcut) {
             self.selectFile()
         }
@@ -640,6 +656,7 @@ extension AppDelegate {
     }
     
     func unbindShortcuts() {
+        Logger.shared.verbose("Unbind shortcuts")
         MASShortcutBinder.shared()?.breakBinding(withDefaultsKey: Constants.Key.selectFileShortcut)
         MASShortcutBinder.shared()?.breakBinding(withDefaultsKey: Constants.Key.pasteboardShortcut)
         MASShortcutBinder.shared()?.breakBinding(withDefaultsKey: Constants.Key.screenshotShortcut)
