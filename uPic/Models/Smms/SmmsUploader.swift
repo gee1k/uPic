@@ -16,7 +16,7 @@ class SmmsUploader: BaseUploader {
 
     static let fileExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
     
-    let url = "https://sm.ms/api/v2/upload"
+    let url = "https://smms.app/api/v2/upload"
 
     func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
         guard let data = host.data, let config = data as? SmmsHostConfig else {
