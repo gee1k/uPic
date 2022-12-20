@@ -1787,7 +1787,7 @@
 			repositoryURL = "https://github.com/soto-project/soto.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 6.0.0;
 			};
 		};
 		9630C4222729A05E009E8735 /* XCRemoteSwiftPackageReference "Alamofire" */ = {

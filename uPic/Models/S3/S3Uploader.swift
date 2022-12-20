@@ -74,25 +74,36 @@ class S3Uploader: BaseUploader {
             httpClientProvider: .createNew
         )
         let s3 = S3(client: client, region: region, endpoint: s3Endpoint, timeout: .minutes(1))
-            
-        var bb = ByteBuffer(data: bodyData)
-        let bufferSize = bb.readableBytes
-        let blockSize = 32*1024
-        var sendedSize = 0
-        let payload = AWSPayload.stream(size: bufferSize) { eventLoop in
-            let size = min(blockSize, bb.readableBytes)
-            // don't ask for 0 bytes
-            if size == 0 {
-                return eventLoop.makeSucceededFuture(.end)
+        
+        var payload: AWSPayload!
+        
+        // 如果是 AWS S3，采用流式上传，以获得最佳性能
+        // 如果是其他自定义 S3 协议服务，则使用完整字节方式上传，以获得最佳兼容性
+        if customize {
+            payload = AWSPayload.data(bodyData)
+        } else {
+            var bb = ByteBuffer(data: bodyData)
+            let bufferSize = bb.readableBytes
+            let blockSize = 32*1024
+            var sendedSize = 0
+            payload = AWSPayload.stream(size: bufferSize) { eventLoop in
+                let size = min(blockSize, bb.readableBytes)
+                // don't ask for 0 bytes
+                if size == 0 {
+                    return eventLoop.makeSucceededFuture(.end)
+                }
+                let slice = bb.readSlice(length: size)!
+                // Update your UI here
+                sendedSize += size
+                let precent = Double(sendedSize) / Double(bufferSize)
+                super.progress(percent: precent)
+                return eventLoop.makeSucceededFuture(.byteBuffer(slice))
             }
-            let slice = bb.readSlice(length: size)!
-            // Update your UI here
-            sendedSize += size
-            let precent = Double(sendedSize) / Double(bufferSize)
-            super.progress(percent: precent)
-            return eventLoop.makeSucceededFuture(.byteBuffer(slice))
         }
 
+        let date = Date()
+        let t1 = date.timeIntervalSince1970
+        
         let putObjectRequest = S3.PutObjectRequest(
             acl: .publicRead,
             body: payload,
@@ -103,6 +114,11 @@ class S3Uploader: BaseUploader {
         let put = s3.putObject(putObjectRequest)
         
         put.whenComplete { (result: Result) in
+            let date2 = Date()
+            let t2 = date2.timeIntervalSince1970
+            debugPrint("===============================")
+            debugPrint("上传所用时长: \(t2-t1)")
+            debugPrint("===============================")
             switch(result) {
             case .success(_):
                 if domain.isEmpty {

@@ -21,6 +21,7 @@ public class S3Region {
         "us-west-2": ["cname": "美国西部（俄勒冈）", "name": "US West (Oregon)"],
         "af-south-1": ["cname": "非洲（开普敦）", "name": "Africa (Cape Town)"],
         "ap-east-1": ["cname": "亚太地区（香港）", "name": "Asia Pacific (Hong Kong)"],
+        "ap-south-2": ["cname": "亚太地区（海得拉巴）", "name": "Asia Pacific (Hyderabad)"],
         "ap-south-1": ["cname": "亚太地区（孟买）", "name": "Asia Pacific (Mumbai)"],
         "ap-northeast-3": ["cname": "亚太地区 (大阪)", "name": "Asia Pacific (Osaka)"],
         "ap-northeast-2": ["cname": "亚太地区（首尔）", "name": "Asia Pacific (Seoul)"],
@@ -34,12 +35,18 @@ public class S3Region {
         "eu-west-1": ["cname": "欧洲（爱尔兰）", "name": "Europe (Ireland)"],
         "eu-west-2": ["cname": "欧洲（伦敦）", "name": "Europe (London)"],
         "eu-south-1": ["cname": "欧洲（米兰）", "name": "Europe (Milan)"],
+        "eu-south-2": ["cname": "欧洲（西班牙）", "name": "Europe (Spain)"],
         "eu-west-3": ["cname": "欧洲 (巴黎)", "name": "Europe (Paris)"],
         "eu-north-1": ["cname": "欧洲（斯德哥尔摩）", "name": "Europe (Stockholm)"],
+        "eu-central-2": ["cname": "欧洲（苏黎世）", "name": "Europe (Zurich)"],
         "me-south-1": ["cname": "中东（巴林）", "name": "Middle East (Bahrain)"],
+        "me-central-1": ["cname": "中东（阿联酋）", "name": "Middle East (UAE)"],
         "sa-east-1": ["cname": "南美洲（圣保罗）", "name": "South America (São Paulo)"],
+        // gov
+        "us-gov-east-1": ["cname": "AWS GovCloud (US-East)", "name": "AWS GovCloud (US-East)"],
+        "us-gov-west-1": ["cname": "AWS GovCloud (US-West)", "name": "AWS GovCloud (US-West)"],
         // 中国
-        "cn-north-1": ["cname": "中国（北京）", "name": "China (Beijing)"],
+        "us-gov-east-1": ["cname": "中国（北京）", "name": "China (Beijing)"],
         "cn-northwest-1": ["cname": "中国 (宁夏)", "name": "China (Ningxia)"]
     ]
     

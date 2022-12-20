@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swift-server/async-http-client.git",
       "state" : {
-        "revision" : "0f21b44d1ad5227ccbaa073aa40cd37eb8bbc337",
-        "version" : "1.11.0"
+        "revision" : "fc510a39cff61b849bf5cdff17eb2bd6d0777b49",
+        "version" : "1.11.5"
       }
     },
     {
@@ -86,8 +86,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/soto-project/soto.git",
       "state" : {
-        "revision" : "3648a7fcbaa1ac06b6ab2b4b227d521ed065e780",
-        "version" : "5.13.1"
+        "revision" : "ad93b6bfb76696324bc0c9f0354f59b5060d4317",
+        "version" : "6.3.0"
       }
     },
     {
@@ -95,8 +95,26 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/soto-project/soto-core.git",
       "state" : {
-        "revision" : "3079d17f2576cff5f2a3f68865629af455c673d1",
-        "version" : "5.9.3"
+        "revision" : "84a53eaef17c29ec8eb14dfcee1e44d5880b85b7",
+        "version" : "6.3.0"
+      }
+    },
+    {
+      "identity" : "swift-atomics",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-atomics.git",
+      "state" : {
+        "revision" : "ff3d2212b6b093db7f177d0855adbc4ef9c5f036",
+        "version" : "1.0.3"
+      }
+    },
+    {
+      "identity" : "swift-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-collections.git",
+      "state" : {
+        "revision" : "937e904258d22af6e447a0b72c0bc67583ef64a2",
+        "version" : "1.0.4"
       }
     },
     {
@@ -122,8 +140,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio.git",
       "state" : {
-        "revision" : "124119f0bb12384cef35aa041d7c3a686108722d",
-        "version" : "2.40.0"
+        "revision" : "e855380cb5234e96b760d93e0bfdc403e381e928",
+        "version" : "2.45.0"
       }
     },
     {
@@ -158,8 +176,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio-transport-services.git",
       "state" : {
-        "revision" : "2cb54f91ddafc90832c5fa247faf5798d0a7c204",
-        "version" : "1.13.0"
+        "revision" : "c0d9a144cfaec8d3d596aadde3039286a266c15c",
+        "version" : "1.15.0"
       }
     },
     {

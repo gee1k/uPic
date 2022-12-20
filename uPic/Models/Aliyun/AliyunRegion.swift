@@ -15,6 +15,7 @@ class AliyunRegion {
         "oss-cn-hangzhou": ["cname": "华东 1（杭州）"],
         "oss-cn-shanghai": ["cname": "华东 2（上海）"],
         "oss-cn-nanjing": ["cname": "华东5（南京本地地域）"],
+        "oss-cn-fuzhou": ["cname": "华东6（福州本地地域）"],
         "oss-cn-qingdao": ["cname": "华北 1（青岛）"],
         "oss-cn-beijing": ["cname": "华北 2（北京）"],
         "oss-cn-zhangjiakou": ["cname": "华北 3（张家口）"],
