@@ -100,9 +100,6 @@ class S3Uploader: BaseUploader {
                 return eventLoop.makeSucceededFuture(.byteBuffer(slice))
             }
         }
-
-        let date = Date()
-        let t1 = date.timeIntervalSince1970
         
         let putObjectRequest = S3.PutObjectRequest(
             acl: .publicRead,
@@ -114,11 +111,6 @@ class S3Uploader: BaseUploader {
         let put = s3.putObject(putObjectRequest)
         
         put.whenComplete { (result: Result) in
-            let date2 = Date()
-            let t2 = date2.timeIntervalSince1970
-            debugPrint("===============================")
-            debugPrint("上传所用时长: \(t2-t1)")
-            debugPrint("===============================")
             switch(result) {
             case .success(_):
                 if domain.isEmpty {
