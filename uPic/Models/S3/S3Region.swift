@@ -46,7 +46,7 @@ public class S3Region {
         "us-gov-east-1": ["cname": "AWS GovCloud (US-East)", "name": "AWS GovCloud (US-East)"],
         "us-gov-west-1": ["cname": "AWS GovCloud (US-West)", "name": "AWS GovCloud (US-West)"],
         // 中国
-        "us-gov-east-1": ["cname": "中国（北京）", "name": "China (Beijing)"],
+        "cn-north-1": ["cname": "中国（北京）", "name": "China (Beijing)"],
         "cn-northwest-1": ["cname": "中国 (宁夏)", "name": "China (Ningxia)"]
     ]
     
