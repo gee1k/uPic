@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,9 +14,6 @@
 		16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7B22AECD9F004D39B7 /* Constants.swift */; };
 		160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */; };
 		1613D88725C9826B009E348A /* AutoGenStrings.py in Resources */ = {isa = PBXBuildFile; fileRef = 1613D88625C9826B009E348A /* AutoGenStrings.py */; };
-		161539122408EC7B00CC662F /* LskyProUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161539102408E7F200CC662F /* LskyProUploader.swift */; };
-		161539132408EC7D00CC662F /* LskyProHostConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161539112408E7F200CC662F /* LskyProHostConfig.swift */; };
-		161539152408F0E200CC662F /* LskyProConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161539142408F0E200CC662F /* LskyProConfigView.swift */; };
 		1618D1A522E99BAA00831601 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
 		1618D1A622E99BB800831601 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169F073D22AF53DE008E8525 /* Preferences.storyboard */; };
 		1618D1A822E99E2100831601 /* UploadNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618D1A722E99E2100831601 /* UploadNotifier.swift */; };
@@ -131,7 +128,7 @@
 		16F04EEC23BCC4B200CCA2FE /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EEB23BCC4B200CCA2FE /* FileManager+Extension.swift */; };
 		16F04EEE23BCC4C500CCA2FE /* URLSchemeExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EED23BCC4C500CCA2FE /* URLSchemeExt.swift */; };
 		16F7467422E994A300480A62 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F7467322E994A300480A62 /* FinderSync.swift */; };
-		16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 16F7467122E994A300480A62 /* uPicFinderExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 16F7467122E994A300480A62 /* uPicFinderExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B09F11423695F8D000208BD /* HistoryThumbnailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09F11323695F8D000208BD /* HistoryThumbnailContentView.swift */; };
 		4B112CA723603DBB009E79B4 /* HistoryThumbnailFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B112CA623603DBB009E79B4 /* HistoryThumbnailFlowLayout.swift */; };
 		4B2B3354236BC5AB00C9F2CA /* NSButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2B3353236BC5AB00C9F2CA /* NSButton+Extension.swift */; };
@@ -164,7 +161,7 @@
 		96B6C3F125AD89F200B1A584 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 96B6C3F025AD89F200B1A584 /* icon.icns */; };
 		96B6C3F325AD89F200B1A584 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6C3F225AD89F200B1A584 /* ShareViewController.swift */; };
 		96B6C3F625AD89F200B1A584 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B6C3F425AD89F200B1A584 /* ShareViewController.xib */; };
-		96B6C3FB25AD89F200B1A584 /* uPicShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 96B6C3EE25AD89F200B1A584 /* uPicShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		96B6C3FB25AD89F200B1A584 /* uPicShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 96B6C3EE25AD89F200B1A584 /* uPicShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96B6C41125AD8AFB00B1A584 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96B6C41325AD8AFB00B1A584 /* InfoPlist.strings */; };
 		96B6C42025AD934B00B1A584 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164745EF22B65FE900F9575D /* String+Extension.swift */; };
 		96B8520325B80D0300424535 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96B8520525B80D0300424535 /* Welcome.storyboard */; };
@@ -193,16 +190,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		16F7467D22E994A300480A62 /* Embed App Extensions */ = {
+		16F7467D22E994A300480A62 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed App Extensions */,
-				96B6C3FB25AD89F200B1A584 /* uPicShareExtension.appex in Embed App Extensions */,
+				16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed Foundation Extensions */,
+				96B6C3FB25AD89F200B1A584 /* uPicShareExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -219,9 +216,6 @@
 		16068C7B22AECD9F004D39B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
 		1613D88625C9826B009E348A /* AutoGenStrings.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = AutoGenStrings.py; sourceTree = "<group>"; };
-		161539102408E7F200CC662F /* LskyProUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LskyProUploader.swift; sourceTree = "<group>"; };
-		161539112408E7F200CC662F /* LskyProHostConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LskyProHostConfig.swift; sourceTree = "<group>"; };
-		161539142408F0E200CC662F /* LskyProConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LskyProConfigView.swift; sourceTree = "<group>"; };
 		1618D1A722E99E2100831601 /* UploadNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadNotifier.swift; sourceTree = "<group>"; };
 		161ABBDC23B1F1EB00805C5B /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		161ABBE323B212C800805C5B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
@@ -452,15 +446,6 @@
 			path = Script;
 			sourceTree = "<group>";
 		};
-		1615390E2408E7DE00CC662F /* LskyPro */ = {
-			isa = PBXGroup;
-			children = (
-				161539102408E7F200CC662F /* LskyProUploader.swift */,
-				161539112408E7F200CC662F /* LskyProHostConfig.swift */,
-			);
-			path = LskyPro;
-			sourceTree = "<group>";
-		};
 		161C3BDF22C4830A0092114F /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,7 +509,6 @@
 			isa = PBXGroup;
 			children = (
 				16AFDB3524E50F0A0008E5A7 /* S3ConfigView.swift */,
-				161539142408F0E200CC662F /* LskyProConfigView.swift */,
 				16D20B5B238392C9006D8D01 /* BaiduConfigView.swift */,
 				167620EF23081DC0008F8363 /* ImgurConfigView.swift */,
 				1657019E22C897A400C57EE9 /* WeiboConfigView.swift */,
@@ -606,7 +590,6 @@
 				1646B80222C7931E009271DF /* Gitee */,
 				167DDBE922C76F3B00B03357 /* Github */,
 				167620EA2308191A008F8363 /* Imgur */,
-				1615390E2408E7DE00CC662F /* LskyPro */,
 				1690E7E522BF113700FC81F8 /* Qiniu */,
 				16AFDB2E24E3EA340008E5A7 /* S3 */,
 				167D7F4E22B4DB2500DD0A7A /* Smms */,
@@ -918,7 +901,7 @@
 				16A6DC5222AA375700813706 /* Resources */,
 				964DA808272AF5630003304C /* Copy “Launch at Login Helper” */,
 				8B11FF3895E709812B771F7E /* [CP] Embed Pods Frameworks */,
-				16F7467D22E994A300480A62 /* Embed App Extensions */,
+				16F7467D22E994A300480A62 /* Embed Foundation Extensions */,
 				1613D88B25C98273009E348A /* ShellScript */,
 			);
 			buildRules = (
@@ -986,8 +969,9 @@
 		16A6DC4C22AA375700813706 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1230;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "Svend Jin";
 				TargetAttributes = {
 					16A6DC5322AA375700813706 = {
@@ -1131,6 +1115,7 @@
 		};
 		964DA808272AF5630003304C /* Copy “Launch at Login Helper” */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1203,7 +1188,6 @@
 				1646B80E22C7C082009271DF /* ConfigView.swift in Sources */,
 				96767C09266CABC800867727 /* AppleScriptCommand.swift in Sources */,
 				16D20B5A238390F4006D8D01 /* BaiduUtil.swift in Sources */,
-				161539122408EC7B00CC662F /* LskyProUploader.swift in Sources */,
 				1690E7EB22BF2D9400FC81F8 /* QiniuUploader.swift in Sources */,
 				965E819B25B7274E0031A01F /* WelcomeWindowController.swift in Sources */,
 				1657019B22C8934000C57EE9 /* WeiboqQuality.swift in Sources */,
@@ -1226,7 +1210,6 @@
 				167D08AA22ED8A27000F3BC0 /* AliyunHostConfig.swift in Sources */,
 				1660FCBD22C11C7800372950 /* TencentRegion.swift in Sources */,
 				167D7F4922B4D2F500DD0A7A /* HostConfig.swift in Sources */,
-				161539152408F0E200CC662F /* LskyProConfigView.swift in Sources */,
 				164C3A0222B2AB22003ADE39 /* ConfigNotifier.swift in Sources */,
 				164C3A0022B2AA6C003ADE39 /* Notifier.swift in Sources */,
 				4BEFD813238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift in Sources */,
@@ -1256,7 +1239,6 @@
 				1647474522B66E3400F9575D /* Util.swift in Sources */,
 				167620ED230819C0008F8363 /* ImgurHostConfig.swift in Sources */,
 				1657019F22C897A400C57EE9 /* WeiboConfigView.swift in Sources */,
-				161539132408EC7D00CC662F /* LskyProHostConfig.swift in Sources */,
 				96CA5B8A25B41B1F00855629 /* OutputFormatCustomization.swift in Sources */,
 				16F04EE723BCC45F00CCA2FE /* StringExtensions.swift in Sources */,
 				16AFDB3624E50F0A0008E5A7 /* S3ConfigView.swift in Sources */,
@@ -1475,6 +1457,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1492,7 +1475,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1538,6 +1521,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1549,7 +1533,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -1562,7 +1546,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B31C410193F6C634ECBC8F5F /* Pods-uPic.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1570,7 +1554,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1578,8 +1563,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1593,7 +1578,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA1B39CC17103449CC5099AD /* Pods-uPic.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1601,7 +1586,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1609,8 +1595,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1627,7 +1613,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
@@ -1636,8 +1623,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1654,7 +1641,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
@@ -1663,8 +1651,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1680,7 +1668,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
@@ -1689,8 +1678,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1706,7 +1695,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
@@ -1715,8 +1705,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.3.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1771,7 +1761,7 @@
 			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.7.0;
+				minimumVersion = 3.8.0;
 			};
 		};
 		1649394B285F1C44007278DA /* XCRemoteSwiftPackageReference "Zip" */ = {
@@ -1787,7 +1777,7 @@
 			repositoryURL = "https://github.com/soto-project/soto.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
+				minimumVersion = 6.6.0;
 			};
 		};
 		9630C4222729A05E009E8735 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -1795,7 +1785,7 @@
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.5.0;
+				minimumVersion = 5.7.0;
 			};
 		};
 		9630C4232729A096009E8735 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
@@ -1803,7 +1793,7 @@
 			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.0;
+				minimumVersion = 1.7.2;
 			};
 		};
 		9630C4242729A0B0009E8735 /* XCRemoteSwiftPackageReference "SwiftyXMLParser" */ = {
@@ -1811,7 +1801,7 @@
 			repositoryURL = "https://github.com/yahoojapan/SwiftyXMLParser";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.6.0;
 			};
 		};
 		9630C4252729A0D0009E8735 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -1819,7 +1809,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
+				minimumVersion = 7.8.0;
 			};
 		};
 		9630C4262729A0EA009E8735 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -1827,7 +1817,7 @@
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.6.0;
 			};
 		};
 		964198B42729A6BA0001AB97 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
@@ -1851,7 +1841,7 @@
 			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

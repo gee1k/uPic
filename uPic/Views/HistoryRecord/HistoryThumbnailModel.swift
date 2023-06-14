@@ -10,7 +10,7 @@ import Foundation
 import Cocoa
 import WCDBSwift
 
-class HistoryThumbnailModel: TableCodable {
+final class HistoryThumbnailModel: TableCodable {
     var identifier: Int? = nil
     var url: String = ""
     var previewWidth: Double = 0
@@ -50,7 +50,6 @@ class HistoryThumbnailModel: TableCodable {
     
     enum CodingKeys: String, CodingTableKey {
         typealias Root = HistoryThumbnailModel
-        static let objectRelationalMapping = TableBinding(CodingKeys.self)
         case identifier
         case url
         case previewWidth
@@ -61,10 +60,8 @@ class HistoryThumbnailModel: TableCodable {
         case host
         case isImage
         
-        static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
-            return [
-                identifier: ColumnConstraintBinding(isPrimary: true),
-            ]
+        static let objectRelationalMapping = TableBinding(CodingKeys.self) {
+            BindColumnConstraint(identifier, isPrimary: true)
         }
     }
     

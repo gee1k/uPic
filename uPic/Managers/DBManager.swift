@@ -18,16 +18,11 @@ public class DBManager {
     
     init() {
         Database.globalTrace(ofError: { (error) in
-           switch error.type {
-           case .sqliteGlobal:break
-           case .warning:
-               print("[WCDB][WARNING] \(error.description)")
-           default:
-               print("[WCDB][ERROR] \(error.description)")
-           }
+            assert(error.level != .Fatal)
+            print(error)
         })
         debugPrintOnly("数据库地址：\(Constants.CachePath.databasePath)")
-        database = Database(withPath: Constants.CachePath.databasePath)
+        database = Database(at: Constants.CachePath.databasePath)
         createHistoryTable()
         createOutputFormatTable()
     }
@@ -52,7 +47,7 @@ extension DBManager {
     
     func insertHistory(_ model: HistoryThumbnailModel) {
         do {
-            try database.insert(objects: model, intoTable: Constants.CachePath.historyTableName)
+            try database.insert(model, intoTable: Constants.CachePath.historyTableName)
         } catch let error as NSError {
             print ("Error: \(error.domain)")
         }
@@ -60,7 +55,7 @@ extension DBManager {
     
     func insertHistorys(_ models: [HistoryThumbnailModel]) {
         do {
-            try database.insert(objects: models, intoTable: Constants.CachePath.historyTableName)
+            try database.insert(models, intoTable: Constants.CachePath.historyTableName)
         } catch let error as NSError {
             print ("Error: \(error.domain)")
         }
@@ -69,7 +64,7 @@ extension DBManager {
     func getHistoryList() -> [HistoryThumbnailModel] {
         var list: [HistoryThumbnailModel] = []
         do {
-            list = try database.getObjects(on: HistoryThumbnailModel.Properties.all, fromTable: Constants.CachePath.historyTableName, orderBy: [HistoryThumbnailModel.Properties.identifier.asOrder(by: .descending)])
+            list = try database.getObjects(on: HistoryThumbnailModel.Properties.all, fromTable: Constants.CachePath.historyTableName, orderBy: [HistoryThumbnailModel.Properties.identifier.asOrder().order(.descending)])
         } catch let error as NSError {
             print ("Error: \(error.domain)")
         }
@@ -81,7 +76,7 @@ extension DBManager {
     }
     
     func deleteHositoryFirst(_ k: Int = 1) {
-        try? database.delete(fromTable: Constants.CachePath.historyTableName, where: nil, orderBy: [HistoryThumbnailModel.Properties.identifier.asOrder(by: .ascending)], limit: k)
+        try? database.delete(fromTable: Constants.CachePath.historyTableName, where: nil, orderBy: [HistoryThumbnailModel.Properties.identifier.asOrder().order(.ascending)], limit: k)
     }
 }
 
@@ -97,7 +92,7 @@ extension DBManager {
     
     func insertOutputFormat(_ model: OutputFormatModel) {
         do {
-            try database.insert(objects: model, intoTable: Constants.CachePath.outputFormatTableTableName)
+            try database.insert(model, intoTable: Constants.CachePath.outputFormatTableTableName)
         } catch let error as NSError {
             print ("Error: \(error.domain)")
         }
@@ -106,7 +101,7 @@ extension DBManager {
     func saveOutputFormats(_ models: [OutputFormatModel]) {
         do {
             try database.delete(fromTable: Constants.CachePath.outputFormatTableTableName)
-            try database.insert(objects: models, intoTable: Constants.CachePath.outputFormatTableTableName)
+            try database.insert(models, intoTable: Constants.CachePath.outputFormatTableTableName)
         } catch let error as NSError {
             print ("Error: \(error.domain)")
         }
@@ -115,7 +110,7 @@ extension DBManager {
     func getOutputFormatList() -> [OutputFormatModel] {
         var list: [OutputFormatModel] = []
         do {
-            list = try database.getObjects(on: OutputFormatModel.Properties.all, fromTable: Constants.CachePath.outputFormatTableTableName, orderBy: [OutputFormatModel.Properties.identifier.asOrder(by: .ascending)])
+            list = try database.getObjects(on: OutputFormatModel.Properties.all, fromTable: Constants.CachePath.outputFormatTableTableName, orderBy: [OutputFormatModel.Properties.identifier.asOrder().order(.ascending)])
             
             // 检查是否存在输出格式数据
             if (list.count == 0) {
@@ -135,7 +130,7 @@ extension DBManager {
     func deleteOutputFormat(_ identifier: Int) {
         try? database.delete(fromTable: Constants.CachePath.outputFormatTableTableName,
                              where: OutputFormatModel.Properties.identifier == identifier,
-                             orderBy: [OutputFormatModel.Properties.identifier.asOrder(by: .ascending)]
+                             orderBy: [OutputFormatModel.Properties.identifier.asOrder().order(.ascending)]
         )
     }
 }

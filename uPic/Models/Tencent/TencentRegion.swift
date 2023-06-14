@@ -33,8 +33,7 @@ class TencentRegion {
         "na-ashburn": ["cname": "弗吉尼亚（美东）"],
         "na-toronto": ["cname": "多伦多"],
         "sa-saopaulo": ["cname": "圣保罗"],
-        "eu-frankfurt": ["cname": "法兰克福"],
-        "eu-moscow": ["cname": "莫斯科"]
+        "eu-frankfurt": ["cname": "法兰克福"]
     ]
     
     public static func name(_ key: String) -> String {

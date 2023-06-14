@@ -184,9 +184,6 @@ class BaseUploader {
         case .baidu_bos:
             BaiduUploader.shared.upload(url, host: host)
             break
-        case .lsky_pro:
-            LskyProUploader.shared.upload(url, host: host)
-            break
         }
     }
 
@@ -250,9 +247,6 @@ class BaseUploader {
         case .baidu_bos:
             BaiduUploader.shared.upload(data, host: host)
             break
-        case .lsky_pro:
-            LskyProUploader.shared.upload(data, host: host)
-            break
         }
     }
 
@@ -290,8 +284,6 @@ class BaseUploader {
             return ImgurUploader.fileExtensions
         case .baidu_bos:
             return BaiduUploader.fileExtensions
-        case .lsky_pro:
-            return LskyProUploader.fileExtensions
         }
     }
 
