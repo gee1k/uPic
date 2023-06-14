@@ -12,6 +12,7 @@ import Alamofire
 import AppKit
 import ScriptingBridge
 import MASShortcut
+import LaunchAtLogin
 
 
 @NSApplicationMain
@@ -56,6 +57,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         // Register events and status bar menus only in non-command line mode
+        
+        LaunchAtLogin.migrateIfNeeded()
         
         // Set status bar icon and progress icon
         setupStatusBar()

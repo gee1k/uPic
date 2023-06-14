@@ -1,11 +1,11 @@
 PODS:
   - libminipng (0.5.6)
-  - SQLiteRepairKit (1.2.2):
-    - WCDBOptimizedSQLCipher (~> 1.2.0)
-  - WCDB.swift (1.0.8.2):
-    - SQLiteRepairKit (~> 1.2.0)
-    - WCDBOptimizedSQLCipher (~> 1.2.0)
-  - WCDBOptimizedSQLCipher (1.2.1)
+  - WCDB.swift (2.0.2.5):
+    - WCDB.swift/no-arc (= 2.0.2.5)
+    - WCDBOptimizedSQLCipher (~> 1.4.1)
+  - WCDB.swift/no-arc (2.0.2.5):
+    - WCDBOptimizedSQLCipher (~> 1.4.1)
+  - WCDBOptimizedSQLCipher (1.4.1)
 
 DEPENDENCIES:
   - libminipng
@@ -14,16 +14,14 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - libminipng
-    - SQLiteRepairKit
     - WCDB.swift
     - WCDBOptimizedSQLCipher
 
 SPEC CHECKSUMS:
   libminipng: a44c35d06b9d54d6640acdf97f4500c034748abb
-  SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
-  WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
-  WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
+  WCDB.swift: 41d30d0e113cb2032947e34998f9eedc5c8cbd71
+  WCDBOptimizedSQLCipher: 880ec8aa6cda6b27e4c72b30bf0cc01771deda6f
 
-PODFILE CHECKSUM: 89b7752c39972dc59c8b267c69126165a8916a2c
+PODFILE CHECKSUM: 578e68ce0a8889942b52298dac45365f59c42985
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.12.1

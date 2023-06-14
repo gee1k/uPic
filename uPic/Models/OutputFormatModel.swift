@@ -9,24 +9,19 @@
 import Foundation
 import WCDBSwift
 
-class OutputFormatModel: TableCodable {
+final class OutputFormatModel: TableCodable {
     var identifier: Int? = nil
     var name: String = ""
     var value: String = ""
     
     enum CodingKeys: String, CodingTableKey {
         typealias Root = OutputFormatModel
-        static let objectRelationalMapping = TableBinding(CodingKeys.self)
         case identifier
         case name
         case value
         
-        
-        
-        static var columnConstraintBindings: [CodingKeys: ColumnConstraintBinding]? {
-            return [
-                identifier: ColumnConstraintBinding(isPrimary: true),
-            ]
+        static let objectRelationalMapping = TableBinding(CodingKeys.self) {
+            BindColumnConstraint(identifier, isPrimary: true)
         }
     }
     

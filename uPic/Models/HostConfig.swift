@@ -81,8 +81,6 @@ class HostConfig: NSObject, Codable {
             return ImgurHostConfig()
         case .baidu_bos:
             return BaiduHostConfig()
-        case .lsky_pro:
-            return LskyProHostConfig()
         }
     }
 
@@ -132,9 +130,6 @@ class HostConfig: NSObject, Codable {
             break
         case .baidu_bos:
             config = BaiduHostConfig.deserialize(str: str)
-            break
-        case .lsky_pro:
-            config = LskyProHostConfig.deserialize(str: str)
             break
         }
         
