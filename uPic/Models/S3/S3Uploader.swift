@@ -102,7 +102,7 @@ class S3Uploader: BaseUploader {
         }
         
         let putObjectRequest = S3.PutObjectRequest(
-            acl: .publicRead,
+            acl: config.acl == nil ? .publicRead : S3.ObjectCannedACL(rawValue: config.acl!),
             body: payload,
             bucket: bucket,
             contentType: mimeType,

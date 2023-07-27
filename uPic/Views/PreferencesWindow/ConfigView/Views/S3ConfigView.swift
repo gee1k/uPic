@@ -129,6 +129,33 @@ class S3ConfigView: ConfigView {
         self.addSubview(bucketLabel)
         self.addSubview(bucketField)
         nextKeyViews.append(bucketField)
+        
+        // MARK: ACL Control (public-read, private, public-read-write)
+        y = y - gapTop - labelHeight - 5
+
+        let aclLabel = NSTextField(labelWithString:"ACL:")
+        aclLabel.frame = NSRect(x: paddingLeft, y: y, width: labelWidth, height: labelHeight+2)
+        aclLabel.alignment = .right
+        aclLabel.lineBreakMode = .byClipping
+
+        let aclPopUp = NSPopUpButton(frame: NSRect(x: textFieldX, y: y, width: textFieldWidth, height: labelHeight+2))
+        aclPopUp.target = self
+        aclPopUp.action = #selector(aclChange(_:))
+        aclPopUp.identifier = NSUserInterfaceItemIdentifier(rawValue: "acl")
+        let aclTitles = ["public-read", "private", "public-read-write"]
+        let aclKeys = [".public-read", ".private", ".public-read-write"]
+        for (index, title) in aclTitles.enumerated() {
+            let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
+            menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: aclKeys[index])
+            aclPopUp.menu?.addItem(menuItem)
+        }
+        
+        aclPopUp.sizeToFit()
+
+        self.addSubview(aclLabel)
+        self.addSubview(aclPopUp)
+        nextKeyViews.append(aclPopUp)
+
 
         // MARK: AccessKey
         y = y - gapTop - labelHeight
@@ -182,7 +209,12 @@ class S3ConfigView: ConfigView {
         
         changeCustomizeModel(data.customize)
     }
-
+    
+    @objc func aclChange(_ sender: NSPopUpButton) {
+        if let menuItem = sender.selectedItem, let identifier = menuItem.identifier?.rawValue {
+            self.data?.setValue(identifier, forKey: "acl")
+        }
+    }
     
     @objc func regionChange(_ sender: NSPopUpButton) {
         if let menuItem = sender.selectedItem, let identifier = menuItem.identifier?.rawValue {
