@@ -28,6 +28,7 @@ class S3Uploader: BaseUploader {
 
         let customize = config.customize
         let bucket = config.bucket
+        let acl = config.acl
         let accessKey = config.accessKey
         let secretKey = config.secretKey
         let domain = config.domain
@@ -102,7 +103,7 @@ class S3Uploader: BaseUploader {
         }
         
         let putObjectRequest = S3.PutObjectRequest(
-            acl: config.acl == nil ? .publicRead : S3.ObjectCannedACL(rawValue: config.acl!),
+            acl: acl == nil ? .publicRead : S3.ObjectCannedACL(rawValue: acl!),
             body: payload,
             bucket: bucket,
             contentType: mimeType,

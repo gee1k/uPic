@@ -142,14 +142,24 @@ class S3ConfigView: ConfigView {
         aclPopUp.target = self
         aclPopUp.action = #selector(aclChange(_:))
         aclPopUp.identifier = NSUserInterfaceItemIdentifier(rawValue: "acl")
-        let aclTitles = ["public-read", "private", "public-read-write"]
-        let aclKeys = [".public-read", ".private", ".public-read-write"]
-        for (index, title) in aclTitles.enumerated() {
-            let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
+
+        var selectAcl: NSMenuItem?
+        let aclTitles = ["public-read", "private", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read", "bucket-owner-full-control"]
+        let aclKeys = ["public-read", "private", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read", "bucket-owner-full-control"]
+        for (index, acl) in aclTitles.enumerated() {
+            let menuItem = NSMenuItem(title: acl, action: nil, keyEquivalent: "")
             menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: aclKeys[index])
             aclPopUp.menu?.addItem(menuItem)
+
+            if data.acl == aclKeys[index] {
+                selectAcl = menuItem
+            }
         }
         
+        if selectAcl != nil {
+            aclPopUp.select(selectAcl)
+        }
+
         aclPopUp.sizeToFit()
 
         self.addSubview(aclLabel)
@@ -212,10 +222,11 @@ class S3ConfigView: ConfigView {
     
     @objc func aclChange(_ sender: NSPopUpButton) {
         if let menuItem = sender.selectedItem, let identifier = menuItem.identifier?.rawValue {
+            print("Changing acl to: \(identifier)") // Add this line
             self.data?.setValue(identifier, forKey: "acl")
         }
     }
-    
+        
     @objc func regionChange(_ sender: NSPopUpButton) {
         if let menuItem = sender.selectedItem, let identifier = menuItem.identifier?.rawValue {
             self.data?.setValue(identifier, forKey: "region")
