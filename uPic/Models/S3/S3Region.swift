@@ -40,6 +40,7 @@ public class S3Region {
         "eu-south-2": ["cname": "欧洲（西班牙）", "name": "Europe (Spain)"],
         "eu-north-1": ["cname": "欧洲（斯德哥尔摩）", "name": "Europe (Stockholm)"],
         "eu-central-2": ["cname": "欧洲（苏黎世）", "name": "Europe (Zurich)"],
+        "il-central-1": ["cname": "以色列（特拉维夫）", "name": "Israel (Tel Aviv)"],
         "me-south-1": ["cname": "中东（巴林）", "name": "Middle East (Bahrain)"],
         "me-central-1": ["cname": "中东（阿联酋）", "name": "Middle East (UAE)"],
         "sa-east-1": ["cname": "南美洲（圣保罗）", "name": "South America (São Paulo)"],
