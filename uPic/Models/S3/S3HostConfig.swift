@@ -8,12 +8,22 @@
 
 import Foundation
 import SwiftyJSON
+import SotoS3
+
+extension S3.ObjectCannedACL: CaseIterable {
+    public static var allCases: [S3.ObjectCannedACL] {
+        return [.publicRead, .publicReadWrite, .private, .authenticatedRead, .awsExecRead, .bucketOwnerFullControl, .bucketOwnerRead]
+    }
+}
+
+typealias S3ObjectCannedACL = S3.ObjectCannedACL
 
 @objcMembers
 class S3HostConfig: HostConfig {
     dynamic var region: String?
     dynamic var endpoint: String?
     dynamic var bucket: String = ""
+    dynamic var acl: String?
     dynamic var accessKey: String = ""
     dynamic var secretKey: String = ""
     dynamic var domain: String = ""
@@ -29,6 +39,8 @@ class S3HostConfig: HostConfig {
             return "Endpoint".localized
         case "bucket":
             return "Bucket".localized
+        case "acl":
+            return "ACL"
         case "accessKey":
             return "Access Key".localized
         case "secretKey":
@@ -51,6 +63,7 @@ class S3HostConfig: HostConfig {
         dict["region"] = self.region
         dict["endpoint"] = self.endpoint
         dict["bucket"] = self.bucket
+        dict["acl"] = self.acl
         dict["accessKey"] = self.accessKey
         dict["secretKey"] = self.secretKey
         dict["domain"] = self.domain
@@ -71,6 +84,7 @@ class S3HostConfig: HostConfig {
         config.region = json["region"].stringValue
         config.endpoint = json["endpoint"].string
         config.bucket = json["bucket"].stringValue
+        config.acl = json["acl"].stringValue
         config.accessKey = json["accessKey"].stringValue
         config.secretKey = json["secretKey"].stringValue
         config.domain = json["domain"].stringValue
