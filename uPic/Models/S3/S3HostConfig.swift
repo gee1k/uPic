@@ -8,6 +8,15 @@
 
 import Foundation
 import SwiftyJSON
+import SotoS3
+
+extension S3.ObjectCannedACL: CaseIterable {
+    public static var allCases: [S3.ObjectCannedACL] {
+        return [.publicRead, .publicReadWrite, .private, .authenticatedRead, .awsExecRead, .bucketOwnerFullControl, .bucketOwnerRead]
+    }
+}
+
+typealias S3ObjectCannedACL = S3.ObjectCannedACL
 
 @objcMembers
 class S3HostConfig: HostConfig {
