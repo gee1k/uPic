@@ -144,14 +144,12 @@ class S3ConfigView: ConfigView {
         aclPopUp.identifier = NSUserInterfaceItemIdentifier(rawValue: "acl")
 
         var selectAcl: NSMenuItem?
-        let aclTitles = ["public-read", "private", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read", "bucket-owner-full-control"]
-        let aclKeys = ["public-read", "private", "public-read-write", "authenticated-read", "aws-exec-read", "bucket-owner-read", "bucket-owner-full-control"]
-        for (index, acl) in aclTitles.enumerated() {
-            let menuItem = NSMenuItem(title: acl, action: nil, keyEquivalent: "")
-            menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: aclKeys[index])
+        for acl in S3ObjectCannedACL.allCases {
+            let menuItem = NSMenuItem(title: acl.description, action: nil, keyEquivalent: "")
+            menuItem.identifier = NSUserInterfaceItemIdentifier(rawValue: acl.rawValue)
             aclPopUp.menu?.addItem(menuItem)
 
-            if data.acl == aclKeys[index] {
+            if data.acl == acl.rawValue {
                 selectAcl = menuItem
             }
         }
@@ -159,8 +157,6 @@ class S3ConfigView: ConfigView {
         if selectAcl != nil {
             aclPopUp.select(selectAcl)
         }
-
-        aclPopUp.sizeToFit()
 
         self.addSubview(aclLabel)
         self.addSubview(aclPopUp)
