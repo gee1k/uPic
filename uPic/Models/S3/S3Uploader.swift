@@ -102,8 +102,13 @@ class S3Uploader: BaseUploader {
             }
         }
         
+        var s3Acl = S3.ObjectCannedACL.publicRead
+        if let acl = acl, let oAcl = S3.ObjectCannedACL(rawValue: acl) {
+            s3Acl = oAcl
+        }
+        
         let putObjectRequest = S3.PutObjectRequest(
-            acl: acl == nil ? .publicRead : S3.ObjectCannedACL(rawValue: acl!),
+            acl: s3Acl,
             body: payload,
             bucket: bucket,
             contentType: mimeType,
