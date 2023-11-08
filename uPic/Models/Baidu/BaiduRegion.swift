@@ -15,6 +15,7 @@ public class BaiduRegion {
         "bd": ["name": "华北-保定"],
         "su": ["name": "华东-苏州"],
         "gz": ["name": "华南-广州"],
+        "cd": ["name": "西南-成都"],
         "hkg": ["name": "中国香港"],
         "sin": ["name": "新加坡"],
         "fwh": ["name": "金融华东-武汉"],

@@ -14,8 +14,9 @@ class AliyunRegion {
     public static let allRegion = [
         "oss-cn-hangzhou": ["cname": "华东 1（杭州）"],
         "oss-cn-shanghai": ["cname": "华东 2（上海）"],
-        "oss-cn-nanjing": ["cname": "华东5（南京本地地域）"],
-        "oss-cn-fuzhou": ["cname": "华东6（福州本地地域）"],
+        "oss-cn-nanjing": ["cname": "华东5（南京-本地地域）"],
+        "oss-cn-fuzhou": ["cname": "华东6（福州-本地地域）"],
+        "oss-cn-wuhan": ["cname": "华中1（武汉-本地地域）"],
         "oss-cn-qingdao": ["cname": "华北 1（青岛）"],
         "oss-cn-beijing": ["cname": "华北 2（北京）"],
         "oss-cn-zhangjiakou": ["cname": "华北 3（张家口）"],
@@ -39,7 +40,8 @@ class AliyunRegion {
         "oss-ap-south-1": ["cname": "印度（孟买）"],
         "oss-eu-central-1": ["cname": "德国（法兰克福）"],
         "oss-eu-west-1": ["cname": "英国（伦敦）"],
-        "oss-me-east-1": ["cname": "阿联酋（迪拜）"]
+        "oss-me-east-1": ["cname": "阿联酋（迪拜）"],
+        "oss-rg-china-mainland": ["cname": "无地域属性（中国内地）"]
     ]
     
     public static func name(_ key: String) -> String {

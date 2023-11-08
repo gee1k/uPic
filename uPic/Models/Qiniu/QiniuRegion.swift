@@ -17,7 +17,8 @@ class QiniuRegion {
         "z1": ["name": "华北-河北", "url": "https://upload-z1.qiniup.com"],
         "z2": ["name": "华南-广东", "url": "https://upload-z2.qiniup.com"],
         "na0": ["name": "北美-洛杉矶", "url": "https://upload-na0.qiniup.com"],
-        "as0": ["name": "亚太-新加坡", "url": "https://upload-as0.qiniup.com"]
+        "as0": ["name": "亚太-新加坡", "url": "https://upload-as0.qiniup.com"],
+        "ap-southeast-2": ["name": "亚太-河内", "url": "https://upload-ap-southeast-2.qiniup.com"]
     ]
     
     public static func name(_ key: String) -> String {
