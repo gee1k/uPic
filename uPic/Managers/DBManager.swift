@@ -17,10 +17,10 @@ public class DBManager {
     private var database: Database!
     
     init() {
-        Database.globalTrace(ofError: { (error) in
+        Database.globalTraceError { error in
             assert(error.level != .Fatal)
             print(error)
-        })
+        }
         debugPrintOnly("数据库地址：\(Constants.CachePath.databasePath)")
         database = Database(at: Constants.CachePath.databasePath)
         createHistoryTable()

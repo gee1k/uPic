@@ -1,11 +1,8 @@
 PODS:
   - libminipng (0.5.6)
-  - WCDB.swift (2.0.2.5):
-    - WCDB.swift/no-arc (= 2.0.2.5)
-    - WCDBOptimizedSQLCipher (~> 1.4.1)
-  - WCDB.swift/no-arc (2.0.2.5):
-    - WCDBOptimizedSQLCipher (~> 1.4.1)
-  - WCDBOptimizedSQLCipher (1.4.1)
+  - WCDB.swift (2.1.5):
+    - WCDBOptimizedSQLCipher (= 1.4.4)
+  - WCDBOptimizedSQLCipher (1.4.4)
 
 DEPENDENCIES:
   - libminipng
@@ -19,8 +16,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   libminipng: a44c35d06b9d54d6640acdf97f4500c034748abb
-  WCDB.swift: 41d30d0e113cb2032947e34998f9eedc5c8cbd71
-  WCDBOptimizedSQLCipher: 880ec8aa6cda6b27e4c72b30bf0cc01771deda6f
+  WCDB.swift: 175885bda1e00d58baaa0a8f276fa0c03ba62a96
+  WCDBOptimizedSQLCipher: 7f03bb7c94ad164996f0fa87d0f76026f5ab0f92
 
 PODFILE CHECKSUM: 578e68ce0a8889942b52298dac45365f59c42985
 
