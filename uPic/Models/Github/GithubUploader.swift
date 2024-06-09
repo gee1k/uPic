@@ -76,6 +76,8 @@ class GithubUploader: BaseUploader {
                             return
                         }
 
+                        Logger.shared.error("upload image error: \(errorMsg)")
+
                         // If image has been uploaded, just return image raw content url.
                         self.getGitHubFileSha(url, token: token) { fileSha in
                             guard let fileSha else { return super.faild(responseData: response.data, errorMsg: errorMsg) }
@@ -93,7 +95,8 @@ class GithubUploader: BaseUploader {
                                 return
                             }
 
-                            super.faild(responseData: response.data, errorMsg: errorMsg)
+                            // If uploading image name has been existed, but sha hash is different, means they are different images, we need to re-upload the image. Use random file name.
+                            self._upload(nil, fileData: retData, host: host)
                         }
                     }
                 }
