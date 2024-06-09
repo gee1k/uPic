@@ -13,7 +13,11 @@ class GithubUtil {
     static func getUrl(owner: String, repo: String, filePath: String) -> String {
         return "https://api.github.com/repos/\(owner)/\(repo)/contents/\(filePath)".urlEncoded()
     }
-    
+
+    static func getRawContentUrl(owner: String, repo: String, branch: String, filePath: String) -> String {
+        return "https://raw.githubusercontent.com/\(owner)/\(repo)/\(branch)/\(filePath)".urlEncoded()
+    }
+
     static func getRequestParameters(branch: String, filePath: String, b64Content: String) -> Parameters {
         var parameters = Parameters()
         parameters["branch"] = branch

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03F383CA2C15A6BC00795FD3 /* URL+sha1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F383C92C15A6BC00795FD3 /* URL+sha1.swift */; };
 		1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1602ED9622ADEFB200AA8638 /* BaseUploader.swift */; };
 		1602ED9922ADF43800AA8638 /* SmmsUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1602ED9822ADF43800AA8638 /* SmmsUploader.swift */; };
 		16068C7522AEC1D1004D39B7 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7422AEC1D1004D39B7 /* PreferencesViewController.swift */; };
@@ -205,6 +206,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03F383C92C15A6BC00795FD3 /* URL+sha1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+sha1.swift"; sourceTree = "<group>"; };
 		1602ED9622ADEFB200AA8638 /* BaseUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUploader.swift; sourceTree = "<group>"; };
 		1602ED9822ADF43800AA8638 /* SmmsUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmmsUploader.swift; sourceTree = "<group>"; };
 		1605DDD8246D993C00262C89 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				4B6C62F923613AEF008E3735 /* NSImage+Extension.swift */,
 				4B2B3355236C3B6400C9F2CA /* NSView+Extension.swift */,
 				4B2B3353236BC5AB00C9F2CA /* NSButton+Extension.swift */,
+				03F383C92C15A6BC00795FD3 /* URL+sha1.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1264,6 +1267,7 @@
 				16AFDB3824E50F450008E5A7 /* S3Region.swift in Sources */,
 				96F633F625AEC3C7005514EB /* DatabaseViewController.swift in Sources */,
 				16CD34FC23BC8966005B52F2 /* MimeType.swift in Sources */,
+				03F383CA2C15A6BC00795FD3 /* URL+sha1.swift in Sources */,
 				16F04EE623BCC45F00CCA2FE /* Option.swift in Sources */,
 				169F074422AF7A3D008E8525 /* StatusMenuController.swift in Sources */,
 				167DDBEB22C76F5000B03357 /* GithubUploader.swift in Sources */,
