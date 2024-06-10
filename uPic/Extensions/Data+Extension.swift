@@ -63,4 +63,14 @@ extension Data {
         let sha1 = store.sha1().toHexString()
         return sha1
     }
+
+    /// Get github file sha.
+        func githubSHAAsync() async -> String {
+            return await withCheckedContinuation { continuation in
+                DispatchQueue.global().async {
+                    let sha1 = self.githubSHA()
+                    continuation.resume(returning: sha1)
+                }
+            }
+        }
 }

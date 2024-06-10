@@ -52,55 +52,60 @@ class GithubUploader: BaseUploader {
 
         AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().uploadProgress { progress in
             super.progress(percent: progress.fractionCompleted)
-            }.responseData(completionHandler: { response -> Void in
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    if let errorMessage = json["message"].string {
-                        super.faild(responseData: response.data, errorMsg: errorMessage)
+        }.responseData(completionHandler: { response -> Void in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                if let errorMessage = json["message"].string {
+                    super.faild(responseData: response.data, errorMsg: errorMessage)
+                    return
+                }
+                if domain.isEmpty {
+                    super.completed(url: json["content"]["download_url"].stringValue.urlDecoded(), retData, fileUrl, fileName)
+                } else {
+                    super.completed(url: "\(domain)/\(saveKey)", retData, fileUrl, fileName)
+                }
+            case .failure(let error):
+                var errorMsg = error.localizedDescription
+
+                if let data = response.data {
+                    let json = JSON(data)
+                    errorMsg = json["message"].stringValue
+                    Logger.shared.error("upload image error: \(errorMsg)")
+
+                    // If image name is duplicated, we will receive a 422 error and "sha\" wasn't supplied msg.
+                    if !self.isImageNameDuplicatedError(json) {
+                        super.faild(responseData: data, errorMsg: errorMsg)
                         return
                     }
-                    if domain.isEmpty {
-                        super.completed(url: json["content"]["download_url"].stringValue.urlDecoded(), retData, fileUrl, fileName)
-                    } else {
-                        super.completed(url: "\(domain)/\(saveKey)", retData, fileUrl, fileName)
-                    }
-                case .failure(let error):
-                    var errorMsg = error.localizedDescription
-                    if let data = response.data {
-                        let json = JSON(data)
-                        errorMsg = json["message"].stringValue
 
-                        if !self.isShaMissingError(json) {
-                            super.faild(responseData: response.data, errorMsg: errorMsg)
-                            return
-                        }
+                    let errMsg = errorMsg
 
-                        Logger.shared.error("upload image error: \(errorMsg)")
+                    Task {
+                        do {
+                            async let fileInfo = self.getGitHubFileInfo(url: url, token: token)
+                            async let sha = retData?.githubSHAAsync() ?? ""
+                            let (fileInfoJSON, shaValue) = await (try fileInfo, sha)
 
-                        // If image has been uploaded, just return image raw content url.
-                        self.getGitHubFileSha(url, token: token) { fileSha in
-                            guard let fileSha else { return super.faild(responseData: response.data, errorMsg: errorMsg) }
-
-                            let sha = retData?.githubSHA() ?? ""
-                            Logger.shared.info("local sha: \(sha)")
-
-                            // If sha is equal to fileSha, that means the image has been uploaded.
-                            if fileSha == sha {
-                                let url = domain.isEmpty
-                                ? GithubUtil.getRawContentUrl(owner: owner, repo: repo, branch: branch, filePath: saveKey)
-                                : "\(domain)/\(saveKey)"
-
+                            let fileSHA = fileInfoJSON["sha"].string
+                            if shaValue == fileSHA {
+                                Logger.shared.info("image has been uploaded, return download_url")
+                                let url = domain.isEmpty ? fileInfoJSON["download_url"].stringValue : "\(domain)/\(saveKey)"
                                 super.completed(url: url, retData, fileUrl, fileName)
                                 return
                             }
 
+                            Logger.shared.info("image name has been existed, re-load image with random name")
+
                             // If uploading image name has been existed, but sha hash is different, means they are different images, we need to re-upload the image. Use random file name.
                             self._upload(nil, fileData: retData, host: host)
+                        } catch {
+                            return super.faild(responseData: data, errorMsg: errMsg)
                         }
                     }
                 }
-            })
+            }
+        })
     }
 
     func upload(_ fileUrl: URL, host: Host) {
@@ -112,30 +117,21 @@ class GithubUploader: BaseUploader {
     }
 
     /// Check if error status is 422 and message is "Invalid request.\n\n\"sha\" wasn't supplied.", that means the uploaded image name has been existed.
-    func isShaMissingError(_ json: JSON) -> Bool {
+    func isImageNameDuplicatedError(_ json: JSON) -> Bool {
         if  json["status"].intValue == 422, json["message"].stringValue == "Invalid request.\n\n\"sha\" wasn't supplied." {
             return true
         }
         return false
     }
 
-    /// Get file sha by github url GET method.
-    func getGitHubFileSha(_ url: String, token: String, completion: @escaping (_ sha: String?) -> Void) {
+    /// Use AF await to get file JSON by github url GET method.
+    func getGitHubFileInfo(url: String, token: String) async  throws -> JSON {
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.authorization("token \(token)"))
         headers.add(HTTPHeader.contentType("application/json"))
         headers.add(HTTPHeader.defaultUserAgent)
 
-        AF.request(url, method: .get, headers: headers).validate().responseData { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                let sha = json["sha"].stringValue
-                Logger.shared.info("github file sha(\(url): \(sha)")
-                completion(sha)
-            case .failure:
-                completion(nil)
-            }
-        }
+        let dataTask = AF.request(url, method: .get, headers: headers).serializingDecodable(JSON.self)
+        return try await dataTask.value
     }
 }
