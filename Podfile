@@ -7,7 +7,6 @@ use_frameworks!
 
 target 'uPic' do
     pod "libminipng"
-    pod 'WCDB.swift'
 end
 
 post_install do |installer|

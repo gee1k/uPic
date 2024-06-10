@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03714B8D2C1743BE00BB4459 /* WCDBSwiftDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 03714B8C2C1743BE00BB4459 /* WCDBSwiftDynamic */; };
 		03F383CA2C15A6BC00795FD3 /* URL+sha1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F383C92C15A6BC00795FD3 /* URL+sha1.swift */; };
 		1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1602ED9622ADEFB200AA8638 /* BaseUploader.swift */; };
 		1602ED9922ADF43800AA8638 /* SmmsUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1602ED9822ADF43800AA8638 /* SmmsUploader.swift */; };
@@ -403,6 +404,7 @@
 				8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */,
 				964198C22729A7E90001AB97 /* CryptoSwift in Frameworks */,
 				964198D22729AB170001AB97 /* LaunchAtLogin in Frameworks */,
+				03714B8D2C1743BE00BB4459 /* WCDBSwiftDynamic in Frameworks */,
 				964198C82729A7F60001AB97 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -927,6 +929,7 @@
 				1649393C285E2620007278DA /* CocoaLumberjack */,
 				1649393E285E2620007278DA /* CocoaLumberjackSwift */,
 				1649394C285F1C45007278DA /* Zip */,
+				03714B8C2C1743BE00BB4459 /* WCDBSwiftDynamic */,
 			);
 			productName = uPic;
 			productReference = 16EC9A0222ABBBB4001B6C89 /* uPic.app */;
@@ -1028,6 +1031,7 @@
 				16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */,
 				1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
 				1649394B285F1C44007278DA /* XCRemoteSwiftPackageReference "Zip" */,
+				03714B8B2C1743BE00BB4459 /* XCRemoteSwiftPackageReference "wcdb" */,
 			);
 			productRefGroup = 16A6DC4B22AA375700813706;
 			projectDirPath = "";
@@ -1764,6 +1768,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		03714B8B2C1743BE00BB4459 /* XCRemoteSwiftPackageReference "wcdb" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Tencent/wcdb";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 		1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
@@ -1855,6 +1867,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		03714B8C2C1743BE00BB4459 /* WCDBSwiftDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 03714B8B2C1743BE00BB4459 /* XCRemoteSwiftPackageReference "wcdb" */;
+			productName = WCDBSwiftDynamic;
+		};
 		1649393C285E2620007278DA /* CocoaLumberjack */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
