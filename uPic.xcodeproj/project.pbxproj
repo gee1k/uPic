@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03714B8D2C1743BE00BB4459 /* WCDBSwiftDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 03714B8C2C1743BE00BB4459 /* WCDBSwiftDynamic */; };
+		03714B932C19907C00BB4459 /* WCDBSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 03714B922C19907C00BB4459 /* WCDBSwift */; };
 		03F383CA2C15A6BC00795FD3 /* URL+sha1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F383C92C15A6BC00795FD3 /* URL+sha1.swift */; };
 		1602ED9722ADEFB200AA8638 /* BaseUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1602ED9622ADEFB200AA8638 /* BaseUploader.swift */; };
 		1602ED9922ADF43800AA8638 /* SmmsUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1602ED9822ADF43800AA8638 /* SmmsUploader.swift */; };
@@ -398,13 +398,13 @@
 				1649393F285E2620007278DA /* CocoaLumberjackSwift in Frameworks */,
 				964198B62729A6BA0001AB97 /* SwiftyJSON in Frameworks */,
 				964198C62729A7F00001AB97 /* Kingfisher in Frameworks */,
+				03714B932C19907C00BB4459 /* WCDBSwift in Frameworks */,
 				964198C42729A7EC0001AB97 /* SwiftyXMLParser in Frameworks */,
 				964198C02729A7E30001AB97 /* Alamofire in Frameworks */,
 				16539DCF278AD8700035B9DF /* SotoS3 in Frameworks */,
 				8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */,
 				964198C22729A7E90001AB97 /* CryptoSwift in Frameworks */,
 				964198D22729AB170001AB97 /* LaunchAtLogin in Frameworks */,
-				03714B8D2C1743BE00BB4459 /* WCDBSwiftDynamic in Frameworks */,
 				964198C82729A7F60001AB97 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -929,7 +929,7 @@
 				1649393C285E2620007278DA /* CocoaLumberjack */,
 				1649393E285E2620007278DA /* CocoaLumberjackSwift */,
 				1649394C285F1C45007278DA /* Zip */,
-				03714B8C2C1743BE00BB4459 /* WCDBSwiftDynamic */,
+				03714B922C19907C00BB4459 /* WCDBSwift */,
 			);
 			productName = uPic;
 			productReference = 16EC9A0222ABBBB4001B6C89 /* uPic.app */;
@@ -1031,7 +1031,7 @@
 				16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */,
 				1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
 				1649394B285F1C44007278DA /* XCRemoteSwiftPackageReference "Zip" */,
-				03714B8B2C1743BE00BB4459 /* XCRemoteSwiftPackageReference "wcdb" */,
+				03714B912C19907C00BB4459 /* XCRemoteSwiftPackageReference "wcdb" */,
 			);
 			productRefGroup = 16A6DC4B22AA375700813706;
 			projectDirPath = "";
@@ -1768,7 +1768,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		03714B8B2C1743BE00BB4459 /* XCRemoteSwiftPackageReference "wcdb" */ = {
+		03714B912C19907C00BB4459 /* XCRemoteSwiftPackageReference "wcdb" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Tencent/wcdb";
 			requirement = {
@@ -1867,10 +1867,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		03714B8C2C1743BE00BB4459 /* WCDBSwiftDynamic */ = {
+		03714B922C19907C00BB4459 /* WCDBSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 03714B8B2C1743BE00BB4459 /* XCRemoteSwiftPackageReference "wcdb" */;
-			productName = WCDBSwiftDynamic;
+			package = 03714B912C19907C00BB4459 /* XCRemoteSwiftPackageReference "wcdb" */;
+			productName = WCDBSwift;
 		};
 		1649393C285E2620007278DA /* CocoaLumberjack */ = {
 			isa = XCSwiftPackageProductDependency;
