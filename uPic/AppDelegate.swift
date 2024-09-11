@@ -14,7 +14,6 @@ import ScriptingBridge
 import MASShortcut
 import LaunchAtLogin
 
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
@@ -113,16 +112,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Finder context menu file upload listener
     @objc func uploadFilesFromFinderMenu(notification: Notification) {
         let pathStr = notification.object as? String ?? ""
-        Logger.shared.verbose("收到来自 Finder Menu 的上传请求-\(pathStr)")
+        Logger.shared.verbose("收到来自 Finder Menu 的上传请求: \(pathStr)")
         uploadFilesFromPaths(pathStr)
     }
     
     @objc func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
         if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue{
-            Logger.shared.verbose("收到来自 URLScheme 的上传请求-\(urlString)")
+            Logger.shared.verbose("收到来自 URLScheme 的上传请求: \(urlString)")
             URLSchemeExt.shared.handleURL(urlString)
         } else {
-            Logger.shared.warn("收到来自 URLScheme 的上传请求-无效参数")
+            Logger.shared.warn("收到来自 URLScheme 的上传请求: 无效参数")
         }
     }
 }
@@ -178,13 +177,7 @@ extension AppDelegate {
                                    .rightMouseUp, .rightMouseDown])
             
             // 注册拖拽文件格式支持。使其支持浏览器拖拽的URL、tiff。以及Safari 有些情况(例如，百度搜图，在默认搜索列表。不进入详情时)下拖拽的时候获取到的是图片URL字符串
-            if #available(OSX 10.13, *) {
-                button.window?.registerForDraggedTypes([.URL, .fileURL, .string, .html])
-            } else {
-                // Fallback on earlier versions
-                button.window?.registerForDraggedTypes([.png, .tiff, .pdf, .string, .html])
-            }
-            
+            button.window?.registerForDraggedTypes([.URL, .fileURL, .string, .html])
         }
     }
     
@@ -345,34 +338,45 @@ extension AppDelegate {
             return
         }
         
-        // 截图权限检测
-        Logger.shared.verbose("检查屏幕录制权限")
-        let hasPermission = ScreenUtil.screeningRecordPermissionCheck()
-        if !hasPermission {
-            Logger.shared.warn("无截图权限，申请截图权限并弹出帮助界面、跳转到设置界面")
-            // 无截图权限，申请截图权限并弹出帮助界面、跳转到设置界面
-            ScreenUtil.requestRecordScreenPermissions()
+        if ScreenUtil.getScreenshotApp() == 0 {
+            Logger.shared.info("使用 macOS 自带截图工具截图")
             
-            _ = WindowManager.shared.showWindow(storyboard: "ScreenshotAuthorizationHelp", withIdentifier: "screenshotAuthorizationHelpWindowController")
-            return
-        }
-        Logger.shared.verbose("屏幕录制权限已获取， 开始截图")
-        
-        let task = Process()
-        task.launchPath = "/usr/sbin/screencapture"
-        task.arguments = ["-i", "-c"]
-        task.launch()
-        task.waitUntilExit()
-        
-        Logger.shared.info("截图上传格式:\(NSPasteboard.general.types?.first?.rawValue ?? "")")
-        if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.png) {
-            Logger.shared.info("截图上传 PNG")
-            let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
-            self.uploadFiles([imgData!])
-        } else if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.jpeg) {
-            Logger.shared.info("截图上传 JPEG")
-            let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.jpeg)
-            self.uploadFiles([imgData!])
+            // 截图权限检测
+            Logger.shared.verbose("检查屏幕录制权限")
+            let hasPermission = ScreenUtil.screeningRecordPermissionCheck()
+            if !hasPermission {
+                Logger.shared.warn("无截图权限，申请截图权限并弹出帮助界面、跳转到设置界面")
+                // 无截图权限，申请截图权限并弹出帮助界面、跳转到设置界面
+                ScreenUtil.requestRecordScreenPermissions()
+                
+                _ = WindowManager.shared.showWindow(storyboard: "ScreenshotAuthorizationHelp", withIdentifier: "screenshotAuthorizationHelpWindowController")
+                return
+            }
+            Logger.shared.verbose("屏幕录制权限已获取， 开始截图")
+            
+            let task = Process()
+            task.launchPath = "/usr/sbin/screencapture"
+            task.arguments = ["-i", "-c"]
+            task.launch()
+            task.waitUntilExit()
+            
+            Logger.shared.info("截图上传格式:\(NSPasteboard.general.types?.first?.rawValue ?? "")")
+            if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.png) {
+                Logger.shared.info("截图上传 PNG")
+                let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.png)
+                self.uploadFiles([imgData!])
+            } else if (NSPasteboard.general.types?.first == NSPasteboard.PasteboardType.jpeg) {
+                Logger.shared.info("截图上传 JPEG")
+                let imgData = NSPasteboard.general.data(forType: NSPasteboard.PasteboardType.jpeg)
+                self.uploadFiles([imgData!])
+            }
+            
+        } else {
+            Logger.shared.info("使用 Longshot 截图")
+            guard let url = URL(string: "longshot://x-callback-url/snip?func=start&channel=clipboard&type=data&x-source=uPic&x-success=uPic://x-callback-url/acceptSnip?x-source=longshot&x-error=uPic://x-callback-url/snipError?x-source=longshot&errorMessage=message") else {
+                return
+            }
+            NSWorkspace.shared.open(url)
         }
     }
 }

@@ -20,6 +20,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     @IBOutlet weak var historyRecordPadding: NSTextField!
     @IBOutlet weak var historyRecordFileNameScrollSpeed: NSTextField!
     @IBOutlet weak var historyRecordFileNameScrollWaitTime: NSTextField!
+    @IBOutlet weak var screenshotAppOption: NSPopUpButton!
     @IBOutlet weak var finderExtensionIcon: NSPopUpButton!
     @IBOutlet weak var fullDiskAuthorizationImage: NSImageView!
     @IBOutlet weak var fullDiskAuthorizationButton: NSButton!
@@ -40,6 +41,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         screenshotShortcut.associatedUserDefaultsKey = Constants.Key.screenshotShortcut
         
         setHistoryRecordTextFieldDefaultText()
+        setScreenshotAppDefaultValue()
         setFinderExtensionIconDefaultValue()
     }
     
@@ -52,12 +54,12 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         historyRecordFileNameScrollWaitTime.stringValue = "\(HistoryRecordFileNameScrollWaitTimeGlobal)"
     }
     
+    func setScreenshotAppDefaultValue() {
+        screenshotAppOption.selectItem(at: ScreenUtil.getScreenshotApp())
+    }
+    
     func setFinderExtensionIconDefaultValue() {
         finderExtensionIcon.selectItem(at: FinderUtil.getIcon())
-        
-        if #available(macOS 11, *) {
-            finderExtensionIcon.item(at: 1)!.image = NSImage(named: "single_new")
-        }
     }
     
     func checkFullDiskAuthorizationStatus() {
@@ -96,6 +98,10 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         Defaults[.historyRecordFileNameScrollWaitTime] = Float(historyRecordFileNameScrollWaitTime.stringValue)
         
         ConfigNotifier.postNotification(.changeHistoryList)
+    }
+    
+    @IBAction func didChangeScreenshotApp(_ sender: NSPopUpButton) {
+        ScreenUtil.setScreenshotApp(sender.indexOfSelectedItem)
     }
     
     @IBAction func didChangeFinderExtensionIcon(_ sender: NSPopUpButton) {
@@ -142,6 +148,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
             ConfigManager.shared.removeAllUserDefaults()
             ConfigManager.shared.firstSetup()
             FinderUtil.removeIcon()
+            ScreenUtil.resetScreenshotApp()
             
             DispatchQueue.main.async {
                 self.setFinderExtensionIconDefaultValue()

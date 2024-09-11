@@ -151,12 +151,12 @@
 		964198C42729A7EC0001AB97 /* SwiftyXMLParser in Frameworks */ = {isa = PBXBuildFile; productRef = 964198C32729A7EC0001AB97 /* SwiftyXMLParser */; };
 		964198C62729A7F00001AB97 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 964198C52729A7F00001AB97 /* Kingfisher */; };
 		964198C82729A7F60001AB97 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 964198C72729A7F60001AB97 /* SnapKit */; };
-		964198D22729AB170001AB97 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 964198D12729AB170001AB97 /* LaunchAtLogin */; };
 		965A5E5225ADBD8F00AB88FF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
 		965E817125B721650031A01F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965E817025B721650031A01F /* WelcomeViewController.swift */; };
 		965E819B25B7274E0031A01F /* WelcomeWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965E819A25B7274E0031A01F /* WelcomeWindowController.swift */; };
 		96767C02266C8AEB00867727 /* UPic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 96767C01266C8AEB00867727 /* UPic.sdef */; };
 		96767C09266CABC800867727 /* AppleScriptCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96767C08266CABC800867727 /* AppleScriptCommand.swift */; };
+		967A6B7D2C9057E200C3DDEB /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 967A6B7C2C9057E200C3DDEB /* LaunchAtLogin */; };
 		968ECC07240DFCF900B2D78C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 968ECC09240DFCF900B2D78C /* InfoPlist.strings */; };
 		96B6C3F125AD89F200B1A584 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 96B6C3F025AD89F200B1A584 /* icon.icns */; };
 		96B6C3F325AD89F200B1A584 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B6C3F225AD89F200B1A584 /* ShareViewController.swift */; };
@@ -352,13 +352,13 @@
 		4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPreviewCustomScrollView.swift; sourceTree = "<group>"; };
 		96223BDA26F62AF900EA33F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Welcome.strings; sourceTree = "<group>"; };
 		9637625F25B6E32B0097452B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Database.strings; sourceTree = "<group>"; };
+		965841092C90AF6F00585B71 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		965E817025B721650031A01F /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		965E819A25B7274E0031A01F /* WelcomeWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeWindowController.swift; sourceTree = "<group>"; };
 		96767C01266C8AEB00867727 /* UPic.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = UPic.sdef; sourceTree = "<group>"; };
 		96767C08266CABC800867727 /* AppleScriptCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleScriptCommand.swift; sourceTree = "<group>"; };
 		968ECC08240DFCF900B2D78C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		968ECC0A240DFCFA00B2D78C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		96AA47FE25B88BE3006B4DAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		96B6C3EE25AD89F200B1A584 /* uPicShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		96B6C3F025AD89F200B1A584 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		96B6C3F225AD89F200B1A584 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -392,6 +392,7 @@
 				964198BC2729A75B0001AB97 /* MASShortcut in Frameworks */,
 				1649393D285E2620007278DA /* CocoaLumberjack in Frameworks */,
 				1649394D285F1C45007278DA /* Zip in Frameworks */,
+				967A6B7D2C9057E200C3DDEB /* LaunchAtLogin in Frameworks */,
 				1649393F285E2620007278DA /* CocoaLumberjackSwift in Frameworks */,
 				964198B62729A6BA0001AB97 /* SwiftyJSON in Frameworks */,
 				964198C62729A7F00001AB97 /* Kingfisher in Frameworks */,
@@ -400,7 +401,6 @@
 				16539DCF278AD8700035B9DF /* SotoS3 in Frameworks */,
 				8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */,
 				964198C22729A7E90001AB97 /* CryptoSwift in Frameworks */,
-				964198D22729AB170001AB97 /* LaunchAtLogin in Frameworks */,
 				964198C82729A7F60001AB97 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -902,7 +902,7 @@
 				964DA808272AF5630003304C /* Copy “Launch at Login Helper” */,
 				8B11FF3895E709812B771F7E /* [CP] Embed Pods Frameworks */,
 				16F7467D22E994A300480A62 /* Embed Foundation Extensions */,
-				1613D88B25C98273009E348A /* ShellScript */,
+				1613D88B25C98273009E348A /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -919,11 +919,11 @@
 				964198C32729A7EC0001AB97 /* SwiftyXMLParser */,
 				964198C52729A7F00001AB97 /* Kingfisher */,
 				964198C72729A7F60001AB97 /* SnapKit */,
-				964198D12729AB170001AB97 /* LaunchAtLogin */,
 				16539DCE278AD8700035B9DF /* SotoS3 */,
 				1649393C285E2620007278DA /* CocoaLumberjack */,
 				1649393E285E2620007278DA /* CocoaLumberjackSwift */,
 				1649394C285F1C45007278DA /* Zip */,
+				967A6B7C2C9057E200C3DDEB /* LaunchAtLogin */,
 			);
 			productName = uPic;
 			productReference = 16EC9A0222ABBBB4001B6C89 /* uPic.app */;
@@ -971,7 +971,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1230;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1600;
 				ORGANIZATIONNAME = "Svend Jin";
 				TargetAttributes = {
 					16A6DC5322AA375700813706 = {
@@ -1021,10 +1021,10 @@
 				9630C4262729A0EA009E8735 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				964198B42729A6BA0001AB97 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				964198BA2729A75A0001AB97 /* XCRemoteSwiftPackageReference "MASShortcut" */,
-				964198D02729AB170001AB97 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */,
 				1649393B285E2620007278DA /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
 				1649394B285F1C44007278DA /* XCRemoteSwiftPackageReference "Zip" */,
+				967A6B7B2C9057E200C3DDEB /* XCRemoteSwiftPackageReference "LaunchAtLogin-Legacy" */,
 			);
 			productRefGroup = 16A6DC4B22AA375700813706;
 			projectDirPath = "";
@@ -1079,8 +1079,9 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1613D88B25C98273009E348A /* ShellScript */ = {
+		1613D88B25C98273009E348A /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1088,6 +1089,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -1363,7 +1365,7 @@
 				169F073C22AF53DE008E8525 /* Base */,
 				161ABBE323B212C800805C5B /* zh-Hans */,
 				1605DDD9246D993C00262C89 /* zh-Hant */,
-				96AA47FE25B88BE3006B4DAE /* en */,
+				965841092C90AF6F00585B71 /* en */,
 			);
 			name = Preferences.storyboard;
 			sourceTree = "<group>";
@@ -1461,6 +1463,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1475,7 +1478,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1525,6 +1528,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1533,7 +1537,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -1546,25 +1550,27 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B31C410193F6C634ECBC8F5F /* Pods-uPic.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPicDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 24;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = W863J6W8DZ;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1579,25 +1585,27 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA1B39CC17103449CC5099AD /* Pods-uPic.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 24;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = W863J6W8DZ;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1613,11 +1621,12 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtensionDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = W863J6W8DZ;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1625,8 +1634,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.4.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1641,11 +1650,12 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = W863J6W8DZ;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1653,8 +1663,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.4.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1668,11 +1678,12 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtensionDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = W863J6W8DZ;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1680,8 +1691,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.4.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1695,11 +1706,12 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = W863J6W8DZ;
+				DEVELOPMENT_TEAM = 2U23P5CPX2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1707,10 +1719,11 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.4.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1763,7 +1776,7 @@
 			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.8.0;
+				minimumVersion = 3.8.5;
 			};
 		};
 		1649394B285F1C44007278DA /* XCRemoteSwiftPackageReference "Zip" */ = {
@@ -1771,7 +1784,7 @@
 			repositoryURL = "https://github.com/marmelroy/Zip.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.0;
+				minimumVersion = 2.1.2;
 			};
 		};
 		16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */ = {
@@ -1787,7 +1800,7 @@
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.0;
+				minimumVersion = 5.9.1;
 			};
 		};
 		9630C4232729A096009E8735 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
@@ -1795,7 +1808,7 @@
 			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.7.2;
+				minimumVersion = 1.8.3;
 			};
 		};
 		9630C4242729A0B0009E8735 /* XCRemoteSwiftPackageReference "SwiftyXMLParser" */ = {
@@ -1811,7 +1824,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.8.0;
+				minimumVersion = 7.12.0;
 			};
 		};
 		9630C4262729A0EA009E8735 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -1819,7 +1832,7 @@
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.6.0;
+				minimumVersion = 5.7.1;
 			};
 		};
 		964198B42729A6BA0001AB97 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
@@ -1827,7 +1840,7 @@
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.0.2;
 			};
 		};
 		964198BA2729A75A0001AB97 /* XCRemoteSwiftPackageReference "MASShortcut" */ = {
@@ -1838,12 +1851,12 @@
 				kind = branch;
 			};
 		};
-		964198D02729AB170001AB97 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+		967A6B7B2C9057E200C3DDEB /* XCRemoteSwiftPackageReference "LaunchAtLogin-Legacy" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Legacy";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.0.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1904,9 +1917,9 @@
 			package = 9630C4262729A0EA009E8735 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		964198D12729AB170001AB97 /* LaunchAtLogin */ = {
+		967A6B7C2C9057E200C3DDEB /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 964198D02729AB170001AB97 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			package = 967A6B7B2C9057E200C3DDEB /* XCRemoteSwiftPackageReference "LaunchAtLogin-Legacy" */;
 			productName = LaunchAtLogin;
 		};
 /* End XCSwiftPackageProductDependency section */

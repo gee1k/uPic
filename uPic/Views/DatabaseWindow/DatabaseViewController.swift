@@ -84,11 +84,7 @@ class DatabaseViewController: NSViewController {
         tableView.reloadData()
         
         // 更新窗口 Title 中的数量
-        if #available(OSX 11.0, *) {
-            view.window?.subtitle = "\(items.count) " + "items".localized
-        } else {
-            view.window?.title += "  \(items.count) " + "items".localized
-        }
+        view.window?.subtitle = "\(items.count) " + "items".localized
     }
     
     // 更新图床列表

@@ -14,7 +14,6 @@ public class PreferencesNotifier: Notifier {
         case openConfigSheet
         case saveCustomExtensionSettings
         case hostConfigChanged
-        case githubCDNAutoComplete
     }
 
 }
