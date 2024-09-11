@@ -13,23 +13,11 @@ extension NSPasteboard.PasteboardType {
     // MARK: 剪切板扩展，让 10.13 以前的版本也支持 FileUrl 类型
     
     static let backwardsCompatibleFileURL: NSPasteboard.PasteboardType = {
-        
-        if #available(OSX 10.13, *) {
-            return NSPasteboard.PasteboardType.fileURL
-        } else {
-            return NSPasteboard.PasteboardType(kUTTypeFileURL as String)
-        }
-        
+        return NSPasteboard.PasteboardType.fileURL
     } ()
     
     static let backwardsCompatibleURL: NSPasteboard.PasteboardType = {
-        
-        if #available(OSX 10.13, *) {
-            return NSPasteboard.PasteboardType.URL
-        } else {
-            return NSPasteboard.PasteboardType(kUTTypeURL as String)
-        }
-        
+        return NSPasteboard.PasteboardType.URL
     } ()
     
     static let gif: NSPasteboard.PasteboardType = kUTType(kUTTypeGIF)

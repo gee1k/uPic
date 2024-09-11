@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22146" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="BoV-iM-DLl">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="BoV-iM-DLl">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22146"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +20,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
-                        <toolbar key="toolbar" implicitIdentifier="F994A6BC-6548-4845-AF34-98BA595D6E6C" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="AZk-hs-d2X">
+                        <toolbar key="toolbar" implicitIdentifier="F994A6BC-6548-4845-AF34-98BA595D6E6C" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="AZk-hs-d2X">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="2372AE59-5267-411F-872F-9C064B07EA83" label="Refresh" paletteLabel="Refresh" tag="-1" image="NSRefreshTemplate" id="cIr-0p-1ah">
                                     <size key="minSize" width="33.5" height="29"/>
@@ -101,7 +101,7 @@
                                                     <rect key="frame" x="8" y="4" width="18" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Fbl-yq-94B">
+                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Fbl-yq-94B">
                                                             <rect key="frame" x="-2" y="1" width="22" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="1" id="nOC-jD-wpP">
                                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -137,7 +137,7 @@
                                                     <rect key="frame" x="43" y="4" width="100" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5T8-lY-Z1H">
+                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5T8-lY-Z1H">
                                                             <rect key="frame" x="-2" y="1" width="104" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Name" id="A25-IL-lsb">
                                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -207,7 +207,7 @@
                                                     <rect key="frame" x="212" y="4" width="50" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XNQ-yO-ePH">
+                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="XNQ-yO-ePH">
                                                             <rect key="frame" x="-2" y="1" width="54" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Size" id="xFO-bI-gPs">
                                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -243,7 +243,7 @@
                                                     <rect key="frame" x="279" y="4" width="150" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Knv-Pw-ipy">
+                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Knv-Pw-ipy">
                                                             <rect key="frame" x="-2" y="1" width="154" height="16"/>
                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Time" id="Oop-Sb-42w">
                                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -279,7 +279,7 @@
                                                     <rect key="frame" x="446" y="4" width="269" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Ngt-eZ-JMM">
+                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Ngt-eZ-JMM">
                                                             <rect key="frame" x="-2" y="1" width="273" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="URL" id="Mwg-rj-Qgg">
                                                                 <font key="font" usesAppearanceFont="YES"/>

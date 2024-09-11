@@ -13,11 +13,7 @@ class DatabaseWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        if #available(OSX 11.0, *) {
-            window?.subtitle = "\(DBManager.shared.getHistoryList().count) " + "items".localized
-        } else {
-            window?.title += "  \(DBManager.shared.getHistoryList().count) " + "items".localized
-        }
+        window?.subtitle = "\(DBManager.shared.getHistoryList().count) " + "items".localized
     }
     
 }

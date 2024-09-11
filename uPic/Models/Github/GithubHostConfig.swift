@@ -17,7 +17,6 @@ class GithubHostConfig: HostConfig {
     dynamic var token: String = ""
     dynamic var domain: String = ""
     dynamic var saveKeyPath: String?
-    dynamic var useCdn: Bool = false
     
     override func displayName(key: String) -> String {
         switch key {
@@ -33,8 +32,6 @@ class GithubHostConfig: HostConfig {
             return "Domain".localized
         case "saveKeyPath":
             return "Save Key".localized
-        case "useCdn":
-            return "Use CDN".localized
         default:
             return ""
         }
@@ -48,7 +45,6 @@ class GithubHostConfig: HostConfig {
         dict["token"] = self.token
         dict["domain"] = self.domain
         dict["saveKeyPath"] = self.saveKeyPath
-        dict["useCdn"] = self.useCdn
         
         return JSON(dict).rawString()!
     }
@@ -67,23 +63,6 @@ class GithubHostConfig: HostConfig {
         config.domain = json["domain"].stringValue
         config.saveKeyPath = json["saveKeyPath"].stringValue
         
-        // FIXME: - Workaround
-        if let str =  json["useCdn"].string {
-            config.useCdn = str == "1"
-        } else {
-            config.useCdn = json["useCdn"].boolValue
-        }
         return config
-    }
-    
-    override func controlTextDidChange(_ obj: Notification) {
-        super.controlTextDidChange(obj)
-        if !self.useCdn {
-            return
-        }
-        let keys = ["owner", "repo", "branch"]
-        if let textField = obj.object as? NSTextField, let key = textField.identifier?.rawValue, keys.contains(key) {
-            PreferencesNotifier.postNotification(.githubCDNAutoComplete)
-        }
     }
 }

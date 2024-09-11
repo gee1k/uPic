@@ -14,6 +14,9 @@
 /* Class = "NSButtonCell"; title = "Show"; ObjectID = "7Gg-u8-8Yt"; */
 "7Gg-u8-8Yt.title" = "显示";
 
+/* Class = "NSMenuItem"; title = "Longshot"; ObjectID = "7P7-Gy-ZGZ"; */
+"7P7-Gy-ZGZ.title" = "Longshot";
+
 /* Class = "NSButtonCell"; title = "Reset"; ObjectID = "8gb-uy-oRd"; */
 "8gb-uy-oRd.title" = "重置";
 
@@ -37,6 +40,9 @@
 
 /* Class = "NSButtonCell"; title = "OK"; ObjectID = "Cp0-zp-Dpm"; */
 "Cp0-zp-Dpm.title" = "确定";
+
+/* Class = "NSMenuItem"; title = "macOS"; ObjectID = "Dvs-LH-gLm"; */
+"Dvs-LH-gLm.title" = "macOS";
 
 /* Class = "NSTextFieldCell"; title = "Shortcuts"; ObjectID = "FpP-Q9-flS"; */
 "FpP-Q9-flS.title" = "快捷键";
@@ -146,6 +152,9 @@
 /* Class = "NSButtonCell"; title = "https://github.com/gee1k/uPic"; ObjectID = "f2V-P5-pQI"; */
 "f2V-P5-pQI.title" = "https://github.com/gee1k/uPic";
 
+/* Class = "NSViewController"; title = "Restart Finder prompt"; ObjectID = "gNK-aF-Cmm"; */
+"gNK-aF-Cmm.title" = "Restart Finder prompt";
+
 /* Class = "NSButtonCell"; title = "Save"; ObjectID = "gUg-yZ-cS0"; */
 "gUg-yZ-cS0.title" = "保存";
 
@@ -166,6 +175,9 @@
 
 /* Class = "NSViewController"; title = "About"; ObjectID = "k6X-N1-mVu"; */
 "k6X-N1-mVu.title" = "关于";
+
+/* Class = "NSTextFieldCell"; title = "Screenshot App"; ObjectID = "kiG-mF-GIz"; */
+"kiG-mF-GIz.title" = "截图 App";
 
 /* Class = "NSButtonCell"; title = "Not Authorized"; ObjectID = "l8U-fu-WXc"; */
 "l8U-fu-WXc.title" = "未授权";
@@ -205,10 +217,3 @@
 
 /* Class = "NSTextFieldCell"; title = "💬 Telegram:"; ObjectID = "yO0-9g-BJK"; */
 "yO0-9g-BJK.title" = "💬 Telegram:";
-
-//##################################################################################
-//#           AutoGenStrings            2021-02-02 20:52:14
-//##################################################################################
-
-/* Class = "NSViewController"; title = "Restart Finder prompt"; ObjectID = "gNK-aF-Cmm"; */
-"gNK-aF-Cmm.title" = "Restart Finder prompt";

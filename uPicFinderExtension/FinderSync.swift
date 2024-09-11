@@ -41,11 +41,7 @@ class FinderSync: FIFinderSync {
         case 2:
             uploadMenuItem.image = NSImage(named: "color")
         default:
-            if #available(macOS 11, *) {
-                uploadMenuItem.image = NSImage(named: "single_new")
-            } else {
-                uploadMenuItem.image = NSImage(named: "single")
-            }
+            uploadMenuItem.image = NSImage(named: "single_new")
         }
         
         uploadMenuItem.image?.isTemplate = true

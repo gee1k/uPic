@@ -15,7 +15,7 @@ class GithubConfigView: ConfigView {
     }
     
     deinit {
-        PreferencesNotifier.removeObserver(observer: self, notification: .githubCDNAutoComplete)
+        
     }
     
     override func createView() {
@@ -24,7 +24,6 @@ class GithubConfigView: ConfigView {
         guard let data = self.data as? GithubHostConfig else {
             return
         }
-        PreferencesNotifier.addObserver(observer: self, selector: #selector(autoCompleteCDN), notification: .githubCDNAutoComplete)
         
         // MARK: owner
         let ownerLabel = NSTextField(labelWithString: "\(data.displayName(key: "owner")):")
@@ -97,32 +96,10 @@ class GithubConfigView: ConfigView {
         self.addSubview(tokenField)
         nextKeyViews.append(tokenField)
         
-        
         // MARK: domain
         y = y - gapTop - labelHeight
         self.createDomainField(data)
         self.domainField?.placeholderString = "Can be empty, there is a default domain".localized
-        
-        // MARK: Use CDN
-        y = y - gapTop - labelHeight
-        
-        let useCdnLabel = NSTextField(labelWithString: data.displayName(key: "useCdn"))
-        useCdnLabel.frame = NSRect(x: viewWidth - 25 - Int(useCdnLabel.frame.width), y: y, width: Int(useCdnLabel.frame.width), height: labelHeight)
-        useCdnLabel.alignment = .right
-        useCdnLabel.lineBreakMode = .byClipping
-        
-        
-        let useCdnBtn = NSButton(frame: NSRect(x: viewWidth - 25, y: y, width: 50, height: labelHeight))
-        useCdnBtn.title = ""
-        useCdnBtn.target = self
-        useCdnBtn.action = #selector(useCdnChanged(_:))
-        useCdnBtn.identifier = NSUserInterfaceItemIdentifier(rawValue: "useCdn")
-        useCdnBtn.setButtonType(.switch)
-        useCdnBtn.allowsMixedState = false
-        useCdnBtn.state = data.useCdn ? .on : .off
-        self.addSubview(useCdnLabel)
-        self.addSubview(useCdnBtn)
-        self.useCdnChanged(useCdnBtn)
        
         // MARK: saveKeyPath
         y = y - gapTop - labelHeight
@@ -132,45 +109,5 @@ class GithubConfigView: ConfigView {
         y = y - gapTop * 2 - labelHeight
         super.createHelpBtn("https://blog.svend.cc/upic/tutorials/github")
     }
-    
-    
-    @objc func useCdnChanged(_ sender: NSButton) {
-        if sender.state == .off {
-            self.domainField?.isEnabled = true
-        } else {
-            self.domainField?.isEnabled = false
-            self.autoCompleteCDN()
-        }
-        
-        let boolValue = sender.state == .on
-        
-        if self.data?.value(forKey: "useCdn") as! Bool != boolValue {
-            self.data?.setValue(boolValue, forKey: "useCdn")
-        }
-        
-    }
-    
-    /// auto complete cdn domain
-    @objc func autoCompleteCDN() {
-        var owner = self.data?.value(forKey: "owner") as? String
-        if owner == nil || owner!.isEmpty {
-            owner = "{owner}"
-        }
-        var repo = self.data?.value(forKey: "repo") as? String
-        if repo == nil || repo!.isEmpty {
-            repo = "{repo}"
-        }
-        var branch = self.data?.value(forKey: "branch") as? String
-        if branch == nil || branch!.isEmpty {
-            branch = "{branch}"
-        }
-        let domain = "https://cdn.jsdelivr.net/gh/\(owner!)/\(repo!)@\(branch!)"
-        
-        if self.domainField?.stringValue != domain {
-            self.domainField?.stringValue = domain
-            self.data?.setValue(domain, forKey: "domain")
-        }
-    }
-    
 }
 
