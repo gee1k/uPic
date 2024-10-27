@@ -1,5 +1,5 @@
 {
-  "originHash" : "514b67057fc540806048159de4fca077afcd3f38b7321469c99153ae88ea4300",
+  "originHash" : "35ade5cc662bc84228cd36388b5822ec895340b341c9f6bf18a8f78923b9cd99",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -101,6 +101,15 @@
       }
     },
     {
+      "identity" : "sqlcipher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Tencent/sqlcipher",
+      "state" : {
+        "revision" : "12c73015f37571e89206e6acecf36300873db8fa",
+        "version" : "1.4.6"
+      }
+    },
+    {
       "identity" : "swift-atomics",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-atomics.git",
@@ -197,6 +206,15 @@
       "state" : {
         "revision" : "d7a1d23f04c86c1cd2e8f19247dd15d74e0ea8be",
         "version" : "5.6.0"
+      }
+    },
+    {
+      "identity" : "wcdb",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Tencent/wcdb",
+      "state" : {
+        "revision" : "617b5a065181a2a7bb221980e49509cbe2f7bce5",
+        "version" : "2.1.9"
       }
     },
     {
