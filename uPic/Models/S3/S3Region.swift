@@ -23,6 +23,7 @@ public class S3Region {
         "ap-east-1": ["cname": "亚太地区（香港）", "name": "Asia Pacific (Hong Kong)"],
         "ap-south-2": ["cname": "亚太地区（海得拉巴）", "name": "Asia Pacific (Hyderabad)"],
         "ap-southeast-3": ["cname": "亚太地区（雅加达）", "name": "Asia Pacific (Jakarta)"],
+        "ap-southeast-5": ["cname": "亚太地区（马来西亚）", "name": "Asia Pacific (Malaysia)"],
         "ap-southeast-4": ["cname": "亚太地区（墨尔本）", "name": "Asia Pacific (Melbourne)"],
         "ap-south-1": ["cname": "亚太地区（孟买）", "name": "Asia Pacific (Mumbai)"],
         "ap-northeast-3": ["cname": "亚太地区 (大阪)", "name": "Asia Pacific (Osaka)"],
@@ -31,6 +32,7 @@ public class S3Region {
         "ap-southeast-2": ["cname": "亚太地区（悉尼）", "name": "Asia Pacific (Sydney)"],
         "ap-northeast-1": ["cname": "亚太地区（东京）", "name": "Asia Pacific (Tokyo)"],
         "ca-central-1": ["cname": "加拿大 (中部)", "name": "Canada (Central)"],
+        "ca-west-1": ["cname": "加拿大西部（卡尔加里）", "name": "Canada West (Calgary)"],
         //
         "eu-central-1": ["cname": "欧洲（法兰克福）", "name": "Europe (Frankfurt)"],
         "eu-west-1": ["cname": "欧洲（爱尔兰）", "name": "Europe (Ireland)"],

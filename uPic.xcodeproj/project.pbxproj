@@ -14,6 +14,8 @@
 		16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7B22AECD9F004D39B7 /* Constants.swift */; };
 		160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */; };
 		1613D88725C9826B009E348A /* AutoGenStrings.py in Resources */ = {isa = PBXBuildFile; fileRef = 1613D88625C9826B009E348A /* AutoGenStrings.py */; };
+		16181F3D2CCF432C0040D761 /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; };
+		16181F402CCF43310040D761 /* WCDBSwiftDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9610BE8D2CCE84A300FD9F77 /* WCDBSwiftDynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		1618D1A522E99BAA00831601 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
 		1618D1A622E99BB800831601 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169F073D22AF53DE008E8525 /* Preferences.storyboard */; };
 		1618D1A822E99E2100831601 /* UploadNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1618D1A722E99E2100831601 /* UploadNotifier.swift */; };
@@ -142,7 +144,6 @@
 		4BC11BDE238CFD53001641A6 /* HistoryThumbnailTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC11BDD238CFD53001641A6 /* HistoryThumbnailTimer.swift */; };
 		4BEFD811238B738E00BBE64D /* HistoryThumbnailConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD810238B738E00BBE64D /* HistoryThumbnailConstant.swift */; };
 		4BEFD813238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEFD812238BB2F200BBE64D /* HistoryPreviewCustomScrollView.swift */; };
-		8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; };
 		9610BE8E2CCE84A300FD9F77 /* WCDBSwiftDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 9610BE8D2CCE84A300FD9F77 /* WCDBSwiftDynamic */; };
 		96223BB126F6214B00EA33F7 /* FinderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ECAA952413B6C200F9236B /* FinderUtil.swift */; };
 		964198B62729A6BA0001AB97 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 964198B52729A6BA0001AB97 /* SwiftyJSON */; };
@@ -191,6 +192,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		16181F3F2CCF432C0040D761 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				16181F402CCF43310040D761 /* WCDBSwiftDynamic in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		16F7467D22E994A300480A62 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -391,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				964198BC2729A75B0001AB97 /* MASShortcut in Frameworks */,
+				16181F3D2CCF432C0040D761 /* Pods_uPic.framework in Frameworks */,
 				1649393D285E2620007278DA /* CocoaLumberjack in Frameworks */,
 				1649394D285F1C45007278DA /* Zip in Frameworks */,
 				967A6B7D2C9057E200C3DDEB /* LaunchAtLogin in Frameworks */,
@@ -400,7 +413,6 @@
 				964198C42729A7EC0001AB97 /* SwiftyXMLParser in Frameworks */,
 				964198C02729A7E30001AB97 /* Alamofire in Frameworks */,
 				16539DCF278AD8700035B9DF /* SotoS3 in Frameworks */,
-				8E879700A97E9294450D524F /* Pods_uPic.framework in Frameworks */,
 				964198C22729A7E90001AB97 /* CryptoSwift in Frameworks */,
 				9610BE8E2CCE84A300FD9F77 /* WCDBSwiftDynamic in Frameworks */,
 				964198C82729A7F60001AB97 /* SnapKit in Frameworks */,
@@ -905,6 +917,7 @@
 				8B11FF3895E709812B771F7E /* [CP] Embed Pods Frameworks */,
 				16F7467D22E994A300480A62 /* Embed Foundation Extensions */,
 				1613D88B25C98273009E348A /* Run Script */,
+				16181F3F2CCF432C0040D761 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1561,12 +1574,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPicDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1576,7 +1589,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1595,12 +1608,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "uPic/Supporting Files/uPic.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/uPic/Supporting Files/Info.plist";
@@ -1610,7 +1623,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1625,12 +1638,12 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtensionDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1639,7 +1652,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1654,12 +1667,12 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicFinderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1668,7 +1681,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1682,12 +1695,12 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtensionDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1696,7 +1709,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1710,12 +1723,12 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 2U23P5CPX2;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = uPicShareExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1724,7 +1737,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1812,7 +1825,7 @@
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.1;
+				minimumVersion = 5.10.1;
 			};
 		};
 		9630C4232729A096009E8735 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {

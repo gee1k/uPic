@@ -17,9 +17,8 @@ public class BaiduRegion {
         "gz": ["name": "华南-广州"],
         "cd": ["name": "西南-成都"],
         "hkg": ["name": "中国香港"],
-        "sin": ["name": "新加坡"],
-        "fwh": ["name": "金融华东-武汉"],
-        "fsh": ["name": "金融华东-上海"]
+        "fwh": ["name": "华中-武汉"],
+        "fsh": ["name": "华东金融-上海"]
     ]
     
     public static func name(_ key: String) -> String {
