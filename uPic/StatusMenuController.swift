@@ -45,6 +45,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         (NSApplication.shared.delegate as? AppDelegate)?.unbindShortcuts()
         
+        refreshUploadFromScreenshotMenuItemTitle()
         refreshOutputFormat()
         refreshOutputFormatEncoded()
         resetCompressFactor()
@@ -240,6 +241,18 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
         let outputUrl = (NSApplication.shared.delegate as? AppDelegate)?.copyUrls(urls: [url])
         NotificationExt.shared.postCopySuccessfulNotice(outputUrl)
+    }
+    
+    func refreshUploadFromScreenshotMenuItemTitle() {
+        var title = "Upload from screenshot".localized
+        switch ScreenUtil.getScreenshotApp() {
+        case .system:
+            title += " (System)".localized
+        case .longshot:
+            title += " (Longshot)".localized
+        }
+        
+        uploadFromScreenshotMenuItem.title = title
     }
     
     // refresh current host to select

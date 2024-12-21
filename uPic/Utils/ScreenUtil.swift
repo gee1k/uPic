@@ -57,21 +57,26 @@ class ScreenUtil {
     
     static func resetScreenshotApp() {
         let defaults = UserDefaults.init(suiteName: groupName)
-        defaults?.set(0, forKey: "uPic_ScreenshotApp")
+        defaults?.set(ScreenshotApp.system.rawValue, forKey: "uPic_ScreenshotApp")
         defaults?.synchronize()
     }
     
-    static func getScreenshotApp() -> Int {
+    static func getScreenshotApp() -> ScreenshotApp {
         let defaults = UserDefaults.init(suiteName: groupName)
         guard let screenshotApp = defaults?.value(forKey: "uPic_ScreenshotApp") else {
-            return 0
+            return .system
         }
-        return screenshotApp as! Int
+        return ScreenshotApp(rawValue: screenshotApp as! Int)!
     }
     
-    static func setScreenshotApp(_ value: Int) {
+    static func setScreenshotApp(_ value: ScreenshotApp) {
         let defaults = UserDefaults.init(suiteName: groupName)
-        defaults?.set(value, forKey: "uPic_ScreenshotApp")
+        defaults?.set(value.rawValue, forKey: "uPic_ScreenshotApp")
         defaults?.synchronize()
     }
+}
+
+enum ScreenshotApp: Int {
+    case system = 0
+    case longshot = 1
 }
