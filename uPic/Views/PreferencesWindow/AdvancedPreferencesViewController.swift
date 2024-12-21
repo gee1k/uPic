@@ -55,7 +55,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     }
     
     func setScreenshotAppDefaultValue() {
-        screenshotAppOption.selectItem(at: ScreenUtil.getScreenshotApp())
+        screenshotAppOption.selectItem(at: ScreenUtil.getScreenshotApp().rawValue)
     }
     
     func setFinderExtensionIconDefaultValue() {
@@ -101,7 +101,7 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     }
     
     @IBAction func didChangeScreenshotApp(_ sender: NSPopUpButton) {
-        ScreenUtil.setScreenshotApp(sender.indexOfSelectedItem)
+        ScreenUtil.setScreenshotApp(ScreenshotApp(rawValue: sender.indexOfSelectedItem) ?? .system)
     }
     
     @IBAction func didChangeFinderExtensionIcon(_ sender: NSPopUpButton) {

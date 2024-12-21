@@ -338,7 +338,7 @@ extension AppDelegate {
             return
         }
         
-        if ScreenUtil.getScreenshotApp() == 0 {
+        if ScreenUtil.getScreenshotApp() == .system {
             Logger.shared.info("使用 macOS 自带截图工具截图")
             
             // 截图权限检测
@@ -371,7 +371,7 @@ extension AppDelegate {
                 self.uploadFiles([imgData!])
             }
             
-        } else {
+        } else if ScreenUtil.getScreenshotApp() == .longshot {
             Logger.shared.info("使用 Longshot 截图")
             guard let url = URL(string: "longshot://x-callback-url/snip?func=start&channel=clipboard&type=data&x-source=uPic&x-success=uPic://x-callback-url/acceptSnip?x-source=longshot&x-error=uPic://x-callback-url/snipError?x-source=longshot&errorMessage=message") else {
                 return

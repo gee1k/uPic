@@ -82,13 +82,13 @@
 
 "Did not get the file URL" = "没有获取到文件URL";
 
-/* 状态栏菜单图床 */
+/* 状态栏菜单 */
+"Upload from screenshot" = "截图上传";
+" (System)" = " (系统截图)";
+" (Longshot)" = " (Longshot)";
 "Host" = "图床";
-/* 状态栏菜单输出格式 */
 "Output format" = "输出格式";
-/* 状态栏菜单输出格式编码 */
 "Output format encode" = "输出格式编码";
-/* 状态栏菜单上传前压缩图片 */
 "Compress images before uploading" = "上传前压缩图片";
 
 "Reset User Preferences?" = "重置用户偏好设置?";

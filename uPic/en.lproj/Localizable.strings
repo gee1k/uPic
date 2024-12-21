@@ -80,13 +80,13 @@
 
 "Did not get the file URL" = "Did not get the file URL";
 
-/* 状态栏菜单图床 */
+/* 状态栏菜单 */
+"Upload from screenshot" = "Upload from screenshot";
+"System" = "System";
+"Longshot" = "Longshot";
 "Host" = "Host";
-/* 状态栏菜单输出格式 */
 "Output format" = "Output format";
-/* 状态栏菜单输出格式编码 */
 "Output format encode" = "Output format encode";
-/* 状态栏菜单上传前压缩图片 */
 "Compress images before uploading" = "Compress images before uploading";
 
 "Reset User Preferences?" = "Reset User Preferences?";
