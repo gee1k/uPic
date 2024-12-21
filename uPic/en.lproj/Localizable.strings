@@ -82,8 +82,8 @@
 
 /* 状态栏菜单 */
 "Upload from screenshot" = "Upload from screenshot";
-"System" = "System";
-"Longshot" = "Longshot";
+" (System)" = " (System)";
+" (Longshot)" = " (Longshot)";
 "Host" = "Host";
 "Output format" = "Output format";
 "Output format encode" = "Output format encode";
