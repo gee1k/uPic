@@ -16,6 +16,7 @@ class QiniuRegion {
         "cn-east-2": ["name": "华东-浙江2"],
         "z1": ["name": "华北-河北"],
         "z2": ["name": "华南-广东"],
+        "cn-northwest-1": ["name": "西北-陕西1"],
         "na0": ["name": "北美-洛杉矶"],
         "as0": ["name": "亚太-新加坡"],
         "ap-southeast-2": ["name": "亚太-河内"],

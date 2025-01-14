@@ -30,6 +30,7 @@ public class S3Region {
         "ap-northeast-2": ["cname": "亚太地区（首尔）", "name": "Asia Pacific (Seoul)"],
         "ap-southeast-1": ["cname": "亚太地区（新加坡）", "name": "Asia Pacific (Singapore)"],
         "ap-southeast-2": ["cname": "亚太地区（悉尼）", "name": "Asia Pacific (Sydney)"],
+        "ap-southeast-7": ["cname": "亚太地区（泰国）", "name": "Asia Pacific (Thailand)"],
         "ap-northeast-1": ["cname": "亚太地区（东京）", "name": "Asia Pacific (Tokyo)"],
         "ca-central-1": ["cname": "加拿大 (中部)", "name": "Canada (Central)"],
         "ca-west-1": ["cname": "加拿大西部（卡尔加里）", "name": "Canada West (Calgary)"],
