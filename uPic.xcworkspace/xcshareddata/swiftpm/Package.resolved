@@ -105,8 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Tencent/sqlcipher",
       "state" : {
-        "revision" : "12c73015f37571e89206e6acecf36300873db8fa",
-        "version" : "1.4.6"
+        "revision" : "5d8825c22feedb421ad6f9ecfc1399460e10d299",
+        "version" : "1.4.7"
       }
     },
     {
@@ -213,8 +213,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Tencent/wcdb",
       "state" : {
-        "revision" : "617b5a065181a2a7bb221980e49509cbe2f7bce5",
-        "version" : "2.1.9"
+        "branch" : "master",
+        "revision" : "99b2cec68d7c9634e08d28ba3a7d54583cd4d303"
       }
     },
     {

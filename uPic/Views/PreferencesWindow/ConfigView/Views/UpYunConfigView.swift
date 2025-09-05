@@ -78,6 +78,7 @@ class UpYunConfigView: ConfigView {
         passwordField.placeholderString = "Operator password".localized
         self.addSubview(passwordLabel)
         self.addSubview(passwordField)
+        self.addRevealToggle(for: passwordField)
         nextKeyViews.append(passwordField)
         
         // MARK: domain

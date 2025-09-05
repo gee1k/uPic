@@ -86,6 +86,7 @@ class GiteeConfigView: ConfigView {
         tokenField.stringValue = data.token 
         self.addSubview(tokenLabel)
         self.addSubview(tokenField)
+        self.addRevealToggle(for: tokenField)
         nextKeyViews.append(tokenField)
         
         

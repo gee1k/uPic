@@ -94,6 +94,7 @@ class TencentConfigView: ConfigView {
         secretIdField.stringValue = data.secretId 
         self.addSubview(secretIdLabel)
         self.addSubview(secretIdField)
+        self.addRevealToggle(for: secretIdField)
         nextKeyViews.append(secretIdField)
         
         
@@ -113,6 +114,7 @@ class TencentConfigView: ConfigView {
         secretKeyField.stringValue = data.secretKey 
         self.addSubview(secretKeyLabel)
         self.addSubview(secretKeyField)
+        self.addRevealToggle(for: secretKeyField)
         nextKeyViews.append(secretKeyField)
         
         // MARK: domain
@@ -135,4 +137,3 @@ class TencentConfigView: ConfigView {
         }
     }
 }
-

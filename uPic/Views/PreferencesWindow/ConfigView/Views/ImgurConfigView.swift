@@ -36,6 +36,7 @@ class ImgurConfigView: ConfigView {
         clientIdField.stringValue = data.clientId 
         self.addSubview(clientIdLabel)
         self.addSubview(clientIdField)
+        self.addRevealToggle(for: clientIdField)
         nextKeyViews.append(clientIdField)
         
         // Get Client ID
