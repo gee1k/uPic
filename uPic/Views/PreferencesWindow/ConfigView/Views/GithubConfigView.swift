@@ -94,6 +94,7 @@ class GithubConfigView: ConfigView {
         tokenField.stringValue = data.token
         self.addSubview(tokenLabel)
         self.addSubview(tokenField)
+        self.addRevealToggle(for: tokenField)
         nextKeyViews.append(tokenField)
         
         // MARK: domain
@@ -110,4 +111,3 @@ class GithubConfigView: ConfigView {
         super.createHelpBtn("https://blog.svend.cc/upic/tutorials/github")
     }
 }
-

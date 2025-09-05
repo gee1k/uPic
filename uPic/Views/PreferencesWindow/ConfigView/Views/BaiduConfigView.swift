@@ -94,6 +94,7 @@ class BaiduConfigView: ConfigView {
         accessKeyField.stringValue = data.accessKey
         self.addSubview(accessKeyLabel)
         self.addSubview(accessKeyField)
+        self.addRevealToggle(for: accessKeyField)
         nextKeyViews.append(accessKeyField)
 
 
@@ -113,6 +114,7 @@ class BaiduConfigView: ConfigView {
         secretKeyField.stringValue = data.secretKey
         self.addSubview(secretKeyLabel)
         self.addSubview(secretKeyField)
+        self.addRevealToggle(for: secretKeyField)
         nextKeyViews.append(secretKeyField)
 
 

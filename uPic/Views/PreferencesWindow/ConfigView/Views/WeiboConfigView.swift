@@ -75,6 +75,7 @@ class WeiboConfigView: ConfigView {
         passwordField.stringValue = data.password 
         self.addSubview(passwordLabel)
         self.addSubview(passwordField)
+        self.addRevealToggle(for: passwordField)
         nextKeyViews.append(passwordField)
         
         // MARK: cookie

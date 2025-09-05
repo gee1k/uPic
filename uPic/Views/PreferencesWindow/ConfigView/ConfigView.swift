@@ -6,6 +6,7 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 import Cocoa
+import ObjectiveC
 
 class ConfigView: NSView {
     
@@ -269,5 +270,83 @@ class ConfigView: NSView {
             BaseUploader.upload(data: imgData, self.host)
         }
         
+    }
+
+    // Attach a reveal (eye) toggle to a secure field to allow showing plaintext.
+    // Default is hidden (secure), clicking the toggle shows/hides plaintext.
+    func addRevealToggle(for secureField: NSSecureTextField) {
+        let originalFrame = secureField.frame
+        let buttonWidth: CGFloat = 26
+        let spacing: CGFloat = 4
+
+        // Shrink the field to make room for the eye button
+        secureField.frame.size.width = originalFrame.width - buttonWidth - spacing
+
+        // Plain text twin field (hidden by default)
+        let plainField = NSTextField(frame: secureField.frame)
+        plainField.identifier = secureField.identifier
+        plainField.usesSingleLineMode = true
+        plainField.lineBreakMode = .byTruncatingTail
+        plainField.delegate = secureField.delegate
+        plainField.stringValue = secureField.stringValue
+        plainField.isHidden = true
+        self.addSubview(plainField)
+
+        // Eye toggle button
+        let buttonX = secureField.frame.origin.x + secureField.frame.size.width + spacing
+        let button = NSButton(frame: NSRect(x: buttonX, y: secureField.frame.origin.y, width: buttonWidth, height: secureField.frame.size.height))
+        button.bezelStyle = .texturedRounded
+        button.setButtonType(.pushOnPushOff)
+        button.title = ""
+        button.imagePosition = .imageOnly
+        if let hideImg = NSImage(systemSymbolName: "eye.slash", accessibilityDescription: "Hide") {
+            button.image = hideImg
+        }
+        if let showImg = NSImage(systemSymbolName: "eye", accessibilityDescription: "Show") {
+            button.alternateImage = showImg
+        }
+        button.toolTip = "Show/Hide"
+        button.target = self
+        button.action = #selector(toggleReveal(_:))
+        // Store fields for toggling (associate objects since NSButton has no representedObject)
+        button.upicToggleInfo = ["secure": secureField, "plain": plainField]
+        self.addSubview(button)
+    }
+
+    @objc private func toggleReveal(_ sender: NSButton) {
+        guard let info = sender.upicToggleInfo as? [String: Any],
+              let secure = info["secure"] as? NSSecureTextField,
+              let plain = info["plain"] as? NSTextField else { return }
+
+        if sender.state == .on {
+            // Show plaintext
+            plain.stringValue = secure.stringValue
+            plain.isHidden = false
+            secure.isHidden = true
+            // Move focus to visible field if needed
+            if window?.firstResponder === secure.currentEditor() {
+                window?.makeFirstResponder(plain)
+            }
+        } else {
+            // Hide plaintext
+            secure.stringValue = plain.stringValue
+            secure.isHidden = false
+            plain.isHidden = true
+            if window?.firstResponder === plain.currentEditor() {
+                window?.makeFirstResponder(secure)
+            }
+        }
+    }
+}
+
+// MARK: - Associated storage for NSButton
+private struct AssociatedKeys {
+    static var toggleInfo = "uPicToggleInfoKey"
+}
+
+private extension NSButton {
+    var upicToggleInfo: Any? {
+        get { objc_getAssociatedObject(self, &AssociatedKeys.toggleInfo) }
+        set { objc_setAssociatedObject(self, &AssociatedKeys.toggleInfo, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
 }
