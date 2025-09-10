@@ -14,7 +14,6 @@
 		16068C7C22AECD9F004D39B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16068C7B22AECD9F004D39B7 /* Constants.swift */; };
 		160CAA2522B1ED6F00D04FBD /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160CAA2422B1ED6F00D04FBD /* PreferenceKey.swift */; };
 		1613D88725C9826B009E348A /* AutoGenStrings.py in Resources */ = {isa = PBXBuildFile; fileRef = 1613D88625C9826B009E348A /* AutoGenStrings.py */; };
-		16181F3D2CCF432C0040D761 /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; };
 		16181F402CCF43310040D761 /* WCDBSwiftDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 9610BE8D2CCE84A300FD9F77 /* WCDBSwiftDynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		1618D1A522E99BAA00831601 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623612522AB951E00E4025C /* Localizable.strings */; };
 		1618D1A622E99BB800831601 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 169F073D22AF53DE008E8525 /* Preferences.storyboard */; };
@@ -129,6 +128,7 @@
 		16F04EE823BCC45F00CCA2FE /* Cli.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EE323BCC45F00CCA2FE /* Cli.swift */; };
 		16F04EEC23BCC4B200CCA2FE /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EEB23BCC4B200CCA2FE /* FileManager+Extension.swift */; };
 		16F04EEE23BCC4C500CCA2FE /* URLSchemeExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F04EED23BCC4C500CCA2FE /* URLSchemeExt.swift */; };
+		16F234092E71191A00C38258 /* Pods_uPic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A116EF79D38D9092D34EFCF5 /* Pods_uPic.framework */; };
 		16F7467422E994A300480A62 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F7467322E994A300480A62 /* FinderSync.swift */; };
 		16F7467922E994A300480A62 /* uPicFinderExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 16F7467122E994A300480A62 /* uPicFinderExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B09F11423695F8D000208BD /* HistoryThumbnailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B09F11323695F8D000208BD /* HistoryThumbnailContentView.swift */; };
@@ -403,7 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				964198BC2729A75B0001AB97 /* MASShortcut in Frameworks */,
-				16181F3D2CCF432C0040D761 /* Pods_uPic.framework in Frameworks */,
+				16F234092E71191A00C38258 /* Pods_uPic.framework in Frameworks */,
 				1649393D285E2620007278DA /* CocoaLumberjack in Frameworks */,
 				1649394D285F1C45007278DA /* Zip in Frameworks */,
 				967A6B7D2C9057E200C3DDEB /* LaunchAtLogin in Frameworks */,
@@ -1123,9 +1123,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-uPic/Pods-uPic-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-uPic/Pods-uPic-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1577,7 +1581,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1589,7 +1593,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 1.4.4;
+				MARKETING_VERSION = 1.4.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1611,7 +1615,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1623,7 +1627,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 1.4.4;
+				MARKETING_VERSION = 1.4.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1638,10 +1642,10 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = uPicFinderExtension/uPicFinderExtensionDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1652,7 +1656,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 1.4.4;
+				MARKETING_VERSION = 1.4.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1670,7 +1674,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1681,7 +1685,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 1.4.4;
+				MARKETING_VERSION = 1.4.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicFinderExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1695,10 +1699,10 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtensionDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1709,7 +1713,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 1.4.4;
+				MARKETING_VERSION = 1.4.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1726,7 +1730,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1737,7 +1741,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 1.4.4;
+				MARKETING_VERSION = 1.4.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

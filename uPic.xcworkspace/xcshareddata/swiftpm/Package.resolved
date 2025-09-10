@@ -213,8 +213,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Tencent/wcdb",
       "state" : {
-        "branch" : "master",
-        "revision" : "99b2cec68d7c9634e08d28ba3a7d54583cd4d303"
+        "revision" : "99b2cec68d7c9634e08d28ba3a7d54583cd4d303",
+        "version" : "2.1.14"
       }
     },
     {

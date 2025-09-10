@@ -39,7 +39,7 @@ class PreferencesViewController: NSViewController {
                 context.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
 
 
-                let contentSize = self.view.fittingSize
+                let contentSize = self.view.frame.size
 
                 let newWindowSize = window.frameRect(forContentRect: CGRect(origin: .zero, size: contentSize)).size
 

@@ -38,6 +38,7 @@ class AliyunRegion {
         "oss-eu-west-1": ["cname": "英国（伦敦）"],
         "oss-us-west-1": ["cname": "美国（硅谷）"],
         "oss-us-east-1": ["cname": "美国（弗吉尼亚）"],
+        "oss-na-south-1": ["cname": "墨西哥"],
         "oss-me-east-1": ["cname": "阿联酋（迪拜）"]
     ]
     
