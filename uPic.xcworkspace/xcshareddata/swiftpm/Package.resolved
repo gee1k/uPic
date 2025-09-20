@@ -1,5 +1,5 @@
 {
-  "originHash" : "7fc64ebcffbcad09f128596fdb4602c3a520b65476298b18ff915664078976a3",
+  "originHash" : "8d039bacb1e4e53603329122772752c60ebfbc5df549f6b148aebc5c54fee523",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -62,6 +62,15 @@
       "state" : {
         "revision" : "9a894d799269cb591037f9f9cb0961510d4dca81",
         "version" : "5.0.2"
+      }
+    },
+    {
+      "identity" : "lcpermissionskit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DevLiuSir/LCPermissionsKit.git",
+      "state" : {
+        "revision" : "4740b60bbd3b78300fc15e77cd39731e23a8eb8a",
+        "version" : "1.0.2"
       }
     },
     {

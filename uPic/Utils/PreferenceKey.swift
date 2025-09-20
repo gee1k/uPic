@@ -64,7 +64,6 @@ extension DefaultsKeys {
     static let historyRecordFileNameScrollSpeed = DefaultsKey<Double>(Keys.historyRecordFileNameScrollSpeed)
     static let historyRecordFileNameScrollWaitTime = DefaultsKey<Float>(Keys.historyRecordFileNameScrollWaitTime)
     
-    
     // 是否是请求授权过
     static let requestedAuthorization = DefaultsKey<Bool>(Keys.requestedAuthorization)
     // 根目录授权书签

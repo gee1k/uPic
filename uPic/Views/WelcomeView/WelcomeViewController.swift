@@ -51,8 +51,8 @@ class WelcomViewController: NSViewController {
     @IBAction func didClickNextButton(_ sender: NSButton) {
         if currentViewIndex == viewList.count - 1 { // 最后一个页面
             debugPrintOnly("开始授权")
-            // 欢迎页授权用户主目录
-            DiskPermissionManager.shared.requestHomeDirectoryPermissions()
+            // 欢迎页请求完全磁盘访问权限
+            DiskPermissionManager.shared.requestFullDiskPermissions()
             closeWindow(sender)
         } else {
             switchToPage(to: currentViewIndex + 1)

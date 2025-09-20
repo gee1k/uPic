@@ -64,6 +64,7 @@
 		1662AC7122C0AC53003AC924 /* AliyunConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662AC7022C0AC52003AC924 /* AliyunConfigView.swift */; };
 		166B4A5322B9CB4D001288ED /* UpYunConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4A5222B9CB4D001288ED /* UpYunConfigView.swift */; };
 		166B4A5722B9D118001288ED /* PreferencesNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166B4A5622B9D118001288ED /* PreferencesNotifier.swift */; };
+		16725B262E7F02B100A8FB12 /* LCPermissionsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16725B252E7F02B100A8FB12 /* LCPermissionsKit */; };
 		1672762322AFF655007299C3 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672762222AFF655007299C3 /* Host.swift */; };
 		1675516222ABF80300D3EB6F /* NSDragingInfo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516122ABF80300D3EB6F /* NSDragingInfo+Extension.swift */; };
 		1675516A22ACAA5900D3EB6F /* AppPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1675516922ACAA5900D3EB6F /* AppPublic.swift */; };
@@ -404,6 +405,7 @@
 			files = (
 				964198BC2729A75B0001AB97 /* MASShortcut in Frameworks */,
 				16F234092E71191A00C38258 /* Pods_uPic.framework in Frameworks */,
+				16725B262E7F02B100A8FB12 /* LCPermissionsKit in Frameworks */,
 				1649393D285E2620007278DA /* CocoaLumberjack in Frameworks */,
 				1649394D285F1C45007278DA /* Zip in Frameworks */,
 				967A6B7D2C9057E200C3DDEB /* LaunchAtLogin in Frameworks */,
@@ -940,6 +942,7 @@
 				1649394C285F1C45007278DA /* Zip */,
 				967A6B7C2C9057E200C3DDEB /* LaunchAtLogin */,
 				9610BE8D2CCE84A300FD9F77 /* WCDBSwiftDynamic */,
+				16725B252E7F02B100A8FB12 /* LCPermissionsKit */,
 			);
 			productName = uPic;
 			productReference = 16EC9A0222ABBBB4001B6C89 /* uPic.app */;
@@ -1042,6 +1045,7 @@
 				1649394B285F1C44007278DA /* XCRemoteSwiftPackageReference "Zip" */,
 				967A6B7B2C9057E200C3DDEB /* XCRemoteSwiftPackageReference "LaunchAtLogin-Legacy" */,
 				9610BE8C2CCE84A300FD9F77 /* XCRemoteSwiftPackageReference "wcdb" */,
+				16725B242E7F02B100A8FB12 /* XCRemoteSwiftPackageReference "LCPermissionsKit" */,
 			);
 			productRefGroup = 16A6DC4B22AA375700813706;
 			projectDirPath = "";
@@ -1816,6 +1820,14 @@
 				minimumVersion = 6.6.0;
 			};
 		};
+		16725B242E7F02B100A8FB12 /* XCRemoteSwiftPackageReference "LCPermissionsKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DevLiuSir/LCPermissionsKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 		9610BE8C2CCE84A300FD9F77 /* XCRemoteSwiftPackageReference "wcdb" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Tencent/wcdb";
@@ -1910,6 +1922,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 16539DCD278AD8700035B9DF /* XCRemoteSwiftPackageReference "soto" */;
 			productName = SotoS3;
+		};
+		16725B252E7F02B100A8FB12 /* LCPermissionsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16725B242E7F02B100A8FB12 /* XCRemoteSwiftPackageReference "LCPermissionsKit" */;
+			productName = LCPermissionsKit;
 		};
 		9610BE8D2CCE84A300FD9F77 /* WCDBSwiftDynamic */ = {
 			isa = XCSwiftPackageProductDependency;

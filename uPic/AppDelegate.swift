@@ -87,6 +87,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Insert code here to initialize your application
         ConfigManager.shared.firstSetup()
+
+        // 删除旧版本的根目录和用户目录权限
+        DiskPermissionManager.shared.removeOldFullDiskPermissions()
         
         if !Defaults[.requestedAuthorization] {
             Defaults[.requestedAuthorization] = true
@@ -512,8 +515,10 @@ extension AppDelegate {
             return
         }
 
-        // 开始磁盘授权访问
-        _ = DiskPermissionManager.shared.startDirectoryAccessing()
+        // 检查磁盘访问权限
+        if !DiskPermissionManager.shared.checkFullDiskAuthorizationStatus() {
+            Logger.shared.warn("没有完全磁盘访问权限，可能影响文件上传")
+        }
         
         self.uploding = true
         self.tickFileToUpload()
@@ -611,8 +616,7 @@ extension AppDelegate {
     func uploadDone() {
         Logger.shared.info("上传任务结束：\(self.resultUrls.joined(separator: " | "))")
         
-        // 停止磁盘授权访问
-        DiskPermissionManager.shared.stopDirectoryAccessing()
+        // PermissionsKit 自动管理权限，无需手动停止
         
         self.uploding = false
         // MARK: - Cli Support
