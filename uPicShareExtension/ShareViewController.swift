@@ -20,66 +20,90 @@ class ShareViewController: NSViewController {
     
     override func loadView() {
         super.loadView()
-        var times = 3
         
-        label.stringValue = "Unsupported file type".localized
-        self.timerLabel.stringValue = "closing in %@ seconds...".localized
-        self.timerLabel.stringValue = self.timerLabel.stringValue.replacingOccurrences(of: "%@", with: "\(times)")
+        label.stringValue = "Processing files...".localized
+        self.timerLabel.stringValue = "Please wait...".localized
         okButton.title = "OK".localized
-        
-        let time = DispatchSource.makeTimerSource()
-        time.schedule(deadline: .now(), repeating: 1) //repeating代表间隔1秒
-        time.setEventHandler {
-            if times == 0 {
-                time.cancel()
-                let cancelError = NSError(domain: NSCocoaErrorDomain, code: NSUserCancelledError, userInfo: nil)
-                self.extensionContext!.cancelRequest(withError: cancelError)
-            }else {
-                DispatchQueue.main.async {
-                    self.timerLabel.stringValue = "closing in %@ seconds...".localized
-                    self.timerLabel.stringValue = self.timerLabel.stringValue.replacingOccurrences(of: "%@", with: "\(times)")
-                    times -= 1
+
+        processSelectedFiles { success in
+            DispatchQueue.main.async {
+                if success {
+                    self.label.stringValue = "Success".localized
+                    self.timerLabel.stringValue = "Launching uPic...".localized
+                    
+                    // 使用特定标记调起主应用
+                    if let url = URL(string: "uPic://share-extension-upload") {
+                        NSWorkspace.shared.open(url)
+                    }
+                    
+                    // 成功后短暂延迟关闭
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        let cancelError = NSError(domain: NSCocoaErrorDomain, code: NSUserCancelledError, userInfo: nil)
+                        self.extensionContext!.cancelRequest(withError: cancelError)
+                    }
+                } else {
+                    self.label.stringValue = "Failed to process files".localized
+                    self.timerLabel.stringValue = "Please try again".localized
+                    
+                    // 失败后 3 秒关闭
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        let cancelError = NSError(domain: NSCocoaErrorDomain, code: NSUserCancelledError, userInfo: nil)
+                        self.extensionContext!.cancelRequest(withError: cancelError)
+                    }
                 }
             }
         }
-
-        getSelectedItemsURL { (paths) in
-            let encodeUrl = "uPic://files?\(paths)".urlEncoded()
-
-            if let url = URL(string: encodeUrl) {
-                self.label.stringValue = "Success".localized
-                NSWorkspace.shared.open(url)
-            }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            time.resume()
-        }
     }
     
-    func getSelectedItemsURL(callback: @escaping (_ paths: String)->()) {
+    func processSelectedFiles(completion: @escaping (Bool) -> Void) {
         let item = self.extensionContext!.inputItems[0] as! NSExtensionItem
-        var paths = ""
-        var i = 0
+        var sharedFileURLs: [URL] = []
+        var processedCount = 0
         
-        if let itemProviders = item.attachments {
-            for itemProvider in itemProviders {
-                if itemProvider.hasItemConformingToTypeIdentifier("public.url") {
-                    itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (data, error) in
-                        let nsData = data as! NSData
-                        let url = NSURL(dataRepresentation: nsData as Data, relativeTo: nil)
-                        var filePath = url.absoluteString!
-                        
-                        if filePath.starts(with: "file://") {
-                            filePath = String(filePath.dropFirst(7)) // 去除文件开头的"file://"
-                        }
-                        paths = "\(paths)\(filePath)\n"
-                        
-                        i += 1
-                        if i == itemProviders.count {
-                            callback(paths)
+        guard let itemProviders = item.attachments, !itemProviders.isEmpty else {
+            completion(false)
+            return
+        }
+        
+        for itemProvider in itemProviders {
+            if itemProvider.hasItemConformingToTypeIdentifier("public.url") {
+                itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (data, error) in
+                    defer {
+                        processedCount += 1
+                        if processedCount == itemProviders.count {
+                            // 所有文件处理完成
+                            if !sharedFileURLs.isEmpty {
+                                FinderUtil.saveSharedFiles(sharedFileURLs)
+                                completion(true)
+                            } else {
+                                completion(false)
+                            }
                         }
                     }
+                    
+                    if let error = error {
+                        debugPrint("加载文件项失败: \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    guard let nsData = data as? NSData,
+                          let originalURL = NSURL(dataRepresentation: nsData as Data, relativeTo: nil) as URL? else {
+                        debugPrint("无法解析文件URL")
+                        return
+                    }
+                    
+                    // 复制文件到共享目录
+                    if let sharedURL = FinderUtil.copyFileToSharedDirectory(originalURL) {
+                        sharedFileURLs.append(sharedURL)
+                        debugPrint("文件已复制到共享目录: \(sharedURL.path)")
+                    } else {
+                        debugPrint("复制文件到共享目录失败: \(originalURL.path)")
+                    }
+                }
+            } else {
+                processedCount += 1
+                if processedCount == itemProviders.count {
+                    completion(!sharedFileURLs.isEmpty)
                 }
             }
         }

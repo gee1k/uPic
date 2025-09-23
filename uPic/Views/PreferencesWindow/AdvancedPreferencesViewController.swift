@@ -21,7 +21,6 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     @IBOutlet weak var historyRecordFileNameScrollSpeed: NSTextField!
     @IBOutlet weak var historyRecordFileNameScrollWaitTime: NSTextField!
     @IBOutlet weak var screenshotAppOption: NSPopUpButton!
-    @IBOutlet weak var finderExtensionIcon: NSPopUpButton!
     @IBOutlet weak var fullDiskAuthorizationImage: NSImageView!
     @IBOutlet weak var fullDiskAuthorizationButton: NSButton!
     @IBOutlet weak var resetPreferencesButton: NSButton!
@@ -42,7 +41,6 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         
         setHistoryRecordTextFieldDefaultText()
         setScreenshotAppDefaultValue()
-        setFinderExtensionIconDefaultValue()
     }
     
     func setHistoryRecordTextFieldDefaultText() {
@@ -56,10 +54,6 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     
     func setScreenshotAppDefaultValue() {
         screenshotAppOption.selectItem(at: ScreenUtil.getScreenshotApp().rawValue)
-    }
-    
-    func setFinderExtensionIconDefaultValue() {
-        finderExtensionIcon.selectItem(at: FinderUtil.getIcon())
     }
     
     func checkFullDiskAuthorizationStatus() {
@@ -102,10 +96,6 @@ class AdvancedPreferencesViewController: PreferencesViewController {
     
     @IBAction func didChangeScreenshotApp(_ sender: NSPopUpButton) {
         ScreenUtil.setScreenshotApp(ScreenshotApp(rawValue: sender.indexOfSelectedItem) ?? .system)
-    }
-    
-    @IBAction func didChangeFinderExtensionIcon(_ sender: NSPopUpButton) {
-        FinderUtil.setIcon(sender.indexOfSelectedItem)
     }
     
     @IBAction func didClickOpenOutputFormatCustomizationPanelButton(_ sender: NSButton) {
@@ -151,11 +141,9 @@ class AdvancedPreferencesViewController: PreferencesViewController {
         case .alertSecondButtonReturn:
             ConfigManager.shared.removeAllUserDefaults()
             ConfigManager.shared.firstSetup()
-            FinderUtil.removeIcon()
             ScreenUtil.resetScreenshotApp()
             
             DispatchQueue.main.async {
-                self.setFinderExtensionIconDefaultValue()
                 ConfigNotifier.postNotification(.changeHistoryList)
                 self.resetAllValues()
             }

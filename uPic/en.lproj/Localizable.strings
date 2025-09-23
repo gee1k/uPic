@@ -12,6 +12,12 @@
 "Success" = "Success";
 "Warning" = "Warning";
 "Continue" = "Continue";
+"Processing files..." = "Processing files...";
+"Failed to process files" = "Failed to process files";
+"No files found from ShareExtension" = "No files found from ShareExtension";
+"Please wait..." = "Please wait...";
+"Launching uPic..." = "Launching uPic...";
+"Please try again" = "Please try again";
 "Example:" = "Example:";
 "On" = "On";
 "Off" = "Off";

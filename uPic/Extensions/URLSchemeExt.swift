@@ -35,6 +35,9 @@ class URLSchemeExt {
                 let pathStr = String(keyValue.last ?? "")
                 (NSApplication.shared.delegate as? AppDelegate)?.uploadFilesFromPaths(pathStr.urlDecoded())
             }
+        case "share-extension-upload":
+            Logger.shared.verbose("上传类型为: ShareExtension")
+            (NSApplication.shared.delegate as? AppDelegate)?.uploadFilesFromShareExtension()
         case "url":
             Logger.shared.verbose("上传类型为: URL")
             if (keyValue.count == 2) {

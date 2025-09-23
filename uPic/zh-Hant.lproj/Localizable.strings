@@ -13,6 +13,12 @@
 "Warning" = "提醒";
 "Continue" = "繼續";
 "Success" = "成功";
+"Processing files..." = "正在處理檔案...";
+"Failed to process files" = "處理檔案失敗";
+"No files found from ShareExtension" = "未找到來自分享擴展的檔案";
+"Please wait..." = "請稍候...";
+"Launching uPic..." = "正在啟動 uPic...";
+"Please try again" = "請重試";
 "Example:" = "範例:";
 "On" = "開啟";
 "Off" = "關閉";

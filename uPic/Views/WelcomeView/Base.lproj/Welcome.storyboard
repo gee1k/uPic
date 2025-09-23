@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="TZk-Q2-ku8">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="24127" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="TZk-Q2-ku8">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24127"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +20,7 @@
                                     <constraint firstAttribute="height" constant="350" id="fa0-bQ-hw5"/>
                                 </constraints>
                             </box>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Qm-aQ-zV7">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Qm-aQ-zV7">
                                 <rect key="frame" x="160" y="139" width="80" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Welcome to" id="pk7-xU-bny">
                                     <font key="font" metaFont="system"/>
@@ -28,7 +28,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="kXM-Jf-wd6">
+                            <textField focusRingType="none" verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="kXM-Jf-wd6">
                                 <rect key="frame" x="156" y="92" width="89" height="47"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="uPic" id="mld-Ub-NIp">
                                     <font key="font" metaFont="systemBold" size="40"/>
@@ -36,7 +36,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="sHr-8A-Uy8">
+                            <textField focusRingType="none" verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="sHr-8A-Uy8">
                                 <rect key="frame" x="90" y="20" width="221" height="62"/>
                                 <textFieldCell key="cell" controlSize="small" alignment="center" allowsEditingTextAttributes="YES" id="J8p-JL-LaG">
                                     <font key="font" metaFont="message" size="11"/>
@@ -120,7 +120,7 @@ Upload any files to any services you like.</string>
                             <visualEffectView blendingMode="behindWindow" material="toolTip" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="Lap-h2-5bc">
                                 <rect key="frame" x="0.0" y="0.0" width="400" height="70"/>
                                 <subviews>
-                                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EKb-io-pBy">
+                                    <textField hidden="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EKb-io-pBy">
                                         <rect key="frame" x="33" y="28" width="54" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="center" title="Previous" id="lZV-cL-KsE">
                                             <font key="font" metaFont="message" size="11"/>
@@ -130,19 +130,19 @@ Upload any files to any services you like.</string>
                                     </textField>
                                     <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lxf-Mu-J6V">
                                         <rect key="frame" x="20" y="20" width="75" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="RDF-7g-Bmq"/>
-                                            <constraint firstAttribute="width" constant="75" id="tOS-o5-b0D"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="leftButton" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="2I3-3H-vxu">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="RDF-7g-Bmq"/>
+                                            <constraint firstAttribute="width" constant="75" id="tOS-o5-b0D"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="didClickPreviousButton:" target="pFx-0z-ve9" id="m1a-BV-7P5"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oy7-tW-Gdv">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oy7-tW-Gdv">
                                         <rect key="frame" x="324" y="28" width="33" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="center" title="Next" id="EN9-1Z-Sqq">
                                             <font key="font" metaFont="message" size="11"/>
@@ -152,14 +152,14 @@ Upload any files to any services you like.</string>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GXl-IF-Mw1">
                                         <rect key="frame" x="305" y="20" width="75" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="PPO-HQ-3Uv"/>
-                                            <constraint firstAttribute="width" constant="75" id="grg-Sq-HYj"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="rightButton" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="3Wz-e6-tEH">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="PPO-HQ-3Uv"/>
+                                            <constraint firstAttribute="width" constant="75" id="grg-Sq-HYj"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="didClickNextButton:" target="pFx-0z-ve9" id="zp2-xx-keG"/>
                                         </connections>
@@ -179,14 +179,14 @@ Upload any files to any services you like.</string>
                             </visualEffectView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8XH-5n-mYT">
                                 <rect key="frame" x="8" y="372" width="35" height="45.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="Pca-jn-gOR"/>
-                                    <constraint firstAttribute="height" constant="35" id="sgh-N6-w5z"/>
-                                </constraints>
                                 <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSStopProgressFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="X8m-Fj-Re0">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="25"/>
                                 </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="Pca-jn-gOR"/>
+                                    <constraint firstAttribute="height" constant="35" id="sgh-N6-w5z"/>
+                                </constraints>
                                 <connections>
                                     <action selector="didClickCloseButton:" target="pFx-0z-ve9" id="LtH-Kr-FIy"/>
                                 </connections>
@@ -230,7 +230,7 @@ Upload any files to any services you like.</string>
                                     <constraint firstAttribute="height" constant="350" id="q6c-1o-r7s"/>
                                 </constraints>
                             </box>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="97H-Yp-lWy">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="97H-Yp-lWy">
                                 <rect key="frame" x="196" y="139" width="8" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="zg0-DE-r3q">
                                     <font key="font" metaFont="system"/>
@@ -238,7 +238,7 @@ Upload any files to any services you like.</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="lLk-9v-kQN">
+                            <textField focusRingType="none" verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="lLk-9v-kQN">
                                 <rect key="frame" x="58" y="92" width="284" height="47"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Drag to Upload" id="dfW-Tj-Gog">
                                     <font key="font" metaFont="systemBold" size="40"/>
@@ -246,7 +246,7 @@ Upload any files to any services you like.</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ASD-Fb-asf">
+                            <textField focusRingType="none" verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ASD-Fb-asf">
                                 <rect key="frame" x="18" y="20" width="364" height="62"/>
                                 <textFieldCell key="cell" controlSize="small" alignment="center" id="U8F-dC-vKZ">
                                     <font key="font" metaFont="message" size="11"/>
@@ -309,7 +309,7 @@ It is just this simple. </string>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="scriptUpload" id="dN0-pp-rqY"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rVP-9K-Du9">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rVP-9K-Du9">
                                 <rect key="frame" x="196" y="139" width="8" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="3AO-6I-06u">
                                     <font key="font" metaFont="system"/>
@@ -317,7 +317,7 @@ It is just this simple. </string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qc4-ry-JH1">
+                            <textField focusRingType="none" verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qc4-ry-JH1">
                                 <rect key="frame" x="39" y="92" width="323" height="47"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Upload via Script" id="vGP-mK-Tjk">
                                     <font key="font" metaFont="systemBold" size="40"/>
@@ -325,7 +325,7 @@ It is just this simple. </string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="IdQ-hd-89Z">
+                            <textField focusRingType="none" verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="IdQ-hd-89Z">
                                 <rect key="frame" x="35" y="20" width="330" height="62"/>
                                 <textFieldCell key="cell" controlSize="small" alignment="center" id="xz2-3l-Jef">
                                     <font key="font" metaFont="message" size="11"/>
@@ -380,7 +380,7 @@ Check tutorial for more info.</string>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="extensionUpload" id="uHF-yb-xzn"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lrQ-78-pnQ">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lrQ-78-pnQ">
                                 <rect key="frame" x="196" y="139" width="8" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="3bo-8S-MjP">
                                     <font key="font" metaFont="system"/>
@@ -388,7 +388,7 @@ Check tutorial for more info.</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Af-Kz-KFh">
+                            <textField focusRingType="none" verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Af-Kz-KFh">
                                 <rect key="frame" x="3" y="92" width="394" height="47"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Upload via Extension" id="5PO-nX-1ts">
                                     <font key="font" metaFont="systemBold" size="40"/>
@@ -396,13 +396,10 @@ Check tutorial for more info.</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="2lT-U1-QYS">
-                                <rect key="frame" x="64" y="20" width="273" height="62"/>
-                                <textFieldCell key="cell" controlSize="small" alignment="center" id="xlO-Fz-Nxq">
+                            <textField focusRingType="none" verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="2lT-U1-QYS">
+                                <rect key="frame" x="71" y="20" width="259" height="62"/>
+                                <textFieldCell key="cell" controlSize="small" alignment="center" title="Click share button and select &quot;Upload via uPic&quot;." id="xlO-Fz-Nxq">
                                     <font key="font" metaFont="message" size="11"/>
-                                    <string key="title">Click share button and select "Upload via uPic".
-or
-Right click on the file and select "Upload via uPic".</string>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -452,7 +449,7 @@ Right click on the file and select "Upload via uPic".</string>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="screenshotUpload" id="fbG-aU-i5g"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M1i-5w-HuB">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M1i-5w-HuB">
                                 <rect key="frame" x="196" y="139" width="8" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="DNH-Ru-AKC">
                                     <font key="font" metaFont="system"/>
@@ -460,7 +457,7 @@ Right click on the file and select "Upload via uPic".</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="VBu-59-WOf">
+                            <textField focusRingType="none" verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="VBu-59-WOf">
                                 <rect key="frame" x="19" y="92" width="362" height="47"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Upload Screenshot" id="n2q-3P-rmS">
                                     <font key="font" metaFont="systemBold" size="40"/>
@@ -468,7 +465,7 @@ Right click on the file and select "Upload via uPic".</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="xTs-kZ-vV8">
+                            <textField focusRingType="none" verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="xTs-kZ-vV8">
                                 <rect key="frame" x="18" y="20" width="364" height="62"/>
                                 <textFieldCell key="cell" controlSize="small" alignment="center" id="isq-Ch-gao">
                                     <font key="font" metaFont="message" size="11"/>
@@ -523,7 +520,7 @@ Please enable Setting -&gt; Security &amp; Privacy -&gt; Privacy -&gt; Screen Re
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="grantPermission" id="mPh-xs-6Ib"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Kt-Bf-ncd">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Kt-Bf-ncd">
                                 <rect key="frame" x="170" y="139" width="61" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="We need" id="a6A-gm-fbk">
                                     <font key="font" metaFont="system"/>
@@ -531,7 +528,7 @@ Please enable Setting -&gt; Security &amp; Privacy -&gt; Privacy -&gt; Screen Re
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PPi-xH-quM">
+                            <textField focusRingType="none" verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PPi-xH-quM">
                                 <rect key="frame" x="70" y="92" width="260" height="47"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Authorization" id="RwC-HL-AhF">
                                     <font key="font" metaFont="systemBold" size="40"/>
@@ -539,7 +536,7 @@ Please enable Setting -&gt; Security &amp; Privacy -&gt; Privacy -&gt; Screen Re
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="JA9-zd-ufx">
+                            <textField focusRingType="none" verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="JA9-zd-ufx">
                                 <rect key="frame" x="18" y="20" width="364" height="62"/>
                                 <textFieldCell key="cell" controlSize="small" alignment="center" id="KKR-Bg-AzW">
                                     <font key="font" metaFont="message" size="11"/>
@@ -595,7 +592,7 @@ Please be aware that uPic DO NOT collect any of your informations.</string>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="multipleServices" id="CLP-Cz-gcd"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v2h-2z-7iZ">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v2h-2z-7iZ">
                                 <rect key="frame" x="196" y="139" width="8" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="qfT-j8-2rD">
                                     <font key="font" metaFont="system"/>
@@ -603,7 +600,7 @@ Please be aware that uPic DO NOT collect any of your informations.</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tfh-X1-xah">
+                            <textField focusRingType="none" verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tfh-X1-xah">
                                 <rect key="frame" x="37" y="92" width="327" height="47"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" alignment="center" title="Multiple Services" id="X47-xi-iV3">
                                     <font key="font" metaFont="systemBold" size="40"/>
@@ -611,7 +608,7 @@ Please be aware that uPic DO NOT collect any of your informations.</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="h3M-aT-Fhu">
+                            <textField focusRingType="none" verticalHuggingPriority="749" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="h3M-aT-Fhu">
                                 <rect key="frame" x="18" y="20" width="364" height="62"/>
                                 <textFieldCell key="cell" controlSize="small" alignment="center" title="GitHub, Imgur, SM.MS, Qiniu KODO, Upyun USS, Aliyun OSS, Tencent Cloud COS, Gitee, Amazon S3, Baidu Cloud BOS, Lsky Pro" id="ve2-Sd-1j7">
                                     <font key="font" metaFont="message" size="11"/>
@@ -645,7 +642,7 @@ Please be aware that uPic DO NOT collect any of your informations.</string>
     </scenes>
     <resources>
         <image name="NSApplicationIcon" width="32" height="32"/>
-        <image name="NSStopProgressFreestandingTemplate" width="15" height="15"/>
+        <image name="NSStopProgressFreestandingTemplate" width="20" height="20"/>
         <image name="dragToUpload" width="150" height="150"/>
         <image name="extensionUpload" width="150" height="150"/>
         <image name="grantPermission" width="150" height="150"/>

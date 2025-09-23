@@ -52,14 +52,14 @@ brew install bigwig-club/brew/upic --cask
 
  **If you have difficulty accessing Github in mainland China, you can download it from [Gitee release](https://gitee.com/gee1k/uPic/releases).**
 
-### Check Finder Extensions's authority
+### Check System Share Permission
 
 - 1. Run uPic
 
-- 2. Open `System preferences` - `Extensions` - `Finder Extensions` make sure that `uPicFinderExtension` is be selected
+- 2. Make sure the app has Full Disk Access permission, which can be authorized in `Preferences` - `Advanced`
 
   <center>
-    <img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/finder-extension.png" height="300">
+    <img src="https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/full-disk-access.png" height="300">
   </center>
 
 
@@ -73,7 +73,7 @@ brew install bigwig-club/brew/upic --cask
 | **📸 Screenshot upload** | Directly pull frame screenshot upload.  `Can set global shortcuts` | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/screenshot.gif) |
 | **🖱 Drag and drop local file upload** | Drag and drop files to the status bar to upload | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/dragFile.gif) |
 | **🖱 Drag and drop browser image upload** | Drag image from browser to status bar to upload | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/dragFromBrowser.gif) |
-| **📂 Finder contextmenu upload** | Right click on file upload | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/contextmenu.gif) |
+| **📂 Share Extension upload** | Right click on file and share to uPic | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/share.gif) |
 | **⌨️ Command line upload** | Invoke uPic to upload files by executing commands | ![](https://cdn.jsdelivr.net/gh/gee1k/oss@master/screenshot/uPic-en/cli.gif) |
 
 ## 🧰 More features

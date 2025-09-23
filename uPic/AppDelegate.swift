@@ -64,15 +64,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Request notification permission
         NotificationExt.requestAuthorization()
-        
 
         bindShortcuts()
-        
-        
-        Logger.shared.verbose("Listening Finder contextmenu upload")
-        // Add Finder context menu file upload listener
-        UploadNotifier.addObserver(observer: self, selector: #selector(uploadFilesFromFinderMenu), notification: .uploadFiles)
-        
         
         Logger.shared.verbose("Listening scheme")
         // Add URL scheme listening
@@ -104,19 +97,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let statusItem = statusItem {
             NSStatusBar.system.removeStatusItem(statusItem)
         }
-        // Remove Finder context menu file upload listener
-        UploadNotifier.removeObserver(observer: self, notification: .uploadFiles)
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         return true
-    }
-    
-    // Finder context menu file upload listener
-    @objc func uploadFilesFromFinderMenu(notification: Notification) {
-        let pathStr = notification.object as? String ?? ""
-        Logger.shared.verbose("收到来自 Finder Menu 的上传请求: \(pathStr)")
-        uploadFilesFromPaths(pathStr)
     }
     
     @objc func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
@@ -433,6 +417,52 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
 
 // 上传方法
 extension AppDelegate {
+    // 处理来自 ShareExtension 的文件上传
+    func uploadFilesFromShareExtension() {
+        Logger.shared.verbose("开始处理来自 ShareExtension 的文件上传")
+        
+        let sharedFiles = FinderUtil.getAndClearSharedFiles()
+        
+        if sharedFiles.isEmpty {
+            Logger.shared.warn("没有找到来自 ShareExtension 的共享文件")
+            NotificationExt.shared.postUploadErrorNotice("No files found from ShareExtension".localized)
+            return
+        }
+        
+        Logger.shared.verbose("获取到 \(sharedFiles.count) 个共享文件")
+        
+        let fileExtensions = BaseUploader.getFileExtensions()
+        var validFiles = [URL]()
+        
+        for fileURL in sharedFiles {
+            // 检查文件是否存在
+            if !FileManager.default.fileExists(atPath: fileURL.path) {
+                Logger.shared.warn("共享文件不存在: \(fileURL.path)")
+                continue
+            }
+            
+            // 检查文件格式
+            if fileExtensions.isEmpty || fileExtensions.contains(fileURL.pathExtension.lowercased()) {
+                validFiles.append(fileURL)
+            } else {
+                Logger.shared.warn("文件格式不支持: \(fileURL.path)")
+                // 删除不支持的文件
+                FinderUtil.removeFileFromSharedDirectory(fileURL)
+            }
+        }
+        
+        if validFiles.isEmpty {
+            Logger.shared.error("没有有效的文件可以上传")
+            NotificationExt.shared.postUploadErrorNotice("File format not supported!".localized)
+            // 清理所有剩余文件
+            FinderUtil.cleanupSharedFiles()
+            return
+        }
+        
+        // 设置上传来源为 ShareExtension 并上传文件
+        self.uploadFiles(validFiles, .shareExtension)
+    }
+    
     // 解析以 \n 分割的多个文件路径并上传
     func uploadFilesFromPaths(_ pathStr: String) {
         let paths = pathStr.split(separator: Character("\n"))
@@ -608,6 +638,7 @@ extension AppDelegate {
         Logger.shared.warn("取消上传")
         self.setStatusBarIcon(isIndicator: false)
         BaseUploader.cancelUpload()
+        FinderUtil.cleanupSharedFiles()
         self.needUploadFiles.removeAll()
         self.resultUrls.removeAll()
         self.uploding = false
@@ -617,6 +648,12 @@ extension AppDelegate {
         Logger.shared.info("上传任务结束：\(self.resultUrls.joined(separator: " | "))")
         
         // PermissionsKit 自动管理权限，无需手动停止
+        
+        // 清理 ShareExtension 共享文件
+        if uploadSourceType == UploadSourceType.shareExtension {
+            FinderUtil.cleanupSharedFiles()
+            Logger.shared.verbose("已清理 ShareExtension 共享文件")
+        }
         
         self.uploding = false
         // MARK: - Cli Support

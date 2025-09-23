@@ -2,9 +2,6 @@
 /* Class = "NSButtonCell"; title = "svend.cc"; ObjectID = "0dV-As-mmQ"; */
 "0dV-As-mmQ.title" = "svend.cc";
 
-/* Class = "NSTextFieldCell"; title = "need a Finder Restart"; ObjectID = "2Rg-te-FPU"; */
-"2Rg-te-FPU.title" = "需要重启访达";
-
 /* Class = "NSViewController"; title = "Host"; ObjectID = "5Ln-jV-uxk"; */
 "5Ln-jV-uxk.title" = "圖床";
 
@@ -31,9 +28,6 @@
 
 /* Class = "NSTextFieldCell"; title = "File name scroll speed:"; ObjectID = "BBZ-i9-B2g"; */
 "BBZ-i9-B2g.title" = "文件名滾動速度(ms):";
-
-/* Class = "NSButtonCell"; title = "iSvend"; ObjectID = "BoF-vP-aWK"; */
-"BoF-vP-aWK.title" = "iSvend";
 
 /* Class = "NSButtonCell"; title = "Add Header Field"; ObjectID = "Ckh-A7-mxC"; */
 "Ckh-A7-mxC.title" = "增加 Header 字段";
@@ -86,9 +80,6 @@
 /* Class = "NSTableColumn"; headerCell.title = "Name"; ObjectID = "NLj-vQ-ghD"; */
 "NLj-vQ-ghD.headerCell.title" = "名称";
 
-/* Class = "NSTextFieldCell"; title = "🐦 Twitter:"; ObjectID = "OKr-1C-5jV"; */
-"OKr-1C-5jV.title" = "🐦 Twitter:";
-
 /* Class = "NSTextFieldCell"; title = "File name scroll wait time:"; ObjectID = "ON0-aF-BNd"; */
 "ON0-aF-BNd.title" = "文件名滾動等待時間(s):";
 
@@ -122,9 +113,6 @@
 /* Class = "NSTextFieldCell"; title = "Upload from screenshot:"; ObjectID = "Xd9-iA-emU"; */
 "Xd9-iA-emU.title" = "截圖並上傳:";
 
-/* Class = "NSTextFieldCell"; title = "Finder extension"; ObjectID = "XtR-28-Jft"; */
-"XtR-28-Jft.title" = "查看擴展";
-
 /* Class = "NSButtonCell"; title = "Launch uPic at login"; ObjectID = "ZbK-xW-anT"; */
 "ZbK-xW-anT.title" = "開機自動啟動 uPic";
 
@@ -140,9 +128,6 @@
 /* Class = "NSBox"; title = "HostSettings"; ObjectID = "dEW-XT-ogl"; */
 "dEW-XT-ogl.title" = "設定雲存處";
 
-/* Class = "NSMenuItem"; title = "Single"; ObjectID = "dGv-rY-F7Z"; */
-"dGv-rY-F7Z.title" = "單色";
-
 /* Class = "NSMenuItem"; title = "More"; ObjectID = "dZy-kW-0lH"; */
 "dZy-kW-0lH.title" = "更多";
 
@@ -151,9 +136,6 @@
 
 /* Class = "NSButtonCell"; title = "https://github.com/gee1k/uPic"; ObjectID = "f2V-P5-pQI"; */
 "f2V-P5-pQI.title" = "https://github.com/gee1k/uPic";
-
-/* Class = "NSViewController"; title = "Restart Finder prompt"; ObjectID = "gNK-aF-Cmm"; */
-"gNK-aF-Cmm.title" = "Restart Finder prompt";
 
 /* Class = "NSButtonCell"; title = "Save"; ObjectID = "gUg-yZ-cS0"; */
 "gUg-yZ-cS0.title" = "保存";
@@ -182,9 +164,6 @@
 /* Class = "NSButtonCell"; title = "Not Authorized"; ObjectID = "l8U-fu-WXc"; */
 "l8U-fu-WXc.title" = "未授权";
 
-/* Class = "NSTextFieldCell"; title = "Hold option and right click on finder, then select Relaunch."; ObjectID = "mDT-aa-auv"; */
-"mDT-aa-auv.title" = "按住 option 并在访达上右击, 然后选择重新开启.";
-
 /* Class = "NSTextFieldCell"; title = "uPic"; ObjectID = "mOB-su-ZM1"; */
 "mOB-su-ZM1.title" = "uPic";
 
@@ -203,18 +182,9 @@
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "q1H-P0-jix"; */
 "q1H-P0-jix.title" = "取消";
 
-/* Class = "NSMenuItem"; title = "Color"; ObjectID = "q6h-oC-nNb"; */
-"q6h-oC-nNb.title" = "彩色";
-
-/* Class = "NSTextFieldCell"; title = "Icon:"; ObjectID = "ugx-B2-gPe"; */
-"ugx-B2-gPe.title" = "圖標:";
-
 /* Class = "NSTextFieldCell"; title = "✋Welcome Page:"; ObjectID = "ul8-3a-sB4"; */
 "ul8-3a-sB4.title" = "✋歡迎頁:";
 
 /* Class = "NSTextFieldCell"; title = "Output Format Customization"; ObjectID = "w0T-ah-0NT"; */
 "w0T-ah-0NT.title" = "輸出格式自定義";
-
-/* Class = "NSTextFieldCell"; title = "💬 Telegram:"; ObjectID = "yO0-9g-BJK"; */
-"yO0-9g-BJK.title" = "💬 Telegram:";
 
