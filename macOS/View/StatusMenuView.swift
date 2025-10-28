@@ -51,25 +51,54 @@ struct StatusMenuView: View {
             
             Menu("Output format  \(Text(selectedOutputFormat.name).foregroundStyle(.secondary))") {
                 ForEach(outputFormats) { outputFormat in
-                    Button(outputFormat.name, systemImage: selectedOutputFormat == outputFormat ? "checkmark" : "") {
+                    Button {
                         selectedOutputFormat = outputFormat
+                    } label: {
+                        HStack {
+                            if selectedOutputFormat == outputFormat {
+                                Image(systemName: "checkmark")
+                            }
+                            Text(outputFormat.name)
+                        }
                     }
                 }
             }
             
             Menu("Output format encoded  \(Text(outputFormatEncoded ? "On" : "Off").foregroundStyle(.secondary))") {
-                Button("On", systemImage: outputFormatEncoded == true ? "checkmark" : "") {
+                Button {
                     outputFormatEncoded = true
+                } label: {
+                    HStack {
+                        if outputFormatEncoded == true {
+                            Image(systemName: "checkmark")
+                        }
+                        Text("On")
+                    }
                 }
-                Button("Off", systemImage: outputFormatEncoded == false ? "checkmark" : "") {
+                
+                Button {
                     outputFormatEncoded = false
+                } label: {
+                    HStack {
+                        if outputFormatEncoded == false {
+                            Image(systemName: "checkmark")
+                        }
+                        Text("Off")
+                    }
                 }
             }
             
             Menu("Compress before uploading  \(Text(compressFactor >= 100 ? "Off" : "\(compressFactor)%").foregroundStyle(.secondary))") {
                 ForEach(Array(stride(from: 10, through: 100, by: 10)), id: \.self) { compressFactor in
-                    Button(compressFactor >= 100 ? "Off" : "\(compressFactor)%", systemImage: self.compressFactor == compressFactor ? "checkmark" : "") {
+                    Button {
                         self.compressFactor = compressFactor
+                    } label: {
+                        HStack {
+                            if self.compressFactor == compressFactor {
+                                Image(systemName: "checkmark")
+                            }
+                            Text(compressFactor >= 100 ? "Off " : "\(compressFactor)%")
+                        }
                     }
                 }
             }

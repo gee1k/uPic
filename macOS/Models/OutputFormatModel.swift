@@ -9,7 +9,7 @@
 import Defaults
 import Foundation
 
-struct OutputFormatModel: Identifiable, Codable, Equatable, Defaults.Serializable {
+struct OutputFormatModel: Identifiable, Codable, Equatable, Hashable, Defaults.Serializable {
     var id = UUID()
     var name: String
     var value: String

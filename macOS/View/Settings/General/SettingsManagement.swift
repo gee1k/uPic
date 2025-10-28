@@ -9,6 +9,7 @@ import Defaults
 import SimpleLogger
 import SwiftUI
 import UniformTypeIdentifiers
+import KeyboardShortcuts
 
 struct SettingsManagement: View {
     // Export/Import states
@@ -73,10 +74,11 @@ struct SettingsManagement: View {
             Button("Cancel", role: .cancel) {}
             Button("Reset", role: .destructive) {
                 AppLogger.settings.warning("User initiated reset of all settings")
-                if let userDefaults = UserDefaults(suiteName: "group.com.licardo.AlrightClick") {
-                    userDefaults.removeAll()
-                    AppLogger.settings.info("All settings have been successfully reset")
+                if let userDefaults = UserDefaults(suiteName: Constants.appGroupIdentifier) {
+                    Defaults.removeAll(suite: userDefaults)
                 }
+                KeyboardShortcuts.resetAll()
+                AppLogger.settings.info("All settings have been successfully reset")
             }
         } message: {
             Text("Are you sure you want to reset all settings? This action cannot be undone and will remove all your custom menu items and preferences.")

@@ -12,6 +12,7 @@ struct AdvanceSettingsView: View {
         Form {
             KeyboardShortcutsSettings()
             HistoryRecordSettings()
+            OutputFormatSettings()
             ScreenshotAppSettings()
         }
         .formStyle(.grouped)
