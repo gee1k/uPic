@@ -25,7 +25,7 @@ struct HostListItem: View {
                     .frame(width: 16, height: 16)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(hostModel.name ?? "Unnamed Host")
+                    Text(hostModel.name)
                         .lineLimit(1)
                         .foregroundColor(foregroundColor)
                     Text(HostType(rawValue: hostModel.typeRaw ?? "")?.displayNname ?? "Unknown")

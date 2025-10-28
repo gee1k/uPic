@@ -144,7 +144,7 @@ struct BaiduConfigView: View {
             bucket = baiduConfig.bucket ?? ""
             accessKey = baiduConfig.accessKey ?? ""
             secretKey = baiduConfig.secretKey ?? ""
-            domain = baiduConfig.domain ?? ""
+            domain = baiduConfig.domain
             saveKey = baiduConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
 
             // Find region by matching string value

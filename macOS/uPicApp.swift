@@ -46,5 +46,6 @@ struct uPicApp: App {
         } label: {
             Image(isUploading ? "uploadingStatusMenuIcon" : "statusMenuIcon")
         }
+        .modelContainer(sharedModelContainer)
     }
 }

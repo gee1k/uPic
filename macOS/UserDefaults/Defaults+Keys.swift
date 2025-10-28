@@ -14,7 +14,8 @@ private let appGroupUserDefaults = UserDefaults(suiteName: Constants.appGroupIde
 extension Defaults.Keys {
     // uPic specific keys
     static let firstUsage = Defaults.Key<Bool>("firstUsage", default: true, suite: appGroupUserDefaults)
-    static let defaultHostId = Defaults.Key<String?>("defaultHostId", suite: appGroupUserDefaults)
+    static let selectedHostId = Defaults.Key<String?>("selectedHostId", suite: appGroupUserDefaults)
+    static let selectedHostName = Defaults.Key<String?>("selectedHostName", suite: appGroupUserDefaults)
     static let selectedOutputFormat = Defaults.Key<OutputFormatModel>("selectedOutputFormat", default: OutputFormatModel.getDefaultOutputFormats().first!, suite: appGroupUserDefaults)
     static let outputFormats = Defaults.Key<[OutputFormatModel]>("outputFormats", default: OutputFormatModel.getDefaultOutputFormats(), suite: appGroupUserDefaults)
     static let outputFormatEncoded = Defaults.Key<Bool>("outputFormatEncoded", default: false, suite: appGroupUserDefaults)
