@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SmmsConfigView: View {
+    @State private var name: String = .init(localized: "SMMS")
     @State private var token: String = ""
     @State private var isTokenSecured: Bool = true
 
@@ -15,6 +16,9 @@ struct SmmsConfigView: View {
 
     var body: some View {
         Form {
+            // Name
+            TextField("Name", text: $name, prompt: Text("Custom name"))
+                .frame(height: 30)
             HStack {
                 if isTokenSecured {
                     SecureField(text: $token, prompt: Text("SMMS Token")) {

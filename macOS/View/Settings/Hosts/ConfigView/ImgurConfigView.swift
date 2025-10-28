@@ -9,6 +9,7 @@ import SwiftUI
 import UPicCore
 
 struct ImgurConfigView: View {
+    @State private var name: String = .init(localized: "Imgur")
     @State private var clientId: String = ""
     @State private var isClientIdSecured: Bool = true
 
@@ -16,6 +17,10 @@ struct ImgurConfigView: View {
 
     var body: some View {
         Form {
+            // Name
+            TextField("Name", text: $name, prompt: Text("Custom name"))
+                .frame(height: 30)
+
             // Client ID
             HStack {
                 if isClientIdSecured {
@@ -38,7 +43,7 @@ struct ImgurConfigView: View {
             // Get Client ID
             HStack {
                 Spacer()
-                
+
                 Menu {
                     Button("Not created before? Go get one!") {
                         if let url = URL(string: Constants.imgurGetClientIdUrl) {

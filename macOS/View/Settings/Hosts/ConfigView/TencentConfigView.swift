@@ -9,6 +9,7 @@ import SwiftUI
 import UPicCore
 
 struct TencentConfigView: View {
+    @State private var name: String = .init(localized: "Tencent Cloud COS")
     @State private var region = TencentRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var secretId: String = ""
@@ -23,6 +24,10 @@ struct TencentConfigView: View {
 
     var body: some View {
         Form {
+            // Name
+            TextField("Name", text: $name, prompt: Text("Custom name"))
+                .frame(height: 30)
+
             // Region
             Picker("Region", selection: $region) {
                 ForEach(TencentRegion.allRegions, id: \.self) { region in

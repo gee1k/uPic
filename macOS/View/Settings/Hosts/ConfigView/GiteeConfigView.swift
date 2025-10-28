@@ -9,6 +9,7 @@ import SwiftUI
 import UPicCore
 
 struct GiteeConfigView: View {
+    @State private var name: String = .init(localized: "Gitee")
     @State private var userName: String = ""
     @State private var repo: String = ""
     @State private var branch: String = "master"
@@ -22,6 +23,10 @@ struct GiteeConfigView: View {
 
     var body: some View {
         Form {
+            // Name
+            TextField("Name", text: $name, prompt: Text("Custom name"))
+                .frame(height: 30)
+
             // User Name
             TextField("User Name", text: $userName)
                 .frame(height: 30)

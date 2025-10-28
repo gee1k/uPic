@@ -9,6 +9,7 @@ import SwiftUI
 import UPicCore
 
 struct CustomConfigView: View {
+    @State private var name: String = .init(localized: "Custom")
     @State private var apiUrl: String = ""
     @State private var method: CustomRequestMethod = .POST
     @State private var fileField: String = ""
@@ -25,6 +26,10 @@ struct CustomConfigView: View {
 
     var body: some View {
         Form {
+            // Name
+            TextField("Name", text: $name, prompt: Text("Custom name"))
+                .frame(height: 30)
+
             // URL
             TextField("API URL", text: $apiUrl)
                 .frame(height: 30)
@@ -43,7 +48,6 @@ struct CustomConfigView: View {
                 Text("Use Base64")
                 Toggle("Use Base64", isOn: $useBase64)
                     .labelsHidden()
-
             }
             .frame(height: 30)
 

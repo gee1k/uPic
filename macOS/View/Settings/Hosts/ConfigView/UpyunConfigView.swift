@@ -9,6 +9,7 @@ import SwiftUI
 import UPicCore
 
 struct UpyunConfigView: View {
+    @State private var name: String = .init(localized: "Upyun USS")
     @State private var bucket: String = ""
     @State private var operatorName: String = ""
     @State private var password: String = ""
@@ -21,6 +22,10 @@ struct UpyunConfigView: View {
 
     var body: some View {
         Form {
+            // Name
+            TextField("Name", text: $name, prompt: Text("Custom name"))
+                .frame(height: 30)
+
             // Bucket
             TextField("Bucket", text: $bucket)
                 .frame(height: 30)

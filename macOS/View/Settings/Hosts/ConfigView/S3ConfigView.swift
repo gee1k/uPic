@@ -10,6 +10,7 @@ import UPicCore
 internal import SotoS3
 
 struct S3ConfigView: View {
+    @State private var name: String = .init(localized: "Amazon S3 Compatible")
     @State private var customize: Bool = false
     @State private var region = S3Region.allRegions.first!
     @State private var endpoint: String = ""
@@ -27,6 +28,10 @@ struct S3ConfigView: View {
 
     var body: some View {
         Form {
+            // Name
+            TextField("Name", text: $name, prompt: Text("Custom name"))
+                .frame(height: 30)
+
             // Customize Toggle
             Toggle("Customize", isOn: $customize)
                 .toggleStyle(.switch)

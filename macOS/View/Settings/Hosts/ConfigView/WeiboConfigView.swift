@@ -9,6 +9,7 @@ import SwiftUI
 import UPicCore
 
 struct WeiboConfigView: View {
+    @State private var name: String = .init(localized: "Weibo")
     @State private var cookieMode: Bool = false
     @State private var username: String = ""
     @State private var password: String = ""
@@ -21,6 +22,10 @@ struct WeiboConfigView: View {
 
     var body: some View {
         Form {
+            // Name
+            TextField("Name", text: $name, prompt: Text("Custom name"))
+                .frame(height: 30)
+
             // Cookie Mode Toggle
             Toggle("Cookie Mode", isOn: $cookieMode)
                 .toggleStyle(.switch)

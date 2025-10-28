@@ -9,6 +9,7 @@ import SwiftUI
 import UPicCore
 
 struct BaiduConfigView: View {
+    @State private var name: String = .init(localized: "Baidu Cloud BOS")
     @State private var region = BaiduRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var accessKey: String = ""
@@ -23,6 +24,10 @@ struct BaiduConfigView: View {
 
     var body: some View {
         Form {
+            // Name
+            TextField("Name", text: $name, prompt: Text("Custom name"))
+                .frame(height: 30)
+
             // Region
             Picker("Region", selection: $region) {
                 ForEach(BaiduRegion.allRegions, id: \.self) { region in
