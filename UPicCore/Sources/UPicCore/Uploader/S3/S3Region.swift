@@ -10,7 +10,7 @@ import Foundation
 public class S3Region {
     /// https://docs.aws.amazon.com/general/latest/gr/rande.html
     
-    public static let allRegion: [String] = [
+    public static let allRegions: [String] = [
         "us-east-2",
         "us-east-1",
         "us-west-1",
@@ -45,7 +45,7 @@ public class S3Region {
         "sa-east-1",
         "us-gov-east-1",
         "us-gov-west-1"
-    ]
+    ].sorted()
     
     public static func endPoint(_ key: String) -> String {
         if key.isEmpty {

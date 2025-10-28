@@ -20,4 +20,5 @@ enum Constants {
     //Host Config View
     static let smmsAPITokenUrl = "https://smms.app/home/apitoken"
     static let smmsHelpUrl = "https://blog.svend.cc/upic/tutorials/smms"
+    static let qiniuHelpUrl = "https://blog.svend.cc/upic/tutorials/qiniu_kodo"
 }

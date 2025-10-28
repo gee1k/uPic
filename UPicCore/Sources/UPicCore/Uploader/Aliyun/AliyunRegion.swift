@@ -10,7 +10,7 @@ import Foundation
 
 public class AliyunRegion {
     /// https://help.aliyun.com/document_detail/31837.html?spm=a2c4g.11186623.3.3.61247c57V4n0QD
-    public static let allRegion: [String] = [
+    public static let allRegions: [String] = [
         "oss-cn-hangzhou",
         "oss-cn-shanghai",
         "oss-cn-nanjing",
@@ -40,7 +40,7 @@ public class AliyunRegion {
         "oss-na-south-1",
         "oss-me-east-1",
         "oss-rg-china-mainland"
-    ]
+    ].sorted()
     
     public static func endPoint(_ key: String) -> String {
         if key.isEmpty {

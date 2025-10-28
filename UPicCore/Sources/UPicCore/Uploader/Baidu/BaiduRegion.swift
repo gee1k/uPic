@@ -10,7 +10,7 @@ import Foundation
 
 public class BaiduRegion {
     /// https://cloud.baidu.com/doc/BOS/s/Ck1rk80hn#%E8%8E%B7%E5%8F%96%E8%AE%BF%E9%97%AE%E5%9F%9F%E5%90%8D
-    public static let allRegion: [String] = [
+    public static let allRegions: [String] = [
         "bj",
         "bd",
         "su",
@@ -19,7 +19,7 @@ public class BaiduRegion {
         "hkg",
         "fwh",
         "fsh"
-    ]
+    ].sorted()
     
     public static func endPoint(_ key: String) -> String {
         if key.isEmpty {
