@@ -1,5 +1,5 @@
 {
-  "originHash" : "7649e7ba93f5582b66b18a5b812600527500ce1057d4f8e3b673add828a33fe2",
+  "originHash" : "9787eaf31f4702a3127178eca0d8374e92cf0b567cd582abbdc8ec9f666413ff",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -29,15 +29,6 @@
       }
     },
     {
-      "identity" : "defaults",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/sindresorhus/Defaults",
-      "state" : {
-        "revision" : "8192b0986611e105355a9433e99bf5c79469fbbd",
-        "version" : "9.0.6"
-      }
-    },
-    {
       "identity" : "handyjson",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Miles-Matheson/HandyJSON.git",
@@ -53,33 +44,6 @@
       "state" : {
         "revision" : "3877a5060e85ae33e3b9fe51ab581784f65ec80e",
         "version" : "1.0.3"
-      }
-    },
-    {
-      "identity" : "keyboardshortcuts",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/sindresorhus/KeyboardShortcuts",
-      "state" : {
-        "revision" : "1aef85578fdd4f9eaeeb8d53b7b4fc31bf08fe27",
-        "version" : "2.4.0"
-      }
-    },
-    {
-      "identity" : "launchatlogin-modern",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/sindresorhus/LaunchAtLogin-Modern",
-      "state" : {
-        "revision" : "a04ec1c363be3627734f6dad757d82f5d4fa8fcc",
-        "version" : "1.1.0"
-      }
-    },
-    {
-      "identity" : "simplelogger",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/fatbobman/SimpleLogger",
-      "state" : {
-        "revision" : "1a532ca493eeb9b93413f40194fd01e46731317e",
-        "version" : "0.8.0"
       }
     },
     {
@@ -278,15 +242,6 @@
       "state" : {
         "revision" : "0fcc4c9c2d58dd98504c06f7308c86de775396ff",
         "version" : "2.9.0"
-      }
-    },
-    {
-      "identity" : "swift-syntax",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/swiftlang/swift-syntax",
-      "state" : {
-        "revision" : "4799286537280063c85a32f09884cfbca301b1a1",
-        "version" : "602.0.0"
       }
     },
     {
