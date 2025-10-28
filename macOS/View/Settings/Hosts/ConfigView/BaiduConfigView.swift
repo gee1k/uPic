@@ -1,0 +1,142 @@
+//
+//  BaiduConfigView.swift
+//  uPic(macOS)
+//
+//  Created by Licardo on 2025/10/28.
+//
+
+import SwiftUI
+import UPicCore
+
+struct BaiduConfigView: View {
+    @State private var region = BaiduRegion.allRegions.first!
+    @State private var bucket: String = ""
+    @State private var accessKey: String = ""
+    @State private var secretKey: String = ""
+    @State private var domain: String = ""
+    @State private var saveKey: String = "uPic/{filename}{.suffix}"
+    @State private var saveKeySuffix: String = ""
+    @State private var isAccessKeySecured: Bool = true
+    @State private var isSecretKeySecured: Bool = true
+
+    @Environment(\.openURL) var openURL
+
+    // Region display names mapping
+    private let regionNames: [String: String] = [
+        "bj": "Beijing",
+        "bd": "Baoding",
+        "su": "Suzhou",
+        "gz": "Guangzhou",
+        "cd": "Chengdu",
+        "hkg": "Hong Kong",
+        "fwh": "Wuhan",
+        "fsh": "Shanghai"
+    ]
+
+    var body: some View {
+        Form {
+            // Region
+            Picker("Region", selection: $region) {
+                ForEach(BaiduRegion.allRegions, id: \.self) { region in
+                    Text(regionDisplayName(region))
+                        .tag(region)
+                }
+            }
+            .frame(height: 30)
+
+            // Bucket
+            TextField("Bucket", text: $bucket)
+                .frame(height: 30)
+
+            // Access Key
+            HStack {
+                if isAccessKeySecured {
+                    SecureField("Access Key", text: $accessKey)
+                } else {
+                    TextField("Access Key", text: $accessKey)
+                }
+
+                Button {
+                    isAccessKeySecured.toggle()
+                } label: {
+                    Image(systemName: isAccessKeySecured ? "eye.slash" : "eye")
+                        .foregroundStyle(isAccessKeySecured ? .primary : Color.blue)
+                }
+                .buttonStyle(.plain)
+                .disabled(accessKey.isEmpty)
+            }
+            .frame(height: 30)
+
+            // Secret Key
+            HStack {
+                if isSecretKeySecured {
+                    SecureField("Secret Key", text: $secretKey)
+                } else {
+                    TextField("Secret Key", text: $secretKey)
+                }
+
+                Button {
+                    isSecretKeySecured.toggle()
+                } label: {
+                    Image(systemName: isSecretKeySecured ? "eye.slash" : "eye")
+                        .foregroundStyle(isSecretKeySecured ? .primary : Color.blue)
+                }
+                .buttonStyle(.plain)
+                .disabled(secretKey.isEmpty)
+            }
+            .frame(height: 30)
+
+            // Domain
+            TextField("Domain", text: $domain, prompt: Text(verbatim: "https://your-domain.com"))
+                .frame(height: 30)
+
+            // Save Key Path
+            HStack {
+                TextField("Save Key", text: $saveKey)
+                    .fontDesign(.monospaced)
+                TextField("", text: $saveKeySuffix, prompt: Text("!w"))
+                    .labelsHidden()
+                    .frame(minWidth: 40)
+                    .fixedSize()
+                    .fontDesign(.monospaced)
+                    .help("The suffix added during the visit does not affect the upload(also supports variables). Can be used as object storage for image processing styles, etc ... For example: !w means get a watermarked image.")
+            }
+            .frame(height: 30)
+
+            Text("""
+            Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} and etc. For example, the uploaded file is uPic.jpg, set to "uPic/{filename}{.suffix}", it will be saved as: uPic/uPic.jpg.
+            """)
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .frame(maxHeight: .infinity, alignment: .topLeading)
+
+            // Help Links
+            HStack {
+                Spacer()
+                Button {
+                    if let url = URL(string: "https://blog.svend.cc/upic/tutorials/baidu_bos") {
+                        openURL(url)
+                    }
+                } label: {
+                    Image(systemName: "questionmark")
+                        .padding(2)
+                }
+                .buttonBorderShape(.circle)
+            }
+        }
+        .padding()
+    }
+
+    // Helper computed properties
+    private var sortedRegions: [String] {
+        return BaiduRegion.allRegions.sorted()
+    }
+
+    private func regionDisplayName(_ key: String) -> String {
+        return regionNames[key] ?? key.uppercased()
+    }
+}
+
+#Preview {
+    BaiduConfigView()
+}
