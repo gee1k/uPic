@@ -102,7 +102,7 @@ struct TencentConfigView: View {
             HStack {
                 Spacer()
                 Button {
-                    if let url = URL(string: "https://blog.svend.cc/upic/tutorials/tencent_cos") {
+                    if let url = URL(string: Constants.tencentHelpUrl) {
                         openURL(url)
                     }
                 } label: {

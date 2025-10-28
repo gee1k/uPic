@@ -81,7 +81,7 @@ struct GiteeConfigView: View {
             HStack {
                 Spacer()
                 Button {
-                    if let url = URL(string: "https://blog.svend.cc/upic/tutorials/gitee") {
+                    if let url = URL(string: Constants.giteeHelpUrl) {
                         openURL(url)
                     }
                 } label: {

@@ -90,7 +90,7 @@ struct CustomConfigView: View {
             HStack {
                 Spacer()
                 Button {
-                    if let url = URL(string: "https://blog.svend.cc/upic/tutorials/custom") {
+                    if let url = URL(string: Constants.customHelpUrl) {
                         openURL(url)
                     }
                 } label: {

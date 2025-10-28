@@ -81,7 +81,7 @@ struct GithubConfigView: View {
             HStack {
                 Spacer()
                 Button {
-                    if let url = URL(string: "https://blog.svend.cc/upic/tutorials/github") {
+                    if let url = URL(string: Constants.githubHelpUrl) {
                         openURL(url)
                     }
                 } label: {

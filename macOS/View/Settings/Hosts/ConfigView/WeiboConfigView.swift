@@ -75,7 +75,7 @@ struct WeiboConfigView: View {
             HStack {
                 Spacer()
                 Button {
-                    if let url = URL(string: "https://blog.svend.cc/upic/tutorials/weibo") {
+                    if let url = URL(string: Constants.weiboHelpUrl) {
                         openURL(url)
                     }
                 } label: {

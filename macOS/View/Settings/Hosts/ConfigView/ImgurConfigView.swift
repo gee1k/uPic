@@ -41,13 +41,13 @@ struct ImgurConfigView: View {
                 
                 Menu {
                     Button("Not created before? Go get one!") {
-                        if let url = URL(string: "https://blog.svend.cc/upic/tutorials/imgur") {
+                        if let url = URL(string: Constants.imgurGetClientIdUrl) {
                             openURL(url)
                         }
                     }
 
                     Button("Already have one? Go get it!") {
-                        if let url = URL(string: "https://imgur.com/account/settings/apps") {
+                        if let url = URL(string: Constants.imgurCreateClientIdUrl) {
                             openURL(url)
                         }
                     }
@@ -65,7 +65,7 @@ struct ImgurConfigView: View {
             HStack {
                 Spacer()
                 Button {
-                    if let url = URL(string: "https://blog.svend.cc/upic/tutorials/imgur") {
+                    if let url = URL(string: Constants.imgurHelpUrl) {
                         openURL(url)
                     }
                 } label: {

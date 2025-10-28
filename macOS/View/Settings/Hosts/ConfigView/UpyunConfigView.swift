@@ -76,7 +76,7 @@ struct UpyunConfigView: View {
             HStack {
                 Spacer()
                 Button {
-                    if let url = URL(string: "https://blog.svend.cc/upic/tutorials/upyun_uss") {
+                    if let url = URL(string: Constants.upyunHelpUrl) {
                         openURL(url)
                     }
                 } label: {

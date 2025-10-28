@@ -102,7 +102,7 @@ struct AliyunConfigView: View {
             HStack {
                 Spacer()
                 Button {
-                    if let url = URL(string: "https://blog.svend.cc/upic/tutorials/aliyun_oss") {
+                    if let url = URL(string: Constants.aliyunHelpUrl) {
                         openURL(url)
                     }
                 } label: {

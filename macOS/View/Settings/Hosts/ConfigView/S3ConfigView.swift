@@ -127,7 +127,7 @@ struct S3ConfigView: View {
             HStack {
                 Spacer()
                 Button {
-                    if let url = URL(string: "https://blog.svend.cc/upic/tutorials/amazon_s3") {
+                    if let url = URL(string: Constants.s3HelpUrl) {
                         openURL(url)
                     }
                 } label: {

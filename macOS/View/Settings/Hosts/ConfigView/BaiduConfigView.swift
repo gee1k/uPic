@@ -102,7 +102,7 @@ struct BaiduConfigView: View {
             HStack {
                 Spacer()
                 Button {
-                    if let url = URL(string: "https://blog.svend.cc/upic/tutorials/baidu_bos") {
+                    if let url = URL(string: Constants.baiduHelpUrl) {
                         openURL(url)
                     }
                 } label: {
