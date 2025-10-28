@@ -26,11 +26,11 @@ struct AboutSettingsView: View {
                         }
                         Spacer()
                         Button {
-                            if let url = URL(string: "https://github.com/gee1k/uPic") {
+                            if let url = URL(string: Constants.githubHomepage) {
                                 openURL(url)
                             }
                         } label: {
-                            Text(verbatim: "https://github.com/gee1k/uPic")
+                            Text(verbatim: Constants.githubHomepage)
                         }
                         .buttonStyle(.link)
                     }
@@ -39,11 +39,11 @@ struct AboutSettingsView: View {
                         Label("Home Page", systemImage: "house")
                         Spacer()
                         Button {
-                            if let url = URL(string: "https://svend.cc") {
+                            if let url = URL(string: Constants.svendHomepage) {
                                 openURL(url)
                             }
                         } label: {
-                            Text(verbatim: "https://svend.cc")
+                            Text(verbatim: Constants.svendHomepage)
                         }
                         .buttonStyle(.link)
                     }
@@ -54,7 +54,7 @@ struct AboutSettingsView: View {
                         Button {
                             createTempLogAndSendEmail()
                         } label: {
-                            Text(verbatim: "svend.jin@gmail.com")
+                            Text(verbatim: Constants.svendEmail)
                         }
                         .buttonStyle(.link)
                     }
@@ -73,7 +73,7 @@ struct AboutSettingsView: View {
                         Label("Rate App", systemImage: "hand.thumbsup")
                         Spacer()
                         Button {
-                            if let url = URL(string: "itms-apps://itunes.apple.com/app/id1549159979?action=write-review") {
+                            if let url = URL(string: Constants.appStoreReviewURL) {
                                 openURL(url)
                             }
                         } label: {
@@ -110,13 +110,13 @@ struct AboutSettingsView: View {
             
             HStack(alignment: .center, spacing: 4) {
                 Spacer()
-                Text("MADE WITH")
+                Text(verbatim: "MADE WITH")
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(.secondary)
                 Image("Heart")
                     .resizable()
                     .frame(width: 10, height: 10)
-                Text("BY SVEND AND [MORE](https://github.com/gee1k/uPic/graphs/contributors)")
+                Text("BY SVEND AND [MORE](\(Constants.githubContributors))")
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(.secondary)
                 Spacer()
@@ -151,7 +151,7 @@ struct AboutSettingsView: View {
     }
 
     private func sendEmailWithAttachment(subject: String, body: String, attachmentURL: URL?) {
-        let email = "svend.jin@gmail.com"
+        let email = Constants.svendEmail
 
         let sharingService = NSSharingService(named: .composeEmail)
         if let sharingService = sharingService {
@@ -210,7 +210,7 @@ struct AboutSettingsView: View {
     }
     
     private func getLogFileURL() -> URL? {
-        guard let groupContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.svend.uPic") else {
+        guard let groupContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Constants.appGroupIdentifier) else {
             return nil
         }
         

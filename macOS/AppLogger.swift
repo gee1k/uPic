@@ -8,15 +8,6 @@
 import Foundation
 import SimpleLogger
 
-// MARK: - Constants
-
-private enum Constants {
-    static let subsystem = "com.svend.uPic.macos"
-    static let logFileNamePrefix = "uPic"
-    static let logDirectoryName = "Logs"
-    static let appGroupIdentifier = "group.com.svend.uPic"
-}
-
 // MARK: - Public Logger Interface
 
 enum AppLogger {
@@ -89,14 +80,14 @@ private final class FileLogManager {
         guard let groupContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Constants.appGroupIdentifier) else {
             return nil
         }
-        return groupContainer.appendingPathComponent(Constants.logDirectoryName)
+        return groupContainer.appendingPathComponent("Logs")
     }()
 
     func writeLog(_ logLine: String) {
         guard let logDirectory = logDirectory else { return }
 
         let currentDateKey = LogFormatter.currentDateKey()
-        let fileName = "\(Constants.logFileNamePrefix)-\(currentDateKey).log"
+        let fileName = "uPic-\(currentDateKey).log"
         let fileURL = logDirectory.appendingPathComponent(fileName)
 
         do {
@@ -136,7 +127,7 @@ private final class FileLogManager {
 
             for file in files {
                 let fileName = file.lastPathComponent
-                if fileName.hasPrefix("\(Constants.logFileNamePrefix)-"), fileName.hasSuffix(".log"), fileName != currentFileName {
+                if fileName.hasPrefix("uPic-"), fileName.hasSuffix(".log"), fileName != currentFileName {
                     try FileManager.default.removeItem(at: file)
                 }
             }
@@ -153,7 +144,7 @@ struct UPicLogger: LoggerManagerProtocol {
     private static let fileManager = FileLogManager()
 
     init(category: String) {
-        self.logger = .default(subsystem: Constants.subsystem, category: category)
+        self.logger = .default(subsystem: "com.svend.uPic.macos", category: category)
     }
 
     func log(_ message: String, level: LogLevel, file: String, function: String, line: Int) {

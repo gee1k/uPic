@@ -71,7 +71,7 @@ struct SettingsView: View {
         } detail: {
             switch selectedIndex {
             case 0:
-                EmptyView()
+                GeneralSettingsView()
             case 1:
                 EmptyView()
             case 2:
@@ -79,7 +79,7 @@ struct SettingsView: View {
             case 3:
                 AboutSettingsView()
             default:
-                EmptyView()
+                GeneralSettingsView()
             }
         }
     }
