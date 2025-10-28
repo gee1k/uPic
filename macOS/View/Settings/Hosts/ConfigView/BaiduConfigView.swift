@@ -21,24 +21,12 @@ struct BaiduConfigView: View {
 
     @Environment(\.openURL) var openURL
 
-    // Region display names mapping
-    private let regionNames: [String: String] = [
-        "bj": "Beijing",
-        "bd": "Baoding",
-        "su": "Suzhou",
-        "gz": "Guangzhou",
-        "cd": "Chengdu",
-        "hkg": "Hong Kong",
-        "fwh": "Wuhan",
-        "fsh": "Shanghai"
-    ]
-
     var body: some View {
         Form {
             // Region
             Picker("Region", selection: $region) {
                 ForEach(BaiduRegion.allRegions, id: \.self) { region in
-                    Text(regionDisplayName(region))
+                    Text(region)
                         .tag(region)
                 }
             }
@@ -125,15 +113,6 @@ struct BaiduConfigView: View {
             }
         }
         .padding()
-    }
-
-    // Helper computed properties
-    private var sortedRegions: [String] {
-        return BaiduRegion.allRegions.sorted()
-    }
-
-    private func regionDisplayName(_ key: String) -> String {
-        return regionNames[key] ?? key.uppercased()
     }
 }
 
