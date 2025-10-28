@@ -75,7 +75,7 @@ struct SettingsView: View {
             case 1:
                 AdvanceSettingsView()
             case 2:
-                EmptyView()
+                HostsSettingsView()
             case 3:
                 AboutSettingsView()
             default:
