@@ -28,7 +28,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		961848742EB09470005BD3AC /* uPic(macOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "uPic(macOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		961848742EB09470005BD3AC /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -102,7 +102,7 @@
 		961848752EB09470005BD3AC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				961848742EB09470005BD3AC /* uPic(macOS).app */,
+				961848742EB09470005BD3AC /* uPic.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,7 +143,7 @@
 				9640CD6D2EB09C30003BF4FB /* UPicCore */,
 			);
 			productName = uPic;
-			productReference = 961848742EB09470005BD3AC /* uPic(macOS).app */;
+			productReference = 961848742EB09470005BD3AC /* uPic.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -372,7 +372,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 15;
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = uPic;
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -424,7 +424,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 15;
 				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = uPic;
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;

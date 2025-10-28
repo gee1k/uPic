@@ -7,10 +7,12 @@
 
 import SwiftData
 import SwiftUI
+import Defaults
 
 @main
 struct uPicApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @Default(.isUploading) var isUploading
 
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -41,8 +43,7 @@ struct uPicApp: App {
         MenuBarExtra {
             StatusMenuView()
         } label: {
-            Image("statusMenu")
+            Image(isUploading ? "uploadingStatusMenuIcon" : "statusMenuIcon")
         }
-        .menuBarExtraStyle(.menu)
     }
 }
