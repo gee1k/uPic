@@ -9,7 +9,7 @@
 import KeyboardShortcuts
 
 extension KeyboardShortcuts.Name {
-    static let selectFileShortcut = Self("uPic_SelectFileShortcut")
-    static let pasteboardShortcut = Self("uPic_PasteboardShortcut")
-    static let screenshotShortcut = Self("uPic_ScreenshotShortcut")
+    static let uploadFromSelectFile = Self("uploadFromSelectFile")
+    static let uploadFromClipboard = Self("uploadFromClipboard")
+    static let uploadFromScreenshot = Self("uploadFromScreenshot")
 }
