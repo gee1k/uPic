@@ -73,7 +73,7 @@ struct SettingsView: View {
             case 0:
                 GeneralSettingsView()
             case 1:
-                EmptyView()
+                AdvanceSettingsView()
             case 2:
                 EmptyView()
             case 3:

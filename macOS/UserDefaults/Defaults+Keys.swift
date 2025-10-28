@@ -7,6 +7,7 @@
 
 import Defaults
 import Foundation
+import SwiftUI
 
 // Configure App Group UserDefaults
 private let appGroup = UserDefaults(suiteName: Constants.appGroupIdentifier)!
@@ -39,7 +40,7 @@ extension Defaults.Keys {
     static let rootSubdirectoryNames = Defaults.Key<[String]>("rootSubdirectoryNames", default: [], suite: appGroup)
 }
 
-enum ScreenshotApp: String, Defaults.Serializable {
+enum ScreenshotApp: String, CaseIterable, Defaults.Serializable {
     case system
     case longshot
 
@@ -47,6 +48,13 @@ enum ScreenshotApp: String, Defaults.Serializable {
         switch self {
         case .system: return String(localized: "System")
         case .longshot: return String(localized: "Longshot")
+        }
+    }
+
+    var icon: Image {
+        switch self {
+        case .system: return Image(systemName: "apple.logo")
+        case .longshot: return Image("LongShot")
         }
     }
 }
