@@ -8,29 +8,38 @@
 
 import Foundation
 import HandyJSON
+import SwiftData
 
+@Model
 public class HostModel: HandyJSON {
     public var id: String!
     public var name: String!
-    public var type: HostType!
-    public var data: HostConfig?
-    
+    public var typeRaw: String?
+    public var dataRaw: Data?
+
     required public init() {}
     
     public init(_ type: HostType, data: HostConfig?) {
         self.id = "\(Date().secondStamp)"
         self.name = type.displayNname
-        self.type = type
-        self.data = data
+        self.typeRaw = type.rawValue
+        if let data = data,
+           let jsonString = data.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8) {
+            self.dataRaw = jsonData
+        }
     }
     
     public func isValid() -> Bool {
-        guard let _ = self.id, let _ = self.name, let _ = self.type else {
+        guard let _ = self.id, let _ = self.name, let typeRaw = self.typeRaw else {
             return false
         }
-        
-        if let data = self.data {
-            return data.isValid()
+
+        // Check if dataRaw can be decoded to valid HostConfig
+        if let dataRaw = self.dataRaw,
+           let jsonString = String(data: dataRaw, encoding: .utf8),
+           let hostConfig = HostConfig.deserialize(from: jsonString) {
+            return hostConfig.isValid()
         }
         
         return true
@@ -48,39 +57,18 @@ public class HostModel: HandyJSON {
         return self.toJSONString()
     }
     
+    public func getConfig<T: HostConfig>(_ type: T.Type) -> T? {
+        guard let dataRaw = dataRaw,
+              let jsonString = String(data: dataRaw, encoding: .utf8) else {
+            return nil
+        }
+        return T.deserialize(from: jsonString, designatedPath: "data")
+    }
+
     public static func deserialize(serializeString: String, designatedPath: String? = nil) -> HostModel? {
         guard let model = HostModel.deserialize(from: serializeString, designatedPath: designatedPath) else {
             return nil
         }
-        switch model.type {
-        case .aliyun_oss:
-            model.data = AliyunHostConfig.deserialize(from: serializeString, designatedPath: "data")
-        case .s3:
-            model.data = S3HostConfig.deserialize(from: serializeString, designatedPath: "data")
-        case .baidu_bos:
-            model.data = BaiduHostConfig.deserialize(from: serializeString, designatedPath: "data")
-        case .custom:
-            model.data = CustomHostConfig.deserialize(from: serializeString, designatedPath: "data")
-        case .gitee:
-            model.data = GiteeHostConfig.deserialize(from: serializeString, designatedPath: "data")
-        case .github:
-            model.data = GithubHostConfig.deserialize(from: serializeString, designatedPath: "data")
-        case .imgur:
-            model.data = ImgurHostConfig.deserialize(from: serializeString, designatedPath: "data")
-        case .qiniu_kodo:
-            model.data = QiniuHostConfig.deserialize(from: serializeString, designatedPath: "data")
-        case .smms:
-            model.data = SmmsHostConfig.deserialize(from: serializeString, designatedPath: "data")
-        case .tencent_cos:
-            model.data = TencentHostConfig.deserialize(from: serializeString, designatedPath: "data")
-        case .upyun_uss:
-            model.data = UpyunHostConfig.deserialize(from: serializeString, designatedPath: "data")
-        case .weibo:
-            model.data = WeiboHostConfig.deserialize(from: serializeString, designatedPath: "data")
-        case .none:
-            break
-        }
-        
         return model
     }
 }

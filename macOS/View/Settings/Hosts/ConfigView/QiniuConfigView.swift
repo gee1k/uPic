@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 import UPicCore
+import HandyJSON
 
 struct QiniuConfigView: View {
-    @State private var name: String = .init(localized: "Qiniu KODO")
+    let hostModel: HostModel
+    @Environment(\.modelContext) private var modelContext
+
+    @State private var name: String = ""
     @State private var region = QiniuRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var accessKey: String = ""
@@ -117,10 +122,65 @@ struct QiniuConfigView: View {
                 .buttonBorderShape(.circle)
             }
         }
+
+        HStack {
+            Spacer()
+            Button("Save Configuration") {
+                saveConfiguration()
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(name.isEmpty || bucket.isEmpty || accessKey.isEmpty || secretKey.isEmpty)
+        }
         .padding()
+        .onAppear {
+            loadConfiguration()
+        }
+    }
+
+    private func loadConfiguration() {
+        name = hostModel.name ?? "Qiniu KODO"
+
+        if let qiniuConfig = hostModel.getConfig(QiniuHostConfig.self) {
+            bucket = qiniuConfig.bucket ?? ""
+            accessKey = qiniuConfig.accessKey ?? ""
+            secretKey = qiniuConfig.secretKey ?? ""
+            domain = qiniuConfig.domain ?? ""
+            saveKey = qiniuConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+
+            // Find region by matching string value
+            if let regionStr = qiniuConfig.region,
+               QiniuRegion.allRegions.contains(regionStr) {
+                region = regionStr
+            }
+        }
+    }
+
+    private func saveConfiguration() {
+        let qiniuConfig = QiniuHostConfig()
+        qiniuConfig.bucket = bucket
+        qiniuConfig.accessKey = accessKey
+        qiniuConfig.secretKey = secretKey
+        qiniuConfig.domain = domain
+        qiniuConfig.saveKeyPath = saveKey
+        qiniuConfig.region = region
+
+        hostModel.name = name
+        if let jsonString = qiniuConfig.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8) {
+            hostModel.dataRaw = jsonData
+        }
+
+        do {
+            try modelContext.save()
+            print("Configuration saved successfully!")
+        } catch {
+            print("Failed to save configuration: \(error)")
+        }
     }
 }
 
 #Preview {
-    QiniuConfigView()
+    let sampleHostModel = HostModel(.qiniu_kodo, data: nil)
+    return QiniuConfigView(hostModel: sampleHostModel)
+        .modelContainer(for: HostModel.self, inMemory: true)
 }

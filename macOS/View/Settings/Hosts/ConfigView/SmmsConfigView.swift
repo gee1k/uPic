@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
+import UPicCore
+import HandyJSON
 
 struct SmmsConfigView: View {
-    @State private var name: String = .init(localized: "SMMS")
+    let hostModel: HostModel
+    @Environment(\.modelContext) private var modelContext
+
+    @State private var name: String = ""
     @State private var token: String = ""
     @State private var isTokenSecured: Bool = true
 
@@ -59,11 +65,55 @@ struct SmmsConfigView: View {
                 }
                 .buttonBorderShape(.circle)
             }
+
+            HStack {
+                Spacer()
+                Button("Save Configuration") {
+                    saveConfiguration()
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || token.isEmpty)
+            }
         }
         .padding()
+        .onAppear {
+            loadConfiguration()
+        }
+    }
+
+    private func loadConfiguration() {
+        // Load existing data from HostModel
+        name = hostModel.name ?? "SMMS"
+
+        if let smmsConfig = hostModel.getConfig(SmmsHostConfig.self) {
+            token = smmsConfig.token ?? ""
+        }
+    }
+
+    private func saveConfiguration() {
+        // Create SmmsHostConfig
+        let smmsConfig = SmmsHostConfig()
+        smmsConfig.token = token
+
+        // Update HostModel
+        hostModel.name = name
+        if let jsonString = smmsConfig.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8) {
+            hostModel.dataRaw = jsonData
+        }
+
+        do {
+            try modelContext.save()
+            print("Configuration saved successfully!")
+        } catch {
+            print("Failed to save configuration: \(error)")
+        }
     }
 }
 
 #Preview {
-    SmmsConfigView()
+    // Create a sample HostModel for preview
+    let sampleHostModel = HostModel(.smms, data: nil)
+    return SmmsConfigView(hostModel: sampleHostModel)
+        .modelContainer(for: HostModel.self, inMemory: true)
 }

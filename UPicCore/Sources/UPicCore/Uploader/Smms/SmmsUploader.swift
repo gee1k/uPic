@@ -54,7 +54,7 @@ public class SmmsUploader {
     }
     
     internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
-        guard let config = model.data as? SmmsHostConfig, config.isValid() else {
+        guard let config = model.getConfig(SmmsHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
         }

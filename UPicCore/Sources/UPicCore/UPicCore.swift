@@ -60,7 +60,13 @@ public class UPicCore {
         }
         
         DispatchQueue.main.async {
-            switch hostModel.type {
+            guard let typeRaw = hostModel.typeRaw,
+                  let hostType = HostType(rawValue: typeRaw) else {
+                self._uploadFail(.unknownHostType)
+                return
+            }
+
+            switch hostType {
             case .aliyun_oss:
                 AliyunUploader.handle(self, model: hostModel, data: data, filename: filename)
             case .s3:
@@ -103,12 +109,18 @@ public class UPicCore {
     }
     
     private func beforeUpload(hostModel: HostModel, fileData: Data) -> Data? {
-        if !checkFileExtensionIsAllow(hostType: hostModel.type, data: fileData) {
+        guard let typeRaw = hostModel.typeRaw,
+              let hostType = HostType(rawValue: typeRaw) else {
+            _uploadFail(.invalidConfig)
+            return nil
+        }
+
+        if !checkFileExtensionIsAllow(hostType: hostType, data: fileData) {
             _uploadFail(.notSupportedFile)
             return nil
         }
-        
-        if !checkFileSize(hostType: hostModel.type, fileData: fileData) {
+
+        if !checkFileSize(hostType: hostType, fileData: fileData) {
             _uploadFail(.sizeLimit)
             return nil
         }

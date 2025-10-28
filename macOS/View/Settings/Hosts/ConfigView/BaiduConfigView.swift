@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 import UPicCore
+import HandyJSON
 
 struct BaiduConfigView: View {
-    @State private var name: String = .init(localized: "Baidu Cloud BOS")
+    let hostModel: HostModel
+    @Environment(\.modelContext) private var modelContext
+
+    @State private var name: String = ""
     @State private var region = BaiduRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var accessKey: String = ""
@@ -117,10 +122,65 @@ struct BaiduConfigView: View {
                 .buttonBorderShape(.circle)
             }
         }
+
+        HStack {
+            Spacer()
+            Button("Save Configuration") {
+                saveConfiguration()
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(name.isEmpty || bucket.isEmpty || accessKey.isEmpty || secretKey.isEmpty)
+        }
         .padding()
+        .onAppear {
+            loadConfiguration()
+        }
+    }
+
+    private func loadConfiguration() {
+        name = hostModel.name ?? "Baidu Cloud BOS"
+
+        if let baiduConfig = hostModel.getConfig(BaiduHostConfig.self) {
+            bucket = baiduConfig.bucket ?? ""
+            accessKey = baiduConfig.accessKey ?? ""
+            secretKey = baiduConfig.secretKey ?? ""
+            domain = baiduConfig.domain ?? ""
+            saveKey = baiduConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+
+            // Find region by matching string value
+            if let regionStr = baiduConfig.region,
+               BaiduRegion.allRegions.contains(regionStr) {
+                region = regionStr
+            }
+        }
+    }
+
+    private func saveConfiguration() {
+        let baiduConfig = BaiduHostConfig()
+        baiduConfig.bucket = bucket
+        baiduConfig.accessKey = accessKey
+        baiduConfig.secretKey = secretKey
+        baiduConfig.domain = domain
+        baiduConfig.saveKeyPath = saveKey
+        baiduConfig.region = region
+
+        hostModel.name = name
+        if let jsonString = baiduConfig.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8) {
+            hostModel.dataRaw = jsonData
+        }
+
+        do {
+            try modelContext.save()
+            print("Configuration saved successfully!")
+        } catch {
+            print("Failed to save configuration: \(error)")
+        }
     }
 }
 
 #Preview {
-    BaiduConfigView()
+    let sampleHostModel = HostModel(.baidu_bos, data: nil)
+    return BaiduConfigView(hostModel: sampleHostModel)
+        .modelContainer(for: HostModel.self, inMemory: true)
 }

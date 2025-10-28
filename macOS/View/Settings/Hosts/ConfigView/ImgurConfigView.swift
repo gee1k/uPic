@@ -6,15 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
 import UPicCore
+import HandyJSON
 
 struct ImgurConfigView: View {
-    @State private var name: String = .init(localized: "Imgur")
+    let hostModel: HostModel
+    @Environment(\.modelContext) private var modelContext
+
+    @State private var name: String = ""
     @State private var clientId: String = ""
     @State private var isClientIdSecured: Bool = true
 
     @Environment(\.openURL) var openURL
 
+    
     var body: some View {
         Form {
             // Name
@@ -79,11 +85,51 @@ struct ImgurConfigView: View {
                 }
                 .buttonBorderShape(.circle)
             }
+
+            HStack {
+                Spacer()
+                Button("Save Configuration") {
+                    saveConfiguration()
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || clientId.isEmpty)
+            }
         }
         .padding()
+        .onAppear {
+            loadConfiguration()
+        }
+    }
+
+    func loadConfiguration() {
+        name = hostModel.name ?? "Imgur"
+
+        if let imgurConfig = hostModel.getConfig(ImgurHostConfig.self) {
+            clientId = imgurConfig.clientId ?? ""
+        }
+    }
+
+    func saveConfiguration() {
+        let imgurConfig = ImgurHostConfig()
+        imgurConfig.clientId = clientId
+
+        hostModel.name = name
+        if let jsonString = imgurConfig.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8) {
+            hostModel.dataRaw = jsonData
+        }
+
+        do {
+            try modelContext.save()
+            print("Configuration saved successfully!")
+        } catch {
+            print("Failed to save configuration: \(error)")
+        }
     }
 }
 
 #Preview {
-    ImgurConfigView()
+    let sampleHostModel = HostModel(.imgur, data: nil)
+    return ImgurConfigView(hostModel: sampleHostModel)
+        .modelContainer(for: HostModel.self, inMemory: true)
 }

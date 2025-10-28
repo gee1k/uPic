@@ -35,7 +35,7 @@ public class S3Uploader {
     }
     
     internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
-        guard let config = model.data as? S3HostConfig, config.isValid() else {
+        guard let config = model.getConfig(S3HostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
         }

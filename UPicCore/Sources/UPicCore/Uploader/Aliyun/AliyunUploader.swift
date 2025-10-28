@@ -44,7 +44,7 @@ public class AliyunUploader {
     }
     
     internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
-        guard let config = model.data as? AliyunHostConfig, config.isValid() else {
+        guard let config = model.getConfig(AliyunHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
         }

@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 import UPicCore
+import HandyJSON
 
 struct CustomConfigView: View {
-    @State private var name: String = .init(localized: "Custom")
+    let hostModel: HostModel
+    @Environment(\.modelContext) private var modelContext
+
+    @State private var name: String = ""
     @State private var apiUrl: String = ""
     @State private var method: CustomRequestMethod = .POST
     @State private var fileField: String = ""
@@ -104,13 +109,63 @@ struct CustomConfigView: View {
                 .buttonBorderShape(.circle)
             }
         }
+
+        HStack {
+            Spacer()
+            Button("Save Configuration") {
+                saveConfiguration()
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(name.isEmpty || apiUrl.isEmpty)
+        }
         .padding()
+        .onAppear {
+            loadConfiguration()
+        }
         .sheet(isPresented: $showOtherFieldsSheet) {
             OtherFieldsSheetView(
                 headersText: $headersText,
                 bodyText: $bodyText,
                 isPresented: $showOtherFieldsSheet
             )
+        }
+    }
+
+    private func loadConfiguration() {
+        name = hostModel.name ?? "Custom"
+
+        if let customConfig = hostModel.getConfig(CustomHostConfig.self) {
+            apiUrl = customConfig.url ?? ""
+            method = customConfig.method
+            fileField = customConfig.field ?? ""
+            resultPath = customConfig.resultPath ?? ""
+            domain = customConfig.domain
+            saveKey = customConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+            useBase64 = customConfig.useBase64
+        }
+    }
+
+    private func saveConfiguration() {
+        let customConfig = CustomHostConfig()
+        customConfig.url = apiUrl
+        customConfig.method = method
+        customConfig.field = fileField
+        customConfig.resultPath = resultPath
+        customConfig.domain = domain
+        customConfig.saveKeyPath = saveKey
+        customConfig.useBase64 = useBase64
+
+        hostModel.name = name
+        if let jsonString = customConfig.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8) {
+            hostModel.dataRaw = jsonData
+        }
+
+        do {
+            try modelContext.save()
+            print("Configuration saved successfully!")
+        } catch {
+            print("Failed to save configuration: \(error)")
         }
     }
 }
@@ -163,5 +218,7 @@ struct OtherFieldsSheetView: View {
 }
 
 #Preview {
-    CustomConfigView()
+    let sampleHostModel = HostModel(.custom, data: nil)
+    return CustomConfigView(hostModel: sampleHostModel)
+        .modelContainer(for: HostModel.self, inMemory: true)
 }

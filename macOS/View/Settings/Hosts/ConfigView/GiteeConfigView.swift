@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 import UPicCore
+import HandyJSON
 
 struct GiteeConfigView: View {
-    @State private var name: String = .init(localized: "Gitee")
+    let hostModel: HostModel
+    @Environment(\.modelContext) private var modelContext
+
+    @State private var name: String = ""
     @State private var userName: String = ""
     @State private var repo: String = ""
     @State private var branch: String = "master"
@@ -96,10 +101,60 @@ struct GiteeConfigView: View {
                 .buttonBorderShape(.circle)
             }
         }
+
+        HStack {
+            Spacer()
+            Button("Save Configuration") {
+                saveConfiguration()
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(name.isEmpty || userName.isEmpty || repo.isEmpty || token.isEmpty)
+        }
         .padding()
+        .onAppear {
+            loadConfiguration()
+        }
+    }
+
+    private func loadConfiguration() {
+        name = hostModel.name ?? "Gitee"
+
+        if let giteeConfig = hostModel.getConfig(GiteeHostConfig.self) {
+            userName = giteeConfig.owner ?? ""
+            repo = giteeConfig.repo ?? ""
+            branch = giteeConfig.branch
+            token = giteeConfig.token ?? ""
+            domain = giteeConfig.domain
+            saveKey = giteeConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+        }
+    }
+
+    private func saveConfiguration() {
+        let giteeConfig = GiteeHostConfig()
+        giteeConfig.owner = userName
+        giteeConfig.repo = repo
+        giteeConfig.branch = branch
+        giteeConfig.token = token
+        giteeConfig.domain = domain
+        giteeConfig.saveKeyPath = saveKey
+
+        hostModel.name = name
+        if let jsonString = giteeConfig.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8) {
+            hostModel.dataRaw = jsonData
+        }
+
+        do {
+            try modelContext.save()
+            print("Configuration saved successfully!")
+        } catch {
+            print("Failed to save configuration: \(error)")
+        }
     }
 }
 
 #Preview {
-    GiteeConfigView()
+    let sampleHostModel = HostModel(.gitee, data: nil)
+    return GiteeConfigView(hostModel: sampleHostModel)
+        .modelContainer(for: HostModel.self, inMemory: true)
 }

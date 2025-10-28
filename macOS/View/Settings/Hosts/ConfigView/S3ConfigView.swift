@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 import UPicCore
+import HandyJSON
 internal import SotoS3
 
 struct S3ConfigView: View {
-    @State private var name: String = .init(localized: "Amazon S3 Compatible")
+    let hostModel: HostModel
+    @Environment(\.modelContext) private var modelContext
+
+    @State private var name: String = ""
     @State private var customize: Bool = false
-    @State private var region = S3Region.allRegions.first!
+    @State private var region = S3Region.allRegions.first ?? ""
     @State private var endpoint: String = ""
     @State private var bucket: String = ""
     @State private var acl = S3ObjectCannedACL.allCases.first!
@@ -26,6 +31,7 @@ struct S3ConfigView: View {
 
     @Environment(\.openURL) var openURL
 
+    
     var body: some View {
         Form {
             // Name
@@ -141,11 +147,74 @@ struct S3ConfigView: View {
                 }
                 .buttonBorderShape(.circle)
             }
+
+            HStack {
+                Spacer()
+                Button("Save Configuration") {
+                    saveConfiguration()
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || bucket.isEmpty || accessKey.isEmpty || secretKey.isEmpty)
+            }
         }
         .padding()
+        .onAppear {
+            loadConfiguration()
+        }
+    }
+
+    func loadConfiguration() {
+        name = hostModel.name ?? "Amazon S3 Compatible"
+
+        if let s3Config = hostModel.getConfig(S3HostConfig.self) {
+            customize = s3Config.customize
+            // Find region by matching string value
+            if let regionStr = s3Config.region,
+               S3Region.allRegions.contains(regionStr) {
+                region = regionStr
+            }
+            endpoint = s3Config.endpoint ?? ""
+            bucket = s3Config.bucket ?? ""
+            if let aclStr = s3Config.acl,
+               let matchedACL = S3ObjectCannedACL.allCases.first(where: { $0.rawValue == aclStr }) {
+                acl = matchedACL
+            }
+            accessKey = s3Config.accessKey ?? ""
+            secretKey = s3Config.secretKey ?? ""
+            domain = s3Config.domain
+            saveKey = s3Config.saveKeyPath ?? "uPic/{filename}{.suffix}"
+        }
+    }
+
+    func saveConfiguration() {
+        let s3Config = S3HostConfig()
+        s3Config.customize = customize
+        s3Config.region = customize ? nil : region
+        s3Config.endpoint = customize ? endpoint : nil
+        s3Config.bucket = bucket
+        s3Config.acl = acl.rawValue
+        s3Config.accessKey = accessKey
+        s3Config.secretKey = secretKey
+        s3Config.domain = domain
+        s3Config.saveKeyPath = saveKey
+
+        hostModel.name = name
+        if let jsonString = s3Config.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8) {
+            hostModel.dataRaw = jsonData
+        }
+
+        do {
+            try modelContext.save()
+            print("Configuration saved successfully!")
+        } catch {
+            print("Failed to save configuration: \(error)")
+        }
     }
 }
 
 #Preview {
-    S3ConfigView()
+    let sampleHostModel = HostModel(.s3, data: nil)
+    return S3ConfigView(hostModel: sampleHostModel)
+        .modelContainer(for: HostModel.self, inMemory: true)
 }

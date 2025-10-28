@@ -5,10 +5,15 @@
 //  Created by Licardo on 2025/10/28.
 //
 
+import HandyJSON
+import SwiftData
 import SwiftUI
 import UPicCore
 
 struct WeiboConfigView: View {
+    let hostModel: HostModel
+    @Environment(\.modelContext) private var modelContext
+
     @State private var name: String = .init(localized: "Weibo")
     @State private var cookieMode: Bool = false
     @State private var username: String = ""
@@ -90,10 +95,61 @@ struct WeiboConfigView: View {
                 .buttonBorderShape(.circle)
             }
         }
+
+        HStack {
+            Spacer()
+            Button("Save Configuration") {
+                saveConfiguration()
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(name.isEmpty || (cookieMode ? cookie.isEmpty : (username.isEmpty || password.isEmpty)))
+        }
         .padding()
+        .onAppear {
+            loadConfiguration()
+        }
+    }
+
+    private func loadConfiguration() {
+        name = hostModel.name ?? "Weibo"
+
+        if let weiboConfig = hostModel.getConfig(WeiboHostConfig.self) {
+            cookieMode = weiboConfig.cookieMode
+            username = weiboConfig.username ?? ""
+            password = weiboConfig.password ?? ""
+            cookie = weiboConfig.cookie ?? ""
+            domain = weiboConfig.domain
+            quality = weiboConfig.quality
+        }
+    }
+
+    private func saveConfiguration() {
+        let weiboConfig = WeiboHostConfig()
+        weiboConfig.cookieMode = cookieMode
+        weiboConfig.username = username
+        weiboConfig.password = password
+        weiboConfig.cookie = cookie
+        weiboConfig.domain = domain
+        weiboConfig.quality = quality
+
+        hostModel.name = name
+        if let jsonString = weiboConfig.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8)
+        {
+            hostModel.dataRaw = jsonData
+        }
+
+        do {
+            try modelContext.save()
+            print("Configuration saved successfully!")
+        } catch {
+            print("Failed to save configuration: \(error)")
+        }
     }
 }
 
 #Preview {
-    WeiboConfigView()
+    let sampleHostModel = HostModel(.weibo, data: nil)
+    return WeiboConfigView(hostModel: sampleHostModel)
+        .modelContainer(for: HostModel.self, inMemory: true)
 }

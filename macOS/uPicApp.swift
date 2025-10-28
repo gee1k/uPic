@@ -8,6 +8,7 @@
 import SwiftData
 import SwiftUI
 import Defaults
+import UPicCore
 
 @main
 struct uPicApp: App {
@@ -16,7 +17,7 @@ struct uPicApp: App {
 
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            HostModel.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 import UPicCore
+import HandyJSON
 
 struct GithubConfigView: View {
-    @State private var name: String = .init(localized: "GitHub")
+    let hostModel: HostModel
+    @Environment(\.modelContext) private var modelContext
+
+    @State private var name: String = ""
     @State private var userName: String = ""
     @State private var repo: String = ""
     @State private var branch: String = "main"
@@ -19,6 +24,7 @@ struct GithubConfigView: View {
     @State private var saveKeySuffix: String = ""
     @State private var isTokenSecured: Bool = true
 
+    
     @Environment(\.openURL) var openURL
 
     var body: some View {
@@ -96,10 +102,60 @@ struct GithubConfigView: View {
                 .buttonBorderShape(.circle)
             }
         }
+
+        HStack {
+            Spacer()
+            Button("Save Configuration") {
+                saveConfiguration()
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(name.isEmpty || userName.isEmpty || repo.isEmpty || token.isEmpty)
+        }
         .padding()
+        .onAppear {
+            loadConfiguration()
+        }
+    }
+
+    func loadConfiguration() {
+        name = hostModel.name ?? "GitHub"
+
+        if let githubConfig = hostModel.getConfig(GithubHostConfig.self) {
+            userName = githubConfig.owner ?? ""
+            repo = githubConfig.repo ?? ""
+            branch = githubConfig.branch
+            token = githubConfig.token ?? ""
+            domain = githubConfig.domain
+            saveKey = githubConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+        }
+    }
+
+    func saveConfiguration() {
+        let githubConfig = GithubHostConfig()
+        githubConfig.owner = userName
+        githubConfig.repo = repo
+        githubConfig.branch = branch
+        githubConfig.token = token
+        githubConfig.domain = domain
+        githubConfig.saveKeyPath = saveKey
+
+        hostModel.name = name
+        if let jsonString = githubConfig.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8) {
+            hostModel.dataRaw = jsonData
+        }
+
+        do {
+            try modelContext.save()
+            print("Configuration saved successfully!")
+        } catch {
+            print("Failed to save configuration: \(error)")
+        }
     }
 }
 
 #Preview {
-    GithubConfigView()
+    let sampleHostModel = HostModel(.github, data: nil)
+    return GithubConfigView(hostModel: sampleHostModel)
+        .modelContainer(for: HostModel.self, inMemory: true)
 }

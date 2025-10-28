@@ -43,7 +43,7 @@ public class UpyunUploader {
     }
     
     internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
-        guard let config = model.data as? UpyunHostConfig, config.isValid() else {
+        guard let config = model.getConfig(UpyunHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
         }

@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 import UPicCore
+import HandyJSON
 
 struct TencentConfigView: View {
-    @State private var name: String = .init(localized: "Tencent Cloud COS")
+    let hostModel: HostModel
+    @Environment(\.modelContext) private var modelContext
+
+    @State private var name: String = ""
     @State private var region = TencentRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var secretId: String = ""
@@ -117,10 +122,65 @@ struct TencentConfigView: View {
                 .buttonBorderShape(.circle)
             }
         }
+
+        HStack {
+            Spacer()
+            Button("Save Configuration") {
+                saveConfiguration()
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(name.isEmpty || bucket.isEmpty || secretId.isEmpty || secretKey.isEmpty)
+        }
         .padding()
+        .onAppear {
+            loadConfiguration()
+        }
+    }
+
+    private func loadConfiguration() {
+        name = hostModel.name ?? "Tencent Cloud COS"
+
+        if let tencentConfig = hostModel.getConfig(TencentHostConfig.self) {
+            bucket = tencentConfig.bucket ?? ""
+            secretId = tencentConfig.secretId ?? ""
+            secretKey = tencentConfig.secretKey ?? ""
+            domain = tencentConfig.domain
+            saveKey = tencentConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+
+            // Find region by matching string value
+            if let regionStr = tencentConfig.region,
+               TencentRegion.allRegions.contains(regionStr) {
+                region = regionStr
+            }
+        }
+    }
+
+    private func saveConfiguration() {
+        let tencentConfig = TencentHostConfig()
+        tencentConfig.bucket = bucket
+        tencentConfig.secretId = secretId
+        tencentConfig.secretKey = secretKey
+        tencentConfig.domain = domain
+        tencentConfig.saveKeyPath = saveKey
+        tencentConfig.region = region
+
+        hostModel.name = name
+        if let jsonString = tencentConfig.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8) {
+            hostModel.dataRaw = jsonData
+        }
+
+        do {
+            try modelContext.save()
+            print("Configuration saved successfully!")
+        } catch {
+            print("Failed to save configuration: \(error)")
+        }
     }
 }
 
 #Preview {
-    TencentConfigView()
+    let sampleHostModel = HostModel(.tencent_cos, data: nil)
+    return TencentConfigView(hostModel: sampleHostModel)
+        .modelContainer(for: HostModel.self, inMemory: true)
 }

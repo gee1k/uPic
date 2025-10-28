@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 import UPicCore
+import HandyJSON
 
 struct AliyunConfigView: View {
-    @State private var name: String = .init(localized: "Aliyun OSS")
+    let hostModel: HostModel
+    @Environment(\.modelContext) private var modelContext
+
+    @State private var name: String = ""
     @State private var region = AliyunRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var accessKey: String = ""
@@ -117,10 +122,65 @@ struct AliyunConfigView: View {
                 .buttonBorderShape(.circle)
             }
         }
+
+        HStack {
+            Spacer()
+            Button("Save Configuration") {
+                saveConfiguration()
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(name.isEmpty || bucket.isEmpty || accessKey.isEmpty || secretKey.isEmpty)
+        }
         .padding()
+        .onAppear {
+            loadConfiguration()
+        }
+    }
+
+    private func loadConfiguration() {
+        name = hostModel.name ?? "Aliyun OSS"
+
+        if let aliyunConfig = hostModel.getConfig(AliyunHostConfig.self) {
+            bucket = aliyunConfig.bucket ?? ""
+            accessKey = aliyunConfig.accessKey ?? ""
+            secretKey = aliyunConfig.secretKey ?? ""
+            domain = aliyunConfig.domain
+            saveKey = aliyunConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+
+            // Find region by matching string value
+            if let regionStr = aliyunConfig.region,
+               AliyunRegion.allRegions.contains(regionStr) {
+                region = regionStr
+            }
+        }
+    }
+
+    private func saveConfiguration() {
+        let aliyunConfig = AliyunHostConfig()
+        aliyunConfig.bucket = bucket
+        aliyunConfig.accessKey = accessKey
+        aliyunConfig.secretKey = secretKey
+        aliyunConfig.domain = domain
+        aliyunConfig.saveKeyPath = saveKey
+        aliyunConfig.region = region
+
+        hostModel.name = name
+        if let jsonString = aliyunConfig.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8) {
+            hostModel.dataRaw = jsonData
+        }
+
+        do {
+            try modelContext.save()
+            print("Configuration saved successfully!")
+        } catch {
+            print("Failed to save configuration: \(error)")
+        }
     }
 }
 
 #Preview {
-    AliyunConfigView()
+    let sampleHostModel = HostModel(.aliyun_oss, data: nil)
+    return AliyunConfigView(hostModel: sampleHostModel)
+        .modelContainer(for: HostModel.self, inMemory: true)
 }

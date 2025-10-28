@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 import UPicCore
+import HandyJSON
 
 struct UpyunConfigView: View {
-    @State private var name: String = .init(localized: "Upyun USS")
+    let hostModel: HostModel
+    @Environment(\.modelContext) private var modelContext
+
+    @State private var name: String = ""
     @State private var bucket: String = ""
     @State private var operatorName: String = ""
     @State private var password: String = ""
@@ -91,10 +96,58 @@ struct UpyunConfigView: View {
                 .buttonBorderShape(.circle)
             }
         }
+
+        HStack {
+            Spacer()
+            Button("Save Configuration") {
+                saveConfiguration()
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(name.isEmpty || bucket.isEmpty || operatorName.isEmpty || password.isEmpty)
+        }
         .padding()
+        .onAppear {
+            loadConfiguration()
+        }
+    }
+
+    private func loadConfiguration() {
+        name = hostModel.name ?? "Upyun USS"
+
+        if let upyunConfig = hostModel.getConfig(UpyunHostConfig.self) {
+            bucket = upyunConfig.bucket ?? ""
+            operatorName = upyunConfig.operatorName ?? ""
+            password = upyunConfig.password ?? ""
+            domain = upyunConfig.domain
+            saveKey = upyunConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+        }
+    }
+
+    private func saveConfiguration() {
+        let upyunConfig = UpyunHostConfig()
+        upyunConfig.bucket = bucket
+        upyunConfig.operatorName = operatorName
+        upyunConfig.password = password
+        upyunConfig.domain = domain
+        upyunConfig.saveKeyPath = saveKey
+
+        hostModel.name = name
+        if let jsonString = upyunConfig.toJSONString(),
+           let jsonData = jsonString.data(using: .utf8) {
+            hostModel.dataRaw = jsonData
+        }
+
+        do {
+            try modelContext.save()
+            print("Configuration saved successfully!")
+        } catch {
+            print("Failed to save configuration: \(error)")
+        }
     }
 }
 
 #Preview {
-    UpyunConfigView()
+    let sampleHostModel = HostModel(.upyun_uss, data: nil)
+    return UpyunConfigView(hostModel: sampleHostModel)
+        .modelContainer(for: HostModel.self, inMemory: true)
 }

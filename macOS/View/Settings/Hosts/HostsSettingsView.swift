@@ -6,24 +6,33 @@
 //
 
 import SwiftUI
+import SwiftData
 import UPicCore
 
 struct HostsSettingsView: View {
-    @State private var selectedHostType: HostType? = nil
-    @State private var hosts: [HostType] = []
+    @Environment(\.modelContext) private var modelContext
+    @Query private var hostModels: [HostModel]
+    @State private var selectedHostModel: HostModel? = nil
 
     var body: some View {
         HSplitView {
             // Left panel - Hosts List
             VStack(spacing: 0) {
-                List(selection: $selectedHostType) {
-                    ForEach(hosts, id: \.self) { hostType in
-                        Label {
-                            Text(hostType.displayNname)
-                        } icon: {
-                            Image("host_icon_\(hostType.rawValue)")
-                        }
+                List(selection: $selectedHostModel) {
+                    ForEach(hostModels) { hostModel in
+                        HostListItem(
+                            hostModel: hostModel,
+                            isSelected: selectedHostModel?.id == hostModel.id,
+                            onSelect: {
+                                selectedHostModel = hostModel
+                            },
+                            onDelete: {
+                                deleteHost(hostModel)
+                            }
+                        )
                     }
+                    .listRowInsets(EdgeInsets())
+                    .listRowSeparator(.hidden)
                 }
 
                 Spacer()
@@ -39,6 +48,9 @@ struct HostsSettingsView: View {
                                     Text(hostType.displayNname)
                                 } icon: {
                                     Image("host_icon_\(hostType.rawValue)")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 16, height: 16)
                                 }
                             }
                         }
@@ -56,8 +68,8 @@ struct HostsSettingsView: View {
 
             // Right panel - Config view
             VStack {
-                if let selectedHostType = selectedHostType {
-                    configView(for: selectedHostType)
+                if let selectedHostModel = selectedHostModel {
+                    configView(for: selectedHostModel)
                 } else {
                     VStack(spacing: 20) {
                         Image(systemName: "server.rack")
@@ -82,39 +94,80 @@ struct HostsSettingsView: View {
     }
 
     @ViewBuilder
-    private func configView(for hostType: HostType) -> some View {
-        switch hostType {
+    private func configView(for hostModel: HostModel) -> some View {
+        switch HostType(rawValue: hostModel.typeRaw ?? "") {
         case .smms:
-            SmmsConfigView()
+            SmmsConfigView(hostModel: hostModel)
         case .weibo:
-            WeiboConfigView()
+            WeiboConfigView(hostModel: hostModel)
         case .imgur:
-            ImgurConfigView()
+            ImgurConfigView(hostModel: hostModel)
         case .s3:
-            S3ConfigView()
+            S3ConfigView(hostModel: hostModel)
         case .qiniu_kodo:
-            QiniuConfigView()
+            QiniuConfigView(hostModel: hostModel)
         case .upyun_uss:
-            UpyunConfigView()
+            UpyunConfigView(hostModel: hostModel)
         case .aliyun_oss:
-            AliyunConfigView()
+            AliyunConfigView(hostModel: hostModel)
         case .tencent_cos:
-            TencentConfigView()
+            TencentConfigView(hostModel: hostModel)
         case .baidu_bos:
-            BaiduConfigView()
+            BaiduConfigView(hostModel: hostModel)
         case .github:
-            GithubConfigView()
+            GithubConfigView(hostModel: hostModel)
         case .gitee:
-            GiteeConfigView()
+            GiteeConfigView(hostModel: hostModel)
         case .custom:
-            CustomConfigView()
+            CustomConfigView(hostModel: hostModel)
+        case .none:
+            Text("Unknown host type")
+                .foregroundStyle(.secondary)
         }
     }
 
     private func addHost(_ hostType: HostType) {
-        if !hosts.contains(hostType) {
-            hosts.append(hostType)
-            selectedHostType = hostType
+        let hostModel = HostModel(hostType, data: nil)
+        modelContext.insert(hostModel)
+        selectedHostModel = hostModel
+
+        do {
+            try modelContext.save()
+        } catch {
+            print("Failed to save host model: \(error)")
+        }
+    }
+
+    private func deleteHost(_ hostModel: HostModel) {
+        withAnimation {
+            modelContext.delete(hostModel)
+            if selectedHostModel?.id == hostModel.id {
+                selectedHostModel = nil
+            }
+
+            do {
+                try modelContext.save()
+            } catch {
+                print("Failed to delete host model: \(error)")
+            }
+        }
+    }
+
+    private func deleteHosts(offsets: IndexSet) {
+        withAnimation {
+            for index in offsets {
+                let hostModel = hostModels[index]
+                modelContext.delete(hostModel)
+                if selectedHostModel?.id == hostModel.id {
+                    selectedHostModel = nil
+                }
+            }
+
+            do {
+                try modelContext.save()
+            } catch {
+                print("Failed to delete host models: \(error)")
+            }
         }
     }
 }
