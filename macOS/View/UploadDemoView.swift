@@ -12,15 +12,10 @@ import UniformTypeIdentifiers
 
 struct UploadDemoView: View {
     @Environment(\.modelContext) private var modelContext
-    @StateObject private var uploader: UPicUploader
+    @ObservedObject private var uploader = UPicUploader.shared
     @State private var isShowingFilePicker = false
     @State private var selectedHost: HostModel?
     @State private var hasDiskPermissions = false
-
-    init() {
-        let context = ModelContext(try! ModelContainer(for: HostModel.self, UploadHistoryModel.self))
-        self._uploader = StateObject(wrappedValue: UPicUploader(modelContext: context))
-    }
 
     var body: some View {
         VStack(spacing: 30) {

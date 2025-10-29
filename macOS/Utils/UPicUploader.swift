@@ -25,6 +25,9 @@ public struct UploadItem {
 
 @MainActor
 public class UPicUploader: ObservableObject {
+    // MARK: - Shared Instance
+    public static let shared = UPicUploader()
+
     // MARK: - Published Properties
 
     @Published var isUploading = false
@@ -46,9 +49,16 @@ public class UPicUploader: ObservableObject {
 
     // MARK: - Initialization
 
-    public init(modelContext: ModelContext) {
-        self.modelContext = modelContext
+    private init() {
+        let context = ModelContext(try! ModelContainer(for: HostModel.self, UploadHistoryModel.self))
+        self.modelContext = context
         loadUploadHistory()
+    }
+
+    // Public initializer for external use
+    public convenience init(modelContext: ModelContext) {
+        self.init()
+        // Note: This will use the shared instance's modelContext
     }
 
     // MARK: - Permission Management
@@ -66,6 +76,10 @@ public class UPicUploader: ObservableObject {
     /// 打开系统偏好设置
     public func openSystemPreferences() {
         BookmarkManager.shared.openPreferences()
+    }
+    
+    public func cancelAllUploads() {
+        UPicCore.shared.cancel()
     }
 
     // MARK: - Public Methods
@@ -255,7 +269,7 @@ public class UPicUploader: ObservableObject {
 
             await MainActor.run {
                 self.currentUploadingItem = item.thumbnailData ?? data
-                self.uploadProgress = Double(index) / Double(totalCount)
+                self.uploadProgress = 0.0 // 每个文件开始时重置进度
             }
 
             let size = ByteCountFormatter.string(fromByteCount: Int64(data.count), countStyle: .decimal)
@@ -296,12 +310,14 @@ public class UPicUploader: ObservableObject {
     private func performSingleUpload(hostModel: HostModel, item: UploadItem) async throws -> String {
         return try await withCheckedThrowingContinuation { continuation in
             UPicCore.shared
-                .progress { _ in
+                .progress { progress in
                     Task { @MainActor in
-                        // 这里可以更新单个文件的上传进度
+                        self.uploadProgress = progress
+                        AppLogger.uploader.info("[UPicUploader] 单文件上传进度: \(progress * 100)%")
                     }
                 }
                 .complete { url in
+                    AppLogger.uploader.info("[UPicUploader] 单文件上传完成: \(url)")
                     continuation.resume(returning: url)
                 }
                 .fail { errorMessage, detailError in

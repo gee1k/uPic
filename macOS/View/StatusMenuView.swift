@@ -12,24 +12,18 @@ import SwiftUI
 import UPicCore
 
 struct StatusMenuView: View {
-    @Default(.isUploading) var isUploading
     @Default(.selectedHostId) var selectedHostId
     @Default(.screenshotApp) var screenshotApp
     @Default(.selectedOutputFormat) var selectedOutputFormat
     @Default(.outputFormats) var outputFormats
     @Default(.outputFormatEncoded) var outputFormatEncoded
     @Default(.compressFactor) var compressFactor
-    
-    @StateObject private var uploader: UPicUploader
-    
+
+    @ObservedObject private var uploader = UPicUploader.shared
+
     @Query private var hostModels: [HostModel]
-    
+
     @Environment(\.openWindow) var openWindow
-    
-    init() {
-        let context = ModelContext(try! ModelContainer(for: HostModel.self, UploadHistoryModel.self))
-        self._uploader = StateObject(wrappedValue: UPicUploader(modelContext: context))
-    }
     
     private var selectedHostName: String {
         if let hostModel = hostModels.first(where: { $0.id == selectedHostId }) {
@@ -41,9 +35,9 @@ struct StatusMenuView: View {
     
     var body: some View {
         VStack {
-            if isUploading {
+            if uploader.isUploading {
                 Button("Cancel upload") {
-                    print("取消上传")
+                    
                 }
                 Divider()
             }

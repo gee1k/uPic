@@ -53,7 +53,10 @@ struct uPicApp: App {
         MenuBarExtra {
             StatusMenuView()
         } label: {
-            Image(isUploading ? "uploadingStatusMenuIcon" : "statusMenuIcon")
+            MenuBarProgressView(
+                isUploading: UPicUploader.shared.isUploading,
+                uploadProgress: UPicUploader.shared.uploadProgress
+            )
         }
         .modelContainer(upicModelContainer)
     }
