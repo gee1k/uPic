@@ -14,11 +14,16 @@ struct HistoryTable: View {
     let uploadHistory: [UploadHistoryModel]
     @State private var selectedHistory = Set<UploadHistoryModel.ID>()
     @Environment(\.modelContext) private var modelContext
+    @Query private var hostModels: [HostModel]
 
     @State private var showClearHistoryAlert: Bool = false
     @State private var quickLookURL: URL?
     @State private var isShowingQuickLook = false
     @State private var thumbnailSize: CGFloat = 60
+
+    private func getHost(for history: UploadHistoryModel) -> HostModel? {
+        return hostModels.first { $0.id == history.hostId }
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -27,6 +32,23 @@ struct HistoryTable: View {
                     ThumbnailView(history: history, size: thumbnailSize)
                 }
                 .width(thumbnailSize + 20)
+
+                TableColumn("Host") { history in
+                    if let host = getHost(for: history) {
+                        HStack(spacing: 4) {
+                            Image("host_icon_\(host.typeRaw ?? "smms")")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 16, height: 16)
+                            Text(host.name ?? "Unknown")
+                                .lineLimit(1)
+                        }
+                    } else {
+                        Text("Unknown Host")
+                            .foregroundColor(.secondary)
+                    }
+                }
+                .width(ideal: 50)
 
                 TableColumn("File Name") { history in
                     Text(history.filename ?? "未知文件")
