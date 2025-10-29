@@ -123,7 +123,8 @@ struct AboutSettingsView: View {
             }
             .padding(.bottom, 4)
         }
-        .navigationTitle(Text("About"))
+        .navigationTitle("About")
+        .formStyle(.grouped)
     }
     
     private func createTempLogAndSendEmail() {

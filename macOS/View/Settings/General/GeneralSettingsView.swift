@@ -16,7 +16,7 @@ struct GeneralSettingsView: View {
 
             SettingsManagement()
         }
-        .navigationTitle(Text("General"))
+        .navigationTitle("General")
         .formStyle(.grouped)
     }
 }

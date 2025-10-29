@@ -15,6 +15,7 @@ struct AdvanceSettingsView: View {
             OutputFormatSettings()
             ScreenshotAppSettings()
         }
+        .navigationTitle("Advance")
         .formStyle(.grouped)
     }
 }

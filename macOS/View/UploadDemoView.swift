@@ -89,25 +89,6 @@ struct UploadDemoView: View {
                         }
                 }
             }
-
-            // 历史记录预览
-            if !uploader.uploadHistory.isEmpty {
-                Divider()
-
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("最近上传")
-                        .font(.headline)
-
-                    ScrollView {
-                        LazyVStack(spacing: 8) {
-                            ForEach(uploader.uploadHistory.prefix(5), id: \.id) { history in
-                                HistoryRowView(history: history)
-                            }
-                        }
-                    }
-                    .frame(height: 300)
-                }
-            }
         }
         .padding(30)
         .frame(minWidth: 500, minHeight: 600)
