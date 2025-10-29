@@ -15,7 +15,7 @@ struct S3ConfigView: View {
     let hostModel: HostModel
     @Environment(\.modelContext) private var modelContext
 
-    @State private var name: String = String(localized: "Amazon S3 Compatible")
+    @State private var name: String = .init(localized: "Amazon S3 Compatible")
     @State private var customize: Bool = false
     @State private var region = S3Region.allRegions.first ?? ""
     @State private var endpoint: String = ""
@@ -131,7 +131,10 @@ struct S3ConfigView: View {
             """)
             .font(.caption)
             .foregroundStyle(.secondary)
-            .frame(maxHeight: .infinity, alignment: .topLeading)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity, maxHeight: 80, alignment: .topLeading)
+
+            Spacer()
 
             // Help Links
             HStack {
@@ -146,10 +149,11 @@ struct S3ConfigView: View {
                 }
                 .buttonBorderShape(.circle)
             }
+            .frame(height: 30)
 
             HStack {
                 Spacer()
-                Button("Save Configuration") {
+                Button("Save") {
                     saveConfiguration()
                 }
                 .buttonStyle(.borderedProminent)

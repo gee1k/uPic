@@ -5,8 +5,8 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 import UPicCore
 
 struct HostsSettingsView: View {
@@ -56,13 +56,14 @@ struct HostsSettingsView: View {
                         }
                     } label: {
                         Image(systemName: "plus.circle.fill")
-                            .foregroundStyle(.primary, .blue)
+                            .foregroundStyle(.white, .blue)
                     }
                     .menuStyle(.borderlessButton)
                     .menuIndicator(.hidden)
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 4)
                 }
+                .padding(.bottom, 8)
+                .padding(.trailing, 4)
+                .padding(.top, -8)
             }
             .frame(minWidth: 200, idealWidth: 200, maxWidth: 250)
 

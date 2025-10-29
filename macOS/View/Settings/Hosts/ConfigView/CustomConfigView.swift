@@ -93,7 +93,10 @@ struct CustomConfigView: View {
             """)
             .font(.caption)
             .foregroundStyle(.secondary)
-            .frame(maxHeight: .infinity, alignment: .topLeading)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity, maxHeight: 80, alignment: .topLeading)
+
+            Spacer()
 
             // Help Links
             HStack {
@@ -108,15 +111,16 @@ struct CustomConfigView: View {
                 }
                 .buttonBorderShape(.circle)
             }
-        }
+            .frame(height: 30)
 
-        HStack {
-            Spacer()
-            Button("Save Configuration") {
-                saveConfiguration()
+            HStack {
+                Spacer()
+                Button("Save") {
+                    saveConfiguration()
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || apiUrl.isEmpty)
             }
-            .buttonStyle(.borderedProminent)
-            .disabled(name.isEmpty || apiUrl.isEmpty)
         }
         .padding()
         .onAppear {

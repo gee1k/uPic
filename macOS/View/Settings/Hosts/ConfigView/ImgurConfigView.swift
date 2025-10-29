@@ -45,10 +45,10 @@ struct ImgurConfigView: View {
             }
             .frame(height: 30)
 
-            // Get Client ID
             HStack {
                 Spacer()
 
+                // Get Client ID
                 Menu {
                     Button("Not created before? Go get one!") {
                         if let url = URL(string: Constants.imgurGetClientIdUrl) {
@@ -66,14 +66,8 @@ struct ImgurConfigView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .menuIndicator(.hidden)
-                .frame(height: 30)
-            }
 
-            Spacer()
-
-            // Help Links
-            HStack {
-                Spacer()
+                // Help button
                 Button {
                     if let url = URL(string: Constants.imgurHelpUrl) {
                         openURL(url)
@@ -84,10 +78,13 @@ struct ImgurConfigView: View {
                 }
                 .buttonBorderShape(.circle)
             }
+            .frame(height: 30)
+
+            Spacer()
 
             HStack {
                 Spacer()
-                Button("Save Configuration") {
+                Button("Save") {
                     saveConfiguration()
                 }
                 .buttonStyle(.borderedProminent)

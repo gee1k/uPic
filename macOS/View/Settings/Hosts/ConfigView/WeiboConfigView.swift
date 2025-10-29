@@ -81,6 +81,8 @@ struct WeiboConfigView: View {
             TextField("Domain", text: $domain, prompt: Text(verbatim: "https://tva1.sinaimg.cn"))
                 .frame(height: 30)
 
+            Spacer()
+
             // Help Links
             HStack {
                 Spacer()
@@ -94,15 +96,16 @@ struct WeiboConfigView: View {
                 }
                 .buttonBorderShape(.circle)
             }
-        }
+            .frame(height: 30)
 
-        HStack {
-            Spacer()
-            Button("Save Configuration") {
-                saveConfiguration()
+            HStack {
+                Spacer()
+                Button("Save") {
+                    saveConfiguration()
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || (cookieMode ? cookie.isEmpty : (username.isEmpty || password.isEmpty)))
             }
-            .buttonStyle(.borderedProminent)
-            .disabled(name.isEmpty || (cookieMode ? cookie.isEmpty : (username.isEmpty || password.isEmpty)))
         }
         .padding()
         .onAppear {

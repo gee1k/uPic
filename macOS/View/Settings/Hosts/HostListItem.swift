@@ -40,7 +40,7 @@ struct HostListItem: View {
                         Image(systemName: "trash")
                             .foregroundColor(.red)
                     }
-                    .buttonStyle(PlainButtonStyle())
+                    .buttonStyle(.plain)
                     .frame(width: 20, height: 20)
                     .transition(.opacity.combined(with: .scale))
                 }
@@ -54,7 +54,7 @@ struct HostListItem: View {
             )
             .padding(.horizontal, -8)
         }
-        .buttonStyle(PlainButtonStyle())
+        .buttonStyle(.plain)
         .onHover { hovering in
             withAnimation(.easeInOut(duration: 0.2)) {
                 isHovered = hovering

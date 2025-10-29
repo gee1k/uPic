@@ -38,7 +38,7 @@ struct SettingsTabItem: View {
             )
             .padding(.horizontal, -8)
         }
-        .buttonStyle(PlainButtonStyle())
+        .buttonStyle(.plain)
         .onHover { hovering in
             withAnimation {
                 isHovered = hovering

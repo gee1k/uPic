@@ -65,10 +65,13 @@ struct SmmsConfigView: View {
                 }
                 .buttonBorderShape(.circle)
             }
+            .frame(height: 30)
+
+            Spacer()
 
             HStack {
                 Spacer()
-                Button("Save Configuration") {
+                Button("Save") {
                     saveConfiguration()
                 }
                 .buttonStyle(.borderedProminent)

@@ -106,7 +106,10 @@ struct AliyunConfigView: View {
             """)
             .font(.caption)
             .foregroundStyle(.secondary)
-            .frame(maxHeight: .infinity, alignment: .topLeading)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity, maxHeight: 80, alignment: .topLeading)
+
+            Spacer()
 
             // Help Links
             HStack {
@@ -121,15 +124,16 @@ struct AliyunConfigView: View {
                 }
                 .buttonBorderShape(.circle)
             }
-        }
+            .frame(height: 30)
 
-        HStack {
-            Spacer()
-            Button("Save Configuration") {
-                saveConfiguration()
+            HStack {
+                Spacer()
+                Button("Save") {
+                    saveConfiguration()
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || bucket.isEmpty || accessKey.isEmpty || secretKey.isEmpty)
             }
-            .buttonStyle(.borderedProminent)
-            .disabled(name.isEmpty || bucket.isEmpty || accessKey.isEmpty || secretKey.isEmpty)
         }
         .padding()
         .onAppear {
