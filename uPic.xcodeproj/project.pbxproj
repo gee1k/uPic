@@ -12,6 +12,7 @@
 		9618488C2EB094B0005BD3AC /* SimpleLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 9618488B2EB094B0005BD3AC /* SimpleLogger */; };
 		9618488F2EB094C0005BD3AC /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 9618488E2EB094C0005BD3AC /* Defaults */; };
 		9640CD6E2EB09C30003BF4FB /* UPicCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9640CD6D2EB09C30003BF4FB /* UPicCore */; };
+		9666F3F42EB236570076A227 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 9666F3F32EB236570076A227 /* MenuBarExtraAccess */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -78,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9666F3F42EB236570076A227 /* MenuBarExtraAccess in Frameworks */,
 				9618488F2EB094C0005BD3AC /* Defaults in Frameworks */,
 				961848892EB094A4005BD3AC /* LaunchAtLogin in Frameworks */,
 				9640CD6E2EB09C30003BF4FB /* UPicCore in Frameworks */,
@@ -141,6 +143,7 @@
 				9618488B2EB094B0005BD3AC /* SimpleLogger */,
 				9618488E2EB094C0005BD3AC /* Defaults */,
 				9640CD6D2EB09C30003BF4FB /* UPicCore */,
+				9666F3F32EB236570076A227 /* MenuBarExtraAccess */,
 			);
 			productName = uPic;
 			productReference = 961848742EB09470005BD3AC /* uPic.app */;
@@ -177,6 +180,7 @@
 				9618488A2EB094B0005BD3AC /* XCRemoteSwiftPackageReference "SimpleLogger" */,
 				9618488D2EB094C0005BD3AC /* XCRemoteSwiftPackageReference "Defaults" */,
 				9640CD6C2EB09C30003BF4FB /* XCLocalSwiftPackageReference "UPicCore" */,
+				9666F3F22EB236570076A227 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 961848752EB09470005BD3AC /* Products */;
@@ -498,6 +502,14 @@
 				minimumVersion = 9.0.6;
 			};
 		};
+		9666F3F22EB236570076A227 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/orchetect/MenuBarExtraAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -524,6 +536,11 @@
 		9640CD6D2EB09C30003BF4FB /* UPicCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UPicCore;
+		};
+		9666F3F32EB236570076A227 /* MenuBarExtraAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9666F3F22EB236570076A227 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */;
+			productName = MenuBarExtraAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

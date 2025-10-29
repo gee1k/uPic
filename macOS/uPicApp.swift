@@ -5,7 +5,7 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import Defaults
+import MenuBarExtraAccess
 import SwiftData
 import SwiftUI
 import UPicCore
@@ -13,7 +13,8 @@ import UPicCore
 @main
 struct uPicApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @Default(.isUploading) var isUploading
+    @ObservedObject private var uploader = UPicUploader.shared
+    private let indicator = NSProgressIndicator()
 
     var upicModelContainer: ModelContainer = {
         let schema = Schema([
@@ -53,11 +54,47 @@ struct uPicApp: App {
         MenuBarExtra {
             StatusMenuView()
         } label: {
-            MenuBarProgressView(
-                isUploading: UPicUploader.shared.isUploading,
-                uploadProgress: UPicUploader.shared.uploadProgress
-            )
+            Image("statusMenuIcon")
         }
         .modelContainer(upicModelContainer)
+        .menuBarExtraAccess(isPresented: .constant(true)) { statusItem in
+            statusItem.length = NSStatusItem.squareLength
+            setupStatusBarIndicator(statusItem)
+        }
+    }
+
+    // MARK: - Status Bar Management
+
+    private func setupStatusBarIndicator(_ statusItem: NSStatusItem) {
+        guard let button = statusItem.button else { return }
+
+        // 设置进度指示器
+        indicator.frame = NSRect(
+            x: (button.frame.width - 16) / 2,
+            y: (button.frame.height - 16) / 2,
+            width: 16,
+            height: 16
+        )
+        indicator.minValue = 0.0
+        indicator.maxValue = 1.0
+        indicator.isIndeterminate = false
+        indicator.controlSize = .small
+        indicator.style = .spinning
+        indicator.isHidden = true
+
+        indicator.toolTip = "Right click to cancel the current upload task"
+
+        button.addSubview(indicator)
+
+        if uploader.isUploading {
+            statusItem.button?.image = nil
+            indicator.doubleValue = uploader.uploadProgress
+            indicator.isHidden = false
+        } else {
+            let icon = NSImage(named: "statusMenuIcon")
+            statusItem.button?.image = icon
+            indicator.isHidden = true
+            indicator.doubleValue = 0.0
+        }
     }
 }

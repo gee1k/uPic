@@ -1,10 +1,10 @@
 {
-  "originHash" : "7649e7ba93f5582b66b18a5b812600527500ce1057d4f8e3b673add828a33fe2",
+  "originHash" : "5ce55faec8bd67726c576303cd28546508313978da269207744389c0b742ddc1",
   "pins" : [
     {
       "identity" : "alamofire",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "location" : "https://github.com/Alamofire/Alamofire",
       "state" : {
         "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
         "version" : "5.10.2"
@@ -22,7 +22,7 @@
     {
       "identity" : "cryptoswift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/krzyzanowskim/CryptoSwift.git",
+      "location" : "https://github.com/krzyzanowskim/CryptoSwift",
       "state" : {
         "revision" : "e45a26384239e028ec87fbcc788f513b67e10d8f",
         "version" : "1.9.0"
@@ -40,7 +40,7 @@
     {
       "identity" : "handyjson",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Miles-Matheson/HandyJSON.git",
+      "location" : "https://github.com/Miles-Matheson/HandyJSON",
       "state" : {
         "branch" : "master",
         "revision" : "de8a7126d2270da55cea3cb45dadffcfd002dbbe"
@@ -71,6 +71,15 @@
       "state" : {
         "revision" : "a04ec1c363be3627734f6dad757d82f5d4fa8fcc",
         "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "menubarextraaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/orchetect/MenuBarExtraAccess",
+      "state" : {
+        "revision" : "707dff6f55217b3ef5b6be84ced3e83511d4df5c",
+        "version" : "1.2.2"
       }
     },
     {
@@ -193,7 +202,7 @@
     {
       "identity" : "swift-log",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-log.git",
+      "location" : "https://github.com/apple/swift-log",
       "state" : {
         "revision" : "ce592ae52f982c847a4efc0dd881cc9eb32d29f2",
         "version" : "1.6.4"
