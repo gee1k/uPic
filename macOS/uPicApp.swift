@@ -18,6 +18,7 @@ struct uPicApp: App {
     var upicModelContainer: ModelContainer = {
         let schema = Schema([
             HostModel.self,
+            UploadHistoryModel.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
