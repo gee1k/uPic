@@ -12,7 +12,7 @@ import UPicCore
 
 struct BaiduConfigView: View {
     let hostModel: HostModel
-    @Environment(\.modelContext) private var modelContext
+    let onSave: () -> Void
 
     @State private var name: String = .init(localized: "Baidu Cloud BOS")
     @State private var region = BaiduRegion.allRegions.first!
@@ -173,17 +173,12 @@ struct BaiduConfigView: View {
             hostModel.dataRaw = jsonData
         }
 
-        do {
-            try modelContext.save()
-            print("Configuration saved successfully!")
-        } catch {
-            print("Failed to save configuration: \(error)")
-        }
+        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.baidu_bos, data: nil)
-    return BaiduConfigView(hostModel: sampleHostModel)
+    BaiduConfigView(hostModel: sampleHostModel) {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

@@ -12,7 +12,7 @@ import UPicCore
 
 struct AliyunConfigView: View {
     let hostModel: HostModel
-    @Environment(\.modelContext) private var modelContext
+    let onSave: () -> Void
 
     @State private var name: String = .init(localized: "Aliyun OSS")
     @State private var region = AliyunRegion.allRegions.first!
@@ -173,17 +173,12 @@ struct AliyunConfigView: View {
             hostModel.dataRaw = jsonData
         }
 
-        do {
-            try modelContext.save()
-            print("Configuration saved successfully!")
-        } catch {
-            print("Failed to save configuration: \(error)")
-        }
+        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.aliyun_oss, data: nil)
-    return AliyunConfigView(hostModel: sampleHostModel)
+    AliyunConfigView(hostModel: sampleHostModel) {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

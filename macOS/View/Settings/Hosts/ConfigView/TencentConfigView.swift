@@ -12,7 +12,7 @@ import UPicCore
 
 struct TencentConfigView: View {
     let hostModel: HostModel
-    @Environment(\.modelContext) private var modelContext
+    let onSave: () -> Void
 
     @State private var name: String = .init(localized: "Tencent Cloud COS")
     @State private var region = TencentRegion.allRegions.first!
@@ -173,17 +173,12 @@ struct TencentConfigView: View {
             hostModel.dataRaw = jsonData
         }
 
-        do {
-            try modelContext.save()
-            print("Configuration saved successfully!")
-        } catch {
-            print("Failed to save configuration: \(error)")
-        }
+        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.tencent_cos, data: nil)
-    return TencentConfigView(hostModel: sampleHostModel)
+    TencentConfigView(hostModel: sampleHostModel) {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

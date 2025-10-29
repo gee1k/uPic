@@ -12,7 +12,7 @@ import UPicCore
 
 struct QiniuConfigView: View {
     let hostModel: HostModel
-    @Environment(\.modelContext) private var modelContext
+    let onSave: () -> Void
 
     @State private var name: String = .init(localized: "Qiniu KODO")
     @State private var region = QiniuRegion.allRegions.first!
@@ -173,17 +173,12 @@ struct QiniuConfigView: View {
             hostModel.dataRaw = jsonData
         }
 
-        do {
-            try modelContext.save()
-            print("Configuration saved successfully!")
-        } catch {
-            print("Failed to save configuration: \(error)")
-        }
+        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.qiniu_kodo, data: nil)
-    return QiniuConfigView(hostModel: sampleHostModel)
+    QiniuConfigView(hostModel: sampleHostModel) {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

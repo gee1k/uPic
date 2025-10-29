@@ -13,7 +13,7 @@ internal import SotoS3
 
 struct S3ConfigView: View {
     let hostModel: HostModel
-    @Environment(\.modelContext) private var modelContext
+    let onSave: () -> Void
 
     @State private var name: String = .init(localized: "Amazon S3 Compatible")
     @State private var customize: Bool = false
@@ -205,17 +205,12 @@ struct S3ConfigView: View {
             hostModel.dataRaw = jsonData
         }
 
-        do {
-            try modelContext.save()
-            print("Configuration saved successfully!")
-        } catch {
-            print("Failed to save configuration: \(error)")
-        }
+        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.s3, data: nil)
-    return S3ConfigView(hostModel: sampleHostModel)
+    S3ConfigView(hostModel: sampleHostModel) {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

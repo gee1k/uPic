@@ -5,9 +5,9 @@
 //  Created by Licardo on 2025/10/28.
 //
 
+import Defaults
 import SwiftData
 import SwiftUI
-import Defaults
 import UPicCore
 
 @main
@@ -15,7 +15,7 @@ struct uPicApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Default(.isUploading) var isUploading
 
-    var sharedModelContainer: ModelContainer = {
+    var upicModelContainer: ModelContainer = {
         let schema = Schema([
             HostModel.self,
         ])
@@ -33,7 +33,7 @@ struct uPicApp: App {
             SettingsView()
                 .frame(minWidth: 780, idealWidth: 780, minHeight: 560, idealHeight: 560)
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(upicModelContainer)
         .defaultPosition(.center)
         #if DEBUG
             .defaultLaunchBehavior(.presented)
@@ -46,6 +46,6 @@ struct uPicApp: App {
         } label: {
             Image(isUploading ? "uploadingStatusMenuIcon" : "statusMenuIcon")
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(upicModelContainer)
     }
 }

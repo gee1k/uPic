@@ -12,7 +12,7 @@ import UPicCore
 
 struct WeiboConfigView: View {
     let hostModel: HostModel
-    @Environment(\.modelContext) private var modelContext
+    let onSave: () -> Void
 
     @State private var name: String = .init(localized: "Weibo")
     @State private var cookieMode: Bool = false
@@ -142,17 +142,12 @@ struct WeiboConfigView: View {
             hostModel.dataRaw = jsonData
         }
 
-        do {
-            try modelContext.save()
-            print("Configuration saved successfully!")
-        } catch {
-            print("Failed to save configuration: \(error)")
-        }
+        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.weibo, data: nil)
-    return WeiboConfigView(hostModel: sampleHostModel)
+    WeiboConfigView(hostModel: sampleHostModel) {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

@@ -12,7 +12,7 @@ import UPicCore
 
 struct SmmsConfigView: View {
     let hostModel: HostModel
-    @Environment(\.modelContext) private var modelContext
+    let onSave: () -> Void
 
     @State private var name: String = .init(localized: "SMMS")
     @State private var token: String = ""
@@ -103,17 +103,12 @@ struct SmmsConfigView: View {
             hostModel.dataRaw = jsonData
         }
 
-        do {
-            try modelContext.save()
-            print("Configuration saved successfully!")
-        } catch {
-            print("Failed to save configuration: \(error)")
-        }
+        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.smms, data: nil)
-    return SmmsConfigView(hostModel: sampleHostModel)
+    SmmsConfigView(hostModel: sampleHostModel) {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

@@ -5,21 +5,31 @@
 //  Created by Licardo on 2025/10/28.
 //
 
+import Defaults
 import SwiftData
 import SwiftUI
 import UPicCore
 
 struct HostsSettingsView: View {
+    @Default(.selectedHostId) var selectedHostId
+
+    @State private var selectedHostModel: HostModel? = nil
+    @State private var tempHostModels: [HostModel] = []
+
     @Environment(\.modelContext) private var modelContext
     @Query private var hostModels: [HostModel]
-    @State private var selectedHostModel: HostModel? = nil
+
+    // Combine persisted hosts and temporary hosts
+    private var allHostModels: [HostModel] {
+        hostModels + tempHostModels
+    }
 
     var body: some View {
         HSplitView {
             // Left panel - Hosts List
             VStack(spacing: 0) {
                 List(selection: $selectedHostModel) {
-                    ForEach(hostModels) { hostModel in
+                    ForEach(allHostModels) { hostModel in
                         HostListItem(
                             hostModel: hostModel,
                             isSelected: selectedHostModel?.id == hostModel.id,
@@ -81,7 +91,7 @@ struct HostsSettingsView: View {
                             .font(.title2)
                             .foregroundStyle(.secondary)
 
-                        Text("Select a host from the list or add a new one to configure upload settings.")
+                        Text("Select a host from the list or add a new one to configure.")
                             .font(.body)
                             .foregroundStyle(.tertiary)
                             .multilineTextAlignment(.center)
@@ -98,41 +108,65 @@ struct HostsSettingsView: View {
     private func configView(for hostModel: HostModel) -> some View {
         switch HostType(rawValue: hostModel.typeRaw ?? "") {
         case .smms:
-            SmmsConfigView(hostModel: hostModel)
-                .id(hostModel.id)
+            SmmsConfigView(hostModel: hostModel) {
+                saveHostToDatabase(hostModel)
+            }
+            .id(hostModel.id)
         case .weibo:
-            WeiboConfigView(hostModel: hostModel)
-                .id(hostModel.id)
+            WeiboConfigView(hostModel: hostModel) {
+                saveHostToDatabase(hostModel)
+            }
+            .id(hostModel.id)
         case .imgur:
-            ImgurConfigView(hostModel: hostModel)
-                .id(hostModel.id)
+            ImgurConfigView(hostModel: hostModel) {
+                saveHostToDatabase(hostModel)
+            }
+            .id(hostModel.id)
         case .s3:
-            S3ConfigView(hostModel: hostModel)
-                .id(hostModel.id)
+            S3ConfigView(hostModel: hostModel) {
+                saveHostToDatabase(hostModel)
+            }
+            .id(hostModel.id)
         case .qiniu_kodo:
-            QiniuConfigView(hostModel: hostModel)
-                .id(hostModel.id)
+            QiniuConfigView(hostModel: hostModel) {
+                saveHostToDatabase(hostModel)
+            }
+            .id(hostModel.id)
         case .upyun_uss:
-            UpyunConfigView(hostModel: hostModel)
-                .id(hostModel.id)
+            UpyunConfigView(hostModel: hostModel) {
+                saveHostToDatabase(hostModel)
+            }
+            .id(hostModel.id)
         case .aliyun_oss:
-            AliyunConfigView(hostModel: hostModel)
-                .id(hostModel.id)
+            AliyunConfigView(hostModel: hostModel) {
+                saveHostToDatabase(hostModel)
+            }
+            .id(hostModel.id)
         case .tencent_cos:
-            TencentConfigView(hostModel: hostModel)
-                .id(hostModel.id)
+            TencentConfigView(hostModel: hostModel) {
+                saveHostToDatabase(hostModel)
+            }
+            .id(hostModel.id)
         case .baidu_bos:
-            BaiduConfigView(hostModel: hostModel)
-                .id(hostModel.id)
+            BaiduConfigView(hostModel: hostModel) {
+                saveHostToDatabase(hostModel)
+            }
+            .id(hostModel.id)
         case .github:
-            GithubConfigView(hostModel: hostModel)
-                .id(hostModel.id)
+            GithubConfigView(hostModel: hostModel) {
+                saveHostToDatabase(hostModel)
+            }
+            .id(hostModel.id)
         case .gitee:
-            GiteeConfigView(hostModel: hostModel)
-                .id(hostModel.id)
+            GiteeConfigView(hostModel: hostModel) {
+                saveHostToDatabase(hostModel)
+            }
+            .id(hostModel.id)
         case .custom:
-            CustomConfigView(hostModel: hostModel)
-                .id(hostModel.id)
+            CustomConfigView(hostModel: hostModel) {
+                saveHostToDatabase(hostModel)
+            }
+            .id(hostModel.id)
         case .none:
             Text("Unknown host type")
                 .foregroundStyle(.secondary)
@@ -141,45 +175,50 @@ struct HostsSettingsView: View {
 
     private func addHost(_ hostType: HostType) {
         let hostModel = HostModel(hostType, data: nil)
-        modelContext.insert(hostModel)
+        tempHostModels.append(hostModel)
         selectedHostModel = hostModel
-
-        do {
-            try modelContext.save()
-        } catch {
-            print("Failed to save host model: \(error)")
-        }
     }
 
     private func deleteHost(_ hostModel: HostModel) {
         withAnimation {
-            modelContext.delete(hostModel)
-            if selectedHostModel?.id == hostModel.id {
-                selectedHostModel = nil
+            if let tempIndex = tempHostModels.firstIndex(where: { $0.id == hostModel.id }) {
+                tempHostModels.remove(at: tempIndex)
+            } else {
+                modelContext.delete(hostModel)
+                do {
+                    try modelContext.save()
+                } catch {
+                    print("Failed to delete host model: \(error.localizedDescription)")
+                }
             }
 
-            do {
-                try modelContext.save()
-            } catch {
-                print("Failed to delete host model: \(error)")
+            if selectedHostId == hostModel.id {
+                if hostModels.count == 0 {
+                    selectedHostId = nil
+                } else {
+                    selectedHostId = hostModels.first?.id
+                }
             }
         }
     }
 
-    private func deleteHosts(offsets: IndexSet) {
+    func saveHostToDatabase(_ hostModel: HostModel) {
         withAnimation {
-            for index in offsets {
-                let hostModel = hostModels[index]
-                modelContext.delete(hostModel)
-                if selectedHostModel?.id == hostModel.id {
-                    selectedHostModel = nil
-                }
+            modelContext.insert(hostModel)
+
+            if let tempIndex = tempHostModels.firstIndex(where: { $0.id == hostModel.id }) {
+                tempHostModels.remove(at: tempIndex)
             }
 
             do {
                 try modelContext.save()
+                print("Host saved successfully to database!")
             } catch {
-                print("Failed to delete host models: \(error)")
+                print("Failed to save host to database: \(error)")
+            }
+
+            if hostModels.count == 1 {
+                selectedHostId = hostModel.id
             }
         }
     }

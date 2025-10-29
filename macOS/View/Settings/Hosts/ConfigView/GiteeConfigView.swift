@@ -12,7 +12,7 @@ import UPicCore
 
 struct GiteeConfigView: View {
     let hostModel: HostModel
-    @Environment(\.modelContext) private var modelContext
+    let onSave: () -> Void
 
     @State private var name: String = .init(localized: "Gitee")
     @State private var userName: String = ""
@@ -25,6 +25,7 @@ struct GiteeConfigView: View {
     @State private var isTokenSecured: Bool = true
 
     @Environment(\.openURL) var openURL
+    @Environment(\.modelContext) private var modelContext
 
     var body: some View {
         Form {
@@ -149,17 +150,12 @@ struct GiteeConfigView: View {
             hostModel.dataRaw = jsonData
         }
 
-        do {
-            try modelContext.save()
-            print("Configuration saved successfully!")
-        } catch {
-            print("Failed to save configuration: \(error)")
-        }
+        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.gitee, data: nil)
-    return GiteeConfigView(hostModel: sampleHostModel)
+    GiteeConfigView(hostModel: sampleHostModel) {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

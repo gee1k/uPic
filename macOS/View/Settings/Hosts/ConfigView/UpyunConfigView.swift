@@ -12,7 +12,7 @@ import UPicCore
 
 struct UpyunConfigView: View {
     let hostModel: HostModel
-    @Environment(\.modelContext) private var modelContext
+    let onSave: () -> Void
 
     @State private var name: String = .init(localized: "Upyun USS")
     @State private var bucket: String = ""
@@ -142,17 +142,12 @@ struct UpyunConfigView: View {
             hostModel.dataRaw = jsonData
         }
 
-        do {
-            try modelContext.save()
-            print("Configuration saved successfully!")
-        } catch {
-            print("Failed to save configuration: \(error)")
-        }
+        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.upyun_uss, data: nil)
-    return UpyunConfigView(hostModel: sampleHostModel)
+    UpyunConfigView(hostModel: sampleHostModel) {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

@@ -12,7 +12,7 @@ import UPicCore
 
 struct ImgurConfigView: View {
     let hostModel: HostModel
-    @Environment(\.modelContext) private var modelContext
+    let onSave: () -> Void
 
     @State private var name: String = .init(localized: "Imgur")
     @State private var clientId: String = ""
@@ -116,17 +116,12 @@ struct ImgurConfigView: View {
             hostModel.dataRaw = jsonData
         }
 
-        do {
-            try modelContext.save()
-            print("Configuration saved successfully!")
-        } catch {
-            print("Failed to save configuration: \(error)")
-        }
+        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.imgur, data: nil)
-    return ImgurConfigView(hostModel: sampleHostModel)
+    ImgurConfigView(hostModel: sampleHostModel) {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

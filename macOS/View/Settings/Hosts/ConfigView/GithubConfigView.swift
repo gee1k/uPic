@@ -12,7 +12,7 @@ import UPicCore
 
 struct GithubConfigView: View {
     let hostModel: HostModel
-    @Environment(\.modelContext) private var modelContext
+    let onSave: () -> Void
 
     @State private var name: String = .init(localized: "GitHub")
     @State private var userName: String = ""
@@ -149,17 +149,12 @@ struct GithubConfigView: View {
             hostModel.dataRaw = jsonData
         }
 
-        do {
-            try modelContext.save()
-            print("Configuration saved successfully!")
-        } catch {
-            print("Failed to save configuration: \(error)")
-        }
+        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.github, data: nil)
-    return GithubConfigView(hostModel: sampleHostModel)
+    GithubConfigView(hostModel: sampleHostModel) {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }
