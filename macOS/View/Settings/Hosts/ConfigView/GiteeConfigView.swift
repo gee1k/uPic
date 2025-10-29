@@ -5,16 +5,16 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
-import SwiftData
-import UPicCore
 import HandyJSON
+import SwiftData
+import SwiftUI
+import UPicCore
 
 struct GiteeConfigView: View {
     let hostModel: HostModel
     @Environment(\.modelContext) private var modelContext
 
-    @State private var name: String = ""
+    @State private var name: String = .init(localized: "Gitee")
     @State private var userName: String = ""
     @State private var repo: String = ""
     @State private var branch: String = "master"
@@ -117,15 +117,17 @@ struct GiteeConfigView: View {
     }
 
     private func loadConfiguration() {
-        name = hostModel.name ?? "Gitee"
+        if hostModel.dataRaw != nil {
+            name = hostModel.name
 
-        if let giteeConfig = hostModel.getConfig(GiteeHostConfig.self) {
-            userName = giteeConfig.owner ?? ""
-            repo = giteeConfig.repo ?? ""
-            branch = giteeConfig.branch
-            token = giteeConfig.token ?? ""
-            domain = giteeConfig.domain
-            saveKey = giteeConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+            if let giteeConfig = hostModel.getConfig(GiteeHostConfig.self) {
+                userName = giteeConfig.owner ?? ""
+                repo = giteeConfig.repo ?? ""
+                branch = giteeConfig.branch
+                token = giteeConfig.token ?? ""
+                domain = giteeConfig.domain
+                saveKey = giteeConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+            }
         }
     }
 
@@ -139,8 +141,7 @@ struct GiteeConfigView: View {
         giteeConfig.saveKeyPath = saveKey
 
         hostModel.name = name
-        if let jsonString = giteeConfig.toJSONString(),
-           let jsonData = jsonString.data(using: .utf8) {
+        if let jsonString = giteeConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
 

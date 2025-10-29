@@ -5,17 +5,17 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
-import SwiftData
-import UPicCore
 import HandyJSON
+import SwiftData
+import SwiftUI
+import UPicCore
 internal import SotoS3
 
 struct S3ConfigView: View {
     let hostModel: HostModel
     @Environment(\.modelContext) private var modelContext
 
-    @State private var name: String = ""
+    @State private var name: String = String(localized: "Amazon S3 Compatible")
     @State private var customize: Bool = false
     @State private var region = S3Region.allRegions.first ?? ""
     @State private var endpoint: String = ""
@@ -31,7 +31,6 @@ struct S3ConfigView: View {
 
     @Environment(\.openURL) var openURL
 
-    
     var body: some View {
         Form {
             // Name
@@ -164,25 +163,24 @@ struct S3ConfigView: View {
     }
 
     func loadConfiguration() {
-        name = hostModel.name ?? "Amazon S3 Compatible"
+        if hostModel.dataRaw != nil {
+            name = hostModel.name
 
-        if let s3Config = hostModel.getConfig(S3HostConfig.self) {
-            customize = s3Config.customize
-            // Find region by matching string value
-            if let regionStr = s3Config.region,
-               S3Region.allRegions.contains(regionStr) {
-                region = regionStr
+            if let s3Config = hostModel.getConfig(S3HostConfig.self) {
+                customize = s3Config.customize
+                if let regionStr = s3Config.region, S3Region.allRegions.contains(regionStr) {
+                    region = regionStr
+                }
+                endpoint = s3Config.endpoint ?? ""
+                bucket = s3Config.bucket ?? ""
+                if let aclStr = s3Config.acl, let matchedACL = S3ObjectCannedACL.allCases.first(where: { $0.rawValue == aclStr }) {
+                    acl = matchedACL
+                }
+                accessKey = s3Config.accessKey ?? ""
+                secretKey = s3Config.secretKey ?? ""
+                domain = s3Config.domain
+                saveKey = s3Config.saveKeyPath ?? "uPic/{filename}{.suffix}"
             }
-            endpoint = s3Config.endpoint ?? ""
-            bucket = s3Config.bucket ?? ""
-            if let aclStr = s3Config.acl,
-               let matchedACL = S3ObjectCannedACL.allCases.first(where: { $0.rawValue == aclStr }) {
-                acl = matchedACL
-            }
-            accessKey = s3Config.accessKey ?? ""
-            secretKey = s3Config.secretKey ?? ""
-            domain = s3Config.domain
-            saveKey = s3Config.saveKeyPath ?? "uPic/{filename}{.suffix}"
         }
     }
 
@@ -199,8 +197,7 @@ struct S3ConfigView: View {
         s3Config.saveKeyPath = saveKey
 
         hostModel.name = name
-        if let jsonString = s3Config.toJSONString(),
-           let jsonData = jsonString.data(using: .utf8) {
+        if let jsonString = s3Config.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
 

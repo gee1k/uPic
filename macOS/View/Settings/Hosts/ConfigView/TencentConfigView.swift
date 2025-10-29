@@ -5,16 +5,16 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
-import SwiftData
-import UPicCore
 import HandyJSON
+import SwiftData
+import SwiftUI
+import UPicCore
 
 struct TencentConfigView: View {
     let hostModel: HostModel
     @Environment(\.modelContext) private var modelContext
 
-    @State private var name: String = ""
+    @State private var name: String = .init(localized: "Tencent Cloud COS")
     @State private var region = TencentRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var secretId: String = ""
@@ -138,19 +138,19 @@ struct TencentConfigView: View {
     }
 
     private func loadConfiguration() {
-        name = hostModel.name ?? "Tencent Cloud COS"
+        if hostModel.dataRaw != nil {
+            name = hostModel.name
 
-        if let tencentConfig = hostModel.getConfig(TencentHostConfig.self) {
-            bucket = tencentConfig.bucket ?? ""
-            secretId = tencentConfig.secretId ?? ""
-            secretKey = tencentConfig.secretKey ?? ""
-            domain = tencentConfig.domain
-            saveKey = tencentConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+            if let tencentConfig = hostModel.getConfig(TencentHostConfig.self) {
+                bucket = tencentConfig.bucket ?? ""
+                secretId = tencentConfig.secretId ?? ""
+                secretKey = tencentConfig.secretKey ?? ""
+                domain = tencentConfig.domain
+                saveKey = tencentConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
 
-            // Find region by matching string value
-            if let regionStr = tencentConfig.region,
-               TencentRegion.allRegions.contains(regionStr) {
-                region = regionStr
+                if let regionStr = tencentConfig.region, TencentRegion.allRegions.contains(regionStr) {
+                    region = regionStr
+                }
             }
         }
     }
@@ -165,8 +165,7 @@ struct TencentConfigView: View {
         tencentConfig.region = region
 
         hostModel.name = name
-        if let jsonString = tencentConfig.toJSONString(),
-           let jsonData = jsonString.data(using: .utf8) {
+        if let jsonString = tencentConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
 

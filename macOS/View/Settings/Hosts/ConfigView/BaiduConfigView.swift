@@ -5,16 +5,16 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
-import SwiftData
-import UPicCore
 import HandyJSON
+import SwiftData
+import SwiftUI
+import UPicCore
 
 struct BaiduConfigView: View {
     let hostModel: HostModel
     @Environment(\.modelContext) private var modelContext
 
-    @State private var name: String = ""
+    @State private var name: String = .init(localized: "Baidu Cloud BOS")
     @State private var region = BaiduRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var accessKey: String = ""
@@ -138,19 +138,19 @@ struct BaiduConfigView: View {
     }
 
     private func loadConfiguration() {
-        name = hostModel.name ?? "Baidu Cloud BOS"
+        if hostModel.dataRaw != nil {
+            name = hostModel.name
 
-        if let baiduConfig = hostModel.getConfig(BaiduHostConfig.self) {
-            bucket = baiduConfig.bucket ?? ""
-            accessKey = baiduConfig.accessKey ?? ""
-            secretKey = baiduConfig.secretKey ?? ""
-            domain = baiduConfig.domain
-            saveKey = baiduConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+            if let baiduConfig = hostModel.getConfig(BaiduHostConfig.self) {
+                bucket = baiduConfig.bucket ?? ""
+                accessKey = baiduConfig.accessKey ?? ""
+                secretKey = baiduConfig.secretKey ?? ""
+                domain = baiduConfig.domain
+                saveKey = baiduConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
 
-            // Find region by matching string value
-            if let regionStr = baiduConfig.region,
-               BaiduRegion.allRegions.contains(regionStr) {
-                region = regionStr
+                if let regionStr = baiduConfig.region, BaiduRegion.allRegions.contains(regionStr) {
+                    region = regionStr
+                }
             }
         }
     }
@@ -165,8 +165,7 @@ struct BaiduConfigView: View {
         baiduConfig.region = region
 
         hostModel.name = name
-        if let jsonString = baiduConfig.toJSONString(),
-           let jsonData = jsonString.data(using: .utf8) {
+        if let jsonString = baiduConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
 

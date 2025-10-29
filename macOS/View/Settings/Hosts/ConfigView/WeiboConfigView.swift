@@ -111,15 +111,17 @@ struct WeiboConfigView: View {
     }
 
     private func loadConfiguration() {
-        name = hostModel.name ?? "Weibo"
+        if hostModel.dataRaw != nil {
+            name = hostModel.name
 
-        if let weiboConfig = hostModel.getConfig(WeiboHostConfig.self) {
-            cookieMode = weiboConfig.cookieMode
-            username = weiboConfig.username ?? ""
-            password = weiboConfig.password ?? ""
-            cookie = weiboConfig.cookie ?? ""
-            domain = weiboConfig.domain
-            quality = weiboConfig.quality
+            if let weiboConfig = hostModel.getConfig(WeiboHostConfig.self) {
+                cookieMode = weiboConfig.cookieMode
+                username = weiboConfig.username ?? ""
+                password = weiboConfig.password ?? ""
+                cookie = weiboConfig.cookie ?? ""
+                domain = weiboConfig.domain
+                quality = weiboConfig.quality
+            }
         }
     }
 
@@ -133,9 +135,7 @@ struct WeiboConfigView: View {
         weiboConfig.quality = quality
 
         hostModel.name = name
-        if let jsonString = weiboConfig.toJSONString(),
-           let jsonData = jsonString.data(using: .utf8)
-        {
+        if let jsonString = weiboConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
 

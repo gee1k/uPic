@@ -13,7 +13,6 @@ import UPicCore
 
 struct StatusMenuView: View {
     @Default(.isUploading) var isUploading
-    @Default(.selectedHostName) var selectedHostName
     @Default(.selectedHostId) var selectedHostId
     @Default(.screenshotApp) var screenshotApp
     @Default(.selectedOutputFormat) var selectedOutputFormat
@@ -24,6 +23,14 @@ struct StatusMenuView: View {
     @Query private var hostModels: [HostModel]
     
     @Environment(\.openWindow) var openWindow
+    
+    private var selectedHostName: String {
+        if let hostModel = hostModels.first(where: { $0.id == selectedHostId }) {
+            return hostModel.name
+        } else {
+            return ""
+        }
+    }
     
     var body: some View {
         VStack {
@@ -49,10 +56,9 @@ struct StatusMenuView: View {
             }
             .globalKeyboardShortcut(.uploadFromScreenshot)
     
-            Menu("Host  \(Text(selectedHostName ?? "").foregroundStyle(.secondary))") {
+            Menu("Host  \(Text(selectedHostName).foregroundStyle(.secondary))") {
                 ForEach(hostModels) { hostModel in
                     Button {
-                        selectedHostName = hostModel.name
                         selectedHostId = hostModel.id
                     } label: {
                         Label {

@@ -5,16 +5,16 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
-import SwiftData
-import UPicCore
 import HandyJSON
+import SwiftData
+import SwiftUI
+import UPicCore
 
 struct GithubConfigView: View {
     let hostModel: HostModel
     @Environment(\.modelContext) private var modelContext
 
-    @State private var name: String = ""
+    @State private var name: String = .init(localized: "GitHub")
     @State private var userName: String = ""
     @State private var repo: String = ""
     @State private var branch: String = "main"
@@ -24,7 +24,6 @@ struct GithubConfigView: View {
     @State private var saveKeySuffix: String = ""
     @State private var isTokenSecured: Bool = true
 
-    
     @Environment(\.openURL) var openURL
 
     var body: some View {
@@ -118,15 +117,17 @@ struct GithubConfigView: View {
     }
 
     func loadConfiguration() {
-        name = hostModel.name ?? "GitHub"
+        if hostModel.dataRaw != nil {
+            name = hostModel.name
 
-        if let githubConfig = hostModel.getConfig(GithubHostConfig.self) {
-            userName = githubConfig.owner ?? ""
-            repo = githubConfig.repo ?? ""
-            branch = githubConfig.branch
-            token = githubConfig.token ?? ""
-            domain = githubConfig.domain
-            saveKey = githubConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+            if let githubConfig = hostModel.getConfig(GithubHostConfig.self) {
+                userName = githubConfig.owner ?? ""
+                repo = githubConfig.repo ?? ""
+                branch = githubConfig.branch
+                token = githubConfig.token ?? ""
+                domain = githubConfig.domain
+                saveKey = githubConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+            }
         }
     }
 
@@ -140,8 +141,7 @@ struct GithubConfigView: View {
         githubConfig.saveKeyPath = saveKey
 
         hostModel.name = name
-        if let jsonString = githubConfig.toJSONString(),
-           let jsonData = jsonString.data(using: .utf8) {
+        if let jsonString = githubConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
 

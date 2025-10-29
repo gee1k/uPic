@@ -5,16 +5,16 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
-import SwiftData
-import UPicCore
 import HandyJSON
+import SwiftData
+import SwiftUI
+import UPicCore
 
 struct QiniuConfigView: View {
     let hostModel: HostModel
     @Environment(\.modelContext) private var modelContext
 
-    @State private var name: String = ""
+    @State private var name: String = String(localized: "Qiniu KODO")
     @State private var region = QiniuRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var accessKey: String = ""
@@ -138,19 +138,19 @@ struct QiniuConfigView: View {
     }
 
     private func loadConfiguration() {
-        name = hostModel.name ?? "Qiniu KODO"
+        if hostModel.dataRaw != nil {
+            name = hostModel.name
 
-        if let qiniuConfig = hostModel.getConfig(QiniuHostConfig.self) {
-            bucket = qiniuConfig.bucket ?? ""
-            accessKey = qiniuConfig.accessKey ?? ""
-            secretKey = qiniuConfig.secretKey ?? ""
-            domain = qiniuConfig.domain ?? ""
-            saveKey = qiniuConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+            if let qiniuConfig = hostModel.getConfig(QiniuHostConfig.self) {
+                bucket = qiniuConfig.bucket ?? ""
+                accessKey = qiniuConfig.accessKey ?? ""
+                secretKey = qiniuConfig.secretKey ?? ""
+                domain = qiniuConfig.domain
+                saveKey = qiniuConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
 
-            // Find region by matching string value
-            if let regionStr = qiniuConfig.region,
-               QiniuRegion.allRegions.contains(regionStr) {
-                region = regionStr
+                if let regionStr = qiniuConfig.region, QiniuRegion.allRegions.contains(regionStr) {
+                    region = regionStr
+                }
             }
         }
     }
@@ -165,8 +165,7 @@ struct QiniuConfigView: View {
         qiniuConfig.region = region
 
         hostModel.name = name
-        if let jsonString = qiniuConfig.toJSONString(),
-           let jsonData = jsonString.data(using: .utf8) {
+        if let jsonString = qiniuConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
 

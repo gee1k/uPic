@@ -5,16 +5,16 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
-import SwiftData
-import UPicCore
 import HandyJSON
+import SwiftData
+import SwiftUI
+import UPicCore
 
 struct AliyunConfigView: View {
     let hostModel: HostModel
     @Environment(\.modelContext) private var modelContext
 
-    @State private var name: String = ""
+    @State private var name: String = .init(localized: "Aliyun OSS")
     @State private var region = AliyunRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var accessKey: String = ""
@@ -138,19 +138,19 @@ struct AliyunConfigView: View {
     }
 
     private func loadConfiguration() {
-        name = hostModel.name ?? "Aliyun OSS"
+        if hostModel.dataRaw != nil {
+            name = hostModel.name
 
-        if let aliyunConfig = hostModel.getConfig(AliyunHostConfig.self) {
-            bucket = aliyunConfig.bucket ?? ""
-            accessKey = aliyunConfig.accessKey ?? ""
-            secretKey = aliyunConfig.secretKey ?? ""
-            domain = aliyunConfig.domain
-            saveKey = aliyunConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+            if let aliyunConfig = hostModel.getConfig(AliyunHostConfig.self) {
+                bucket = aliyunConfig.bucket ?? ""
+                accessKey = aliyunConfig.accessKey ?? ""
+                secretKey = aliyunConfig.secretKey ?? ""
+                domain = aliyunConfig.domain
+                saveKey = aliyunConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
 
-            // Find region by matching string value
-            if let regionStr = aliyunConfig.region,
-               AliyunRegion.allRegions.contains(regionStr) {
-                region = regionStr
+                if let regionStr = aliyunConfig.region, AliyunRegion.allRegions.contains(regionStr) {
+                    region = regionStr
+                }
             }
         }
     }
@@ -165,8 +165,7 @@ struct AliyunConfigView: View {
         aliyunConfig.region = region
 
         hostModel.name = name
-        if let jsonString = aliyunConfig.toJSONString(),
-           let jsonData = jsonString.data(using: .utf8) {
+        if let jsonString = aliyunConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
 

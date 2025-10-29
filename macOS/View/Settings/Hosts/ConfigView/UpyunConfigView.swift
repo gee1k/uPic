@@ -5,16 +5,16 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
-import SwiftData
-import UPicCore
 import HandyJSON
+import SwiftData
+import SwiftUI
+import UPicCore
 
 struct UpyunConfigView: View {
     let hostModel: HostModel
     @Environment(\.modelContext) private var modelContext
 
-    @State private var name: String = ""
+    @State private var name: String = .init(localized: "Upyun USS")
     @State private var bucket: String = ""
     @State private var operatorName: String = ""
     @State private var password: String = ""
@@ -112,14 +112,16 @@ struct UpyunConfigView: View {
     }
 
     private func loadConfiguration() {
-        name = hostModel.name ?? "Upyun USS"
+        if hostModel.dataRaw != nil {
+            name = hostModel.name
 
-        if let upyunConfig = hostModel.getConfig(UpyunHostConfig.self) {
-            bucket = upyunConfig.bucket ?? ""
-            operatorName = upyunConfig.operatorName ?? ""
-            password = upyunConfig.password ?? ""
-            domain = upyunConfig.domain
-            saveKey = upyunConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+            if let upyunConfig = hostModel.getConfig(UpyunHostConfig.self) {
+                bucket = upyunConfig.bucket ?? ""
+                operatorName = upyunConfig.operatorName ?? ""
+                password = upyunConfig.password ?? ""
+                domain = upyunConfig.domain
+                saveKey = upyunConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+            }
         }
     }
 
@@ -132,8 +134,7 @@ struct UpyunConfigView: View {
         upyunConfig.saveKeyPath = saveKey
 
         hostModel.name = name
-        if let jsonString = upyunConfig.toJSONString(),
-           let jsonData = jsonString.data(using: .utf8) {
+        if let jsonString = upyunConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
 

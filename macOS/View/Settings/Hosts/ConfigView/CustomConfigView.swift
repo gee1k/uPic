@@ -5,16 +5,16 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
-import SwiftData
-import UPicCore
 import HandyJSON
+import SwiftData
+import SwiftUI
+import UPicCore
 
 struct CustomConfigView: View {
     let hostModel: HostModel
     @Environment(\.modelContext) private var modelContext
 
-    @State private var name: String = ""
+    @State private var name: String = .init(localized: "Custom")
     @State private var apiUrl: String = ""
     @State private var method: CustomRequestMethod = .POST
     @State private var fileField: String = ""
@@ -132,16 +132,18 @@ struct CustomConfigView: View {
     }
 
     private func loadConfiguration() {
-        name = hostModel.name ?? "Custom"
+        if hostModel.dataRaw != nil {
+            name = hostModel.name
 
-        if let customConfig = hostModel.getConfig(CustomHostConfig.self) {
-            apiUrl = customConfig.url ?? ""
-            method = customConfig.method
-            fileField = customConfig.field ?? ""
-            resultPath = customConfig.resultPath ?? ""
-            domain = customConfig.domain
-            saveKey = customConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
-            useBase64 = customConfig.useBase64
+            if let customConfig = hostModel.getConfig(CustomHostConfig.self) {
+                apiUrl = customConfig.url ?? ""
+                method = customConfig.method
+                fileField = customConfig.field ?? ""
+                resultPath = customConfig.resultPath ?? ""
+                domain = customConfig.domain
+                saveKey = customConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
+                useBase64 = customConfig.useBase64
+            }
         }
     }
 
@@ -156,8 +158,7 @@ struct CustomConfigView: View {
         customConfig.useBase64 = useBase64
 
         hostModel.name = name
-        if let jsonString = customConfig.toJSONString(),
-           let jsonData = jsonString.data(using: .utf8) {
+        if let jsonString = customConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
 

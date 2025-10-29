@@ -98,28 +98,40 @@ struct HostsSettingsView: View {
         switch HostType(rawValue: hostModel.typeRaw ?? "") {
         case .smms:
             SmmsConfigView(hostModel: hostModel)
+                .id(hostModel.id)
         case .weibo:
             WeiboConfigView(hostModel: hostModel)
+                .id(hostModel.id)
         case .imgur:
             ImgurConfigView(hostModel: hostModel)
+                .id(hostModel.id)
         case .s3:
             S3ConfigView(hostModel: hostModel)
+                .id(hostModel.id)
         case .qiniu_kodo:
             QiniuConfigView(hostModel: hostModel)
+                .id(hostModel.id)
         case .upyun_uss:
             UpyunConfigView(hostModel: hostModel)
+                .id(hostModel.id)
         case .aliyun_oss:
             AliyunConfigView(hostModel: hostModel)
+                .id(hostModel.id)
         case .tencent_cos:
             TencentConfigView(hostModel: hostModel)
+                .id(hostModel.id)
         case .baidu_bos:
             BaiduConfigView(hostModel: hostModel)
+                .id(hostModel.id)
         case .github:
             GithubConfigView(hostModel: hostModel)
+                .id(hostModel.id)
         case .gitee:
             GiteeConfigView(hostModel: hostModel)
+                .id(hostModel.id)
         case .custom:
             CustomConfigView(hostModel: hostModel)
+                .id(hostModel.id)
         case .none:
             Text("Unknown host type")
                 .foregroundStyle(.secondary)

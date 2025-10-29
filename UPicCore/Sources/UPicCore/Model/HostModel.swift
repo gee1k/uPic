@@ -62,7 +62,7 @@ public class HostModel: HandyJSON {
               let jsonString = String(data: dataRaw, encoding: .utf8) else {
             return nil
         }
-        return T.deserialize(from: jsonString, designatedPath: "data")
+        return T.deserialize(from: jsonString)
     }
 
     public static func deserialize(serializeString: String, designatedPath: String? = nil) -> HostModel? {

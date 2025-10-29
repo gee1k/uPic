@@ -5,16 +5,16 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
-import SwiftData
-import UPicCore
 import HandyJSON
+import SwiftData
+import SwiftUI
+import UPicCore
 
 struct SmmsConfigView: View {
     let hostModel: HostModel
     @Environment(\.modelContext) private var modelContext
 
-    @State private var name: String = ""
+    @State private var name: String = .init(localized: "SMMS")
     @State private var token: String = ""
     @State private var isTokenSecured: Bool = true
 
@@ -82,23 +82,21 @@ struct SmmsConfigView: View {
     }
 
     private func loadConfiguration() {
-        // Load existing data from HostModel
-        name = hostModel.name ?? "SMMS"
+        if hostModel.dataRaw != nil {
+            name = hostModel.name
 
-        if let smmsConfig = hostModel.getConfig(SmmsHostConfig.self) {
-            token = smmsConfig.token ?? ""
+            if let smmsConfig = hostModel.getConfig(SmmsHostConfig.self) {
+                token = smmsConfig.token ?? ""
+            }
         }
     }
 
     private func saveConfiguration() {
-        // Create SmmsHostConfig
         let smmsConfig = SmmsHostConfig()
         smmsConfig.token = token
 
-        // Update HostModel
         hostModel.name = name
-        if let jsonString = smmsConfig.toJSONString(),
-           let jsonData = jsonString.data(using: .utf8) {
+        if let jsonString = smmsConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
 
@@ -112,7 +110,6 @@ struct SmmsConfigView: View {
 }
 
 #Preview {
-    // Create a sample HostModel for preview
     let sampleHostModel = HostModel(.smms, data: nil)
     return SmmsConfigView(hostModel: sampleHostModel)
         .modelContainer(for: HostModel.self, inMemory: true)
