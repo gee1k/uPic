@@ -85,6 +85,19 @@ public class UPicUploader: ObservableObject {
     // MARK: - Public Methods
 
     /// 通过文件URL上传
+    public func upload(fileURLs: [URL]) async {
+        guard let host = getSelectedHost() else {
+            AppLogger.uploader.error("[UPicUploader] 没有可用的图床配置")
+            await MainActor.run {
+                self.onUploadFail?("没有可用的图床配置", nil)
+            }
+            return
+        }
+
+        await upload(hostModel: host, fileURLs: fileURLs)
+    }
+
+    /// 通过文件URL上传
     public func upload(hostModel: HostModel, fileURLs: [URL]) async {
         AppLogger.uploader.info("[UPicUploader] 开始通过 URL 上传 -> \(fileURLs.count) 个文件")
 
@@ -198,6 +211,19 @@ public class UPicUploader: ObservableObject {
     }
 
     /// 通过Data上传
+    public func upload(fileData: Data, filename: String? = nil) async {
+        guard let host = getSelectedHost() else {
+            AppLogger.uploader.error("[UPicUploader] 没有可用的图床配置")
+            await MainActor.run {
+                self.onUploadFail?("没有可用的图床配置", nil)
+            }
+            return
+        }
+
+        await upload(hostModel: host, fileData: fileData, filename: filename)
+    }
+
+    /// 通过Data上传
     public func upload(hostModel: HostModel, fileData: Data, filename: String? = nil) async {
         AppLogger.uploader.info("[UPicUploader] 开始通过 Data 上传")
 
@@ -212,6 +238,19 @@ public class UPicUploader: ObservableObject {
         uploadItem.thumbnailData = thumbnailData
 
         await upload(hostModel: hostModel, items: [uploadItem])
+    }
+
+    /// 通过NSImage上传
+    public func upload(images: [NSImage]) async {
+        guard let host = getSelectedHost() else {
+            AppLogger.uploader.error("[UPicUploader] 没有可用的图床配置")
+            await MainActor.run {
+                self.onUploadFail?("没有可用的图床配置", nil)
+            }
+            return
+        }
+
+        await upload(hostModel: host, images: images)
     }
 
     /// 通过NSImage上传
@@ -431,9 +470,7 @@ public class UPicUploader: ObservableObject {
             if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
                 AppLogger.uploader.info("[UPicUploader] 选择文件数量：\(openPanel.urls.count)")
                 Task {
-                    if let selectedHost = self?.getSelectedHost() {
-                        await self?.upload(hostModel: selectedHost, fileURLs: openPanel.urls)
-                    }
+                    await self?.upload(fileURLs: openPanel.urls)
                 }
             }
         }
@@ -471,9 +508,7 @@ public class UPicUploader: ObservableObject {
 
             if !urls.isEmpty {
                 Task {
-                    if let selectedHost = getSelectedHost() {
-                        await upload(hostModel: selectedHost, fileURLs: urls)
-                    }
+                    await upload(fileURLs: urls)
                 }
                 return
             }
@@ -496,9 +531,7 @@ public class UPicUploader: ObservableObject {
                 }
 
                 Task {
-                    if let selectedHost = getSelectedHost() {
-                        await upload(hostModel: selectedHost, fileData: processedData, filename: "clipboard_\(Date().timeIntervalSince1970).png")
-                    }
+                    await upload(fileData: processedData, filename: "clipboard_\(Date().timeIntervalSince1970).png")
                 }
                 return
             }
@@ -558,9 +591,7 @@ public class UPicUploader: ObservableObject {
                 AppLogger.uploader.info("[UPicUploader] 截图上传成功：\(imageType.rawValue)")
 
                 Task {
-                    if let selectedHost = getSelectedHost() {
-                        await upload(hostModel: selectedHost, fileData: imageData, filename: "screenshot_\(Date().timeIntervalSince1970).png")
-                    }
+                    await upload(fileData: imageData, filename: "screenshot_\(Date().timeIntervalSince1970).png")
                 }
                 return
             }

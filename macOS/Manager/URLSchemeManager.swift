@@ -8,11 +8,14 @@
 
 import Cocoa
 import SimpleLogger
+import SwiftUI
 
 class URLSchemeManager {
+    @ObservedObject private var uploader = UPicUploader.shared
+
     static var shared = URLSchemeManager()
 
-    func handleURL(_ urlStr: String) {
+    func handleURL(_ urlStr: String) async {
         AppLogger.urlScheme.info("开始解析 URLScheme 参数: \(urlStr)")
 
         guard let url = NSURL(string: urlStr) else {
@@ -34,14 +37,14 @@ class URLSchemeManager {
             AppLogger.urlScheme.info("上传类型为: 文件")
             if keyValue.count == 2 {
                 let pathStr = String(keyValue.last ?? "")
-                // (NSApplication.shared.delegate as? AppDelegate)?.uploadFilesFromPaths(pathStr.urlDecoded())
+                await uploader.upload(fileURLs: [URL(filePath: pathStr)])
             }
         case "url":
             AppLogger.urlScheme.info("上传类型为: URL")
             if keyValue.count == 2 {
                 let url = String(keyValue.last ?? "")
                 if let fileUrl = URL(string: url.urlDecoded()), let data = try? Data(contentsOf: fileUrl) {
-                    // (NSApplication.shared.delegate as? AppDelegate)?.uploadFiles([data])
+                    await uploader.upload(fileData: data)
                 }
             }
         case .some(let str) where str.contains("x-callback-url"):
