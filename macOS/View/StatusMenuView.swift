@@ -126,10 +126,17 @@ struct StatusMenuView: View {
             
             Divider()
             
+            Button("Database") {
+                openWindow(id: "database")
+            }
+            .keyboardShortcut("D")
+            
             Button("Preferences") {
                 openWindow(id: "settings")
             }
             .keyboardShortcut(",")
+            
+            Divider()
             
             Button("Quit") {
                 NSApplication.shared.terminate(self)

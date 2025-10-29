@@ -41,6 +41,14 @@ struct uPicApp: App {
             .defaultLaunchBehavior(.suppressed)
         #endif
 
+        Window("uPic Database", id: "database") {
+            DatabaseView()
+                .frame(minWidth: 780, idealWidth: 780, minHeight: 560, idealHeight: 560)
+        }
+        .modelContainer(upicModelContainer)
+        .defaultPosition(.center)
+        .defaultLaunchBehavior(.suppressed)
+
         MenuBarExtra {
             StatusMenuView()
         } label: {
