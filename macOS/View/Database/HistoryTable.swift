@@ -18,98 +18,120 @@ struct HistoryTable: View {
     @State private var showClearHistoryAlert: Bool = false
     @State private var quickLookURL: URL?
     @State private var isShowingQuickLook = false
+    @State private var thumbnailSize: CGFloat = 60
 
     var body: some View {
-        Table(uploadHistory, selection: $selectedHistory) {
-            TableColumn("Thumbnail") { history in
-                ThumbnailView(history: history)
-            }
-            .width(80)
+        VStack(spacing: 0) {
+            Table(uploadHistory, selection: $selectedHistory) {
+                TableColumn("Thumbnail") { history in
+                    ThumbnailView(history: history, size: thumbnailSize)
+                }
+                .width(thumbnailSize + 20)
 
-            TableColumn("File Name") { history in
-                Text(history.filename ?? "未知文件")
-                    .lineLimit(1)
-                    .truncationMode(.middle)
-            }
-            .width(ideal: 80)
+                TableColumn("File Name") { history in
+                    Text(history.filename ?? "未知文件")
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                }
+                .width(ideal: 80)
 
-            TableColumn("URL") { history in
-                Text(history.url)
-                    .lineLimit(2)
-                    .truncationMode(.tail)
-                    .foregroundColor(.secondary)
-            }
-            .width(ideal: 120)
-
-            TableColumn("Size") { history in
-                if let dimensions = history.dimensions {
-                    Text(dimensions)
-                        .foregroundColor(.secondary)
-                } else {
-                    Text("-")
+                TableColumn("URL") { history in
+                    Text(history.url)
+                        .lineLimit(2)
+                        .truncationMode(.tail)
                         .foregroundColor(.secondary)
                 }
-            }
-            .width(ideal: 50)
+                .width(ideal: 120)
 
-            TableColumn("Frame") { history in
-                Text(history.formattedSize)
-                    .foregroundColor(.secondary)
-            }
-            .width(ideal: 50)
-
-            TableColumn("Upload Time") { history in
-                Text(history.formattedDate)
-                    .foregroundColor(.secondary)
-            }
-            .width(ideal: 160)
-        }
-        .toolbar {
-            ToolbarItem {
-                Button {
-                    showClearHistoryAlert = true
-                } label: {
-                    Image(systemName: "trash")
-                        .foregroundColor(.red)
-                }
-            }
-        }
-        .contextMenu(forSelectionType: UploadHistoryModel.ID.self) { selectedIds in
-            if let selectedId = selectedIds.first, let history = uploadHistory.first(where: { $0.id == selectedId }) {
-                Button("Preview", systemImage: "eye") {
-                    if let url = URL(string: history.url) {
-                        quickLookURL = url
+                TableColumn("Size") { history in
+                    if let dimensions = history.dimensions {
+                        Text(dimensions)
+                            .foregroundColor(.secondary)
+                    } else {
+                        Text("-")
+                            .foregroundColor(.secondary)
                     }
                 }
+                .width(ideal: 50)
 
-                Button("Copy URL", systemImage: "clipboard") {
-                    copyToClipboard(history.url)
+                TableColumn("Frame") { history in
+                    Text(history.formattedSize)
+                        .foregroundColor(.secondary)
                 }
+                .width(ideal: 50)
 
-                Button("Open in Browser", systemImage: "network") {
-                    openInBrowser(history.url)
+                TableColumn("Upload Time") { history in
+                    Text(history.formattedDate)
+                        .foregroundColor(.secondary)
                 }
-
-                Divider()
-
-                Button("Delete", systemImage: "trash", role: .destructive) {
-                    deleteHistory(history)
+                .width(ideal: 160)
+            }
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        showClearHistoryAlert = true
+                    } label: {
+                        Image(systemName: "trash")
+                            .foregroundColor(.red)
+                    }
                 }
             }
-        }
-        .alert("清空历史记录", isPresented: $showClearHistoryAlert) {
-            Button("取消", role: .cancel) {}
-            Button("清空", role: .destructive) {
-                clearAllHistory()
+            .contextMenu(forSelectionType: UploadHistoryModel.ID.self) { selectedIds in
+                if let selectedId = selectedIds.first, let history = uploadHistory.first(where: { $0.id == selectedId }) {
+                    Button("Preview", systemImage: "eye") {
+                        if let url = URL(string: history.url) {
+                            quickLookURL = url
+                        }
+                    }
+
+                    Button("Copy URL", systemImage: "clipboard") {
+                        copyToClipboard(history.url)
+                    }
+
+                    Button("Open in Browser", systemImage: "network") {
+                        openInBrowser(history.url)
+                    }
+
+                    Divider()
+
+                    Button("Delete", systemImage: "trash", role: .destructive) {
+                        deleteHistory(history)
+                    }
+                }
             }
-        } message: {
-            Text("确定要清空所有上传历史记录吗？此操作不可撤销。")
+            .alert("Clear History Record", isPresented: $showClearHistoryAlert) {
+                Button("Cancel", role: .cancel) {}
+                Button("Clear", role: .destructive) {
+                    clearAllHistory()
+                }
+            } message: {
+                Text("Are you sure you want to clear all upload history? This action cannot be undone.")
+            }
+            .onKeyPress(.space) {
+                handleSpaceKey()
+                return .handled
+            }
+            .quickLookPreview($quickLookURL)
+            .id(thumbnailSize)
+
+            HStack(spacing: 2) {
+                Spacer()
+
+                HStack(spacing: 2) {
+                    Text("Thumbnail Size")
+                    Image(systemName: "photo")
+                }
+                .foregroundColor(.secondary)
+                .font(.caption)
+
+                Slider(value: $thumbnailSize, in: 40 ... 120, step: 5) {}
+                    .labelsHidden()
+                    .frame(width: 100)
+            }
+            .padding(.trailing, 16)
+            .padding(.bottom, 8)
+            .background(Color(NSColor.controlBackgroundColor))
         }
-        .onKeyPress(.space) {
-            handleSpaceKey()
-            return .handled
-        }
-        .quickLookPreview($quickLookURL)
     }
 
     private func deleteHistory(_ history: UploadHistoryModel) {
@@ -155,6 +177,7 @@ struct HistoryTable: View {
 
 struct ThumbnailView: View {
     let history: UploadHistoryModel
+    let size: CGFloat
 
     var body: some View {
         Group {
@@ -162,20 +185,20 @@ struct ThumbnailView: View {
                 Image(nsImage: nsImage)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 50, height: 50)
+                    .frame(width: size - 10, height: size - 10)
                     .clipShape(RoundedRectangle(cornerRadius: 6))
             } else {
                 RoundedRectangle(cornerRadius: 6)
                     .fill(Color.gray.opacity(0.3))
-                    .frame(width: 50, height: 50)
+                    .frame(width: size - 10, height: size - 10)
                     .overlay(
                         Image(systemName: "photo")
-                            .font(.system(size: 16))
+                            .font(.system(size: size / 4))
                             .foregroundColor(.secondary)
                     )
             }
         }
-        .frame(width: 60, height: 60)
+        .frame(width: size, height: size)
     }
 }
 
