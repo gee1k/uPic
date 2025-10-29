@@ -18,8 +18,6 @@ struct UploadDemoView: View {
     @State private var hasDiskPermissions = false
 
     init() {
-        // 这里需要从环境中获取modelContext
-        // 暂时使用占位符，实际使用时需要传入正确的modelContext
         let context = ModelContext(try! ModelContainer(for: HostModel.self, UploadHistoryModel.self))
         self._uploader = StateObject(wrappedValue: UPicUploader(modelContext: context))
     }

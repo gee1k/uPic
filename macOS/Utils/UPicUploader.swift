@@ -7,11 +7,13 @@
 
 import AppKit
 import Combine
+import Defaults
 import Foundation
 import SimpleLogger
 import SwiftData
 import SwiftUI
 import UPicCore
+import UniformTypeIdentifiers
 
 public struct UploadItem {
     var data: Data?
@@ -388,5 +390,256 @@ public class UPicUploader: ObservableObject {
         } catch {
             AppLogger.uploader.error("[UPicUploader] 清空历史记录失败 -> \(error.localizedDescription)")
         }
+    }
+
+    // MARK: - File Selection Upload
+
+    /// 选择文件上传
+    public func uploadFromSelectFile() {
+        AppLogger.uploader.info("[UPicUploader] 开始选择文件上传")
+
+        if isUploading {
+            AppLogger.uploader.warning("[UPicUploader] 当前上传任务未结束")
+            return
+        }
+
+        let openPanel = NSOpenPanel()
+        openPanel.allowsMultipleSelection = true
+        openPanel.canChooseDirectories = false
+        openPanel.canCreateDirectories = false
+        openPanel.canChooseFiles = true
+        openPanel.allowedContentTypes = [.image]
+
+        openPanel.begin { [weak self] result in
+            openPanel.close()
+            if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
+                AppLogger.uploader.info("[UPicUploader] 选择文件数量：\(openPanel.urls.count)")
+                Task {
+                    if let selectedHost = self?.getSelectedHost() {
+                        await self?.upload(hostModel: selectedHost, fileURLs: openPanel.urls)
+                    }
+                }
+            }
+        }
+
+        NSApp.activate(ignoringOtherApps: true)
+    }
+
+    // MARK: - Clipboard Upload
+
+    /// 从剪贴板上传
+    public func uploadFromClipboard() {
+        AppLogger.uploader.info("[UPicUploader] 开始从剪贴板上传")
+
+        if isUploading {
+            AppLogger.uploader.warning("[UPicUploader] 当前上传任务未结束")
+            return
+        }
+
+        let pasteboard = NSPasteboard.general
+        AppLogger.uploader.info("[UPicUploader] 剪贴板格式：\(pasteboard.types?.first?.rawValue ?? "未知")")
+
+        // 检查文件
+        if let filenames = pasteboard.propertyList(forType: NSPasteboard.PasteboardType("NSFilenamesPboardType")) as? [String] {
+            var urls = [URL]()
+
+            for path in filenames {
+                let url = URL(fileURLWithPath: path)
+                let fileExtension = url.pathExtension.lowercased()
+                if isImageFileExtension(fileExtension) {
+                    urls.append(url)
+                }
+            }
+
+            AppLogger.uploader.info("[UPicUploader] 剪贴板文件数量：\(urls.count)")
+
+            if !urls.isEmpty {
+                Task {
+                    if let selectedHost = getSelectedHost() {
+                        await upload(hostModel: selectedHost, fileURLs: urls)
+                    }
+                }
+                return
+            }
+        }
+
+        // 检查图片数据
+        let imageTypes: [NSPasteboard.PasteboardType] = [.png, .tiff]
+
+        for imageType in imageTypes {
+            if let imageData = pasteboard.data(forType: imageType) {
+                AppLogger.uploader.info("[UPicUploader] 剪贴板上传图片：\(imageType.rawValue)")
+
+                var processedData = imageData
+
+                // 转换TIFF为JPEG
+                if imageType == .tiff,
+                   let image = NSImage(data: imageData),
+                   let jpegData = image.jpegData(compressionQuality: 0.9) {
+                    processedData = jpegData
+                }
+
+                Task {
+                    if let selectedHost = getSelectedHost() {
+                        await upload(hostModel: selectedHost, fileData: processedData, filename: "clipboard_\(Date().timeIntervalSince1970).png")
+                    }
+                }
+                return
+            }
+        }
+
+        // 检查URL字符串
+        if let urlString = pasteboard.string(forType: .string),
+           let url = URL(string: urlString.trimmingCharacters(in: .whitespacesAndNewlines)) {
+            AppLogger.uploader.info("[UPicUploader] 剪贴板上传URL：\(urlString)")
+
+            Task {
+                do {
+                    let data = try Data(contentsOf: url)
+                    if let selectedHost = getSelectedHost() {
+                        await upload(hostModel: selectedHost, fileData: data, filename: url.lastPathComponent)
+                    }
+                } catch {
+                    AppLogger.uploader.error("[UPicUploader] 从URL加载数据失败：\(error.localizedDescription)")
+                }
+            }
+        }
+    }
+
+    // MARK: - Screenshot Upload
+
+    /// 截图上传
+    public func uploadFromScreenshot() {
+        AppLogger.uploader.info("[UPicUploader] 开始截图上传")
+
+        if isUploading {
+            AppLogger.uploader.warning("[UPicUploader] 当前上传任务未结束")
+            return
+        }
+
+        // 检查屏幕录制权限
+        if !checkScreenRecordingPermission() {
+            AppLogger.uploader.warning("[UPicUploader] 无截图权限，申请权限")
+            requestScreenRecordingPermission()
+            return
+        }
+
+        // 使用系统截图工具
+        let task = Process()
+        task.launchPath = "/usr/sbin/screencapture"
+        task.arguments = ["-i", "-c"] // 交互模式，复制到剪贴板
+        task.launch()
+        task.waitUntilExit()
+
+        // 检查剪贴板中的截图
+        let pasteboard = NSPasteboard.general
+        AppLogger.uploader.info("[UPicUploader] 截图格式：\(pasteboard.types?.first?.rawValue ?? "未知")")
+
+        let imageTypes: [NSPasteboard.PasteboardType] = [.png, .tiff]
+
+        for imageType in imageTypes {
+            if let imageData = pasteboard.data(forType: imageType) {
+                AppLogger.uploader.info("[UPicUploader] 截图上传成功：\(imageType.rawValue)")
+
+                Task {
+                    if let selectedHost = getSelectedHost() {
+                        await upload(hostModel: selectedHost, fileData: imageData, filename: "screenshot_\(Date().timeIntervalSince1970).png")
+                    }
+                }
+                return
+            }
+        }
+
+        AppLogger.uploader.warning("[UPicUploader] 截图失败或未找到图片数据")
+    }
+
+    // MARK: - Helper Methods
+
+    /// 获取选中的图床配置
+    private func getSelectedHost() -> HostModel? {
+        guard let selectedHostId = Defaults[.selectedHostId] else {
+            AppLogger.uploader.warning("[UPicUploader] 未选中任何图床配置")
+            return getFirstHostAsFallback()
+        }
+
+        let descriptor = FetchDescriptor<HostModel>(
+            predicate: #Predicate { $0.id == selectedHostId }
+        )
+
+        do {
+            let hosts = try modelContext.fetch(descriptor)
+            if let selectedHost = hosts.first {
+                AppLogger.uploader.info("[UPicUploader] 使用选中的图床配置：\(selectedHost.name)")
+                return selectedHost
+            } else {
+                AppLogger.uploader.warning("[UPicUploader] 选中的图床配置不存在，ID：\(selectedHostId)")
+                return getFirstHostAsFallback()
+            }
+        } catch {
+            AppLogger.uploader.error("[UPicUploader] 获取选中图床配置失败：\(error.localizedDescription)")
+            return getFirstHostAsFallback()
+        }
+    }
+
+    /// 获取第一个图床配置作为备用选项
+    private func getFirstHostAsFallback() -> HostModel? {
+        let descriptor = FetchDescriptor<HostModel>()
+        do {
+            let hosts = try modelContext.fetch(descriptor)
+            if let firstHost = hosts.first {
+                AppLogger.uploader.info("[UPicUploader] 使用第一个图床配置作为备用：\(firstHost.name)")
+                // 自动设置为选中的图床
+                Defaults[.selectedHostId] = firstHost.id
+                return firstHost
+            } else {
+                AppLogger.uploader.error("[UPicUploader] 没有可用的图床配置")
+                return nil
+            }
+        } catch {
+            AppLogger.uploader.error("[UPicUploader] 获取备用图床配置失败：\(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    /// 检查是否为图片文件扩展名
+    private func isImageFileExtension(_ ext: String) -> Bool {
+        let imageExtensions = ["png", "jpg", "jpeg", "gif", "webp", "bmp", "tiff", "ico", "svg"]
+        return imageExtensions.contains(ext.lowercased())
+    }
+
+    /// 检查屏幕录制权限
+    private func checkScreenRecordingPermission() -> Bool {
+        // 简化的权限检查，实际项目中可能需要更复杂的实现
+        return CGPreflightScreenCaptureAccess()
+    }
+
+    /// 请求屏幕录制权限
+    private func requestScreenRecordingPermission() {
+        CGRequestScreenCaptureAccess()
+        // 显示权限请求提示
+        let alert = NSAlert()
+        alert.messageText = "需要屏幕录制权限"
+        alert.informativeText = "请在系统偏好设置 > 安全性与隐私 > 屏幕录制中允许 uPic 访问。"
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "打开系统偏好设置")
+        alert.addButton(withTitle: "取消")
+
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn {
+            NSWorkspace.shared.open(URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture")!)
+        }
+    }
+}
+
+// MARK: - NSImage Extension
+
+extension NSImage {
+    /// 将NSImage转换为JPEG数据
+    func jpegData(compressionQuality: CGFloat = 0.9) -> Data? {
+        guard let tiffData = self.tiffRepresentation,
+              let bitmapRep = NSBitmapImageRep(data: tiffData) else {
+            return nil
+        }
+        return bitmapRep.representation(using: .jpeg, properties: [.compressionFactor: compressionQuality])
     }
 }

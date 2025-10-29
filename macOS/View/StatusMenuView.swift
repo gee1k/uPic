@@ -20,9 +20,16 @@ struct StatusMenuView: View {
     @Default(.outputFormatEncoded) var outputFormatEncoded
     @Default(.compressFactor) var compressFactor
     
+    @StateObject private var uploader: UPicUploader
+    
     @Query private var hostModels: [HostModel]
     
     @Environment(\.openWindow) var openWindow
+    
+    init() {
+        let context = ModelContext(try! ModelContainer(for: HostModel.self, UploadHistoryModel.self))
+        self._uploader = StateObject(wrappedValue: UPicUploader(modelContext: context))
+    }
     
     private var selectedHostName: String {
         if let hostModel = hostModels.first(where: { $0.id == selectedHostId }) {
@@ -42,19 +49,28 @@ struct StatusMenuView: View {
             }
             
             Button("Upload from select file") {
-                print("Upload from select file")
+                uploader.uploadFromSelectFile()
             }
             .globalKeyboardShortcut(.uploadFromSelectFile)
+            .onGlobalKeyboardShortcut(.uploadFromSelectFile, type: .keyUp) {
+                uploader.uploadFromSelectFile()
+            }
             
             Button("Upload from clipboard") {
-                print("Upload from clipboard")
+                uploader.uploadFromClipboard()
             }
             .globalKeyboardShortcut(.uploadFromClipboard)
+            .onGlobalKeyboardShortcut(.uploadFromClipboard, type: .keyUp) {
+                uploader.uploadFromClipboard()
+            }
             
             Button("Upload from screenshot  \(Text(screenshotApp.displayName).foregroundStyle(.secondary))") {
-                print("Upload from screenshot")
+                uploader.uploadFromScreenshot()
             }
             .globalKeyboardShortcut(.uploadFromScreenshot)
+            .onGlobalKeyboardShortcut(.uploadFromScreenshot, type: .keyUp) {
+                uploader.uploadFromScreenshot()
+            }
     
             Menu("Host  \(Text(selectedHostName).foregroundStyle(.secondary))") {
                 ForEach(hostModels) { hostModel in

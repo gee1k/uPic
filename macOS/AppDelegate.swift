@@ -11,8 +11,6 @@ import SimpleLogger
 
 class AppDelegate: NSResponder, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
-        setupKeyboardShortcuts()
-        
         Noti.shared.requestNotificationAuthorization()
 
         // Add URL scheme listening
@@ -21,18 +19,6 @@ class AppDelegate: NSResponder, NSApplicationDelegate {
 
     func applicationShouldHandleReopen(_: NSApplication, hasVisibleWindows _: Bool) -> Bool {
         return true
-    }
-
-    private func setupKeyboardShortcuts() {
-        KeyboardShortcuts.onKeyUp(for: .uploadFromSelectFile) {
-            print("Upload from select file")
-        }
-        KeyboardShortcuts.onKeyUp(for: .uploadFromClipboard) {
-            print("Upload from clipboard")
-        }
-        KeyboardShortcuts.onKeyUp(for: .uploadFromScreenshot) {
-            print("Upload from screenshot")
-        }
     }
 
     @objc func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent _: NSAppleEventDescriptor!) {
