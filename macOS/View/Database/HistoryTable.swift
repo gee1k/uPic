@@ -5,6 +5,7 @@
 //  Created by Licardo on 2025/10/29.
 //
 
+import QuickLook
 import SwiftData
 import SwiftUI
 import UPicCore
@@ -15,6 +16,8 @@ struct HistoryTable: View {
     @Environment(\.modelContext) private var modelContext
 
     @State private var showClearHistoryAlert: Bool = false
+    @State private var quickLookURL: URL?
+    @State private var isShowingQuickLook = false
 
     var body: some View {
         Table(uploadHistory, selection: $selectedHistory) {
@@ -28,6 +31,7 @@ struct HistoryTable: View {
                     .lineLimit(1)
                     .truncationMode(.middle)
             }
+            .width(ideal: 80)
 
             TableColumn("URL") { history in
                 Text(history.url)
@@ -35,6 +39,7 @@ struct HistoryTable: View {
                     .truncationMode(.tail)
                     .foregroundColor(.secondary)
             }
+            .width(ideal: 120)
 
             TableColumn("Size") { history in
                 if let dimensions = history.dimensions {
@@ -45,19 +50,19 @@ struct HistoryTable: View {
                         .foregroundColor(.secondary)
                 }
             }
-            .width(80)
+            .width(ideal: 50)
 
             TableColumn("Frame") { history in
                 Text(history.formattedSize)
                     .foregroundColor(.secondary)
             }
-            .width(80)
+            .width(ideal: 50)
 
             TableColumn("Upload Time") { history in
                 Text(history.formattedDate)
                     .foregroundColor(.secondary)
             }
-            .width(120)
+            .width(ideal: 160)
         }
         .toolbar {
             ToolbarItem {
@@ -69,25 +74,27 @@ struct HistoryTable: View {
                 }
             }
         }
-        .contextMenu(forSelectionType: UploadHistoryModel.self) { selectedItems in
-            if let history = selectedItems.first {
-                Button("复制链接") {
+        .contextMenu(forSelectionType: UploadHistoryModel.ID.self) { selectedIds in
+            if let selectedId = selectedIds.first, let history = uploadHistory.first(where: { $0.id == selectedId }) {
+                Button("Preview", systemImage: "eye") {
+                    if let url = URL(string: history.url) {
+                        quickLookURL = url
+                    }
+                }
+
+                Button("Copy URL", systemImage: "clipboard") {
                     copyToClipboard(history.url)
                 }
 
-                Button("在浏览器中打开") {
+                Button("Open in Browser", systemImage: "network") {
                     openInBrowser(history.url)
                 }
 
                 Divider()
 
-                Button("删除", role: .destructive) {
+                Button("Delete", systemImage: "trash", role: .destructive) {
                     deleteHistory(history)
                 }
-            }
-        } primaryAction: { selectedItems in
-            if let history = selectedItems.first {
-                copyToClipboard(history.url)
             }
         }
         .alert("清空历史记录", isPresented: $showClearHistoryAlert) {
@@ -98,6 +105,11 @@ struct HistoryTable: View {
         } message: {
             Text("确定要清空所有上传历史记录吗？此操作不可撤销。")
         }
+        .onKeyPress(.space) {
+            handleSpaceKey()
+            return .handled
+        }
+        .quickLookPreview($quickLookURL)
     }
 
     private func deleteHistory(_ history: UploadHistoryModel) {
@@ -130,6 +142,14 @@ struct HistoryTable: View {
         } catch {
             print("Failed to clear history: \(error)")
         }
+    }
+
+    private func handleSpaceKey() {
+        guard let selectedId = selectedHistory.first, let history = uploadHistory.first(where: { $0.id == selectedId }), let url = URL(string: history.url) else {
+            return
+        }
+
+        quickLookURL = url
     }
 }
 
