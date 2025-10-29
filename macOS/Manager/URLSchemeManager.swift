@@ -1,5 +1,5 @@
 //
-//  URLSchemeExt.swift
+//  URLSchemeManager.swift
 //  uPic
 //
 //  Created by Svend Jin on 2019/12/27.
@@ -9,8 +9,8 @@
 import Cocoa
 import SimpleLogger
 
-class URLSchemeExt {
-    static var shared = URLSchemeExt()
+class URLSchemeManager {
+    static var shared = URLSchemeManager()
 
     func handleURL(_ urlStr: String) {
         AppLogger.urlScheme.info("开始解析 URLScheme 参数: \(urlStr)")
@@ -34,14 +34,14 @@ class URLSchemeExt {
             AppLogger.urlScheme.info("上传类型为: 文件")
             if keyValue.count == 2 {
                 let pathStr = String(keyValue.last ?? "")
-                //(NSApplication.shared.delegate as? AppDelegate)?.uploadFilesFromPaths(pathStr.urlDecoded())
+                // (NSApplication.shared.delegate as? AppDelegate)?.uploadFilesFromPaths(pathStr.urlDecoded())
             }
         case "url":
             AppLogger.urlScheme.info("上传类型为: URL")
             if keyValue.count == 2 {
                 let url = String(keyValue.last ?? "")
                 if let fileUrl = URL(string: url.urlDecoded()), let data = try? Data(contentsOf: fileUrl) {
-                    //(NSApplication.shared.delegate as? AppDelegate)?.uploadFiles([data])
+                    // (NSApplication.shared.delegate as? AppDelegate)?.uploadFiles([data])
                 }
             }
         case .some(let str) where str.contains("x-callback-url"):
@@ -49,7 +49,7 @@ class URLSchemeExt {
 
             if str.contains("acceptSnip") {
                 AppLogger.urlScheme.info("开始处理 x-callback-url 请求: \(keyValue)")
-                //(NSApplication.shared.delegate as? AppDelegate)?.uploadByPasteboard()
+                // (NSApplication.shared.delegate as? AppDelegate)?.uploadByPasteboard()
             } else {
                 AppLogger.urlScheme.warning("x-callback-url 请求错误: \(keyValue)")
             }
