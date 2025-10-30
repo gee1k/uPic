@@ -23,7 +23,7 @@ struct WeiboConfigView: View {
     @State private var domain: String = "https://tva1.sinaimg.cn"
     @State private var isPasswordSecured: Bool = true
 
-    @Environment(\.openURL) var openURL
+    @Environment(\.openURL) private var openURL
 
     var body: some View {
         Form {

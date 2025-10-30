@@ -18,6 +18,7 @@ enum AppLogger {
     static let notifications = UPicLogger(category: "notifications")
     static let uploader = UPicLogger(category: "uploader")
     static let bookmark = UPicLogger(category: "bookmark")
+    static let tools = UPicLogger(category: "tools")
 }
 
 // MARK: - Log Formatter

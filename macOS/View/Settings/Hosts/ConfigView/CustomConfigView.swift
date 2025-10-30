@@ -27,7 +27,7 @@ struct CustomConfigView: View {
     @State private var headersText: String = ""
     @State private var bodyText: String = ""
 
-    @Environment(\.openURL) var openURL
+    @Environment(\.openURL) private var openURL
 
     var body: some View {
         Form {

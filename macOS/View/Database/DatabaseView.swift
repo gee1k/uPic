@@ -38,13 +38,6 @@ struct DatabaseView: View {
     }
 }
 
-extension UploadHistoryModel {
-    var dimensions: String? {
-        guard pixelWidth > 0, pixelHeight > 0 else { return nil }
-        return "\(pixelWidth) × \(pixelHeight)"
-    }
-}
-
 #Preview {
     DatabaseView()
         .modelContainer(for: [HostModel.self, UploadHistoryModel.self], inMemory: true)

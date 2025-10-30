@@ -24,7 +24,7 @@ struct GiteeConfigView: View {
     @State private var saveKeySuffix: String = ""
     @State private var isTokenSecured: Bool = true
 
-    @Environment(\.openURL) var openURL
+    @Environment(\.openURL) private var openURL
     @Environment(\.modelContext) private var modelContext
 
     var body: some View {

@@ -67,4 +67,11 @@ public final class UploadHistoryModel {
         formatter.timeStyle = .short
         return formatter.string(from: createdDate)
     }
+
+    public var dimensions: String? {
+        guard pixelWidth > 0 && pixelHeight > 0 else {
+            return nil
+        }
+        return "\(pixelWidth)×\(pixelHeight)"
+    }
 }

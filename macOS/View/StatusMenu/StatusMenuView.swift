@@ -24,7 +24,7 @@ struct StatusMenuView: View {
     @Query private var hostModels: [HostModel]
 
     @Environment(\.openWindow) var openWindow
-    
+
     private var selectedHostName: String {
         if let hostModel = hostModels.first(where: { $0.id == selectedHostId }) {
             return hostModel.name
@@ -136,10 +136,29 @@ struct StatusMenuView: View {
             
             Divider()
             
+            Menu("History") {
+                if uploader.uploadHistory.isEmpty {
+                    Text("No history yet")
+                        .foregroundColor(.secondary)
+                } else {
+                    ForEach(Array(uploader.uploadHistory.prefix(8)), id: \.id) { history in
+                        HistoryMenuItem(history: history)
+                    }
+
+                    Divider()
+
+                    Button("View More...") {
+                        openWindow(id: "database")
+                    }
+                }
+            }
+            
             Button("Database") {
                 openWindow(id: "database")
             }
             .keyboardShortcut("D")
+            
+            Divider()
             
             Button("Preferences") {
                 openWindow(id: "settings")
@@ -155,6 +174,7 @@ struct StatusMenuView: View {
         }
     }
 }
+
 
 #Preview {
     StatusMenuView()

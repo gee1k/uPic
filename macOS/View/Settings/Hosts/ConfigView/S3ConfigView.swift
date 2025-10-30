@@ -29,7 +29,7 @@ struct S3ConfigView: View {
     @State private var isAccessKeySecured: Bool = true
     @State private var isSecretKeySecured: Bool = true
 
-    @Environment(\.openURL) var openURL
+    @Environment(\.openURL) private var openURL
 
     var body: some View {
         Form {

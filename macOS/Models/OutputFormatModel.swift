@@ -34,10 +34,15 @@ extension OutputFormatModel {
         let tempArr = filename.components(separatedBy: .whitespaces).map { $0.trim() }.filter { !$0.isEmpty }
         filename = tempArr.joined(separator: "")
 
-        if outputFormat == nil {
+        var output = outputFormat
+        if output == nil {
+            output = Defaults[.selectedOutputFormat]
+        }
+
+        if output == nil {
             return formatUrl
         } else {
-            return outputFormat!.value.replacingOccurrences(of: "{url}", with: formatUrl).replacingOccurrences(of: "{filename}", with: filename)
+            return output!.value.replacingOccurrences(of: "{url}", with: formatUrl).replacingOccurrences(of: "{filename}", with: filename)
         }
     }
 }

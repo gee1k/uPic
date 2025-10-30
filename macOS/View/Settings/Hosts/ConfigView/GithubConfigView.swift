@@ -24,7 +24,7 @@ struct GithubConfigView: View {
     @State private var saveKeySuffix: String = ""
     @State private var isTokenSecured: Bool = true
 
-    @Environment(\.openURL) var openURL
+    @Environment(\.openURL) private var openURL
 
     var body: some View {
         Form {

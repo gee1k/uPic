@@ -159,8 +159,7 @@ public class BookmarkManager {
     private func checkRootSubdirectoriesAuthorizationStatus() -> Bool {
         AppLogger.bookmark.debug("开始检查根目录子目录权限状态")
         
-        guard let bookmarkDataArray = Defaults[.rootSubdirectoryBookmarks], let storedNames = Defaults[.rootSubdirectoryNames], !bookmarkDataArray.isEmpty
-        else {
+        guard let bookmarkDataArray = Defaults[.rootSubdirectoryBookmarks], let storedNames = Defaults[.rootSubdirectoryNames], !bookmarkDataArray.isEmpty else {
             AppLogger.bookmark.debug("未找到根目录子目录书签")
             return false
         }
@@ -210,10 +209,7 @@ public class BookmarkManager {
     private func startRootSubdirectoriesAccessing() -> Bool {
         AppLogger.bookmark.debug("开始启动根目录子目录访问")
         
-        guard let bookmarkDataArray = Defaults[.rootSubdirectoryBookmarks],
-              let storedNames = Defaults[.rootSubdirectoryNames],
-              !bookmarkDataArray.isEmpty
-        else {
+        guard let bookmarkDataArray = Defaults[.rootSubdirectoryBookmarks], let storedNames = Defaults[.rootSubdirectoryNames], !bookmarkDataArray.isEmpty else {
             AppLogger.bookmark.debug("未找到根目录子目录书签")
             return false
         }
@@ -474,9 +470,7 @@ extension BookmarkManager {
         
         // 如果当前系统不需要使用临时解决方案，但我们有子目录 bookmarks
         if !shouldUseRootSubdirectoryWorkaround() {
-            if let _ = Defaults[.rootSubdirectoryBookmarks],
-               Defaults[.rootDirectoryBookmark] == nil
-            {
+            if let _ = Defaults[.rootSubdirectoryBookmarks], Defaults[.rootDirectoryBookmark] == nil {
                 AppLogger.bookmark.debug("系统已修复根目录 bookmark bug，但当前使用子目录方案，尝试升级")
                 
                 // 尝试创建根目录 bookmark 来测试是否已修复

@@ -14,11 +14,11 @@ struct HistoryTable: View {
     let uploadHistory: [UploadHistoryModel]
     @State private var selectedHistory = Set<UploadHistoryModel.ID>()
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.openURL) private var openURL
     @Query private var hostModels: [HostModel]
 
     @State private var showClearHistoryAlert: Bool = false
     @State private var quickLookURL: URL?
-    @State private var isShowingQuickLook = false
     @State private var thumbnailSize: CGFloat = 60
 
     private func getHost(for history: UploadHistoryModel) -> HostModel? {
@@ -107,11 +107,13 @@ struct HistoryTable: View {
                     }
 
                     Button("Copy URL", systemImage: "clipboard") {
-                        copyToClipboard(history.url)
+                        Tools.shared.copyUrls([history.url])
                     }
 
                     Button("Open in Browser", systemImage: "network") {
-                        openInBrowser(history.url)
+                        if let url = URL(string: history.url) {
+                            openURL(url)
+                        }
                     }
 
                     Divider()
@@ -163,17 +165,6 @@ struct HistoryTable: View {
         } catch {
             print("Failed to delete history: \(error)")
         }
-    }
-
-    private func copyToClipboard(_ string: String) {
-        let pasteboard = NSPasteboard.general
-        pasteboard.clearContents()
-        pasteboard.setString(string, forType: .string)
-    }
-
-    private func openInBrowser(_ url: String) {
-        guard let nsUrl = URL(string: url) else { return }
-        NSWorkspace.shared.open(nsUrl)
     }
 
     private func clearAllHistory() {
