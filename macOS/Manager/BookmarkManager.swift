@@ -86,7 +86,7 @@ public class BookmarkManager {
     
     /// 为根目录的所有子目录创建 security-scoped bookmark (macOS 26.0 临时解决方案)
     private func createRootSubdirectoryBookmarks(rootURL: URL) -> Bool {
-        AppLogger.bookmark.debug("开始为根目录子目录创建书签")
+        AppLogger.bookmark.debug("Starting to create bookmarks for root subdirectories")
         
         // 通常无法创建 bookmark 的系统目录和文件
         let excludedPaths: Set<String> = [
@@ -117,13 +117,13 @@ public class BookmarkManager {
                 
                 // 跳过已知的系统目录和隐藏文件
                 if excludedPaths.contains(fileName) {
-                    AppLogger.bookmark.debug("跳过系统目录: \(url.path)")
+                    AppLogger.bookmark.debug("Skipping system directory: \(url.path)")
                     continue
                 }
                 
                 // 跳过以点开头的隐藏文件/目录（除了一些重要的目录）
                 if fileName.hasPrefix(".") && !priorityDirs.contains(fileName) {
-                    AppLogger.bookmark.debug("跳过隐藏项目: \(url.path)")
+                    AppLogger.bookmark.debug("Skipping hidden item: \(url.path)")
                     continue
                 }
                 
@@ -132,10 +132,10 @@ public class BookmarkManager {
                     bookmarkDataArray.append(bookmarkData)
                     subdirectoryNames.append(fileName)
                     successCount += 1
-                    AppLogger.bookmark.debug("成功创建子目录书签: \(url.path)")
+                    AppLogger.bookmark.debug("Successfully created subdirectory bookmark: \(url.path)")
                 } catch {
                     failureCount += 1
-                    AppLogger.bookmark.debug("为子目录创建书签失败: \(url.path), 错误: \(error.localizedDescription)")
+                    AppLogger.bookmark.debug("Failed to create subdirectory bookmark: \(url.path), error: \(error.localizedDescription)")
                     // 继续处理其他目录，不因为单个目录失败而终止
                 }
             }
@@ -144,29 +144,29 @@ public class BookmarkManager {
             Defaults[.rootSubdirectoryBookmarks] = bookmarkDataArray
             Defaults[.rootSubdirectoryNames] = subdirectoryNames
             
-            AppLogger.bookmark.debug("根目录子目录书签创建完成，成功: \(successCount), 失败: \(failureCount), 总共有效书签: \(bookmarkDataArray.count)")
+            AppLogger.bookmark.debug("Root subdirectory bookmarks creation completed, success: \(successCount), failure: \(failureCount), total valid bookmarks: \(bookmarkDataArray.count)")
             
             // 只要有一些成功的书签就认为是成功的
             return bookmarkDataArray.count >= 2 // 至少需要2个有效书签才算成功
             
         } catch {
-            AppLogger.bookmark.error("读取根目录内容失败: \(error)")
+            AppLogger.bookmark.error("Failed to read root directory contents: \(error)")
             return false
         }
     }
     
     /// 检查根目录子目录权限状态（macOS 26.0 临时解决方案）
     private func checkRootSubdirectoriesAuthorizationStatus() -> Bool {
-        AppLogger.bookmark.debug("开始检查根目录子目录权限状态")
+        AppLogger.bookmark.debug("Starting to check root subdirectories authorization status")
         
         guard let bookmarkDataArray = Defaults[.rootSubdirectoryBookmarks], let storedNames = Defaults[.rootSubdirectoryNames], !bookmarkDataArray.isEmpty else {
-            AppLogger.bookmark.debug("未找到根目录子目录书签")
+            AppLogger.bookmark.debug("No root subdirectory bookmarks found")
             return false
         }
         
         // 检查存储的书签数量是否合理
         if bookmarkDataArray.count < 2 {
-            AppLogger.bookmark.debug("有效书签数量太少，需要重新授权")
+            AppLogger.bookmark.debug("Too few valid bookmarks, need to re-authorize")
             return false
         }
         
@@ -177,7 +177,7 @@ public class BookmarkManager {
         }
         
         if !hasImportantDirs {
-            AppLogger.bookmark.debug("缺少重要目录的书签，权限可能不完整")
+            AppLogger.bookmark.debug("Missing bookmarks for important directories, permissions may be incomplete")
             return false
         }
         
@@ -193,7 +193,7 @@ public class BookmarkManager {
                     validBookmarks += 1
                 }
             } catch {
-                AppLogger.bookmark.debug("书签解析失败: \(storedNames[index])")
+                AppLogger.bookmark.debug("Bookmark resolution failed: \(storedNames[index])")
             }
         }
         
@@ -201,16 +201,16 @@ public class BookmarkManager {
         let validRatio = Double(validBookmarks) / Double(bookmarkDataArray.count)
         let hasValidPermissions = validRatio > 0.6 // 60% 的书签有效就认为权限正常（考虑到某些目录可能会变化）
         
-        AppLogger.bookmark.debug("根目录子目录权限检查完成，有效书签: \(validBookmarks)/\(bookmarkDataArray.count)，比例: \(validRatio)")
+        AppLogger.bookmark.debug("Root subdirectory permissions check completed, valid bookmarks: \(validBookmarks)/\(bookmarkDataArray.count), ratio: \(validRatio)")
         return hasValidPermissions
     }
     
     /// 启动根目录子目录访问（macOS 26.0 临时解决方案）
     private func startRootSubdirectoriesAccessing() -> Bool {
-        AppLogger.bookmark.debug("开始启动根目录子目录访问")
+        AppLogger.bookmark.debug("Starting to start root subdirectories accessing")
         
         guard let bookmarkDataArray = Defaults[.rootSubdirectoryBookmarks], let storedNames = Defaults[.rootSubdirectoryNames], !bookmarkDataArray.isEmpty else {
-            AppLogger.bookmark.debug("未找到根目录子目录书签")
+            AppLogger.bookmark.debug("No root subdirectory bookmarks found")
             return false
         }
         
@@ -229,7 +229,7 @@ public class BookmarkManager {
                 let url = try URL(resolvingBookmarkData: bookmarkData, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
                 
                 if isStale {
-                    AppLogger.bookmark.debug("书签已过期: \(dirName)")
+                    AppLogger.bookmark.debug("Bookmark is stale: \(dirName)")
                     failureCount += 1
                     continue
                 }
@@ -237,21 +237,21 @@ public class BookmarkManager {
                 if url.startAccessingSecurityScopedResource() {
                     rootSubdirectoryUrls.append(url)
                     successCount += 1
-                    AppLogger.bookmark.debug("成功启动访问: \(url.path)")
+                    AppLogger.bookmark.debug("Successfully started accessing: \(url.path)")
                 } else {
-                    AppLogger.bookmark.debug("启动安全作用域访问失败: \(url.path)")
+                    AppLogger.bookmark.debug("Failed to start security scoped resource access: \(url.path)")
                     failureCount += 1
                 }
                 
             } catch {
-                AppLogger.bookmark.debug("解析书签失败 (\(dirName)): \(error.localizedDescription)")
+                AppLogger.bookmark.debug("Failed to resolve bookmark (\(dirName)): \(error.localizedDescription)")
                 failureCount += 1
             }
         }
         
         // 只要有一些成功的访问就认为成功
         let success = successCount >= 2 // 至少需要2个成功的访问
-        AppLogger.bookmark.debug("根目录子目录访问启动完成，成功: \(successCount), 失败: \(failureCount)")
+        AppLogger.bookmark.debug("Root subdirectories access startup completed, success: \(successCount), failure: \(failureCount)")
         
         if !success {
             // 如果失败，清理已启动的访问
@@ -263,14 +263,14 @@ public class BookmarkManager {
     
     /// 停止根目录子目录访问（macOS 26.0 临时解决方案）
     private func stopRootSubdirectoriesAccessing() {
-        AppLogger.bookmark.debug("开始停止根目录子目录访问")
+        AppLogger.bookmark.debug("Starting to stop root subdirectories accessing")
         
         for url in rootSubdirectoryUrls {
             url.stopAccessingSecurityScopedResource()
         }
         rootSubdirectoryUrls.removeAll()
         
-        AppLogger.bookmark.debug("根目录子目录访问停止完成")
+        AppLogger.bookmark.debug("Root subdirectories accessing stopped")
     }
 }
 
@@ -279,11 +279,11 @@ extension BookmarkManager {
     /// 检查完全磁盘访问权限状态
     /// - Returns: 是否已授权完全磁盘访问权限
     func checkFullDiskAuthorizationStatus() -> Bool {
-        AppLogger.bookmark.debug("开始检查是否有全盘访问权限")
+        AppLogger.bookmark.debug("Starting to check if full disk access permission is granted")
         
         // 如果需要使用临时解决方案（macOS 26.0）
         if shouldUseRootSubdirectoryWorkaround() {
-            AppLogger.bookmark.debug("使用根目录子目录权限检查方案 (macOS 26.0 临时解决方案)")
+            AppLogger.bookmark.debug("Using root subdirectory permission check solution (macOS 26.0 workaround)")
             Defaults[.hasFullDiskAccess] = checkRootSubdirectoriesAuthorizationStatus()
             return checkRootSubdirectoriesAuthorizationStatus()
         }
@@ -295,29 +295,29 @@ extension BookmarkManager {
                 let url = try URL(resolvingBookmarkData: data, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &isStale)
                 if isStale {
                     // bookmarks could become stale as the OS changes
-                    AppLogger.bookmark.debug("没有全盘访问权限-书签已过期，需要保存一个新的...")
+                    AppLogger.bookmark.debug("No full disk access permission - bookmark is stale, need to save a new one...")
                 } else if url.path == "/" {
-                    AppLogger.bookmark.debug("有全盘访问权限")
+                    AppLogger.bookmark.debug("Has full disk access permission")
                     Defaults[.hasFullDiskAccess] = true
                     return true
                 } else {
-                    AppLogger.bookmark.debug("没有全盘访问权限-书签路径为\(url.path)")
+                    AppLogger.bookmark.debug("No full disk access permission - bookmark path: \(url.path)")
                 }
             } catch {
-                AppLogger.bookmark.error("没有全盘访问权限-书签错误\(error)")
+                AppLogger.bookmark.error("No full disk access permission - bookmark error: \(error)")
             }
         } else {
-            AppLogger.bookmark.debug("没有全盘访问权限-未找到传统根目录书签")
+            AppLogger.bookmark.debug("No full disk access permission - no traditional root directory bookmark found")
         }
         
         // 如果传统方案失败，检查是否有子目录 bookmarks 作为回退方案
         if let bookmarks = Defaults[.rootSubdirectoryBookmarks], !bookmarks.isEmpty {
-            AppLogger.bookmark.debug("传统根目录方案失败，尝试检查子目录权限方案")
+            AppLogger.bookmark.debug("Traditional root directory scheme failed, trying to check subdirectory permission scheme")
             Defaults[.hasFullDiskAccess] = checkRootSubdirectoriesAuthorizationStatus()
             return checkRootSubdirectoriesAuthorizationStatus()
         }
         
-        AppLogger.bookmark.debug("没有找到任何有效的磁盘访问权限")
+        AppLogger.bookmark.debug("No valid disk access permissions found")
         Defaults[.hasFullDiskAccess] = false
         return false
     }
@@ -327,26 +327,26 @@ extension BookmarkManager {
     /// 通用的权限请求处理方法
     /// - Parameter defaultDirectory: 默认打开的目录路径
     private func requestDirectoryPermissions(defaultDirectory: String) {
-        let logPrefix = defaultDirectory == "/" ? "根目录" : "主目录"
-        AppLogger.bookmark.debug("开始授权\(logPrefix)权限")
+        let logPrefix = defaultDirectory == "/" ? "root directory" : "home directory"
+        AppLogger.bookmark.debug("Starting to authorize \(logPrefix) permissions")
         
         guard let url = promptForWorkingDirectoryPermission(for: URL(fileURLWithPath: defaultDirectory, isDirectory: true)) else {
-            AppLogger.bookmark.debug("授权\(logPrefix)权限失败")
+            AppLogger.bookmark.debug("Failed to authorize \(logPrefix) permissions")
             return
         }
         
         // 检查用户实际选择的路径
         if url.path == "/" {
             // 用户选择了根目录，按全盘权限处理
-            AppLogger.bookmark.debug("用户选择了根目录，按全盘权限处理")
+            AppLogger.bookmark.debug("User selected root directory, handling as full disk access permission")
             
             // 如果需要使用临时解决方案（macOS 26.0）
             if shouldUseRootSubdirectoryWorkaround() {
-                AppLogger.bookmark.debug("使用根目录子目录权限授权方案 (macOS 26.0 临时解决方案)")
+                AppLogger.bookmark.debug("Using root subdirectory permission authorization scheme (macOS 26.0 workaround)")
                 if createRootSubdirectoryBookmarks(rootURL: url) {
-                    AppLogger.bookmark.debug("根目录子目录权限授权成功")
+                    AppLogger.bookmark.debug("Root subdirectory permission authorization succeeded")
                 } else {
-                    AppLogger.bookmark.debug("根目录子目录权限授权失败")
+                    AppLogger.bookmark.debug("Root subdirectory permission authorization failed")
                 }
                 return
             }
@@ -356,22 +356,22 @@ extension BookmarkManager {
                 _ = try url.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
                 // 如果成功，保存为根目录 bookmark
                 saveBookmarkData(for: url, defaultKey: .rootDirectoryBookmark)
-                AppLogger.bookmark.debug("保存为全盘权限-\(url.path)")
+                AppLogger.bookmark.debug("Saved as full disk access permission: \(url.path)")
             } catch {
-                AppLogger.bookmark.error("创建根目录 bookmark 失败: \(error)")
+                AppLogger.bookmark.error("Failed to create root directory bookmark: \(error)")
                 
                 // 如果传统方案失败，尝试使用临时解决方案
-                AppLogger.bookmark.debug("根目录 bookmark 创建失败，尝试使用子目录方案")
+                AppLogger.bookmark.debug("Root directory bookmark creation failed, trying to use subdirectory scheme")
                 if createRootSubdirectoryBookmarks(rootURL: url) {
-                    AppLogger.bookmark.debug("fallback 到根目录子目录权限授权成功")
+                    AppLogger.bookmark.debug("Fallback to root subdirectory permission authorization succeeded")
                 } else {
-                    AppLogger.bookmark.debug("fallback 到根目录子目录权限授权也失败")
+                    AppLogger.bookmark.debug("Fallback to root subdirectory permission authorization also failed")
                 }
             }
         } else {
             // 用户选择的是其他目录，按主目录权限处理
             saveBookmarkData(for: url, defaultKey: .homeDirectoryBookmark)
-            AppLogger.bookmark.debug("授权主目录权限成功-\(url.path)")
+            AppLogger.bookmark.debug("Home directory permission authorization succeeded: \(url.path)")
         }
     }
     
@@ -388,7 +388,7 @@ extension BookmarkManager {
     }
     
     func cancelFullDiskPermissions() {
-        AppLogger.bookmark.debug("取消授权根目录权限")
+        AppLogger.bookmark.debug("Canceling root directory permission authorization")
         
         // 清除传统的根目录 bookmark
         Defaults[.rootDirectoryBookmark] = nil
@@ -400,25 +400,25 @@ extension BookmarkManager {
         // 停止当前的访问
         stopDirectoryAccessing()
         
-        AppLogger.bookmark.debug("取消根目录权限成功")
+        AppLogger.bookmark.debug("Root directory permission cancellation succeeded")
     }
     
     // 获取安全授权，根目录授权优先获取，无根目录书签时获取主目录书签
     func startDirectoryAccessing() -> Bool {
-        AppLogger.bookmark.debug("开始获取安全授权")
+        AppLogger.bookmark.debug("Starting to obtain security authorization")
         
         stopDirectoryAccessing()
         
         // 如果需要使用临时解决方案（macOS 26.0）并且有子目录 bookmarks
         if shouldUseRootSubdirectoryWorkaround() {
             if let bookmarks = Defaults[.rootSubdirectoryBookmarks], !bookmarks.isEmpty {
-                AppLogger.bookmark.debug("使用根目录子目录访问方案 (macOS 26.0 临时解决方案)")
+                AppLogger.bookmark.debug("Using root subdirectory access scheme (macOS 26.0 workaround)")
                 let success = startRootSubdirectoriesAccessing()
                 if success {
-                    AppLogger.bookmark.debug("获取安全授权完成--根目录子目录方案")
+                    AppLogger.bookmark.debug("Security authorization completed--root subdirectory scheme")
                     return true
                 }
-                AppLogger.bookmark.debug("根目录子目录方案失败，尝试其他方案")
+                AppLogger.bookmark.debug("Root subdirectory scheme failed, trying other schemes")
             }
         }
         
@@ -426,7 +426,7 @@ extension BookmarkManager {
         if let data = Defaults[.rootDirectoryBookmark], let url = restoreFileAccess(with: data, defaultKey: .rootDirectoryBookmark) {
             workingDirectoryBookmarkUrl = url
             let flag = url.startAccessingSecurityScopedResource()
-            AppLogger.bookmark.debug("获取安全授权完成--根目录-\(url.path)")
+            AppLogger.bookmark.debug("Security authorization completed, root directory: \(url.path)")
             return flag
         }
         
@@ -434,16 +434,16 @@ extension BookmarkManager {
         if let data = Defaults[.homeDirectoryBookmark], let url = restoreFileAccess(with: data, defaultKey: .homeDirectoryBookmark) {
             workingDirectoryBookmarkUrl = url
             let flag = url.startAccessingSecurityScopedResource()
-            AppLogger.bookmark.debug("获取安全授权完成--用户主目录-\(url.path)")
+            AppLogger.bookmark.debug("Security authorization completed, user home directory: \(url.path)")
             return flag
         }
         
-        AppLogger.bookmark.debug("未获取安全授权")
+        AppLogger.bookmark.debug("Failed to obtain security authorization")
         return false
     }
     
     func stopDirectoryAccessing() {
-        AppLogger.bookmark.debug("开始停止获取安全授权")
+        AppLogger.bookmark.debug("Starting to stop security authorization")
         
         // 停止根目录子目录访问
         stopRootSubdirectoriesAccessing()
@@ -454,7 +454,7 @@ extension BookmarkManager {
             workingDirectoryBookmarkUrl = nil
         }
         
-        AppLogger.bookmark.debug("停止获取安全授权完成")
+        AppLogger.bookmark.debug("Security authorization stop completed")
     }
     
     /// 打开系统偏好设置 - 完全磁盘访问权限
@@ -466,27 +466,27 @@ extension BookmarkManager {
     /// 尝试从子目录方案升级到根目录方案（当系统修复 bug 后）
     /// 在应用启动时调用，检查是否可以升级到更好的方案
     func tryUpgradeToRootDirectoryPermission() {
-        AppLogger.bookmark.debug("检查是否可以升级到根目录权限方案")
+        AppLogger.bookmark.debug("Checking if can upgrade to root directory permission scheme")
         
         // 如果当前系统不需要使用临时解决方案，但我们有子目录 bookmarks
         if !shouldUseRootSubdirectoryWorkaround() {
             if let _ = Defaults[.rootSubdirectoryBookmarks], Defaults[.rootDirectoryBookmark] == nil {
-                AppLogger.bookmark.debug("系统已修复根目录 bookmark bug，但当前使用子目录方案，尝试升级")
+                AppLogger.bookmark.debug("System has fixed root directory bookmark bug, currently using subdirectory scheme, attempting to upgrade")
                 
                 // 尝试创建根目录 bookmark 来测试是否已修复
                 let testURL = URL(fileURLWithPath: "/", isDirectory: true)
                 do {
                     _ = try testURL.bookmarkData(options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
-                    AppLogger.bookmark.debug("根目录 bookmark 创建测试成功，系统已修复 bug")
+                    AppLogger.bookmark.debug("Root directory bookmark creation test succeeded, system bug has been fixed")
                     
                     // 注意：这里不能自动升级，因为需要用户重新授权
                     // 只是清除临时方案的数据，提示用户重新授权会使用更好的方案
-                    AppLogger.bookmark.debug("清除临时方案数据，等待用户重新授权")
+                    AppLogger.bookmark.debug("Clearing temporary scheme data, waiting for user re-authorization")
                     Defaults[.rootSubdirectoryBookmarks] = nil
                     Defaults[.rootSubdirectoryNames] = nil
                     
                 } catch {
-                    AppLogger.bookmark.debug("根目录 bookmark 创建测试失败，系统尚未修复: \(error)")
+                    AppLogger.bookmark.debug("Root directory bookmark creation test failed, system not yet fixed: \(error)")
                 }
             }
         }

@@ -72,7 +72,7 @@ struct GiteeConfigView: View {
             HStack {
                 TextField("Save Key", text: $saveKey)
                     .fontDesign(.monospaced)
-                TextField("", text: $saveKeySuffix, prompt: Text("!w"))
+                TextField("", text: $saveKeySuffix, prompt: Text(verbatim: "!w"))
                     .labelsHidden()
                     .frame(minWidth: 40)
                     .fixedSize()

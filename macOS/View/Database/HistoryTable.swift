@@ -70,7 +70,7 @@ struct HistoryTable: View {
                         Text(dimensions)
                             .foregroundColor(.secondary)
                     } else {
-                        Text("-")
+                        Text(verbatim: "-")
                             .foregroundColor(.secondary)
                     }
                 }
