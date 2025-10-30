@@ -11,7 +11,6 @@ struct AdvanceSettingsView: View {
     var body: some View {
         Form {
             KeyboardShortcutsSettings()
-            HistoryRecordSettings()
             OutputFormatSettings()
             ScreenshotAppSettings()
         }

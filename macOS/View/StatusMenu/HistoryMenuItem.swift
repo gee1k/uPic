@@ -68,6 +68,8 @@ struct HistoryMenuItem: View {
                 Text(history.filename ?? "Unknown file")
                     .truncationMode(.middle)
             }
+        } primaryAction: {
+            Tools.shared.copyUrls([history.url])
         }
     }
 }
