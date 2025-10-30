@@ -27,7 +27,7 @@ struct OpenSourceLicensesView: View {
                 }
             } header: {
                 HStack {
-                    Image("github")
+                    Image("host_icon_github")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 16, height: 16)
