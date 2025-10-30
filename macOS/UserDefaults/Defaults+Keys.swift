@@ -32,11 +32,11 @@ extension Defaults.Keys {
     static let historyRecordFileNameScrollWaitTime = Defaults.Key<Float>("historyRecordFileNameScrollWaitTime", default: 2.0, suite: appGroupUserDefaults)
 
     // Authorization and bookmarks
-    static let requestedAuthorization = Defaults.Key<Bool>("requestedAuthorization", default: false, suite: appGroupUserDefaults)
+    static let hasFullDiskAccess = Defaults.Key<Bool>("hasFullDiskAccess", default: false, suite: appGroupUserDefaults)
     static let rootDirectoryBookmark = Defaults.Key<Data?>("rootDirectoryBookmark", suite: appGroupUserDefaults)
     static let homeDirectoryBookmark = Defaults.Key<Data?>("homeDirectoryBookmark", suite: appGroupUserDefaults)
-    static let rootSubdirectoryBookmarks = Defaults.Key<[Data]>("rootSubdirectoryBookmarks", default: [], suite: appGroupUserDefaults)
-    static let rootSubdirectoryNames = Defaults.Key<[String]>("rootSubdirectoryNames", default: [], suite: appGroupUserDefaults)
+    static let rootSubdirectoryBookmarks = Defaults.Key<[Data]?>("rootSubdirectoryBookmarks", suite: appGroupUserDefaults)
+    static let rootSubdirectoryNames = Defaults.Key<[String]?>("rootSubdirectoryNames", suite: appGroupUserDefaults)
 }
 
 enum ScreenshotApp: String, CaseIterable, Defaults.Serializable {

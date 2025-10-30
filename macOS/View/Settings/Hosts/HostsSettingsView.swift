@@ -6,6 +6,7 @@
 //
 
 import Defaults
+import SimpleLogger
 import SwiftData
 import SwiftUI
 import UPicCore
@@ -188,7 +189,7 @@ struct HostsSettingsView: View {
                 do {
                     try modelContext.save()
                 } catch {
-                    print("Failed to delete host model: \(error.localizedDescription)")
+                    AppLogger.hosts.error("Failed to delete host model: \(error.localizedDescription)")
                 }
             }
 
@@ -212,9 +213,9 @@ struct HostsSettingsView: View {
 
             do {
                 try modelContext.save()
-                print("Host saved successfully to database!")
+                AppLogger.hosts.info("Host saved successfully to database: \(hostModel.name!) \(hostModel.typeRaw!)")
             } catch {
-                print("Failed to save host to database: \(error)")
+                AppLogger.hosts.error("Failed to save host to database: \(hostModel.name!) \(hostModel.typeRaw!). Error: \(error.localizedDescription)")
             }
 
             if hostModels.count == 1 {
