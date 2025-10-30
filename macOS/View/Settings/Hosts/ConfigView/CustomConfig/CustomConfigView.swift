@@ -24,8 +24,8 @@ struct CustomConfigView: View {
     @State private var saveKeySuffix: String = ""
     @State private var useBase64: Bool = false
     @State private var showOtherFieldsSheet: Bool = false
-    @State private var headersText: String = ""
-    @State private var bodyText: String = ""
+    @State private var headers: [(String, String)] = []
+    @State private var bodies: [(String, String)] = []
 
     @Environment(\.openURL) private var openURL
 
@@ -127,11 +127,7 @@ struct CustomConfigView: View {
             loadConfiguration()
         }
         .sheet(isPresented: $showOtherFieldsSheet) {
-            OtherFieldsSheetView(
-                headersText: $headersText,
-                bodyText: $bodyText,
-                isPresented: $showOtherFieldsSheet
-            )
+            OtherFieldsCustomizeView(headers: $headers, bodies: $bodies)
         }
     }
 
@@ -147,6 +143,10 @@ struct CustomConfigView: View {
                 domain = customConfig.domain
                 saveKey = customConfig.saveKeyPath ?? "uPic/{filename}{.suffix}"
                 useBase64 = customConfig.useBase64
+
+                // Load headers and bodies
+                headers = customConfig.headers.map { ($0.key, $0.value) }
+                bodies = customConfig.bodys.map { ($0.key, $0.value) }
             }
         }
     }
@@ -161,59 +161,16 @@ struct CustomConfigView: View {
         customConfig.saveKeyPath = saveKey
         customConfig.useBase64 = useBase64
 
+        // Convert temp arrays back to HeaderOrBodyModel
+        customConfig.headers = headers.map { HeaderOrBodyModel(key: $0.0, value: $0.1) }
+        customConfig.bodys = bodies.map { HeaderOrBodyModel(key: $0.0, value: $0.1) }
+
         hostModel.name = name
         if let jsonString = customConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
 
         onSave()
-    }
-}
-
-// Separate view for the Other Fields sheet
-struct OtherFieldsSheetView: View {
-    @Binding var headersText: String
-    @Binding var bodyText: String
-    @Binding var isPresented: Bool
-
-    var body: some View {
-        VStack(spacing: 20) {
-            Text("Custom Fields Configuration")
-                .font(.headline)
-                .padding(.top)
-
-            Form {
-                Section(header: Text("Headers")) {
-                    TextEditor(text: $headersText)
-                        .frame(minHeight: 100)
-                        .fontDesign(.monospaced)
-                }
-
-                Section(header: Text("Body")) {
-                    TextEditor(text: $bodyText)
-                        .frame(minHeight: 100)
-                        .fontDesign(.monospaced)
-                }
-            }
-
-            HStack {
-                Spacer()
-
-                Button("Cancel") {
-                    isPresented = false
-                }
-                .keyboardShortcut(.escape)
-
-                Button("Save") {
-                    // Save logic would be handled by the parent view
-                    isPresented = false
-                }
-                .keyboardShortcut(.return)
-                .buttonStyle(.borderedProminent)
-            }
-            .padding()
-        }
-        .frame(minWidth: 500, minHeight: 400)
     }
 }
 
