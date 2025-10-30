@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96149DDB2EB3DA9E005ADB6A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96149DDA2EB3DA9E005ADB6A /* CloudKit.framework */; };
 		961848862EB09488005BD3AC /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 961848852EB09488005BD3AC /* KeyboardShortcuts */; };
 		961848892EB094A4005BD3AC /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 961848882EB094A4005BD3AC /* LaunchAtLogin */; };
 		9618488C2EB094B0005BD3AC /* SimpleLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 9618488B2EB094B0005BD3AC /* SimpleLogger */; };
@@ -29,6 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		96149DDA2EB3DA9E005ADB6A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		961848742EB09470005BD3AC /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 				9618488F2EB094C0005BD3AC /* Defaults in Frameworks */,
 				961848892EB094A4005BD3AC /* LaunchAtLogin in Frameworks */,
 				9640CD6E2EB09C30003BF4FB /* UPicCore in Frameworks */,
+				96149DDB2EB3DA9E005ADB6A /* CloudKit.framework in Frameworks */,
 				9618488C2EB094B0005BD3AC /* SimpleLogger in Frameworks */,
 				961848862EB09488005BD3AC /* KeyboardShortcuts in Frameworks */,
 			);
@@ -112,6 +115,7 @@
 		9640CD782EB09CBD003BF4FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				96149DDA2EB3DA9E005ADB6A /* CloudKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
