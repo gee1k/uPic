@@ -175,13 +175,19 @@ struct HostsSettingsView: View {
     }
 
     private func addHost(_ hostType: HostType) {
-        let hostModel = HostModel(hostType, data: nil)
-        tempHostModels.append(hostModel)
-        selectedHostModel = hostModel
+        withAnimation {
+            let hostModel = HostModel(hostType, data: nil)
+            tempHostModels.append(hostModel)
+            selectedHostModel = hostModel
+        }
     }
 
     private func deleteHost(_ hostModel: HostModel) {
         withAnimation {
+            if selectedHostModel == hostModel {
+                selectedHostModel = nil
+            }
+
             if let tempIndex = tempHostModels.firstIndex(where: { $0.id == hostModel.id }) {
                 tempHostModels.remove(at: tempIndex)
             } else {
@@ -204,23 +210,21 @@ struct HostsSettingsView: View {
     }
 
     func saveHostToDatabase(_ hostModel: HostModel) {
-        withAnimation {
-            modelContext.insert(hostModel)
+        if hostModels.count == 0 { // 如果原来没有任何 host，这次添加的是第一个，设置为默认 Host
+            selectedHostId = hostModel.id
+        }
 
-            if let tempIndex = tempHostModels.firstIndex(where: { $0.id == hostModel.id }) {
-                tempHostModels.remove(at: tempIndex)
-            }
+        modelContext.insert(hostModel)
 
-            do {
-                try modelContext.save()
-                AppLogger.hosts.info("Host saved successfully to database: \(hostModel.name) \(hostModel.typeRaw ?? "")")
-            } catch {
-                AppLogger.hosts.error("Failed to save host to database: \(hostModel.name) \(hostModel.typeRaw ?? ""). Error: \(error.localizedDescription)")
-            }
+        if let tempIndex = tempHostModels.firstIndex(where: { $0.id == hostModel.id }) {
+            tempHostModels.remove(at: tempIndex)
+        }
 
-            if hostModels.count == 1 {
-                selectedHostId = hostModel.id
-            }
+        do {
+            try modelContext.save()
+            AppLogger.hosts.info("Host saved successfully to database: \(hostModel.name) \(hostModel.typeRaw ?? "")")
+        } catch {
+            AppLogger.hosts.error("Failed to save host to database: \(hostModel.name) \(hostModel.typeRaw ?? ""). Error: \(error.localizedDescription)")
         }
     }
 }
