@@ -213,9 +213,9 @@ struct HostsSettingsView: View {
 
             do {
                 try modelContext.save()
-                AppLogger.hosts.info("Host saved successfully to database: \(hostModel.name ?? "") \(hostModel.typeRaw ?? "")")
+                AppLogger.hosts.info("Host saved successfully to database: \(hostModel.name) \(hostModel.typeRaw ?? "")")
             } catch {
-                AppLogger.hosts.error("Failed to save host to database: \(hostModel.name ?? "") \(hostModel.typeRaw ?? ""). Error: \(error.localizedDescription)")
+                AppLogger.hosts.error("Failed to save host to database: \(hostModel.name) \(hostModel.typeRaw ?? ""). Error: \(error.localizedDescription)")
             }
 
             if hostModels.count == 1 {

@@ -24,24 +24,30 @@ struct uPicApp: App {
         ])
 
         // 配置iCloud同步并改进错误处理
-        let modelConfiguration = ModelConfiguration(
+        let cloudKitConfig = ModelConfiguration(
+            "uPicCloud",
             schema: schema,
             isStoredInMemoryOnly: false,
+            groupContainer: .automatic,
             cloudKitDatabase: .automatic
         )
 
+        // 本地备用配置
+        let localConfig = ModelConfiguration(
+            "uPicLocal",
+            schema: schema,
+            isStoredInMemoryOnly: false,
+            cloudKitDatabase: .none
+        )
+
         do {
-            let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+            // 首先尝试创建带CloudKit的容器
+            let container = try ModelContainer(for: schema, configurations: [cloudKitConfig])
             AppLogger.uploader.info("SwiftData ModelContainer with iCloud sync created successfully")
             return container
         } catch {
-            // 如果iCloud同步失败，则回退到本地存储
-            AppLogger.uploader.error("Failed to create CloudKit ModelContainer, falling back to local storage: \(error.localizedDescription)")
-            let localConfig = ModelConfiguration(
-                schema: schema,
-                isStoredInMemoryOnly: false,
-                cloudKitDatabase: .none
-            )
+            // 如果iCloud同步失败，则只使用本地存储
+            AppLogger.uploader.error("Failed to create CloudKit ModelContainer, falling back to local storage only: \(error.localizedDescription)")
             do {
                 let container = try ModelContainer(for: schema, configurations: [localConfig])
                 AppLogger.uploader.info("SwiftData ModelContainer with local storage created successfully")

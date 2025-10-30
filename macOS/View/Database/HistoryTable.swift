@@ -40,7 +40,7 @@ struct HistoryTable: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 16, height: 16)
-                            Text(host.name ?? "Unknown")
+                            Text(host.name)
                                 .lineLimit(1)
                         }
                     } else {

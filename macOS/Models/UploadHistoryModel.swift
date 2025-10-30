@@ -10,13 +10,13 @@ import SwiftData
 
 @Model
 public final class UploadHistoryModel {
-    public var id: String
-    public var url: String
+    public var id: String = ""
+    public var url: String = ""
     public var thumbnailData: Data?
-    public var createdDate: Date
-    public var size: Int
-    public var pixelWidth: Int
-    public var pixelHeight: Int
+    public var createdDate: Date = Date()
+    public var size: Int = 0
+    public var pixelWidth: Int = 0
+    public var pixelHeight: Int = 0
     public var originalFilename: String?
     public var hostId: String?
 

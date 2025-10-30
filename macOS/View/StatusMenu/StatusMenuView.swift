@@ -83,7 +83,7 @@ struct StatusMenuView: View {
                         selectedHostId = hostModel.id
                     } label: {
                         Label {
-                            Text("\(hostModel.name ?? "Unknown") \(selectedHostId == hostModel.id ? "✓" : "")")
+                            Text("\(hostModel.name) \(selectedHostId == hostModel.id ? "✓" : "")")
                         } icon: {
                             Image("host_icon_\(hostModel.typeRaw ?? "smms")")
                         }

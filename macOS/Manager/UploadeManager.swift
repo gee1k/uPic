@@ -638,7 +638,7 @@ public class UploadeManager: ObservableObject {
         do {
             let hosts = try modelContext.fetch(descriptor)
             if let selectedHost = hosts.first {
-                AppLogger.uploader.info("Using selected host configuration: \(selectedHost.name ?? "")")
+                AppLogger.uploader.info("Using selected host configuration: \(selectedHost.name)")
                 return selectedHost
             } else {
                 AppLogger.uploader.warning("Selected host configuration does not exist, ID: \(selectedHostId)")
@@ -661,7 +661,7 @@ public class UploadeManager: ObservableObject {
         do {
             let hosts = try modelContext.fetch(descriptor)
             if let firstHost = hosts.first {
-                AppLogger.uploader.info("Using first host configuration as fallback: \(firstHost.name ?? "")")
+                AppLogger.uploader.info("Using first host configuration as fallback: \(firstHost.name)")
                 // 自动设置为选中的图床
                 Defaults[.selectedHostId] = firstHost.id
                 return firstHost

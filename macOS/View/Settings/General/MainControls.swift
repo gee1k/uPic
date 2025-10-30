@@ -26,7 +26,7 @@ struct MainControls: View {
                     .foregroundStyle(.secondary)
             }
             
-            Defaults.Toggle(key: .sendNotification) {
+            Defaults.Toggle(key: .autoCopyUrlToClipboard) {
                 Label("Auto clipboard", systemImage: "clipboard")
                 
                 Text("Copy URL to clipboard automatically after a successful upload.")
