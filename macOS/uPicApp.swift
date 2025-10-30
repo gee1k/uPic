@@ -13,7 +13,7 @@ import UPicCore
 @main
 struct uPicApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @ObservedObject private var uploader = UPicUploadeManager.shared
+    @ObservedObject private var uploader = UploadeManager.shared
     private let indicator = NSProgressIndicator()
 
     var upicModelContainer: ModelContainer = {

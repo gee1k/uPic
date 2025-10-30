@@ -16,7 +16,7 @@ struct HistoryMenuItem: View {
 
     @Query private var hostModels: [HostModel]
 
-    @ObservedObject private var uploader = UPicUploadeManager.shared
+    @ObservedObject private var uploader = UploadeManager.shared
 
     @Environment(\.openURL) private var openURL
 

@@ -21,7 +21,8 @@ extension Defaults.Keys {
     static let historyLimit = Defaults.Key<Int>("historyLimit", default: 100, suite: appGroupUserDefaults)
     static let compressFactor = Defaults.Key<Int>("compressFactor", default: 80, suite: appGroupUserDefaults)
     static let screenshotApp = Defaults.Key<ScreenshotApp>("screenshotApp", default: .system, suite: appGroupUserDefaults)
-    static let isUploading = Defaults.Key<Bool>("isUploading", default: false, suite: appGroupUserDefaults)
+    static let autoCopyUrlToClipboard = Defaults.Key<Bool>("autoCopyUrlToClipboard", default: true, suite: appGroupUserDefaults)
+    static let sendNotification = Defaults.Key<Bool>("sendNotification", default: true, suite: appGroupUserDefaults)
 
     // History record settings
     static let historyRecordWidth = Defaults.Key<Float>("historyRecordWidth", default: 200.0, suite: appGroupUserDefaults)

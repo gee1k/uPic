@@ -18,8 +18,9 @@ struct StatusMenuView: View {
     @Default(.outputFormats) var outputFormats
     @Default(.outputFormatEncoded) var outputFormatEncoded
     @Default(.compressFactor) var compressFactor
+    @Default(.autoCopyUrlToClipboard) var autoCopyUrlToClipboard
 
-    @ObservedObject private var uploader = UPicUploadeManager.shared
+    @ObservedObject private var uploader = UploadeManager.shared
 
     @Query private var hostModels: [HostModel]
 
@@ -36,9 +37,7 @@ struct StatusMenuView: View {
     var body: some View {
         VStack {
             if uploader.isUploading {
-                Button("Cancel upload") {
-                    
-                }
+                Button("Cancel upload") {}
                 Divider()
             }
             
@@ -134,6 +133,30 @@ struct StatusMenuView: View {
                 }
             }
             
+            Menu("Auto clipboard  \(Text(autoCopyUrlToClipboard ? "On" : "Off").foregroundStyle(.secondary))") {
+                Button {
+                    autoCopyUrlToClipboard = true
+                } label: {
+                    HStack {
+                        if autoCopyUrlToClipboard == true {
+                            Image(systemName: "checkmark")
+                        }
+                        Text("On")
+                    }
+                }
+                
+                Button {
+                    autoCopyUrlToClipboard = false
+                } label: {
+                    HStack {
+                        if autoCopyUrlToClipboard == false {
+                            Image(systemName: "checkmark")
+                        }
+                        Text("Off")
+                    }
+                }
+            }
+            
             Divider()
             
             Menu("History") {
@@ -174,7 +197,6 @@ struct StatusMenuView: View {
         }
     }
 }
-
 
 #Preview {
     StatusMenuView()

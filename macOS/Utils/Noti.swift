@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import Defaults
 import SimpleLogger
 import UserNotifications
 
@@ -14,53 +15,55 @@ class Noti: NSObject {
 }
 
 extension Noti {
-    func postUploadErrorNotice(_ body: String? = "") {
+    func postUploadError(_ body: String? = "") {
         self.post(title: String(localized: "Upload failed"), body: body)
     }
     
-    func postUploadSuccessfulNotice(_ body: String? = "") {
+    func postUploadSuccessful(_ body: String? = "") {
         self.post(title: String(localized: "Uploaded successfully"), subtitle: String(localized: "URL has been copied to the clipboard, paste and use it!"), body: body)
     }
     
-    func postCopySuccessfulNotice(_ body: String? = "") {
-        self.post(title: String(localized: "URL has been copied to the clipboard, paste and use it!"), body: body)
+    func postCopySuccessful(_ body: String? = "") {
+        self.post(title: String(localized: "URL has been copied to the clipboard"), body: body)
     }
     
-    func postFileDoesNotExistNotice() {
+    func postFileDoesNotExist() {
         self.post(title: String(localized: "Upload failed"), body: String(localized: "The file does not exist or has been deleted!"))
     }
     
-    func postFileNoAccessNotice() {
+    func postFileNoAccess() {
         self.post(title: String(localized: "Upload failed"), body: String(localized: "No access to file!"))
     }
     
-    func postUplodingNotice(_ body: String? = "") {
+    func postUploding(_ body: String? = "") {
         self.post(title: String(localized: "The current upload task is not complete"), body: body)
     }
     
-    func postImportErrorNotice(_ body: String? = String(localized: "The configuration file is invalid, please check!")) {
+    func postImportError(_ body: String? = String(localized: "The configuration file is invalid, please check!")) {
         self.post(title: String(localized: "Import failed"), body: body)
     }
     
-    func postImportSuccessfulNotice() {
+    func postImportSuccessful() {
         self.post(title: String(localized: "Successfully"), body: String(localized: "The configuration has been imported, please check and use!"))
     }
     
-    func postExportErrorNotice(_ body: String? = String(localized: "configuration export error!")) {
+    func postExportError(_ body: String? = String(localized: "configuration export error!")) {
         self.post(title: String(localized: "The current upload task is not complete"), body: body)
     }
     
-    func postExportSuccessfulNotice() {
+    func postExportSuccessful() {
         self.post(title: String(localized: "Successfully"), body: String(localized: "The configuration file is exported successfully, Do not modify the file contents!"))
     }
     
-    func postAppIsAlreadyRunningNotice() {
+    func postAppIsAlreadyRunning() {
         self.post(title: "uPic", body: String(localized: "App is already running"))
     }
 }
 
 extension Noti: UNUserNotificationCenterDelegate {
     func post(title: String, subtitle: String = "", body: String? = nil) {
+        guard Defaults[.sendNotification] else { return }
+        
         let content = UNMutableNotificationContent()
         content.title = title
         content.subtitle = subtitle

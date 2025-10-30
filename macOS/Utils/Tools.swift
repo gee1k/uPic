@@ -7,6 +7,7 @@
 
 import AppKit
 import SimpleLogger
+import UPicCore
 
 class Tools {
     static let shared = Tools()
@@ -21,6 +22,8 @@ class Tools {
         NSPasteboard.general.setString(outputStr, forType: .string)
 
         AppLogger.tools.info("Copy upload result to clipboard: \(outputStr)")
+
+        Noti.shared.postCopySuccessful(outputStr)
     }
 
     private func formatOutputUrls(_ urls: [String], _ outputType: OutputFormatModel? = nil) -> [String] {

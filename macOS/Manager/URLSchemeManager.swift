@@ -11,7 +11,7 @@ import SimpleLogger
 import SwiftUI
 
 class URLSchemeManager {
-    @ObservedObject private var uploader = UPicUploadeManager.shared
+    @ObservedObject private var uploader = UploadeManager.shared
 
     static var shared = URLSchemeManager()
 

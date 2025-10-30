@@ -24,10 +24,10 @@ public struct UploadItem {
     var originalFilename: String?
 }
 
-public class UPicUploadeManager: ObservableObject {
+public class UploadeManager: ObservableObject {
     // MARK: - Shared Instance
 
-    public static let shared = UPicUploadeManager()
+    public static let shared = UploadeManager()
 
     // MARK: - Published Properties
 
@@ -40,13 +40,6 @@ public class UPicUploadeManager: ObservableObject {
 
     private let modelContext: ModelContext
     private let notificationCenter = NotificationCenter.default
-
-    // MARK: - Callbacks
-
-    public var onUploadStart: (() -> Void)?
-    public var onUploadComplete: ((String) -> Void)?
-    public var onUploadFail: ((String, String?) -> Void)?
-    public var onAllUploadsComplete: (() -> Void)?
 
     // MARK: - Initialization
 
@@ -89,9 +82,7 @@ public class UPicUploadeManager: ObservableObject {
     public func upload(fileURLs: [URL]) async {
         guard let host = getSelectedHost() else {
             AppLogger.uploader.error("No available hosts configuration")
-            await MainActor.run {
-                self.onUploadFail?("No available hosts configuration", nil)
-            }
+            Noti.shared.postUploadError(String(localized: "No available hosts configuration"))
             return
         }
 
@@ -112,9 +103,6 @@ public class UPicUploadeManager: ObservableObject {
             // 尝试启动已有的权限访问
             guard diskPermissionManager.startDirectoryAccessing() else {
                 AppLogger.uploader.error("Unable to get disk access permission, please authorize in settings")
-                await MainActor.run {
-                    self.onUploadFail?("Missing disk access permissions", "please authorize in settings")
-                }
                 return
             }
         }
@@ -144,12 +132,14 @@ public class UPicUploadeManager: ObservableObject {
         // 检查文件是否存在
         guard FileManager.default.fileExists(atPath: url.path) else {
             AppLogger.uploader.warning("File does not exist: \(url.path)")
+            Noti.shared.postFileDoesNotExist()
             return nil
         }
 
         // 检查文件是否可读
         guard FileManager.default.isReadableFile(atPath: url.path) else {
             AppLogger.uploader.warning("File is not readable: \(url.path)")
+            Noti.shared.postFileNoAccess()
             return nil
         }
 
@@ -213,9 +203,7 @@ public class UPicUploadeManager: ObservableObject {
     public func upload(fileData: Data, filename: String? = nil) async {
         guard let host = getSelectedHost() else {
             AppLogger.uploader.error("No available host configuration")
-            await MainActor.run {
-                self.onUploadFail?("No available host configuration", nil)
-            }
+            Noti.shared.postUploadError(String(localized: "No available hosts configuration"))
             return
         }
 
@@ -243,9 +231,7 @@ public class UPicUploadeManager: ObservableObject {
     public func upload(images: [NSImage]) async {
         guard let host = getSelectedHost() else {
             AppLogger.uploader.error("No available host configuration")
-            await MainActor.run {
-                self.onUploadFail?("No available host configuration", nil)
-            }
+            Noti.shared.postUploadError(String(localized: "No available hosts configuration"))
             return
         }
 
@@ -284,14 +270,12 @@ public class UPicUploadeManager: ObservableObject {
     private func upload(hostModel: HostModel, items: [UploadItem]) async {
         guard !items.isEmpty else {
             AppLogger.uploader.warning("No valid upload items")
-            onAllUploadsComplete?()
             return
         }
 
         await MainActor.run {
             self.isUploading = true
             self.uploadProgress = 0.0
-            self.onUploadStart?()
         }
 
         AppLogger.uploader.info("Starting upload task queue: \(items.count) items")
@@ -317,20 +301,14 @@ public class UPicUploadeManager: ObservableObject {
                 let url = try await performSingleUpload(hostModel: hostModel, item: item)
                 AppLogger.uploader.info("Upload successful: \(url)")
 
+                Noti.shared.postUploadSuccessful(url)
+
                 await saveToHistory(item: item, url: url, hostId: hostModel.id)
                 successCount += 1
-
-                await MainActor.run {
-                    self.onUploadComplete?(url)
-                }
-
             } catch {
-                let errorMessage = error.localizedDescription
-                AppLogger.uploader.error("Upload failed: \(errorMessage)")
+                AppLogger.uploader.error("Upload failed: \(error.localizedDescription)")
 
-                await MainActor.run {
-                    self.onUploadFail?(errorMessage, error.localizedDescription)
-                }
+                Noti.shared.postUploadError(error.localizedDescription)
             }
         }
 
@@ -338,8 +316,6 @@ public class UPicUploadeManager: ObservableObject {
             self.isUploading = false
             self.uploadProgress = 1.0
             self.currentUploadingItem = nil
-
-            self.onAllUploadsComplete?()
         }
 
         AppLogger.uploader.info("Upload task queue completed: Success: \(successCount)/\(totalCount)")
@@ -621,6 +597,7 @@ public class UPicUploadeManager: ObservableObject {
     private func getSelectedHost() -> HostModel? {
         guard let selectedHostId = Defaults[.selectedHostId] else {
             AppLogger.uploader.warning("No host configuration selected")
+            Noti.shared.postUploadError(String(localized: "No host configuration selected"))
             return getFirstHostAsFallback()
         }
 
@@ -680,11 +657,11 @@ public class UPicUploadeManager: ObservableObject {
         CGRequestScreenCaptureAccess()
         // 显示权限请求提示
         let alert = NSAlert()
-        alert.messageText = "Screen Recording Permission Required"
-        alert.informativeText = "Please allow uPic to access screen recording in System Preferences > Security & Privacy > Screen Recording."
+        alert.messageText = String(localized: "Screen Recording Permission Required")
+        alert.informativeText = String(localized: "Please allow uPic to access screen recording in System Preferences > Security & Privacy > Screen Recording.")
         alert.alertStyle = .warning
-        alert.addButton(withTitle: "Open System Preferences")
-        alert.addButton(withTitle: "Cancel")
+        alert.addButton(withTitle: String(localized: "Open System Preferences"))
+        alert.addButton(withTitle: String(localized: "Cancel"))
 
         let response = alert.runModal()
         if response == .alertFirstButtonReturn {
@@ -695,7 +672,7 @@ public class UPicUploadeManager: ObservableObject {
 
 // MARK: - 压缩
 
-extension UPicUploadeManager {
+extension UploadeManager {
     private func compressImage(_ data: Data) -> Data {
         let factor: Int = Defaults[.compressFactor]
 
