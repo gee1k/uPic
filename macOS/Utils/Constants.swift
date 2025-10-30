@@ -10,7 +10,7 @@ import Cocoa
 import Foundation
 
 enum Constants {
-    static let appGroupIdentifier = "group.com.svend.uPic"
+    static let appGroupIdentifier = "group.svend.uPic"
     static let githubHomepage = "https://github.com/gee1k/uPic"
     static let svendHomepage = "https://svend.cc"
     static let svendEmail = "svend.jin@gmail.com"

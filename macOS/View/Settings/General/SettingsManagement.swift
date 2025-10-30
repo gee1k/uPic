@@ -1,6 +1,6 @@
 //
 //  SettingsManagement.swift
-//  AlrightClick
+//  uPic(macOS)
 //
 //  Created by Licardo on 2025/10/7.
 //
@@ -56,7 +56,7 @@ struct SettingsManagement: View {
             isPresented: $isExportingLogs,
             document: LogDocument(text: logContent),
             contentType: .text,
-            defaultFilename: "AlrightClick.log"
+            defaultFilename: "uPic.log"
         ) { result in
             switch result {
             case .success(let url):

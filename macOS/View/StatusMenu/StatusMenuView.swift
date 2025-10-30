@@ -57,7 +57,19 @@ struct StatusMenuView: View {
                 uploader.uploadFromClipboard()
             }
             
-            Button("Upload from screenshot  \(Text(screenshotApp.displayName).foregroundStyle(.secondary))") {
+            Menu("Upload from screenshot  \(Text(screenshotApp.displayName).foregroundStyle(.secondary))") {
+                ForEach(ScreenshotApp.allCases, id: \.self) { screenshotApp in
+                    Button {
+                        self.screenshotApp = screenshotApp
+                    } label: {
+                        Label {
+                            Text("\(screenshotApp.displayName) \(self.screenshotApp == screenshotApp ? "✓" : "")")
+                        } icon: {
+                            screenshotApp.icon
+                        }
+                    }
+                }
+            } primaryAction: {
                 uploader.uploadFromScreenshot()
             }
             .globalKeyboardShortcut(.uploadFromScreenshot)

@@ -1,6 +1,6 @@
 //
 //  MainControls.swift
-//  AlrightClick
+//  uPic(macOS)
 //
 //  Created by Licardo on 2025/10/7.
 //
