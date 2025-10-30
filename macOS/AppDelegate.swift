@@ -22,7 +22,7 @@ class AppDelegate: NSResponder, NSApplicationDelegate {
     }
 
     @objc func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent _: NSAppleEventDescriptor!) {
-        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue {
+        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue?.removingPercentEncoding {
             AppLogger.urlScheme.info("收到来自 URLScheme 的上传请求: \(urlString)")
             Task {
                 await URLSchemeManager.shared.handleURL(urlString)
