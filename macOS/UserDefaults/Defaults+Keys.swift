@@ -24,14 +24,6 @@ extension Defaults.Keys {
     static let autoCopyUrlToClipboard = Defaults.Key<Bool>("autoCopyUrlToClipboard", default: true, suite: appGroupUserDefaults)
     static let sendNotification = Defaults.Key<Bool>("sendNotification", default: true, suite: appGroupUserDefaults)
 
-    // History record settings
-    static let historyRecordWidth = Defaults.Key<Float>("historyRecordWidth", default: 200.0, suite: appGroupUserDefaults)
-    static let historyRecordColumns = Defaults.Key<Int>("historyRecordColumns", default: 3, suite: appGroupUserDefaults)
-    static let historyRecordSpacing = Defaults.Key<Float>("historyRecordSpacing", default: 10.0, suite: appGroupUserDefaults)
-    static let historyRecordPadding = Defaults.Key<Float>("historyRecordPadding", default: 5.0, suite: appGroupUserDefaults)
-    static let historyRecordFileNameScrollSpeed = Defaults.Key<Double>("historyRecordFileNameScrollSpeed", default: 50.0, suite: appGroupUserDefaults)
-    static let historyRecordFileNameScrollWaitTime = Defaults.Key<Float>("historyRecordFileNameScrollWaitTime", default: 2.0, suite: appGroupUserDefaults)
-
     // Authorization and bookmarks
     static let hasFullDiskAccess = Defaults.Key<Bool>("hasFullDiskAccess", default: false, suite: appGroupUserDefaults)
     static let rootDirectoryBookmark = Defaults.Key<Data?>("rootDirectoryBookmark", suite: appGroupUserDefaults)
