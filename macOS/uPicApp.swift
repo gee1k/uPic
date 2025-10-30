@@ -6,6 +6,7 @@
 //
 
 import MenuBarExtraAccess
+import SimpleLogger
 import SwiftData
 import SwiftUI
 import UPicCore
@@ -21,14 +22,41 @@ struct uPicApp: App {
             HostModel.self,
             UploadHistoryModel.self,
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        // 配置iCloud同步并改进错误处理
+        let modelConfiguration = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: false,
+            cloudKitDatabase: .automatic
+        )
 
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+            AppLogger.uploader.info("SwiftData ModelContainer with iCloud sync created successfully")
+            return container
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            // 如果iCloud同步失败，则回退到本地存储
+            AppLogger.uploader.error("Failed to create CloudKit ModelContainer, falling back to local storage: \(error.localizedDescription)")
+            let localConfig = ModelConfiguration(
+                schema: schema,
+                isStoredInMemoryOnly: false,
+                cloudKitDatabase: .none
+            )
+            do {
+                let container = try ModelContainer(for: schema, configurations: [localConfig])
+                AppLogger.uploader.info("SwiftData ModelContainer with local storage created successfully")
+                return container
+            } catch {
+                AppLogger.uploader.error("Failed to create local ModelContainer: \(error.localizedDescription)")
+                fatalError("Could not create ModelContainer: \(error.localizedDescription)")
+            }
         }
     }()
+
+    init() {
+        let modelContext = ModelContext(upicModelContainer)
+        UploadeManager.shared.configure(with: modelContext)
+    }
 
     var body: some Scene {
         Window("uPic Settings", id: "settings") {
@@ -82,7 +110,7 @@ struct uPicApp: App {
         indicator.style = .spinning
         indicator.isHidden = true
 
-        indicator.toolTip = "Right click to cancel the current upload task"
+        indicator.toolTip = String(localized: "Right click to cancel the current upload task")
 
         button.addSubview(indicator)
 

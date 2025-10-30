@@ -38,21 +38,25 @@ public class UploadeManager: ObservableObject {
 
     // MARK: - Dependencies
 
-    private let modelContext: ModelContext
+    private var modelContext: ModelContext?
     private let notificationCenter = NotificationCenter.default
 
     // MARK: - Initialization
 
     private init() {
-        let context = ModelContext(try! ModelContainer(for: HostModel.self, UploadHistoryModel.self))
-        self.modelContext = context
+        loadUploadHistory()
+    }
+
+    // Configure the shared instance with a ModelContext
+    public func configure(with modelContext: ModelContext) {
+        self.modelContext = modelContext
         loadUploadHistory()
     }
 
     // Public initializer for external use
     public convenience init(modelContext: ModelContext) {
         self.init()
-        // Note: This will use the shared instance's modelContext
+        self.configure(with: modelContext)
     }
 
     // MARK: - Permission Management
@@ -349,6 +353,11 @@ public class UploadeManager: ObservableObject {
 
     private func saveToHistory(item: UploadItem, url: String, hostId: String?) async {
         await MainActor.run {
+            guard let modelContext = modelContext else {
+                AppLogger.uploader.error("ModelContext not available, cannot save history")
+                return
+            }
+
             let compressedData = compressImage(item.data!)
 
             let history = UploadHistoryModel(
@@ -389,10 +398,16 @@ public class UploadeManager: ObservableObject {
     }
 
     private func loadUploadHistory() {
+        guard let modelContext = modelContext else {
+            AppLogger.uploader.debug("ModelContext not available, skipping history loading")
+            return
+        }
+
         let descriptor = FetchDescriptor<UploadHistoryModel>(sortBy: [SortDescriptor(\.createdDate, order: .reverse)])
 
         do {
             uploadHistory = try modelContext.fetch(descriptor)
+            AppLogger.uploader.debug("Loaded \(uploadHistory.count) upload history records")
         } catch {
             AppLogger.uploader.error("Failed to load upload history: \(error.localizedDescription)")
         }
@@ -401,6 +416,11 @@ public class UploadeManager: ObservableObject {
     // MARK: - Public History Management
 
     public func deleteHistory(_ history: UploadHistoryModel) {
+        guard let modelContext = modelContext else {
+            AppLogger.uploader.error("ModelContext not available, cannot delete history")
+            return
+        }
+
         modelContext.delete(history)
 
         do {
@@ -412,6 +432,11 @@ public class UploadeManager: ObservableObject {
     }
 
     public func clearAllHistory() {
+        guard let modelContext = modelContext else {
+            AppLogger.uploader.error("ModelContext not available, cannot clear history")
+            return
+        }
+
         let descriptor = FetchDescriptor<UploadHistoryModel>()
 
         do {
@@ -601,6 +626,11 @@ public class UploadeManager: ObservableObject {
             return getFirstHostAsFallback()
         }
 
+        guard let modelContext = modelContext else {
+            AppLogger.uploader.error("ModelContext not available, cannot get selected host")
+            return nil
+        }
+
         let descriptor = FetchDescriptor<HostModel>(
             predicate: #Predicate { $0.id == selectedHostId }
         )
@@ -622,6 +652,11 @@ public class UploadeManager: ObservableObject {
 
     /// 获取第一个图床配置作为备用选项
     private func getFirstHostAsFallback() -> HostModel? {
+        guard let modelContext = modelContext else {
+            AppLogger.uploader.error("ModelContext not available, cannot get fallback host")
+            return nil
+        }
+
         let descriptor = FetchDescriptor<HostModel>()
         do {
             let hosts = try modelContext.fetch(descriptor)

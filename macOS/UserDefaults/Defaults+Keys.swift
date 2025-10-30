@@ -13,18 +13,19 @@ private let appGroupUserDefaults = UserDefaults(suiteName: Constants.appGroupIde
 
 extension Defaults.Keys {
     // uPic specific keys
-    static let firstUsage = Defaults.Key<Bool>("firstUsage", default: true, suite: appGroupUserDefaults)
-    static let selectedHostId = Defaults.Key<String?>("selectedHostId", suite: appGroupUserDefaults)
-    static let selectedOutputFormat = Defaults.Key<OutputFormatModel>("selectedOutputFormat", default: OutputFormatModel.getDefaultOutputFormats().first!, suite: appGroupUserDefaults)
-    static let outputFormats = Defaults.Key<[OutputFormatModel]>("outputFormats", default: OutputFormatModel.getDefaultOutputFormats(), suite: appGroupUserDefaults)
-    static let outputFormatEncoded = Defaults.Key<Bool>("outputFormatEncoded", default: false, suite: appGroupUserDefaults)
-    static let historyLimit = Defaults.Key<Int>("historyLimit", default: 100, suite: appGroupUserDefaults)
-    static let compressFactor = Defaults.Key<Int>("compressFactor", default: 80, suite: appGroupUserDefaults)
-    static let screenshotApp = Defaults.Key<ScreenshotApp>("screenshotApp", default: .system, suite: appGroupUserDefaults)
-    static let autoCopyUrlToClipboard = Defaults.Key<Bool>("autoCopyUrlToClipboard", default: true, suite: appGroupUserDefaults)
-    static let sendNotification = Defaults.Key<Bool>("sendNotification", default: true, suite: appGroupUserDefaults)
+    static let firstUsage = Defaults.Key<Bool>("firstUsage", default: true, suite: appGroupUserDefaults, iCloud: true)
+    static let selectedHostId = Defaults.Key<String?>("selectedHostId", suite: appGroupUserDefaults, iCloud: true)
+    static let selectedOutputFormat = Defaults.Key<OutputFormatModel>("selectedOutputFormat", default: OutputFormatModel.getDefaultOutputFormats().first!, suite: appGroupUserDefaults, iCloud: true)
+    static let outputFormats = Defaults.Key<[OutputFormatModel]>("outputFormats", default: OutputFormatModel.getDefaultOutputFormats(), suite: appGroupUserDefaults, iCloud: true)
+    static let outputFormatEncoded = Defaults.Key<Bool>("outputFormatEncoded", default: false, suite: appGroupUserDefaults, iCloud: true)
+    static let historyLimit = Defaults.Key<Int>("historyLimit", default: 100, suite: appGroupUserDefaults, iCloud: true)
+    static let compressFactor = Defaults.Key<Int>("compressFactor", default: 80, suite: appGroupUserDefaults, iCloud: true)
+    static let screenshotApp = Defaults.Key<ScreenshotApp>("screenshotApp", default: .system, suite: appGroupUserDefaults, iCloud: true)
+    static let autoCopyUrlToClipboard = Defaults.Key<Bool>("autoCopyUrlToClipboard", default: true, suite: appGroupUserDefaults, iCloud: true)
+    static let sendNotification = Defaults.Key<Bool>("sendNotification", default: true, suite: appGroupUserDefaults, iCloud: true)
 
     // Authorization and bookmarks
+    // Note: Bookmark data should not sync to iCloud as they contain system-specific security-scoped bookmarks
     static let hasFullDiskAccess = Defaults.Key<Bool>("hasFullDiskAccess", default: false, suite: appGroupUserDefaults)
     static let rootDirectoryBookmark = Defaults.Key<Data?>("rootDirectoryBookmark", suite: appGroupUserDefaults)
     static let homeDirectoryBookmark = Defaults.Key<Data?>("homeDirectoryBookmark", suite: appGroupUserDefaults)
