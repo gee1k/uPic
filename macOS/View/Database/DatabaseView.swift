@@ -21,11 +21,11 @@ struct DatabaseView: View {
                         .font(.system(size: 60))
                         .foregroundColor(.secondary)
 
-                    Text("暂无上传历史")
+                    Text("No upload history")
                         .font(.title2)
                         .foregroundColor(.secondary)
 
-                    Text("上传图片后，历史记录将显示在这里")
+                    Text("After uploading images, the history will be displayed here.")
                         .font(.body)
                         .foregroundColor(.secondary)
                 }

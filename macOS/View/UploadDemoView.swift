@@ -12,7 +12,7 @@ import UniformTypeIdentifiers
 
 struct UploadDemoView: View {
     @Environment(\.modelContext) private var modelContext
-    @ObservedObject private var uploader = UPicUploader.shared
+    @ObservedObject private var uploader = UPicUploadeManager.shared
     @State private var isShowingFilePicker = false
     @State private var selectedHost: HostModel?
     @State private var hasDiskPermissions = false

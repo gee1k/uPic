@@ -65,7 +65,7 @@ struct HistoryTable: View {
                 }
                 .width(ideal: 120)
 
-                TableColumn("Size") { history in
+                TableColumn("Frame") { history in
                     if let dimensions = history.dimensions {
                         Text(dimensions)
                             .foregroundColor(.secondary)
@@ -76,7 +76,7 @@ struct HistoryTable: View {
                 }
                 .width(ideal: 50)
 
-                TableColumn("Frame") { history in
+                TableColumn("Size") { history in
                     Text(history.formattedSize)
                         .foregroundColor(.secondary)
                 }

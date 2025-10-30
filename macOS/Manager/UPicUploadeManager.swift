@@ -9,11 +9,12 @@ import AppKit
 import Combine
 import Defaults
 import Foundation
+import libminipng
 import SimpleLogger
 import SwiftData
 import SwiftUI
-import UPicCore
 import UniformTypeIdentifiers
+import UPicCore
 
 public struct UploadItem {
     var data: Data?
@@ -23,10 +24,10 @@ public struct UploadItem {
     var originalFilename: String?
 }
 
-@MainActor
-public class UPicUploader: ObservableObject {
+public class UPicUploadeManager: ObservableObject {
     // MARK: - Shared Instance
-    public static let shared = UPicUploader()
+
+    public static let shared = UPicUploadeManager()
 
     // MARK: - Published Properties
 
@@ -77,7 +78,7 @@ public class UPicUploader: ObservableObject {
     public func openSystemPreferences() {
         BookmarkManager.shared.openPreferences()
     }
-    
+
     public func cancelAllUploads() {
         UPicCore.shared.cancel()
     }
@@ -346,6 +347,8 @@ public class UPicUploader: ObservableObject {
 
     private func performSingleUpload(hostModel: HostModel, item: UploadItem) async throws -> String {
         return try await withCheckedThrowingContinuation { continuation in
+            let compressedData = compressImage(item.data!)
+
             UPicCore.shared
                 .progress { progress in
                     Task { @MainActor in
@@ -364,17 +367,19 @@ public class UPicUploader: ObservableObject {
                     ])
                     continuation.resume(throwing: error)
                 }
-                .upload(hostModel: hostModel, fileData: item.data!, filename: item.originalFilename)
+                .upload(hostModel: hostModel, fileData: compressedData, filename: item.originalFilename)
         }
     }
 
     private func saveToHistory(item: UploadItem, url: String, hostId: String?) async {
         await MainActor.run {
+            let compressedData = compressImage(item.data!)
+
             let history = UploadHistoryModel(
                 url: url,
                 thumbnailData: item.thumbnailData,
                 createdDate: Date(),
-                size: item.data?.count ?? 0,
+                size: compressedData.count,
                 pixelWidth: item.pixelWidth,
                 pixelHeight: item.pixelHeight,
                 originalFilename: item.originalFilename,
@@ -522,9 +527,7 @@ public class UPicUploader: ObservableObject {
                 var processedData = imageData
 
                 // 转换TIFF为JPEG
-                if imageType == .tiff,
-                   let image = NSImage(data: imageData),
-                   let jpegData = image.jpegData(compressionQuality: 0.9) {
+                if imageType == .tiff, let image = NSImage(data: imageData), let jpegData = image.jpegData(compressionQuality: 0.9) {
                     processedData = jpegData
                 }
 
@@ -536,8 +539,7 @@ public class UPicUploader: ObservableObject {
         }
 
         // 检查URL字符串
-        if let urlString = pasteboard.string(forType: .string),
-           let url = URL(string: urlString.trimmingCharacters(in: .whitespacesAndNewlines)) {
+        if let urlString = pasteboard.string(forType: .string), let url = URL(string: urlString.trimmingCharacters(in: .whitespacesAndNewlines)) {
             AppLogger.uploader.info("Uploading URL from clipboard: \(urlString)")
 
             Task {
@@ -555,9 +557,24 @@ public class UPicUploader: ObservableObject {
 
     // MARK: - Screenshot Upload
 
-    /// 截图上传
     public func uploadFromScreenshot() {
         AppLogger.uploader.info("Starting screenshot upload")
+
+        switch Defaults[.screenshotApp] {
+        case .system:
+            uploadFromSystemScreenshot()
+        case .longshot:
+            AppLogger.uploader.info("Screenshot via Longshot")
+            guard let url = URL(string: "longshot://x-callback-url/snip?func=start&channel=clipboard&type=data&x-source=uPic&x-success=uPic://x-callback-url/acceptSnip?x-source=longshot&x-error=uPic://x-callback-url/snipError?x-source=longshot&errorMessage=message") else {
+                return
+            }
+            NSWorkspace.shared.open(url)
+        }
+    }
+
+    /// 系统截图上传
+    private func uploadFromSystemScreenshot() {
+        AppLogger.uploader.info("Screenshot via System")
 
         if isUploading {
             AppLogger.uploader.warning("Current upload task not finished")
@@ -676,15 +693,56 @@ public class UPicUploader: ObservableObject {
     }
 }
 
-// MARK: - NSImage Extension
+// MARK: - 压缩
 
-extension NSImage {
-    /// 将NSImage转换为JPEG数据
-    func jpegData(compressionQuality: CGFloat = 0.9) -> Data? {
-        guard let tiffData = self.tiffRepresentation,
-              let bitmapRep = NSBitmapImageRep(data: tiffData) else {
-            return nil
+extension UPicUploadeManager {
+    private func compressImage(_ data: Data) -> Data {
+        let factor: Int = Defaults[.compressFactor]
+
+        if factor >= 100 {
+            return data
         }
-        return bitmapRep.representation(using: .jpeg, properties: [.compressionFactor: compressionQuality])
+
+        switch Swime.mimeType(data: data)?.type {
+        case .png:
+            return compressPng(data, factor: factor)
+        case .jpg:
+            return compressJpg(data, factor: factor)
+        default:
+            return data
+        }
+    }
+
+    /// 压缩PNG图片。
+    /// - Parameters:
+    ///   - data: jpg Data
+    ///   - factor: 压缩率 0~100
+    private func compressPng(_ data: Data, factor: Int = 100) -> Data {
+        if factor <= 0 || factor >= 100 {
+            return data
+        }
+
+        let repData = minipng.data2Data(data, factor)
+
+        return repData ?? data
+    }
+
+    /// 压缩Jpg图片。
+    /// - Parameters:
+    ///   - data: jpg Data
+    ///   - factor: 压缩率 0~100
+    private func compressJpg(_ data: Data, factor: Int = 100) -> Data {
+        guard let bitmap = NSBitmapImageRep(data: data) else {
+            return data
+        }
+
+        let factor = Float(factor) / 100
+
+        if factor <= 0.0 || factor >= 1.0 {
+            return data
+        }
+
+        let repData = bitmap.representation(using: .jpeg, properties: [.compressionFactor: factor])
+        return repData ?? data
     }
 }

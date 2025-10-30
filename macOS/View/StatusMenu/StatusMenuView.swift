@@ -19,7 +19,7 @@ struct StatusMenuView: View {
     @Default(.outputFormatEncoded) var outputFormatEncoded
     @Default(.compressFactor) var compressFactor
 
-    @ObservedObject private var uploader = UPicUploader.shared
+    @ObservedObject private var uploader = UPicUploadeManager.shared
 
     @Query private var hostModels: [HostModel]
 

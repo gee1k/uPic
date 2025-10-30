@@ -20,7 +20,7 @@ extension NSImage {
         return targetImage
     }
 
-    var pngData: Data? {
+    func pngData() -> Data? {
         guard let rep = NSBitmapImageRep(
             bitmapDataPlanes: nil,
             pixelsWide: Int(size.width),
@@ -46,6 +46,14 @@ extension NSImage {
         }
         return data
     }
-}
 
-extension NSImage {}
+    /// 将NSImage转换为JPEG数据
+    func jpegData(compressionQuality: CGFloat = 0.9) -> Data? {
+        guard let tiffData = tiffRepresentation,
+              let bitmapRep = NSBitmapImageRep(data: tiffData)
+        else {
+            return nil
+        }
+        return bitmapRep.representation(using: .jpeg, properties: [.compressionFactor: compressionQuality])
+    }
+}
