@@ -87,9 +87,9 @@ public class UPicUploader: ObservableObject {
     /// 通过文件URL上传
     public func upload(fileURLs: [URL]) async {
         guard let host = getSelectedHost() else {
-            AppLogger.uploader.error("[UPicUploader] 没有可用的图床配置")
+            AppLogger.uploader.error("No available hosts configuration")
             await MainActor.run {
-                self.onUploadFail?("没有可用的图床配置", nil)
+                self.onUploadFail?("No available hosts configuration", nil)
             }
             return
         }
@@ -99,20 +99,20 @@ public class UPicUploader: ObservableObject {
 
     /// 通过文件URL上传
     public func upload(hostModel: HostModel, fileURLs: [URL]) async {
-        AppLogger.uploader.info("[UPicUploader] 开始通过 URL 上传 -> \(fileURLs.count) 个文件")
+        AppLogger.uploader.info("Start uploading via URL: \(fileURLs.count) files")
 
         // 使用 DiskPermissionManager 管理磁盘访问权限
         let diskPermissionManager = BookmarkManager.shared
 
         // 首先检查是否已有磁盘访问权限
         if !diskPermissionManager.checkFullDiskAuthorizationStatus() {
-            AppLogger.uploader.warning("[UPicUploader] 缺少磁盘访问权限，尝试启动权限访问")
+            AppLogger.uploader.warning("Missing disk access permissions, attempting to start permission access")
 
             // 尝试启动已有的权限访问
             guard diskPermissionManager.startDirectoryAccessing() else {
-                AppLogger.uploader.error("[UPicUploader] 无法获取磁盘访问权限，请在设置中授权")
+                AppLogger.uploader.error("Unable to get disk access permission, please authorize in settings")
                 await MainActor.run {
-                    self.onUploadFail?("缺少磁盘访问权限", "请在应用设置中授权完全磁盘访问权限")
+                    self.onUploadFail?("Missing disk access permissions", "please authorize in settings")
                 }
                 return
             }
@@ -123,7 +123,7 @@ public class UPicUploader: ObservableObject {
 
         // 处理所有文件
         for url in fileURLs {
-            AppLogger.uploader.info("[UPicUploader] 处理文件 -> \(url.path)")
+            AppLogger.uploader.info("Processing file: \(url.path)")
 
             if let item = await safelyProcessFile(url: url) {
                 items.append(item)
@@ -136,21 +136,19 @@ public class UPicUploader: ObservableObject {
 
         // 释放磁盘访问权限
         diskPermissionManager.stopDirectoryAccessing()
-
-        AppLogger.uploader.info("[UPicUploader] 磁盘访问权限已释放")
     }
 
     /// 安全地处理单个文件，使用 DiskPermissionManager
     private func safelyProcessFile(url: URL) async -> UploadItem? {
         // 检查文件是否存在
         guard FileManager.default.fileExists(atPath: url.path) else {
-            AppLogger.uploader.warning("[UPicUploader] 文件不存在 -> \(url.path)")
+            AppLogger.uploader.warning("File does not exist: \(url.path)")
             return nil
         }
 
         // 检查文件是否可读
         guard FileManager.default.isReadableFile(atPath: url.path) else {
-            AppLogger.uploader.warning("[UPicUploader] 文件不可读 -> \(url.path)")
+            AppLogger.uploader.warning("File is not readable: \(url.path)")
             return nil
         }
 
@@ -159,11 +157,11 @@ public class UPicUploader: ObservableObject {
 
         do {
             let data = try Data(contentsOf: url)
-            AppLogger.uploader.info("[UPicUploader] 成功读取文件数据 -> \(url.path), 大小: \(data.count) bytes")
+            AppLogger.uploader.info("Successfully read file data: \(url.path), size: \(data.count) bytes")
 
             // 验证数据不为空
             guard !data.isEmpty else {
-                AppLogger.uploader.warning("[UPicUploader] 文件数据为空 -> \(url.path)")
+                AppLogger.uploader.warning("File data is empty: \(url.path)")
                 if hasFileScopedAccess {
                     url.stopAccessingSecurityScopedResource()
                 }
@@ -183,9 +181,9 @@ public class UPicUploader: ObservableObject {
                 let thumbnailData = generateThumbnail(from: image, quality: 0.3)
                 uploadItem.thumbnailData = thumbnailData
 
-                AppLogger.uploader.info("[UPicUploader] 图片信息 -> 尺寸: \(uploadItem.pixelWidth)×\(uploadItem.pixelHeight)")
+                AppLogger.uploader.info("Image file frame: \(uploadItem.pixelWidth)×\(uploadItem.pixelHeight)")
             } else {
-                AppLogger.uploader.info("[UPicUploader] 非图片文件 -> \(url.path)")
+                AppLogger.uploader.info("Non-image file:\(url.path)")
                 // 对于非图片文件，仍然允许上传
                 uploadItem.pixelWidth = 0
                 uploadItem.pixelHeight = 0
@@ -200,7 +198,7 @@ public class UPicUploader: ObservableObject {
             return uploadItem
 
         } catch {
-            AppLogger.uploader.error("[UPicUploader] 读取文件数据失败 -> \(url.path), 错误: \(error.localizedDescription)")
+            AppLogger.uploader.error("Failed to read file data: \(url.path), error: \(error.localizedDescription)")
 
             // 出错时立即释放文件级别的安全作用域
             if hasFileScopedAccess {
@@ -213,9 +211,9 @@ public class UPicUploader: ObservableObject {
     /// 通过Data上传
     public func upload(fileData: Data, filename: String? = nil) async {
         guard let host = getSelectedHost() else {
-            AppLogger.uploader.error("[UPicUploader] 没有可用的图床配置")
+            AppLogger.uploader.error("No available host configuration")
             await MainActor.run {
-                self.onUploadFail?("没有可用的图床配置", nil)
+                self.onUploadFail?("No available host configuration", nil)
             }
             return
         }
@@ -225,7 +223,7 @@ public class UPicUploader: ObservableObject {
 
     /// 通过Data上传
     public func upload(hostModel: HostModel, fileData: Data, filename: String? = nil) async {
-        AppLogger.uploader.info("[UPicUploader] 开始通过 Data 上传")
+        AppLogger.uploader.info("Starting upload via Data")
 
         let image = NSImage(data: fileData)
         var uploadItem = UploadItem()
@@ -243,9 +241,9 @@ public class UPicUploader: ObservableObject {
     /// 通过NSImage上传
     public func upload(images: [NSImage]) async {
         guard let host = getSelectedHost() else {
-            AppLogger.uploader.error("[UPicUploader] 没有可用的图床配置")
+            AppLogger.uploader.error("No available host configuration")
             await MainActor.run {
-                self.onUploadFail?("没有可用的图床配置", nil)
+                self.onUploadFail?("No available host configuration", nil)
             }
             return
         }
@@ -255,7 +253,7 @@ public class UPicUploader: ObservableObject {
 
     /// 通过NSImage上传
     public func upload(hostModel: HostModel, images: [NSImage]) async {
-        AppLogger.uploader.info("[UPicUploader] 开始通过 NSImage 上传 -> \(images.count) 个图片")
+        AppLogger.uploader.info("Starting upload via NSImage: \(images.count) images")
 
         var items: [UploadItem] = []
 
@@ -284,7 +282,7 @@ public class UPicUploader: ObservableObject {
 
     private func upload(hostModel: HostModel, items: [UploadItem]) async {
         guard !items.isEmpty else {
-            AppLogger.uploader.warning("[UPicUploader] 没有有效的上传项目")
+            AppLogger.uploader.warning("No valid upload items")
             onAllUploadsComplete?()
             return
         }
@@ -295,14 +293,14 @@ public class UPicUploader: ObservableObject {
             self.onUploadStart?()
         }
 
-        AppLogger.uploader.info("[UPicUploader] 开始执行上传任务队列 -> \(items.count)个")
+        AppLogger.uploader.info("Starting upload task queue: \(items.count) items")
 
         var successCount = 0
         let totalCount = items.count
 
         for (index, item) in items.enumerated() {
             guard let data = item.data else {
-                AppLogger.uploader.warning("[UPicUploader] 跳过无数据的上传项目")
+                AppLogger.uploader.warning("Skipping upload item with no data")
                 continue
             }
 
@@ -312,11 +310,11 @@ public class UPicUploader: ObservableObject {
             }
 
             let size = ByteCountFormatter.string(fromByteCount: Int64(data.count), countStyle: .decimal)
-            AppLogger.uploader.info("[UPicUploader] 上传进度 -> \(index + 1)/\(totalCount) - 文件大小 -> \(size)")
+            AppLogger.uploader.info("Upload progress: \(index + 1)/\(totalCount) - File size: \(size)")
 
             do {
                 let url = try await performSingleUpload(hostModel: hostModel, item: item)
-                AppLogger.uploader.info("[UPicUploader] 上传成功 -> \(url)")
+                AppLogger.uploader.info("Upload successful: \(url)")
 
                 await saveToHistory(item: item, url: url, hostId: hostModel.id)
                 successCount += 1
@@ -327,7 +325,7 @@ public class UPicUploader: ObservableObject {
 
             } catch {
                 let errorMessage = error.localizedDescription
-                AppLogger.uploader.error("[UPicUploader] 上传失败 -> \(errorMessage)")
+                AppLogger.uploader.error("Upload failed: \(errorMessage)")
 
                 await MainActor.run {
                     self.onUploadFail?(errorMessage, error.localizedDescription)
@@ -343,7 +341,7 @@ public class UPicUploader: ObservableObject {
             self.onAllUploadsComplete?()
         }
 
-        AppLogger.uploader.info("[UPicUploader] 上传任务队列结束 -> 成功: \(successCount)/\(totalCount)")
+        AppLogger.uploader.info("Upload task queue completed: Success: \(successCount)/\(totalCount)")
     }
 
     private func performSingleUpload(hostModel: HostModel, item: UploadItem) async throws -> String {
@@ -352,11 +350,11 @@ public class UPicUploader: ObservableObject {
                 .progress { progress in
                     Task { @MainActor in
                         self.uploadProgress = progress
-                        AppLogger.uploader.info("[UPicUploader] 单文件上传进度: \(progress * 100)%")
+                        AppLogger.uploader.info("Single file upload progress: \(progress * 100)%")
                     }
                 }
                 .complete { url in
-                    AppLogger.uploader.info("[UPicUploader] 单文件上传完成: \(url)")
+                    AppLogger.uploader.info("Single file upload completed: \(url)")
                     continuation.resume(returning: url)
                 }
                 .fail { errorMessage, detailError in
@@ -387,13 +385,13 @@ public class UPicUploader: ObservableObject {
 
             do {
                 try modelContext.save()
-                AppLogger.uploader.info("[UPicUploader] 历史记录保存成功 -> \(url)")
+                AppLogger.uploader.info("History record saved successfully: \(url)")
 
                 // 重新加载历史记录
                 loadUploadHistory()
 
             } catch {
-                AppLogger.uploader.error("[UPicUploader] 历史记录保存失败 -> \(error.localizedDescription)")
+                AppLogger.uploader.error("Failed to save history record: \(error.localizedDescription)")
             }
         }
     }
@@ -415,7 +413,7 @@ public class UPicUploader: ObservableObject {
         do {
             uploadHistory = try modelContext.fetch(descriptor)
         } catch {
-            AppLogger.uploader.error("[UPicUploader] 加载历史记录失败 -> \(error.localizedDescription)")
+            AppLogger.uploader.error("Failed to load upload history: \(error.localizedDescription)")
         }
     }
 
@@ -428,7 +426,7 @@ public class UPicUploader: ObservableObject {
             try modelContext.save()
             loadUploadHistory()
         } catch {
-            AppLogger.uploader.error("[UPicUploader] 删除历史记录失败 -> \(error.localizedDescription)")
+            AppLogger.uploader.error("Failed to delete history record: \(error.localizedDescription)")
         }
     }
 
@@ -443,7 +441,7 @@ public class UPicUploader: ObservableObject {
             try modelContext.save()
             loadUploadHistory()
         } catch {
-            AppLogger.uploader.error("[UPicUploader] 清空历史记录失败 -> \(error.localizedDescription)")
+            AppLogger.uploader.error("Failed to clear history records: \(error.localizedDescription)")
         }
     }
 
@@ -451,10 +449,10 @@ public class UPicUploader: ObservableObject {
 
     /// 选择文件上传
     public func uploadFromSelectFile() {
-        AppLogger.uploader.info("[UPicUploader] 开始选择文件上传")
+        AppLogger.uploader.info("Starting file selection upload")
 
         if isUploading {
-            AppLogger.uploader.warning("[UPicUploader] 当前上传任务未结束")
+            AppLogger.uploader.warning("Current upload task not finished")
             return
         }
 
@@ -468,7 +466,7 @@ public class UPicUploader: ObservableObject {
         openPanel.begin { [weak self] result in
             openPanel.close()
             if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
-                AppLogger.uploader.info("[UPicUploader] 选择文件数量：\(openPanel.urls.count)")
+                AppLogger.uploader.info("Selected files count: \(openPanel.urls.count)")
                 Task {
                     await self?.upload(fileURLs: openPanel.urls)
                 }
@@ -482,15 +480,15 @@ public class UPicUploader: ObservableObject {
 
     /// 从剪贴板上传
     public func uploadFromClipboard() {
-        AppLogger.uploader.info("[UPicUploader] 开始从剪贴板上传")
+        AppLogger.uploader.info("Starting clipboard upload")
 
         if isUploading {
-            AppLogger.uploader.warning("[UPicUploader] 当前上传任务未结束")
+            AppLogger.uploader.warning("Current upload task not finished")
             return
         }
 
         let pasteboard = NSPasteboard.general
-        AppLogger.uploader.info("[UPicUploader] 剪贴板格式：\(pasteboard.types?.first?.rawValue ?? "未知")")
+        AppLogger.uploader.info("Clipboard format: \(pasteboard.types?.first?.rawValue ?? "Unknown")")
 
         // 检查文件
         if let filenames = pasteboard.propertyList(forType: NSPasteboard.PasteboardType("NSFilenamesPboardType")) as? [String] {
@@ -504,7 +502,7 @@ public class UPicUploader: ObservableObject {
                 }
             }
 
-            AppLogger.uploader.info("[UPicUploader] 剪贴板文件数量：\(urls.count)")
+            AppLogger.uploader.info("Clipboard files count: \(urls.count)")
 
             if !urls.isEmpty {
                 Task {
@@ -519,7 +517,7 @@ public class UPicUploader: ObservableObject {
 
         for imageType in imageTypes {
             if let imageData = pasteboard.data(forType: imageType) {
-                AppLogger.uploader.info("[UPicUploader] 剪贴板上传图片：\(imageType.rawValue)")
+                AppLogger.uploader.info("Uploading image from clipboard: \(imageType.rawValue)")
 
                 var processedData = imageData
 
@@ -540,7 +538,7 @@ public class UPicUploader: ObservableObject {
         // 检查URL字符串
         if let urlString = pasteboard.string(forType: .string),
            let url = URL(string: urlString.trimmingCharacters(in: .whitespacesAndNewlines)) {
-            AppLogger.uploader.info("[UPicUploader] 剪贴板上传URL：\(urlString)")
+            AppLogger.uploader.info("Uploading URL from clipboard: \(urlString)")
 
             Task {
                 do {
@@ -549,7 +547,7 @@ public class UPicUploader: ObservableObject {
                         await upload(hostModel: selectedHost, fileData: data, filename: url.lastPathComponent)
                     }
                 } catch {
-                    AppLogger.uploader.error("[UPicUploader] 从URL加载数据失败：\(error.localizedDescription)")
+                    AppLogger.uploader.error("Failed to load data from URL: \(error.localizedDescription)")
                 }
             }
         }
@@ -559,16 +557,16 @@ public class UPicUploader: ObservableObject {
 
     /// 截图上传
     public func uploadFromScreenshot() {
-        AppLogger.uploader.info("[UPicUploader] 开始截图上传")
+        AppLogger.uploader.info("Starting screenshot upload")
 
         if isUploading {
-            AppLogger.uploader.warning("[UPicUploader] 当前上传任务未结束")
+            AppLogger.uploader.warning("Current upload task not finished")
             return
         }
 
         // 检查屏幕录制权限
         if !checkScreenRecordingPermission() {
-            AppLogger.uploader.warning("[UPicUploader] 无截图权限，申请权限")
+            AppLogger.uploader.warning("No screenshot permission, requesting permission")
             requestScreenRecordingPermission()
             return
         }
@@ -582,13 +580,13 @@ public class UPicUploader: ObservableObject {
 
         // 检查剪贴板中的截图
         let pasteboard = NSPasteboard.general
-        AppLogger.uploader.info("[UPicUploader] 截图格式：\(pasteboard.types?.first?.rawValue ?? "未知")")
+        AppLogger.uploader.info("Screenshot format: \(pasteboard.types?.first?.rawValue ?? "Unknown")")
 
         let imageTypes: [NSPasteboard.PasteboardType] = [.png, .tiff]
 
         for imageType in imageTypes {
             if let imageData = pasteboard.data(forType: imageType) {
-                AppLogger.uploader.info("[UPicUploader] 截图上传成功：\(imageType.rawValue)")
+                AppLogger.uploader.info("Screenshot upload successful: \(imageType.rawValue)")
 
                 Task {
                     await upload(fileData: imageData, filename: "screenshot_\(Date().timeIntervalSince1970).png")
@@ -597,7 +595,7 @@ public class UPicUploader: ObservableObject {
             }
         }
 
-        AppLogger.uploader.warning("[UPicUploader] 截图失败或未找到图片数据")
+        AppLogger.uploader.warning("Screenshot failed or no image data found")
     }
 
     // MARK: - Helper Methods
@@ -605,7 +603,7 @@ public class UPicUploader: ObservableObject {
     /// 获取选中的图床配置
     private func getSelectedHost() -> HostModel? {
         guard let selectedHostId = Defaults[.selectedHostId] else {
-            AppLogger.uploader.warning("[UPicUploader] 未选中任何图床配置")
+            AppLogger.uploader.warning("No host configuration selected")
             return getFirstHostAsFallback()
         }
 
@@ -616,14 +614,14 @@ public class UPicUploader: ObservableObject {
         do {
             let hosts = try modelContext.fetch(descriptor)
             if let selectedHost = hosts.first {
-                AppLogger.uploader.info("[UPicUploader] 使用选中的图床配置：\(selectedHost.name)")
+                AppLogger.uploader.info("Using selected host configuration: \(selectedHost.name ?? "")")
                 return selectedHost
             } else {
-                AppLogger.uploader.warning("[UPicUploader] 选中的图床配置不存在，ID：\(selectedHostId)")
+                AppLogger.uploader.warning("Selected host configuration does not exist, ID: \(selectedHostId)")
                 return getFirstHostAsFallback()
             }
         } catch {
-            AppLogger.uploader.error("[UPicUploader] 获取选中图床配置失败：\(error.localizedDescription)")
+            AppLogger.uploader.error("Failed to get selected host configuration: \(error.localizedDescription)")
             return getFirstHostAsFallback()
         }
     }
@@ -634,16 +632,16 @@ public class UPicUploader: ObservableObject {
         do {
             let hosts = try modelContext.fetch(descriptor)
             if let firstHost = hosts.first {
-                AppLogger.uploader.info("[UPicUploader] 使用第一个图床配置作为备用：\(firstHost.name)")
+                AppLogger.uploader.info("Using first host configuration as fallback: \(firstHost.name ?? "")")
                 // 自动设置为选中的图床
                 Defaults[.selectedHostId] = firstHost.id
                 return firstHost
             } else {
-                AppLogger.uploader.error("[UPicUploader] 没有可用的图床配置")
+                AppLogger.uploader.error("No available host configurations")
                 return nil
             }
         } catch {
-            AppLogger.uploader.error("[UPicUploader] 获取备用图床配置失败：\(error.localizedDescription)")
+            AppLogger.uploader.error("Failed to get fallback host configuration: \(error.localizedDescription)")
             return nil
         }
     }
@@ -665,11 +663,11 @@ public class UPicUploader: ObservableObject {
         CGRequestScreenCaptureAccess()
         // 显示权限请求提示
         let alert = NSAlert()
-        alert.messageText = "需要屏幕录制权限"
-        alert.informativeText = "请在系统偏好设置 > 安全性与隐私 > 屏幕录制中允许 uPic 访问。"
+        alert.messageText = "Screen Recording Permission Required"
+        alert.informativeText = "Please allow uPic to access screen recording in System Preferences > Security & Privacy > Screen Recording."
         alert.alertStyle = .warning
-        alert.addButton(withTitle: "打开系统偏好设置")
-        alert.addButton(withTitle: "取消")
+        alert.addButton(withTitle: "Open System Preferences")
+        alert.addButton(withTitle: "Cancel")
 
         let response = alert.runModal()
         if response == .alertFirstButtonReturn {

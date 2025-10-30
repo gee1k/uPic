@@ -54,7 +54,7 @@ public final class UploadHistoryModel {
         guard let ext = self.fileExtension?.lowercased() else {
             return nil
         }
-        return nil
+        return ext
     }
 
     public var formattedSize: String {
