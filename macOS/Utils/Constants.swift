@@ -16,8 +16,8 @@ enum Constants {
     static let svendEmail = "svend.jin@gmail.com"
     static let appStoreReviewURL = "itms-apps://itunes.apple.com/app/id1549159979?action=write-review"
     static let githubContributors = "https://github.com/gee1k/uPic/graphs/contributors"
-    
-    //Host Config View
+
+    // Host Config View
     static let smmsAPITokenUrl = "https://smms.app/home/apitoken"
     static let smmsHelpUrl = "https://blog.svend.cc/upic/tutorials/smms"
     static let qiniuHelpUrl = "https://blog.svend.cc/upic/tutorials/qiniu_kodo"

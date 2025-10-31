@@ -5,12 +5,12 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
 import Defaults
+import SwiftUI
 
 struct ScreenshotAppSettings: View {
     @Default(.screenshotApp) var screenshotApp
-    
+
     var body: some View {
         Section {
             HStack {

@@ -43,15 +43,15 @@ public final class UploadHistoryModel {
 
     // 计算属性
     public var filename: String? {
-        return self.originalFilename ?? (self.url as NSString).lastPathComponent
+        return originalFilename ?? (url as NSString).lastPathComponent
     }
 
     public var fileExtension: String? {
-        return (self.filename as NSString?)?.pathExtension
+        return (filename as NSString?)?.pathExtension
     }
 
     public var fileType: String? {
-        guard let ext = self.fileExtension?.lowercased() else {
+        guard let ext = fileExtension?.lowercased() else {
             return nil
         }
         return ext
@@ -69,7 +69,7 @@ public final class UploadHistoryModel {
     }
 
     public var dimensions: String? {
-        guard pixelWidth > 0 && pixelHeight > 0 else {
+        guard pixelWidth > 0, pixelHeight > 0 else {
             return nil
         }
         return "\(pixelWidth)×\(pixelHeight)"

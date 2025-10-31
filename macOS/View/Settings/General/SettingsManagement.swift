@@ -6,10 +6,10 @@
 //
 
 import Defaults
+import KeyboardShortcuts
 import SimpleLogger
 import SwiftUI
 import UniformTypeIdentifiers
-import KeyboardShortcuts
 
 struct SettingsManagement: View {
     // Export/Import states

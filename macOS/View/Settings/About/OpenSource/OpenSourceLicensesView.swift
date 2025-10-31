@@ -42,10 +42,6 @@ struct OpenSourceLicensesView: View {
     }
 }
 
-
-
-
-
 #Preview {
     NavigationView {
         OpenSourceLicensesView()

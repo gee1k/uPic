@@ -5,14 +5,14 @@
 //  Created by Licardo on 2025/10/28.
 //
 
-import SwiftUI
 import Defaults
+import SwiftUI
 
 struct OutputFormatSettings: View {
     @Default(.selectedOutputFormat) var selectedOutputFormat
     @Default(.outputFormats) var outputFormats
     @State private var showOutputFormatCustomizeView: Bool = false
-    
+
     var body: some View {
         Section {
             HStack {
@@ -25,7 +25,7 @@ struct OutputFormatSettings: View {
                     }
                 }
                 .labelsHidden()
-                
+
                 Button("Config") {
                     showOutputFormatCustomizeView = true
                 }

@@ -58,7 +58,7 @@ struct OutputFormatCustomizeView: View {
                 }
             }
             .padding(.vertical)
-            
+
             Spacer()
 
             HStack {

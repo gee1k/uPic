@@ -51,7 +51,7 @@ struct HistoryTable: View {
                 .width(ideal: 50)
 
                 TableColumn("File Name") { history in
-                    Text(history.filename ?? "未知文件")
+                    Text(history.filename ?? "Unknown")
                         .lineLimit(1)
                         .truncationMode(.middle)
                 }
