@@ -71,7 +71,6 @@ struct uPicApp: App {
         }
         .modelContainer(upicModelContainer)
         .defaultPosition(.center)
-        .windowLevel(.floating)
         #if DEBUG
             .defaultLaunchBehavior(.presented)
         #else
@@ -84,7 +83,6 @@ struct uPicApp: App {
         }
         .modelContainer(upicModelContainer)
         .defaultPosition(.center)
-        .windowLevel(.floating)
         .defaultLaunchBehavior(.suppressed)
 
         MenuBarExtra {

@@ -23,6 +23,7 @@ struct StatusMenuView: View {
     @ObservedObject private var uploader = UploadeManager.shared
 
     @Query private var hostModels: [HostModel]
+    @Query private var uploadHistory: [UploadHistoryModel]
 
     @Environment(\.openWindow) var openWindow
 
@@ -37,7 +38,9 @@ struct StatusMenuView: View {
     var body: some View {
         VStack {
             if uploader.isUploading {
-                Button("Cancel upload") {}
+                Button("Cancel upload") {
+                    uploader.cancelAllUploads()
+                }
                 Divider()
             }
             
@@ -172,23 +175,25 @@ struct StatusMenuView: View {
             Divider()
             
             Menu("History") {
-                if uploader.uploadHistory.isEmpty {
+                if uploadHistory.isEmpty {
                     Text("No history yet")
                         .foregroundColor(.secondary)
                 } else {
-                    ForEach(Array(uploader.uploadHistory.prefix(8)), id: \.id) { history in
+                    ForEach(Array(uploadHistory.prefix(8)), id: \.id) { history in
                         HistoryMenuItem(history: history)
                     }
 
                     Divider()
 
                     Button("View More...") {
+                        NSApp.activate(ignoringOtherApps: true)
                         openWindow(id: "database")
                     }
                 }
             }
             
             Button("Database") {
+                NSApp.activate(ignoringOtherApps: true)
                 openWindow(id: "database")
             }
             .keyboardShortcut("D")
@@ -196,6 +201,7 @@ struct StatusMenuView: View {
             Divider()
             
             Button("Preferences") {
+                NSApp.activate(ignoringOtherApps: true)
                 openWindow(id: "settings")
             }
             .keyboardShortcut(",")
