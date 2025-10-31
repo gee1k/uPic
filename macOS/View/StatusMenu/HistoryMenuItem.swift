@@ -65,7 +65,7 @@ struct HistoryMenuItem: View {
                         )
                 }
 
-                Text(history.filename ?? "Unknown file")
+                Text(history.filename ?? "Unknown")
                     .truncationMode(.middle)
             }
         } primaryAction: {

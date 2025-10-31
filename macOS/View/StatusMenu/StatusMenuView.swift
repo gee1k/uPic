@@ -81,18 +81,23 @@ struct StatusMenuView: View {
             }
     
             Menu("Host  \(Text(selectedHostName).foregroundStyle(.secondary))") {
-                ForEach(hostModels) { hostModel in
-                    Button {
-                        selectedHostId = hostModel.id
-                    } label: {
-                        Label {
-                            Text("\(hostModel.name) \(selectedHostId == hostModel.id ? "✓" : "")")
-                        } icon: {
-                            Image("host_icon_\(hostModel.typeRaw ?? "smms")")
+                if hostModels.isEmpty {
+                    Text("No host yet")
+                        .foregroundStyle(.secondary)
+                } else {
+                    ForEach(hostModels) { hostModel in
+                        Button {
+                            selectedHostId = hostModel.id
+                        } label: {
+                            Label {
+                                Text("\(hostModel.name) \(selectedHostId == hostModel.id ? "✓" : "")")
+                            } icon: {
+                                Image("host_icon_\(hostModel.typeRaw ?? "smms")")
+                            }
                         }
                     }
                 }
-            }
+             }
             
             Menu("Output format  \(Text(selectedOutputFormat.name).foregroundStyle(.secondary))") {
                 ForEach(outputFormats) { outputFormat in
