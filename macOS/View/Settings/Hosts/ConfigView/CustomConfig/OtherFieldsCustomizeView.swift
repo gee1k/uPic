@@ -26,7 +26,7 @@ struct OtherFieldsCustomizeView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Image(systemName: "textformat.size")
-                        .foregroundColor(.blue)
+                        .foregroundStyle(.blue)
                     Text("Header")
                         .font(.subheadline)
                         .fontWeight(.semibold)
@@ -35,7 +35,7 @@ struct OtherFieldsCustomizeView: View {
                         addNewHeader()
                     } label: {
                         Image(systemName: "plus.circle.fill")
-                            .foregroundColor(.blue)
+                            .foregroundStyle(.blue)
                     }
                     .buttonStyle(.plain)
                     .help("Add new header")
@@ -76,7 +76,7 @@ struct OtherFieldsCustomizeView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Image(systemName: "doc.text")
-                        .foregroundColor(.green)
+                        .foregroundStyle(.green)
                     Text("Body")
                         .font(.subheadline)
                         .fontWeight(.semibold)
@@ -85,10 +85,10 @@ struct OtherFieldsCustomizeView: View {
                         addNewBody()
                     } label: {
                         Image(systemName: "plus.circle.fill")
-                            .foregroundColor(.green)
+                            .foregroundStyle(.green)
                     }
                     .buttonStyle(.plain)
-                    .help("Add new body field")
+                    .help("Add new body")
                 }
 
                 Table(editableBodies) {
@@ -123,7 +123,7 @@ struct OtherFieldsCustomizeView: View {
 
             Text("Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} {saveKey} and etc.")
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
 
             Spacer()
 

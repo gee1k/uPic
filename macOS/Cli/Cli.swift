@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Defaults
 import Foundation
 
 enum UploadSourceType {
@@ -39,10 +40,10 @@ class Cli {
         allDataList = []
         resultUrls = []
         
-        upload = MultiStringOption(shortFlag: "u", longFlag: "upload", required: true, helpMessage: "Path and URL of the file to upload".localized)
-        output = StringOption(shortFlag: "o", longFlag: "output", helpMessage: "Output url format".localized)
-        slient = BoolOption(shortFlag: "s", longFlag: "slient", helpMessage: "Turn off error message output".localized)
-        help = BoolOption(shortFlag: "h", longFlag: "help", helpMessage: "Print this help message".localized)
+        upload = MultiStringOption(shortFlag: "u", longFlag: "upload", required: true, helpMessage: String(localized: "Path and URL of the file to upload"))
+        output = StringOption(shortFlag: "o", longFlag: "output", helpMessage: String(localized: "Output url format"))
+        slient = BoolOption(shortFlag: "s", longFlag: "slient", helpMessage: String(localized: "Turn off error message output"))
+        help = BoolOption(shortFlag: "h", longFlag: "help", helpMessage: String(localized: "Print this help message"))
         cliKit.addOptions(upload, output, slient, help)
         do {
             try cliKit.parse()
@@ -78,13 +79,18 @@ extension Cli {
             }
         }
         
-        var totalPathsCount = "Total paths count".localized
+        var totalPathsCount = String(localized: "Total paths count")
         totalPathsCount = totalPathsCount.replacingOccurrences(of: "{count}", with: "\(allDataList.count)")
         Console.write(totalPathsCount)
         
         // start upload
-        Console.write("Uploading ...")
-        (NSApplication.shared.delegate as? AppDelegate)?.uploadFiles(allDataList, .cli)
+        Console.write(String(localized: "Uploading ..."))
+        
+        if let urls = allDataList as? [URL] {
+            Task {
+                await UploadeManager.shared.upload(fileURLs: urls)
+            }
+        }
     }
     
     /// Upload progress
@@ -119,7 +125,7 @@ extension Cli {
         
         resultUrls.append(outputUrl)
         progress += 1
-        Console.write("Uploading \(progress)/\(allDataList.count)")
+        Console.write(String(localized: "Uploading \(progress)/\(allDataList.count)"))
     }
     
     /// Upload error
@@ -128,18 +134,17 @@ extension Cli {
         if slient.value {
             resultUrls.append(allPathList[progress])
         } else {
-            resultUrls.append(errorMessage ?? "Invalid file path".localized)
+            resultUrls.append(errorMessage ?? String(localized: "Invalid file path"))
         }
         progress += 1
-        Console.write("Uploading \(progress)/\(allDataList.count)")
+        Console.write(String(localized: "Uploading \(progress)/\(allDataList.count)"))
     }
     
     /// all task was uploaded
     func uploadDone() {
-        Console.write("Output URL:")
+        Console.write(String(localized: "Output URL:"))
         
         Console.write(resultUrls.joined(separator: "\n"))
-        DBManager.shared.close()
         DispatchQueue.main.async {
             exit(EX_OK)
         }

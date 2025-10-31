@@ -45,7 +45,7 @@ struct HistoryTable: View {
                         }
                     } else {
                         Text("Unknown")
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(.secondary)
                     }
                 }
                 .width(ideal: 50)
@@ -61,30 +61,30 @@ struct HistoryTable: View {
                     Text(history.url)
                         .lineLimit(2)
                         .truncationMode(.middle)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
                 .width(ideal: 120)
 
                 TableColumn("Frame") { history in
                     if let dimensions = history.dimensions {
                         Text(dimensions)
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(.secondary)
                     } else {
                         Text(verbatim: "-")
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(.secondary)
                     }
                 }
                 .width(ideal: 50)
 
                 TableColumn("Size") { history in
                     Text(history.formattedSize)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
                 .width(ideal: 50)
 
                 TableColumn("Upload Time") { history in
                     Text(history.formattedDate)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
                 .width(ideal: 160)
             }
@@ -94,7 +94,7 @@ struct HistoryTable: View {
                         showClearHistoryAlert = true
                     } label: {
                         Image(systemName: "trash")
-                            .foregroundColor(.red)
+                            .foregroundStyle(.red)
                     }
                 }
             }
@@ -145,7 +145,7 @@ struct HistoryTable: View {
                     Text("Thumbnail Size")
                     Image(systemName: "photo")
                 }
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
                 .font(.caption)
 
                 Slider(value: $thumbnailSize, in: 40 ... 120, step: 5) {}
@@ -207,7 +207,7 @@ struct ThumbnailView: View {
                     .overlay(
                         Image(systemName: "photo")
                             .font(.system(size: size / 4))
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(.secondary)
                     )
             }
         }

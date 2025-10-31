@@ -14,7 +14,7 @@ struct SmmsConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
 
-    @State private var name: String = .init(localized: "SMMS")
+    @State private var name: String = HostType.smms.displayNname
     @State private var token: String = ""
     @State private var isTokenSecured: Bool = true
 

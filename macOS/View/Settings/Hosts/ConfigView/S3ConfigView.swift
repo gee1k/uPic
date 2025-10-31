@@ -15,7 +15,7 @@ struct S3ConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
 
-    @State private var name: String = .init(localized: "Amazon S3 Compatible")
+    @State private var name: String = HostType.s3.displayNname
     @State private var customize: Bool = false
     @State private var region = S3Region.allRegions.first ?? ""
     @State private var endpoint: String = ""

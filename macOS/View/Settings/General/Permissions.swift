@@ -50,7 +50,7 @@ struct Permissions: View {
                 if !hasFullDiskAccess {
                     Text("Required for accessing files on your Mac")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
             }
         } header: {

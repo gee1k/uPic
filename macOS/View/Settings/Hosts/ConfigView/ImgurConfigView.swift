@@ -14,7 +14,7 @@ struct ImgurConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
 
-    @State private var name: String = .init(localized: "Imgur")
+    @State private var name: String = HostType.imgur.displayNname
     @State private var clientId: String = ""
     @State private var isClientIdSecured: Bool = true
 

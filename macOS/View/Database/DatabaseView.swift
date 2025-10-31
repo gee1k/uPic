@@ -19,16 +19,14 @@ struct DatabaseView: View {
                 VStack(spacing: 20) {
                     Image(systemName: "photo.stack")
                         .font(.system(size: 60))
-                        .foregroundColor(.secondary)
 
                     Text("No upload history")
                         .font(.title2)
-                        .foregroundColor(.secondary)
 
                     Text("After uploading images, the history will be displayed here.")
                         .font(.body)
-                        .foregroundColor(.secondary)
                 }
+                .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 HistoryTable(uploadHistory: uploadHistory)

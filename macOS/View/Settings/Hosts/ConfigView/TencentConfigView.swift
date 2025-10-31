@@ -14,7 +14,7 @@ struct TencentConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
 
-    @State private var name: String = .init(localized: "Tencent Cloud COS")
+    @State private var name: String = HostType.tencent_cos.displayNname
     @State private var region = TencentRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var secretId: String = ""

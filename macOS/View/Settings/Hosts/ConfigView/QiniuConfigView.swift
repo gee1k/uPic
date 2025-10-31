@@ -14,7 +14,7 @@ struct QiniuConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
 
-    @State private var name: String = .init(localized: "Qiniu KODO")
+    @State private var name: String = HostType.qiniu_kodo.displayNname
     @State private var region = QiniuRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var accessKey: String = ""

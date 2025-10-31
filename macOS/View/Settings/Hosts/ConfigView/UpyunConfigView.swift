@@ -14,7 +14,7 @@ struct UpyunConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
 
-    @State private var name: String = .init(localized: "Upyun USS")
+    @State private var name: String = HostType.upyun_uss.displayNname
     @State private var bucket: String = ""
     @State private var operatorName: String = ""
     @State private var password: String = ""

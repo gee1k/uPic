@@ -14,7 +14,7 @@ struct AliyunConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
 
-    @State private var name: String = .init(localized: "Aliyun OSS")
+    @State private var name: String = HostType.aliyun_oss.displayNname
     @State private var region = AliyunRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var accessKey: String = ""

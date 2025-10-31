@@ -14,7 +14,7 @@ struct WeiboConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
 
-    @State private var name: String = .init(localized: "Weibo")
+    @State private var name: String = HostType.weibo.displayNname
     @State private var cookieMode: Bool = false
     @State private var username: String = ""
     @State private var password: String = ""

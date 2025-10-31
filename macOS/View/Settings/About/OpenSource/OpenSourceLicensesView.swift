@@ -18,10 +18,10 @@ struct OpenSourceLicensesView: View {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(library.name)
                                 .font(.body)
-                                .foregroundColor(.primary)
+                                .foregroundStyle(.primary)
                             Text(library.author)
                                 .font(.caption)
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                         }
                     }
                 }

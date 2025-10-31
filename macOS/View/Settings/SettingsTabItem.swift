@@ -31,7 +31,7 @@ struct SettingsTabItem: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .foregroundColor(foregroundColor)
+            .foregroundStyle(foregroundColor)
             .background(
                 RoundedRectangle(cornerRadius: 8)
                     .fill(backgroundColor)

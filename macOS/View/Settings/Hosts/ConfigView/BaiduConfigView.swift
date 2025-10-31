@@ -14,7 +14,7 @@ struct BaiduConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
 
-    @State private var name: String = .init(localized: "Baidu Cloud BOS")
+    @State private var name: String = HostType.baidu_bos.displayNname
     @State private var region = BaiduRegion.allRegions.first!
     @State private var bucket: String = ""
     @State private var accessKey: String = ""

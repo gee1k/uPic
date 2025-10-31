@@ -28,7 +28,7 @@ public enum HostType: String, CaseIterable, HandyJSONEnum {
             case .smms: return String(localized: "SMMS")
             case .weibo: return String(localized: "Weibo")
             case .imgur: return String(localized: "Imgur")
-            case .s3: return String(localized: "Amazon S3")
+            case .s3: return String(localized: "Amazon S3 Compatible")
             case .qiniu_kodo: return String(localized: "Qiniu KODO")
             case .upyun_uss: return String(localized: "Upyun USS")
             case .aliyun_oss: return String(localized: "Aliyun OSS")

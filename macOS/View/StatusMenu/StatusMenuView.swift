@@ -177,7 +177,7 @@ struct StatusMenuView: View {
             Menu("History") {
                 if uploadHistory.isEmpty {
                     Text("No history yet")
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 } else {
                     ForEach(Array(uploadHistory.prefix(8)), id: \.id) { history in
                         HistoryMenuItem(history: history)

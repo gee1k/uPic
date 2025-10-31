@@ -14,7 +14,7 @@ struct GithubConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
 
-    @State private var name: String = .init(localized: "GitHub")
+    @State private var name: String = HostType.github.displayNname
     @State private var userName: String = ""
     @State private var repo: String = ""
     @State private var branch: String = "main"

@@ -14,7 +14,7 @@ struct CustomConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
 
-    @State private var name: String = .init(localized: "Custom")
+    @State private var name: String = HostType.custom.displayNname
     @State private var apiUrl: String = ""
     @State private var method: CustomRequestMethod = .POST
     @State private var fileField: String = ""

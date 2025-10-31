@@ -61,7 +61,7 @@ struct HistoryMenuItem: View {
                         .overlay(
                             Image(systemName: "photo")
                                 .font(.system(size: 8))
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.secondary)
                         )
                 }
 

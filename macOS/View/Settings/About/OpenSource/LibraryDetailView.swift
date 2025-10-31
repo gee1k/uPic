@@ -20,11 +20,11 @@ struct LibraryDetailView: View {
 
                     Text(library.author)
                         .font(.body)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
 
                     Link("View on GitHub", destination: URL(string: library.githubURL)!)
                         .font(.caption)
-                        .foregroundColor(.blue)
+                        .foregroundStyle(.blue)
                 }
 
                 Divider()
@@ -35,7 +35,7 @@ struct LibraryDetailView: View {
 
                     Text(library.licenseText)
                         .font(.caption)
-                        .foregroundColor(.primary)
+                        .foregroundStyle(.primary)
                 }
 
                 Spacer()

@@ -21,16 +21,16 @@ struct HostListItem: View {
             HStack {
                 Image("host_icon_\(hostModel.typeRaw ?? "smms")")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFit()
                     .frame(width: 16, height: 16)
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(hostModel.name)
                         .lineLimit(1)
-                        .foregroundColor(foregroundColor)
+                        .foregroundStyle(foregroundColor)
                     Text(HostType(rawValue: hostModel.typeRaw ?? "")?.displayNname ?? "Unknown")
                         .font(.caption)
-                        .foregroundColor(secondaryTextColor)
+                        .foregroundStyle(secondaryTextColor)
                 }
 
                 Spacer()
@@ -38,7 +38,7 @@ struct HostListItem: View {
                 if isHovered {
                     Button(action: onDelete) {
                         Image(systemName: "trash")
-                            .foregroundColor(.red)
+                            .foregroundStyle(.red)
                     }
                     .buttonStyle(.plain)
                     .frame(width: 20, height: 20)
@@ -75,17 +75,17 @@ struct HostListItem: View {
 
     private var foregroundColor: Color {
         if isSelected {
-            return Color.accentColor
+            return .accentColor
         } else {
-            return Color.primary
+            return .primary
         }
     }
 
     private var secondaryTextColor: Color {
         if isSelected {
-            return Color.accentColor.opacity(0.7)
+            return .accentColor.opacity(0.7)
         } else {
-            return Color.secondary
+            return .secondary
         }
     }
 }
