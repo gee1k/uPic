@@ -24,8 +24,8 @@ struct CustomConfigView: View {
     @State private var saveKeySuffix: String = ""
     @State private var useBase64: Bool = false
     @State private var showOtherFieldsSheet: Bool = false
-    @State private var headers: [(String, String)] = []
-    @State private var bodies: [(String, String)] = []
+    @State private var headers: [HeaderOrBodyModel] = []
+    @State private var bodies: [HeaderOrBodyModel] = []
 
     @Environment(\.openURL) private var openURL
 
@@ -145,8 +145,8 @@ struct CustomConfigView: View {
                 useBase64 = customConfig.useBase64
 
                 // Load headers and bodies
-                headers = customConfig.headers.map { ($0.key, $0.value) }
-                bodies = customConfig.bodys.map { ($0.key, $0.value) }
+                headers = customConfig.headers
+                bodies = customConfig.bodys
             }
         }
     }
@@ -162,9 +162,8 @@ struct CustomConfigView: View {
         customConfig.useBase64 = useBase64
 
         // Convert temp arrays back to HeaderOrBodyModel
-        customConfig.headers = headers.map { HeaderOrBodyModel(key: $0.0, value: $0.1) }
-        customConfig.bodys = bodies.map { HeaderOrBodyModel(key: $0.0, value: $0.1) }
-
+        customConfig.headers = headers
+        customConfig.bodys = bodies
         hostModel.name = name
         if let jsonString = customConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData

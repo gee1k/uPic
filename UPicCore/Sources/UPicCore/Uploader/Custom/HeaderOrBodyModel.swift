@@ -9,17 +9,18 @@
 import Foundation
 import HandyJSON
 
-public class HeaderOrBodyModel: HandyJSON {
+public class HeaderOrBodyModel: Identifiable, HandyJSON {
+    public var id = UUID().uuidString
     public var key: String = ""
     public var value: String = ""
-    
-    required public init(){}
-    
+
+    public required init() {}
+
     public init(key: String, value: String) {
         self.key = key
         self.value = value
     }
-    
+
     public func isValid() -> Bool {
         return !self.key.isEmpty && !self.value.isEmpty
     }

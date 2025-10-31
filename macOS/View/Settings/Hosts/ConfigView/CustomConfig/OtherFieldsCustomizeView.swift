@@ -9,8 +9,10 @@ import SwiftUI
 import UPicCore
 
 struct OtherFieldsCustomizeView: View {
-    @Binding var headers: [(String, String)]
-    @Binding var bodies: [(String, String)]
+    @Binding var headers: [HeaderOrBodyModel]
+    @Binding var bodies: [HeaderOrBodyModel]
+    @State private var editableHeaders: [HeaderOrBodyModel] = []
+    @State private var editableBodies: [HeaderOrBodyModel] = []
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -18,13 +20,14 @@ struct OtherFieldsCustomizeView: View {
             Text("Headers and Bodies Customization")
                 .font(.headline)
                 .fontWeight(.semibold)
+                .padding(.bottom, 2)
 
-            // Headers Section
+            // Headers Table
             VStack(alignment: .leading) {
                 HStack {
                     Image(systemName: "textformat.size")
                         .foregroundColor(.blue)
-                    Text("Headers")
+                    Text("Header")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                     Spacer()
@@ -38,65 +41,43 @@ struct OtherFieldsCustomizeView: View {
                     .help("Add new header")
                 }
 
-                VStack(spacing: 4) {
-                    HStack {
-                        Text("Key")
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                            .frame(width: 200, alignment: .leading)
-                        Text("Value")
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                        Spacer()
-                        Text("")
-                            .frame(width: 40)
+                Table(editableHeaders) {
+                    TableColumn("Key") { header in
+                        TextField("Header Key", text: binding(for: header, keyPath: \.key))
+                            .textFieldStyle(.roundedBorder)
                     }
-                    .padding(.horizontal, 8)
+                    .width(200)
 
-                    ScrollView {
-                        LazyVStack(spacing: 4) {
-                            ForEach(headers.indices, id: \.self) { index in
-                                HStack {
-                                    TextField("Header Key", text: Binding(
-                                        get: { headers[index].0 },
-                                        set: { headers[index].0 = $0 }
-                                    ))
-                                    .textFieldStyle(.roundedBorder)
-                                    .frame(width: 200)
+                    TableColumn("Value") { header in
+                        TextField("Header Value", text: binding(for: header, keyPath: \.value))
+                            .textFieldStyle(.roundedBorder)
+                            .fontDesign(.monospaced)
+                    }
 
-                                    TextField("Header Value", text: Binding(
-                                        get: { headers[index].1 },
-                                        set: { headers[index].1 = $0 }
-                                    ))
-                                    .textFieldStyle(.roundedBorder)
-                                    .fontDesign(.monospaced)
-
-                                    Button {
-                                        deleteHeader(at: index)
-                                    } label: {
-                                        Image(systemName: "x.circle")
-                                            .foregroundStyle(.red)
-                                            .frame(width: 40, alignment: .center)
-                                    }
-                                    .buttonStyle(.plain)
-                                    .help("Delete header")
-                                }
-                                .padding(.horizontal, 8)
-                            }
+                    TableColumn("Delete") { header in
+                        Button {
+                            deleteHeader(header)
+                        } label: {
+                            Image(systemName: "x.circle")
+                                .foregroundStyle(.red)
+                                .frame(width: 40, alignment: .center)
                         }
+                        .buttonStyle(.plain)
+                        .help("Delete header")
                     }
+                    .width(40)
                 }
+                .tableStyle(.bordered)
                 .frame(minHeight: 100)
-                .border(Color.gray.opacity(0.3))
             }
-            .padding(.vertical, 8)
+            .padding(.bottom, 4)
 
-            // Bodies Section
+            // Bodies Table
             VStack(alignment: .leading) {
                 HStack {
                     Image(systemName: "doc.text")
                         .foregroundColor(.green)
-                    Text("Bodies")
+                    Text("Body")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                     Spacer()
@@ -110,60 +91,37 @@ struct OtherFieldsCustomizeView: View {
                     .help("Add new body field")
                 }
 
-                VStack(spacing: 4) {
-                    HStack {
-                        Text("Key")
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                            .frame(width: 200, alignment: .leading)
-                        Text("Value")
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                        Spacer()
-                        Text("")
-                            .frame(width: 40)
+                Table(editableBodies) {
+                    TableColumn("Key") { body in
+                        TextField("Body Key", text: binding(for: body, keyPath: \.key))
+                            .textFieldStyle(.roundedBorder)
                     }
-                    .padding(.horizontal, 8)
+                    .width(200)
 
-                    ScrollView {
-                        LazyVStack(spacing: 4) {
-                            ForEach(bodies.indices, id: \.self) { index in
-                                HStack {
-                                    TextField("Body Key", text: Binding(
-                                        get: { bodies[index].0 },
-                                        set: { bodies[index].0 = $0 }
-                                    ))
-                                    .textFieldStyle(.roundedBorder)
-                                    .frame(width: 200)
+                    TableColumn("Value") { body in
+                        TextField("Body Value", text: binding(for: body, keyPath: \.value))
+                            .textFieldStyle(.roundedBorder)
+                            .fontDesign(.monospaced)
+                    }
 
-                                    TextField("Body Value", text: Binding(
-                                        get: { bodies[index].1 },
-                                        set: { bodies[index].1 = $0 }
-                                    ))
-                                    .textFieldStyle(.roundedBorder)
-                                    .fontDesign(.monospaced)
-
-                                    Button {
-                                        deleteBody(at: index)
-                                    } label: {
-                                        Image(systemName: "x.circle")
-                                            .foregroundStyle(.red)
-                                            .frame(width: 40, alignment: .center)
-                                    }
-                                    .buttonStyle(.plain)
-                                    .help("Delete body")
-                                }
-                                .padding(.horizontal, 8)
-                            }
+                    TableColumn("Delete") { body in
+                        Button {
+                            deleteBody(body)
+                        } label: {
+                            Image(systemName: "x.circle")
+                                .foregroundStyle(.red)
+                                .frame(width: 40, alignment: .center)
                         }
+                        .buttonStyle(.plain)
+                        .help("Delete body")
                     }
+                    .width(40)
                 }
+                .tableStyle(.bordered)
                 .frame(minHeight: 100)
-                .border(Color.gray.opacity(0.3))
             }
-            .padding(.vertical, 8)
 
-            Text("Note: Use {url}, {filename}, and other placeholders in your values")
+            Text("Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} {saveKey} and etc.")
                 .font(.caption)
                 .foregroundColor(.secondary)
 
@@ -192,42 +150,71 @@ struct OtherFieldsCustomizeView: View {
         }
         .frame(minWidth: 600, minHeight: 500)
         .padding()
+        .onAppear {
+            editableHeaders = headers
+            editableBodies = bodies
+        }
+    }
+
+    private func binding(for element: HeaderOrBodyModel, keyPath: WritableKeyPath<HeaderOrBodyModel, String>) -> Binding<String> {
+        guard let index = editableHeaders.firstIndex(where: { $0.id == element.id }) ?? editableBodies.firstIndex(where: { $0.id == element.id }) else {
+            fatalError("Element not found in array")
+        }
+
+        let isArrayHeaders = editableHeaders.contains { $0.id == element.id }
+
+        return Binding(
+            get: {
+                if isArrayHeaders {
+                    return editableHeaders[index][keyPath: keyPath]
+                } else {
+                    return editableBodies[index][keyPath: keyPath]
+                }
+            },
+            set: { newValue in
+                if isArrayHeaders {
+                    editableHeaders[index][keyPath: keyPath] = newValue
+                } else {
+                    editableBodies[index][keyPath: keyPath] = newValue
+                }
+            }
+        )
     }
 
     private func addNewHeader() {
-        let newHeader = ("X-Custom-Header", "{filename}")
-        headers.append(newHeader)
+        let newHeader = HeaderOrBodyModel(key: "X-Custom-Header", value: "{filename}")
+        editableHeaders.append(newHeader)
     }
 
     private func addNewBody() {
-        let newBody = ("filename", "{filename}")
-        bodies.append(newBody)
+        let newBody = HeaderOrBodyModel(key: "filename", value: "{filename}")
+        editableBodies.append(newBody)
     }
 
-    private func deleteHeader(at index: Int) {
-        guard index < headers.count else { return }
-        headers.remove(at: index)
+    private func deleteHeader(_ header: HeaderOrBodyModel) {
+        editableHeaders.removeAll { $0.id == header.id }
     }
 
-    private func deleteBody(at index: Int) {
-        guard index < bodies.count else { return }
-        bodies.remove(at: index)
+    private func deleteBody(_ body: HeaderOrBodyModel) {
+        editableBodies.removeAll { $0.id == body.id }
     }
 
     private func saveChanges() {
+        headers = editableHeaders
+        bodies = editableBodies
         dismiss()
     }
 }
 
 #Preview {
     struct PreviewWrapper: View {
-        @State var headers: [(String, String)] = [
-            ("X-Custom-Header", "{filename}"),
-            ("Authorization", "Bearer token")
+        @State var headers: [HeaderOrBodyModel] = [
+            HeaderOrBodyModel(key: "X-Custom-Header", value: "{filename}"),
+            HeaderOrBodyModel(key: "Authorization", value: "Bearer token")
         ]
-        @State var bodies: [(String, String)] = [
-            ("filename", "{filename}"),
-            ("url", "{url}")
+        @State var bodies: [HeaderOrBodyModel] = [
+            HeaderOrBodyModel(key: "filename", value: "{filename}"),
+            HeaderOrBodyModel(key: "url", value: "{url}")
         ]
 
         var body: some View {
