@@ -601,9 +601,7 @@ public class UploadeManager: ObservableObject {
             return nil
         }
 
-        let descriptor = FetchDescriptor<HostModel>(
-            predicate: #Predicate { $0.id == selectedHostId }
-        )
+        let descriptor = FetchDescriptor<HostModel>(predicate: #Predicate { $0.id == selectedHostId })
 
         do {
             let hosts = try modelContext.fetch(descriptor)
