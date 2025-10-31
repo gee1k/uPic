@@ -44,7 +44,7 @@ struct HistoryTable: View {
                                 .lineLimit(1)
                         }
                     } else {
-                        Text("Unknown Host")
+                        Text("Unknown")
                             .foregroundColor(.secondary)
                     }
                 }
@@ -60,7 +60,7 @@ struct HistoryTable: View {
                 TableColumn("URL") { history in
                     Text(history.url)
                         .lineLimit(2)
-                        .truncationMode(.tail)
+                        .truncationMode(.middle)
                         .foregroundColor(.secondary)
                 }
                 .width(ideal: 120)
