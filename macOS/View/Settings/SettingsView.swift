@@ -63,15 +63,6 @@ struct SettingsView: View {
                     )
                     .listRowInsets(EdgeInsets())
                     .listRowSeparator(.hidden)
-                    
-                    SettingsTabItem(
-                        title: String(localized: "Demo"),
-                        systemImage: "info.circle",
-                        tag: 4,
-                        selectedTag: $selectedIndex
-                    )
-                    .listRowInsets(EdgeInsets())
-                    .listRowSeparator(.hidden)
                 }
                 Spacer()
             }
@@ -87,8 +78,6 @@ struct SettingsView: View {
                 HostsSettingsView()
             case 3:
                 AboutSettingsView()
-            case 4:
-                UploadDemoView()
             default:
                 GeneralSettingsView()
             }

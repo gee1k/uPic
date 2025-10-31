@@ -56,24 +56,7 @@ public class UploadeManager: ObservableObject {
     // Public initializer for external use
     public convenience init(modelContext: ModelContext) {
         self.init()
-        self.configure(with: modelContext)
-    }
-
-    // MARK: - Permission Management
-
-    /// 检查是否有磁盘访问权限
-    public func checkDiskPermissions() -> Bool {
-        return BookmarkManager.shared.checkFullDiskAuthorizationStatus()
-    }
-
-    /// 请求磁盘访问权限
-    public func requestDiskPermissions() {
-        BookmarkManager.shared.requestFullDiskPermissions()
-    }
-
-    /// 打开系统偏好设置
-    public func openSystemPreferences() {
-        BookmarkManager.shared.openPreferences()
+        configure(with: modelContext)
     }
 
     public func cancelAllUploads() {
@@ -100,19 +83,7 @@ public class UploadeManager: ObservableObject {
         // 使用 DiskPermissionManager 管理磁盘访问权限
         let diskPermissionManager = BookmarkManager.shared
 
-        // 首先检查是否已有磁盘访问权限
-        if !diskPermissionManager.checkFullDiskAuthorizationStatus() {
-            AppLogger.uploader.warning("Missing disk access permissions, attempting to start permission access")
-
-            // 尝试启动已有的权限访问
-            guard diskPermissionManager.startDirectoryAccessing() else {
-                AppLogger.uploader.error("Unable to get disk access permission, please authorize in settings")
-                return
-            }
-        }
-
         var items: [UploadItem] = []
-        var processedURLs: [URL] = []
 
         // 处理所有文件
         for url in fileURLs {
@@ -120,7 +91,6 @@ public class UploadeManager: ObservableObject {
 
             if let item = await safelyProcessFile(url: url) {
                 items.append(item)
-                processedURLs.append(url)
             }
         }
 
