@@ -36,7 +36,7 @@ struct TencentConfigView: View {
             // Region
             Picker("Region", selection: $region) {
                 ForEach(TencentRegion.allRegions, id: \.self) { region in
-                    Text(region)
+                    Text(TencentRegion.displayName(for: region))
                         .tag(region)
                 }
             }
@@ -49,9 +49,9 @@ struct TencentConfigView: View {
             // Secret Id
             HStack {
                 if isSecretIdSecured {
-                    SecureField("Secret Id", text: $secretId)
+                    SecureField("Secret ID", text: $secretId)
                 } else {
-                    TextField("Secret Id", text: $secretId)
+                    TextField("Secret ID", text: $secretId)
                 }
 
                 Button {

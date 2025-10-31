@@ -109,7 +109,7 @@ struct StatusMenuView: View {
                 }
             }
             
-            Menu("Output format encoded  \(Text(outputFormatEncoded ? "On" : "Off").foregroundStyle(.secondary))") {
+            Menu("Output format encoded  \(Text(outputFormatEncoded ? "Enabled" : "Disabled").foregroundStyle(.secondary))") {
                 Button {
                     outputFormatEncoded = true
                 } label: {
@@ -117,7 +117,7 @@ struct StatusMenuView: View {
                         if outputFormatEncoded == true {
                             Image(systemName: "checkmark")
                         }
-                        Text("On")
+                        Text("Enabled")
                     }
                 }
                 
@@ -128,12 +128,12 @@ struct StatusMenuView: View {
                         if outputFormatEncoded == false {
                             Image(systemName: "checkmark")
                         }
-                        Text("Off")
+                        Text("Disabled")
                     }
                 }
             }
             
-            Menu("Compress before uploading  \(Text(compressFactor >= 100 ? "Off" : "\(compressFactor)%").foregroundStyle(.secondary))") {
+            Menu("Compress before uploading  \(Text(compressFactor >= 100 ? "Disabled" : "\(compressFactor)%").foregroundStyle(.secondary))") {
                 ForEach(Array(stride(from: 10, through: 100, by: 10)), id: \.self) { compressFactor in
                     Button {
                         self.compressFactor = compressFactor
@@ -142,13 +142,13 @@ struct StatusMenuView: View {
                             if self.compressFactor == compressFactor {
                                 Image(systemName: "checkmark")
                             }
-                            Text(compressFactor >= 100 ? "Off " : "\(compressFactor)%")
+                            Text(compressFactor >= 100 ? "Disabled" : "\(compressFactor)%")
                         }
                     }
                 }
             }
             
-            Menu("Auto clipboard  \(Text(autoCopyUrlToClipboard ? "On" : "Off").foregroundStyle(.secondary))") {
+            Menu("Auto clipboard  \(Text(autoCopyUrlToClipboard ? "Enabled" : "Disabled").foregroundStyle(.secondary))") {
                 Button {
                     autoCopyUrlToClipboard = true
                 } label: {
@@ -156,7 +156,7 @@ struct StatusMenuView: View {
                         if autoCopyUrlToClipboard == true {
                             Image(systemName: "checkmark")
                         }
-                        Text("On")
+                        Text("Enabled")
                     }
                 }
                 
@@ -167,7 +167,7 @@ struct StatusMenuView: View {
                         if autoCopyUrlToClipboard == false {
                             Image(systemName: "checkmark")
                         }
-                        Text("Off")
+                        Text("Disabled")
                     }
                 }
             }

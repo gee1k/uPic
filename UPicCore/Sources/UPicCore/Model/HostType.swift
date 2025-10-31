@@ -25,18 +25,18 @@ public enum HostType: String, CaseIterable, HandyJSONEnum {
 
     public var displayNname: String {
         switch self {
-            case .smms: return String(localized: "SMMS")
-            case .weibo: return String(localized: "Weibo")
-            case .imgur: return String(localized: "Imgur")
-            case .s3: return String(localized: "Amazon S3 Compatible")
-            case .qiniu_kodo: return String(localized: "Qiniu KODO")
-            case .upyun_uss: return String(localized: "Upyun USS")
-            case .aliyun_oss: return String(localized: "Aliyun OSS")
-            case .tencent_cos: return String(localized: "Tencent Cloud COS")
-            case .baidu_bos: return String(localized: "Baidu Cloud BOS")
-            case .github: return String(localized: "GitHub")
-            case .gitee: return String(localized: "Gitee")
-            case .custom: return String(localized: "Custom")
+            case .smms: return String(localized: "SMMS", bundle: .module)
+            case .weibo: return String(localized: "Weibo", bundle: .module)
+            case .imgur: return String(localized: "Imgur", bundle: .module)
+            case .s3: return String(localized: "Amazon S3 Compatible", bundle: .module)
+            case .qiniu_kodo: return String(localized: "Qiniu KODO", bundle: .module)
+            case .upyun_uss: return String(localized: "Upyun USS", bundle: .module)
+            case .aliyun_oss: return String(localized: "Aliyun OSS", bundle: .module)
+            case .tencent_cos: return String(localized: "Tencent Cloud COS", bundle: .module)
+            case .baidu_bos: return String(localized: "Baidu Cloud BOS", bundle: .module)
+            case .github: return String(localized: "GitHub", bundle: .module)
+            case .gitee: return String(localized: "Gitee", bundle: .module)
+            case .custom: return String(localized: "Custom", bundle: .module)
         }
     }
 }

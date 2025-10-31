@@ -36,7 +36,7 @@ struct AliyunConfigView: View {
             // Region
             Picker("Region", selection: $region) {
                 ForEach(AliyunRegion.allRegions, id: \.self) { region in
-                    Text(region)
+                    Text(AliyunRegion.displayName(for: region))
                         .tag(region)
                 }
             }

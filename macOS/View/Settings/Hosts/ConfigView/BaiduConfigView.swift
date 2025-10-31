@@ -36,7 +36,7 @@ struct BaiduConfigView: View {
             // Region
             Picker("Region", selection: $region) {
                 ForEach(BaiduRegion.allRegions, id: \.self) { region in
-                    Text(region)
+                    Text(BaiduRegion.displayName(for: region))
                         .tag(region)
                 }
             }

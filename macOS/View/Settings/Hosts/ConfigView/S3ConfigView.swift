@@ -51,7 +51,7 @@ struct S3ConfigView: View {
                 // Region
                 Picker("Region", selection: $region) {
                     ForEach(S3Region.allRegions, id: \.self) { region in
-                        Text(region)
+                        Text(S3Region.displayName(for: region))
                             .tag(region)
                     }
                 }

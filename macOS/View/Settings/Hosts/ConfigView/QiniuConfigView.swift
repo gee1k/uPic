@@ -36,7 +36,7 @@ struct QiniuConfigView: View {
             // Region
             Picker("Region", selection: $region) {
                 ForEach(QiniuRegion.allRegions, id: \.self) { region in
-                    Text(region)
+                    Text(QiniuRegion.displayName(for: region))
                         .tag(region)
                 }
             }

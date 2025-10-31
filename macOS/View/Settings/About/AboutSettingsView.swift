@@ -173,7 +173,7 @@ struct AboutSettingsView: View {
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"], let buildNum = Bundle.main.infoDictionary?["CFBundleVersion"] {
             return "v\(version)(\(buildNum))"
         }
-        return String(localized: "unknown")
+        return String(localized: "Unknown")
     }
     
     private func getDeviceInfo() -> String {

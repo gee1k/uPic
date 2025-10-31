@@ -19,13 +19,13 @@ public enum UploadError: String {
     
     var displayMessage: String {
         switch self {
-        case .invalidSignature: return String(localized: "Invalid signature")
-        case .invalidConfig: return String(localized: "Invalid config")
-        case .invalidResponse: return String(localized: "Invalid response")
-        case .unknownHostType: return String(localized: "Unknown host type")
-        case .notSupportedFile: return String(localized: "File format not supported")
-        case .sizeLimit: return String(localized: "File is over the size limit! Limit:")
-        case .unknownError: return String(localized: "Unknown Error")
+        case .invalidSignature: return String(localized: "Invalid signature", bundle: .module)
+        case .invalidConfig: return String(localized: "Invalid config", bundle: .module)
+        case .invalidResponse: return String(localized: "Invalid response", bundle: .module)
+        case .unknownHostType: return String(localized: "Unknown host type", bundle: .module)
+        case .notSupportedFile: return String(localized: "File format not supported", bundle: .module)
+        case .sizeLimit: return String(localized: "File is over the size limit! Limit:", bundle: .module)
+        case .unknownError: return String(localized: "Unknown Error", bundle: .module)
         }
     }
 }

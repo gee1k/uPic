@@ -47,7 +47,7 @@ extension Noti {
         self.post(title: String(localized: "Successfully"), body: String(localized: "The configuration has been imported, please check and use!"))
     }
     
-    func postExportError(_ body: String? = String(localized: "configuration export error!")) {
+    func postExportError(_ body: String? = String(localized: "Configuration export error!")) {
         self.post(title: String(localized: "The current upload task is not complete"), body: body)
     }
     

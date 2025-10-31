@@ -13,7 +13,7 @@ struct KeyboardShortcutsSettings: View {
         Section {
             HStack {
                 Label {
-                    Text("Upload from Select File")
+                    Text("Upload from select file")
                 } icon: {
                     Image(systemName: "folder")
                         .resizable()
@@ -26,7 +26,7 @@ struct KeyboardShortcutsSettings: View {
 
             HStack {
                 Label {
-                    Text("Upload from Clipboard")
+                    Text("Upload from clipboard")
                 } icon: {
                     Image(systemName: "list.bullet.clipboard")
                         .resizable()
@@ -39,7 +39,7 @@ struct KeyboardShortcutsSettings: View {
 
             HStack {
                 Label {
-                    Text("Upload from Screenshot")
+                    Text("Upload from screenshot")
                 } icon: {
                     Image(systemName: "rectangle.dashed")
                         .resizable()

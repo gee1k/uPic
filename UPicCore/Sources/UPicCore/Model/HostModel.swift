@@ -29,7 +29,7 @@ public class HostModel: HandyJSON {
     }
 
     public func isValid() -> Bool {
-        guard !self.id.isEmpty, !self.name.isEmpty, let typeRaw = self.typeRaw else {
+        guard !self.id.isEmpty, !self.name.isEmpty, let _ = self.typeRaw else {
             return false
         }
 
