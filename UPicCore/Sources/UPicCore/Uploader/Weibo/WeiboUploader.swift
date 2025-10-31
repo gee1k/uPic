@@ -6,10 +6,9 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 import HandyJSON
-
 
 private struct LoginRetModel: HandyJSON {
     var retcode: Int!
@@ -17,13 +16,11 @@ private struct LoginRetModel: HandyJSON {
 }
 
 public class WeiboUploader {
-    
-    internal static let allowExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
+    static let allowExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
     
     private static let UPLOAD_URL = "https://picupload.weibo.com/interface/pic_upload.php?ori=1&mime=image%2Fjpeg&data=base64&url=0&markpos=1&logo=&nick=0&marks=1&app=miniblog"
    
     private static func getRequestConfig(_ config: WeiboHostConfig, loginCookie: String, filename: String, data: Data) -> RequestConfig {
-        
         var headers = HTTPHeaders()
         headers.add(name: "Cookie", value: loginCookie)
        
@@ -39,7 +36,7 @@ public class WeiboUploader {
         return requestConfig
     }
     
-    internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
+    static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
         guard let config = model.getConfig(WeiboHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
@@ -56,8 +53,8 @@ public class WeiboUploader {
                 ctx._uploadFail(.invalidConfig)
                 return
             }
-            _login(ctx, username: username, password: password){ (error, cookie) in
-               guard let cookie = cookie else {
+            _login(ctx, username: username, password: password) { error, cookie in
+                guard let cookie = cookie else {
                     ctx._uploadFail(error)
                     return
                 }
@@ -67,15 +64,15 @@ public class WeiboUploader {
     }
     
     // MARK: - upload image
-    private static func _upload(_ ctx: UPicCore, config: WeiboHostConfig, data: Data, filename: String, loginCookie: String) {
 
+    private static func _upload(_ ctx: UPicCore, config: WeiboHostConfig, data: Data, filename: String, loginCookie: String) {
         let fileExtension = filename.pathExtension == "gif" ? ".gif" : ".jpg"
         
-        let requestConfig = self.getRequestConfig(config, loginCookie: loginCookie, filename: filename, data: data)
+        let requestConfig = getRequestConfig(config, loginCookie: loginCookie, filename: filename, data: data)
         
-        ctx.requester.upload(requestConfig).validate().uploadProgress{ progress in
+        ctx.requester.upload(requestConfig).validate().uploadProgress { progress in
             ctx._uploadProgress(progress.fractionCompleted)
-        }.responseString{ response in
+        }.responseString { response in
             switch response.result {
             case .success(let value):
                 if let pidPid = parsePicPid(reponseString: value) {
@@ -90,7 +87,8 @@ public class WeiboUploader {
     }
     
     // MARK: - Login with username and password to get cookies
-    private static func _login(_ ctx:UPicCore, username: String, password: String, callback: @escaping ((_ errorMsg: String?, _ loginCookie: String?) -> Void)) {
+
+    private static func _login(_ ctx: UPicCore, username: String, password: String, callback: @escaping ((_ errorMsg: String?, _ loginCookie: String?) -> Void)) {
         let loginUrl = "https://passport.weibo.cn/sso/login"
         
         var headers = HTTPHeaders()
@@ -128,6 +126,7 @@ public class WeiboUploader {
     }
     
     // MARK: - Parse image URL
+
     private static func parsePicPid(reponseString: String) -> String? {
         var regex = try! Regex("<.*?/>")
         var result = regex.replacingMatches(in: reponseString, with: "")

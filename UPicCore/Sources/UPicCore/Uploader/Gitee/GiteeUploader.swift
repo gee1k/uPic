@@ -6,8 +6,8 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 import HandyJSON
 
 private struct ReseponseModel: HandyJSON {
@@ -28,11 +28,9 @@ private struct ReseponseContentModel: HandyJSON {
 }
 
 public class GiteeUploader {
-    
-    internal static let allowExtensions: [String] = []
+    static let allowExtensions: [String] = []
    
     private static func getRequestConfig(_ config: GiteeHostConfig, saveKey: String, data: Data) -> RequestConfig {
-        
         var parameters = Parameters()
         parameters["access_token"] = config.token
         parameters["branch"] = config.branch
@@ -54,7 +52,7 @@ public class GiteeUploader {
         return requestConfig
     }
     
-    internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
+    static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
         guard let config = model.getConfig(GiteeHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
@@ -65,9 +63,9 @@ public class GiteeUploader {
         
         let requestConfig = self.getRequestConfig(config, saveKey: saveKey, data: data)
         
-        ctx.requester.request(requestConfig).validate().uploadProgress{ progress in
+        ctx.requester.request(requestConfig).validate().uploadProgress { progress in
             ctx._uploadProgress(progress.fractionCompleted)
-        }.responseString{ response in
+        }.responseString { response in
             switch response.result {
             case .success(let value):
                 guard let model = ReseponseModel.deserialize(from: value) else {
@@ -88,7 +86,8 @@ public class GiteeUploader {
             case .failure(let error):
                 var errorMessage = error.localizedDescription
                 if let resData = response.data, let resString = String(data: resData, encoding: .utf8),
-                    let model = ReseponseModel.deserialize(from: resString), let message = model.message {
+                   let model = ReseponseModel.deserialize(from: resString), let message = model.message
+                {
                     errorMessage = message
                 }
                 ctx._uploadFail(errorMessage, detailError: response.data?.toString())

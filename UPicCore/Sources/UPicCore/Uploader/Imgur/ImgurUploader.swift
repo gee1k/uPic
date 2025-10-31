@@ -6,8 +6,8 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 import HandyJSON
 
 private struct ReseponseModel: HandyJSON {
@@ -22,19 +22,16 @@ private struct ReseponseDataModel: HandyJSON {
 }
 
 public class ImgurUploader {
+    static let allowExtensions: [String] = ["jpg", "jpeg", "png", "gif", "apng", "tiff", "tif", "bmp", "xcf", "webp", "mp4", "mov", "avi", "webm"]
     
-    internal static let allowExtensions: [String] = ["jpg", "jpeg", "png", "gif", "apng", "tiff", "tif", "bmp", "xcf", "webp", "mp4", "mov", "avi", "webm"]
-    
-    internal static let limitSize: UInt64 = 10 * 1024 * 1024
+    static let limitSize: UInt64 = 10 * 1024 * 1024
    
     private static func getRequestConfig(_ config: ImgurHostConfig, filename: String, data: Data) -> RequestConfig {
-        
         var headers = HTTPHeaders()
         headers.add(HTTPHeader.authorization("Client-ID \(config.clientId!)"))
         headers.add(HTTPHeader.contentType("multipart/form-data"))
         headers.add(HTTPHeader.defaultUserAgent)
         
-       
         let multipartFormData = MultipartFormData()
         multipartFormData.append("base64".data(using: .utf8)!, withName: "type")
         multipartFormData.append(filename.data(using: .utf8)!, withName: "name")
@@ -49,7 +46,7 @@ public class ImgurUploader {
         return requestConfig
     }
     
-    internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
+    static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
         guard let config = model.getConfig(ImgurHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
@@ -57,9 +54,9 @@ public class ImgurUploader {
         
         let requestConfig = self.getRequestConfig(config, filename: filename, data: data)
         
-        ctx.requester.upload(requestConfig).validate().uploadProgress{ progress in
+        ctx.requester.upload(requestConfig).validate().uploadProgress { progress in
             ctx._uploadProgress(progress.fractionCompleted)
-        }.responseString{ response in
+        }.responseString { response in
             switch response.result {
             case .success(let value):
                 guard let model = ReseponseModel.deserialize(from: value) else {
@@ -67,7 +64,7 @@ public class ImgurUploader {
                     return
                 }
                 
-                if  model.success, let link = model.data?.link?.urlDecoded() {
+                if model.success, let link = model.data?.link?.urlDecoded() {
                     ctx._uploadComplete(link)
                 } else {
                     ctx._uploadFail(model.data?.error, detailError: response.data?.toString())

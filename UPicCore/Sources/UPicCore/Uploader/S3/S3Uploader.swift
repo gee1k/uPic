@@ -10,13 +10,12 @@ import Foundation
 import SotoS3
 
 public class S3Uploader {
-    
-    internal static let allowExtensions: [String] = []
+    static let allowExtensions: [String] = []
     private static let schema = "https://"
     
     private static func computeUrl(bucket: String, customize: Bool, region: String?, endpoint: String?) -> String {
         if customize, let endpoint = endpoint {
-            if (endpoint.last == "/") {
+            if endpoint.last == "/" {
                 return "\(endpoint)\(bucket)"
             }
             return "\(endpoint)/\(bucket)"
@@ -34,7 +33,7 @@ public class S3Uploader {
         return endpoint
     }
     
-    internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
+    static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
         guard let config = model.getConfig(S3HostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
@@ -55,7 +54,6 @@ public class S3Uploader {
         
         let s3Endpoint = computedS3Endpoint(config.endpoint)
         
-        
         let client = AWSClient(
             credentialProvider: .static(accessKeyId: config.accessKey!, secretAccessKey: config.secretKey!),
             httpClientProvider: .createNew
@@ -70,7 +68,7 @@ public class S3Uploader {
         } else {
             var bb = ByteBuffer(data: data)
             let bufferSize = bb.readableBytes
-            let blockSize = 32*1024
+            let blockSize = 32 * 1024
             var sendedSize = 0
             payload = AWSPayload.stream(size: bufferSize) { eventLoop in
                 let size = min(blockSize, bb.readableBytes)
@@ -102,12 +100,11 @@ public class S3Uploader {
         let put = s3.putObject(putObjectRequest)
         
         put.whenComplete { (result: Result) in
-            switch(result) {
-            case .success(_):
+            switch result {
+            case .success:
                 let url = domain.isEmpty ? url : domain
                 let retUrl = "\(url)/\(saveKey)\(suffix)"
                 ctx._uploadComplete(retUrl)
-                break
                 
             case .failure(let e):
                 if let s3Error = e as? S3ErrorType {
@@ -115,9 +112,7 @@ public class S3Uploader {
                 } else {
                     ctx._uploadFail(e.localizedDescription)
                 }
-                break
-                
-            }
+             }
             try? client.syncShutdown()
         }
     }

@@ -9,20 +9,21 @@
 import Foundation
 
 public class CustomHostConfig: HostConfig {
-    dynamic public var url: String?
-    dynamic public var method: CustomRequestMethod = .POST
-    dynamic public var field: String?
-    dynamic public var bodys: [HeaderOrBodyModel] = []
-    dynamic public var headers: [HeaderOrBodyModel] = []
-    dynamic public var resultPath: String?
-    dynamic public var domain: String = ""
-    dynamic public var saveKeyPath: String?
-    dynamic public var suffix: String = ""
-    dynamic public var useBase64: Bool = false
-    
-    public override func isValid() -> Bool {
-        guard let url = self.url, !url.isEmpty,
-            let field = self.field, !field.isEmpty else {
+    public dynamic var url: String?
+    public dynamic var method: CustomRequestMethod = .POST
+    public dynamic var field: String?
+    public dynamic var bodys: [HeaderOrBodyModel] = []
+    public dynamic var headers: [HeaderOrBodyModel] = []
+    public dynamic var resultPath: String?
+    public dynamic var domain: String = ""
+    public dynamic var saveKeyPath: String?
+    public dynamic var suffix: String = ""
+    public dynamic var useBase64: Bool = false
+
+    override public func isValid() -> Bool {
+        guard let url = url, !url.isEmpty,
+              let field = field, !field.isEmpty
+        else {
             return false
         }
         return true

@@ -9,10 +9,10 @@
 import Foundation
 
 public class SmmsHostConfig: HostConfig {
-    dynamic public var token: String?
-    
-    public override func isValid() -> Bool {
-        guard let token = self.token, !token.isEmpty else {
+    public dynamic var token: String?
+
+    override public func isValid() -> Bool {
+        guard let token = token, !token.isEmpty else {
             return false
         }
         return true

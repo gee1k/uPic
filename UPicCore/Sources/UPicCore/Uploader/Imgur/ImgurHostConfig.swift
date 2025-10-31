@@ -9,10 +9,10 @@
 import Foundation
 
 public class ImgurHostConfig: HostConfig {
-    dynamic public var clientId: String?
-    
-    public override func isValid() -> Bool {
-        guard let clientId = self.clientId, !clientId.isEmpty else {
+    public dynamic var clientId: String?
+
+    override public func isValid() -> Bool {
+        guard let clientId = clientId, !clientId.isEmpty else {
             return false
         }
         return true

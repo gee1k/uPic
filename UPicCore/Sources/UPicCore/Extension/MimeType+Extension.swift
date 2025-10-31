@@ -8,8 +8,8 @@
 
 import Foundation
 
-fileprivate let DEFAULT_MIME_TYPE = "application/octet-stream"
-fileprivate let mimeTypes = [
+private let DEFAULT_MIME_TYPE = "application/octet-stream"
+private let mimeTypes = [
     "html": "text/html",
     "htm": "text/html",
     "shtml": "text/html",
@@ -115,23 +115,21 @@ fileprivate let mimeTypes = [
     "avi": "video/x-msvideo"
 ]
 
-internal extension String {
+extension String {
     var mimeType: String {
         let ext = NSString(string: self).pathExtension
         return mimeTypes[ext.lowercased()] ?? DEFAULT_MIME_TYPE
     }
 }
 
-
-internal extension NSString {
+extension NSString {
     var mimeType: String {
         let ext = self.pathExtension
         return mimeTypes[ext.lowercased()] ?? DEFAULT_MIME_TYPE
     }
 }
 
-
-internal extension URL {
+extension URL {
     var mimeType: String {
         let ext = self.pathExtension
         return mimeTypes[ext.lowercased()] ?? DEFAULT_MIME_TYPE

@@ -8,15 +8,14 @@
 
 import Foundation
 
-internal extension Date {
-    
+extension Date {
     var secondStamp: Int {
         return Int(self.timeIntervalSince1970)
     }
     
     var millisecondStamp: CLongLong {
         let timeInterval: TimeInterval = self.timeIntervalSince1970
-        return CLongLong(round(timeInterval*1000))
+        return CLongLong(round(timeInterval * 1000))
     }
     
     func toUTCString() -> String {

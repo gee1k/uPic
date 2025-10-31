@@ -6,8 +6,8 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 import HandyJSON
 
 private struct ReseponseModel: HandyJSON {
@@ -27,15 +27,13 @@ private struct ReseponseDataModel: HandyJSON {
 }
 
 public class SmmsUploader {
-    
-    internal static let allowExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
+    static let allowExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
     
     // https://doc.sm.ms/
     static let url = "https://smms.app/api/v2/upload"
    
     private static func getRequestConfig(_ config: SmmsHostConfig, filename: String, data: Data) -> RequestConfig {
-        
-        var headers: HTTPHeaders = HTTPHeaders()
+        var headers = HTTPHeaders()
         headers.add(HTTPHeader.contentType("multipart/form-data"))
         headers.add(name: "referer", value: "https://smms.app/")
         headers.add(name: "origin", value: "https://smms.app")
@@ -53,17 +51,17 @@ public class SmmsUploader {
         return requestConfig
     }
     
-    internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
+    static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
         guard let config = model.getConfig(SmmsHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
         }
             
-        let requestConfig = self.getRequestConfig(config, filename: filename, data: data)
+        let requestConfig = getRequestConfig(config, filename: filename, data: data)
         
-        ctx.requester.upload(requestConfig).validate().uploadProgress{ progress in
+        ctx.requester.upload(requestConfig).validate().uploadProgress { progress in
             ctx._uploadProgress(progress.fractionCompleted)
-        }.responseString{ response in
+        }.responseString { response in
             switch response.result {
             case .success(let value):
                 guard let model = ReseponseModel.deserialize(from: value) else {

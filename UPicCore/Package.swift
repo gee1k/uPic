@@ -9,7 +9,8 @@ let package = Package(
     products: [
         .library(
             name: "UPicCore",
-            targets: ["UPicCore"]),
+            targets: ["UPicCore"]
+        )
     ],
     dependencies: [
         .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", from: "1.9.0"),

@@ -6,15 +6,13 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 public class CustomUploader {
-    
-    internal static let allowExtensions: [String] = []
+    static let allowExtensions: [String] = []
     
     private static func getRequestConfig(_ config: CustomHostConfig, filename: String, saveKey: String, data: Data) -> RequestConfig {
-        
         let otherVariables = ["saveKey": saveKey]
         
         let url = FormatUtil._parseVariables(config.url!, filename, otherVariables: otherVariables)
@@ -37,9 +35,8 @@ public class CustomUploader {
             }
         }
         
-        
         var hasContentType = false
-        hasContentType = headerArrs.contains{ $0.key.lowercased() == "content-type" }
+        hasContentType = headerArrs.contains { $0.key.lowercased() == "content-type" }
         if !hasContentType {
             headers.add(HTTPHeader.contentType("multipart/form-data"))
         }
@@ -75,7 +72,7 @@ public class CustomUploader {
         return requestConfig
     }
     
-    internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
+    static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
         guard let config = model.getConfig(CustomHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
@@ -83,7 +80,7 @@ public class CustomUploader {
         
         let saveKey = FormatUtil.parseSaveKeyPath(config.saveKeyPath, filename)
         
-        let requestConfig = self.getRequestConfig(config, filename: filename, saveKey: saveKey, data: data)
+        let requestConfig = getRequestConfig(config, filename: filename, saveKey: saveKey, data: data)
         
         var isApplicationJson = false
         for (_, header) in requestConfig.headers!.enumerated() {
@@ -97,14 +94,14 @@ public class CustomUploader {
         }
         
         if isApplicationJson {
-            ctx.requester.request(requestConfig).validate().uploadProgress{ progress in
+            ctx.requester.request(requestConfig).validate().uploadProgress { progress in
                 ctx._uploadProgress(progress.fractionCompleted)
-            }.responseString{ response in
+            }.responseString { response in
                 switch response.result {
                 case .success(let value):
-                    
                     guard let stringData = value.data(using: .utf8),
-                        let jsonValue = try? JSONSerialization.jsonObject(with: stringData, options: []) else {
+                          let jsonValue = try? JSONSerialization.jsonObject(with: stringData, options: [])
+                    else {
                         ctx._uploadComplete(value)
                         return
                     }
@@ -135,14 +132,14 @@ public class CustomUploader {
                 }
             }
         } else {
-            ctx.requester.upload(requestConfig).validate().uploadProgress{ progress in
+            ctx.requester.upload(requestConfig).validate().uploadProgress { progress in
                 ctx._uploadProgress(progress.fractionCompleted)
-            }.responseString{ response in
+            }.responseString { response in
                 switch response.result {
                 case .success(let value):
-                    
                     guard let stringData = value.data(using: .utf8),
-                        let jsonValue = try? JSONSerialization.jsonObject(with: stringData, options: []) else {
+                          let jsonValue = try? JSONSerialization.jsonObject(with: stringData, options: [])
+                    else {
                         ctx._uploadComplete(value)
                         return
                     }
@@ -174,10 +171,10 @@ public class CustomUploader {
                 }
             }
         }
-        
-    }
+     }
     
     // MARK: - Format resultPath to avoid problems with single quotes and other symbols
+
     private static func formatResultPath(_ resultPath: String?) -> String? {
         guard var path = resultPath else {
             return nil
@@ -187,6 +184,7 @@ public class CustomUploader {
     }
     
     // MARK: - Get value from JSON object according to specified path
+
     private static func getValueFromPath(object: Any?, path: [Any]) -> String? {
         guard let object = object else { return nil }
         if let keyValue = object as? [String: Any] {

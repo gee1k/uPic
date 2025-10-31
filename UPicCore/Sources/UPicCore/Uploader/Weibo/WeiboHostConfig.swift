@@ -9,24 +9,25 @@
 import Foundation
 
 public class WeiboHostConfig: HostConfig {
-    dynamic public var username: String?
-    dynamic public var password: String?
-    dynamic public var cookieMode: Bool = false
-    dynamic public var cookie: String?
-    dynamic public var quality: WeiboqQuality = WeiboqQuality.large
-    
+    public dynamic var username: String?
+    public dynamic var password: String?
+    public dynamic var cookieMode: Bool = false
+    public dynamic var cookie: String?
+    public dynamic var quality: WeiboqQuality = .large
+
     // 微博图片访问域名，有少数域名还没有防盗连
     // ws1.sinaimg.cn
     public var domain: String = "https://tva1.sinaimg.cn"
-    
-    public override func isValid() -> Bool {
+
+    override public func isValid() -> Bool {
         if self.cookieMode {
             guard let cookie = cookie, !cookie.isEmpty else {
                 return false
             }
         } else {
             guard let username = self.username, !username.isEmpty,
-                let password = self.password, !password.isEmpty else {
+                  let password = self.password, !password.isEmpty
+            else {
                 return false
             }
         }

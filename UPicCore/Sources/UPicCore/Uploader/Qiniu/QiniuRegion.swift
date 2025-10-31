@@ -10,7 +10,7 @@ import Foundation
 
 public class QiniuRegion {
     /// https://developer.qiniu.com/kodo/manual/1671/region-endpoint
-    
+
     public static let allRegions: [String] = [
         "z0",
         "cn-east-2",
@@ -22,7 +22,7 @@ public class QiniuRegion {
         "ap-southeast-2",
         "ap-southeast-3"
     ].sorted()
-    
+
     public static func endPoint(_ key: String) -> String? {
         if key.isEmpty {
             return ""

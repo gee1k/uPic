@@ -9,19 +9,20 @@
 import Foundation
 
 public class TencentHostConfig: HostConfig {
-    dynamic public var region: String?
-    dynamic public var bucket: String?
-    dynamic public var secretId: String?
-    dynamic public var secretKey: String?
-    dynamic public var domain: String = ""
-    dynamic public var saveKeyPath: String?
-    dynamic public var suffix: String = ""
-    
-    public override func isValid() -> Bool {
-        guard let region = self.region, !region.isEmpty,
-            let bucket = self.bucket, !bucket.isEmpty,
-            let secretId = self.secretId, !secretId.isEmpty,
-            let secretKey = self.secretKey, !secretKey.isEmpty else {
+    public dynamic var region: String?
+    public dynamic var bucket: String?
+    public dynamic var secretId: String?
+    public dynamic var secretKey: String?
+    public dynamic var domain: String = ""
+    public dynamic var saveKeyPath: String?
+    public dynamic var suffix: String = ""
+
+    override public func isValid() -> Bool {
+        guard let region = region, !region.isEmpty,
+              let bucket = bucket, !bucket.isEmpty,
+              let secretId = secretId, !secretId.isEmpty,
+              let secretKey = secretKey, !secretKey.isEmpty
+        else {
             return false
         }
         return true

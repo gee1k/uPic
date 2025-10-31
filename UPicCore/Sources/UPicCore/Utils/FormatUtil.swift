@@ -8,8 +8,7 @@
 
 import Foundation
 
-internal class FormatUtil {
-    
+class FormatUtil {
     static func _getRandomFileName(_ fileExtension: String?) -> String {
         let random = String.randomStr(len: 6)
         guard let fileExtension = fileExtension else {
@@ -53,16 +52,16 @@ internal class FormatUtil {
         let sinceMillisecond = now.millisecondStamp
         
         var result = str.replacingOccurrences(of: "{year}", with: "\(year)")
-                        .replacingOccurrences(of: "{month}", with: _padZero(month))
-                        .replacingOccurrences(of: "{day}", with: _padZero(day))
-                        .replacingOccurrences(of: "{hour}", with: _padZero(hour))
-                        .replacingOccurrences(of: "{minute}", with: _padZero(minute))
-                        .replacingOccurrences(of: "{second}", with: _padZero(second))
-                        .replacingOccurrences(of: "{since_second}", with: "\(sinceSecond)")
-                        .replacingOccurrences(of: "{since_millisecond}", with: "\(sinceMillisecond)")
-                        .replacingOccurrences(of: "{filename}", with: filename)
-                        .replacingOccurrences(of: "{random}", with: _getRandomFileName(nil))
-                        .replacingOccurrences(of: "{.suffix}", with: ".\(fileExtension)")
+            .replacingOccurrences(of: "{month}", with: _padZero(month))
+            .replacingOccurrences(of: "{day}", with: _padZero(day))
+            .replacingOccurrences(of: "{hour}", with: _padZero(hour))
+            .replacingOccurrences(of: "{minute}", with: _padZero(minute))
+            .replacingOccurrences(of: "{second}", with: _padZero(second))
+            .replacingOccurrences(of: "{since_second}", with: "\(sinceSecond)")
+            .replacingOccurrences(of: "{since_millisecond}", with: "\(sinceMillisecond)")
+            .replacingOccurrences(of: "{filename}", with: filename)
+            .replacingOccurrences(of: "{random}", with: _getRandomFileName(nil))
+            .replacingOccurrences(of: "{.suffix}", with: ".\(fileExtension)")
         
         if let variables = otherVariables, variables.count > 0 {
             for (key, value) in variables {

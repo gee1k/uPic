@@ -6,10 +6,10 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
-internal struct RequestConfig {
+struct RequestConfig {
     var url: String!
     var method: HTTPMethod! = .post
     var data: Data?
@@ -19,16 +19,16 @@ internal struct RequestConfig {
     var headers: HTTPHeaders?
 }
 
-internal class Requester {
-    public static var shared = Requester()
-    
-    public var currentRequest: DataRequest?
-    
+class Requester {
+    static var shared = Requester()
+
+    var currentRequest: DataRequest?
+
     func request(_ config: RequestConfig) -> DataRequest {
-        currentRequest = AF.request(config.url, method: config.method,  parameters: config.parameters, encoding: config.encoding, headers: config.headers)
+        currentRequest = AF.request(config.url, method: config.method, parameters: config.parameters, encoding: config.encoding, headers: config.headers)
         return currentRequest!
     }
-    
+
     func upload(_ config: RequestConfig) -> DataRequest {
         if let data = config.data {
             currentRequest = AF.upload(data, to: config.url, method: config.method, headers: config.headers)

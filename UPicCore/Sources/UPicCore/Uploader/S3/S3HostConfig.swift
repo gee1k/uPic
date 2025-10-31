@@ -18,24 +18,25 @@ extension S3.ObjectCannedACL: @retroactive CaseIterable {
 public typealias S3ObjectCannedACL = S3.ObjectCannedACL
 
 public class S3HostConfig: HostConfig {
-    dynamic public var customize: Bool = false
-    dynamic public var region: String?
-    dynamic public var endpoint: String?
-    dynamic public var bucket: String?
-    dynamic public var acl: String?
-    dynamic public var accessKey: String?
-    dynamic public var secretKey: String?
-    dynamic public var domain: String = ""
-    dynamic public var saveKeyPath: String?
-    dynamic public var suffix: String = ""
-    
-    public override func isValid() -> Bool {
+    public dynamic var customize: Bool = false
+    public dynamic var region: String?
+    public dynamic var endpoint: String?
+    public dynamic var bucket: String?
+    public dynamic var acl: String?
+    public dynamic var accessKey: String?
+    public dynamic var secretKey: String?
+    public dynamic var domain: String = ""
+    public dynamic var saveKeyPath: String?
+    public dynamic var suffix: String = ""
+
+    override public func isValid() -> Bool {
         guard let bucket = self.bucket, !bucket.isEmpty,
-            let accessKey = self.accessKey, !accessKey.isEmpty,
-            let secretKey = self.secretKey, !secretKey.isEmpty else {
+              let accessKey = self.accessKey, !accessKey.isEmpty,
+              let secretKey = self.secretKey, !secretKey.isEmpty
+        else {
             return false
         }
-        
+
         if self.customize {
             guard let endpoint = self.endpoint, !endpoint.isEmpty else {
                 return false

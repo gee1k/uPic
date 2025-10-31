@@ -6,13 +6,12 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 import SWXMLHash
 
 public class AliyunUploader {
-    
-    internal static let allowExtensions: [String] = []
+    static let allowExtensions: [String] = []
     
     private static func generateSignature(_ config: AliyunHostConfig, saveKey: String) -> String? {
         let date = Date().toUTCString()
@@ -43,7 +42,7 @@ public class AliyunUploader {
         return requestConfig
     }
     
-    internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
+    static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
         guard let config = model.getConfig(AliyunHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
@@ -59,11 +58,11 @@ public class AliyunUploader {
         
         let requestConfig = self.getRequestConfig(config, saveKey: saveKey, signature: signature, data: data)
         
-        ctx.requester.upload(requestConfig).validate().uploadProgress{ progress in
+        ctx.requester.upload(requestConfig).validate().uploadProgress { progress in
             ctx._uploadProgress(progress.fractionCompleted)
-        }.response{ response in
+        }.response { response in
             switch response.result {
-            case .success(_):
+            case .success:
                 let url = domain.isEmpty ? requestConfig.url! : "\(domain)/\(saveKey)"
                 let retUrl = "\(url)\(config.suffix)"
                 ctx._uploadComplete(retUrl)

@@ -8,9 +8,7 @@
 
 import Foundation
 
-
 public class TencentRegion {
-    
     /// https://cloud.tencent.com/document/product/436/6224
     public static let allRegions: [String] = [
         "ap-beijing-1",
@@ -34,7 +32,7 @@ public class TencentRegion {
         "sa-saopaulo",
         "eu-frankfurt"
     ].sorted()
-    
+
     public static func endPoint(_ key: String) -> String {
         if key.isEmpty {
             return ""
@@ -42,4 +40,3 @@ public class TencentRegion {
         return "cos.\(key).myqcloud.com"
     }
 }
-

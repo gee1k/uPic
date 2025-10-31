@@ -11,13 +11,12 @@ import HandyJSON
 
 @objcMembers
 public class HostConfig: NSObject, HandyJSON {
-    
-    required public override init(){}
-    
+    override public required init() {}
+
     public func isValid() -> Bool {
         return true
     }
-    
+
     public static func create(_ hostType: HostType) -> HostConfig {
         switch hostType {
         case .aliyun_oss:

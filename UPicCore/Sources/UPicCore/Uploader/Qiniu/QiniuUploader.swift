@@ -6,8 +6,8 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 import HandyJSON
 
 private struct QiniuPutPolicy: Codable {
@@ -22,15 +22,13 @@ private struct ReseponseModel: HandyJSON {
 }
 
 public class QiniuUploader {
-    
-    internal static let allowExtensions: [String] = []
+    static let allowExtensions: [String] = []
     
     private static let expiration = 1800
     
     private static func getToken(scope: String, accessKey: String, secretKey: String) -> String {
-
         let deadline = Date().secondStamp + expiration
-        let putPolicy = QiniuPutPolicy.init(scope: scope, deadline: Int(deadline))
+        let putPolicy = QiniuPutPolicy(scope: scope, deadline: Int(deadline))
 
         let jsonData = try! JSONEncoder().encode(putPolicy)
         let base64String = jsonData.base64EncodedString().urlSafeBase64()
@@ -42,7 +40,6 @@ public class QiniuUploader {
     }
     
     private static func getRequestConfig(_ config: QiniuHostConfig, saveKey: String, token: String, data: Data) -> RequestConfig {
-        
         var headers = HTTPHeaders()
         headers.add(.contentType("application/x-www-form-urlencoded;charset=utf-8"))
         
@@ -60,7 +57,7 @@ public class QiniuUploader {
         return requestConfig
     }
     
-    internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
+    static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
         guard let config = model.getConfig(QiniuHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
@@ -73,11 +70,11 @@ public class QiniuUploader {
         
         let token = getToken(scope: scope, accessKey: config.accessKey!, secretKey: config.secretKey!)
         
-        let requestConfig = self.getRequestConfig(config, saveKey: saveKey, token: token, data: data)
+        let requestConfig = getRequestConfig(config, saveKey: saveKey, token: token, data: data)
         
-        ctx.requester.upload(requestConfig).validate().uploadProgress{ progress in
+        ctx.requester.upload(requestConfig).validate().uploadProgress { progress in
             ctx._uploadProgress(progress.fractionCompleted)
-        }.responseString{ response in
+        }.responseString { response in
             switch response.result {
             case .success(let value):
                 if let model = ReseponseModel.deserialize(from: value), let error = model.error {
@@ -90,7 +87,8 @@ public class QiniuUploader {
             case .failure(let error):
                 var errorMessage = error.localizedDescription
                 if let resData = response.data, let resString = String(data: resData, encoding: .utf8),
-                    let model = ReseponseModel.deserialize(from: resString), let message = model.error {
+                   let model = ReseponseModel.deserialize(from: resString), let message = model.error
+                {
                     errorMessage = message
                 }
                 ctx._uploadFail(errorMessage, detailError: response.data?.toString())

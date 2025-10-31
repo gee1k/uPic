@@ -8,8 +8,7 @@
 
 import Foundation
 
-internal extension String {
-    
+extension String {
     func trim() -> String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
@@ -48,9 +47,9 @@ internal extension String {
 
     static func randomStr(len: Int) -> String {
         var ranStr = ""
-        for _ in 0..<len {
+        for _ in 0 ..< len {
             let index = Int(arc4random_uniform(UInt32(random_str_characters.count)))
-            ranStr.append(random_str_characters[random_str_characters.index(random_str_characters.startIndex, offsetBy: index)])
+            ranStr.append(self.random_str_characters[self.random_str_characters.index(self.random_str_characters.startIndex, offsetBy: index)])
         }
         return ranStr
     }

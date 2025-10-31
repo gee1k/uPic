@@ -6,12 +6,11 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 public class UpyunUploader {
-    
-    internal static let allowExtensions: [String] = []
+    static let allowExtensions: [String] = []
     
     private static func generateSignature(_ config: UpyunHostConfig, saveKey: String) -> String? {
         let md5Password = config.password!.md5()
@@ -27,7 +26,6 @@ public class UpyunUploader {
     }
     
     private static func getRequestConfig(_ config: UpyunHostConfig, saveKey: String, signature: String, data: Data) -> RequestConfig {
-        
         var headers = HTTPHeaders()
         headers.add(.authorization(signature))
         headers.add(.contentType(saveKey.mimeType))
@@ -42,7 +40,7 @@ public class UpyunUploader {
         return requestConfig
     }
     
-    internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
+    static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
         guard let config = model.getConfig(UpyunHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
@@ -58,11 +56,11 @@ public class UpyunUploader {
         
         let requestConfig = self.getRequestConfig(config, saveKey: saveKey, signature: signature, data: data)
         
-        ctx.requester.upload(requestConfig).validate().uploadProgress{ progress in
+        ctx.requester.upload(requestConfig).validate().uploadProgress { progress in
             ctx._uploadProgress(progress.fractionCompleted)
-        }.response{ response in
+        }.response { response in
             switch response.result {
-            case .success(_):
+            case .success:
                 let retUrl = "\(domain)/\(saveKey)\(config.suffix)"
                 ctx._uploadComplete(retUrl)
             case .failure(let error):

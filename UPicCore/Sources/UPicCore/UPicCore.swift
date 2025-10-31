@@ -61,7 +61,8 @@ public class UPicCore {
         
         DispatchQueue.main.async {
             guard let typeRaw = hostModel.typeRaw,
-                  let hostType = HostType(rawValue: typeRaw) else {
+                  let hostType = HostType(rawValue: typeRaw)
+            else {
                 self._uploadFail(.unknownHostType)
                 return
             }
@@ -110,7 +111,8 @@ public class UPicCore {
     
     private func beforeUpload(hostModel: HostModel, fileData: Data) -> Data? {
         guard let typeRaw = hostModel.typeRaw,
-              let hostType = HostType(rawValue: typeRaw) else {
+              let hostType = HostType(rawValue: typeRaw)
+        else {
             _uploadFail(.invalidConfig)
             return nil
         }

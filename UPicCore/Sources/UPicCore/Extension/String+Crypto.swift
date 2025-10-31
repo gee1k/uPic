@@ -6,28 +6,26 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
 import CommonCrypto
 import CryptoSwift
+import Foundation
 
-internal extension String {
-    
-    func calculateHMACByKey(key: Array<UInt8>) -> Array<UInt8> {
-        let hmac = try! HMAC(key: key, variant: .sha1).authenticate(self.bytes)
+extension String {
+    func calculateHMACByKey(key: [UInt8]) -> [UInt8] {
+        let hmac = try! HMAC(key: key, variant: .sha1).authenticate(bytes)
         return hmac
     }
-   
-    func calculateHMACByKey(key: String) -> Array<UInt8> {
+
+    func calculateHMACByKey(key: String) -> [UInt8] {
         return calculateHMACByKey(key: key.bytes)
     }
-    
-    func calculateHMAC256ByKey(key: Array<UInt8>) -> Array<UInt8> {
-        let hmac = try! HMAC(key: key, variant: .sha2(.sha256)).authenticate(self.bytes)
+
+    func calculateHMAC256ByKey(key: [UInt8]) -> [UInt8] {
+        let hmac = try! HMAC(key: key, variant: .sha2(.sha256)).authenticate(bytes)
         return hmac
     }
-    
-    func calculateHMAC256ByKey(key: String) -> Array<UInt8> {
+
+    func calculateHMAC256ByKey(key: String) -> [UInt8] {
         return calculateHMAC256ByKey(key: key.bytes)
     }
-
 }

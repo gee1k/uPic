@@ -8,8 +8,7 @@
 
 import Foundation
 
-internal extension Array {
-    
+extension Array {
     func elementForIndex(idx: Int?) -> Element? {
         guard let idx = idx else {
             return nil

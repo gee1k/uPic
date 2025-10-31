@@ -20,7 +20,7 @@ public class BaiduRegion {
         "fwh",
         "fsh"
     ].sorted()
-    
+
     public static func endPoint(_ key: String) -> String {
         if key.isEmpty {
             return ""

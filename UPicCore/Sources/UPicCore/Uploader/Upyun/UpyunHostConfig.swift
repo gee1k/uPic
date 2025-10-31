@@ -9,17 +9,18 @@
 import Foundation
 
 public class UpyunHostConfig: HostConfig {
-    dynamic public var bucket: String?
-    dynamic public var operatorName: String?
-    dynamic public var password: String?
-    dynamic public var domain: String = ""
-    dynamic public var saveKeyPath: String?
-    dynamic public var suffix: String = ""
-    
-    public override func isValid() -> Bool {
-        guard let operatorName = self.operatorName, !operatorName.isEmpty,
-            let bucket = self.bucket, !bucket.isEmpty,
-            let password = self.password, !password.isEmpty else {
+    public dynamic var bucket: String?
+    public dynamic var operatorName: String?
+    public dynamic var password: String?
+    public dynamic var domain: String = ""
+    public dynamic var saveKeyPath: String?
+    public dynamic var suffix: String = ""
+
+    override public func isValid() -> Bool {
+        guard let operatorName = operatorName, !operatorName.isEmpty,
+              let bucket = bucket, !bucket.isEmpty,
+              let password = password, !password.isEmpty
+        else {
             return false
         }
         return true

@@ -6,17 +6,16 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 import SWXMLHash
 
 public class TencentUploader {
-    
-    internal static let allowExtensions: [String] = []
+    static let allowExtensions: [String] = []
     
     private static let expiration = 8000
     
-    private static func generateSignature(_ config: TencentHostConfig, saveKey: String, signTime:String, host: String) -> String {
+    private static func generateSignature(_ config: TencentHostConfig, saveKey: String, signTime: String, host: String) -> String {
         // https://cloud.tencent.com/document/product/436/7778#signature
         let signKey = signTime.calculateHMACByKey(key: config.secretKey!).toHexString()
         let httpString = "put\n/\(saveKey)\n\nhost=\(host)\n"
@@ -27,7 +26,6 @@ public class TencentUploader {
     }
     
     private static func getRequestConfig(_ config: TencentHostConfig, saveKey: String, data: Data) -> RequestConfig {
-        
         let host = "\(config.bucket!).\(TencentRegion.endPoint(config.region!))"
         
         let signTime = "\(Date().secondStamp);\(Date().secondStamp + expiration)"
@@ -50,7 +48,7 @@ public class TencentUploader {
         return requestConfig
     }
     
-    internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
+    static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
         guard let config = model.getConfig(TencentHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
@@ -59,13 +57,13 @@ public class TencentUploader {
         let domain = config.domain
         let saveKey = FormatUtil.parseSaveKeyPath(config.saveKeyPath, filename)
         
-        let requestConfig = self.getRequestConfig(config, saveKey: saveKey, data: data)
+        let requestConfig = getRequestConfig(config, saveKey: saveKey, data: data)
         
-        ctx.requester.upload(requestConfig).validate().uploadProgress{ progress in
+        ctx.requester.upload(requestConfig).validate().uploadProgress { progress in
             ctx._uploadProgress(progress.fractionCompleted)
-        }.response{ response in
+        }.response { response in
             switch response.result {
-            case .success(_):
+            case .success:
                 let url = domain.isEmpty ? requestConfig.url! : "\(domain)/\(saveKey)"
                 let retUrl = "\(url)\(config.suffix)"
                 ctx._uploadComplete(retUrl)

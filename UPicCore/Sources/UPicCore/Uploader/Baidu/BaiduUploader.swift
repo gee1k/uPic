@@ -6,8 +6,8 @@
 //  Copyright © 2019 Svend Jin. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 import HandyJSON
 
 private struct ErrorModel: HandyJSON {
@@ -17,13 +17,12 @@ private struct ErrorModel: HandyJSON {
 }
 
 public class BaiduUploader {
-    
-    internal static let allowExtensions: [String] = []
+    static let allowExtensions: [String] = []
     
     private static let EXPIRATION_TIME = 1800
     
     private static func getPolicy(bucket: String, saveKey: String) -> String? {
-        var policyDict = Dictionary<String, Any>()
+        var policyDict = [String: Any]()
         let conditions: [Any] = [
             ["bucket": bucket],
             ["key": saveKey]
@@ -39,7 +38,6 @@ public class BaiduUploader {
     }
     
     private static func getRequestConfig(_ config: BaiduHostConfig, saveKey: String, data: Data) -> RequestConfig? {
-        
         let mimeType = saveKey.mimeType
         
         guard let region = config.region else {
@@ -72,7 +70,7 @@ public class BaiduUploader {
         return requestConfig
     }
     
-    internal static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
+    static func handle(_ ctx: UPicCore, model: HostModel, data: Data, filename: String) {
         guard let config = model.getConfig(BaiduHostConfig.self), config.isValid() else {
             ctx._uploadFail(.invalidConfig)
             return
@@ -86,18 +84,19 @@ public class BaiduUploader {
             return
         }
         
-        ctx.requester.upload(requestConfig).validate().uploadProgress{ progress in
+        ctx.requester.upload(requestConfig).validate().uploadProgress { progress in
             ctx._uploadProgress(progress.fractionCompleted)
-        }.response{ response in
+        }.response { response in
             switch response.result {
-            case .success(_):
+            case .success:
                 let url = domain.isEmpty ? requestConfig.url! : domain
                 let retUrl = "\(url)/\(saveKey)\(config.suffix)"
                 ctx._uploadComplete(retUrl)
             case .failure(let error):
                 var errorMessage = error.localizedDescription
                 if let resData = response.data, let resString = String(data: resData, encoding: .utf8),
-                    let model = ErrorModel.deserialize(from: resString), let message = model.message {
+                   let model = ErrorModel.deserialize(from: resString), let message = model.message
+                {
                     errorMessage = message
                 }
                 ctx._uploadFail(errorMessage, detailError: response.data?.toString())

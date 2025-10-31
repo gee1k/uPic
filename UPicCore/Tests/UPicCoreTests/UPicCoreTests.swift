@@ -1,12 +1,12 @@
 //
 //  UPicCoreTests.swift
-//  
+//
 //
 //  Created by Svend Jin on 2020/9/29.
 //
 
-import XCTest
 @testable import UPicCore
+import XCTest
 
 final class UPicCoreTests: XCTestCase {
     func testLocalization() {

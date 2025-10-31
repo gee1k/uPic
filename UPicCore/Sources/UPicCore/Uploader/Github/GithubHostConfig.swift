@@ -9,18 +9,19 @@
 import Foundation
 
 public class GithubHostConfig: HostConfig {
-    dynamic public var owner: String?
-    dynamic public var repo: String?
-    dynamic public var branch: String = "master"
-    dynamic public var token: String?
-    dynamic public var domain: String = ""
-    dynamic public var saveKeyPath: String?
-    dynamic public var useCdn: Bool = false
-    
-    public override func isValid() -> Bool {
-        guard let repo = self.repo, !repo.isEmpty,
-            let owner = self.owner, !owner.isEmpty,
-            let token = self.token, !token.isEmpty else {
+    public dynamic var owner: String?
+    public dynamic var repo: String?
+    public dynamic var branch: String = "master"
+    public dynamic var token: String?
+    public dynamic var domain: String = ""
+    public dynamic var saveKeyPath: String?
+    public dynamic var useCdn: Bool = false
+
+    override public func isValid() -> Bool {
+        guard let repo = repo, !repo.isEmpty,
+              let owner = owner, !owner.isEmpty,
+              let token = token, !token.isEmpty
+        else {
             return false
         }
         return true

@@ -41,7 +41,7 @@ public class AliyunRegion {
         "oss-me-east-1",
         "oss-rg-china-mainland"
     ].sorted()
-    
+
     public static func endPoint(_ key: String) -> String {
         if key.isEmpty {
             return ""
