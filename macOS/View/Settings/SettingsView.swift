@@ -93,6 +93,12 @@ struct SettingsView: View {
                 GeneralSettingsView()
             }
         }
+        .onAppear {
+            NSApp.setActivationPolicy(.regular)
+        }
+        .onDisappear {
+            NSApp.setActivationPolicy(.accessory)
+        }
     }
 }
 

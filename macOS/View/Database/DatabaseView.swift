@@ -35,6 +35,12 @@ struct DatabaseView: View {
             }
         }
         .navigationTitle("Database")
+        .onAppear {
+            NSApp.setActivationPolicy(.regular)
+        }
+        .onDisappear {
+            NSApp.setActivationPolicy(.accessory)
+        }
     }
 }
 
