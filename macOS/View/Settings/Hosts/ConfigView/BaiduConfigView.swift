@@ -13,6 +13,8 @@ import UPicCore
 struct BaiduConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
+    let onCancel: () -> Void
+    let onValidate: () -> Void
 
     @State private var name: String = HostType.baidu_bos.displayNname
     @State private var region = BaiduRegion.allRegions.first!
@@ -110,6 +112,7 @@ struct BaiduConfigView: View {
                 Text("""
                 Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} and etc. For example, the uploaded file is uPic.jpg, set to "uPic/{filename}{.suffix}", it will be saved as: uPic/uPic.jpg.
                 """)
+                .textSelection(.enabled)
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.leading)
@@ -131,15 +134,33 @@ struct BaiduConfigView: View {
                     .buttonBorderShape(.circle)
                 }
                 .frame(height: 30)
+            }
 
-                HStack {
-                    Spacer()
-                    Button("Save") {
+            Spacer()
+
+            HStack {
+                Button("Validate") {
+                    saveConfiguration()
+                    onValidate()
+                }
+                .disabled(name.isEmpty || bucket.isEmpty || accessKey.isEmpty || secretKey.isEmpty)
+
+                Spacer()
+
+                Button("Cancel") {
+                    withAnimation {
+                        onCancel()
+                    }
+                }
+                .foregroundStyle(.red)
+
+                Button("Save") {
+                    withAnimation {
                         saveConfiguration()
                     }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(name.isEmpty || bucket.isEmpty || accessKey.isEmpty || secretKey.isEmpty)
                 }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || bucket.isEmpty || accessKey.isEmpty || secretKey.isEmpty)
             }
         }
         .padding()
@@ -179,13 +200,11 @@ struct BaiduConfigView: View {
         if let jsonString = baiduConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
-
-        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.baidu_bos, data: nil)
-    BaiduConfigView(hostModel: sampleHostModel) {}
+    BaiduConfigView(hostModel: sampleHostModel) {} onCancel: {} onValidate: {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

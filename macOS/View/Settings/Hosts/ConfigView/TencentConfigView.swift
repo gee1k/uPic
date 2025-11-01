@@ -13,6 +13,8 @@ import UPicCore
 struct TencentConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
+    let onCancel: () -> Void
+    let onValidate: () -> Void
 
     @State private var name: String = HostType.tencent_cos.displayNname
     @State private var region = TencentRegion.allRegions.first!
@@ -33,12 +35,12 @@ struct TencentConfigView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 64, height: 64)
-            
+
             Form {
                 // Name
                 TextField("Name", text: $name, prompt: Text("Custom name"))
                     .frame(height: 30)
-                
+
                 // Region
                 Picker("Region", selection: $region) {
                     ForEach(TencentRegion.allRegions, id: \.self) { region in
@@ -47,11 +49,11 @@ struct TencentConfigView: View {
                     }
                 }
                 .frame(height: 30)
-                
+
                 // Bucket
                 TextField("Bucket", text: $bucket)
                     .frame(height: 30)
-                
+
                 // Secret Id
                 HStack {
                     if isSecretIdSecured {
@@ -59,7 +61,7 @@ struct TencentConfigView: View {
                     } else {
                         TextField("Secret ID", text: $secretId)
                     }
-                    
+
                     Button {
                         isSecretIdSecured.toggle()
                     } label: {
@@ -70,7 +72,7 @@ struct TencentConfigView: View {
                     .disabled(secretId.isEmpty)
                 }
                 .frame(height: 30)
-                
+
                 // Secret Key
                 HStack {
                     if isSecretKeySecured {
@@ -78,7 +80,7 @@ struct TencentConfigView: View {
                     } else {
                         TextField("Secret Key", text: $secretKey)
                     }
-                    
+
                     Button {
                         isSecretKeySecured.toggle()
                     } label: {
@@ -89,11 +91,11 @@ struct TencentConfigView: View {
                     .disabled(secretKey.isEmpty)
                 }
                 .frame(height: 30)
-                
+
                 // Domain
                 TextField("Domain", text: $domain, prompt: Text(verbatim: "https://your-domain.com"))
                     .frame(height: 30)
-                
+
                 // Save Key Path
                 HStack {
                     TextField("Save Key", text: $saveKey)
@@ -106,17 +108,18 @@ struct TencentConfigView: View {
                         .help("The suffix added during the visit does not affect the upload(also supports variables). Can be used as object storage for image processing styles, etc ... For example: !w means get a watermarked image.")
                 }
                 .frame(height: 30)
-                
+
                 Text("""
                 Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} and etc. For example, the uploaded file is uPic.jpg, set to "uPic/{filename}{.suffix}", it will be saved as: uPic/uPic.jpg.
                 """)
+                .textSelection(.enabled)
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, maxHeight: 80, alignment: .topLeading)
-                
+
                 Spacer()
-                
+
                 // Help Links
                 HStack {
                     Spacer()
@@ -131,15 +134,33 @@ struct TencentConfigView: View {
                     .buttonBorderShape(.circle)
                 }
                 .frame(height: 30)
-                
-                HStack {
-                    Spacer()
-                    Button("Save") {
+            }
+
+            Spacer()
+
+            HStack {
+                Button("Validate") {
+                    saveConfiguration()
+                    onValidate()
+                }
+                .disabled(name.isEmpty || bucket.isEmpty || secretId.isEmpty || secretKey.isEmpty)
+
+                Spacer()
+
+                Button("Cancel") {
+                    withAnimation {
+                        onCancel()
+                    }
+                }
+                .foregroundStyle(.red)
+
+                Button("Save") {
+                    withAnimation {
                         saveConfiguration()
                     }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(name.isEmpty || bucket.isEmpty || secretId.isEmpty || secretKey.isEmpty)
                 }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || bucket.isEmpty || secretId.isEmpty || secretKey.isEmpty)
             }
         }
         .padding()
@@ -179,13 +200,11 @@ struct TencentConfigView: View {
         if let jsonString = tencentConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
-
-        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.tencent_cos, data: nil)
-    TencentConfigView(hostModel: sampleHostModel) {}
+    TencentConfigView(hostModel: sampleHostModel) {} onCancel: {} onValidate: {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

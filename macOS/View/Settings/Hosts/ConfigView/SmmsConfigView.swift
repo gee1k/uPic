@@ -13,6 +13,8 @@ import UPicCore
 struct SmmsConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
+    let onCancel: () -> Void
+    let onValidate: () -> Void
 
     @State private var name: String = HostType.smms.displayNname
     @State private var token: String = ""
@@ -72,17 +74,34 @@ struct SmmsConfigView: View {
                     .buttonBorderShape(.circle)
                 }
                 .frame(height: 30)
+            }
+
+            Spacer()
+
+            HStack {
+                Button("Validate") {
+                    saveConfiguration()
+                    onValidate()
+                }
+                .disabled(name.isEmpty || token.isEmpty)
 
                 Spacer()
 
-                HStack {
-                    Spacer()
-                    Button("Save") {
-                        saveConfiguration()
+                Button("Cancel") {
+                    withAnimation {
+                        onCancel()
                     }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(name.isEmpty || token.isEmpty)
                 }
+                .foregroundStyle(.red)
+
+                Button("Save") {
+                    withAnimation {
+                        saveConfiguration()
+                        onSave()
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || token.isEmpty)
             }
         }
         .padding()
@@ -109,13 +128,12 @@ struct SmmsConfigView: View {
         if let jsonString = smmsConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
-
-        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.smms, data: nil)
-    SmmsConfigView(hostModel: sampleHostModel) {}
+
+    SmmsConfigView(hostModel: sampleHostModel) {} onCancel: {} onValidate: {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

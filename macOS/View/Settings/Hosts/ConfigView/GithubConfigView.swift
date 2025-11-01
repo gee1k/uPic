@@ -13,6 +13,8 @@ import UPicCore
 struct GithubConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
+    let onCancel: () -> Void
+    let onValidate: () -> Void
 
     @State private var name: String = HostType.github.displayNname
     @State private var userName: String = ""
@@ -32,24 +34,24 @@ struct GithubConfigView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 64, height: 64)
-            
+
             Form {
                 // Name
                 TextField("Name", text: $name, prompt: Text("Custom name"))
                     .frame(height: 30)
-                
+
                 // User Name
                 TextField("User Name", text: $userName)
                     .frame(height: 30)
-                
+
                 // Repo
                 TextField("Repo", text: $repo)
                     .frame(height: 30)
-                
+
                 // Branch
                 TextField("Branch", text: $branch)
                     .frame(height: 30)
-                
+
                 // Token
                 HStack {
                     if isTokenSecured {
@@ -57,7 +59,7 @@ struct GithubConfigView: View {
                     } else {
                         TextField("Token", text: $token)
                     }
-                    
+
                     Button {
                         isTokenSecured.toggle()
                     } label: {
@@ -68,11 +70,11 @@ struct GithubConfigView: View {
                     .disabled(token.isEmpty)
                 }
                 .frame(height: 30)
-                
+
                 // Domain
                 TextField("Domain", text: $domain, prompt: Text("Can be empty, there is a default domain"))
                     .frame(height: 30)
-                
+
                 // Save Key Path
                 HStack {
                     TextField("Save Key", text: $saveKey)
@@ -85,17 +87,18 @@ struct GithubConfigView: View {
                         .help("The suffix added during the visit does not affect the upload(also supports variables). Can be used as object storage for image processing styles, etc ... For example: !w means get a watermarked image.")
                 }
                 .frame(height: 30)
-                
+
                 Text("""
                 Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} and etc. For example, the uploaded file is uPic.jpg, set to "uPic/{filename}{.suffix}", it will be saved as: uPic/uPic.jpg.
                 """)
+                .textSelection(.enabled)
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, maxHeight: 80, alignment: .topLeading)
-                
+
                 Spacer()
-                
+
                 // Help Links
                 HStack {
                     Spacer()
@@ -110,15 +113,34 @@ struct GithubConfigView: View {
                     .buttonBorderShape(.circle)
                 }
                 .frame(height: 30)
-                
-                HStack {
-                    Spacer()
-                    Button("Save") {
-                        saveConfiguration()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(name.isEmpty || userName.isEmpty || repo.isEmpty || token.isEmpty)
+            }
+
+            Spacer()
+
+            HStack {
+                Button("Validate") {
+                    saveConfiguration()
+                    onValidate()
                 }
+                .disabled(name.isEmpty || userName.isEmpty || repo.isEmpty || token.isEmpty)
+
+                Spacer()
+
+                Button("Cancel") {
+                    withAnimation {
+                        onCancel()
+                    }
+                }
+                .foregroundStyle(.red)
+
+                Button("Save") {
+                    withAnimation {
+                        saveConfiguration()
+                        onSave()
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || userName.isEmpty || repo.isEmpty || token.isEmpty)
             }
         }
         .padding()
@@ -155,13 +177,11 @@ struct GithubConfigView: View {
         if let jsonString = githubConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
-
-        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.github, data: nil)
-    GithubConfigView(hostModel: sampleHostModel) {}
+    GithubConfigView(hostModel: sampleHostModel) {} onCancel: {} onValidate: {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

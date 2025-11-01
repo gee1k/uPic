@@ -13,6 +13,8 @@ import UPicCore
 struct WeiboConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
+    let onCancel: () -> Void
+    let onValidate: () -> Void
 
     @State private var name: String = HostType.weibo.displayNname
     @State private var cookieMode: Bool = false
@@ -103,15 +105,34 @@ struct WeiboConfigView: View {
                     .buttonBorderShape(.circle)
                 }
                 .frame(height: 30)
+            }
 
-                HStack {
-                    Spacer()
-                    Button("Save") {
-                        saveConfiguration()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(name.isEmpty || (cookieMode ? cookie.isEmpty : (username.isEmpty || password.isEmpty)))
+            Spacer()
+
+            HStack {
+                Button("Validate") {
+                    saveConfiguration()
+                    onValidate()
                 }
+                .disabled(name.isEmpty || (cookieMode ? cookie.isEmpty : (username.isEmpty || password.isEmpty)))
+
+                Spacer()
+
+                Button("Cancel") {
+                    withAnimation {
+                        onCancel()
+                    }
+                }
+                .foregroundStyle(.red)
+
+                Button("Save") {
+                    withAnimation {
+                        saveConfiguration()
+                        onSave()
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || (cookieMode ? cookie.isEmpty : (username.isEmpty || password.isEmpty)))
             }
         }
         .padding()
@@ -148,13 +169,11 @@ struct WeiboConfigView: View {
         if let jsonString = weiboConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
-
-        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.weibo, data: nil)
-    WeiboConfigView(hostModel: sampleHostModel) {}
+    WeiboConfigView(hostModel: sampleHostModel) {} onCancel: {} onValidate: {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

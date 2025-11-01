@@ -13,6 +13,8 @@ import UPicCore
 struct UpyunConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
+    let onCancel: () -> Void
+    let onValidate: () -> Void
 
     @State private var name: String = HostType.upyun_uss.displayNname
     @State private var bucket: String = ""
@@ -84,6 +86,7 @@ struct UpyunConfigView: View {
                 Text("""
                 Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} and etc. For example, the uploaded file is uPic.jpg, set to "uPic/{filename}{.suffix}", it will be saved as: uPic/uPic.jpg.
                 """)
+                .textSelection(.enabled)
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.leading)
@@ -105,15 +108,34 @@ struct UpyunConfigView: View {
                     .buttonBorderShape(.circle)
                 }
                 .frame(height: 30)
+            }
 
-                HStack {
-                    Spacer()
-                    Button("Save") {
-                        saveConfiguration()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(name.isEmpty || bucket.isEmpty || operatorName.isEmpty || password.isEmpty)
+            Spacer()
+
+            HStack {
+                Button("Validate") {
+                    saveConfiguration()
+                    onValidate()
                 }
+                .disabled(name.isEmpty || bucket.isEmpty || operatorName.isEmpty || password.isEmpty)
+
+                Spacer()
+
+                Button("Cancel") {
+                    withAnimation {
+                        onCancel()
+                    }
+                }
+                .foregroundStyle(.red)
+
+                Button("Save") {
+                    withAnimation {
+                        saveConfiguration()
+                        onSave()
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || bucket.isEmpty || operatorName.isEmpty || password.isEmpty)
             }
         }
         .padding()
@@ -148,13 +170,11 @@ struct UpyunConfigView: View {
         if let jsonString = upyunConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
-
-        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.upyun_uss, data: nil)
-    UpyunConfigView(hostModel: sampleHostModel) {}
+    UpyunConfigView(hostModel: sampleHostModel) {} onCancel: {} onValidate: {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

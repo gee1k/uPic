@@ -14,6 +14,8 @@ internal import SotoS3
 struct S3ConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
+    let onCancel: () -> Void
+    let onValidate: () -> Void
 
     @State private var name: String = HostType.s3.displayNname
     @State private var customize: Bool = false
@@ -37,17 +39,17 @@ struct S3ConfigView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 64, height: 64)
-            
+
             Form {
                 // Name
                 TextField("Name", text: $name, prompt: Text("Custom name"))
                     .frame(height: 30)
-                
+
                 // Customize Toggle
                 Toggle("Customize", isOn: $customize)
                     .toggleStyle(.switch)
                     .frame(height: 30)
-                
+
                 // Region or Endpoint based on customize setting
                 if customize {
                     // Endpoint
@@ -63,11 +65,11 @@ struct S3ConfigView: View {
                     }
                     .frame(height: 30)
                 }
-                
+
                 // Bucket
                 TextField("Bucket", text: $bucket)
                     .frame(height: 30)
-                
+
                 // ACL Control
                 Picker("ACL", selection: $acl) {
                     ForEach(S3ObjectCannedACL.allCases, id: \.self) { acl in
@@ -76,7 +78,7 @@ struct S3ConfigView: View {
                     }
                 }
                 .frame(height: 30)
-                
+
                 // Access Key
                 HStack {
                     if isAccessKeySecured {
@@ -84,7 +86,7 @@ struct S3ConfigView: View {
                     } else {
                         TextField("Access Key", text: $accessKey)
                     }
-                    
+
                     Button {
                         isAccessKeySecured.toggle()
                     } label: {
@@ -95,7 +97,7 @@ struct S3ConfigView: View {
                     .disabled(accessKey.isEmpty)
                 }
                 .frame(height: 30)
-                
+
                 // Secret Key
                 HStack {
                     if isSecretKeySecured {
@@ -103,7 +105,7 @@ struct S3ConfigView: View {
                     } else {
                         TextField("Secret Key", text: $secretKey)
                     }
-                    
+
                     Button {
                         isSecretKeySecured.toggle()
                     } label: {
@@ -114,11 +116,11 @@ struct S3ConfigView: View {
                     .disabled(secretKey.isEmpty)
                 }
                 .frame(height: 30)
-                
+
                 // Domain
                 TextField("Domain", text: $domain, prompt: Text(verbatim: "https://your-domain.com"))
                     .frame(height: 30)
-                
+
                 // Save Key Path
                 HStack {
                     TextField("Save Key", text: $saveKey)
@@ -131,17 +133,18 @@ struct S3ConfigView: View {
                         .help("The suffix added during the visit does not affect the upload(also supports variables). Can be used as object storage for image processing styles, etc ... For example: !w means get a watermarked image.")
                 }
                 .frame(height: 30)
-                
+
                 Text("""
                 Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} and etc. For example, the uploaded file is uPic.jpg, set to "uPic/{filename}{.suffix}", it will be saved as: uPic/uPic.jpg.
                 """)
+                .textSelection(.enabled)
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, maxHeight: 80, alignment: .topLeading)
-                
+
                 Spacer()
-                
+
                 // Help Links
                 HStack {
                     Spacer()
@@ -156,15 +159,33 @@ struct S3ConfigView: View {
                     .buttonBorderShape(.circle)
                 }
                 .frame(height: 30)
-                
-                HStack {
-                    Spacer()
-                    Button("Save") {
+            }
+
+            Spacer()
+
+            HStack {
+                Button("Validate") {
+                    saveConfiguration()
+                    onValidate()
+                }
+                .disabled(name.isEmpty || bucket.isEmpty || accessKey.isEmpty || secretKey.isEmpty)
+
+                Spacer()
+
+                Button("Cancel") {
+                    withAnimation {
+                        onCancel()
+                    }
+                }
+                .foregroundStyle(.red)
+
+                Button("Save") {
+                    withAnimation {
                         saveConfiguration()
                     }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(name.isEmpty || bucket.isEmpty || accessKey.isEmpty || secretKey.isEmpty)
                 }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || bucket.isEmpty || accessKey.isEmpty || secretKey.isEmpty)
             }
         }
         .padding()
@@ -211,13 +232,11 @@ struct S3ConfigView: View {
         if let jsonString = s3Config.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
-
-        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.s3, data: nil)
-    S3ConfigView(hostModel: sampleHostModel) {}
+    S3ConfigView(hostModel: sampleHostModel) {} onCancel: {} onValidate: {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

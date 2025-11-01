@@ -13,6 +13,8 @@ import UPicCore
 struct CustomConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
+    let onCancel: () -> Void
+    let onValidate: () -> Void
 
     @State private var name: String = HostType.custom.displayNname
     @State private var apiUrl: String = ""
@@ -30,92 +32,119 @@ struct CustomConfigView: View {
     @Environment(\.openURL) private var openURL
 
     var body: some View {
-        Form {
-            // Name
-            TextField("Name", text: $name, prompt: Text("Custom name"))
+        VStack {
+            Image("host_icon_\(hostModel.typeRaw ?? "")")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 64, height: 64)
+
+            Form {
+                // Name
+                TextField("Name", text: $name, prompt: Text("Custom name"))
+                    .frame(height: 30)
+
+                // URL
+                TextField("API URL", text: $apiUrl)
+                    .frame(height: 30)
+
+                // Method and Use Base64
+                HStack {
+                    Picker("Method", selection: $method) {
+                        ForEach(CustomRequestMethod.allCases, id: \.self) { method in
+                            Text(method.rawValue)
+                                .tag(method)
+                        }
+                    }
+
+                    Spacer()
+
+                    Text("Use Base64")
+                    Toggle("Use Base64", isOn: $useBase64)
+                        .labelsHidden()
+                }
                 .frame(height: 30)
 
-            // URL
-            TextField("API URL", text: $apiUrl)
-                .frame(height: 30)
+                // Field with Other Fields button
+                HStack {
+                    TextField("File Field", text: $fileField)
+                        .frame(height: 30)
 
-            // Method and Use Base64
-            HStack {
-                Picker("Method", selection: $method) {
-                    ForEach(CustomRequestMethod.allCases, id: \.self) { method in
-                        Text(method.rawValue)
-                            .tag(method)
+                    Button("Other fields") {
+                        showOtherFieldsSheet = true
                     }
                 }
 
-                Spacer()
-
-                Text("Use Base64")
-                Toggle("Use Base64", isOn: $useBase64)
-                    .labelsHidden()
-            }
-            .frame(height: 30)
-
-            // Field with Other Fields button
-            HStack {
-                TextField("File Field", text: $fileField)
+                // Result Path
+                TextField("Result Path", text: $resultPath, prompt: Text("The path to the URL field in Response JSON"))
                     .frame(height: 30)
 
-                Button("Other fields") {
-                    showOtherFieldsSheet = true
+                // Domain
+                TextField("Domain", text: $domain, prompt: Text("(optional), When filled, URL = domain + URL path value"))
+                    .frame(height: 30)
+
+                // Save Key Path
+                HStack {
+                    TextField("Save Key", text: $saveKey)
+                        .fontDesign(.monospaced)
+                    TextField("", text: $saveKeySuffix, prompt: Text(verbatim: "!w"))
+                        .labelsHidden()
+                        .frame(minWidth: 40)
+                        .fixedSize()
+                        .fontDesign(.monospaced)
+                        .help("The suffix added during the visit does not affect the upload(also supports variables). Can be used as object storage for image processing styles, etc ... For example: !w means get a watermarked image.")
                 }
-            }
-
-            // Result Path
-            TextField("Result Path", text: $resultPath, prompt: Text("The path to the URL field in Response JSON"))
                 .frame(height: 30)
 
-            // Domain
-            TextField("Domain", text: $domain, prompt: Text("(optional), When filled, URL = domain + URL path value"))
+                Text("""
+                Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} and etc. For example, the uploaded file is uPic.jpg, set to "uPic/{filename}{.suffix}", it will be saved as: uPic/uPic.jpg.
+                """)
+                .textSelection(.enabled)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, maxHeight: 80, alignment: .topLeading)
+
+                Spacer()
+
+                // Help Links
+                HStack {
+                    Spacer()
+                    Button {
+                        if let url = URL(string: Constants.customHelpUrl) {
+                            openURL(url)
+                        }
+                    } label: {
+                        Image(systemName: "questionmark")
+                            .padding(2)
+                    }
+                    .buttonBorderShape(.circle)
+                }
                 .frame(height: 30)
-
-            // Save Key Path
-            HStack {
-                TextField("Save Key", text: $saveKey)
-                    .fontDesign(.monospaced)
-                TextField("", text: $saveKeySuffix, prompt: Text(verbatim: "!w"))
-                    .labelsHidden()
-                    .frame(minWidth: 40)
-                    .fixedSize()
-                    .fontDesign(.monospaced)
-                    .help("The suffix added during the visit does not affect the upload(also supports variables). Can be used as object storage for image processing styles, etc ... For example: !w means get a watermarked image.")
             }
-            .frame(height: 30)
-
-            Text("""
-            Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} and etc. For example, the uploaded file is uPic.jpg, set to "uPic/{filename}{.suffix}", it will be saved as: uPic/uPic.jpg.
-            """)
-            .font(.caption)
-            .foregroundStyle(.secondary)
-            .multilineTextAlignment(.leading)
-            .frame(maxWidth: .infinity, maxHeight: 80, alignment: .topLeading)
 
             Spacer()
 
-            // Help Links
             HStack {
-                Spacer()
-                Button {
-                    if let url = URL(string: Constants.customHelpUrl) {
-                        openURL(url)
-                    }
-                } label: {
-                    Image(systemName: "questionmark")
-                        .padding(2)
-                }
-                .buttonBorderShape(.circle)
-            }
-            .frame(height: 30)
-
-            HStack {
-                Spacer()
-                Button("Save") {
+                Button("Validate") {
                     saveConfiguration()
+                    onValidate()
+                }
+                .disabled(name.isEmpty || apiUrl.isEmpty)
+
+                Spacer()
+
+                Button("Cancel") {
+                    withAnimation {
+                        onCancel()
+                    }
+                }
+                .foregroundStyle(.red)
+
+                Button("Save") {
+                    withAnimation {
+                        saveConfiguration()
+                        onSave()
+                    }
                 }
                 .buttonStyle(.borderedProminent)
                 .disabled(name.isEmpty || apiUrl.isEmpty)
@@ -167,13 +196,11 @@ struct CustomConfigView: View {
         if let jsonString = customConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
-
-        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.custom, data: nil)
-    CustomConfigView(hostModel: sampleHostModel) {}
+    CustomConfigView(hostModel: sampleHostModel) {} onCancel: {} onValidate: {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }

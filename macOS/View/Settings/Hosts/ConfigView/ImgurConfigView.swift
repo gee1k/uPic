@@ -13,6 +13,8 @@ import UPicCore
 struct ImgurConfigView: View {
     let hostModel: HostModel
     let onSave: () -> Void
+    let onCancel: () -> Void
+    let onValidate: () -> Void
 
     @State private var name: String = HostType.imgur.displayNname
     @State private var clientId: String = ""
@@ -87,15 +89,33 @@ struct ImgurConfigView: View {
                 .frame(height: 30)
 
                 Spacer()
+            }
 
-                HStack {
-                    Spacer()
-                    Button("Save") {
+            Spacer()
+
+            HStack {
+                Button("Validate") {
+                    saveConfiguration()
+                    onValidate()
+                }
+                .disabled(name.isEmpty || clientId.isEmpty)
+
+                Spacer()
+
+                Button("Cancel") {
+                    withAnimation {
+                        onCancel()
+                    }
+                }
+                .foregroundStyle(.red)
+
+                Button("Save") {
+                    withAnimation {
                         saveConfiguration()
                     }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(name.isEmpty || clientId.isEmpty)
                 }
+                .buttonStyle(.borderedProminent)
+                .disabled(name.isEmpty || clientId.isEmpty)
             }
         }
         .padding()
@@ -122,13 +142,11 @@ struct ImgurConfigView: View {
         if let jsonString = imgurConfig.toJSONString(), let jsonData = jsonString.data(using: .utf8) {
             hostModel.dataRaw = jsonData
         }
-
-        onSave()
     }
 }
 
 #Preview {
     let sampleHostModel = HostModel(.imgur, data: nil)
-    ImgurConfigView(hostModel: sampleHostModel) {}
+    ImgurConfigView(hostModel: sampleHostModel) {} onCancel: {} onValidate: {}
         .modelContainer(for: HostModel.self, inMemory: true)
 }
