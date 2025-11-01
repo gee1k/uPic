@@ -27,7 +27,7 @@ struct Permissions: View {
                         Image(systemName: "checkmark.circle.fill")
                             .resizable()
                             .frame(width: 20, height: 20)
-                            .foregroundStyle(Color.green)
+                            .foregroundStyle(.green)
                     } else {
                         HStack(spacing: 8) {
                             Button {

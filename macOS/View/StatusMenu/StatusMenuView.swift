@@ -19,6 +19,7 @@ struct StatusMenuView: View {
     @Default(.outputFormatEncoded) var outputFormatEncoded
     @Default(.compressFactor) var compressFactor
     @Default(.autoCopyUrlToClipboard) var autoCopyUrlToClipboard
+    @Default(.statusMenuHistoryLimit) var statusMenuHistoryLimit
 
     @ObservedObject private var uploader = UploadeManager.shared
 
@@ -184,7 +185,7 @@ struct StatusMenuView: View {
                     Text("No history yet")
                         .foregroundStyle(.secondary)
                 } else {
-                    ForEach(Array(uploadHistory.prefix(8)), id: \.id) { history in
+                    ForEach(Array(uploadHistory.prefix(statusMenuHistoryLimit)), id: \.id) { history in
                         HistoryMenuItem(history: history)
                     }
 

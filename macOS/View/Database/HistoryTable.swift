@@ -25,7 +25,6 @@ struct HistoryTableView: View {
     @State private var sortedHistory: [UploadHistoryModel] = []
     @State private var sortOrder = [KeyPathComparator(\UploadHistoryModel.createdDate, order: .reverse)]
 
-    
     var body: some View {
         VStack(spacing: 0) {
             HistoryMainTable(
@@ -97,22 +96,30 @@ struct HistoryTableView: View {
             .id(thumbnailSize)
 
             HStack(spacing: 2) {
+                Text("\(uploadHistory.count) Items")
+                
                 Spacer()
 
                 HStack(spacing: 2) {
                     Text("Thumbnail Size")
                     Image(systemName: "photo")
                 }
-                .foregroundStyle(.secondary)
-                .font(.caption)
 
-                Slider(value: $thumbnailSize, in: 40 ... 120, step: 5) {}
+                Slider(value: $thumbnailSize, in: 40 ... 120, step: 5)
                     .labelsHidden()
-                    .frame(width: 100)
+                    .frame(width: 120)
+                Button {
+                    thumbnailSize = 60
+                } label: {
+                    Image(systemName: "arrow.clockwise")
+                }
+                .buttonStyle(.plain)
             }
-            .padding(.trailing, 16)
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .padding(.horizontal, 16)
             .padding(.bottom, 8)
-            .background(Color(NSColor.controlBackgroundColor))
+            .padding(.top, 4)
         }
     }
 

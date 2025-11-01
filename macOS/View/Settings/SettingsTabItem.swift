@@ -49,19 +49,19 @@ struct SettingsTabItem: View {
 
     private var backgroundColor: Color {
         if selectedTag == tag {
-            return Color.accentColor.opacity(0.15)
+            return .accentColor.opacity(0.15)
         } else if isHovered {
-            return Color.gray.opacity(0.1)
+            return .gray.opacity(0.1)
         } else {
-            return Color.clear
+            return .clear
         }
     }
 
     private var foregroundColor: Color {
         if selectedTag == tag {
-            return Color.accentColor
+            return .accentColor
         } else {
-            return Color.primary
+            return .primary
         }
     }
 }

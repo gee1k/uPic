@@ -44,8 +44,8 @@ struct SettingsManagement: View {
                 Button {
                     showResetAlert = true
                 } label: {
-                    Label("Reset all settings", systemImage: "arrow.counterclockwise")
-                        .foregroundStyle(Color.red)
+                    Label("Reset all settings", systemImage: "arrow.clockwise")
+                        .foregroundStyle(.red)
                 }
                 .buttonStyle(.plain)
             }

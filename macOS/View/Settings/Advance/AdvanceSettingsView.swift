@@ -12,6 +12,7 @@ struct AdvanceSettingsView: View {
         Form {
             KeyboardShortcutsSettings()
             OutputFormatSettings()
+            StatusMenuHistorySettings()
             ScreenshotAppSettings()
         }
         .navigationTitle("Advance")
