@@ -9,6 +9,7 @@ import QuickLook
 import SwiftData
 import SwiftUI
 import UPicCore
+import SimpleLogger
 
 struct HistoryTableView: View {
     let uploadHistory: [UploadHistoryModel]
@@ -128,7 +129,7 @@ struct HistoryTableView: View {
         do {
             try modelContext.save()
         } catch {
-            print("Failed to delete history: \(error)")
+            AppLogger.history.error("Failed to delete history: \(error.localizedDescription)")
         }
     }
 
@@ -140,7 +141,7 @@ struct HistoryTableView: View {
         do {
             try modelContext.save()
         } catch {
-            print("Failed to clear history: \(error)")
+            AppLogger.history.error("Failed to clear history: \(error.localizedDescription)")
         }
     }
 

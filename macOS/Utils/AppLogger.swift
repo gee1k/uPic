@@ -13,7 +13,8 @@ import SimpleLogger
 enum AppLogger {
     static let app = UPicLogger(category: "app")
     static let settings = UPicLogger(category: "settings")
-    static let hosts = UPicLogger(category: "hosts")
+    static let host = UPicLogger(category: "host")
+    static let history = UPicLogger(category: "history")
     static let urlScheme = UPicLogger(category: "urlScheme")
     static let notifications = UPicLogger(category: "notifications")
     static let uploader = UPicLogger(category: "uploader")

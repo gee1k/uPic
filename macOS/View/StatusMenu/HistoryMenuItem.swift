@@ -14,10 +14,9 @@ struct HistoryMenuItem: View {
     let history: UploadHistoryModel
     @State private var quickLookURL: URL?
 
-    @Query private var hostModels: [HostModel]
+    @Query private var uploadHistory: [UploadHistoryModel]
 
-    @ObservedObject private var uploader = UploadeManager.shared
-
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.openURL) private var openURL
 
     var body: some View {
@@ -44,7 +43,7 @@ struct HistoryMenuItem: View {
             Divider()
 
             Button("Delete", systemImage: "trash", role: .destructive) {
-                uploader.deleteHistory(history)
+                deleteHistory(history)
             }
         } label: {
             HStack {
@@ -66,6 +65,15 @@ struct HistoryMenuItem: View {
             }
         } primaryAction: {
             Tools.shared.copyUrls([history.url])
+        }
+    }
+
+    private func deleteHistory(_ history: UploadHistoryModel) {
+        modelContext.delete(history)
+        do {
+            try modelContext.save()
+        } catch {
+            AppLogger.history.error("Failed to delete history: \(error.localizedDescription)")
         }
     }
 }

@@ -161,9 +161,9 @@ struct HostConfigSwitchView: View {
 
         do {
             try modelContext.save()
-            AppLogger.hosts.info("Host saved successfully to database: \(hostModel.name) \(hostModel.typeRaw ?? "")")
+            AppLogger.host.info("Host saved successfully to database: \(hostModel.name) \(hostModel.typeRaw ?? "")")
         } catch {
-            AppLogger.hosts.error("Failed to save host to database: \(hostModel.name) \(hostModel.typeRaw ?? ""). Error: \(error.localizedDescription)")
+            AppLogger.host.error("Failed to save host to database: \(hostModel.name) \(hostModel.typeRaw ?? ""). Error: \(error.localizedDescription)")
         }
     }
 

@@ -102,7 +102,7 @@ struct HostsSettingsView: View {
                 do {
                     try modelContext.save()
                 } catch {
-                    AppLogger.hosts.error("Failed to delete host model: \(error.localizedDescription)")
+                    AppLogger.host.error("Failed to delete host model: \(error.localizedDescription)")
                 }
             }
 

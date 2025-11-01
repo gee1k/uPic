@@ -384,44 +384,6 @@ public class UploadeManager: ObservableObject {
         }
     }
 
-    // MARK: - Public History Management
-
-    public func deleteHistory(_ history: UploadHistoryModel) {
-        guard let modelContext = modelContext else {
-            AppLogger.uploader.error("ModelContext not available, cannot delete history")
-            return
-        }
-
-        modelContext.delete(history)
-
-        do {
-            try modelContext.save()
-            loadUploadHistory()
-        } catch {
-            AppLogger.uploader.error("Failed to delete history record: \(error.localizedDescription)")
-        }
-    }
-
-    public func clearAllHistory() {
-        guard let modelContext = modelContext else {
-            AppLogger.uploader.error("ModelContext not available, cannot clear history")
-            return
-        }
-
-        let descriptor = FetchDescriptor<UploadHistoryModel>()
-
-        do {
-            let histories = try modelContext.fetch(descriptor)
-            for history in histories {
-                modelContext.delete(history)
-            }
-            try modelContext.save()
-            loadUploadHistory()
-        } catch {
-            AppLogger.uploader.error("Failed to clear history records: \(error.localizedDescription)")
-        }
-    }
-
     // MARK: - File Selection Upload
 
     /// 选择文件上传
