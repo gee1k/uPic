@@ -94,6 +94,7 @@ struct uPicApp: App {
         .menuBarExtraAccess(isPresented: .constant(true)) { statusItem in
             statusItem.length = NSStatusItem.squareLength
             setupStatusBarIndicator(statusItem)
+            registerDraggedTypes(statusItem)
         }
     }
 
@@ -130,5 +131,13 @@ struct uPicApp: App {
             indicator.isHidden = true
             indicator.doubleValue = 0.0
         }
+    }
+
+    private func registerDraggedTypes(_ statusItem: NSStatusItem) {
+        guard let button = statusItem.button else { return }
+
+        button.window?.delegate = appDelegate
+        button.window?.registerForDraggedTypes([NSPasteboard.PasteboardType("NSFilenamesPboardType")])
+        button.window?.registerForDraggedTypes([.URL, .fileURL, .string, .html])
     }
 }

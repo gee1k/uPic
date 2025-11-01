@@ -84,7 +84,7 @@ extension Cli {
         Console.write(totalPathsCount)
         
         // start upload
-        Console.write(String(localized: "Uploading ..."))
+        Console.write(String(localized: "Uploading..."))
         
         if let urls = allDataList as? [URL] {
             Task {
