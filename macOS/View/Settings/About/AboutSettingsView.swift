@@ -116,7 +116,7 @@ struct AboutSettingsView: View {
                 Image("Heart")
                     .resizable()
                     .frame(width: 10, height: 10)
-                Text("BY SVEND AND [MORE](\(Constants.githubContributors))")
+                Text("BY SVEND AND [MORE](https://github.com/gee1k/uPic/graphs/contributors)")
                     .font(.system(size: 12, weight: .medium))
                     .foregroundStyle(.secondary)
                 Spacer()
