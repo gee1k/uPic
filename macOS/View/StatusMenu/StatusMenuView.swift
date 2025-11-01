@@ -7,6 +7,7 @@
 
 import Defaults
 import KeyboardShortcuts
+import SimpleLogger
 import SwiftData
 import SwiftUI
 import UPicCore
@@ -26,6 +27,7 @@ struct StatusMenuView: View {
     @Query private var hostModels: [HostModel]
     @Query(sort: \UploadHistoryModel.createdDate, order: .reverse) private var uploadHistory: [UploadHistoryModel]
 
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.openWindow) var openWindow
 
     private var selectedHostName: String {
@@ -98,7 +100,7 @@ struct StatusMenuView: View {
                         }
                     }
                 }
-             }
+            }
             
             Menu("Output format  \(Text(selectedOutputFormat.name).foregroundStyle(.secondary))") {
                 ForEach(outputFormats) { outputFormat in
@@ -218,6 +220,18 @@ struct StatusMenuView: View {
                 NSApplication.shared.terminate(self)
             }
             .keyboardShortcut("Q")
+        }
+        .onAppear {
+            loadHistoryData()
+        }
+    }
+
+    private func loadHistoryData() {
+        do {
+            let descriptor = FetchDescriptor<UploadHistoryModel>()
+            _ = try modelContext.fetch(descriptor)
+        } catch {
+            AppLogger.app.error("Failed to fetch upload history: \(error.localizedDescription)")
         }
     }
 }
