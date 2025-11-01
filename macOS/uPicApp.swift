@@ -88,7 +88,9 @@ struct uPicApp: App {
         MenuBarExtra {
             StatusMenuView()
         } label: {
-            Image(uploader.isUploading ? "" : "statusMenuIcon")
+            if !uploader.isUploading {
+                Image("statusMenuIcon")
+            }
         }
         .modelContainer(upicModelContainer)
         .menuBarExtraAccess(isPresented: .constant(true)) { statusItem in

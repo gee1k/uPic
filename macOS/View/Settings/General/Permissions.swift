@@ -29,21 +29,19 @@ struct Permissions: View {
                             .frame(width: 20, height: 20)
                             .foregroundStyle(.green)
                     } else {
-                        HStack(spacing: 8) {
-                            Button {
-                                requestFullDiskAccess()
-                            } label: {
-                                if isRequestingFullDiskAccessPermission {
-                                    ProgressView()
-                                        .scaleEffect(0.5)
-                                        .frame(width: 20, height: 20)
-                                } else {
-                                    Text("Request")
-                                        .frame(height: 20)
-                                }
+                        Button {
+                            requestFullDiskAccess()
+                        } label: {
+                            if isRequestingFullDiskAccessPermission {
+                                ProgressView()
+                                    .scaleEffect(0.5)
+                                    .frame(width: 20, height: 20)
+                            } else {
+                                Text("Request")
+                                    .frame(height: 20)
                             }
-                            .disabled(isRequestingFullDiskAccessPermission)
                         }
+                        .disabled(isRequestingFullDiskAccessPermission)
                     }
                 }
 
