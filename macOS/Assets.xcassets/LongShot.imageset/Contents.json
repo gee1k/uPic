@@ -1,19 +1,14 @@
 {
   "images" : [
     {
-      "filename" : "LongShot.png",
-      "idiom" : "universal",
+      "filename" : "longshot_64x64.png",
+      "idiom" : "mac",
       "scale" : "1x"
     },
     {
-      "filename" : "LongShot@2x.png",
-      "idiom" : "universal",
+      "filename" : "longshot_64x64@2x.png",
+      "idiom" : "mac",
       "scale" : "2x"
-    },
-    {
-      "filename" : "LongShot@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
     }
   ],
   "info" : {

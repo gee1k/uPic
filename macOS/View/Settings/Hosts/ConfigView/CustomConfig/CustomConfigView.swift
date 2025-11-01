@@ -64,7 +64,6 @@ struct CustomConfigView: View {
                 Button("Other fields") {
                     showOtherFieldsSheet = true
                 }
-                .frame(width: 100)
             }
 
             // Result Path

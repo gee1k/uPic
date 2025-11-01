@@ -68,10 +68,7 @@ struct HostsSettingsView: View {
                             Label {
                                 Text(hostType.displayNname)
                             } icon: {
-                                Image("host_icon_\(hostType.rawValue)")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 16, height: 16)
+                                Image("host_icon_\(hostType.rawValue)_small")
                             }
                         }
                     }

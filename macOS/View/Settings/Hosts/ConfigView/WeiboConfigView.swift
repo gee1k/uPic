@@ -26,85 +26,92 @@ struct WeiboConfigView: View {
     @Environment(\.openURL) private var openURL
 
     var body: some View {
-        Form {
-            // Name
-            TextField("Name", text: $name, prompt: Text("Custom name"))
-                .frame(height: 30)
+        VStack {
+            Image("host_icon_\(hostModel.typeRaw ?? "")")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 64, height: 64)
 
-            // Cookie Mode Toggle
-            Toggle("Cookie Mode", isOn: $cookieMode)
-                .toggleStyle(.switch)
-                .frame(height: 30)
-
-            // Username and Password (when not in cookie mode)
-            if !cookieMode {
-                // Username
-                TextField("Username", text: $username)
+            Form {
+                // Name
+                TextField("Name", text: $name, prompt: Text("Custom name"))
                     .frame(height: 30)
 
-                // Password
+                // Cookie Mode Toggle
+                Toggle("Cookie Mode", isOn: $cookieMode)
+                    .toggleStyle(.switch)
+                    .frame(height: 30)
+
+                // Username and Password (when not in cookie mode)
+                if !cookieMode {
+                    // Username
+                    TextField("Username", text: $username)
+                        .frame(height: 30)
+
+                    // Password
+                    HStack {
+                        if isPasswordSecured {
+                            SecureField("Password", text: $password)
+                        } else {
+                            TextField("Password", text: $password)
+                        }
+
+                        Button {
+                            isPasswordSecured.toggle()
+                        } label: {
+                            Image(systemName: isPasswordSecured ? "eye.slash" : "eye")
+                                .foregroundStyle(isPasswordSecured ? .primary : Color.blue)
+                        }
+                        .buttonStyle(.plain)
+                        .disabled(password.isEmpty)
+                    }
+                    .frame(height: 30)
+                }
+
+                // Cookie (when in cookie mode)
+                if cookieMode {
+                    TextField("Cookie", text: $cookie)
+                        .frame(height: 30)
+                }
+
+                // Quality
+                Picker("Quality", selection: $quality) {
+                    ForEach(WeiboqQuality.allCases, id: \.self) { quality in
+                        Text(quality.displayName)
+                            .tag(quality)
+                    }
+                }
+                .frame(height: 30)
+
+                // Domain
+                TextField("Domain", text: $domain, prompt: Text(verbatim: "https://tva1.sinaimg.cn"))
+                    .frame(height: 30)
+
+                Spacer()
+
+                // Help Links
                 HStack {
-                    if isPasswordSecured {
-                        SecureField("Password", text: $password)
-                    } else {
-                        TextField("Password", text: $password)
-                    }
-
+                    Spacer()
                     Button {
-                        isPasswordSecured.toggle()
+                        if let url = URL(string: Constants.weiboHelpUrl) {
+                            openURL(url)
+                        }
                     } label: {
-                        Image(systemName: isPasswordSecured ? "eye.slash" : "eye")
-                            .foregroundStyle(isPasswordSecured ? .primary : Color.blue)
+                        Image(systemName: "questionmark")
+                            .padding(2)
                     }
-                    .buttonStyle(.plain)
-                    .disabled(password.isEmpty)
+                    .buttonBorderShape(.circle)
                 }
                 .frame(height: 30)
-            }
 
-            // Cookie (when in cookie mode)
-            if cookieMode {
-                TextField("Cookie", text: $cookie)
-                    .frame(height: 30)
-            }
-
-            // Quality
-            Picker("Quality", selection: $quality) {
-                ForEach(WeiboqQuality.allCases, id: \.self) { quality in
-                    Text(quality.displayName)
-                        .tag(quality)
-                }
-            }
-            .frame(height: 30)
-
-            // Domain
-            TextField("Domain", text: $domain, prompt: Text(verbatim: "https://tva1.sinaimg.cn"))
-                .frame(height: 30)
-
-            Spacer()
-
-            // Help Links
-            HStack {
-                Spacer()
-                Button {
-                    if let url = URL(string: Constants.weiboHelpUrl) {
-                        openURL(url)
+                HStack {
+                    Spacer()
+                    Button("Save") {
+                        saveConfiguration()
                     }
-                } label: {
-                    Image(systemName: "questionmark")
-                        .padding(2)
+                    .buttonStyle(.borderedProminent)
+                    .disabled(name.isEmpty || (cookieMode ? cookie.isEmpty : (username.isEmpty || password.isEmpty)))
                 }
-                .buttonBorderShape(.circle)
-            }
-            .frame(height: 30)
-
-            HStack {
-                Spacer()
-                Button("Save") {
-                    saveConfiguration()
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(name.isEmpty || (cookieMode ? cookie.isEmpty : (username.isEmpty || password.isEmpty)))
             }
         }
         .padding()

@@ -26,87 +26,94 @@ struct UpyunConfigView: View {
     @Environment(\.openURL) private var openURL
 
     var body: some View {
-        Form {
-            // Name
-            TextField("Name", text: $name, prompt: Text("Custom name"))
-                .frame(height: 30)
+        VStack {
+            Image("host_icon_\(hostModel.typeRaw ?? "")")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 64, height: 64)
 
-            // Bucket
-            TextField("Bucket", text: $bucket)
-                .frame(height: 30)
+            Form {
+                // Name
+                TextField("Name", text: $name, prompt: Text("Custom name"))
+                    .frame(height: 30)
 
-            // Operator
-            TextField("Operator", text: $operatorName, prompt: Text("Operator name"))
-                .frame(height: 30)
+                // Bucket
+                TextField("Bucket", text: $bucket)
+                    .frame(height: 30)
 
-            // Password
-            HStack {
-                if isPasswordSecured {
-                    SecureField("Password", text: $password, prompt: Text("Operator password"))
-                } else {
-                    TextField("Password", text: $password, prompt: Text("Operator password"))
-                }
+                // Operator
+                TextField("Operator", text: $operatorName, prompt: Text("Operator name"))
+                    .frame(height: 30)
 
-                Button {
-                    isPasswordSecured.toggle()
-                } label: {
-                    Image(systemName: isPasswordSecured ? "eye.slash" : "eye")
-                        .foregroundStyle(isPasswordSecured ? .primary : Color.blue)
-                }
-                .buttonStyle(.plain)
-                .disabled(password.isEmpty)
-            }
-            .frame(height: 30)
-
-            // Domain
-            TextField("Domain", text: $domain, prompt: Text(verbatim: "https://your-domain.com"))
-                .frame(height: 30)
-
-            // Save Key Path
-            HStack {
-                TextField("Save Key", text: $saveKey)
-                    .fontDesign(.monospaced)
-                TextField("", text: $saveKeySuffix, prompt: Text(verbatim: "!w"))
-                    .labelsHidden()
-                    .frame(minWidth: 40)
-                    .fixedSize()
-                    .fontDesign(.monospaced)
-                    .help("The suffix added during the visit does not affect the upload(also supports variables). Can be used as object storage for image processing styles, etc ... For example: !w means get a watermarked image.")
-            }
-            .frame(height: 30)
-
-            Text("""
-            Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} and etc. For example, the uploaded file is uPic.jpg, set to "uPic/{filename}{.suffix}", it will be saved as: uPic/uPic.jpg.
-            """)
-            .font(.caption)
-            .foregroundStyle(.secondary)
-            .multilineTextAlignment(.leading)
-            .frame(maxWidth: .infinity, maxHeight: 80, alignment: .topLeading)
-
-            Spacer()
-
-            // Help Links
-            HStack {
-                Spacer()
-                Button {
-                    if let url = URL(string: Constants.upyunHelpUrl) {
-                        openURL(url)
+                // Password
+                HStack {
+                    if isPasswordSecured {
+                        SecureField("Password", text: $password, prompt: Text("Operator password"))
+                    } else {
+                        TextField("Password", text: $password, prompt: Text("Operator password"))
                     }
-                } label: {
-                    Image(systemName: "questionmark")
-                        .padding(2)
-                }
-                .buttonBorderShape(.circle)
-            }
-            .frame(height: 30)
 
-            HStack {
-                Spacer()
-                Button("Save") {
-                    saveConfiguration()
+                    Button {
+                        isPasswordSecured.toggle()
+                    } label: {
+                        Image(systemName: isPasswordSecured ? "eye.slash" : "eye")
+                            .foregroundStyle(isPasswordSecured ? .primary : Color.blue)
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(password.isEmpty)
                 }
-                .buttonStyle(.borderedProminent)
-                .disabled(name.isEmpty || bucket.isEmpty || operatorName.isEmpty || password.isEmpty)
+                .frame(height: 30)
+
+                // Domain
+                TextField("Domain", text: $domain, prompt: Text(verbatim: "https://your-domain.com"))
+                    .frame(height: 30)
+
+                // Save Key Path
+                HStack {
+                    TextField("Save Key", text: $saveKey)
+                        .fontDesign(.monospaced)
+                    TextField("", text: $saveKeySuffix, prompt: Text(verbatim: "!w"))
+                        .labelsHidden()
+                        .frame(minWidth: 40)
+                        .fixedSize()
+                        .fontDesign(.monospaced)
+                        .help("The suffix added during the visit does not affect the upload(also supports variables). Can be used as object storage for image processing styles, etc ... For example: !w means get a watermarked image.")
+                }
+                .frame(height: 30)
+
+                Text("""
+                Supports {year} {month} {day} {hour} {minute} {second} {since_second} {since_millisecond} {random} {filename} {.suffix} {suffix} {mimetype} and etc. For example, the uploaded file is uPic.jpg, set to "uPic/{filename}{.suffix}", it will be saved as: uPic/uPic.jpg.
+                """)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity, maxHeight: 80, alignment: .topLeading)
+
+                Spacer()
+
+                // Help Links
+                HStack {
+                    Spacer()
+                    Button {
+                        if let url = URL(string: Constants.upyunHelpUrl) {
+                            openURL(url)
+                        }
+                    } label: {
+                        Image(systemName: "questionmark")
+                            .padding(2)
+                    }
+                    .buttonBorderShape(.circle)
+                }
+                .frame(height: 30)
+
+                HStack {
+                    Spacer()
+                    Button("Save") {
+                        saveConfiguration()
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(name.isEmpty || bucket.isEmpty || operatorName.isEmpty || password.isEmpty)
+                }
             }
         }
         .padding()

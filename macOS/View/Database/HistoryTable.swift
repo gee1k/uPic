@@ -38,7 +38,7 @@ struct HistoryTable: View {
                         HStack(spacing: 4) {
                             Image("host_icon_\(host.typeRaw ?? "smms")")
                                 .resizable()
-                                .aspectRatio(contentMode: .fit)
+                                .scaledToFit()
                                 .frame(width: 16, height: 16)
                             Text(host.name)
                                 .lineLimit(1)
@@ -197,7 +197,7 @@ struct ThumbnailView: View {
             if let thumbnailData = history.thumbnailData, let nsImage = NSImage(data: thumbnailData) {
                 Image(nsImage: nsImage)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .scaledToFill()
                     .frame(width: size - 10, height: size - 10)
                     .clipShape(RoundedRectangle(cornerRadius: 6))
             } else {
