@@ -88,7 +88,7 @@ struct uPicApp: App {
         MenuBarExtra {
             StatusMenuView()
         } label: {
-            Image("statusMenuIcon")
+            Image(uploader.isUploading ? "" : "statusMenuIcon")
         }
         .modelContainer(upicModelContainer)
         .menuBarExtraAccess(isPresented: .constant(true)) { statusItem in
@@ -122,12 +122,11 @@ struct uPicApp: App {
         button.addSubview(indicator)
 
         if uploader.isUploading {
-            statusItem.button?.image = nil
+            button.image = nil
             indicator.doubleValue = uploader.uploadProgress
             indicator.isHidden = false
         } else {
-            let icon = NSImage(named: "statusMenuIcon")
-            statusItem.button?.image = icon
+            button.image = NSImage(named: "statusMenuIcon")
             indicator.isHidden = true
             indicator.doubleValue = 0.0
         }
