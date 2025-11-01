@@ -296,7 +296,7 @@ extension BookmarkManager {
                 if isStale {
                     // bookmarks could become stale as the OS changes
                     AppLogger.bookmark.debug("No full disk access permission - bookmark is stale, need to save a new one...")
-                } else if url.path == "/" {
+                } else if url.path == "/" || url.path.starts(with: "/.") { // macOS26.1在用户选择/目录时，这里的 url 会读取到/下的第一个隐藏文件夹，也就是/.开头
                     AppLogger.bookmark.debug("Has full disk access permission")
                     Defaults[.hasFullDiskAccess] = true
                     return true
