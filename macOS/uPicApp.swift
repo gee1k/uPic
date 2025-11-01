@@ -61,15 +61,15 @@ struct uPicApp: App {
 
     init() {
         let modelContext = ModelContext(upicModelContainer)
-        UploadeManager.shared.configure(with: modelContext)
+        uploader.configure(with: modelContext)
     }
 
     var body: some Scene {
         Window("uPic Settings", id: "settings") {
             SettingsView()
+                .modelContainer(upicModelContainer)
                 .frame(minWidth: 780, idealWidth: 780, minHeight: 560, idealHeight: 560)
         }
-        .modelContainer(upicModelContainer)
         .defaultPosition(.center)
         #if DEBUG
             .defaultLaunchBehavior(.presented)
@@ -79,20 +79,20 @@ struct uPicApp: App {
 
         Window("uPic Database", id: "database") {
             DatabaseView()
+                .modelContainer(upicModelContainer)
                 .frame(minWidth: 780, idealWidth: 780, minHeight: 560, idealHeight: 560)
         }
-        .modelContainer(upicModelContainer)
         .defaultPosition(.center)
         .defaultLaunchBehavior(.suppressed)
 
         MenuBarExtra {
             StatusMenuView()
+                .modelContainer(upicModelContainer)
         } label: {
             if !uploader.isUploading {
                 Image("statusMenuIcon")
             }
         }
-        .modelContainer(upicModelContainer)
         .menuBarExtraAccess(isPresented: .constant(true)) { statusItem in
             statusItem.length = NSStatusItem.squareLength
             setupStatusBarIndicator(statusItem)

@@ -221,18 +221,6 @@ struct StatusMenuView: View {
             }
             .keyboardShortcut("Q")
         }
-        .onAppear {
-            loadHistoryData()
-        }
-    }
-
-    private func loadHistoryData() {
-        do {
-            let descriptor = FetchDescriptor<UploadHistoryModel>()
-            _ = try modelContext.fetch(descriptor)
-        } catch {
-            AppLogger.app.error("Failed to fetch upload history: \(error.localizedDescription)")
-        }
     }
 }
 
