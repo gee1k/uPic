@@ -727,3 +727,43 @@ extension UploadeManager {
         return repData ?? data
     }
 }
+
+public extension UploadeManager {
+    ///
+    /// 获取当前图床对应的支持文件格式
+    ///
+    func getAllowedFileExtensions() -> [String] {
+        guard let host = getSelectedHost() else {
+            return []
+        }
+
+        switch host.typeRaw {
+        case "smms":
+            return SmmsUploader.allowedFileExtensions
+        case "weibo":
+            return WeiboUploader.allowedFileExtensions
+        case "imgur":
+            return ImgurUploader.allowedFileExtensions
+        case "s3":
+            return S3Uploader.allowedFileExtensions
+        case "qiniu_kodo":
+            return QiniuUploader.allowedFileExtensions
+        case "upyun_uss":
+            return UpyunUploader.allowedFileExtensions
+        case "aliyun_oss":
+            return AliyunUploader.allowedFileExtensions
+        case "tencent_cos":
+            return TencentUploader.allowedFileExtensions
+        case "baidu_bos":
+            return BaiduUploader.allowedFileExtensions
+        case "github":
+            return GithubUploader.allowedFileExtensions
+        case "gitee":
+            return GiteeUploader.allowedFileExtensions
+        case "custom":
+            return CustomUploader.allowedFileExtensions
+        default:
+            return []
+        }
+    }
+}

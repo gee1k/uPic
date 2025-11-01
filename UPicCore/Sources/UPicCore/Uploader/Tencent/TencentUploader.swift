@@ -11,7 +11,7 @@ import Foundation
 import SWXMLHash
 
 public class TencentUploader {
-    static let allowExtensions: [String] = []
+    public static let allowedFileExtensions: [String] = []
     
     private static let expiration = 8000
     

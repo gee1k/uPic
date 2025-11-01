@@ -17,7 +17,6 @@ import Cocoa
                 NSWorkspace.shared.open(url)
             }
         }
-
         return nil
     }
 }

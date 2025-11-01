@@ -11,7 +11,7 @@ import Foundation
 import SWXMLHash
 
 public class AliyunUploader {
-    static let allowExtensions: [String] = []
+    public static let allowedFileExtensions: [String] = []
     
     private static func generateSignature(_ config: AliyunHostConfig, saveKey: String) -> String? {
         let date = Date().toUTCString()

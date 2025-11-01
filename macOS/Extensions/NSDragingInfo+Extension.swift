@@ -12,8 +12,7 @@ import UPicCore
 extension NSDraggingInfo {
     /* 获取当前所选的图床对应的文件类型 */
     var fileExtensions: [String] {
-        // return BaseUploader.getFileExtensions()
-        return []
+        return UploadeManager.shared.getAllowedFileExtensions()
     }
 
     // 本地文件管理器中拖拽的文件，可多个

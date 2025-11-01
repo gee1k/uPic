@@ -16,13 +16,13 @@ extension String {
 
     // 将原始的url编码为合法的url
     func urlEncoded() -> String {
-        let encodeUrlString = self.addingPercentEncoding(withAllowedCharacters:
-            .urlQueryAllowed)
+        let encodeUrlString = self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         return encodeUrlString ?? ""
     }
 
     func urlOutputEncoded() -> String {
-        return self.replacingOccurrences(of: " ", with: "%20")
+        return self
+            .replacingOccurrences(of: " ", with: "%20")
             .replacingOccurrences(of: "(", with: "%28")
             .replacingOccurrences(of: ")", with: "%29")
             .replacingOccurrences(of: "<", with: "%3C")

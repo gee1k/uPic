@@ -28,7 +28,7 @@ private struct ReseponseContentModel: HandyJSON {
 }
 
 public class GithubUploader {
-    static let allowExtensions: [String] = []
+    public static let allowedFileExtensions: [String] = []
     
     private static func getRequestConfig(_ config: GithubHostConfig, saveKey: String, data: Data) -> RequestConfig {
         var parameters = Parameters()

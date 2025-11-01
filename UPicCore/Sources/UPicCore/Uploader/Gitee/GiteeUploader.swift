@@ -28,7 +28,7 @@ private struct ReseponseContentModel: HandyJSON {
 }
 
 public class GiteeUploader {
-    static let allowExtensions: [String] = []
+    public static let allowedFileExtensions: [String] = []
    
     private static func getRequestConfig(_ config: GiteeHostConfig, saveKey: String, data: Data) -> RequestConfig {
         var parameters = Parameters()

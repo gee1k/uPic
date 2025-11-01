@@ -27,7 +27,7 @@ private struct ReseponseDataModel: HandyJSON {
 }
 
 public class SmmsUploader {
-    static let allowExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
+    public static let allowedFileExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
     
     // https://doc.sm.ms/
     static let url = "https://smms.app/api/v2/upload"

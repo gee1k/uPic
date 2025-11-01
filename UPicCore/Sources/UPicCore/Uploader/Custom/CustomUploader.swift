@@ -10,7 +10,7 @@ import Alamofire
 import Foundation
 
 public class CustomUploader {
-    static let allowExtensions: [String] = []
+    public static let allowedFileExtensions: [String] = []
     
     private static func getRequestConfig(_ config: CustomHostConfig, filename: String, saveKey: String, data: Data) -> RequestConfig {
         let otherVariables = ["saveKey": saveKey]

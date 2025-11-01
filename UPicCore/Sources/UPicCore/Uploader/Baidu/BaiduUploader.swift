@@ -17,7 +17,7 @@ private struct ErrorModel: HandyJSON {
 }
 
 public class BaiduUploader {
-    static let allowExtensions: [String] = []
+    public static let allowedFileExtensions: [String] = []
     
     private static let EXPIRATION_TIME = 1800
     

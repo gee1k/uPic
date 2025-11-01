@@ -22,7 +22,7 @@ private struct ReseponseDataModel: HandyJSON {
 }
 
 public class ImgurUploader {
-    static let allowExtensions: [String] = ["jpg", "jpeg", "png", "gif", "apng", "tiff", "tif", "bmp", "xcf", "webp", "mp4", "mov", "avi", "webm"]
+    public static let allowedFileExtensions: [String] = ["jpg", "jpeg", "png", "gif", "apng", "tiff", "tif", "bmp", "xcf", "webp", "mp4", "mov", "avi", "webm"]
     
     static let limitSize: UInt64 = 10 * 1024 * 1024
    

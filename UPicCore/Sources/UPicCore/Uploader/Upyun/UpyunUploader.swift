@@ -10,7 +10,7 @@ import Alamofire
 import Foundation
 
 public class UpyunUploader {
-    static let allowExtensions: [String] = []
+    public static let allowedFileExtensions: [String] = []
     
     private static func generateSignature(_ config: UpyunHostConfig, saveKey: String) -> String? {
         let md5Password = config.password!.md5()

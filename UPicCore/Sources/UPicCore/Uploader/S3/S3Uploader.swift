@@ -10,7 +10,7 @@ import Foundation
 import SotoS3
 
 public class S3Uploader {
-    static let allowExtensions: [String] = []
+    public static let allowedFileExtensions: [String] = []
     private static let schema = "https://"
     
     private static func computeUrl(bucket: String, customize: Bool, region: String?, endpoint: String?) -> String {

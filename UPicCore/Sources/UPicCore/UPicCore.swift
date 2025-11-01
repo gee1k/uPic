@@ -173,36 +173,36 @@ public class UPicCore {
     private func checkFileExtensionIsAllow(hostType: HostType, data: Data) -> Bool {
         let ext = Swime.mimeType(data: data)?.ext ?? "jpg"
         
-        var allowExtensions: [String] = []
+        var allowedFileExtensions: [String] = []
         
         switch hostType {
         case .aliyun_oss:
-            allowExtensions = AliyunUploader.allowExtensions
+            allowedFileExtensions = AliyunUploader.allowedFileExtensions
         case .s3:
-            allowExtensions = S3Uploader.allowExtensions
+            allowedFileExtensions = S3Uploader.allowedFileExtensions
         case .tencent_cos:
-            allowExtensions = TencentUploader.allowExtensions
+            allowedFileExtensions = TencentUploader.allowedFileExtensions
         case .baidu_bos:
-            allowExtensions = BaiduUploader.allowExtensions
+            allowedFileExtensions = BaiduUploader.allowedFileExtensions
         case .upyun_uss:
-            allowExtensions = UpyunUploader.allowExtensions
+            allowedFileExtensions = UpyunUploader.allowedFileExtensions
         case .qiniu_kodo:
-            allowExtensions = QiniuUploader.allowExtensions
+            allowedFileExtensions = QiniuUploader.allowedFileExtensions
         case .github:
-            allowExtensions = GithubUploader.allowExtensions
+            allowedFileExtensions = GithubUploader.allowedFileExtensions
         case .gitee:
-            allowExtensions = GiteeUploader.allowExtensions
+            allowedFileExtensions = GiteeUploader.allowedFileExtensions
         case .imgur:
-            allowExtensions = ImgurUploader.allowExtensions
+            allowedFileExtensions = ImgurUploader.allowedFileExtensions
         case .weibo:
-            allowExtensions = WeiboUploader.allowExtensions
+            allowedFileExtensions = WeiboUploader.allowedFileExtensions
         case .smms:
-            allowExtensions = SmmsUploader.allowExtensions
+            allowedFileExtensions = SmmsUploader.allowedFileExtensions
         case .custom:
-            allowExtensions = CustomUploader.allowExtensions
+            allowedFileExtensions = CustomUploader.allowedFileExtensions
         }
         
-        return allowExtensions.count == 0 || allowExtensions.contains(ext)
+        return allowedFileExtensions.count == 0 || allowedFileExtensions.contains(ext)
     }
     
     private func checkFileSize(hostType: HostType, fileData: Data) -> Bool {

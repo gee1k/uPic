@@ -16,7 +16,7 @@ private struct LoginRetModel: HandyJSON {
 }
 
 public class WeiboUploader {
-    static let allowExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
+    public static let allowedFileExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
     
     private static let UPLOAD_URL = "https://picupload.weibo.com/interface/pic_upload.php?ori=1&mime=image%2Fjpeg&data=base64&url=0&markpos=1&logo=&nick=0&marks=1&app=miniblog"
    

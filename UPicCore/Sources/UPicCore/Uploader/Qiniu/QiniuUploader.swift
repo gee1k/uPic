@@ -22,7 +22,7 @@ private struct ReseponseModel: HandyJSON {
 }
 
 public class QiniuUploader {
-    static let allowExtensions: [String] = []
+    public static let allowedFileExtensions: [String] = []
     
     private static let expiration = 1800
     
