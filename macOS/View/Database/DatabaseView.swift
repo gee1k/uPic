@@ -29,7 +29,7 @@ struct DatabaseView: View {
                 .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
-                HistoryTable(uploadHistory: uploadHistory)
+                HistoryTableView(uploadHistory: uploadHistory)
             }
         }
         .navigationTitle("Database")

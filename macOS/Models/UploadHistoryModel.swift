@@ -12,23 +12,25 @@ import SwiftData
 public final class UploadHistoryModel {
     public var id: String = ""
     public var url: String = ""
-    public var thumbnailData: Data?
+    public var thumbnailData: Data = Data()
     public var createdDate: Date = Date()
     public var size: Int = 0
     public var pixelWidth: Int = 0
     public var pixelHeight: Int = 0
-    public var originalFilename: String?
-    public var hostId: String?
+    public var originalFilename: String = ""
+    public var hostType: String = ""
+    public var hostName: String = ""
 
     public init(
         url: String,
-        thumbnailData: Data? = nil,
+        thumbnailData: Data,
         createdDate: Date = Date(),
         size: Int = 0,
         pixelWidth: Int = 0,
         pixelHeight: Int = 0,
-        originalFilename: String? = nil,
-        hostId: String? = nil
+        originalFilename: String,
+        hostType: String,
+        hostName: String
     ) {
         self.id = UUID().uuidString
         self.url = url
@@ -38,12 +40,13 @@ public final class UploadHistoryModel {
         self.pixelWidth = pixelWidth
         self.pixelHeight = pixelHeight
         self.originalFilename = originalFilename
-        self.hostId = hostId
+        self.hostType = hostType
+        self.hostName = hostName
     }
 
     // 计算属性
     public var filename: String? {
-        return originalFilename ?? (url as NSString).lastPathComponent
+        return originalFilename.isEmpty ? (url as NSString).lastPathComponent : originalFilename
     }
 
     public var fileExtension: String? {
@@ -68,10 +71,10 @@ public final class UploadHistoryModel {
         return formatter.string(from: createdDate)
     }
 
-    public var dimensions: String? {
+    public var frame: String {
         guard pixelWidth > 0, pixelHeight > 0 else {
-            return nil
+            return "-"
         }
-        return "\(pixelWidth)×\(pixelHeight)"
+        return "\(pixelWidth)×\(pixelHeight)px"
     }
 }

@@ -23,7 +23,7 @@ struct StatusMenuView: View {
     @ObservedObject private var uploader = UploadeManager.shared
 
     @Query private var hostModels: [HostModel]
-    @Query private var uploadHistory: [UploadHistoryModel]
+    @Query(sort: \UploadHistoryModel.createdDate, order: .reverse) private var uploadHistory: [UploadHistoryModel]
 
     @Environment(\.openWindow) var openWindow
 

@@ -45,7 +45,7 @@ struct WeiboConfigView: View {
                 // Username and Password (when not in cookie mode)
                 if !cookieMode {
                     // Username
-                    TextField("Username", text: $username)
+                    TextField("User Name", text: $username)
                         .frame(height: 30)
 
                     // Password

@@ -1,5 +1,5 @@
 //
-//  HistoryTable.swift
+//  HistoryTableView.swift
 //  uPic(macOS)
 //
 //  Created by Licardo on 2025/10/29.
@@ -10,7 +10,7 @@ import SwiftData
 import SwiftUI
 import UPicCore
 
-struct HistoryTable: View {
+struct HistoryTableView: View {
     let uploadHistory: [UploadHistoryModel]
     @State private var selectedHistory = Set<UploadHistoryModel.ID>()
     @Environment(\.modelContext) private var modelContext
@@ -21,72 +21,30 @@ struct HistoryTable: View {
     @State private var quickLookURL: URL?
     @State private var thumbnailSize: CGFloat = 60
 
-    private func getHost(for history: UploadHistoryModel) -> HostModel? {
-        return hostModels.first { $0.id == history.hostId }
-    }
+    // Sorting state - using SwiftUI's native sorting API
+    @State private var sortedHistory: [UploadHistoryModel] = []
+    @State private var sortOrder = [KeyPathComparator(\UploadHistoryModel.createdDate, order: .reverse)]
 
+    
     var body: some View {
         VStack(spacing: 0) {
-            Table(uploadHistory, selection: $selectedHistory) {
-                TableColumn("Thumbnail") { history in
-                    ThumbnailView(history: history, size: thumbnailSize)
-                }
-                .width(thumbnailSize + 20)
-
-                TableColumn("Host") { history in
-                    if let host = getHost(for: history) {
-                        HStack(spacing: 4) {
-                            Image("host_icon_\(host.typeRaw ?? "smms")")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 16, height: 16)
-                            Text(host.name)
-                                .lineLimit(1)
-                        }
-                    } else {
-                        Text("Unknown")
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                .width(ideal: 50)
-
-                TableColumn("File Name") { history in
-                    Text(history.filename ?? "Unknown")
-                        .lineLimit(1)
-                        .truncationMode(.middle)
-                }
-                .width(ideal: 80)
-
-                TableColumn("URL") { history in
-                    Text(history.url)
-                        .lineLimit(2)
-                        .truncationMode(.middle)
-                        .foregroundStyle(.secondary)
-                }
-                .width(ideal: 120)
-
-                TableColumn("Frame") { history in
-                    if let dimensions = history.dimensions {
-                        Text(dimensions)
-                            .foregroundStyle(.secondary)
-                    } else {
-                        Text(verbatim: "-")
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                .width(ideal: 50)
-
-                TableColumn("Size") { history in
-                    Text(history.formattedSize)
-                        .foregroundStyle(.secondary)
-                }
-                .width(ideal: 50)
-
-                TableColumn("Upload Time") { history in
-                    Text(history.formattedDate)
-                        .foregroundStyle(.secondary)
-                }
-                .width(ideal: 160)
+            HistoryMainTable(
+                sortedHistory: sortedHistory,
+                hostModels: hostModels,
+                sortOrder: $sortOrder,
+                selectedHistory: $selectedHistory,
+                thumbnailSize: thumbnailSize
+            )
+            .onChange(of: sortOrder) { _, newOrder in
+                sortedHistory.sort(using: newOrder)
+            }
+            .onChange(of: uploadHistory) { _, newHistory in
+                sortedHistory = newHistory
+                sortedHistory.sort(using: sortOrder)
+            }
+            .onAppear {
+                sortedHistory = uploadHistory
+                sortedHistory.sort(using: sortOrder)
             }
             .toolbar {
                 ToolbarItem {
@@ -194,7 +152,7 @@ struct ThumbnailView: View {
 
     var body: some View {
         Group {
-            if let thumbnailData = history.thumbnailData, let nsImage = NSImage(data: thumbnailData) {
+            if let nsImage = NSImage(data: history.thumbnailData) {
                 Image(nsImage: nsImage)
                     .resizable()
                     .scaledToFill()
@@ -216,6 +174,6 @@ struct ThumbnailView: View {
 }
 
 #Preview {
-    HistoryTable(uploadHistory: [])
+    HistoryTableView(uploadHistory: [])
         .modelContainer(for: [HostModel.self, UploadHistoryModel.self], inMemory: true)
 }

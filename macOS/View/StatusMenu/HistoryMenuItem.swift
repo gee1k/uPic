@@ -20,10 +20,6 @@ struct HistoryMenuItem: View {
 
     @Environment(\.openURL) private var openURL
 
-    private func getHost(for history: UploadHistoryModel) -> HostModel? {
-        return hostModels.first { $0.id == history.hostId }
-    }
-
     var body: some View {
         Menu {
             Button("Copy URL", systemImage: "clipboard") {
@@ -52,7 +48,7 @@ struct HistoryMenuItem: View {
             }
         } label: {
             HStack {
-                if let thumbnailData = history.thumbnailData, let nsImage = NSImage(data: thumbnailData) {
+                if let nsImage = NSImage(data: history.thumbnailData) {
                     Image(nsImage: nsImage)
                 } else {
                     RoundedRectangle(cornerRadius: 3)
@@ -77,9 +73,12 @@ struct HistoryMenuItem: View {
 #Preview {
     HistoryMenuItem(history: UploadHistoryModel(
         url: "https://example.com/image.png",
+        thumbnailData: Data(),
         createdDate: Date(),
         size: 1024 * 1024,
-        originalFilename: "test-image.png"
+        originalFilename: "test-image.png",
+        hostType: "",
+        hostName: ""
     ))
     .modelContainer(for: [HostModel.self, UploadHistoryModel.self], inMemory: true)
     .padding()

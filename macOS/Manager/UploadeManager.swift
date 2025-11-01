@@ -277,7 +277,7 @@ public class UploadeManager: ObservableObject {
 
                 Noti.shared.postUploadSuccessful(url)
 
-                await saveToHistory(item: item, url: url, hostId: hostModel.id)
+                await saveToHistory(item: item, url: url, hostModel: hostModel)
                 successCount += 1
             } catch {
                 AppLogger.uploader.error("Upload failed: \(error.localizedDescription)")
@@ -321,7 +321,7 @@ public class UploadeManager: ObservableObject {
         }
     }
 
-    private func saveToHistory(item: UploadItem, url: String, hostId: String?) async {
+    private func saveToHistory(item: UploadItem, url: String, hostModel: HostModel) async {
         await MainActor.run {
             guard let modelContext = modelContext else {
                 AppLogger.uploader.error("ModelContext not available, cannot save history")
@@ -332,13 +332,14 @@ public class UploadeManager: ObservableObject {
 
             let history = UploadHistoryModel(
                 url: url,
-                thumbnailData: item.thumbnailData,
+                thumbnailData: item.thumbnailData ?? Data(),
                 createdDate: Date(),
                 size: compressedData.count,
                 pixelWidth: item.pixelWidth,
                 pixelHeight: item.pixelHeight,
-                originalFilename: item.originalFilename,
-                hostId: hostId
+                originalFilename: item.originalFilename ?? "",
+                hostType: hostModel.typeRaw ?? "",
+                hostName: hostModel.name
             )
 
             modelContext.insert(history)
