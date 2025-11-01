@@ -15,12 +15,6 @@ class AppDelegate: NSResponder, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
         Noti.shared.requestNotificationAuthorization()
 
-        if let paths = Cli.shared.getFilePaths() {
-            AppLogger.app.info("The application runs as a cli")
-            Cli.shared.startUpload(paths)
-            return
-        }
-
         // Add URL scheme listening
         NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(self.handleGetURLEvent(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
     }
