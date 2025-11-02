@@ -6,6 +6,7 @@
 //
 
 import QuickLook
+import SimpleLogger
 import SwiftData
 import SwiftUI
 import UPicCore
