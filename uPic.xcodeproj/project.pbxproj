@@ -14,7 +14,19 @@
 		9618488F2EB094C0005BD3AC /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 9618488E2EB094C0005BD3AC /* Defaults */; };
 		9640CD6E2EB09C30003BF4FB /* UPicCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9640CD6D2EB09C30003BF4FB /* UPicCore */; };
 		9666F3F42EB236570076A227 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 9666F3F32EB236570076A227 /* MenuBarExtraAccess */; };
+		96A829C22EB8D89C001FE480 /* uPicShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 96A829B62EB8D89C001FE480 /* uPicShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		96A829CB2EB8E117001FE480 /* SimpleLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 96A829CA2EB8E117001FE480 /* SimpleLogger */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		96A829C02EB8D89C001FE480 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9618486C2EB09470005BD3AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 96A829B52EB8D89C001FE480;
+			remoteInfo = uPicShareExtension;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9640CD882EB09E7E003BF4FB /* Embed Frameworks */ = {
@@ -27,11 +39,23 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96A8299B2EB8D736001FE480 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				96A829C22EB8D89C001FE480 /* uPicShareExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		96149DDA2EB3DA9E005ADB6A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		961848742EB09470005BD3AC /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		96A829B62EB8D89C001FE480 /* uPicShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -41,6 +65,21 @@
 				Info.plist,
 			);
 			target = 961848732EB09470005BD3AC /* uPic(macOS) */;
+		};
+		96A829C62EB8D89C001FE480 /* Exceptions for "uPicShareExtension" folder in "uPicShareExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 96A829B52EB8D89C001FE480 /* uPicShareExtension */;
+		};
+		96A829C92EB8E0FB001FE480 /* Exceptions for "macOS" folder in "uPicShareExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Utils/AppLogger.swift,
+				Utils/Constants.swift,
+			);
+			target = 96A829B52EB8D89C001FE480 /* uPicShareExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -62,6 +101,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				9640CD7E2EB09D1E003BF4FB /* Exceptions for "macOS" folder in "uPic(macOS)" target */,
+				96A829C92EB8E0FB001FE480 /* Exceptions for "macOS" folder in "uPicShareExtension" target */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -72,6 +112,14 @@
 				9640CD892EB09E7E003BF4FB /* Exceptions for "libs" folder in "Embed Frameworks" phase from "uPic(macOS)" target */,
 			);
 			path = libs;
+			sourceTree = "<group>";
+		};
+		96A829B72EB8D89C001FE480 /* uPicShareExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				96A829C62EB8D89C001FE480 /* Exceptions for "uPicShareExtension" folder in "uPicShareExtension" target */,
+			);
+			path = uPicShareExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -91,6 +139,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96A829B32EB8D89C001FE480 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96A829CB2EB8E117001FE480 /* SimpleLogger in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -98,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				961848762EB09470005BD3AC /* macOS */,
+				96A829B72EB8D89C001FE480 /* uPicShareExtension */,
 				9640CD782EB09CBD003BF4FB /* Frameworks */,
 				961848752EB09470005BD3AC /* Products */,
 				9640CD802EB09DF9003BF4FB /* libs */,
@@ -108,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				961848742EB09470005BD3AC /* uPic.app */,
+				96A829B62EB8D89C001FE480 /* uPicShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,10 +189,12 @@
 				961848712EB09470005BD3AC /* Frameworks */,
 				961848722EB09470005BD3AC /* Resources */,
 				9640CD882EB09E7E003BF4FB /* Embed Frameworks */,
+				96A8299B2EB8D736001FE480 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				96A829C12EB8D89C001FE480 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				961848762EB09470005BD3AC /* macOS */,
@@ -153,6 +213,29 @@
 			productReference = 961848742EB09470005BD3AC /* uPic.app */;
 			productType = "com.apple.product-type.application";
 		};
+		96A829B52EB8D89C001FE480 /* uPicShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96A829C32EB8D89C001FE480 /* Build configuration list for PBXNativeTarget "uPicShareExtension" */;
+			buildPhases = (
+				96A829B22EB8D89C001FE480 /* Sources */,
+				96A829B32EB8D89C001FE480 /* Frameworks */,
+				96A829B42EB8D89C001FE480 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				96A829B72EB8D89C001FE480 /* uPicShareExtension */,
+			);
+			name = uPicShareExtension;
+			packageProductDependencies = (
+				96A829CA2EB8E117001FE480 /* SimpleLogger */,
+			);
+			productName = uPicShareExtension;
+			productReference = 96A829B62EB8D89C001FE480 /* uPicShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -164,6 +247,9 @@
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					961848732EB09470005BD3AC = {
+						CreatedOnToolsVersion = 26.0.1;
+					};
+					96A829B52EB8D89C001FE480 = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
 				};
@@ -192,12 +278,20 @@
 			projectRoot = "";
 			targets = (
 				961848732EB09470005BD3AC /* uPic(macOS) */,
+				96A829B52EB8D89C001FE480 /* uPicShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		961848722EB09470005BD3AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96A829B42EB8D89C001FE480 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -214,7 +308,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96A829B22EB8D89C001FE480 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		96A829C12EB8D89C001FE480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 96A829B52EB8D89C001FE480 /* uPicShareExtension */;
+			targetProxy = 96A829C02EB8D89C001FE480 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9618487F2EB09471005BD3AC /* Debug */ = {
@@ -447,6 +556,92 @@
 			};
 			name = Release;
 		};
+		96A829C42EB8D89C001FE480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = uPicShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Upload via uPic";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		96A829C52EB8D89C001FE480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = uPicShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Upload via uPic";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -464,6 +659,15 @@
 			buildConfigurations = (
 				961848822EB09471005BD3AC /* Debug */,
 				961848832EB09471005BD3AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96A829C32EB8D89C001FE480 /* Build configuration list for PBXNativeTarget "uPicShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96A829C42EB8D89C001FE480 /* Debug */,
+				96A829C52EB8D89C001FE480 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -549,6 +753,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9666F3F22EB236570076A227 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */;
 			productName = MenuBarExtraAccess;
+		};
+		96A829CA2EB8E117001FE480 /* SimpleLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9618488A2EB094B0005BD3AC /* XCRemoteSwiftPackageReference "SimpleLogger" */;
+			productName = SimpleLogger;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
