@@ -16,14 +16,15 @@ struct SettingsTabItem: View {
     @State private var isHovered = false
 
     var body: some View {
-        Button(action: {
+        Button {
             selectedTag = tag
-        }) {
+        } label: {
             HStack(spacing: 12) {
                 Image(systemName: systemImage)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 18, height: 18)
+                    .scaleEffect(isHovered ? 1.1 : 1.0)
                 Text(title)
                     .font(.title3)
                 Spacer()
@@ -31,7 +32,7 @@ struct SettingsTabItem: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .foregroundStyle(foregroundColor)
+            .foregroundStyle(selectedTag == tag ? Color.accentColor : .primary)
             .background(
                 RoundedRectangle(cornerRadius: 8)
                     .fill(backgroundColor)
@@ -54,14 +55,6 @@ struct SettingsTabItem: View {
             return .gray.opacity(0.1)
         } else {
             return .clear
-        }
-    }
-
-    private var foregroundColor: Color {
-        if selectedTag == tag {
-            return .accentColor
-        } else {
-            return .primary
         }
     }
 }

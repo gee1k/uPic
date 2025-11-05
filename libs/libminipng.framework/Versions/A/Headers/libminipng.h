@@ -7,8 +7,8 @@
 //
 
 //#import <Cocoa/Cocoa.h>
-@import Foundation;
-#import "minipng.h"
+#import <Foundation/Foundation.h>
+#import <libminipng/minipng.h>
 
 //! Project version number for pngmini.
 FOUNDATION_EXPORT double pngminiVersionNumber;
@@ -17,5 +17,4 @@ FOUNDATION_EXPORT double pngminiVersionNumber;
 FOUNDATION_EXPORT const unsigned char pngminiVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <libminipng/PublicHeader.h>
-
 

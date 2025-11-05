@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>25A354</string>
+	<string>25B78</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -27,21 +27,21 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>25A352</string>
+	<string>25B74</string>
 	<key>DTPlatformName</key>
 	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>26.0</string>
+	<string>26.1</string>
 	<key>DTSDKBuild</key>
-	<string>25A352</string>
+	<string>25B74</string>
 	<key>DTSDKName</key>
-	<string>macosx26.0</string>
+	<string>macosx26.1</string>
 	<key>DTXcode</key>
-	<string>2601</string>
+	<string>2610</string>
 	<key>DTXcodeBuild</key>
-	<string>17A400</string>
+	<string>17B55</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>13.0</string>
+	<string>11</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019年 iChochy. All rights reserved.</string>
 </dict>

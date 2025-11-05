@@ -23,14 +23,15 @@ struct HostListItem: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 16, height: 16)
+                    .scaleEffect(isHovered ? 1.1 : 1.0)
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(hostModel.name)
                         .lineLimit(1)
-                        .foregroundStyle(foregroundColor)
+                        .foregroundStyle(isSelected ? Color.accentColor : .primary)
                     Text(HostType(rawValue: hostModel.typeRaw ?? "")?.displayNname ?? "Unknown")
                         .font(.caption)
-                        .foregroundStyle(secondaryTextColor)
+                        .foregroundStyle(isSelected ? Color.accentColor : .primary)
                 }
 
                 Spacer()

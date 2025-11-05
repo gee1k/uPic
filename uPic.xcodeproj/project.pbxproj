@@ -50,11 +50,22 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96A829E12EB8E66E001FE480 /* Embed ExtensionKit Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed ExtensionKit Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		96149DDA2EB3DA9E005ADB6A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		961848742EB09470005BD3AC /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		964569682EB8F3B40083BD40 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		96A829B62EB8D89C001FE480 /* uPicShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,7 +95,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		9640CD892EB09E7E003BF4FB /* Exceptions for "libs" folder in "Embed Frameworks" phase from "uPic(macOS)" target */ = {
+		9687623E2EBAE745001BDC0B /* Exceptions for "libs" folder in "Embed Frameworks" phase from "uPic(macOS)" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			attributesByRelativePath = {
 				libminipng.framework = (CodeSignOnCopy, RemoveHeadersOnCopy, );
@@ -109,7 +120,7 @@
 		9640CD802EB09DF9003BF4FB /* libs */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				9640CD892EB09E7E003BF4FB /* Exceptions for "libs" folder in "Embed Frameworks" phase from "uPic(macOS)" target */,
+				9687623E2EBAE745001BDC0B /* Exceptions for "libs" folder in "Embed Frameworks" phase from "uPic(macOS)" target */,
 			);
 			path = libs;
 			sourceTree = "<group>";
@@ -174,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				96149DDA2EB3DA9E005ADB6A /* CloudKit.framework */,
+				964569682EB8F3B40083BD40 /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -190,6 +202,7 @@
 				961848722EB09470005BD3AC /* Resources */,
 				9640CD882EB09E7E003BF4FB /* Embed Frameworks */,
 				96A8299B2EB8D736001FE480 /* Embed Foundation Extensions */,
+				96A829E12EB8E66E001FE480 /* Embed ExtensionKit Extensions */,
 			);
 			buildRules = (
 			);
@@ -586,7 +599,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 15;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -629,7 +643,8 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 15;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
