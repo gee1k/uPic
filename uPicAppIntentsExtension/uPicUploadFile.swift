@@ -25,7 +25,7 @@ struct uPicUploadFile: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
-        if !filePath.isEmpty && FileManager.default.fileExists(atPath: filePath) {
+        if FileManager.default.fileExists(atPath: filePath) {
             // 通过 URL Scheme 调用主应用
             let encodedPath = filePath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? filePath
             let urlString = "uPic://files?\(encodedPath)"
@@ -37,6 +37,6 @@ struct uPicUploadFile: AppIntent {
             return .result(value: encodedPath)
         }
 
-        return .result(value: filePath)
+        return .result(value: String(localized: "File does not exist: \(filePath)"))
     }
 }
