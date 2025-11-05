@@ -14,11 +14,21 @@
 		9618488F2EB094C0005BD3AC /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 9618488E2EB094C0005BD3AC /* Defaults */; };
 		9640CD6E2EB09C30003BF4FB /* UPicCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9640CD6D2EB09C30003BF4FB /* UPicCore */; };
 		9666F3F42EB236570076A227 /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 9666F3F32EB236570076A227 /* MenuBarExtraAccess */; };
+		968762772EBAF1AA001BDC0B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968762442EBAE826001BDC0B /* Cocoa.framework */; };
+		968762822EBAF1AA001BDC0B /* uPicActionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 968762762EBAF1AA001BDC0B /* uPicActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		968762882EBAF1BC001BDC0B /* SimpleLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 968762872EBAF1BC001BDC0B /* SimpleLogger */; };
 		96A829C22EB8D89C001FE480 /* uPicShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 96A829B62EB8D89C001FE480 /* uPicShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96A829CB2EB8E117001FE480 /* SimpleLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 96A829CA2EB8E117001FE480 /* SimpleLogger */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		968762802EBAF1AA001BDC0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9618486C2EB09470005BD3AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 968762752EBAF1AA001BDC0B;
+			remoteInfo = uPicActionExtension;
+		};
 		96A829C02EB8D89C001FE480 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9618486C2EB09470005BD3AC /* Project object */;
@@ -46,6 +56,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				96A829C22EB8D89C001FE480 /* uPicShareExtension.appex in Embed Foundation Extensions */,
+				968762822EBAF1AA001BDC0B /* uPicActionExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,6 +77,8 @@
 		96149DDA2EB3DA9E005ADB6A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		961848742EB09470005BD3AC /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		964569682EB8F3B40083BD40 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		968762442EBAE826001BDC0B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		968762762EBAF1AA001BDC0B /* uPicActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		96A829B62EB8D89C001FE480 /* uPicShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -76,6 +89,21 @@
 				Info.plist,
 			);
 			target = 961848732EB09470005BD3AC /* uPic(macOS) */;
+		};
+		968762862EBAF1AA001BDC0B /* Exceptions for "uPicActionExtension" folder in "uPicActionExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 968762752EBAF1AA001BDC0B /* uPicActionExtension */;
+		};
+		9687628A2EBAF1D5001BDC0B /* Exceptions for "macOS" folder in "uPicActionExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Utils/AppLogger.swift,
+				Utils/Constants.swift,
+			);
+			target = 968762752EBAF1AA001BDC0B /* uPicActionExtension */;
 		};
 		96A829C62EB8D89C001FE480 /* Exceptions for "uPicShareExtension" folder in "uPicShareExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -113,6 +141,7 @@
 			exceptions = (
 				9640CD7E2EB09D1E003BF4FB /* Exceptions for "macOS" folder in "uPic(macOS)" target */,
 				96A829C92EB8E0FB001FE480 /* Exceptions for "macOS" folder in "uPicShareExtension" target */,
+				9687628A2EBAF1D5001BDC0B /* Exceptions for "macOS" folder in "uPicActionExtension" target */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -123,6 +152,14 @@
 				9687623E2EBAE745001BDC0B /* Exceptions for "libs" folder in "Embed Frameworks" phase from "uPic(macOS)" target */,
 			);
 			path = libs;
+			sourceTree = "<group>";
+		};
+		968762782EBAF1AA001BDC0B /* uPicActionExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				968762862EBAF1AA001BDC0B /* Exceptions for "uPicActionExtension" folder in "uPicActionExtension" target */,
+			);
+			path = uPicActionExtension;
 			sourceTree = "<group>";
 		};
 		96A829B72EB8D89C001FE480 /* uPicShareExtension */ = {
@@ -150,6 +187,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		968762732EBAF1AA001BDC0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				968762882EBAF1BC001BDC0B /* SimpleLogger in Frameworks */,
+				968762772EBAF1AA001BDC0B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		96A829B32EB8D89C001FE480 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,6 +212,7 @@
 			children = (
 				961848762EB09470005BD3AC /* macOS */,
 				96A829B72EB8D89C001FE480 /* uPicShareExtension */,
+				968762782EBAF1AA001BDC0B /* uPicActionExtension */,
 				9640CD782EB09CBD003BF4FB /* Frameworks */,
 				961848752EB09470005BD3AC /* Products */,
 				9640CD802EB09DF9003BF4FB /* libs */,
@@ -177,6 +224,7 @@
 			children = (
 				961848742EB09470005BD3AC /* uPic.app */,
 				96A829B62EB8D89C001FE480 /* uPicShareExtension.appex */,
+				968762762EBAF1AA001BDC0B /* uPicActionExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,6 +234,7 @@
 			children = (
 				96149DDA2EB3DA9E005ADB6A /* CloudKit.framework */,
 				964569682EB8F3B40083BD40 /* Intents.framework */,
+				968762442EBAE826001BDC0B /* Cocoa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -208,6 +257,7 @@
 			);
 			dependencies = (
 				96A829C12EB8D89C001FE480 /* PBXTargetDependency */,
+				968762812EBAF1AA001BDC0B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				961848762EB09470005BD3AC /* macOS */,
@@ -225,6 +275,29 @@
 			productName = uPic;
 			productReference = 961848742EB09470005BD3AC /* uPic.app */;
 			productType = "com.apple.product-type.application";
+		};
+		968762752EBAF1AA001BDC0B /* uPicActionExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 968762832EBAF1AA001BDC0B /* Build configuration list for PBXNativeTarget "uPicActionExtension" */;
+			buildPhases = (
+				968762722EBAF1AA001BDC0B /* Sources */,
+				968762732EBAF1AA001BDC0B /* Frameworks */,
+				968762742EBAF1AA001BDC0B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				968762782EBAF1AA001BDC0B /* uPicActionExtension */,
+			);
+			name = uPicActionExtension;
+			packageProductDependencies = (
+				968762872EBAF1BC001BDC0B /* SimpleLogger */,
+			);
+			productName = uPicActionExtension;
+			productReference = 968762762EBAF1AA001BDC0B /* uPicActionExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		96A829B52EB8D89C001FE480 /* uPicShareExtension */ = {
 			isa = PBXNativeTarget;
@@ -256,11 +329,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2600;
-				LastUpgradeCheck = 2600;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					961848732EB09470005BD3AC = {
 						CreatedOnToolsVersion = 26.0.1;
+					};
+					968762752EBAF1AA001BDC0B = {
+						CreatedOnToolsVersion = 26.1;
 					};
 					96A829B52EB8D89C001FE480 = {
 						CreatedOnToolsVersion = 26.0.1;
@@ -292,12 +368,20 @@
 			targets = (
 				961848732EB09470005BD3AC /* uPic(macOS) */,
 				96A829B52EB8D89C001FE480 /* uPicShareExtension */,
+				968762752EBAF1AA001BDC0B /* uPicActionExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		961848722EB09470005BD3AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		968762742EBAF1AA001BDC0B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -321,6 +405,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		968762722EBAF1AA001BDC0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		96A829B22EB8D89C001FE480 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -331,6 +422,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		968762812EBAF1AA001BDC0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 968762752EBAF1AA001BDC0B /* uPicActionExtension */;
+			targetProxy = 968762802EBAF1AA001BDC0B /* PBXContainerItemProxy */;
+		};
 		96A829C12EB8D89C001FE480 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 96A829B52EB8D89C001FE480 /* uPicShareExtension */;
@@ -344,6 +440,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -373,6 +470,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -398,6 +496,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -410,6 +509,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -439,6 +539,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = YBK29FJ8B6;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -457,6 +558,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -473,6 +575,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -526,6 +629,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -569,6 +673,94 @@
 			};
 			name = Release;
 		};
+		968762842EBAF1AA001BDC0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = uPicActionExtension/uPicActionExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = uPicActionExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Upload via uPic";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicActionExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		968762852EBAF1AA001BDC0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = uPicActionExtension/uPicActionExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = uPicActionExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Upload via uPic";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicActionExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		96A829C42EB8D89C001FE480 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -576,6 +768,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -620,6 +813,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -674,6 +868,15 @@
 			buildConfigurations = (
 				961848822EB09471005BD3AC /* Debug */,
 				961848832EB09471005BD3AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		968762832EBAF1AA001BDC0B /* Build configuration list for PBXNativeTarget "uPicActionExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				968762842EBAF1AA001BDC0B /* Debug */,
+				968762852EBAF1AA001BDC0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -768,6 +971,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9666F3F22EB236570076A227 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */;
 			productName = MenuBarExtraAccess;
+		};
+		968762872EBAF1BC001BDC0B /* SimpleLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9618488A2EB094B0005BD3AC /* XCRemoteSwiftPackageReference "SimpleLogger" */;
+			productName = SimpleLogger;
 		};
 		96A829CA2EB8E117001FE480 /* SimpleLogger */ = {
 			isa = XCSwiftPackageProductDependency;
