@@ -78,7 +78,7 @@ class ActionRequestHandler: NSObject, NSExtensionRequestHandling {
                 if let url = data as? URL {
                     let filePath = url.path
                     filePaths.append(filePath)
-                    AppLogger.actionExtension.info("Successfully processed generic file: \(filePath)")
+                    AppLogger.actionExtension.info("Successfully processed file: \(filePath)")
                 } else {
                     AppLogger.shareExtension.error("Unable to parse file URL")
                 }

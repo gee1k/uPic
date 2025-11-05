@@ -22,6 +22,7 @@ enum AppLogger {
     static let tools = UPicLogger(category: "tools")
     static let shareExtension = UPicLogger(category: "shareExtension")
     static let actionExtension = UPicLogger(category: "actionExtension")
+    static let appIntentsExtension = UPicLogger(category: "appIntentsExtension")
 }
 
 // MARK: - Log Formatter

@@ -9,5 +9,4 @@ import AppIntents
 import ExtensionFoundation
 
 @main
-struct uPicAppIntentsExtension: AppIntentsExtension {
-}
+struct uPicAppIntentsExtension: AppIntentsExtension {}

@@ -18,6 +18,7 @@
 		968762822EBAF1AA001BDC0B /* uPicActionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 968762762EBAF1AA001BDC0B /* uPicActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		968762882EBAF1BC001BDC0B /* SimpleLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 968762872EBAF1BC001BDC0B /* SimpleLogger */; };
 		968762AF2EBAFC51001BDC0B /* uPicAppIntentsExtension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = 968762A62EBAFC51001BDC0B /* uPicAppIntentsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		968762BB2EBB00A0001BDC0B /* SimpleLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 968762BA2EBB00A0001BDC0B /* SimpleLogger */; };
 		96A829C22EB8D89C001FE480 /* uPicShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 96A829B62EB8D89C001FE480 /* uPicShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96A829CB2EB8E117001FE480 /* SimpleLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 96A829CA2EB8E117001FE480 /* SimpleLogger */; };
 /* End PBXBuildFile section */
@@ -122,6 +123,14 @@
 			);
 			target = 968762A52EBAFC51001BDC0B /* uPicAppIntentsExtension */;
 		};
+		968762B82EBB0007001BDC0B /* Exceptions for "macOS" folder in "uPicAppIntentsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Utils/AppLogger.swift,
+				Utils/Constants.swift,
+			);
+			target = 968762A52EBAFC51001BDC0B /* uPicAppIntentsExtension */;
+		};
 		96A829C62EB8D89C001FE480 /* Exceptions for "uPicShareExtension" folder in "uPicShareExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -159,6 +168,7 @@
 				9640CD7E2EB09D1E003BF4FB /* Exceptions for "macOS" folder in "uPic(macOS)" target */,
 				96A829C92EB8E0FB001FE480 /* Exceptions for "macOS" folder in "uPicShareExtension" target */,
 				9687628A2EBAF1D5001BDC0B /* Exceptions for "macOS" folder in "uPicActionExtension" target */,
+				968762B82EBB0007001BDC0B /* Exceptions for "macOS" folder in "uPicAppIntentsExtension" target */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -225,6 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				968762BB2EBB00A0001BDC0B /* SimpleLogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +362,7 @@
 			);
 			name = uPicAppIntentsExtension;
 			packageProductDependencies = (
+				968762BA2EBB00A0001BDC0B /* SimpleLogger */,
 			);
 			productName = uPicAppIntents;
 			productReference = 968762A62EBAFC51001BDC0B /* uPicAppIntentsExtension.appex */;
@@ -871,7 +883,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.1;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicAppIntentsExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -914,7 +926,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.1;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicAppIntentsExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -1148,6 +1160,11 @@
 			productName = MenuBarExtraAccess;
 		};
 		968762872EBAF1BC001BDC0B /* SimpleLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9618488A2EB094B0005BD3AC /* XCRemoteSwiftPackageReference "SimpleLogger" */;
+			productName = SimpleLogger;
+		};
+		968762BA2EBB00A0001BDC0B /* SimpleLogger */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9618488A2EB094B0005BD3AC /* XCRemoteSwiftPackageReference "SimpleLogger" */;
 			productName = SimpleLogger;
