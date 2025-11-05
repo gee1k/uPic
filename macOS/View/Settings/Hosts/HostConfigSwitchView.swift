@@ -170,7 +170,7 @@ struct HostConfigSwitchView: View {
     private func validateHost(_ hostModel: HostModel) {
         if let image = NSImage(named: "uPic") {
             Task {
-                await UploadeManager.shared.upload(hostModel: hostModel, images: [image])
+                await UploadManager.shared.upload(hostModel: hostModel, images: [image])
             }
         }
     }

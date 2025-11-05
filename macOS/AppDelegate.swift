@@ -52,17 +52,17 @@ extension AppDelegate: NSWindowDelegate, NSDraggingDestination {
         if sender.draggedFileUrls.count > 0 || sender.draggedFromBrowserData != nil || sender.draggedFromBrowserUrl != nil {
             if sender.draggedFileUrls.count > 0 {
                 Task {
-                    await UploadeManager.shared.upload(fileURLs: sender.draggedFileUrls)
+                    await UploadManager.shared.upload(fileURLs: sender.draggedFileUrls)
                 }
                 return true
             } else if let imageData = sender.draggedFromBrowserData {
                 Task {
-                    await UploadeManager.shared.upload(fileData: imageData)
+                    await UploadManager.shared.upload(fileData: imageData)
                 }
                 return true
             } else if let url = sender.draggedFromBrowserUrl {
                 Task {
-                    await UploadeManager.shared.upload(fileURLs: [url])
+                    await UploadManager.shared.upload(fileURLs: [url])
                 }
                 return true
             }

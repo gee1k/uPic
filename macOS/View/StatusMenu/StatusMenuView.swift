@@ -22,7 +22,7 @@ struct StatusMenuView: View {
     @Default(.autoCopyUrlToClipboard) var autoCopyUrlToClipboard
     @Default(.statusMenuHistoryLimit) var statusMenuHistoryLimit
 
-    @ObservedObject private var uploader = UploadeManager.shared
+    @ObservedObject private var uploader = UploadManager.shared
 
     @Query private var hostModels: [HostModel]
     @Query(sort: \UploadHistoryModel.createdDate, order: .reverse) private var uploadHistory: [UploadHistoryModel]

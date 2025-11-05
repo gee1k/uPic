@@ -1,5 +1,5 @@
 //
-//  UPicUploader.swift
+//  UploadManager.swift
 //  uPic
 //
 //  Created by Licardo on 2025/10/29.
@@ -24,10 +24,10 @@ public struct UploadItem {
     var originalFilename: String?
 }
 
-public class UploadeManager: ObservableObject {
+public class UploadManager: ObservableObject {
     // MARK: - Shared Instance
 
-    public static let shared = UploadeManager()
+    public static let shared = UploadManager()
 
     // MARK: - Published Properties
 
@@ -546,7 +546,6 @@ public class UploadeManager: ObservableObject {
     private func getSelectedHost() -> HostModel? {
         guard let selectedHostId = Defaults[.selectedHostId] else {
             AppLogger.uploader.warning("No host configuration selected")
-            Noti.shared.postUploadError(String(localized: "No host configuration selected"))
             return getFirstHostAsFallback()
         }
 
@@ -629,7 +628,7 @@ public class UploadeManager: ObservableObject {
 
 // MARK: - 压缩
 
-extension UploadeManager {
+extension UploadManager {
     private func compressImage(_ data: Data) -> Data {
         let factor: Int = Defaults[.compressFactor]
 
@@ -681,7 +680,7 @@ extension UploadeManager {
     }
 }
 
-public extension UploadeManager {
+public extension UploadManager {
     ///
     /// 获取当前图床对应的支持文件格式
     ///

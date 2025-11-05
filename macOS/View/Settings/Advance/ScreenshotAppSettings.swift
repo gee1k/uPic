@@ -11,7 +11,7 @@ import SwiftUI
 struct ScreenshotAppSettings: View {
     @Default(.screenshotApp) var screenshotApp
     @Default(.customScreenshotAppUlrScheme) var customScreenShotAppUlrscheme
-    @ObservedObject private var uploader = UploadeManager.shared
+    @ObservedObject private var uploader = UploadManager.shared
 
     var body: some View {
         Section {
