@@ -33,4 +33,6 @@ enum Constants {
     static let imgurGetClientIdUrl = "https://imgur.com/upload"
     static let imgurHelpUrl = "https://blog.svend.cc/upic/tutorials/imgur"
     static let customHelpUrl = "https://blog.svend.cc/upic/tutorials/custom"
+
+    static let longshotUlrscheme = "longshot://x-callback-url/snip?func=start&channel=clipboard&type=data&x-source=uPic&x-success=uPic://x-callback-url/acceptSnip?x-source=longshot&x-error=uPic://x-callback-url/snipError?x-source=longshot&errorMessage=message"
 }

@@ -497,12 +497,18 @@ public class UploadeManager: ObservableObject {
         switch Defaults[.screenshotApp] {
         case .system:
             uploadFromSystemScreenshot()
+
         case .longshot:
             AppLogger.uploader.info("Screenshot via Longshot")
-            guard let url = URL(string: "longshot://x-callback-url/snip?func=start&channel=clipboard&type=data&x-source=uPic&x-success=uPic://x-callback-url/acceptSnip?x-source=longshot&x-error=uPic://x-callback-url/snipError?x-source=longshot&errorMessage=message") else {
-                return
+            if let url = URL(string: Constants.longshotUlrscheme) {
+                NSWorkspace.shared.open(url)
             }
-            NSWorkspace.shared.open(url)
+
+        case .x_callback_url:
+            AppLogger.uploader.info("Screenshot via x-callback-url")
+            if let url = URL(string: Defaults[.customScreenshotAppUlrScheme]) {
+                NSWorkspace.shared.open(url)
+            }
         }
     }
 

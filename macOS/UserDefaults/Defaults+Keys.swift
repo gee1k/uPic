@@ -21,6 +21,7 @@ extension Defaults.Keys {
     static let statusMenuHistoryLimit = Defaults.Key<Int>("statusMenuHistoryLimit", default: 10, suite: appGroupUserDefaults, iCloud: true)
     static let compressFactor = Defaults.Key<Int>("compressFactor", default: 20, suite: appGroupUserDefaults, iCloud: true)
     static let screenshotApp = Defaults.Key<ScreenshotApp>("screenshotApp", default: .system, suite: appGroupUserDefaults, iCloud: true)
+    static let customScreenshotAppUlrScheme = Defaults.Key<String>("customScreenshotAppUlrScheme", default: "", suite: appGroupUserDefaults, iCloud: true)
     static let autoCopyUrlToClipboard = Defaults.Key<Bool>("autoCopyUrlToClipboard", default: true, suite: appGroupUserDefaults, iCloud: true)
     static let sendNotification = Defaults.Key<Bool>("sendNotification", default: true, suite: appGroupUserDefaults, iCloud: true)
 
@@ -36,11 +37,13 @@ extension Defaults.Keys {
 enum ScreenshotApp: String, CaseIterable, Defaults.Serializable {
     case system
     case longshot
+    case x_callback_url
 
     var displayName: String {
         switch self {
         case .system: return String(localized: "System")
         case .longshot: return String(localized: "Longshot")
+        case .x_callback_url: return "x-callback-url"
         }
     }
 
@@ -48,6 +51,7 @@ enum ScreenshotApp: String, CaseIterable, Defaults.Serializable {
         switch self {
         case .system: return Image(systemName: "apple.logo")
         case .longshot: return Image("LongShot")
+        case .x_callback_url: return Image(systemName: "link")
         }
     }
 }
