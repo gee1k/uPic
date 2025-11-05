@@ -109,6 +109,13 @@
 			);
 			target = 9602EC742EBB214C004AE3E6 /* uPicAppIntentsExtension */;
 		};
+		9602EF9B2EBB5A6E004AE3E6 /* Exceptions for "uPicActionExtension" folder in "uPicShareExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				icon.icns,
+			);
+			target = 96A829B52EB8D89C001FE480 /* uPicShareExtension */;
+		};
 		9640CD7E2EB09D1E003BF4FB /* Exceptions for "macOS" folder in "uPic(macOS)" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -192,6 +199,7 @@
 		968762782EBAF1AA001BDC0B /* uPicActionExtension */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				9602EF9B2EBB5A6E004AE3E6 /* Exceptions for "uPicActionExtension" folder in "uPicShareExtension" target */,
 				968762862EBAF1AA001BDC0B /* Exceptions for "uPicActionExtension" folder in "uPicActionExtension" target */,
 			);
 			path = uPicActionExtension;

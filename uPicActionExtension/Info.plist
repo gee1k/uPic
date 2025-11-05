@@ -9,13 +9,22 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>NSExtensionActivationRule</key>
-			<string>public.url</string>
+            <string>SUBQUERY (
+                extensionItems, $extensionItem,
+                SUBQUERY (
+                $extensionItem.attachments, $attachment,
+                (
+                ANY $attachment.registeredTypeIdentifiers UTI-CONFORMS-TO "public.item"
+                )
+                ).@count >= 1
+                ).@count >= 1
+            </string>
 			<key>NSExtensionServiceAllowsFinderPreviewItem</key>
 			<true/>
 			<key>NSExtensionServiceAllowsTouchBarItem</key>
 			<true/>
 			<key>NSExtensionServiceFinderPreviewIconName</key>
-			<string>NSActionTemplate</string>
+			<string>uPic</string>
 			<key>NSExtensionServiceRoleType</key>
 			<string>NSExtensionServiceRoleTypeEditor</string>
 			<key>NSExtensionServiceTouchBarBezelColorName</key>
