@@ -12,7 +12,7 @@ import SimpleLogger
 class AppDelegate: NSResponder, NSApplicationDelegate {
     var statusItem: NSStatusItem?
 
-    func applicationDidFinishLaunching(_: Notification) {
+    func applicationWillFinishLaunching(_: Notification) {
         Noti.shared.requestNotificationAuthorization()
 
         // Add URL scheme listening
