@@ -4,15 +4,15 @@
 //
 //  Created by Licardo on 2025/11/5.
 //
-
+ 
 import AppIntents
-
+ 
 // MARK: - App Shortcuts Provider
-
+ 
 struct UPicAppShortcutsProvider: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
-            intent: uPicUploadFile(),
+            intent: UPicUploadFile(),
             phrases: [
                 "Upload file with \(.applicationName)",
                 "Upload \(.applicationName) file"
