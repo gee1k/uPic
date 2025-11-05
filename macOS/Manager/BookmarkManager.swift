@@ -31,7 +31,7 @@ public class BookmarkManager {
         let osVersion = ProcessInfo.processInfo.operatingSystemVersion
         
         // macOS 26.0 需要使用临时解决方案
-        if osVersion.majorVersion == 26 && osVersion.minorVersion == 0 {
+        if osVersion.majorVersion >= 26 {
             return true
         }
         
@@ -51,8 +51,11 @@ public class BookmarkManager {
         openPanel.canChooseDirectories = true
         openPanel.directoryURL = directoryURL
         
-        openPanel.runModal()
-        return openPanel.urls.first
+        let result = openPanel.runModal()
+        if result == .OK {
+            return openPanel.urls.first
+        }
+        return nil
     }
     
     private func saveBookmarkData(for workDir: URL, defaultKey: Defaults.Key<Data?>) {

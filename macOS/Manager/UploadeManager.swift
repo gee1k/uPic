@@ -82,6 +82,7 @@ public class UploadeManager: ObservableObject {
 
         // 使用 DiskPermissionManager 管理磁盘访问权限
         let diskPermissionManager = BookmarkManager.shared
+        let _ = diskPermissionManager.startDirectoryAccessing()
 
         var items: [UploadItem] = []
 
@@ -117,9 +118,6 @@ public class UploadeManager: ObservableObject {
             return nil
         }
 
-        // 尝试使用文件自身的安全作用域（如果有）
-        let hasFileScopedAccess = url.startAccessingSecurityScopedResource()
-
         do {
             let data = try Data(contentsOf: url)
             AppLogger.uploader.info("Successfully read file data: \(url.path), size: \(data.count) bytes")
@@ -127,9 +125,6 @@ public class UploadeManager: ObservableObject {
             // 验证数据不为空
             guard !data.isEmpty else {
                 AppLogger.uploader.warning("File data is empty: \(url.path)")
-                if hasFileScopedAccess {
-                    url.stopAccessingSecurityScopedResource()
-                }
                 return nil
             }
 
@@ -155,20 +150,10 @@ public class UploadeManager: ObservableObject {
                 uploadItem.thumbnailData = data
             }
 
-            // 如果使用了文件级别的安全作用域，在这里释放
-            if hasFileScopedAccess {
-                url.stopAccessingSecurityScopedResource()
-            }
-
             return uploadItem
 
         } catch {
             AppLogger.uploader.error("Failed to read file data: \(url.path), error: \(error.localizedDescription)")
-
-            // 出错时立即释放文件级别的安全作用域
-            if hasFileScopedAccess {
-                url.stopAccessingSecurityScopedResource()
-            }
             return nil
         }
     }

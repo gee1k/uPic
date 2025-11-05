@@ -16,7 +16,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "968762A52EBAFC51001BDC0B"
+               BlueprintIdentifier = "9602EC742EBB214C004AE3E6"
                BuildableName = "uPicAppIntentsExtension.appex"
                BlueprintName = "uPicAppIntentsExtension"
                ReferencedContainer = "container:uPic.xcodeproj">

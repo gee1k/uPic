@@ -87,7 +87,7 @@ struct Permissions: View {
                         permissionAlertMessage = String(localized: "Full disk access permission granted successfully!")
                         showingPermissionAlert = true
                     } else {
-                        permissionAlertMessage = String(localized: "Permission request completed. If access is still denied, please use 'System Settings' button to configure manually.")
+                        permissionAlertMessage = String(localized: "Disk full access permission not granted.")
                         showingPermissionAlert = true
                     }
                 }
