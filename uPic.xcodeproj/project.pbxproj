@@ -17,6 +17,7 @@
 		968762772EBAF1AA001BDC0B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968762442EBAE826001BDC0B /* Cocoa.framework */; };
 		968762822EBAF1AA001BDC0B /* uPicActionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 968762762EBAF1AA001BDC0B /* uPicActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		968762882EBAF1BC001BDC0B /* SimpleLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 968762872EBAF1BC001BDC0B /* SimpleLogger */; };
+		968762AF2EBAFC51001BDC0B /* uPicAppIntentsExtension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = 968762A62EBAFC51001BDC0B /* uPicAppIntentsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96A829C22EB8D89C001FE480 /* uPicShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 96A829B62EB8D89C001FE480 /* uPicShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96A829CB2EB8E117001FE480 /* SimpleLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 96A829CA2EB8E117001FE480 /* SimpleLogger */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 968762752EBAF1AA001BDC0B;
 			remoteInfo = uPicActionExtension;
+		};
+		968762AD2EBAFC51001BDC0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9618486C2EB09470005BD3AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 968762A52EBAFC51001BDC0B;
+			remoteInfo = uPicAppIntents;
 		};
 		96A829C02EB8D89C001FE480 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -67,6 +75,7 @@
 			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
 			dstSubfolderSpec = 16;
 			files = (
+				968762AF2EBAFC51001BDC0B /* uPicAppIntentsExtension.appex in Embed ExtensionKit Extensions */,
 			);
 			name = "Embed ExtensionKit Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +88,7 @@
 		964569682EB8F3B40083BD40 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		968762442EBAE826001BDC0B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		968762762EBAF1AA001BDC0B /* uPicActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		968762A62EBAFC51001BDC0B /* uPicAppIntentsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = uPicAppIntentsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		96A829B62EB8D89C001FE480 /* uPicShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,6 +114,13 @@
 				Utils/Constants.swift,
 			);
 			target = 968762752EBAF1AA001BDC0B /* uPicActionExtension */;
+		};
+		968762B32EBAFC51001BDC0B /* Exceptions for "uPicAppIntentsExtension" folder in "uPicAppIntentsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 968762A52EBAFC51001BDC0B /* uPicAppIntentsExtension */;
 		};
 		96A829C62EB8D89C001FE480 /* Exceptions for "uPicShareExtension" folder in "uPicShareExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -162,6 +179,14 @@
 			path = uPicActionExtension;
 			sourceTree = "<group>";
 		};
+		968762A72EBAFC51001BDC0B /* uPicAppIntentsExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				968762B32EBAFC51001BDC0B /* Exceptions for "uPicAppIntentsExtension" folder in "uPicAppIntentsExtension" target */,
+			);
+			path = uPicAppIntentsExtension;
+			sourceTree = "<group>";
+		};
 		96A829B72EB8D89C001FE480 /* uPicShareExtension */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -196,6 +221,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		968762A32EBAFC51001BDC0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		96A829B32EB8D89C001FE480 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -213,6 +245,7 @@
 				961848762EB09470005BD3AC /* macOS */,
 				96A829B72EB8D89C001FE480 /* uPicShareExtension */,
 				968762782EBAF1AA001BDC0B /* uPicActionExtension */,
+				968762A72EBAFC51001BDC0B /* uPicAppIntentsExtension */,
 				9640CD782EB09CBD003BF4FB /* Frameworks */,
 				961848752EB09470005BD3AC /* Products */,
 				9640CD802EB09DF9003BF4FB /* libs */,
@@ -225,6 +258,7 @@
 				961848742EB09470005BD3AC /* uPic.app */,
 				96A829B62EB8D89C001FE480 /* uPicShareExtension.appex */,
 				968762762EBAF1AA001BDC0B /* uPicActionExtension.appex */,
+				968762A62EBAFC51001BDC0B /* uPicAppIntentsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,6 +292,7 @@
 			dependencies = (
 				96A829C12EB8D89C001FE480 /* PBXTargetDependency */,
 				968762812EBAF1AA001BDC0B /* PBXTargetDependency */,
+				968762AE2EBAFC51001BDC0B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				961848762EB09470005BD3AC /* macOS */,
@@ -299,6 +334,28 @@
 			productReference = 968762762EBAF1AA001BDC0B /* uPicActionExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		968762A52EBAFC51001BDC0B /* uPicAppIntentsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 968762B02EBAFC51001BDC0B /* Build configuration list for PBXNativeTarget "uPicAppIntentsExtension" */;
+			buildPhases = (
+				968762A22EBAFC51001BDC0B /* Sources */,
+				968762A32EBAFC51001BDC0B /* Frameworks */,
+				968762A42EBAFC51001BDC0B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				968762A72EBAFC51001BDC0B /* uPicAppIntentsExtension */,
+			);
+			name = uPicAppIntentsExtension;
+			packageProductDependencies = (
+			);
+			productName = uPicAppIntents;
+			productReference = 968762A62EBAFC51001BDC0B /* uPicAppIntentsExtension.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
+		};
 		96A829B52EB8D89C001FE480 /* uPicShareExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 96A829C32EB8D89C001FE480 /* Build configuration list for PBXNativeTarget "uPicShareExtension" */;
@@ -338,6 +395,9 @@
 					968762752EBAF1AA001BDC0B = {
 						CreatedOnToolsVersion = 26.1;
 					};
+					968762A52EBAFC51001BDC0B = {
+						CreatedOnToolsVersion = 26.1;
+					};
 					96A829B52EB8D89C001FE480 = {
 						CreatedOnToolsVersion = 26.0.1;
 					};
@@ -369,6 +429,7 @@
 				961848732EB09470005BD3AC /* uPic(macOS) */,
 				96A829B52EB8D89C001FE480 /* uPicShareExtension */,
 				968762752EBAF1AA001BDC0B /* uPicActionExtension */,
+				968762A52EBAFC51001BDC0B /* uPicAppIntentsExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -382,6 +443,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		968762742EBAF1AA001BDC0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		968762A42EBAFC51001BDC0B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -412,6 +480,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		968762A22EBAFC51001BDC0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		96A829B22EB8D89C001FE480 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -426,6 +501,11 @@
 			isa = PBXTargetDependency;
 			target = 968762752EBAF1AA001BDC0B /* uPicActionExtension */;
 			targetProxy = 968762802EBAF1AA001BDC0B /* PBXContainerItemProxy */;
+		};
+		968762AE2EBAFC51001BDC0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 968762A52EBAFC51001BDC0B /* uPicAppIntentsExtension */;
+			targetProxy = 968762AD2EBAFC51001BDC0B /* PBXContainerItemProxy */;
 		};
 		96A829C12EB8D89C001FE480 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -761,6 +841,92 @@
 			};
 			name = Release;
 		};
+		968762B12EBAFC51001BDC0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = uPicAppIntentsExtension/uPicAppIntentsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = uPicAppIntentsExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = uPicAppIntents;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicAppIntentsExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		968762B22EBAFC51001BDC0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = uPicAppIntentsExtension/uPicAppIntentsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W863J6W8DZ;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				ENABLE_USER_SELECTED_FILES = readwrite;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = uPicAppIntentsExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = uPicAppIntents;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicAppIntentsExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		96A829C42EB8D89C001FE480 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -877,6 +1043,15 @@
 			buildConfigurations = (
 				968762842EBAF1AA001BDC0B /* Debug */,
 				968762852EBAF1AA001BDC0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		968762B02EBAFC51001BDC0B /* Build configuration list for PBXNativeTarget "uPicAppIntentsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				968762B12EBAFC51001BDC0B /* Debug */,
+				968762B22EBAFC51001BDC0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
