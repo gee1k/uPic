@@ -6,10 +6,10 @@
 //
 
 import QuickLook
+import SimpleLogger
 import SwiftData
 import SwiftUI
 import UPicCore
-import SimpleLogger
 
 struct HistoryTableView: View {
     let uploadHistory: [UploadHistoryModel]
@@ -58,14 +58,14 @@ struct HistoryTableView: View {
             }
             .contextMenu(forSelectionType: UploadHistoryModel.ID.self) { selectedIds in
                 if let selectedId = selectedIds.first, let history = uploadHistory.first(where: { $0.id == selectedId }) {
-                    Button("Preview", systemImage: "eye") {
+                    Button("Quick Look", systemImage: "eye") {
                         if let url = URL(string: history.url) {
                             quickLookURL = url
                         }
                     }
 
                     Button("Copy URL", systemImage: "clipboard") {
-                        Tools.shared.copyUrls([history.url])
+                        Tools.shared.copyUrlsToClipboard([history.url])
                     }
 
                     Button("Open in Browser", systemImage: "network") {
@@ -79,6 +79,13 @@ struct HistoryTableView: View {
                     Button("Delete", systemImage: "trash", role: .destructive) {
                         deleteHistory(history)
                     }
+                }
+            } primaryAction: { selectedIds in
+                let selectedUrls = selectedIds.compactMap { selectedId in
+                    uploadHistory.first(where: { $0.id == selectedId })?.url
+                }
+                if !selectedUrls.isEmpty {
+                    Tools.shared.copyUrlsToClipboard(selectedUrls)
                 }
             }
             .alert("Clear History Record", isPresented: $showClearHistoryAlert) {
@@ -98,7 +105,7 @@ struct HistoryTableView: View {
 
             HStack(spacing: 2) {
                 Text("\(uploadHistory.count) Items")
-                
+
                 Spacer()
 
                 HStack(spacing: 2) {

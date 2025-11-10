@@ -23,7 +23,7 @@ struct HistoryMenuItem: View {
     var body: some View {
         Menu {
             Button("Copy URL", systemImage: "clipboard") {
-                Tools.shared.copyUrls([history.url])
+                Tools.shared.copyUrlsToClipboard([history.url])
             }
 
             Button("Open in Browser", systemImage: "globe") {
@@ -34,7 +34,7 @@ struct HistoryMenuItem: View {
 
             Divider()
 
-            Button("Preview", systemImage: "eye") {
+            Button("Quick Look", systemImage: "eye") {
                 if let url = URL(string: history.url) {
                     quickLookURL = url
                 }
@@ -65,7 +65,7 @@ struct HistoryMenuItem: View {
                     .truncationMode(.middle)
             }
         } primaryAction: {
-            Tools.shared.copyUrls([history.url])
+            Tools.shared.copyUrlsToClipboard([history.url])
         }
     }
 

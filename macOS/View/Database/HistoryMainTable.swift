@@ -5,6 +5,7 @@
 //  Created by Licardo on 2025/11/01.
 //
 
+import AppKit
 import SwiftData
 import SwiftUI
 import UPicCore
