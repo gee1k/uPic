@@ -72,7 +72,7 @@ struct uPicApp: App {
         }
         .defaultPosition(.center)
         #if DEBUG
-            .defaultLaunchBehavior(.suppressed)
+            .defaultLaunchBehavior(.presented)
         #else
             .defaultLaunchBehavior(.suppressed)
         #endif
