@@ -57,26 +57,37 @@ struct HistoryTableView: View {
                 }
             }
             .contextMenu(forSelectionType: UploadHistoryModel.ID.self) { selectedIds in
-                if let selectedId = selectedIds.first, let history = uploadHistory.first(where: { $0.id == selectedId }) {
-                    Button("Quick Look", systemImage: "eye") {
-                        if let url = URL(string: history.url) {
-                            quickLookURL = url
-                        }
-                    }
+                let selectedHistories = selectedIds.compactMap { selectedId in
+                    uploadHistory.first(where: { $0.id == selectedId })
+                }
 
-                    Button("Copy URL", systemImage: "clipboard") {
-                        Tools.shared.copyUrlsToClipboard([history.url])
-                    }
+                Button("Copy URL", systemImage: "clipboard") {
+                    Tools.shared.copyUrlsToClipboard(selectedHistories.compactMap { $0.url })
+                }
 
-                    Button("Open in Browser", systemImage: "network") {
+                Button("Open in Browser", systemImage: "network") {
+                    for history in selectedHistories {
                         if let url = URL(string: history.url) {
                             openURL(url)
                         }
                     }
+                }
 
+                if selectedHistories.count == 1 {
+                    // Quick Look 只对第一个选中的项目
                     Divider()
 
-                    Button("Delete", systemImage: "trash", role: .destructive) {
+                    Button("Quick Look", systemImage: "eye") {
+                        if let firstHistory = selectedHistories.first, let url = URL(string: firstHistory.url) {
+                            quickLookURL = url
+                        }
+                    }
+                }
+
+                Divider()
+
+                Button("Delete", systemImage: "trash", role: .destructive) {
+                    for history in selectedHistories {
                         deleteHistory(history)
                     }
                 }
