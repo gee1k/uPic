@@ -8,18 +8,22 @@
 import AppKit
 import KeyboardShortcuts
 import SimpleLogger
+import SwiftUI
 
 class AppDelegate: NSResponder, NSApplicationDelegate {
     var statusItem: NSStatusItem?
+    @Environment(\.openWindow) var openWindow
 
     func applicationWillFinishLaunching(_: Notification) {
         Noti.shared.requestNotificationAuthorization()
 
         // Add URL scheme listening
-        NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(self.handleGetURLEvent(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+        NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(handleGetURLEvent(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
     }
 
     func applicationShouldHandleReopen(_: NSApplication, hasVisibleWindows _: Bool) -> Bool {
+        NSApp.activate(ignoringOtherApps: true)
+        openWindow(id: "settings")
         return true
     }
 
