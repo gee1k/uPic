@@ -14,6 +14,13 @@ class AppDelegate: NSResponder, NSApplicationDelegate {
 
     func applicationWillFinishLaunching(_: Notification) {
         Noti.shared.requestNotificationAuthorization()
+        
+        if CLIManager.shared.parseArgs() {
+            Task {
+                await CLIManager.shared.startUpload()
+            }
+            return
+        }
 
         // Add URL scheme listening
         NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(self.handleGetURLEvent(event:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))

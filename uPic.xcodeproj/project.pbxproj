@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1633E8CA2EE6751D0036665C /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1633E8C92EE6751D0036665C /* ArgumentParser */; };
 		9602EC842EBB2156004AE3E6 /* SimpleLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 9602EC832EBB2156004AE3E6 /* SimpleLogger */; };
 		9602ED1D2EBB266E004AE3E6 /* uPicAppIntentsExtension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = 9602EC752EBB214C004AE3E6 /* uPicAppIntentsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96149DDB2EB3DA9E005ADB6A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96149DDA2EB3DA9E005ADB6A /* CloudKit.framework */; };
@@ -230,6 +231,7 @@
 			files = (
 				9666F3F42EB236570076A227 /* MenuBarExtraAccess in Frameworks */,
 				9618488F2EB094C0005BD3AC /* Defaults in Frameworks */,
+				1633E8CA2EE6751D0036665C /* ArgumentParser in Frameworks */,
 				961848892EB094A4005BD3AC /* LaunchAtLogin in Frameworks */,
 				9640CD6E2EB09C30003BF4FB /* UPicCore in Frameworks */,
 				96149DDB2EB3DA9E005ADB6A /* CloudKit.framework in Frameworks */,
@@ -348,6 +350,7 @@
 				9618488E2EB094C0005BD3AC /* Defaults */,
 				9640CD6D2EB09C30003BF4FB /* UPicCore */,
 				9666F3F32EB236570076A227 /* MenuBarExtraAccess */,
+				1633E8C92EE6751D0036665C /* ArgumentParser */,
 			);
 			productName = uPic;
 			productReference = 961848742EB09470005BD3AC /* uPic.app */;
@@ -440,6 +443,7 @@
 				9618488D2EB094C0005BD3AC /* XCRemoteSwiftPackageReference "Defaults" */,
 				9640CD6C2EB09C30003BF4FB /* XCLocalSwiftPackageReference "UPicCore" */,
 				9666F3F22EB236570076A227 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
+				1633E8C82EE6751D0036665C /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 961848752EB09470005BD3AC /* Products */;
@@ -1073,6 +1077,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1633E8C82EE6751D0036665C /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.2;
+			};
+		};
 		961848842EB09488005BD3AC /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
@@ -1116,6 +1128,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1633E8C92EE6751D0036665C /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1633E8C82EE6751D0036665C /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
 		9602EC832EBB2156004AE3E6 /* SimpleLogger */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9618488A2EB094B0005BD3AC /* XCRemoteSwiftPackageReference "SimpleLogger" */;

@@ -224,6 +224,74 @@ public class UploadManager: ObservableObject {
         await upload(hostModel: hostModel, items: items)
     }
 
+    // MARK: - CLI Upload
+
+    public func upload(
+        items: [Any],
+        onProgress: @escaping (String) -> Void,
+        onError: @escaping (String?) -> Void,
+        onCompletion: @escaping () -> Void
+    ) async {
+        AppLogger.uploader.info("Starting CLI upload: \(items.count) items")
+
+        guard let host = getSelectedHost() else {
+            AppLogger.uploader.error("No available hosts configuration")
+            onError(String(localized: "No available hosts configuration"))
+            onCompletion()
+            return
+        }
+        
+        // 使用 DiskPermissionManager 管理磁盘访问权限
+        let diskPermissionManager = BookmarkManager.shared
+        let _ = diskPermissionManager.startDirectoryAccessing()
+
+        for item in items {
+            var uploadItem: UploadItem?
+
+            if let url = item as? URL {
+                uploadItem = await safelyProcessFile(url: url)
+                if uploadItem == nil {
+                    onError(nil)
+                    continue
+                }
+            } else if let data = item as? Data {
+                let image = NSImage(data: data)
+                var uItem = UploadItem()
+                uItem.data = data
+                uItem.originalFilename = "upload_\(Date().timeIntervalSince1970)"
+                uItem.pixelWidth = Int(image?.size.width ?? 0)
+                uItem.pixelHeight = Int(image?.size.height ?? 0)
+                uItem.thumbnailData = generateThumbnail(from: image, quality: 0.3)
+                uploadItem = uItem
+            } else if var uItem = item as? UploadItem {
+                if uItem.thumbnailData == nil, let data = uItem.data {
+                    let image = NSImage(data: data)
+                    uItem.pixelWidth = Int(image?.size.width ?? 0)
+                    uItem.pixelHeight = Int(image?.size.height ?? 0)
+                    uItem.thumbnailData = generateThumbnail(from: image, quality: 0.3)
+                }
+                uploadItem = uItem
+            } else {
+                onError(nil)
+                continue
+            }
+
+            if let uploadItem = uploadItem {
+                do {
+                    let url = try await performSingleUpload(hostModel: host, item: uploadItem)
+                    await saveToHistory(item: uploadItem, url: url, hostModel: host)
+                    onProgress(url)
+                } catch {
+                    AppLogger.uploader.error("CLI upload failed: \(error.localizedDescription)")
+                    onError(error.localizedDescription)
+                }
+            }
+        }
+
+        diskPermissionManager.stopDirectoryAccessing()
+        onCompletion()
+    }
+
     // MARK: - Private Methods
 
     private func upload(hostModel: HostModel, items: [UploadItem]) async {
