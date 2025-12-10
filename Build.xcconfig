@@ -1,0 +1,12 @@
+//
+//  Build.xcconfig
+//  uPic
+//
+//  Created by Licardo on 2025/11/10.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+MARKETING_VERSION = 2.0.0
+CURRENT_PROJECT_VERSION = 1

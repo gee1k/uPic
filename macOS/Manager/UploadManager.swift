@@ -39,7 +39,6 @@ public class UploadManager: ObservableObject {
     // MARK: - Dependencies
 
     private var modelContext: ModelContext?
-    private let notificationCenter = NotificationCenter.default
 
     // MARK: - Initialization
 
@@ -82,7 +81,7 @@ public class UploadManager: ObservableObject {
 
         // 使用 DiskPermissionManager 管理磁盘访问权限
         let diskPermissionManager = BookmarkManager.shared
-        let _ = diskPermissionManager.startDirectoryAccessing()
+        _ = diskPermissionManager.startDirectoryAccessing()
 
         var items: [UploadItem] = []
 
@@ -328,7 +327,11 @@ public class UploadManager: ObservableObject {
                 let url = try await performSingleUpload(hostModel: hostModel, item: item)
                 AppLogger.uploader.info("Upload successful: \(url)")
 
-                Noti.shared.postUploadSuccessful(url)
+                if Defaults[.autoCopyUrlToClipboard] {
+                    Tools.shared.copyUrlsToClipboard([url], afterUpload: true)
+                } else {
+                    Noti.shared.postUploadSuccessful("\(Tools.shared.formatOutputUrls([url]))")
+                }
 
                 await saveToHistory(item: item, url: url, hostModel: hostModel)
                 successCount += 1

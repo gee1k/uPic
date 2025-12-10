@@ -12,9 +12,7 @@ import UPicCore
 class Tools {
     static let shared = Tools()
 
-    func copyUrls(_ urls: [String]) {
-        AppLogger.tools.debug("Ready to copy upload results to clipboard: \(urls.joined(separator: ","))")
-
+    func copyUrlsToClipboard(_ urls: [String], afterUpload: Bool = false) {
         let outputUrls = formatOutputUrls(urls)
         let outputStr = outputUrls.joined(separator: "\n")
         NSPasteboard.general.clearContents()
@@ -23,10 +21,14 @@ class Tools {
 
         AppLogger.tools.info("Copy upload result to clipboard: \(outputStr)")
 
-        Noti.shared.postCopySuccessful(outputStr)
+        if afterUpload {
+            Noti.shared.postUploadAndCopyToClipboardSuccessful(outputStr)
+        } else {
+            Noti.shared.postCopyToClipboardSuccessful(outputStr)
+        }
     }
 
-    private func formatOutputUrls(_ urls: [String], _ outputType: OutputFormatModel? = nil) -> [String] {
+    func formatOutputUrls(_ urls: [String], _ outputType: OutputFormatModel? = nil) -> [String] {
         let outputUrls = urls.map { url in
             OutputFormatModel.formatUrl(url, outputFormat: outputType)
         }

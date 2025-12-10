@@ -36,7 +36,7 @@ class URLSchemeManager {
         case "files":
             if keyValue.count == 2 {
                 let pathStr = String(keyValue.last ?? "")
-                AppLogger.urlScheme.debug("URLScheme pload type file: \(pathStr)")
+                AppLogger.urlScheme.debug("URLScheme upload type file: \(pathStr)")
                 await uploader.upload(fileURLs: [URL(filePath: pathStr)])
             }
         case "url":
@@ -48,7 +48,7 @@ class URLSchemeManager {
                 }
             }
         case .some(let str) where str.contains("x-callback-url"):
-            AppLogger.urlScheme.debug("URLScheme pload type: x-callback-url")
+            AppLogger.urlScheme.debug("URLScheme upload type: x-callback-url")
 
             if str.contains("acceptSnip") {
                 AppLogger.urlScheme.info("Processing x-callback-url request: \(keyValue)")

@@ -89,6 +89,7 @@
 		9602EC752EBB214C004AE3E6 /* uPicAppIntentsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = uPicAppIntentsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		96149DDA2EB3DA9E005ADB6A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		961848742EB09470005BD3AC /* uPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		963FCACC2EC1AE35009ABA6D /* Build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Build.xcconfig; sourceTree = "<group>"; };
 		964569682EB8F3B40083BD40 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		968762442EBAE826001BDC0B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		968762762EBAF1AA001BDC0B /* uPicActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = uPicActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,6 +266,7 @@
 		9618486B2EB09470005BD3AC = {
 			isa = PBXGroup;
 			children = (
+				963FCACC2EC1AE35009ABA6D /* Build.xcconfig */,
 				961848762EB09470005BD3AC /* macOS */,
 				96A829B72EB8D89C001FE480 /* uPicShareExtension */,
 				968762782EBAF1AA001BDC0B /* uPicActionExtension */,
@@ -544,10 +546,11 @@
 /* Begin XCBuildConfiguration section */
 		9602EC802EBB214C004AE3E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 963FCACC2EC1AE35009ABA6D /* Build.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = uPicAppIntentsExtension/uPicAppIntentsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -561,7 +564,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicAppIntentsExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -576,10 +579,11 @@
 		};
 		9602EC812EBB214C004AE3E6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 963FCACC2EC1AE35009ABA6D /* Build.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = uPicAppIntentsExtension/uPicAppIntentsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -593,7 +597,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicAppIntentsExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -608,6 +612,7 @@
 		};
 		9618487F2EB09471005BD3AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 963FCACC2EC1AE35009ABA6D /* Build.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -677,6 +682,7 @@
 		};
 		961848802EB09471005BD3AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 963FCACC2EC1AE35009ABA6D /* Build.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -738,6 +744,7 @@
 		};
 		961848822EB09471005BD3AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 963FCACC2EC1AE35009ABA6D /* Build.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = uPic;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -745,7 +752,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
@@ -777,7 +784,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = uPic;
 				REGISTER_APP_GROUPS = YES;
@@ -792,6 +799,7 @@
 		};
 		961848832EB09471005BD3AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 963FCACC2EC1AE35009ABA6D /* Build.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = uPic;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -799,7 +807,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
@@ -831,7 +839,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos;
 				PRODUCT_NAME = uPic;
 				REGISTER_APP_GROUPS = YES;
@@ -846,11 +854,12 @@
 		};
 		968762842EBAF1AA001BDC0B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 963FCACC2EC1AE35009ABA6D /* Build.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = uPicActionExtension/uPicActionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -875,7 +884,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -890,11 +899,12 @@
 		};
 		968762852EBAF1AA001BDC0B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 963FCACC2EC1AE35009ABA6D /* Build.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = uPicActionExtension/uPicActionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -919,7 +929,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -934,11 +944,12 @@
 		};
 		96A829C42EB8D89C001FE480 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 963FCACC2EC1AE35009ABA6D /* Build.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
@@ -964,7 +975,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -979,11 +990,12 @@
 		};
 		96A829C52EB8D89C001FE480 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 963FCACC2EC1AE35009ABA6D /* Build.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = uPicShareExtension/uPicShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = "$(inherited)";
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W863J6W8DZ;
 				ENABLE_APP_SANDBOX = YES;
@@ -1009,7 +1021,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.svend.uPic.macos.uPicShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;

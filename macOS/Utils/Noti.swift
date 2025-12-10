@@ -20,10 +20,14 @@ extension Noti {
     }
     
     func postUploadSuccessful(_ body: String? = "") {
+        self.post(title: String(localized: "Uploaded successfully"), body: body)
+    }
+    
+    func postUploadAndCopyToClipboardSuccessful(_ body: String? = "") {
         self.post(title: String(localized: "Uploaded successfully"), subtitle: String(localized: "URL has been copied to the clipboard"), body: body)
     }
     
-    func postCopySuccessful(_ body: String? = "") {
+    func postCopyToClipboardSuccessful(_ body: String? = "") {
         self.post(title: String(localized: "URL has been copied to the clipboard"), body: body)
     }
     
