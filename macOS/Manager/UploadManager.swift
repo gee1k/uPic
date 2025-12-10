@@ -760,8 +760,6 @@ public extension UploadManager {
         switch host.typeRaw {
         case "smms":
             return SmmsUploader.allowedFileExtensions
-        case "weibo":
-            return WeiboUploader.allowedFileExtensions
         case "imgur":
             return ImgurUploader.allowedFileExtensions
         case "s3":

@@ -14,7 +14,6 @@ import UPicCore
 struct HostConfigSwitchView: View {
     var hostModel: HostModel
     @Binding var tempHostModels: [HostModel]
-
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query private var hostModels: [HostModel]
@@ -27,15 +26,6 @@ struct HostConfigSwitchView: View {
             switch HostType(rawValue: hostModel.typeRaw ?? "") {
             case .smms:
                 SmmsConfigView(hostModel: hostModel) {
-                    saveHostToDatabase(hostModel)
-                } onCancel: {
-                    onCancel()
-                } onValidate: {
-                    validateHost(hostModel)
-                }
-                .id(hostModel.id)
-            case .weibo:
-                WeiboConfigView(hostModel: hostModel) {
                     saveHostToDatabase(hostModel)
                 } onCancel: {
                     onCancel()

@@ -27,7 +27,6 @@ enum Constants {
     static let s3HelpUrl = "https://blog.svend.cc/upic/tutorials/amazon_s3"
     static let githubHelpUrl = "https://blog.svend.cc/upic/tutorials/github"
     static let giteeHelpUrl = "https://blog.svend.cc/upic/tutorials/gitee"
-    static let weiboHelpUrl = "https://blog.svend.cc/upic/tutorials/weibo"
     static let baiduHelpUrl = "https://blog.svend.cc/upic/tutorials/baidu_bos"
     static let imgurCreateClientIdUrl = "https://api.imgur.com/oauth2/addclient"
     static let imgurGetClientIdUrl = "https://imgur.com/upload"
