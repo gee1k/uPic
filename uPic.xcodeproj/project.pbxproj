@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1633E8CA2EE6751D0036665C /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1633E8C92EE6751D0036665C /* ArgumentParser */; };
+		16ACA54B2EE967800082417E /* UPicCore in Frameworks */ = {isa = PBXBuildFile; productRef = 16ACA54A2EE967800082417E /* UPicCore */; };
 		9602EC842EBB2156004AE3E6 /* SimpleLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 9602EC832EBB2156004AE3E6 /* SimpleLogger */; };
 		9602ED1D2EBB266E004AE3E6 /* uPicAppIntentsExtension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = 9602EC752EBB214C004AE3E6 /* uPicAppIntentsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		96149DDB2EB3DA9E005ADB6A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96149DDA2EB3DA9E005ADB6A /* CloudKit.framework */; };
@@ -231,6 +232,7 @@
 			files = (
 				9666F3F42EB236570076A227 /* MenuBarExtraAccess in Frameworks */,
 				9618488F2EB094C0005BD3AC /* Defaults in Frameworks */,
+				16ACA54B2EE967800082417E /* UPicCore in Frameworks */,
 				1633E8CA2EE6751D0036665C /* ArgumentParser in Frameworks */,
 				961848892EB094A4005BD3AC /* LaunchAtLogin in Frameworks */,
 				9640CD6E2EB09C30003BF4FB /* UPicCore in Frameworks */,
@@ -351,6 +353,7 @@
 				9640CD6D2EB09C30003BF4FB /* UPicCore */,
 				9666F3F32EB236570076A227 /* MenuBarExtraAccess */,
 				1633E8C92EE6751D0036665C /* ArgumentParser */,
+				16ACA54A2EE967800082417E /* UPicCore */,
 			);
 			productName = uPic;
 			productReference = 961848742EB09470005BD3AC /* uPic.app */;
@@ -441,9 +444,9 @@
 				961848872EB094A4005BD3AC /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
 				9618488A2EB094B0005BD3AC /* XCRemoteSwiftPackageReference "SimpleLogger" */,
 				9618488D2EB094C0005BD3AC /* XCRemoteSwiftPackageReference "Defaults" */,
-				9640CD6C2EB09C30003BF4FB /* XCLocalSwiftPackageReference "UPicCore" */,
 				9666F3F22EB236570076A227 /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
 				1633E8C82EE6751D0036665C /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				16ACA5492EE967800082417E /* XCRemoteSwiftPackageReference "UPicCore" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 961848752EB09470005BD3AC /* Products */;
@@ -1069,13 +1072,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		9640CD6C2EB09C30003BF4FB /* XCLocalSwiftPackageReference "UPicCore" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = UPicCore;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		1633E8C82EE6751D0036665C /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1083,6 +1079,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.6.2;
+			};
+		};
+		16ACA5492EE967800082417E /* XCRemoteSwiftPackageReference "UPicCore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Bigwig-Club/UPicCore.git";
+			requirement = {
+				branch = next;
+				kind = branch;
 			};
 		};
 		961848842EB09488005BD3AC /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
@@ -1132,6 +1136,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1633E8C82EE6751D0036665C /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
+		};
+		16ACA54A2EE967800082417E /* UPicCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16ACA5492EE967800082417E /* XCRemoteSwiftPackageReference "UPicCore" */;
+			productName = UPicCore;
 		};
 		9602EC832EBB2156004AE3E6 /* SimpleLogger */ = {
 			isa = XCSwiftPackageProductDependency;
