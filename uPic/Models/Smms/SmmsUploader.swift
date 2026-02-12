@@ -16,7 +16,7 @@ class SmmsUploader: BaseUploader {
 
     static let fileExtensions: [String] = ["jpeg", "jpg", "png", "gif", "bmp"]
     
-    let url = "https://smms.app/api/v2/upload"
+    let url = "https://s.ee/api/v1/file/upload"
 
     func _upload(_ fileUrl: URL?, fileData: Data?, host: Host) {
         guard let data = host.data, let config = data as? SmmsHostConfig else {
@@ -42,15 +42,15 @@ class SmmsUploader: BaseUploader {
         
         var headers: HTTPHeaders = HTTPHeaders()
         headers.add(HTTPHeader.contentType("multipart/form-data"))
-        headers.add(name: "referer", value: "https://sm.ms/")
-        headers.add(name: "origin", value: "https://sm.ms")
+        headers.add(name: "referer", value: "https://s.ee/")
+        headers.add(name: "origin", value: "https://s.ee")
         headers.add(HTTPHeader.authorization(token))
         
         func multipartFormDataGen(multipartFormData: MultipartFormData) {
             if retData != nil {
-                multipartFormData.append(retData!, withName: "smfile", fileName: fileName, mimeType: mimeType)
+                multipartFormData.append(retData!, withName: "file", fileName: fileName, mimeType: mimeType)
             } else if fileUrl != nil {
-                multipartFormData.append(fileUrl!, withName: "smfile", fileName: fileName, mimeType: mimeType)
+                multipartFormData.append(fileUrl!, withName: "file", fileName: fileName, mimeType: mimeType)
             }
         }
 
@@ -60,18 +60,16 @@ class SmmsUploader: BaseUploader {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                let success = json["success"].intValue
-                if 0 == success {
-                    if json["code"] == "image_repeated", let repeatedUrl = json["images"].string {
-                        super.completed(url: repeatedUrl, retData, fileUrl, nil)
-                    } else {
-                        let msg = json["message"].stringValue
-                        super.faild(responseData: response.data, errorMsg: msg)
-                    }
-                } else {
+                let code = json["code"].intValue
+                if 0 == code {
+                    // Success - S.EE API uses code: 0 for success
                     let data = json["data"]
                     let url = data["url"].stringValue
                     super.completed(url: url, retData, fileUrl, nil)
+                } else {
+                    // Error - handle both old SM.MS format and new S.EE format
+                    let msg = json["message"].stringValue
+                    super.faild(responseData: response.data, errorMsg: msg)
                 }
             case .failure(_):
                 super.faild(responseData: response.data)

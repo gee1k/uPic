@@ -57,7 +57,7 @@ class SmmsConfigView: ConfigView {
     }
     
     @objc func getApiToken(_ sender: NSButton) {
-        guard let url = URL(string: "https://smms.app/home/apitoken") else {
+        guard let url = URL(string: "https://s.ee/user/settings") else {
             return
         }
         NSWorkspace.shared.open(url)
